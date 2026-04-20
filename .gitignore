@@ -1,0 +1,10 @@
+# Track only DNA files — ignore everything else
+*
+!.gitignore
+!SOUL.md
+!AGENTS.md
+!HEARTBEAT.md
+!IDENTITY.md
+!NUDGE.md
+!MEMORY.md
+!beliefs-candidates.md
