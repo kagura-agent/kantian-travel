@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(161 cards + 177 projects)
+- **wiki** — 统一知识库(173 cards + 195 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -120,3 +120,7 @@
 - **04-16**: Dreaming 机制深读+启用（dreaming.ts 400行, cron 3:30AM, light 3d/REM 7d lookback）→ wiki card dreaming-vs-beliefs-candidates.md
 - **04-19**: multica 竞品分析（5.3k⭐, managed agents, 支持 OpenClaw runtime）; karpathy-skills 参考; multica v0.2.5 autopilot（定时/触发式 agent 任务）vs 我们 heartbeat/cron
 - **04-20**: GitHub patrol 稳定（30 PR, 多 repo 超限需消化）; hermes-agent CI upstream failures 非我方问题; agents-md 20k⭐ 学习; M5StickS3 下单(embodied AI); Caduceus 停止; Archon #1033 merged
+
+## Promoted From Short-Term Memory
+
+(cleaned 04-23: 移除 04-15~04-17 巡检噪音，均为低价值重复巡检记录，无需长期保留)
