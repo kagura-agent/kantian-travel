@@ -48,7 +48,10 @@
 - 北极星:人类伴侣(磨合成本锁定) | chat-first | agent-as-router
 
 ## 学习与研究
-- landscape、TextGrad、竞品、核心洞察 → `wiki/research.md`
+- 管理 repo: kagura-agent/study（guide + targets + workflows + deliverables）
+- 每日教学产出: HTML briefing（给 Luna 的知识精华）| 每周: weekly synthesis
+- GitHub Pages: https://kagura-agent.github.io/study/
+- landscape、TextGrad、竞品、核心洞察 → `study/knowledge.md`
 - self-evolving agent 方向 | Hermes 竞品 | skill 生态爆发 | ACE 学术验证
 - Claude Code 源码研究(7 模块) → `wiki/projects/claude-code-*.md`
 
@@ -123,4 +126,5 @@
 
 ## Promoted From Short-Term Memory
 
-(cleaned 04-23: 移除 04-15~04-17 巡检噪音，均为低价值重复巡检记录，无需长期保留)
+(cleaned 04-25: 移除 04-18~04-20 dreaming 巡检噪音，均为低价值重复 patrol/PR status fragments，原文在 memory/日期.md 中)
+
