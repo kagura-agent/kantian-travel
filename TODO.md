@@ -62,8 +62,10 @@
 
 - [x] ~~修复 wiki top-20 高价值 broken wikilinks~~ ✅ 2026-04-25
 - [x] ~~解决 6 对 duplicate slugs~~ ✅ 2026-04-25
-- [ ] 设置 wiki-lint 定期自动跑（cron 或 CI）
-- [ ] 修复剩余 broken links（当前还有 ~20 个低频引用）
+- [x] 创建 wiki-lint.sh 脚本（wiki/scripts/wiki-lint.sh）✅ 2026-04-25
+- [x] 修复 broken wikilinks：case sensitivity（OmniAgent→omniagent, RivonClaw→rivonclaw, SwarmForge→swarm-forge）、.md suffix、wrong slug（打工→gogetajob）✅ 2026-04-25
+- [ ] 设置 wiki-lint GitHub Actions CI（脚本已就绪，需配置 workflow）
+- [ ] 清理剩余 37 个 broken links（多数是 tag-style 引用，考虑创建 tag 卡片或改为纯文本）
 
 
 
