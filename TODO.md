@@ -42,10 +42,14 @@
 
 ## 🧠 Memex
 
+### Pending PRs
+- [ ] PR #72 - feat(links): add --filter and --stats options for link analysis
+
 ### Observations
-- memex v0.1.29 installed locally
-- Wiki at ~/.openclaw/workspace/wiki: 188 cards, 0 orphan links ✅
-- Open issues worth watching: #65 (Stop hook never merged), #51 (sync push/pull bug, fix in main but not published)
+- memex v0.1.30 installed locally
+- Wiki at ~/.openclaw/workspace/wiki: 196 cards, 52 orphans (26%)
+- #65 (Stop hook) — fixed in v0.1.30, commented suggesting close
+- #51 (sync push/pull bug) — fixed in v0.1.30
 
 
 
@@ -60,12 +64,8 @@
 
 ## 📚 学习
 
-- [x] ~~修复 wiki top-20 高价值 broken wikilinks~~ ✅ 2026-04-25
-- [x] ~~解决 6 对 duplicate slugs~~ ✅ 2026-04-25
-- [x] 创建 wiki-lint.sh 脚本（wiki/scripts/wiki-lint.sh）✅ 2026-04-25
-- [x] 修复 broken wikilinks：case sensitivity（OmniAgent→omniagent, RivonClaw→rivonclaw, SwarmForge→swarm-forge）、.md suffix、wrong slug（打工→gogetajob）✅ 2026-04-25
-- [ ] 设置 wiki-lint GitHub Actions CI（脚本已就绪，需配置 workflow）
-- [ ] 清理剩余 37 个 broken links（多数是 tag-style 引用，考虑创建 tag 卡片或改为纯文本）
+- [ ] 深读 wuphf wiki（markdown+git+BM25 agent wiki）— 与 memex 对标，找差异化点
+- [ ] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应
 
 
 
