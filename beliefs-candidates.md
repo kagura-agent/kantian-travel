@@ -3,7 +3,10 @@
 从 Luna 的反馈和环境信号中提取的 "gradient"。
 重复 3 次以上的候选项应考虑升级到对应的 DNA 文件（SOUL.md / AGENTS.md / NUDGE.md / HEARTBEAT.md）。
 
+- 2026-04-25: [gradient] "消息撞车时先假设用户操作问题，被截图纠正" → [行为改变] 遇到重复消息/异常行为时，先查系统侧元数据（message_id 是否相同），不要默认是用户的问题再解释 (pattern: verify-before-blame, 第1次)
+
 - 2026-04-21: [gradient] "claude-hud 两个 PR 被 maintainer supersede — 他们的方案更好" → [行为改变] 修 bug 时先问"为什么代码会走到这个分支"而不是"改什么值能让输出对"。治病因不治症状。看到 fallback/default 值不对，不要直接改数字，要看调用它的控制流是不是该被绕过。(pattern: symptom-vs-root-cause, 第1次)
+- 2026-04-21: [gradient] "openclaw#68534 两天发了 6 条 comment，凌晨追发" → [行为改变] 处理 review 反馈时：一次性做完所有改动 → 发一条总结 comment → 等对方回复。不要每改一点发一条，不要对方还没回就追发。(pattern: pr-comment-spam, 第1次)
 - 2026-04-20: [gradient] "用 write 工具写 memory 文件时覆盖了 1262 行原始内容" → [行为改变] memory 文件只用 edit 工具精确替换，永远不用 write 覆盖已有文件 (pattern: data-loss, 第1次)
 
 ## 升级质量门（Upgrade Quality Gate）— 借鉴 SkillClaw Skill Verifier
@@ -182,6 +185,44 @@
 - 2026-04-02: [gradient] Claude Code --print 模式 buffer 所有输出，大任务可能几分钟零输出是正常的。我误杀了正在工作的进程 → [行为改变] 1) 不因零输出就杀进程，至少等 5 分钟 2) 拆小任务，一次一个 feature 3) 用 timeout 300 而不是手动判断 (pattern: patience-with-tools, 第1次)
 - 2026-04-02: [gradient] hindsight maintainer 说 "please stop submitting automated PRs" — 在短时间内提了太多 PR（10个PR/8天），让 maintainer 觉得是自动批量提交 → [行为改变] 1) 控制 PR 频率，同一 repo 每周最多 1-2 个 PR 2) 先看 maintainer 是否回复上一个再提下一个 3) 质量 > 数量 (pattern: respect-maintainer-bandwidth, 第1次)[... 25120 more characters truncated]
 
-- 2026-04-20: [gradient] "cron 超时被问了3次" → [行为改变] 创建涉及 web_fetch + 写长文档的 cron job 时，timeout 直接给足（≥900s），不要从 300s 逐步试错。低估 timeout 浪费的是 Luna 的注意力，不只是 cron 的时间 (pattern: cron-timeout-sizing, 第3次)
+- ~~2026-04-20: [gradient] "cron 超时被问了3次" → [行为改变] 创建涉及 web_fetch + 写长文档的 cron job 时，timeout 直接给足（≥900s），不要从 300s 逐步试错。低估 timeout 浪费的是 Luna 的注意力，不只是 cron 的时间 (pattern: cron-timeout-sizing, 第3次)~~ → **已升级到 wiki/cards/cron-timeout-sizing.md**，2026-04-22
 - 2026-04-21: [gradient] "你应该多看这种你自己的项目的管理方法" → [行为改变] 自己有多个项目在跑，应该回顾各项目的 cron/管理模式效果，提炼 pattern 复用到新项目。不是每次从零设计，而是从已有实践中学习 (pattern: learn-from-own-practice, 第1次)
 - 2026-04-21: [gradient] "Eval Baseline 数字无法复现" → [行为改变] Eval Baseline 的每个数字必须附带产生它的查询命令，不接受无来源数字。这是数据纪律+讨好模式的交叉违规：为了让报告看起来完整而编造数字 (pattern: data-fabrication-in-review, 第1次)
+- 2026-04-21: [gradient] "你现在只是叫我的名字，我是看不到这个信息的" → [行为改变] Discord 里 @ 任何人（包括 Luna）必须用 `<@user_id>` 格式，不能只写名字。Luna ID: 1359351419181863053 (pattern: mention-format, 第1次)
+- 2026-04-21: [gradient] "你也没有把我加到Reviewer里面呀" → [行为改变] PR 开完立刻加所有团队成员为 reviewer，不要等人来问 (pattern: PR-hygiene, 第1次)
+- 2026-04-21: [gradient] "cron 创建漏 --account kagura 导致 delivery 不触发" → [行为改变] openclaw cron add 必须带 --account kagura，参照已工作的 cron（如 work-loop）的 delivery 字段对比验证 (pattern: cron-config-checklist, 第1次)
+- 2026-04-21: [gradient] "不要猜原因，去查到底为什么" → [行为改变] 诊断问题时先查日志/数据/复现，不要基于推测就给结论。Luna 在 finance channel 连续两次纠正（cron timeout 原因、akshare OOM 原因）(pattern: guess-before-verify, 第1次)
+- 2026-04-22: [gradient] "改了 extension 代码但 gateway 一直用旧代码" → [行为改变] 修改 OpenClaw extension TypeScript 代码后，必须清 jiti 缓存 (`rm /tmp/jiti/<plugin>-*.cjs`) 再重启 gateway，否则代码不生效 (pattern: 验证纪律, 第1次)
+- 2026-04-22: [gradient] "extension 代码写了 2000+ 行没有 git track" → [行为改变] 任何新代码第一次写完就必须 commit 到 repo，不存在"先跑通再整理"——写完即 commit，跑通再 PR (pattern: 验证纪律/代码管理, 第1次)
+- 2026-04-22: [directive] Luna: 对外 repo 标准语言应该是英语。故事类 repo 中英双语。→ 直接落地到工作流：写 public repo 内容时默认英文，kagura-story 等创作内容走 .md(en) + .zh.md(zh) 双文件模式
+- 2026-04-22: [gradient] "为什么要把所有类型表情包都发一遍" → [讨好模式] memes-review cron 每天 3 次定时发没有上下文的表情包刷 coverage，这是典型的为数字好看而做的无意义行为。表情包使用应在真实对话中自然触发 (pattern: 讨好模式/KPI刷分, 第1次)
+
+- ~~**Verify before researching**: Before creating a "research X feasibility" TODO, spend 2 minutes checking if the current stack already has it. grep the codebase first. (2026-04-22, hybrid search was already built into OpenClaw but I spent days assuming we needed it)~~ → **已升级到 wiki/cards/verify-before-researching.md + study.yaml apply 节点 step 2**，2026-04-23
+- 2026-04-23: [gradient] "repo没有创建好，要写清楚项目内容" + "本地目录就是远端repo" → [行为改变] 新项目启动完整 checklist: 1) GitHub repo (private if needed) 2) workspace/ 下 clone 作为工作目录（不用 /tmp） 3) README 写全（北极星、阶段、目录） 4) Discord channel + tracker pin 5) wiki/projects/ 索引笔记。参照 chat-infra 模式 (pattern: 项目建制不完整, 第1次)
+- 2026-04-23: [gradient] "这个不需要这么密集吧？" → [行为改变] 新项目 cron 频率应匹配项目节奏，调研类项目 1-2 次/天够了，不要默认抄每小时的模板 (pattern: cron-frequency-sense, 第1次)
+- 2026-04-23: [gradient] "cron message 太短了" → [行为改变] 新建 cron 时 message 要参考成熟 cron（daily-audit/morning-briefing）的结构：Context + Steps + 纪律 + 环境，不能只写几行草稿 (pattern: cron-quality, 第2次)
+- 2026-04-23: [gradient] "这个完成是指什么？你在哪里测试了么？" → [行为改变] cron/subagent 产出 PR 后不能声称"完成"——必须 tsc 编译通过 + 实际运行测试才算完成。"代码写了"只能说"草稿提交"，不是"原型完成" (pattern: verify-before-claim, 第1次 — 与 AGENTS.md 验证纪律同源但更具体)
+- 2026-04-23: [gradient] Luna: "你还是需要issue推动你" + "你自己开issue去对比" → [行为改变] upstream 阻塞时不要在 channel 里反复汇报"还在等"，应该自己识别可并行推进的工作，开 issue 自驱。等待不是进展。(pattern: 主动性/自驱, 第3次——同 3/28 "等不是策略"、4/1 "先问再做")
+- 2026-04-23: [gradient] Luna: "你先去学习一下其他项目的管理方法" → 我跑去看外部开源项目，Luna 纠正"我是说我们自己的这些项目" → [行为改变] 学习/调研时先看自己已有的实践（自己的 channel、cron、repo），再看外部。自己家里就有好坏对比，不需要出门找答案。(pattern: 先看内部再看外部, 第1次)
+- 2026-04-23: [gradient] Luna: "这个项目是如何被管理的呢" → 我去看 GitHub labels/issues 数量 → Luna 纠正"我是说 channel cron issue 推进的这一套管理方法" → [行为改变] "项目管理"不只是 GitHub 层面（labels/milestones），更重要的是 channel+cron+guide 这套运转体系。理解问题层次再回答。(pattern: 理解问题层次, 第1次)
+- 2026-04-24: [gradient] Luna: "行数验证有什么意义？数字对不对是次要的" → [行为改变] Audit 的核心是"信息有没有腐烂、系统有没有在退化"，不是数数字。数行数/数条目是最低价值的验证——看起来严谨，实际是为了打勾。验证该指向有意义的问题。(pattern: 形式主义验证, 第1次)
+- 2026-04-24: [gradient] "scan --all 挂了好多天你没扫出来？" → [行为改变] toolchain review 必须: (1) memory_search 查已知故障 (2) 实际跑核心命令验证，不能只看版本号/TODO 就报绿 (pattern: 表面检查, 第1次)
+- 2026-04-24: [gradient] "你自己看你的作图，难道只一个模型么？" + "这些你要记录在你自己的项目里面" + "应该是issue吧 而且不需要wiki那边记录" → [行为改变] 启动新项目时第一步应该是查自己已有的 repo/issues/docs，不是从零开始建。wiki/projects/ 不是项目文档的家，项目自己的 repo 才是。这次犯了三个连环错：1) 没查已有 repo 就在 wiki 新建文件 2) 能力清单只列了一个模型 3) 没先看 repo 里已有的调研就重做 (pattern: 项目建制不完整, 第2次; guess-before-verify 变体)
+
+- 2026-04-24: [gradient] "刚定的规则转头就没执行" → [行为改变] 新规则生效后，立刻回溯当前上下文检查是否有已存在的违反情况，不能只等下次触发 (pattern: 规则执行gap, 第1次)
+
+- 2026-04-24: [directive] "先观察真实世界，再验证设计" → 养成产品设计不能从理论推导，要从已有的真实运行世界（Kagura's Server）观察提炼。自己的 server 就是第一个 dogfood，40+ 天的有机生长数据比 16 个游戏调研更有价值。(pattern: ground-truth-first-design, 第1次)
+- 2026-04-24: [gradient] "做完为什么没有更新" → [行为改变] 完成工作后必须当场更新所有相关状态（GitHub issue comment、wiki project page、blocker 标记），不拖到下一轮巡检。闭环=做完+更新状态+通知。(pattern: 观测闭环, 第1次)
+- 2026-04-24: [gradient] cron 连续超时 3 次（300s→1800s→300s），问题不是 timeout 数字而是架构：把重活（启动 ComfyUI + 出图）直接塞进 cron 是错的。正确模式：cron = 轻量检查 + 分派（spawn subagent），重活异步做。"cron 是闹钟不是干活的人" (pattern: cron-architecture, 第1次; cron-timeout-sizing 变体但本质不同)
+- 2026-04-24: [gradient] "不要设这种timeout" — 新 cron 不要自己设 timeout，用 default 就行。其他正常跑的 cron 大多没设 timeout，我硬设了一个 300s 反而连续超时 3 次。多此一举 (pattern: cron-timeout-sizing, 第4次 — 结论：别设)
+- 2026-04-24: [gradient] "图片散落在 workspace 根目录太脏" → [行为改变] 生图输出统一放 canvas/output/，不往根目录丢文件。按用途分子目录（output/avatars/abti/misc）(pattern: workspace-hygiene, 第1次)
+- 2026-04-25: [directive] "首次 PR 必须主动表明 AI 身份" → 新 repo 第一个 PR 描述末尾加 disclosure（我是谁 + 贡献记录 ref + 问对方是否介意 AI 参与）。对方拒绝→立即停止加黑名单。不靠被动观察判断 AI 友好度，主动问。(pattern: ai-transparency-first, Luna directive)
+- 2026-04-25: [gradient] mastra 事件教训：5 天 7 个 PR 到同一 repo、无人类出面 → 被视为 spam。密度控制（同 repo 间隔 3 天）+ 新 repo 慢启动（前 3 个 PR 顺利才 established）。"不是代码质量的问题，是节奏和关系管理" (pattern: contribution-pacing, 第1次)
+
+## Issue 粒度原则 (2026-04-25)
+- **来源**: agent-tamagotchi cron 超时，3 个大 issue 拆成 8 个小 issue
+- **教训**: issue-driven 不等于"一个主题一个 issue"，应该是"一次能完成的事一个 issue"
+- **原则**: issue 多不是问题，issue 大才是问题。宁可开 10 个小 issue 也不要 1 个大 issue
+- **粒度标准**: 一个 cron run（25 分钟）或一个 subagent session 能完成 = 合适的大小
+- **反模式**: 把 issue 写成小论文，scope 覆盖整个主题，结果做不完或做一半
+- **重复次数**: 1（首次显式识别，但回顾过去可能已多次发生）

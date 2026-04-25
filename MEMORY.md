@@ -128,3 +128,16 @@
 
 (cleaned 04-25: 移除 04-18~04-20 dreaming 巡检噪音，均为低价值重复 patrol/PR status fragments，原文在 memory/日期.md 中)
 
+- **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）
+
+
+## Promoted From Short-Term Memory (2026-04-25)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:7:7 -->
+- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): **flowforge #462** workloop-night 完成; gogetajob sync: 19 open PRs，全部 MERGEABLE，无 conflict; 无真人 review 需要回应（所有 🔴 标记均为 bot: cubic-dev-ai / coderabbitai）; 无 stale PR（全部 3 天内有更新） - confidence: 0.62 - evidence: memory/2026-04-20.md:3-6 - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): 结论：无需处理，全部状态正常 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:780-787]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:10:13 -->
+- - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): 结论：无需处理，全部状态正常 - confidence: 0.62 - evidence: memory/2026-04-20.md:7-7 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 通知：0 条新通知（since 14:16 UTC）; Open PRs：49 个; **CHANGES_REQUESTED**: openclaw/openclaw#68534（steipete review，REM cooldown 逻辑需改）→ 待 workloop 处理; **CI FAILURE**: hermes-agent #12516/#12497/#12452（build-and-push failure）、openclaw #68856/#68840（check failure）→ 待排查 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:785-792]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:14:16 -->
+- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 通知：0 条新通知（since 14:16 UTC）; Open PRs：49 个; **CHANGES_REQUESTED**: openclaw/openclaw#68534（steipete review，REM cooldown 逻辑需改）→ 待 workloop 处理; **CI FAILURE**: hermes-agent #12516/#12497/#12452（build-and-push failure）、openclaw #68856/#68840（check failure）→ 待排查 - confidence: 0.62 - evidence: memory/2026-04-20.md:10-13 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **MERGEABLE UNKNOWN**: hermes-agent #12105/#12098、openclaw #68518/#68798/#68783/#68817/#68846、ClawX #848 → 可能有 conflict; 其余 PR 状态正常，无新 review; ⚠️ 多个 repo 超过 3 PR 上限：hermes-agent (8)、openclaw (10)、kilocode (4) → 需要消化存量 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:790-797]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:19:22 -->
+- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **MERGEABLE UNKNOWN**: hermes-agent #12105/#12098、openclaw #68518/#68798/#68783/#68817/#68846、ClawX #848 → 可能有 conflict; 其余 PR 状态正常，无新 review; ⚠️ 多个 repo 超过 3 PR 上限：hermes-agent (8)、openclaw (10)、kilocode (4) → 需要消化存量 - confidence: 0.62 - evidence: memory/2026-04-20.md:14-16 - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): git pull: up to date; PRs: 0 open, recent merges (#42-#45) all handled; Issues: 0 open; 新信: Bonnie 04-19 未回复 → 已回信（pipeline split, repetition heuristic, catching gaps） [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:795-802]

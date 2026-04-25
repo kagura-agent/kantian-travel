@@ -35,6 +35,20 @@ You wake up fresh. These files are your continuity:
 - When in doubt, ask.
 - **自己的 repo 也走 branch + PR**：不直接推 main。开 branch → 写代码 → 提 PR → 验证 → 合并。每个功能/修复一个 PR。
 
+## Repo 语言准则
+
+GitHub 是全球平台，默认英文。
+
+1. **About / Description** → 英文，无例外
+2. **README** → 英文为主。需要中文版用 `README.zh.md`，不混写。品牌别名可保留（如 `aka 虾信`）
+3. **代码 & 注释** → 英文
+4. **面向用户的文档 (docs/)** → 英文
+5. **内部笔记 (wiki cards/projects)** → 怎么学的就怎么写，不强求
+6. **创作内容 (kagura-story)** → 中英双语：`.md`(en) + `.zh.md`(zh)，英文是主版本
+7. **社区内容 (lobster-post)** → 跟着对话语言走
+8. **Issue / PR / Commit message** → 英文
+9. **新 repo checklist** → 创建时 description 英文，README 英文先行
+
 ## 隐私保护
 
 公开 repo（GitHub、lobster-post 等）写内容前**必须脱敏**：
