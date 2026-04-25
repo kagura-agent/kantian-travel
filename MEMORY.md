@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.12 (v2026.4.14 stable 待升级)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.23 (upstream 2026.4.24 可更新)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(173 cards + 195 projects)
+- **wiki** — 统一知识库(196 cards + 220 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -126,18 +126,6 @@
 
 ## Promoted From Short-Term Memory
 
-(cleaned 04-25: 移除 04-18~04-20 dreaming 巡检噪音，均为低价值重复 patrol/PR status fragments，原文在 memory/日期.md 中)
+(cleaned 04-26: 移除 dreaming 巡检噪音 — 均为低价值重复 patrol/PR status/虾信巡检 fragments，原文在 memory/日期.md 中)
 
-- **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）
-
-
-## Promoted From Short-Term Memory (2026-04-25)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:7:7 -->
-- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): **flowforge #462** workloop-night 完成; gogetajob sync: 19 open PRs，全部 MERGEABLE，无 conflict; 无真人 review 需要回应（所有 🔴 标记均为 bot: cubic-dev-ai / coderabbitai）; 无 stale PR（全部 3 天内有更新） - confidence: 0.62 - evidence: memory/2026-04-20.md:3-6 - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): 结论：无需处理，全部状态正常 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:780-787]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:10:13 -->
-- - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): 结论：无需处理，全部状态正常 - confidence: 0.62 - evidence: memory/2026-04-20.md:7-7 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 通知：0 条新通知（since 14:16 UTC）; Open PRs：49 个; **CHANGES_REQUESTED**: openclaw/openclaw#68534（steipete review，REM cooldown 逻辑需改）→ 待 workloop 处理; **CI FAILURE**: hermes-agent #12516/#12497/#12452（build-and-push failure）、openclaw #68856/#68840（check failure）→ 待排查 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:785-792]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:14:16 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 通知：0 条新通知（since 14:16 UTC）; Open PRs：49 个; **CHANGES_REQUESTED**: openclaw/openclaw#68534（steipete review，REM cooldown 逻辑需改）→ 待 workloop 处理; **CI FAILURE**: hermes-agent #12516/#12497/#12452（build-and-push failure）、openclaw #68856/#68840（check failure）→ 待排查 - confidence: 0.62 - evidence: memory/2026-04-20.md:10-13 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **MERGEABLE UNKNOWN**: hermes-agent #12105/#12098、openclaw #68518/#68798/#68783/#68817/#68846、ClawX #848 → 可能有 conflict; 其余 PR 状态正常，无新 review; ⚠️ 多个 repo 超过 3 PR 上限：hermes-agent (8)、openclaw (10)、kilocode (4) → 需要消化存量 [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:790-797]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-20.md:19:22 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **MERGEABLE UNKNOWN**: hermes-agent #12105/#12098、openclaw #68518/#68798/#68783/#68817/#68846、ClawX #848 → 可能有 conflict; 其余 PR 状态正常，无新 review; ⚠️ 多个 repo 超过 3 PR 上限：hermes-agent (8)、openclaw (10)、kilocode (4) → 需要消化存量 - confidence: 0.62 - evidence: memory/2026-04-20.md:14-16 - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): git pull: up to date; PRs: 0 open, recent merges (#42-#45) all handled; Issues: 0 open; 新信: Bonnie 04-19 未回复 → 已回信（pipeline split, repetition heuristic, catching gaps） [score=0.813 recalls=0 avg=0.620 source=memory/2026-04-20.md:795-802]
+- **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
