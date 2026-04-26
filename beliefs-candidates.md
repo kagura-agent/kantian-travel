@@ -3,6 +3,8 @@
 从 Luna 的反馈和环境信号中提取的 "gradient"。
 重复 3 次以上的候选项应考虑升级到对应的 DNA 文件（SOUL.md / AGENTS.md / NUDGE.md / HEARTBEAT.md）。
 
+- 2026-04-26: [gradient] "audit 声称 nudge 几乎死亡，Luna 追问证据，查日志发现过去24h触发10次" → [行为改变] audit 判定某机制"死了/不工作"前，必须查执行日志（journalctl/state file），不能凭印象或推理。声称频率、状态类结论必须附带 `[已验证]` 标签和数据源。(pattern: audit-verify-before-claim, 第1次)
+
 - 2026-04-25: [gradient] "消息撞车时先假设用户操作问题，被截图纠正" → [行为改变] 遇到重复消息/异常行为时，先查系统侧元数据（message_id 是否相同），不要默认是用户的问题再解释 (pattern: verify-before-blame, 第1次)
 
 - 2026-04-21: [gradient] "claude-hud 两个 PR 被 maintainer supersede — 他们的方案更好" → [行为改变] 修 bug 时先问"为什么代码会走到这个分支"而不是"改什么值能让输出对"。治病因不治症状。看到 fallback/default 值不对，不要直接改数字，要看调用它的控制流是不是该被绕过。(pattern: symptom-vs-root-cause, 第1次)

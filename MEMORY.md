@@ -129,3 +129,4 @@
 (cleaned 04-26: 移除 dreaming 巡检噪音 — 均为低价值重复 patrol/PR status/虾信巡检 fragments，原文在 memory/日期.md 中)
 
 - **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
+- **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行, -21行 dreaming 噪音）; memex#72 merged 通知收到; error cron 降到 3 个（从 11 个改善）; OpenClaw 2026.4.24 待更新; ~30 open PR 全部球在 maintainer 手里

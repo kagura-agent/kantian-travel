@@ -64,8 +64,10 @@
 
 ## 📚 学习
 
-- [ ] 深读 wuphf wiki（markdown+git+BM25 agent wiki）— 与 memex 对标，找差异化点
-- [ ] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应
+- [x] 深读 wuphf wiki（markdown+git+BM25 agent wiki）— 与 memex 对标，找差异化点 ✅ 2026-04-26
+- [x] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应 ✅ 2026-04-26
+- [ ] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）
+- [ ] 考虑 confidence decay 机制用于 wiki cards（灵感来自 Stash）
 
 
 
