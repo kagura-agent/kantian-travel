@@ -70,8 +70,10 @@
 - [ ] 考虑 confidence decay 机制用于 wiki cards（灵感来自 Stash）
 - [x] 深读 Claude Code skill 生态（claude-skill-social-post, floodsung-skill）— 分析 skill 作为分发单元的设计模式 ✅ 2026-04-26
 - [x] 调研 auto-memory (dezgit2025, 219⭐) — progressive session recall 机制 ✅ 2026-04-26（已有 wiki 笔记，更新跟进）
-- [ ] 跟踪 skill 信任层发展（SkillCheck, loaditout.ai）— 看它们能不能成为生态标准
-- [ ] 研究 caveman 的 token 优化机制 — 对 OpenClaw 的 skill context 加载有什么启发
+- [x] 跟踪 skill 信任层发展（SkillCheck, STSS, Gen+Vercel, Skillpub, Tessl 等）✅ 2026-04-26（详见 wiki/projects/skill-trust-landscape-2026-04.md）
+- [x] 研究 caveman 的 token 优化机制 ✅ 2026-04-26（详见 wiki/projects/caveman.md + cards/conciseness-accuracy-paradox.md）
+- [ ] 实验：将 caveman-compress 思路应用到 OpenClaw skill context 加载
+- [ ] 探索 STSS 的贡献机会（6 stars 但架构最完整，early mover advantage）
 
 
 
