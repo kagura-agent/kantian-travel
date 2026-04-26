@@ -73,7 +73,9 @@
 - [x] 跟踪 skill 信任层发展（SkillCheck, STSS, Gen+Vercel, Skillpub, Tessl 等）✅ 2026-04-26（详见 wiki/projects/skill-trust-landscape-2026-04.md）
 - [x] 研究 caveman 的 token 优化机制 ✅ 2026-04-26（详见 wiki/projects/caveman.md + cards/conciseness-accuracy-paradox.md）
 - [ ] 实验：将 caveman-compress 思路应用到 OpenClaw skill context 加载
-- [ ] 探索 STSS 的贡献机会（6 stars 但架构最完整，early mover advantage）
+- [x] 探索 STSS 的贡献机会（6 stars 但架构最完整，early mover advantage）✅ 2026-04-26（详见 wiki/projects/stss.md）
+- [ ] STSS 贡献：提交 chain-tracer 单元测试 PR（敲门砖，评估 maintainer 响应）
+- [ ] STSS 贡献：开 issue 问 LICENSE（MIT/Apache-2.0）
 
 
 
