@@ -68,8 +68,10 @@
 - [x] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应 ✅ 2026-04-26
 - [ ] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）
 - [ ] 考虑 confidence decay 机制用于 wiki cards（灵感来自 Stash）
-- [ ] 深读 Claude Code skill 生态（claude-skill-social-post, floodsung-skill）— 分析 skill 作为分发单元的设计模式
-- [ ] 调研 auto-memory (dezgit2025, 219⭐) — progressive session recall 机制
+- [x] 深读 Claude Code skill 生态（claude-skill-social-post, floodsung-skill）— 分析 skill 作为分发单元的设计模式 ✅ 2026-04-26
+- [x] 调研 auto-memory (dezgit2025, 219⭐) — progressive session recall 机制 ✅ 2026-04-26（已有 wiki 笔记，更新跟进）
+- [ ] 跟踪 skill 信任层发展（SkillCheck, loaditout.ai）— 看它们能不能成为生态标准
+- [ ] 研究 caveman 的 token 优化机制 — 对 OpenClaw 的 skill context 加载有什么启发
 
 
 

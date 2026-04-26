@@ -228,3 +228,9 @@
 - **粒度标准**: 一个 cron run（25 分钟）或一个 subagent session 能完成 = 合适的大小
 - **反模式**: 把 issue 写成小论文，scope 覆盖整个主题，结果做不完或做一半
 - **重复次数**: 1（首次显式识别，但回顾过去可能已多次发生）
+
+## 2026-04-26: subagent cwd 必须显式设置
+- **gradient**: avatar-biz cron subagent 在 ~/ 裸跑 npm install，污染 home 目录 package.json
+- **规则**: spawn subagent 涉及 npm/pip/任何包管理时，必须显式设 cwd 到项目目录。不能依赖 "message 里写了 repo 路径" — 那只是提示不是强制
+- **检查**: spawn 前问自己 "cwd 是什么？会在哪里创建文件？"
+- 重复次数: 1
