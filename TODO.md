@@ -43,7 +43,7 @@
 ## 🧠 Memex
 
 ### Pending PRs
-- [ ] PR #72 - feat(links): add --filter and --stats options for link analysis
+- [x] PR #72 - feat(links): add --filter and --stats options for link analysis (MERGED ✅ 04-26)
 
 ### Observations
 - memex v0.1.30 installed locally
@@ -68,6 +68,8 @@
 - [x] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应 ✅ 2026-04-26
 - [ ] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）
 - [ ] 考虑 confidence decay 机制用于 wiki cards（灵感来自 Stash）
+- [ ] 深读 Claude Code skill 生态（claude-skill-social-post, floodsung-skill）— 分析 skill 作为分发单元的设计模式
+- [ ] 调研 auto-memory (dezgit2025, 219⭐) — progressive session recall 机制
 
 
 
