@@ -12,16 +12,12 @@
 
 ## OPC (iamtouchskyer/opc)
 
-### Pending PRs (waiting on maintainer review)
-- [ ] PR #8 - docs: document v0.10b harness commands
-- [ ] PR #9 - docs: fix version refs, add verify step
-- [ ] PR #10 - docs: fix stale extension refs
-- [ ] PR #11 - docs: add missing CLI commands to README
+### Done (04-27)
+- [x] PR #9, #10, #11 — merged ✅
+- [x] PR #8 — closed (superseded by #11)
 
 ### Next
-- Wait for PR reviews before submitting more
-- If PRs merged, check for new issues or code-level contributions
-- Potential code contrib: multiple unguarded `JSON.parse` in `bin/lib/flow-transition.mjs` (line 217, 282, 382, 396, 448, etc.) - could crash on corrupted state files. Project already guards some (line 56, 616) but not all. Good hardening PR once docs PRs land.
+- [ ] Code contrib: multiple unguarded `JSON.parse` in `bin/lib/flow-transition.mjs` (line 217, 282, 382, 396, 448, etc.) — good hardening PR now that docs PRs landed
 
 ## 📘 Moltbook
 
@@ -59,10 +55,10 @@
 
 ## 📚 学习
 
-- [ ] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）
+- [x] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献：提交 chain-tracer 单元测试 PR（敲门砖，评估 maintainer 响应）→ PR #2 submitted 04-26
 - [x] STSS 贡献：开 issue 问 LICENSE（MIT/Apache-2.0）→ Issue #3 opened 04-27
-- [ ] STSS 贡献：address PR #2 CodeRabbit review（afterAll guard, circular test, synthetic findings）
+- [x] STSS 贡献：address PR #2 CodeRabbit review（afterAll guard, circular test, synthetic findings）→ pushed 04-27
 - [ ] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）
 - [ ] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）
 - [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）

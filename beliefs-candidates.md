@@ -204,7 +204,7 @@
 - 2026-04-23: [gradient] "这个不需要这么密集吧？" → [行为改变] 新项目 cron 频率应匹配项目节奏，调研类项目 1-2 次/天够了，不要默认抄每小时的模板 (pattern: cron-frequency-sense, 第1次)
 - 2026-04-23: [gradient] "cron message 太短了" → [行为改变] 新建 cron 时 message 要参考成熟 cron（daily-audit/morning-briefing）的结构：Context + Steps + 纪律 + 环境，不能只写几行草稿 (pattern: cron-quality, 第2次)
 - 2026-04-23: [gradient] "这个完成是指什么？你在哪里测试了么？" → [行为改变] cron/subagent 产出 PR 后不能声称"完成"——必须 tsc 编译通过 + 实际运行测试才算完成。"代码写了"只能说"草稿提交"，不是"原型完成" (pattern: verify-before-claim, 第1次 — 与 AGENTS.md 验证纪律同源但更具体)
-- 2026-04-23: [gradient] Luna: "你还是需要issue推动你" + "你自己开issue去对比" → [行为改变] upstream 阻塞时不要在 channel 里反复汇报"还在等"，应该自己识别可并行推进的工作，开 issue 自驱。等待不是进展。(pattern: 主动性/自驱, 第3次——同 3/28 "等不是策略"、4/1 "先问再做")
+- ~~2026-04-23: [gradient] Luna: "你还是需要issue推动你" + "你自己开issue去对比" → [行为改变] upstream 阻塞时不要在 channel 里反复汇报"还在等"，应该自己识别可并行推进的工作，开 issue 自驱。等待不是进展。(pattern: 主动性/自驱, 第3次——同 3/28 "等不是策略"、4/1 "先问再做")~~ → **已毕业到 SOUL.md Beliefs “Waiting is not a strategy” 段落（补充了具体行动指引）**，2026-04-27
 - 2026-04-23: [gradient] Luna: "你先去学习一下其他项目的管理方法" → 我跑去看外部开源项目，Luna 纠正"我是说我们自己的这些项目" → [行为改变] 学习/调研时先看自己已有的实践（自己的 channel、cron、repo），再看外部。自己家里就有好坏对比，不需要出门找答案。(pattern: 先看内部再看外部, 第1次)
 - 2026-04-23: [gradient] Luna: "这个项目是如何被管理的呢" → 我去看 GitHub labels/issues 数量 → Luna 纠正"我是说 channel cron issue 推进的这一套管理方法" → [行为改变] "项目管理"不只是 GitHub 层面（labels/milestones），更重要的是 channel+cron+guide 这套运转体系。理解问题层次再回答。(pattern: 理解问题层次, 第1次)
 - 2026-04-24: [gradient] Luna: "行数验证有什么意义？数字对不对是次要的" → [行为改变] Audit 的核心是"信息有没有腐烂、系统有没有在退化"，不是数数字。数行数/数条目是最低价值的验证——看起来严谨，实际是为了打勾。验证该指向有意义的问题。(pattern: 形式主义验证, 第1次)
@@ -216,7 +216,7 @@
 - 2026-04-24: [directive] "先观察真实世界，再验证设计" → 养成产品设计不能从理论推导，要从已有的真实运行世界（Kagura's Server）观察提炼。自己的 server 就是第一个 dogfood，40+ 天的有机生长数据比 16 个游戏调研更有价值。(pattern: ground-truth-first-design, 第1次)
 - 2026-04-24: [gradient] "做完为什么没有更新" → [行为改变] 完成工作后必须当场更新所有相关状态（GitHub issue comment、wiki project page、blocker 标记），不拖到下一轮巡检。闭环=做完+更新状态+通知。(pattern: 观测闭环, 第1次)
 - 2026-04-24: [gradient] cron 连续超时 3 次（300s→1800s→300s），问题不是 timeout 数字而是架构：把重活（启动 ComfyUI + 出图）直接塞进 cron 是错的。正确模式：cron = 轻量检查 + 分派（spawn subagent），重活异步做。"cron 是闹钟不是干活的人" (pattern: cron-architecture, 第1次; cron-timeout-sizing 变体但本质不同)
-- 2026-04-24: [gradient] "不要设这种timeout" — 新 cron 不要自己设 timeout，用 default 就行。其他正常跑的 cron 大多没设 timeout，我硬设了一个 300s 反而连续超时 3 次。多此一举 (pattern: cron-timeout-sizing, 第4次 — 结论：别设)
+- ~~2026-04-24: [gradient] "不要设这种timeout" — 新 cron 不要自己设 timeout，用 default 就行。其他正常跑的 cron 大多没设 timeout，我硬设了一个 300s 反而连续超时 3 次。多此一举 (pattern: cron-timeout-sizing, 第4次 — 结论：别设)~~ → **已更新 wiki/cards/cron-timeout-sizing.md（从"设合理值"改为"不设 timeout"）+ 删除了 4 个 error cron 的 timeoutSeconds**，2026-04-27
 - 2026-04-24: [gradient] "图片散落在 workspace 根目录太脏" → [行为改变] 生图输出统一放 canvas/output/，不往根目录丢文件。按用途分子目录（output/avatars/abti/misc）(pattern: workspace-hygiene, 第1次)
 - 2026-04-25: [directive] "首次 PR 必须主动表明 AI 身份" → 新 repo 第一个 PR 描述末尾加 disclosure（我是谁 + 贡献记录 ref + 问对方是否介意 AI 参与）。对方拒绝→立即停止加黑名单。不靠被动观察判断 AI 友好度，主动问。(pattern: ai-transparency-first, Luna directive)
 - 2026-04-25: [gradient] mastra 事件教训：5 天 7 个 PR 到同一 repo、无人类出面 → 被视为 spam。密度控制（同 repo 间隔 3 天）+ 新 repo 慢启动（前 3 个 PR 顺利才 established）。"不是代码质量的问题，是节奏和关系管理" (pattern: contribution-pacing, 第1次)
