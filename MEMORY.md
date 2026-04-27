@@ -39,7 +39,7 @@
 
 ## Projects — 打工
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
-- 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX
+- 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
@@ -130,4 +130,4 @@
 
 - **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
 - **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行）; memex#72 merged; error cron 降到 3 个（从 11 个改善）; ~30 open PR 全部球在 maintainer 手里
-- **04-27**: OPC PRs #9/#10/#11 merged; ABTI OG images deployed (PR#66); STSS Issue#3 opened; #kagura-blog channel 新建; 6 error cron; daily-review 完成
+- **04-27**: OPC PRs #9/#10/#11 merged; ABTI OG images deployed (PR#66) + llm-base-url PR#68; STSS Issue#3 opened; DeepTutor PR#404; memex PR#76 (doctor --verbose); #kagura-blog channel 新建 + Astro blog 初始化; GTM monetization 研究完成 (blocked on Luna); 虚假毕业事件 + 二次审计撤销; 4 cron timeout 修复; Podbean 发布 broken (EP022+EP023); Gateway 宕机 12h (4/26 19:33→4/27 07:25); wiki-lint 改进; PR 池增至 50 个; kagura-story EP022+EP023 写完

@@ -65,6 +65,8 @@
 - [ ] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）
 - [ ] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）
 - [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）
+- [ ] Deep read: wanman.ai hosted 版的 skill self-evolution 和 db9 brain adapter（从 OSS 看不到完整实现）
+- [ ] 应用: 评估 idle_cached 模式能否引入 OpenClaw ACP（session resume between triggers）
 
 
 
