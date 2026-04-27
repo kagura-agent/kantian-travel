@@ -68,10 +68,10 @@
 - [ ] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）
 - [ ] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）
 - [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）
-- [ ] Deep read: wanman.ai hosted 版的 skill self-evolution 和 db9 brain adapter（从 OSS 看不到完整实现）
+- [x] Deep read: wanman.ai hosted 版的 skill self-evolution 和 db9 brain adapter → 2026-04-27 详见 wiki/projects/wanman-skill-evolution.md，结论：evolution pipeline 实际在 OSS 中完整开放，核心是 run_feedback→metrics→autoPromote 闭环；idle_cached 模式值得引入 ACP
 - [ ] 应用: 评估 idle_cached 模式能否引入 OpenClaw ACP（session resume between triggers）
 - [x] 应用: 评估 hermes-memory-skills 4维评分体系（Novelty/Durability/Specificity/Reduction）能否用于我们的 beliefs-candidates 筛选 → 2026-04-27 采纳 Durability + Reduction 两个维度到升级质量门
-- [ ] Deep read: byob Chrome-reuse MCP 架构——能否集成到 OpenClaw browser skill 作为 auth-aware 后端
+- [x] Deep read: byob Chrome-reuse MCP 架构——能否集成到 OpenClaw browser skill 作为 auth-aware 后端 → 2026-04-27 详见 wiki/projects/byob-chrome-reuse-mcp.md，结论：headless blocker，不适合做主后端，但架构模式值得借鉴
 
 
 
