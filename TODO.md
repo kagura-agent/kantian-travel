@@ -82,3 +82,6 @@
 - [ ] Track: Orb v0.4 — next release (v0.3.0 was high quality, watch for new platform adapters)
 - [ ] Evaluate: phantom contribution ROI — 5 PRs open 10+ days, zero external merge history. Consider deprioritizing
 - [ ] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns)
+- [ ] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
+- [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
+- [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
