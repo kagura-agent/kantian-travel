@@ -65,11 +65,11 @@
 - [x] STSS 贡献：提交 chain-tracer 单元测试 PR（敲门砖，评估 maintainer 响应）→ PR #2 submitted 04-26
 - [x] STSS 贡献：开 issue 问 LICENSE（MIT/Apache-2.0）→ Issue #3 opened 04-27
 - [x] STSS 贡献：address PR #2 CodeRabbit review（afterAll guard, circular test, synthetic findings）→ pushed 04-27
-- [ ] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）
-- [ ] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）
-- [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）
+- [x] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）→ 04-27 done, replaced empty catches with console.warn
+- [x] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）→ 04-27 done, flattened to 2-level with clear fallback
+- [x] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）→ 04-27 done, console.warn added, 37 tests pass
 - [x] Deep read: wanman.ai hosted 版的 skill self-evolution 和 db9 brain adapter → 2026-04-27 详见 wiki/projects/wanman-skill-evolution.md，结论：evolution pipeline 实际在 OSS 中完整开放，核心是 run_feedback→metrics→autoPromote 闭环；idle_cached 模式值得引入 ACP
-- [ ] 应用: 评估 idle_cached 模式能否引入 OpenClaw ACP（session resume between triggers）
+- [x] 应用: 评估 idle_cached 模式能否引入 OpenClaw ACP（session resume between triggers）→ 2026-04-27 结论：ACP persistent mode 已实现核心机制，无需额外开发
 - [x] 应用: 评估 hermes-memory-skills 4维评分体系（Novelty/Durability/Specificity/Reduction）能否用于我们的 beliefs-candidates 筛选 → 2026-04-27 采纳 Durability + Reduction 两个维度到升级质量门
 - [x] Deep read: byob Chrome-reuse MCP 架构——能否集成到 OpenClaw browser skill 作为 auth-aware 后端 → 2026-04-27 详见 wiki/projects/byob-chrome-reuse-mcp.md，结论：headless blocker，不适合做主后端，但架构模式值得借鉴
 
