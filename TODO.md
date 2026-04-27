@@ -38,9 +38,13 @@
 
 ## 🧠 Memex
 
+### Active
+- [ ] PR #76 — `doctor --verbose` flag to show broken link & orphan details (submitted 04-27)
+
 ### Observations
-- memex v0.1.30 installed locally
-- Wiki at ~/.openclaw/workspace/wiki: 196 cards, 52 orphans (26%)
+- memex v0.1.30 installed locally (synced with upstream 1310ec7)
+- Wiki at ~/.openclaw/workspace/wiki: 201 cards (480 files), 51 orphans (25%), 247 broken links
+- New upstream features: `doctor` run-all (PR #74), `links --filter/--stats` (PR #72)
 
 
 
@@ -51,7 +55,6 @@
 - [ ] **guide.md: 新增「抽象边界检查」** — mcp-use#1393 教训：修 library/core 代码前，先检查 consumer 层是否已有机制（session storage、reconnect hook 等）。不要把 consumer-specific 逻辑下推到 library 层。guide.md「减少被 Supersede」section 第 5 条
 - [ ] **guide.md: 新增「平台特定 fix 的 scope 控制」** — openclaw#69179 教训：修平台特定 bug 时只影响该平台。动态 guard > 无条件行为变更。guide.md「减少被 Supersede」section 第 6 条
 - [ ] **guide.md: 新增「test PR 要 fix+extend」** — NemoClaw#2256 教训：修 test resilience 时同时扩展 coverage。维护者更喜欢既修问题又增值的 PR。guide.md「减少被 Supersede」section 第 7 条
-- [ ] **guide.md: 新增「症状 vs 根因」检查项** — claude-hud#462/#469 教训：看到 fallback 值不对时，问「该改值还是改控制流？」。目前在 pr-superseded-lessons.md 有但 guide.md 没有。guide.md「减少被 Supersede」section 第 8 条
 
 ## 📚 学习
 
