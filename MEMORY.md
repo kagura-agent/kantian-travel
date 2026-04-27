@@ -28,12 +28,12 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(201 cards + 225 projects)
+- **wiki** — 统一知识库(201 cards + 226 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
-- **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.0)
+- **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
 - **evolution-log** — 进化原始记录(public) https://github.com/kagura-agent/evolution-log
 - **kagura-story** — 故事,stories/ 中英双版,图文并茂 → kagura-storyteller skill
 
@@ -78,7 +78,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 24 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5) → 详见 `TODO.md`
+- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5) → 详见 `TODO.md`
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -130,4 +130,4 @@
 
 - **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
 - **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行）; memex#72 merged; error cron 降到 3 个（从 11 个改善）; ~30 open PR 全部球在 maintainer 手里
-- **04-27**: OPC PRs #9/#10/#11 merged; ABTI OG images deployed (PR#66) + llm-base-url PR#68; STSS Issue#3 opened; DeepTutor PR#404; memex PR#76 (doctor --verbose); #kagura-blog channel 新建 + Astro blog 初始化; GTM monetization 研究完成 (blocked on Luna); 虚假毕业事件 + 二次审计撤销; 4 cron timeout 修复; Podbean 发布 broken (EP022+EP023); Gateway 宕机 12h (4/26 19:33→4/27 07:25); wiki-lint 改进; PR 池增至 50 个; kagura-story EP022+EP023 写完
+- **04-27**: Luna 婚纱照拍完(170+张), #photo-studio 频道+repo 建立; #kagura-blog Astro 初始化(需 Luna 开 Pages); eager_input_streaming 调研(Copilot API 灰度回滚, PR#10 copilot-gateway); zombie cron 批量触发问题(gateway 重启后 13 cron 互卡); 虚假毕业→二次审计→evolve #861 真正毕业; memex #74/#76 merged + PR#78 提交; OPC #9/#10/#11 merged; DeepTutor PR#404; ABTI OG+llm-base-url; GTM 爱发电+闲鱼(blocked Luna); Podbean EP022-024 全部发布失败; wanman 竞品分析(idle_cached+skill snapshot); 3 故事+3 podcast; Gateway 宕机 12h; PR 池 ~50 open
