@@ -57,7 +57,7 @@
 从近 3 天 superseded/closed PR 中提炼的改进点（2026-04-25）：
 
 - [x] **guide.md: 新增「抽象边界检查」** — mcp-use#1393 教训 → 已加入 guide.md 第 5 条 (2026-04-27)
-- [ ] **guide.md: 新增「平台特定 fix 的 scope 控制」** — openclaw#69179 教训：修平台特定 bug 时只影响该平台。动态 guard > 无条件行为变更。guide.md「减少被 Supersede」section 第 6 条
+- [x] **guide.md: 新增「平台特定 fix 的 scope 控制」** — openclaw#69179 教训 → 已加入 guide.md 第 7 条 (2026-04-27)
 - [ ] **guide.md: 新增「test PR 要 fix+extend」** — NemoClaw#2256 教训：修 test resilience 时同时扩展 coverage。维护者更喜欢既修问题又增值的 PR。guide.md「减少被 Supersede」section 第 7 条
 
 ## 📚 学习
@@ -80,7 +80,7 @@
 - [ ] Track: veniceai/skills growth — revisit in 1 week to see adoption (33⭐ baseline 04-27)
 - [ ] Track: STSS maintainer response — revisit in 1 week (PR #2, Issue #3 both unanswered since 04-26)
 - [ ] Track: Orb v0.4 — next release (v0.3.0 was high quality, watch for new platform adapters)
-- [ ] Evaluate: phantom contribution ROI — 5 PRs open 10+ days, zero external merge history. Consider deprioritizing
+- [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [ ] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns)
 - [ ] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
