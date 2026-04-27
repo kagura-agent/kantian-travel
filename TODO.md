@@ -78,3 +78,7 @@
 
 - [x] Evaluate: ClawHub `clawhub init --template api-ref` for API reference skills (inspired by veniceai/skills swagger-sync pattern) → 2026-04-27 verdict: not now (empty marketplace, wrong template type, LLM makes templates less valuable)
 - [ ] Track: veniceai/skills growth — revisit in 1 week to see adoption (33⭐ baseline 04-27)
+- [ ] Track: STSS maintainer response — revisit in 1 week (PR #2, Issue #3 both unanswered since 04-26)
+- [ ] Track: Orb v0.4 — next release (v0.3.0 was high quality, watch for new platform adapters)
+- [ ] Evaluate: phantom contribution ROI — 5 PRs open 10+ days, zero external merge history. Consider deprioritizing
+- [ ] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns)
