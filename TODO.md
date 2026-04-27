@@ -39,7 +39,10 @@
 ## 🧠 Memex
 
 ### Active
-- [ ] PR #76 — `doctor --verbose` flag to show broken link & orphan details (submitted 04-27)
+- [ ] PR #78 — `doctor --json` flag for machine-readable output (submitted 04-27)
+
+### Done
+- [x] PR #76 — `doctor --verbose` flag (merged 04-27)
 
 ### Observations
 - memex v0.1.30 installed locally (synced with upstream 1310ec7)
@@ -52,7 +55,7 @@
 
 从近 3 天 superseded/closed PR 中提炼的改进点（2026-04-25）：
 
-- [ ] **guide.md: 新增「抽象边界检查」** — mcp-use#1393 教训：修 library/core 代码前，先检查 consumer 层是否已有机制（session storage、reconnect hook 等）。不要把 consumer-specific 逻辑下推到 library 层。guide.md「减少被 Supersede」section 第 5 条
+- [x] **guide.md: 新增「抽象边界检查」** — mcp-use#1393 教训 → 已加入 guide.md 第 5 条 (2026-04-27)
 - [ ] **guide.md: 新增「平台特定 fix 的 scope 控制」** — openclaw#69179 教训：修平台特定 bug 时只影响该平台。动态 guard > 无条件行为变更。guide.md「减少被 Supersede」section 第 6 条
 - [ ] **guide.md: 新增「test PR 要 fix+extend」** — NemoClaw#2256 教训：修 test resilience 时同时扩展 coverage。维护者更喜欢既修问题又增值的 PR。guide.md「减少被 Supersede」section 第 7 条
 
@@ -67,6 +70,8 @@
 - [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）
 - [ ] Deep read: wanman.ai hosted 版的 skill self-evolution 和 db9 brain adapter（从 OSS 看不到完整实现）
 - [ ] 应用: 评估 idle_cached 模式能否引入 OpenClaw ACP（session resume between triggers）
+- [x] 应用: 评估 hermes-memory-skills 4维评分体系（Novelty/Durability/Specificity/Reduction）能否用于我们的 beliefs-candidates 筛选 → 2026-04-27 采纳 Durability + Reduction 两个维度到升级质量门
+- [ ] Deep read: byob Chrome-reuse MCP 架构——能否集成到 OpenClaw browser skill 作为 auth-aware 后端
 
 
 

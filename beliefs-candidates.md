@@ -22,7 +22,15 @@
 | **Specificity & Reusability** | 写出来能指导具体行为吗？还是太泛？ | "要更小心" "要更认真" 类空话 |
 | **Safe to Publish** | 放进 DNA 会不会泄露隐私或造成过度约束？ | 包含具体人名/公司名；过于场景化的规则 |
 
-4 维度全 pass → 升级。任一 reject → 留在 candidates 继续观察，或改写后重评。
+| **Durability** | 30 天后这条 pattern 还会 relevant 吗？是基本行为模式还是跟特定临时上下文绑定？ | 只在某个 repo/某个工具版本/某个阶段才触发 |
+| **Reduction** | 升级这条能让现有 DNA 规则合并/精简吗？（soft gate，优先但不阻塞） | — |
+
+前 4 维度 + Durability 全 pass → 升级。Reduction 为 bonus：有 reduction 的候选优先升级，且升级时必须检查是否能合并已有条目。
+任一硬 gate reject → 留在 candidates 继续观察，或改写后重评。
+
+> 💡 Durability 和 Reduction 维度借鉴自 [[hermes-memory-skills]] 4D 评分体系（Novelty/Durability/Specificity/Reduction）。
+> Hermes 的 Novelty ≈ 我们的「独特性」补充筛选；Specificity 我们已有。
+> 新增的两个维度填补了：Durability 弥补「重复 3 次」作为持久性代理的不足；Reduction 对抗 DNA 单调增长。
 
 **补充筛选** (借鉴 cangjie-skill 三重验证，2026-04-20 引入):
 当 4 维度全 pass 但仍不确定是否升级时，用以下 3 问进一步筛选：
