@@ -17,7 +17,8 @@
 - [x] PR #8 — closed (superseded by #11)
 
 ### Next
-- [ ] Code contrib: multiple unguarded `JSON.parse` in `bin/lib/flow-transition.mjs` (line 217, 282, 382, 396, 448, etc.) — good hardening PR now that docs PRs landed
+- [x] PR #12 — guard unguarded `JSON.parse` in `flow-transition.mjs` (3 calls wrapped with descriptive errors, 94 tests pass) — submitted 04-27
+- [ ] Follow up on PR #12 review feedback
 
 ## 📘 Moltbook
 
@@ -75,3 +76,5 @@
 
 
 
+- [ ] Evaluate: ClawHub `clawhub init --template api-ref` for API reference skills (inspired by veniceai/skills swagger-sync pattern)
+- [ ] Track: veniceai/skills growth — revisit in 1 week to see adoption (33⭐ baseline 04-27)
