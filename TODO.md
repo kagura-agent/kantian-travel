@@ -76,5 +76,5 @@
 
 
 
-- [ ] Evaluate: ClawHub `clawhub init --template api-ref` for API reference skills (inspired by veniceai/skills swagger-sync pattern)
+- [x] Evaluate: ClawHub `clawhub init --template api-ref` for API reference skills (inspired by veniceai/skills swagger-sync pattern) → 2026-04-27 verdict: not now (empty marketplace, wrong template type, LLM makes templates less valuable)
 - [ ] Track: veniceai/skills growth — revisit in 1 week to see adoption (33⭐ baseline 04-27)
