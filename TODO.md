@@ -42,14 +42,9 @@
 
 ## 🧠 Memex
 
-### Pending PRs
-- [x] PR #72 - feat(links): add --filter and --stats options for link analysis (MERGED ✅ 04-26)
-
 ### Observations
 - memex v0.1.30 installed locally
 - Wiki at ~/.openclaw/workspace/wiki: 196 cards, 52 orphans (26%)
-- #65 (Stop hook) — fixed in v0.1.30, commented suggesting close
-- #51 (sync push/pull bug) — fixed in v0.1.30
 
 
 
@@ -64,19 +59,10 @@
 
 ## 📚 学习
 
-- [x] 深读 wuphf wiki（markdown+git+BM25 agent wiki）— 与 memex 对标，找差异化点 ✅ 2026-04-26
-- [x] 跟进 Stash memory layer（HN 101pts）— 看 API 设计和社区反应 ✅ 2026-04-26
 - [ ] 给 wiki 加 lint 健康检查（灵感来自 wuphf `/lint`）
-- [x] 考虑 confidence decay 机制用于 wiki cards（灵感来自 Stash）✅ 2026-04-26（设计完成，wiki-lint.sh 已加 staleness check，详见 cards/confidence-decay-design.md）
-- [x] 深读 Claude Code skill 生态（claude-skill-social-post, floodsung-skill）— 分析 skill 作为分发单元的设计模式 ✅ 2026-04-26
-- [x] 调研 auto-memory (dezgit2025, 219⭐) — progressive session recall 机制 ✅ 2026-04-26（已有 wiki 笔记，更新跟进）
-- [x] 跟踪 skill 信任层发展（SkillCheck, STSS, Gen+Vercel, Skillpub, Tessl 等）✅ 2026-04-26（详见 wiki/projects/skill-trust-landscape-2026-04.md）
-- [x] 研究 caveman 的 token 优化机制 ✅ 2026-04-26（详见 wiki/projects/caveman.md + cards/conciseness-accuracy-paradox.md）
-- [x] 实验：将 caveman-compress 思路应用到 OpenClaw skill context 加载 ✅ 2026-04-26（gogetajob SKILL.md 压缩 61%，详见 cards/skill-context-compression.md）
-- [x] 探索 STSS 的贡献机会（6 stars 但架构最完整，early mover advantage）✅ 2026-04-26（详见 wiki/projects/stss.md）
-- [ ] STSS 贡献：提交 chain-tracer 单元测试 PR（敲门砖，评估 maintainer 响应）
-- [ ] STSS 贡献：开 issue 问 LICENSE（MIT/Apache-2.0）
-- [x] Defender/Tolerator 审计：扫描自己的代码（nudge hook、memory writes、FlowForge error recovery），找 silent failures 和 defense spirals ✅ 2026-04-26（详见 wiki/cards/self-audit-defender-tolerator-2026-04.md）
+- [x] STSS 贡献：提交 chain-tracer 单元测试 PR（敲门砖，评估 maintainer 响应）→ PR #2 submitted 04-26
+- [x] STSS 贡献：开 issue 问 LICENSE（MIT/Apache-2.0）→ Issue #3 opened 04-27
+- [ ] STSS 贡献：address PR #2 CodeRabbit review（afterAll guard, circular test, synthetic findings）
 - [ ] Fix: GoGetAJob audit.ts empty catches → log warning + mark "unknown"（from self-audit）
 - [ ] Fix: GoGetAJob submit.ts 3-level try/catch → simplify to single ahead-count check（from self-audit）
 - [ ] Fix: FlowForge start() → add warning log when auto-closing stale instance（from self-audit）

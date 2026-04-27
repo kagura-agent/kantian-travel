@@ -234,3 +234,11 @@
 - **规则**: spawn subagent 涉及 npm/pip/任何包管理时，必须显式设 cwd 到项目目录。不能依赖 "message 里写了 repo 路径" — 那只是提示不是强制
 - **检查**: spawn 前问自己 "cwd 是什么？会在哪里创建文件？"
 - 重复次数: 1
+
+### 2026-04-26: Defender/Tolerator Lens (from claude-mem study)
+When reviewing code or workflows, ask two questions:
+1. "Is this defending against X, and does the defense produce more bugs than X itself?" (Defender)
+2. "Is this silently swallowing errors that will explode later?" (Tolerator)
+If yes → delete the code, don't fix it. Replace with simpler, narrower mechanism.
+**Count**: 1 (first observation, from claude-mem PR #2141)
+**Target**: If repeated 2+ more times → AGENTS.md 验证纪律 section
