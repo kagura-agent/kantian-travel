@@ -84,6 +84,8 @@
 - [ ] Track: veniceai/skills growth — 33⭐ unchanged 04-27, no push since 04-24. Revisit 05-04, drop if still flat
 - [ ] Track: STSS maintainer response — 6⭐, last push 03-19. PR #2/Issue #3 unanswered. Likely dead, revisit 05-04 then drop
 - [ ] Track: Orb — 53⭐, latest v0.2.0 (04-23). No v0.3 yet. Revisit 05-04
+- [ ] Track: agent-session-resume — 142⭐ (04-28), cross-agent session resume for Claude Code/Codex/OpenCode. Directly relevant to ACP. Single push 04-25. Revisit 05-05
+- [ ] Track: browser-use/bux — 223⭐ (04-28), 24/7 Claude Code + browser harness. 2 days old. Revisit 05-05
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]

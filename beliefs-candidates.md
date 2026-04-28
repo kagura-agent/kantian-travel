@@ -277,3 +277,8 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 - [2026-04-28] [gradient] "昨天我们做了cron的lane的patch" → [记录本地 hotfix] 手动 patch dist 文件后必须记录到 TOOLS.md 或 wiki，包括：改了哪个文件、改了什么、upstream 是否已修。升级前 grep 检查。Luna 问升级会不会覆盖 patch，我完全忘了有这个 patch。(pattern: LOCAL_PATCH_TRACKING, 1/3)
   - triggers: 手动修改 node_modules/dist 文件时
   - validation: TOOLS.md 或 wiki 里有 patch 记录吗？
+
+- 2026-04-28: [gradient] "用代理呀 我们有代理" → [行为改变] pip install 时 unset proxy 是对的（npm/pip 镜像走国内直连），但下载 HuggingFace 模型权重等外网资源时必须保留代理。区分"包管理走镜像"和"模型下载走代理"两种场景，不要一刀切 unset all (pattern: 工具环境配置, 第1次)
+
+- 2026-04-28: [gradient] Luna 问"channel session 是激活的么"直接暴露了我方案的核心假设错误 → [行为改变] 设计方案时先验证"谁会消费这个数据"的完整链路，不只看"能不能写进去" (pattern: 假设未验证就推进, 第1次)
+- 2026-04-28: [confirmation] zombie cron 修复找到了 jobs-state.json 的 runningAtMs 字段 → [为什么值得记] 上次(04-27)靠重启解决，这次找到了根因并手动清除，下次可以直接修 (pattern: 根因定位)
