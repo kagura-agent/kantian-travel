@@ -89,18 +89,19 @@
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
-- [ ] Track: agentic-stack growth & v0.13+ — 1,712⭐ (04-28), v0.12.0 released 04-27. Already deep-read. Revisit 05-04 for v0.13
+- [ ] Track: agentic-stack growth & v0.13+ — 1,725⭐ (04-28 followup), v0.12.0 tldraw visual canvas (feature flags + skill-local store). Revisit 05-04 for v0.13
 - [x] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol — arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 — 部分采纳，创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
 - [ ] Track: GenericAgent growth — 7,866⭐ (04-28), arXiv 发布一周。Revisit 05-04
-- [ ] Track: nanobot growth — 41,117⭐ (04-28), 每日更新。Revisit 05-04
+- [ ] Track: nanobot growth — 41,171⭐ (04-28 followup), extra_body provider escape hatch + Cloudflare bypass. Revisit 05-04
 - [x] Quick scan: GitHub trending + HN (04-28) — dirac selected for deep read
 - [x] Deep read: dirac — hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
-- [ ] Track: dirac growth — 771⭐ (04-28), Cline fork, topped TerminalBench-2. Revisit 05-04
+- [ ] Track: dirac growth — 866⭐ (04-28 followup, was 771), v0.3.2 + GPT 5.5 support. +12%/day growth. Revisit 05-04
 - [ ] Track: obscura headless browser — 7.2k⭐ (04-28), Rust. Revisit 05-04
 - [ ] Track: CubeSandbox agent sandbox — 4.4k⭐ (04-28), Tencent, Rust. Revisit 05-04
-- [ ] Track: bux (browser-use/bux) — 196⭐ (04-28), 24/7 Claude Code + Browser Harness. Very new (04-26). Revisit 05-04
+- [ ] Track: bux (browser-use/bux) — 229⭐ (04-28 followup, was 196), steady growth. Revisit 05-04
 - [ ] Track: OpenChronicle growth — 1658⭐ (04-28), macOS-only agent memory. Revisit 05-04
+- [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
