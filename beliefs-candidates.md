@@ -3,7 +3,22 @@
 从 Luna 的反馈和环境信号中提取的 "gradient"。
 重复 3 次以上的候选项应考虑升级到对应的 DNA 文件（SOUL.md / AGENTS.md / NUDGE.md / HEARTBEAT.md）。
 
+## Entry Format (from GEP analysis, 2026-04-28)
+
+New entries should include `triggers:` and `validation:` fields (inspired by [[evomap-evolver-gep]] signal matching):
+
+```
+- YYYY-MM-DD: [gradient] "quote" → [行为改变] description (pattern: name, 第Nx)
+  - triggers: 什么场景/信号触发这条规则？（越具体越好）
+  - validation: 如何验证行为真的改了？（可执行的检查方法）
+```
+
+**Why**: 没有 triggers 的规则靠 LLM 记住应用 → 遗忘。没有 validation 的升级无法判断是否治愈。
+**Scope**: 新条目必须写；旧条目在 audit/review 时逐步补充。
+
 - 2026-04-26: [gradient] "audit 声称 nudge 几乎死亡，Luna 追问证据，查日志发现过去24h触发10次" → [行为改变] audit 判定某机制"死了/不工作"前，必须查执行日志（journalctl/state file），不能凭印象或推理。声称频率、状态类结论必须附带 `[已验证]` 标签和数据源。(pattern: audit-verify-before-claim, 第1次)
+  - triggers: audit/review 中对任何机制做"工作/不工作"判断时
+  - validation: 结论前是否附带了具体命令+输出？有无 `[已验证]` 标签？
 
 - 2026-04-25: [gradient] "消息撞车时先假设用户操作问题，被截图纠正" → [行为改变] 遇到重复消息/异常行为时，先查系统侧元数据（message_id 是否相同），不要默认是用户的问题再解释 (pattern: verify-before-blame, 第1次)
 
@@ -250,3 +265,12 @@ When reviewing code or workflows, ask two questions:
 If yes → delete the code, don't fix it. Replace with simpler, narrower mechanism.
 **Count**: 1 (first observation, from claude-mem PR #2141)
 **Target**: If repeated 2+ more times → AGENTS.md 验证纪律 section
+- triggers: code review 中看到 try/catch 包裹、fallback 链、防御性检查时
+- validation: review 时是否主动问了这两个问题？是否有“删代码”而不是“修代码”的决策？
+
+- [2026-04-27] **网络慢时用API读关键文件，不clone整个repo**：git clone在网络受限环境经常超时。`gh api repos/.../contents/<path>` 可以精准读取需要的文件。(1/3)
+  - triggers: subagent/打工需要读远程 repo 代码时，特别是当 clone 超时过
+  - validation: 下次 clone 失败时是否立即切换到 API 方式？
+- [2026-04-27] **subagent任务要有网络fallback**：clone repo等网络依赖操作给subagent时，如果超时主agent应用API方式接手，不是重试。(1/3)
+  - triggers: subagent 报告 clone/fetch 超时时
+  - validation: 是否用 API fallback 而不是直接重试？
