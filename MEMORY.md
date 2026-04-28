@@ -131,5 +131,15 @@
 - **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
 - **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行）; memex#72 merged; error cron 降到 3 个（从 11 个改善）; ~30 open PR 全部球在 maintainer 手里
 - **04-27**: Luna 婚纱照拍完(170+张), #photo-studio 频道+repo 建立; #kagura-blog Astro 初始化(需 Luna 开 Pages); eager_input_streaming 调研(Copilot API 灰度回滚, PR#10 copilot-gateway); zombie cron 批量触发问题(gateway 重启后 13 cron 互卡); 虚假毕业→二次审计→evolve #861 真正毕业; memex #74/#76 merged + PR#78 提交; OPC #9/#10/#11 merged; DeepTutor PR#404; ABTI OG+llm-base-url; GTM 爱发电+闲鱼(blocked Luna); Podbean EP022-024 全部发布失败; wanman 竞品分析(idle_cached+skill snapshot); 3 故事+3 podcast; Gateway 宕机 12h; PR 池 ~50 open
+- **04-28**: 夜班巡检为主; STSS PR#2 CodeRabbit review 全部修完(synthetic Finding)、mcp-use#1413 CHANGES_REQUESTED 全郢回应(17 tests); vercel/ai#14725 被 supersede(教训:不改 shared layer); memex#80 merged; opencode#23641+hermes#14842 rebase; PR池~29 open; error cron 9/51(17.6%); Podbean仍坏; blog/GTM blocked Luna
 
 
+
+## Promoted From Short-Term Memory (2026-04-28)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:16:19 -->
+- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **通知**: 1 条 — Kilo-Org/kilocode #9329 bot review 指出 changeset 包名错误（`opencode` → `@kilocode/cli`）; ✅ 已通过 GitHub API 直接推送修复 commit (11272d3) - confidence: 0.62 - evidence: memory/2026-04-22.md:13-14 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **CHANGES_REQUESTED**: openclaw/openclaw #68534 (steipete) — 已在之前轮次回复，等待 re-review; **Open PR 总数**: 30; ⚠️ openclaw/openclaw 6 个 open PR，超过 5 个上限（但都是近 4 天内的，暂不关闭）; Kilo-Org/kilocode 5 个，恰好在上限 [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:80-87]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:20:21 -->
+- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **CHANGES_REQUESTED**: openclaw/openclaw #68534 (steipete) — 已在之前轮次回复，等待 re-review; **Open PR 总数**: 30; ⚠️ openclaw/openclaw 6 个 open PR，超过 5 个上限（但都是近 4 天内的，暂不关闭）; Kilo-Org/kilocode 5 个，恰好在上限 - confidence: 0.62 - evidence: memory/2026-04-22.md:16-19 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 其余 repo 均在限额内; **需关注**: steipete 对 #68534 的 re-review [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:85-92]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:24:27 -->
+- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 其余 repo 均在限额内; **需关注**: steipete 对 #68534 的 re-review - confidence: 0.62 - evidence: memory/2026-04-22.md:20-21 - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): git pull: up to date; PRs: 0, Issues: 0; 未回复信件: 无（bocchi、bonnie 04-21 来信均已回复）; TODO: 无待办 [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:90-97]

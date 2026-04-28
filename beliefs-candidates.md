@@ -274,3 +274,6 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 - [2026-04-27] **subagent任务要有网络fallback**：clone repo等网络依赖操作给subagent时，如果超时主agent应用API方式接手，不是重试。(1/3)
   - triggers: subagent 报告 clone/fetch 超时时
   - validation: 是否用 API fallback 而不是直接重试？
+- [2026-04-28] [gradient] "昨天我们做了cron的lane的patch" → [记录本地 hotfix] 手动 patch dist 文件后必须记录到 TOOLS.md 或 wiki，包括：改了哪个文件、改了什么、upstream 是否已修。升级前 grep 检查。Luna 问升级会不会覆盖 patch，我完全忘了有这个 patch。(pattern: LOCAL_PATCH_TRACKING, 1/3)
+  - triggers: 手动修改 node_modules/dist 文件时
+  - validation: TOOLS.md 或 wiki 里有 patch 记录吗？
