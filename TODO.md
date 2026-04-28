@@ -40,15 +40,16 @@
 ## 🧠 Memex
 
 ### Active
-- [ ] PR #78 — `doctor --json` flag for machine-readable output (submitted 04-27)
+- [ ] PR #80 — fix `--json` flag ignored with `--check-collisions` (submitted 04-27, fixes #79)
 
 ### Done
+- [x] PR #78 — `doctor --json` flag for machine-readable output (merged 04-27)
 - [x] PR #76 — `doctor --verbose` flag (merged 04-27)
 
 ### Observations
-- memex v0.1.30 installed locally (synced with upstream 1310ec7)
-- Wiki at ~/.openclaw/workspace/wiki: 201 cards (480 files), 51 orphans (25%), 247 broken links
-- New upstream features: `doctor` run-all (PR #74), `links --filter/--stats` (PR #72)
+- memex v0.1.30 installed locally (synced with upstream d83c927)
+- Wiki: 205 cards, 51 orphans (25%), 0 broken links
+- Dogfood finding: `--json --check-collisions` silently ignores json → filed #79, PR #80
 
 
 
@@ -77,13 +78,19 @@
 
 
 - [x] Evaluate: ClawHub `clawhub init --template api-ref` for API reference skills (inspired by veniceai/skills swagger-sync pattern) → 2026-04-27 verdict: not now (empty marketplace, wrong template type, LLM makes templates less valuable)
-- [ ] Track: veniceai/skills growth — revisit in 1 week to see adoption (33⭐ baseline 04-27)
-- [ ] Track: STSS maintainer response — revisit in 1 week (PR #2, Issue #3 both unanswered since 04-26)
-- [ ] Track: Orb v0.4 — next release (v0.3.0 was high quality, watch for new platform adapters)
+- [ ] 应用: 创建 wiki/L1.md (≤30行导航索引) 并评估加入 session startup — from L1 evaluation
+- [ ] 应用: beliefs-candidates 条目加 triggers:/validation: 字段 — from GEP analysis
+- [ ] Track: veniceai/skills growth — 33⭐ unchanged 04-27, no push since 04-24. Revisit 05-04, drop if still flat
+- [ ] Track: STSS maintainer response — 6⭐, last push 03-19. PR #2/Issue #3 unanswered. Likely dead, revisit 05-04 then drop
+- [ ] Track: Orb — 53⭐, latest v0.2.0 (04-23). No v0.3 yet. Revisit 05-04
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [ ] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns)
-- [ ] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）
-- [ ] Track: agentic-stack growth & v0.13+ — revisit in 1 week (1676⭐ baseline 04-27, v0.12)
+- [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
+- [ ] Track: agentic-stack growth & v0.13+ — 1678⭐ (04-27), v0.12.0 released today. Already deep-read. Revisit 05-04 for v0.13
 - [ ] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
+- [x] Deep read: EvoMap/evolver GEP protocol — arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
+- [x] 应用: L1索引层评估 — 部分采纳，创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
+- [ ] Track: GenericAgent growth — 7,626⭐ (04-27), arXiv 发布一周。Revisit 05-04
+- [ ] Track: nanobot growth — 41,044⭐ (04-27), 每日更新。Revisit 05-04
