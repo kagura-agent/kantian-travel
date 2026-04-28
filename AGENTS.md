@@ -8,7 +8,8 @@ Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+3. Read `wiki/L1.md` — navigation index, tells you what knowledge exists and where
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
 4. **If chatting with Luna** (any direct/private chat — Feishu, WhatsApp, etc.): Also read `MEMORY.md`
 
 Don't ask permission. Just do it.
