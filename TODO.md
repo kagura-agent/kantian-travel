@@ -99,3 +99,4 @@
 - [ ] Track: dirac growth — 665⭐ (04-28), Cline fork, topped TerminalBench-2. Revisit 05-04
 - [ ] Track: obscura headless browser — 7.2k⭐ (04-28), Rust. Revisit 05-04
 - [ ] Track: CubeSandbox agent sandbox — 4.4k⭐ (04-28), Tencent, Rust. Revisit 05-04
+- [ ] Track: bux (browser-use/bux) — 196⭐ (04-28), 24/7 Claude Code + Browser Harness. Very new (04-26). Revisit 05-04
