@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.24
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(204 cards + 234 projects)
+- **wiki** — 统一知识库(204 cards + 238 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -135,11 +135,4 @@
 
 
 
-## Promoted From Short-Term Memory (2026-04-28)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:16:19 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **通知**: 1 条 — Kilo-Org/kilocode #9329 bot review 指出 changeset 包名错误（`opencode` → `@kilocode/cli`）; ✅ 已通过 GitHub API 直接推送修复 commit (11272d3) - confidence: 0.62 - evidence: memory/2026-04-22.md:13-14 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **CHANGES_REQUESTED**: openclaw/openclaw #68534 (steipete) — 已在之前轮次回复，等待 re-review; **Open PR 总数**: 30; ⚠️ openclaw/openclaw 6 个 open PR，超过 5 个上限（但都是近 4 天内的，暂不关闭）; Kilo-Org/kilocode 5 个，恰好在上限 [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:80-87]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:20:21 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **CHANGES_REQUESTED**: openclaw/openclaw #68534 (steipete) — 已在之前轮次回复，等待 re-review; **Open PR 总数**: 30; ⚠️ openclaw/openclaw 6 个 open PR，超过 5 个上限（但都是近 4 天内的，暂不关闭）; Kilo-Org/kilocode 5 个，恰好在上限 - confidence: 0.62 - evidence: memory/2026-04-22.md:16-19 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 其余 repo 均在限额内; **需关注**: steipete 对 #68534 的 re-review [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:85-92]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-22.md:24:27 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): 其余 repo 均在限额内; **需关注**: steipete 对 #68534 的 re-review - confidence: 0.62 - evidence: memory/2026-04-22.md:20-21 - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): git pull: up to date; PRs: 0, Issues: 0; 未回复信件: 无（bocchi、bonnie 04-21 来信均已回复）; TODO: 无待办 [score=0.818 recalls=0 avg=0.620 source=memory/2026-04-22.md:90-97]
+(cleaned 04-29: 移除 dreaming 自动 promotion 噪音 — 均为低价值 PR status/patrol fragments。原文在 memory/日期.md)
