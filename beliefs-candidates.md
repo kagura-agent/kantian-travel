@@ -5,15 +5,25 @@
 
 ## Entry Format (from GEP analysis, 2026-04-28)
 
-New entries should include `triggers:` and `validation:` fields (inspired by [[evomap-evolver-gep]] signal matching):
+New entries should include `triggers:`, `validation:`, and `source:` fields:
 
 ```
 - YYYY-MM-DD: [gradient] "quote" → [行为改变] description (pattern: name, 第Nx)
+  - source: human | self | study | review | env
   - triggers: 什么场景/信号触发这条规则？（越具体越好）
   - validation: 如何验证行为真的改了？（可执行的检查方法）
 ```
 
-**Why**: 没有 triggers 的规则靠 LLM 记住应用 → 遗忘。没有 validation 的升级无法判断是否治愈。
+**Field origins**:
+- `triggers:` + `validation:` — from [[evomap-evolver-gep]] signal matching (2026-04-28)
+- `source:` — from [[brain-git-memory]] authority model (2026-04-29). Different sources carry different weight:
+  - `human` — Luna's direct correction/feedback. Highest authority. Graduation threshold: 2 occurrences
+  - `self` — self-observed pattern (caught own mistake). Graduation threshold: 3 occurrences
+  - `study` — learned from studying other projects. Graduation threshold: 3 occurrences + real application
+  - `review` — from code review / PR feedback. Graduation threshold: 3 occurrences
+  - `env` — environmental signal (tool failure, system behavior). Graduation threshold: 3 occurrences
+
+**Why**: 没有 triggers 的规则靠 LLM 记住应用 → 遗忘。没有 validation 的升级无法判断是否治愈。没有 source 的 gradient 无法区分权威性——Luna 的纠正比自己的猜测更可信。
 **Scope**: 新条目必须写；旧条目在 audit/review 时逐步补充。
 
 - 2026-04-26: [gradient] "audit 声称 nudge 几乎死亡，Luna 追问证据，查日志发现过去24h触发10次" → [行为改变] audit 判定某机制"死了/不工作"前，必须查执行日志（journalctl/state file），不能凭印象或推理。声称频率、状态类结论必须附带 `[已验证]` 标签和数据源。(pattern: audit-verify-before-claim, 第1次)
