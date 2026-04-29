@@ -282,3 +282,6 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 
 - 2026-04-28: [gradient] Luna 问"channel session 是激活的么"直接暴露了我方案的核心假设错误 → [行为改变] 设计方案时先验证"谁会消费这个数据"的完整链路，不只看"能不能写进去" (pattern: 假设未验证就推进, 第1次)
 - 2026-04-28: [confirmation] zombie cron 修复找到了 jobs-state.json 的 runningAtMs 字段 → [为什么值得记] 上次(04-27)靠重启解决，这次找到了根因并手动清除，下次可以直接修 (pattern: 根因定位)
+
+- 2026-04-28: [gradient] "选片这件事你也可以来问问我的想法" → [行为改变] 做个性化任务时先问用户偏好再动手，不要假设默认值。特别是审美相关的事（选片、设计、风格），用户的口味是关键输入 (pattern: 用户参与, 第1次)
+- 2026-04-29: [gradient] "fixed里面有呀" → [行为改变] 浏览目录时必须看所有文件，不能只关注编号命名的文件。非标准文件名往往是成品/模板/关键素材 (pattern: 忽略已有资源自己重造, 第1次)

@@ -136,3 +136,8 @@
 
 
 (cleaned 04-29: 移除 dreaming 自动 promotion 噪音 — 均为低价值 PR status/patrol fragments。原文在 memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-04-29)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:14:17 -->
+- - 所有 🔴 flag 都是 bot review (coderabbitai, cubic-dev-ai, chatgpt-codex-connector, claude)，无真人 review 待处理 - 无 merge conflict，无需 rebase - 注意: kilocode #9182 可能被 #9245 取代（alex-alecu 另开 PR 修了） - stagehand #1997 已 ping 过维护者，继续等待 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): **flowforge workloop-night #510** 完成; gogetajob sync 检查 15 个 open PR，全部状态正常; 无真人 review 需要代码修改（flagged 的都是 bot：coderabbitai, chatgpt-codex-connector, claude）; 所有 PR mergeable，无 conflict [score=0.822 recalls=0 avg=0.620 source=memory/2026-04-21.md:95-102]
