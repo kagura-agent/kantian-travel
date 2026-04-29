@@ -41,16 +41,20 @@
 ## 🧠 Memex
 
 ### Active
-- [ ] PR #80 — fix `--json` flag ignored with `--check-collisions` (submitted 04-27, fixes #79)
+- [ ] PR #89 — fix `sync --init` master/main branch divergence (submitted 04-29, fixes #82)
 
 ### Done
+- [x] PR #80 — fix `--json` flag ignored with `--check-collisions` (merged 04-27, fixes #79)
 - [x] PR #78 — `doctor --json` flag for machine-readable output (merged 04-27)
 - [x] PR #76 — `doctor --verbose` flag (merged 04-27)
+- [x] Updated local memex to 0.1.32 (built from fork, npm link)
 
 ### Observations
-- memex v0.1.30 installed locally (synced with upstream d83c927)
-- Wiki: 205 cards, 51 orphans (25%), 0 broken links
-- Dogfood finding: `--json --check-collisions` silently ignores json → filed #79, PR #80
+- memex 0.1.32 installed locally (built from fork, npm link — npm install -g kept getting SIGKILL)
+- Wiki: 205 cards, 51 orphans (25%), 282 broken links (wikilinks to non-existent cards), 0 slug collisions
+- doctor --verbose now works in 0.1.32 (shows orphans + broken links)
+- Broken links are mostly refs to project slugs that aren’t wiki cards — expected for a project-reference-heavy wiki
+- Dogfood finding: detectRemoteBranch() returns fallback "origin/main" even on empty remotes — fixed in PR #89
 
 
 
@@ -61,6 +65,8 @@
 - [x] **guide.md: 新增「抽象边界检查」** — mcp-use#1393 教训 → 已加入 guide.md 第 5 条 (2026-04-27)
 - [x] **guide.md: 新增「平台特定 fix 的 scope 控制」** — openclaw#69179 教训 → 已加入 guide.md 第 7 条 (2026-04-27)
 - [x] **guide.md: 新增「test PR 要 fix+extend」** — NemoClaw#2256 教训 → 已加入 guide.md 第 8 条 (2026-04-28)
+- [x] **guide.md: 新增「repeat supersede = blocklist」** — VoltAgent 教训 → 已加入 guide.md 第 9 条 (2026-04-29)
+- [x] **guide.md: 新增「提 PR 前验证 fork 存在」** — FinceptTerminal 教训 → 已加入 guide.md 第 10 条 (2026-04-29)
 
 ## 📚 学习
 
@@ -90,6 +96,8 @@
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack growth — 1,740⭐ (04-29), v0.12.0. Post-release calm, no commits since 04-27. Revisit 05-04
+- [ ] Track: future-agi (future-agi/future-agi) — 734⭐ (04-29), eval/observability/gateway platform. Active development. Revisit 05-06
+- [ ] Track: dirac (dirac-run/dirac) — 978⭐ (04-29), coding agent efficiency (Hash Anchored edits, AST manipulation). Topped TerminalBench. Revisit 05-06
 - [ ] Track: cadis (Growth-Circle/cadis) — 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
 - [x] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
