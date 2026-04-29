@@ -113,6 +113,7 @@
 - [ ] Track: open-design growth — 1902⭐ (04-29, created 04-28). Agent-agnostic design skill ecosystem. Explosive launch. Revisit 05-04
 - [ ] Track: thClaws — 612⭐ (04-29), Rust-first multi-provider agent harness, sovereign design. Revisit 05-04
 - [ ] Track: garden-skills — 1712⭐ (04-29), multi-skill collection (ConardLi). Revisit 05-04
+- [ ] Track: microsoft/apm — 2,145⭐ (04-29), daily pushes, Python. Agent Package Manager (skill distribution layer). Revisit 05-06
 - [ ] Track: OmniAgent — 576⭐ (04-29), self-evolving + security hardening. Revisit 05-06
 - [ ] Track: brain (codejunkie99/brain) — 22⭐ (04-29), git-backed agent memory Rust. Revisit 05-06
 - [x] Deep read: brain — git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
