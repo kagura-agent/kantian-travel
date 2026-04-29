@@ -118,3 +118,5 @@
 - [x] Deep read: brain — git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
 - [x] 应用: beliefs-candidates 加 `source:` authority field（human 2×/self 3× 差异化毕业门槛）— from brain authority model (04-29)
 - [x] 应用: pre-commit secret scanning hooks installed on workspace + wiki repos — from brain prevention>detection pattern (04-29)
+- [ ] Track: hermes-labyrinth — 210⭐ (04-29), Hermes observability plugin, v0.1.0 hackathon build. Active. Revisit 05-06
+- [ ] Track: mizchi/skills — 106⭐ (04-29), APM-distributed agent skills by well-known JP dev. Revisit 05-06
