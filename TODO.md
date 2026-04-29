@@ -109,3 +109,4 @@
 - [ ] Track: Stash growth — 514⭐ (04-29, was 227 on 04-26), last push 04-26. Revisit 05-06
 - [ ] Track: cadis — 37⭐ (04-29), Rust-first multi-agent runtime, worktree-isolated coding agents. Revisit 05-06
 - [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
+- [ ] Track: open-design growth — 1902⭐ (04-29, created 04-28). Agent-agnostic design skill ecosystem. Explosive launch. Revisit 05-04
