@@ -106,3 +106,6 @@
 - [ ] Track: OpenChronicle growth — 1658⭐ (04-28), macOS-only agent memory. Revisit 05-04
 - [ ] Track: future-agi — 703⭐ (04-29, +1), DB migrations + annotation fixes. Incremental. Revisit 05-04
 - [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
+- [ ] Track: Stash growth — 514⭐ (04-29, was 227 on 04-26), last push 04-26. Revisit 05-06
+- [ ] Track: cadis — 37⭐ (04-29), Rust-first multi-agent runtime, worktree-isolated coding agents. Revisit 05-06
+- [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
