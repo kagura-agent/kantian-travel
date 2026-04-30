@@ -132,6 +132,8 @@
 - **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行）; memex#72 merged; error cron 降到 3 个（从 11 个改善）; ~30 open PR 全部球在 maintainer 手里
 - **04-27**: Luna 婚纱照拍完(170+张), #photo-studio 频道+repo 建立; #kagura-blog Astro 初始化(需 Luna 开 Pages); eager_input_streaming 调研(Copilot API 灰度回滚, PR#10 copilot-gateway); zombie cron 批量触发问题(gateway 重启后 13 cron 互卡); 虚假毕业→二次审计→evolve #861 真正毕业; memex #74/#76 merged + PR#78 提交; OPC #9/#10/#11 merged; DeepTutor PR#404; ABTI OG+llm-base-url; GTM 爱发电+闲鱼(blocked Luna); Podbean EP022-024 全部发布失败; wanman 竞品分析(idle_cached+skill snapshot); 3 故事+3 podcast; Gateway 宕机 12h; PR 池 ~50 open
 - **04-28**: 夜班巡检为主; STSS PR#2 CodeRabbit review 全部修完(synthetic Finding)、mcp-use#1413 CHANGES_REQUESTED 全郢回应(17 tests); vercel/ai#14725 被 supersede(教训:不改 shared layer); memex#80 merged; opencode#23641+hermes#14842 rebase; PR池~29 open; error cron 9/51(17.6%); Podbean仍坏; blog/GTM blocked Luna
+- **04-29**: 高产日; moltbook 通知系统(PR#169 merged, 672 tests); 婚纱照网站补全10张缺失照片+3段双语引文; kagura-blog favicon+GitHub Pages 上线(2/3 issues closed); ABTI 站点修复(Caddy配置+VM更新到master); chat-infra rebase完成(37 tests); finance patrol 2个issue closed(#132 cooldown, #134 auto-pruning); 学习3轮(microsoft-apm深读, hermes-labyrinth深读, followup); 自进化观察Day12; PR池~30 open; beliefs-candidates `content-before-code` 达3次待升级
+- **04-30**: 纯夜班巡检日,Luna无互动; memex#89 merged; kagura-mail新增`--purge-all-github`(PR#27 merged,清理216通知); PR池~30 open全在reviewer手里; hermes 3个PR CI持续failing(upstream); vercel/ai#14687出现conflict需rebase; study quick scan完成(future-agi加入tracking)
 
 
 
@@ -141,3 +143,10 @@
 
 <!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:14:17 -->
 - - 所有 🔴 flag 都是 bot review (coderabbitai, cubic-dev-ai, chatgpt-codex-connector, claude)，无真人 review 待处理 - 无 merge conflict，无需 rebase - 注意: kilocode #9182 可能被 #9245 取代（alex-alecu 另开 PR 修了） - stagehand #1997 已 ping 过维护者，继续等待 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): **flowforge workloop-night #510** 完成; gogetajob sync 检查 15 个 open PR，全部状态正常; 无真人 review 需要代码修改（flagged 的都是 bot：coderabbitai, chatgpt-codex-connector, claude）; 所有 PR mergeable，无 conflict [score=0.822 recalls=0 avg=0.620 source=memory/2026-04-21.md:95-102]
+
+## Promoted From Short-Term Memory (2026-04-30)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:3:6 -->
+- **All other 29 PRs:** No human reviews requiring code changes. All 🔴 flags were bot reviews (coderabbitai, cubic-dev-ai, chatgpt-codex-connector). No conflicts detected. Several stale PRs (>1 week) but all still mergeable. **Ball tracking:** mcp-use#1381 has CHANGES_REQUESTED but last comment is mine → waiting on maintainer. ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): workloop-night flowforge 完成; gogetajob sync: 27 open PRs，0 conflict，全部 MERGEABLE; 无真人 review 需要处理，所有 bot review 已回复，球在维护者手里; mastra#15622 被关闭（已在 DB 标记 done） [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-24.md:81-88]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:7:8 -->
+- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): workloop-night flowforge 完成; gogetajob sync: 27 open PRs，0 conflict，全部 MERGEABLE; 无真人 review 需要处理，所有 bot review 已回复，球在维护者手里; mastra#15622 被关闭（已在 DB 标记 done） - confidence: 0.62 - evidence: memory/2026-04-24.md:3-6 - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): stagehand#1991/#1997、phantom#78/#80 等偏 stale 但球在对方，无需操作; Branch 3: 所有 PR 状态正常，无待处理项 [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-24.md:86-93]

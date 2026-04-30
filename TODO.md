@@ -105,7 +105,7 @@
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol — arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 — 部分采纳，创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
-- [ ] Track: GenericAgent growth — 8,231⭐ (04-30), supervisor_sop added, NextWillSummary removed. Revisit 05-04
+- [ ] Track: GenericAgent growth — 8,306⭐ (04-30 PM), supervisor_sop added, NextWillSummary removed. Revisit 05-04
 - [ ] Track: nanobot growth — 41,171⭐ (04-28 followup), extra_body provider escape hatch + Cloudflare bypass. Revisit 05-04
 - [x] Quick scan: GitHub trending + HN (04-28) — dirac selected for deep read
 - [x] Deep read: dirac — hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
@@ -137,3 +137,5 @@
 - **Attribution check**: Need to add `kagura.agent.ai@gmail.com` → `kagura-agent` mapping to `scripts/release.py` AUTHOR_MAP
 - **Also**: `test_session_resume_returns_hydrated_messages` and `test_session.py` import error (may be upstream)
 - **Action**: Fix in next workloop session
+- [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
+- [ ] Track: reversa (sandeco/reversa) — 180⭐ (04-30), legacy→spec multi-agent framework. Skills-as-agents pattern. Revisit 05-07, drop if still single contributor + no tests
