@@ -113,7 +113,7 @@
 - [ ] Track: CubeSandbox agent sandbox — 4.4k⭐ (04-28), Tencent, Rust. Revisit 05-04
 - [ ] Track: OpenChronicle growth — 1658⭐ (04-28), macOS-only agent memory. Revisit 05-04
 - [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
-- [ ] Track: Stash growth — 514⭐ (04-29, was 227 on 04-26), last push 04-26. Revisit 05-06
+- [ ] Track: Stash growth — 580⭐ (04-30, was 514 on 04-29), accelerating. Revisit 05-06
 - [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
 - [ ] Track: open-design growth — 6,005⭐ (04-30, was 1,902). ACP JSON-RPC native, 10 agent CLIs, artifact platform. Revisit 05-07
 - [ ] Track: thClaws — 612⭐ (04-29), Rust-first multi-provider agent harness, sovereign design. Revisit 05-04
