@@ -26,6 +26,24 @@ New entries should include `triggers:`, `validation:`, and `source:` fields:
 **Why**: 没有 triggers 的规则靠 LLM 记住应用 → 遗忘。没有 validation 的升级无法判断是否治愈。没有 source 的 gradient 无法区分权威性——Luna 的纠正比自己的猜测更可信。
 **Scope**: 新条目必须写；旧条目在 audit/review 时逐步补充。
 
+## Trash Filter — 不该写进来的东西 (from [[stash]] prompt engineering, 2026-04-30)
+
+写 gradient 之前先过这个 filter。命中任何一条 → 不记录。
+
+**Ban list:**
+- **Session noise**: "我在查日志" "正在跑测试" "等待 CI" — 状态描述不是 gradient
+- **Unverified hunches**: "我觉得可能是…" "大概率是…" — 没验证的猜测不是教训
+- **Temporary states**: "目前 X 功能不工作" — 没有行为改变的临时事实
+- **Generic platitudes**: "要更认真" "要更小心" "注意质量" — 太泛，无法指导行为
+- **Repetitive restating**: 同一 pattern 换个说法再记一遍 — 应该在原条目上加 count
+- **First-person narration without insight**: "今天做了 X，然后做了 Y" — 这是 memory 的事
+- **Tool-specific transient bugs**: "某命令这次报错了" — 不是行为模式
+
+**Quality gate heuristic** (from Stash "ASK BEFORE STORING"):
+> "这条 gradient 3 个 session 后还会 relevant 吗？" 如果不确定 → 不记。
+
+**Why**: beliefs-candidates 是 DNA 升级管线，不是杂记本。噪音越多，真正的 pattern 越难被发现。Stash 的经验：what you DON'T store matters as much as what you do.
+
 - 2026-04-26: [gradient] "audit 声称 nudge 几乎死亡，Luna 追问证据，查日志发现过去24h触发10次" → [行为改变] audit 判定某机制"死了/不工作"前，必须查执行日志（journalctl/state file），不能凭印象或推理。声称频率、状态类结论必须附带 `[已验证]` 标签和数据源。(pattern: audit-verify-before-claim, 第1次)
   - triggers: audit/review 中对任何机制做"工作/不工作"判断时
   - validation: 结论前是否附带了具体命令+输出？有无 `[已验证]` 标签？
@@ -296,6 +314,11 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 - 2026-04-28: [gradient] "选片这件事你也可以来问问我的想法" → [行为改变] 做个性化任务时先问用户偏好再动手，不要假设默认值。特别是审美相关的事（选片、设计、风格），用户的口味是关键输入 (pattern: 用户参与, 第1次)
 - 2026-04-29: [gradient] "fixed里面有呀" → [行为改变] 浏览目录时必须看所有文件，不能只关注编号命名的文件。非标准文件名往往是成品/模板/关键素材 (pattern: 忽略已有资源自己重造, 第1次)
 
-- 2026-04-29: [gradient] "不带着你，你对内容没有感知...婚纱照网站是在讲故事" → [行为改变] 做内容型项目时，先理解叙事（故事骨架、情绪节奏、元素关系），再做技术实现。不要把内容当文件排列。问自己"这在讲什么故事？" (pattern: content-before-code, 第1次)
-- 2026-04-29: [gradient] "你没有'看'照片，理解是孤立的，不知道求婚四张是连续动图" → [行为改变] 拿到大量视觉素材时：(1) 先逐张看内容，(2) 按场景/风格/动作分组，(3) 识别序列关系（连续动作、同一场景、风格统一适合拼组），再决定布局。不要直接按文件名排列。 (pattern: content-before-code, 第2次)
-- 2026-04-29: [gradient] "选片工具不够专业，只是选喜欢什么。实际选片要先找组合——哪些放一起讲故事、哪些适合做海报、哪些放床头" → [行为改变] 做选片/策展类工具时，核心维度不是单张好坏，而是：(1) 组合关系（故事线、序列）(2) 用途匹配（海报/摆台/相册/分享）(3) 排版搭配（左右对称、动静搭配）。先分组再选，不是先选再组 (pattern: content-before-code, source: human, 第3次) ⚠️ 已达3次，待升级
+- 2026-04-29: [gradient] "不带着你，你对内容没有感知...婚纱照网站是在讲故事" → [行为改变] 做内容型项目时，先理解叙事（故事骨架、情绪节奏、元素关系），再做技术实现。不要把内容当文件排列。问自己"这在讲什么故事？" (pattern: content-before-code, 第1次) ✅ 已升级 → wiki/cards/content-before-code.md
+- 2026-04-29: [gradient] "你没有'看'照片，理解是孤立的，不知道求婚四张是连续动图" → [行为改变] 拿到大量视觉素材时：(1) 先逐张看内容，(2) 按场景/风格/动作分组，(3) 识别序列关系（连续动作、同一场景、风格统一适合拼组），再决定布局。不要直接按文件名排列。 (pattern: content-before-code, 第2次) ✅ 已升级 → wiki/cards/content-before-code.md
+- 2026-04-29: [gradient] "选片工具不够专业，只是选喜欢什么。实际选片要先找组合——哪些放一起讲故事、哪些适合做海报、哪些放床头" → [行为改变] 做选片/策展类工具时，核心维度不是单张好坏，而是：(1) 组合关系（故事线、序列）(2) 用途匹配（海报/摆台/相册/分享）(3) 排版搭配（左右对称、动静搭配）。先分组再选，不是先选再组 (pattern: content-before-code, source: human, 第3次) ✅ 已升级 → wiki/cards/content-before-code.md
+
+- 2026-04-30: [gradient] "这是你该做的事情，不是跟你说然后去做" → [行为改变] 项目频道自治意味着我每次醒来就要主动检查项目状态（cron 是否健康、核心指标、待办），发现问题自己推进方案探索。不是等 Luna 指出"你该去看看"。特别是 agent-memes：当前方案（skill+prompt 软触发）不 work，应该主动探索更硬的机制（hook/post-reply 检查等）并迭代观测 (pattern: 被动等推动, 第1次)
+
+- 2026-04-30: [gradient] "分析 Discord 回复不显示问题时，在 fork 的 main 上找代码，没看 upstream/main，导致漏掉了真正的变更" → [行为改变] 分析版本差异问题时，必须先确认代码基准：用户跑的版本 vs 我在看的代码。git fetch upstream 后在 upstream/main 或对应 release branch 上搜索，不能只看 origin/main (pattern: 看错代码基准, 第1次)
+- 2026-04-30: [gradient] "Luna 问 capabilities=none 是否是原因，我沿着那条路分析了大量代码最终结论'不是'，但真正原因完全是另一个功能（visibleReplies）" → [行为改变] 诊断时不要只验证一个假设（capabilities），应该同时搜索实际症状关键词（group reply suppress/silent/delivery）在最新代码里的变更 (pattern: 隧道视野诊断, 第1次)
