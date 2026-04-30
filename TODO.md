@@ -67,6 +67,7 @@
 - [x] **guide.md: 新增「test PR 要 fix+extend」** — NemoClaw#2256 教训 → 已加入 guide.md 第 8 条 (2026-04-28)
 - [x] **guide.md: 新增「repeat supersede = blocklist」** — VoltAgent 教训 → 已加入 guide.md 第 9 条 (2026-04-29)
 - [x] **guide.md: 新增「提 PR 前验证 fork 存在」** — FinceptTerminal 教训 → 已加入 guide.md 第 10 条 (2026-04-29)
+- [x] **guide.md: 新增「源头拦截 > 消费端过滤」** — openclaw#73608 教训 → 已加入 guide.md 第 11 条 (2026-04-30)
 
 ## 📚 学习
 
@@ -92,7 +93,6 @@
 - [ ] Track: Orb — 53⭐, latest v0.2.0 (04-23). No v0.3 yet. Revisit 05-04
 - [ ] Track: agent-session-resume — 150⭐ (04-29, flat), no push since 04-25. Likely stalled. Revisit 05-05, drop if still flat
 - [ ] Track: bux (browser-use/bux) — 265⭐ (04-30), growth slowed. Revisit 05-07, drop if plateau continues
-- [ ] Track: browser-use/bux — merged into bux tracking above. DONE
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
@@ -105,21 +105,17 @@
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol — arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 — 部分采纳，创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
-- [ ] Track: GenericAgent growth — 8,306⭐ (04-30 PM), supervisor_sop added, NextWillSummary removed. Revisit 05-04
+- [ ] Track: GenericAgent growth — 8,401⭐ (04-30 PM), supervisor_sop + stream hardening. Revisit 05-04
 - [ ] Track: nanobot growth — 41,171⭐ (04-28 followup), extra_body provider escape hatch + Cloudflare bypass. Revisit 05-04
 - [x] Quick scan: GitHub trending + HN (04-28) — dirac selected for deep read
 - [x] Deep read: dirac — hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
-- [ ] Track: dirac growth — 1,001⭐ (04-30), v0.3.7, Responses API reverted, reliability iteration. Revisit 05-04
 - [ ] Track: obscura headless browser — 7.2k⭐ (04-28), Rust. Revisit 05-04
 - [ ] Track: CubeSandbox agent sandbox — 4.4k⭐ (04-28), Tencent, Rust. Revisit 05-04
-- [ ] Track: bux (browser-use/bux) — 252⭐ (04-29, flat), mostly CLAUDE.md refinements. Revisit 05-04
 - [ ] Track: OpenChronicle growth — 1658⭐ (04-28), macOS-only agent memory. Revisit 05-04
-- [ ] Track: future-agi — 703⭐ (04-29, +1), DB migrations + annotation fixes. Incremental. Revisit 05-04
 - [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
 - [ ] Track: Stash growth — 514⭐ (04-29, was 227 on 04-26), last push 04-26. Revisit 05-06
-- [ ] Track: cadis — 37⭐ (04-29), Rust-first multi-agent runtime, worktree-isolated coding agents. Revisit 05-06
 - [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
-- [ ] Track: open-design growth — 1902⭐ (04-29, created 04-28). Agent-agnostic design skill ecosystem. Explosive launch. Revisit 05-04
+- [ ] Track: open-design growth — 6,005⭐ (04-30, was 1,902). ACP JSON-RPC native, 10 agent CLIs, artifact platform. Revisit 05-07
 - [ ] Track: thClaws — 612⭐ (04-29), Rust-first multi-provider agent harness, sovereign design. Revisit 05-04
 - [ ] Track: garden-skills — 1712⭐ (04-29), multi-skill collection (ConardLi). Revisit 05-04
 - [ ] Track: microsoft/apm — 2,145⭐ (04-29), daily pushes, Python. Agent Package Manager (skill distribution layer). Revisit 05-06
@@ -129,13 +125,19 @@
 - [x] 应用: beliefs-candidates 加 `source:` authority field（human 2×/self 3× 差异化毕业门槛）— from brain authority model (04-29)
 - [x] 应用: pre-commit secret scanning hooks installed on workspace + wiki repos — from brain prevention>detection pattern (04-29)
 - [ ] Track: hermes-labyrinth — 210⭐ (04-29), Hermes observability plugin, v0.1.0 hackathon build. Active. Revisit 05-06
-- [ ] Track: mizchi/skills — 106⭐ (04-29), APM-distributed agent skills by well-known JP dev. Revisit 05-06
-- [ ] Track: mapick-ai/mapick — 14⭐ (04-30), OpenClaw skill lifecycle manager + privacy layer. First third-party governance tool. Revisit 05-07
+- [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
+- [ ] Track: reversa (sandeco/reversa) — 182⭐ (04-30), legacy→executable specs, skills-as-agents. Revisit 05-07
+- [ ] Track: mizchi/skills — 113⭐ (04-30), APM-distributed agent skills, JP dev. Revisit 05-06
+- [ ] Track: 99xAgency/GodModeSkill — 167⭐ (04-30), multi-LLM cross-review. Revisit 05-06
+- [ ] Track: Beever Atlas (Beever-AI/beever-atlas) — 191⭐ (04-30), Google ADK wiki-first RAG. Active dev. Revisit 05-07
+- [ ] Track: ast-outline (aeroxy/ast-outline) — 94⭐ (04-30), Rust AST structural outline for coding agents. Fast growth. Revisit 05-04
+- [ ] Track: mapick-ai/mapick — 21⭐ (04-30), OpenClaw privacy layer + skill advisor. Our ecosystem. Revisit 05-07
 
 ## hermes-agent#17416 CI Failures (2026-04-30)
 - **Tests failing**: Circuit breaker changes break MCP structured content tests (`test_mcp_structured_content.py`) — circuit breaker fires during test mocks
 - **Attribution check**: Need to add `kagura.agent.ai@gmail.com` → `kagura-agent` mapping to `scripts/release.py` AUTHOR_MAP
 - **Also**: `test_session_resume_returns_hydrated_messages` and `test_session.py` import error (may be upstream)
 - **Action**: Fix in next workloop session
-- [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
-- [ ] Track: reversa (sandeco/reversa) — 180⭐ (04-30), legacy→spec multi-agent framework. Skills-as-agents pattern. Revisit 05-07, drop if still single contributor + no tests
+- [ ] Track: spawn-agent (millionco/spawn-agent) — 76⭐ (04-30), ACP → Vercel AI SDK bridge. Revisit 05-07
+- [ ] Track: cursor/cookbook — 2,214⭐ (04-30), Cursor first-party SDK. Revisit 05-07
+- [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) — 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
