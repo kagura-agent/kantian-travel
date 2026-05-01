@@ -41,9 +41,10 @@
 ## 🧠 Memex
 
 ### Active
-- [ ] PR #89 — fix `sync --init` master/main branch divergence (submitted 04-29, fixes #82)
+- [ ] PR #92 — feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91)
 
 ### Done
+- [x] PR #89 — fix `sync --init` master/main branch divergence (merged 04-29, fixes #82)
 - [x] PR #80 — fix `--json` flag ignored with `--check-collisions` (merged 04-27, fixes #79)
 - [x] PR #78 — `doctor --json` flag for machine-readable output (merged 04-27)
 - [x] PR #76 — `doctor --verbose` flag (merged 04-27)
@@ -100,6 +101,8 @@
 - [ ] Track: future-agi (future-agi/future-agi) — 750⭐ (04-30), eval/observability/gateway platform. Active development. Revisit 05-06
 - [ ] Track: dirac (dirac-run/dirac) — 1,004⭐ (04-30), reliability iteration phase, ChatGPT 5.5 support. Revisit 05-07
 - [ ] Track: cadis (Growth-Circle/cadis) — 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
+- [ ] Track: reversa (sandeco/reversa) — 318⭐ (05-01), legacy→exec specs for AI agents. Very new (4 days). Revisit 05-08, drop if growth stalls
+- [ ] Track: pu.sh (NahimNasser/pu) — 53⭐ (05-01), 400-line shell coding agent. HN front page. Revisit 05-08, check if it's a flash or grows
 - [x] **Fix: gogetajob entry point** — `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix — Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)

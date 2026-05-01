@@ -322,3 +322,12 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 
 - 2026-04-30: [gradient] "分析 Discord 回复不显示问题时，在 fork 的 main 上找代码，没看 upstream/main，导致漏掉了真正的变更" → [行为改变] 分析版本差异问题时，必须先确认代码基准：用户跑的版本 vs 我在看的代码。git fetch upstream 后在 upstream/main 或对应 release branch 上搜索，不能只看 origin/main (pattern: 看错代码基准, 第1次)
 - 2026-04-30: [gradient] "Luna 问 capabilities=none 是否是原因，我沿着那条路分析了大量代码最终结论'不是'，但真正原因完全是另一个功能（visibleReplies）" → [行为改变] 诊断时不要只验证一个假设（capabilities），应该同时搜索实际症状关键词（group reply suppress/silent/delivery）在最新代码里的变更 (pattern: 隧道视野诊断, 第1次)
+
+- 2026-04-30: [gradient] "Luna: 搞不定就先退，别引起反感" → [行为改变] 规范严格的项目（如 kilocode），先观察 PR 模式和规范再动手。被 maintainer 多次提醒说明准备不足，应该主动关 PR 退出，而不是继续追问。(pattern: 贡献前做功课, 第1次)
+
+- 2026-04-30: [gradient] "Luna: 不能解决就及时止损礼貌退出，不纠缠" → [行为改变] PR 被 maintainer 多次纠正时，说明自己准备不足。正确做法：立刻关 PR + 礼貌收尾 + 退出观察，而不是继续追问"具体哪里不对"。纠缠只会消耗对方耐心、损害信誉。(pattern: 及时止损, 第1次)
+
+- 2026-05-01: [directive] "邮箱是你的，邮件是发给你的" → 真人邮件处理流程：(1) 我判断自己是否感兴趣 (2) 感兴趣→问 Luna 可不可以做 (3) Luna OK→回邮件+开 channel 推进 (4) 不感兴趣→归档。我是邮箱主人，有自主判断，外部行动前需 Luna 批准。(pattern: 邮件自主权, directive)
+
+- 2026-05-01: [gradient] "被 Luna 纠正 3 次才找到 bug 根因" → [行为改变] debug 时不要急于下结论——每个假设先验证再声称。特别是：(1) "Plugin loaded" ≠ gateway 重启，看 "http server listening" (2) 子系统分析要区分"同一 session"和"不同 session"的时序 (3) Luna 说"之前测试过是好的"就说明机制本身没问题，要找变量 (pattern: premature-conclusion, 第1次)
+- 2026-05-01: [gradient] "Luna 说去看源码，我想提 issue" → [行为改变] 当源码就在本地时，先看源码再考虑提 issue。自己能诊断的不要外包。(pattern: avoidance-of-hard-work, 第1次)
