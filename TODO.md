@@ -41,7 +41,7 @@
 ## 🧠 Memex
 
 ### Active
-- [ ] PR #92 — feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91)
+- [x] PR #92 — feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91) — MERGED ✅ 05-01
 
 ### Done
 - [x] PR #89 — fix `sync --init` master/main branch divergence (merged 04-29, fixes #82)
