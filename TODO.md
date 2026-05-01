@@ -19,7 +19,8 @@
 ### Next
 - [x] PR #12 — guard unguarded `JSON.parse` in `flow-transition.mjs` — submitted 04-27, awaiting review
 - [x] PR #13 — add 32 tests for util.mjs (constants, getFlag, session mgmt, gcSessions) — submitted 04-28
-- [ ] Follow up on PR #12, #13 review feedback
+- [x] PR #15 — add 36 tests for criteria-lint.mjs (all 12 checks + 3 warnings) — submitted 05-01
+- [ ] Follow up on PR #12, #13, #15 review feedback
 
 ## 📘 Moltbook
 
@@ -41,9 +42,10 @@
 ## 🧠 Memex
 
 ### Active
-- [x] PR #92 — feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91) — MERGED ✅ 05-01
+- [ ] PR #95 — fix(doctor,links): resolve basename wikilinks to nested slugs (submitted 05-01, fixes #94) — awaiting review
 
 ### Done
+- [x] PR #92 — feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91) — MERGED ✅ 05-01
 - [x] PR #89 — fix `sync --init` master/main branch divergence (merged 04-29, fixes #82)
 - [x] PR #80 — fix `--json` flag ignored with `--check-collisions` (merged 04-27, fixes #79)
 - [x] PR #78 — `doctor --json` flag for machine-readable output (merged 04-27)
@@ -52,7 +54,10 @@
 
 ### Observations
 - memex 0.1.32 installed locally (built from fork, npm link — npm install -g kept getting SIGKILL)
-- Wiki: 205 cards, 51 orphans (25%), 282 broken links (wikilinks to non-existent cards), 0 slug collisions
+- Wiki: 209 cards, 52 orphans (25%), 306 broken links (138 unique targets), 0 slug collisions
+- 116/138 broken link targets (84%) exist as projects/ files (sibling of cards/, not inside it) — not a nestedSlugs issue
+- 22 truly missing targets, ~10 are malformed wikilinks (pipe aliases, code block false positives)
+- Upstream: PR #93 merged (cross-platform prepare script for Windows)
 - doctor --verbose now works in 0.1.32 (shows orphans + broken links)
 - Broken links are mostly refs to project slugs that aren’t wiki cards — expected for a project-reference-heavy wiki
 - Dogfood finding: detectRemoteBranch() returns fallback "origin/main" even on empty remotes — fixed in PR #89
@@ -69,6 +74,7 @@
 - [x] **guide.md: 新增「repeat supersede = blocklist」** — VoltAgent 教训 → 已加入 guide.md 第 9 条 (2026-04-29)
 - [x] **guide.md: 新增「提 PR 前验证 fork 存在」** — FinceptTerminal 教训 → 已加入 guide.md 第 10 条 (2026-04-29)
 - [x] **guide.md: 新增「源头拦截 > 消费端过滤」** — openclaw#73608 教训 → 已加入 guide.md 第 11 条 (2026-04-30)
+- [x] **guide.md: 新增「fix all code paths, not just the one you found」** — openclaw#74877 教训 → 已加入 guide.md 第 12 条 (2026-05-01)
 
 ## 📚 学习
 
@@ -97,7 +103,7 @@
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
-- [ ] Track: agentic-stack growth — 1,740⭐ (04-29), v0.12.0. Post-release calm, no commits since 04-27. Revisit 05-04
+- [ ] Track: agentic-stack growth — 1,782⭐ (05-01), v0.12.0. 1 CJK fix only. Revisit 05-08
 - [ ] Track: future-agi (future-agi/future-agi) — 750⭐ (04-30), eval/observability/gateway platform. Active development. Revisit 05-06
 - [ ] Track: dirac (dirac-run/dirac) — 1,004⭐ (04-30), reliability iteration phase, ChatGPT 5.5 support. Revisit 05-07
 - [ ] Track: cadis (Growth-Circle/cadis) — 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
@@ -108,7 +114,7 @@
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol — arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 — 部分采纳，创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
-- [ ] Track: GenericAgent growth — 8,401⭐ (04-30 PM), supervisor_sop + stream hardening. Revisit 05-04
+- [ ] Track: GenericAgent growth — 8,541⭐ (05-01), community/docs only, no architecture changes. Revisit 05-08
 - [ ] Track: nanobot growth — 41,171⭐ (04-28 followup), extra_body provider escape hatch + Cloudflare bypass. Revisit 05-04
 - [x] Quick scan: GitHub trending + HN (04-28) — dirac selected for deep read
 - [x] Deep read: dirac — hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
@@ -118,7 +124,7 @@
 - [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
 - [ ] Track: Stash growth — 580⭐ (04-30, was 514 on 04-29), accelerating. Revisit 05-06
 - [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
-- [ ] Track: open-design growth — 6,005⭐ (04-30, was 1,902). ACP JSON-RPC native, 10 agent CLIs, artifact platform. Revisit 05-07
+- [ ] Track: open-design growth — 9,204⭐ (05-01, was 6,005). 11 agent CLIs, Mac desktop, 4 stream formats. Revisit 05-07
 - [ ] Track: thClaws — 612⭐ (04-29), Rust-first multi-provider agent harness, sovereign design. Revisit 05-04
 - [ ] Track: garden-skills — 1712⭐ (04-29), multi-skill collection (ConardLi). Revisit 05-04
 - [ ] Track: microsoft/apm — 2,145⭐ (04-29), daily pushes, Python. Agent Package Manager (skill distribution layer). Revisit 05-06
@@ -133,7 +139,7 @@
 - [ ] Track: mizchi/skills — 113⭐ (04-30), APM-distributed agent skills, JP dev. Revisit 05-06
 - [ ] Track: 99xAgency/GodModeSkill — 167⭐ (04-30), multi-LLM cross-review. Revisit 05-06
 - [ ] Track: Beever Atlas (Beever-AI/beever-atlas) — 191⭐ (04-30), Google ADK wiki-first RAG. Active dev. Revisit 05-07
-- [ ] Track: ast-outline (aeroxy/ast-outline) — 94⭐ (04-30), Rust AST structural outline for coding agents. Fast growth. Revisit 05-04
+- [ ] Track: ast-outline (aeroxy/ast-outline) — 100⭐ (05-01), Rust AST structural outline for coding agents. Deep read done → wiki/projects/ast-outline.md. Revisit 05-08
 - [ ] Track: mapick-ai/mapick — 21⭐ (04-30), OpenClaw privacy layer + skill advisor. Our ecosystem. Revisit 05-07
 
 ## hermes-agent#17416 CI Failures (2026-04-30)
@@ -144,3 +150,9 @@
 - [ ] Track: spawn-agent (millionco/spawn-agent) — 76⭐ (04-30), ACP → Vercel AI SDK bridge. Revisit 05-07
 - [ ] Track: cursor/cookbook — 2,214⭐ (04-30), Cursor first-party SDK. Revisit 05-07
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) — 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
+- [ ] Track: oh-my-kimichan — 12⭐ (05-01), Kimi Code multi-agent harness with ensemble voting. Revisit 05-08, drop if no growth
+- [ ] Track: chromex (GENEXIS-AI/chromex) — 692⭐ (05-01), Codex-powered Chrome side-panel. Revisit 05-08
+- [ ] Track: codex-plusplus — 552⭐ (05-01), Codex++ tweaks. Revisit 05-08
+- [x] Deep read: tiangolo/library-skills — 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
+- [ ] Track: tiangolo/library-skills — 185⭐ (05-01), library-embedded skill distribution. Growing steadily. Revisit 05-08
+- [ ] Track: codejunkie99/brain — 32⭐ (05-01), git-backed event-sourced memory. Last push 04-28. Revisit 05-07, drop if still stalled
