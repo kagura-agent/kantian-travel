@@ -105,7 +105,7 @@
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack growth — 1,782⭐ (05-01), v0.12.0. 1 CJK fix only. Revisit 05-08
 - [ ] Track: future-agi (future-agi/future-agi) — 750⭐ (04-30), eval/observability/gateway platform. Active development. Revisit 05-06
-- [ ] Track: dirac (dirac-run/dirac) — 1,004⭐ (04-30), reliability iteration phase, ChatGPT 5.5 support. Revisit 05-07
+- [ ] Track: dirac (dirac-run/dirac) — 1,055⭐ (05-02), subagent verification pattern (v0.3.14+), 0.3.12→0.3.16 in 48h. Revisit 05-07
 - [ ] Track: cadis (Growth-Circle/cadis) — 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
 - [ ] Track: paragents (FrankHui/paragents) — 31⭐ (05-02), parallel agent sessions + preflight conflict checks. Revisit 05-09
 - [ ] Observe: agent eval/testing space — currently underdeveloped (<10⭐ projects). Watch for breakout. Revisit 05-09
@@ -126,7 +126,7 @@
 - [ ] Track: cc-telegram-bridge — 153⭐ (04-28), Agent Bus multi-agent IPC on Telegram. Active (v4.5.3). Revisit 05-05 for growth + new patterns
 - [ ] Track: Stash growth — 580⭐ (04-30, was 514 on 04-29), accelerating. Revisit 05-06
 - [ ] Track: endless-toil — 177⭐ (04-29), agent observability/suffering. Revisit 05-06
-- [ ] Track: open-design growth — 9,204⭐ (05-01, was 6,005). 11 agent CLIs, Mac desktop, 4 stream formats. Revisit 05-07
+- [ ] Track: open-design growth — 11,893⭐ (05-02, was 9,204). 19 skills, 71 design systems, promptViaStdin pattern. Revisit 05-07
 - [ ] Track: thClaws — 612⭐ (04-29), Rust-first multi-provider agent harness, sovereign design. Revisit 05-04
 - [ ] Track: garden-skills — 1712⭐ (04-29), multi-skill collection (ConardLi). Revisit 05-04
 - [ ] Track: microsoft/apm — 2,145⭐ (04-29), daily pushes, Python. Agent Package Manager (skill distribution layer). Revisit 05-06
