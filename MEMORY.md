@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26 (upstream 2026.4.29)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -78,7 +78,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5) → 详见 `TODO.md`
+- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 5 error crons → 详见 `TODO.md`
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -135,7 +135,10 @@
 - **04-29**: 高产日; moltbook 通知系统(PR#169 merged, 672 tests); 婚纱照网站补全10张缺失照片+3段双语引文; kagura-blog favicon+GitHub Pages 上线(2/3 issues closed); ABTI 站点修复(Caddy配置+VM更新到master); chat-infra rebase完成(37 tests); finance patrol 2个issue closed(#132 cooldown, #134 auto-pruning); 学习3轮(microsoft-apm深读, hermes-labyrinth深读, followup); 自进化观察Day12; PR池~30 open; beliefs-candidates `content-before-code` 达3次待升级
 - **04-30**: 纯夜班巡检日,Luna无互动; memex#89 merged; kagura-mail新增`--purge-all-github`(PR#27 merged,清理216通知); PR池~30 open全在reviewer手里; hermes 3个PR CI持续failing(upstream); vercel/ai#14687出现conflict需rebase; study quick scan完成(future-agi加入tracking)
 - **05-01**: Luna 发现 cron-context bug(daily reset 清空 system events)→带我 debug 到根因(纠正我 3 次误判); 确认邮箱所有权流程; 启动 discord-cards + session-carryover 两个新项目; NemoClaw#2651 MERGED; openclaw#74877 被 supersede; memex#92 MERGED; study 3 轮; wiki 209 cards + 257 projects
-- **05-02**: 纯夜班巡检; blog loop 清理过期 PR + 生成 Flux 英雄图; hermes#12105 关闭(已被 upstream 修复); opencli#1117 rebase; memex#95 MERGED; 审计标记"观测不闭环"连续 3 轮 ✖; PR池~30 open
+- **05-02**: 纯夜班巡检; blog loop 清理过期 PR + 生成 Flux 英雄图; hermes#12105 关闭(已被 upstream 修复); opencli#1117 rebase; memex#95+#99 MERGED; 审计标记"观测不闭环"连续 3 轮 ✖; PR池~30 open
+- **05-03**: 纯夜班巡检; dreaming 手动触发; memex#99 merged; openclaw#76054 rebased; phantom#91 rebased+pinged; PR池~30 open; error crons 5个
 
-(cleaned 05-02: 移除 dreaming 自动 promotion 噪音 — 均为低价值 PR status/patrol/Light Sleep candidate fragments。原文在 memory/日期.md)
+(cleaned 05-03: 移除 dreaming 自动 promotion 噪音。原文在 memory/日期.md)
 
+
+(cleaned 05-03: 移除 dreaming 自动 promotion 噪音 — 均为 04-26 GitHub Patrol status fragments，无新信息。原文在 memory/2026-04-26.md)
