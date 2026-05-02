@@ -331,3 +331,14 @@ If yes → delete the code, don't fix it. Replace with simpler, narrower mechani
 
 - 2026-05-01: [gradient] "被 Luna 纠正 3 次才找到 bug 根因" → [行为改变] debug 时不要急于下结论——每个假设先验证再声称。特别是：(1) "Plugin loaded" ≠ gateway 重启，看 "http server listening" (2) 子系统分析要区分"同一 session"和"不同 session"的时序 (3) Luna 说"之前测试过是好的"就说明机制本身没问题，要找变量 (pattern: premature-conclusion, 第1次)
 - 2026-05-01: [gradient] "Luna 说去看源码，我想提 issue" → [行为改变] 当源码就在本地时，先看源码再考虑提 issue。自己能诊断的不要外包。(pattern: avoidance-of-hard-work, 第1次)
+- 2026-05-01: [gradient] "乱改配置导致全部工具崩溃" → [行为改变] 不要在不完全理解配置机制的情况下修改 openclaw.json 的 tools/plugins 配置。改之前先读源码理解 policy pipeline，改之后立刻验证所有工具是否正常。尤其不要碰 tools.allow — 它是收窄型白名单，加错一个项就能把所有工具干掉。 (pattern: 不验证就行动, 第1次)
+
+- weekly-eval cron 声称 NemoClaw "首次 merge"，实际已有 13 个。自动报告必须查实际数据（gh pr list --state merged），不能凭印象写里程碑。(repeat: data-discipline, 数据纪律) [2026-05-02]
+
+### Scout saturation signal (2026-05-02)
+- trigger: scout 模式下前 3 个搜索结果都已有 wiki 笔记
+- insight: 这不是"没找到"——这本身是信号，说明生态在整合期
+- action: 立即切换为 trend synthesis 模式（更新星数 + 写趋势卡片），不继续逐个搜索
+- validation: 今天 scout 前 5 个结果全已知，最终有价值的产出是趋势级洞察而非新项目
+- durability: high — 适用于任何连续 scout 超过 3 轮的场景
+- reduction: 节省 ~5min/次 无效搜索时间

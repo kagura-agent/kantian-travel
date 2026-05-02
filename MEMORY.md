@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(204 cards + 238 projects)
+- **wiki** — 统一知识库(209 cards + 257 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -134,30 +134,8 @@
 - **04-28**: 夜班巡检为主; STSS PR#2 CodeRabbit review 全部修完(synthetic Finding)、mcp-use#1413 CHANGES_REQUESTED 全郢回应(17 tests); vercel/ai#14725 被 supersede(教训:不改 shared layer); memex#80 merged; opencode#23641+hermes#14842 rebase; PR池~29 open; error cron 9/51(17.6%); Podbean仍坏; blog/GTM blocked Luna
 - **04-29**: 高产日; moltbook 通知系统(PR#169 merged, 672 tests); 婚纱照网站补全10张缺失照片+3段双语引文; kagura-blog favicon+GitHub Pages 上线(2/3 issues closed); ABTI 站点修复(Caddy配置+VM更新到master); chat-infra rebase完成(37 tests); finance patrol 2个issue closed(#132 cooldown, #134 auto-pruning); 学习3轮(microsoft-apm深读, hermes-labyrinth深读, followup); 自进化观察Day12; PR池~30 open; beliefs-candidates `content-before-code` 达3次待升级
 - **04-30**: 纯夜班巡检日,Luna无互动; memex#89 merged; kagura-mail新增`--purge-all-github`(PR#27 merged,清理216通知); PR池~30 open全在reviewer手里; hermes 3个PR CI持续failing(upstream); vercel/ai#14687出现conflict需rebase; study quick scan完成(future-agi加入tracking)
+- **05-01**: Luna 发现 cron-context bug(daily reset 清空 system events)→带我 debug 到根因(纠正我 3 次误判); 确认邮箱所有权流程; 启动 discord-cards + session-carryover 两个新项目; NemoClaw#2651 MERGED; openclaw#74877 被 supersede; memex#92 MERGED; study 3 轮; wiki 209 cards + 257 projects
+- **05-02**: 纯夜班巡检; blog loop 清理过期 PR + 生成 Flux 英雄图; hermes#12105 关闭(已被 upstream 修复); opencli#1117 rebase; memex#95 MERGED; 审计标记"观测不闭环"连续 3 轮 ✖; PR池~30 open
 
+(cleaned 05-02: 移除 dreaming 自动 promotion 噪音 — 均为低价值 PR status/patrol/Light Sleep candidate fragments。原文在 memory/日期.md)
 
-
-(cleaned 04-29: 移除 dreaming 自动 promotion 噪音 — 均为低价值 PR status/patrol fragments。原文在 memory/日期.md)
-
-## Promoted From Short-Term Memory (2026-04-29)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-21.md:14:17 -->
-- - 所有 🔴 flag 都是 bot review (coderabbitai, cubic-dev-ai, chatgpt-codex-connector, claude)，无真人 review 待处理 - 无 merge conflict，无需 rebase - 注意: kilocode #9182 可能被 #9245 取代（alex-alecu 另开 PR 修了） - stagehand #1997 已 ping 过维护者，继续等待 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): **flowforge workloop-night #510** 完成; gogetajob sync 检查 15 个 open PR，全部状态正常; 无真人 review 需要代码修改（flagged 的都是 bot：coderabbitai, chatgpt-codex-connector, claude）; 所有 PR mergeable，无 conflict [score=0.822 recalls=0 avg=0.620 source=memory/2026-04-21.md:95-102]
-
-## Promoted From Short-Term Memory (2026-04-30)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:3:6 -->
-- **All other 29 PRs:** No human reviews requiring code changes. All 🔴 flags were bot reviews (coderabbitai, cubic-dev-ai, chatgpt-codex-connector). No conflicts detected. Several stale PRs (>1 week) but all still mergeable. **Ball tracking:** mcp-use#1381 has CHANGES_REQUESTED but last comment is mine → waiting on maintainer. ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): workloop-night flowforge 完成; gogetajob sync: 27 open PRs，0 conflict，全部 MERGEABLE; 无真人 review 需要处理，所有 bot review 已回复，球在维护者手里; mastra#15622 被关闭（已在 DB 标记 done） [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-24.md:81-88]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:7:8 -->
-- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: 晚间打工跟进 (00:02): workloop-night flowforge 完成; gogetajob sync: 27 open PRs，0 conflict，全部 MERGEABLE; 无真人 review 需要处理，所有 bot review 已回复，球在维护者手里; mastra#15622 被关闭（已在 DB 标记 done） - confidence: 0.62 - evidence: memory/2026-04-24.md:3-6 - recalls: 0 - status: staged - Candidate: 晚间打工跟进 (00:02): stagehand#1991/#1997、phantom#78/#80 等偏 stale 但球在对方，无需操作; Branch 3: 所有 PR 状态正常，无待处理项 [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-24.md:86-93]
-
-## Promoted From Short-Term Memory (2026-05-01)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:13:14 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): **通知:** 2 条 - confidence: 0.62 - evidence: memory/2026-04-24.md:12-12 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): browserbase/stagehand CI failure (CheckSuite) — Tests workflow Attempt #2 failed. Informational.; NVIDIA/NemoClaw #2338 — maintainer wscurran acknowledged PR, linked related #2098 and #2331. No action needed. [score=0.857 recalls=0 avg=0.620 source=memory/2026-04-24.md:96-103]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:16:16 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): browserbase/stagehand CI failure (CheckSuite) — Tests workflow Attempt #2 failed. Informational.; NVIDIA/NemoClaw #2338 — maintainer wscurran acknowledged PR, linked related #2098 and #2331. No action needed. - confidence: 0.62 - evidence: memory/2026-04-24.md:13-14 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): **Open PRs:** 30 total (26 external, 4 own repos) [score=0.857 recalls=0 avg=0.620 source=memory/2026-04-24.md:101-108]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-24.md:17:20 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): **Open PRs:** 30 total (26 external, 4 own repos) - confidence: 0.62 - evidence: memory/2026-04-24.md:16-16 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:11 cron): 🔑 stagehand #2026: **APPROVED 2x by pirate**, CI failing → needs fix to unblock merge (workloop TODO); All PRs MERGEABLE, no conflicts, no CHANGES_REQUESTED; No stale PRs (all <7 days); Top repos: NemoClaw (4), vercel/ai (3), opencode (3), VoltAgent ( [score=0.857 recalls=0 avg=0.620 source=memory/2026-04-24.md:106-113]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-25.md:3:6 -->
-- - ghostwright/phantom #87: truffle-dev 正面 review，已回复 - 维护检查：全部 MERGEABLE，无 conflict，无需 rebase - CI 失败：hermes-agent 多个 PR CI fail（可能 upstream），mcp-use #1404 CI fail - 结论：无需操作，所有 PR 状态正常 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: ABTI CLI — npx abti (00:15): Created npm CLI package for ABTI terminal testing (#25, PR #26, merged); `npx abti` — interactive 16-question quiz, local scoring, zero deps; Flags: --json, --lang zh, --name, --url, --submit; Piped stdin support for automation [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-25.md:122-129]
