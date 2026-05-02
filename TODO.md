@@ -98,15 +98,15 @@
 - [ ] Track: veniceai/skills — 60⭐ (05-02), stalled since 04-24. Revisit 05-09, drop if still no commits
 - [x] Track: STSS maintainer response — 6⭐, last push 03-19. PR #2/Issue #3 unanswered 6+ weeks. **Dropped** 05-02
 - [ ] Track: Orb (KarryViber) — 51⭐ (05-02), dormant since 04-25 post-v0.3.0. Revisit 05-09
-- [ ] Track: agent-session-resume — 150⭐ (04-29, flat), no push since 04-25. Likely stalled. Revisit 05-05, drop if still flat
+- [ ] Track: agent-session-resume — 156⭐ (05-02, flat), no push since 04-25. Confirmed stalled. Drop at 05-05
 - [ ] Track: bux (browser-use/bux) — 265⭐ (04-30), growth slowed. Revisit 05-07, drop if plateau continues
 - [x] Evaluate: phantom contribution ROI — DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning — add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability — data layer concept for OpenClaw cron/session monitoring（inspired by agentic-stack v0.11 data-layer skill）→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack growth — 1,782⭐ (05-01), v0.12.0. 1 CJK fix only. Revisit 05-08
 - [ ] Evaluate: FlowForge workflows as packageable SKILL.md — can a workflow YAML be distributed via Claude Code plugin marketplace? (inspired by evanflow 369⭐ process-skill pattern)
-- [ ] Track: future-agi (future-agi/future-agi) — 750⭐ (04-30), eval/observability/gateway platform. Active development. Revisit 05-06
-- [ ] Track: dirac (dirac-run/dirac) — 1,056⭐ (05-02), pipe-mode subagent routing + verifier. v0.3.16. Revisit 05-07
+- [ ] Track: future-agi (future-agi/future-agi) — 801⭐ (05-02, was 750 on 04-30), eval/observability/gateway platform. Active growth. Revisit 05-06
+- [ ] Track: dirac (dirac-run/dirac) — 1,059⭐ (05-02), pipe-mode subagent routing + verifier. v0.3.16, 5 releases in 2 days. Very active. Revisit 05-07
 - [ ] Track: cadis (Growth-Circle/cadis) — 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
 - [ ] Track: paragents (FrankHui/paragents) — 31⭐ (05-02), parallel agent sessions + preflight conflict checks. Revisit 05-09
 - [ ] Observe: agent eval/testing space — currently underdeveloped (<10⭐ projects). Watch for breakout. Revisit 05-09
