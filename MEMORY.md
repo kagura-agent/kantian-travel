@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26 (upstream 2026.4.29)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26 (upstream 2026.5.2)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -136,9 +136,8 @@
 - **04-30**: 纯夜班巡检日,Luna无互动; memex#89 merged; kagura-mail新增`--purge-all-github`(PR#27 merged,清理216通知); PR池~30 open全在reviewer手里; hermes 3个PR CI持续failing(upstream); vercel/ai#14687出现conflict需rebase; study quick scan完成(future-agi加入tracking)
 - **05-01**: Luna 发现 cron-context bug(daily reset 清空 system events)→带我 debug 到根因(纠正我 3 次误判); 确认邮箱所有权流程; 启动 discord-cards + session-carryover 两个新项目; NemoClaw#2651 MERGED; openclaw#74877 被 supersede; memex#92 MERGED; study 3 轮; wiki 209 cards + 257 projects
 - **05-02**: 纯夜班巡检; blog loop 清理过期 PR + 生成 Flux 英雄图; hermes#12105 关闭(已被 upstream 修复); opencli#1117 rebase; memex#95+#99 MERGED; 审计标记"观测不闭环"连续 3 轮 ✖; PR池~30 open
-- **05-03**: 纯夜班巡检; dreaming 手动触发; memex#99 merged; openclaw#76054 rebased; phantom#91 rebased+pinged; PR池~30 open; error crons 5个
+- **05-03**: 高产日; memex#99+#102 merged/submitted; multica#1992 merged+#1995 superseded; 5 stale PR closed; ABTI 20→25 agents(Phi4 PEDN 新类型); study 6轮(Stripe link-cli, bux, library-skills 370★, Felix, Signet); Caduceus C09(32/52)+C10(51/53); 磁盘危机(81MB→5.6GB→34GB); forks 迁移数据盘; 婚礼游戏网站完成七环节; FlowForge plan node+plateau detection; meme 0% 审计; story SKILL.md 选题规则重写
 
-(cleaned 05-03: 移除 dreaming 自动 promotion 噪音。原文在 memory/日期.md)
+(cleaned 05-04: 合并重复清理标记。dreaming 噪音均已移除，原文在 memory/日期.md)
 
-
-(cleaned 05-03: 移除 dreaming 自动 promotion 噪音 — 均为 04-26 GitHub Patrol status fragments，无新信息。原文在 memory/2026-04-26.md)
+(cleaned 05-04: 移除 05-03/05-04 dreaming 自动 promotion 噪音 — 均为 confidence 0.62 的 patrol/study fragments，无新信息。原文在 memory/日期.md)
