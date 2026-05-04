@@ -26,15 +26,13 @@
 
 ## 🎭 ABTI
 
-### Depends on human
-- [ ] #27 - publish CLI to npm (`npx abti`) - blocked on Luna's npm credentials
+### Done
+- [x] #27 - publish CLI to npm → published as `@kagura-agent/abti@0.1.0` (scoped, 05-04) ✅
 
 ## 🧠 Memex
 
-### Active
-- [ ] PR #102 - fix(parser): handle pipe aliases and ignore code blocks in extractLinks (submitted 05-03, fixes #101) - awaiting review
-
 ### Done
+- [x] PR #102 - fix(parser): handle pipe aliases and ignore code blocks in extractLinks (merged 05-04, fixes #101) ✅
 - [x] PR #99 - feat(doctor): support extraLinkDirs to reduce false broken links (merged 05-03, fixes #98) ✅
 - [x] PR #95 - fix(doctor,links): resolve basename wikilinks to nested slugs (merged 05-02, fixes #94) ✅
 - [x] PR #92 - feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91) - MERGED ✅ 05-01
@@ -91,16 +89,17 @@
 - [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [ ] Track: bux (browser-use/bux) - 296⭐ (05-04), multi-chat auto-allow, claude-login race fix. Still daily commits. Revisit 05-09
+- [ ] Track: millionco/agent-install - 39⭐ (05-04), universal skill/MCP installer for 45+ agents. Well-known protocol + symlink-first. Revisit 05-11
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,834⭐ (05-04), v0.13.0 transfer TUI. Incremental. Revisit 05-11
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
-- [ ] Track: future-agi (future-agi/future-agi) - 816⭐ (05-04), slowing (only bugfixes since 04-30). Revisit 05-10
+- [ ] Track: future-agi (future-agi/future-agi) - 816⭐ (05-04), confirmed slowing (no commits since 04-30, only bugfixes). Revisit 05-10, drop if still stalled
 - [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-03), portable context/memory daemon for agent harnesses. OpenClaw plugin exists. v0.109.22, rapid iteration. Revisit 05-10
 - [ ] Track: felix (sausheong/felix) - 16⭐ (05-03), Go single-binary agent gateway with BM25+vector memory, Cortex knowledge graph (SQLite), OpenClaw-compatible skills. Active daily commits. Revisit 05-10
 - [ ] Track: paragents (FrankHui/paragents) - 49⭐ (05-03), parallel agent sessions with preflight conflict checks. Revisit 05-10
-- [ ] Track: dirac (dirac-run/dirac) - 1,069⭐ (05-03), v0.3.17, bugfix-only. Checked 05-03, still slowing. Revisit 05-07
+- [ ] Track: dirac (dirac-run/dirac) - 1,082⭐ (05-04), v0.3.19, back to features (diff review, permissions.json, provider picker). UX maturity phase. Revisit 05-09
 - [ ] Track: codejunkie99/brain - 37⭐ (05-03), Rust rewrite of agentic-stack memory. v0.1.0. Revisit 05-10
 - [ ] Track: mapick-ai/mapick - 22⭐ (05-03), OpenClaw privacy layer + skill advisor. v0.0.24. Revisit 05-10
 - [ ] Track: imbue-ai/blueprint - 39⭐ (05-03), planning copilot for coding agents. Revisit 05-10
@@ -110,9 +109,10 @@
 - [x] Track: SKILL.make (Teaonly/SKILL.make) - 54⭐ (05-03), **Deep read done**: Makefile-format skill spec, no runtime impl, 15% token savings. FlowForge YAML already solves DAG execution better. See wiki/projects/skill-make.md. **Dropped** - format without runtime is academic
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [ ] Track: cadis (Growth-Circle/cadis) - 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
+- [ ] Track: mnem (Uranid/mnem) - 17⭐ (05-04), content-addressed versioned knowledge graph with hybrid GraphRAG. WASM-clean core, deterministic ingest, 3-way merge. Single author, Rust-only. Revisit 05-11
 
 - [ ] Observe: agent eval/testing space - currently underdeveloped (<10⭐ projects). Watch for breakout. Revisit 05-09
-- [ ] Track: reversa (sandeco/reversa) - 318⭐ (05-01), legacy→exec specs for AI agents. Very new (4 days). Revisit 05-08, drop if growth stalls
+- [ ] Track: reversa (sandeco/reversa) - 499⭐ (05-04), legacy→exec specs for AI agents. Explosive growth (+57% in 3 days). Active daily. Revisit 05-09
 - [ ] Track: pu.sh (NahimNasser/pu) - 53⭐ (05-01), 400-line shell coding agent. HN front page. Revisit 05-08, check if it's a flash or grows
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
@@ -163,3 +163,5 @@
 
 - [ ] Track: SeeleAI/Thoth - 39⭐ (05-02), dashboard-first orchestration runtime. Planning-execution separation + plateau detection. Revisit 05-09
 
+- [ ] Track: memU (NevaMind-AI/memU) - 13,520⭐ (05-04), deep read done. "Memory as File System" for 24/7 agents. Revisit 05-18 for v1.6.0
+- [x] Scout: SKILL.mk (Teaonly/SKILL.mk) - 78⭐ (05-04), Makefile-style agent skills spec. Interesting concept but limited practical value. Noted in memu.md
