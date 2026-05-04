@@ -42,12 +42,22 @@
 - [x] PR #76 - `doctor --verbose` flag (merged 04-27)
 - [x] Updated local memex to 0.1.32 (built from fork, npm link)
 
+### Next
+- [ ] PR #107 - fix(links): case-insensitive wikilink resolution (submitted 05-04, fixes #106) — awaiting review
+- [ ] Follow up on PR #107 review feedback
+
 ### Observations
 - memex 0.1.32 installed locally (built from fork, npm link — npm install -g kept getting SIGKILL)
-- Wiki: 210+ cards, 60 orphans (27%), 28 broken links (down from 306 thanks to extraLinkDirs PR #99), 0 slug collisions
-- 28 broken links breakdown: ~4 pipe alias false positives (PR #102 fixes), ~12 from wiki-health-check card (inline examples), rest are missing cards (clawhub, team-lead, etc.)
-- PR #99 extraLinkDirs merged — reduced false broken links by 91% (306→28)
-- Upstream active: Azure embeddings support added, sync test fixes
+- ⚠️ upstream memex 1.0.1 (major bump) — evaluate if fork rebase needed or if 0.1.x fork is intentionally divergent
+
+## 🔧 Infrastructure Maintenance
+- [ ] sops 3.9.4 → 3.12.2 upgrade (flagged since 05-02, no security urgency but 3 major versions behind)
+- [ ] Evaluate memex 0.1.32 fork vs upstream 1.0.1: rebase fork or stay on 0.1.x? (flagged since 05-02)
+- Wiki: 223 cards, 62 orphans (28%), 9 broken links (down from 340 after rebuilding with extraLinkDirs + case-insensitive fix), 0 slug collisions
+- 9 remaining broken links: 3× clawhub (missing card), hermes, db9, kronos-agent-os, agent-skill-ecosystem, wiki-lint, team-lead — all genuinely missing cards
+- Upstream: A-MEM agentic memory skill added (#103/#104) — experimental, feature-flagged, default-off
+- Backlinks command already merged upstream (March) — was in stale local branch
+- PR #107 submitted: case-insensitive wikilink resolution (fixes [[OpenClaw]] → openclaw)
 
 
 
@@ -63,6 +73,7 @@
 - [x] **guide.md: 新增「源头拦截 > 消费端过滤」** - openclaw#73608 教训 → 已加入 guide.md 第 11 条 (2026-04-30)
 - [x] **guide.md: 新增「fix all code paths, not just the one you found」** - openclaw#74877 教训 → 已加入 guide.md 第 12 条 (2026-05-01)
 - [x] **guide.md: 新增「test the exact repro from the issue」** - multica#1995 教训 → 已加入 guide.md 第 14 条 (2026-05-03)
+- [x] **guide.md: 新增「security data: remove, don't redact」** - NemoClaw#2468 教训 → 已加入 guide.md 第 15 条 (2026-05-04)
 
 ## 📚 学习
 
@@ -95,14 +106,15 @@
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,834⭐ (05-04), v0.13.0 transfer TUI. Incremental. Revisit 05-11
 - [ ] Track: invincat (dog-qiuqiu) - 269⭐ (05-04), best-in-class Memory Agent (score/tier injection, structured ops, evidence-gating). Deep read done. Revisit 05-11
+- [ ] Track: Autoloops/upskill - 17⭐ (05-04), first complete skill marketplace (registry+trust+feedback). Claims 10K+ skills. Revisit 05-11
 - [ ] Track: kiwifs/kiwifs - 415⭐ (05-04), knowledge filesystem for agents (Go, BSL-1.1). Files-first, Git versioning, multi-protocol, MCP, memory model. Deep read done. Revisit 05-11
 - [ ] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
-- [ ] Track: future-agi (future-agi/future-agi) - 816⭐ (05-04), confirmed slowing (no commits since 04-30, only bugfixes). Revisit 05-10, drop if still stalled
-- [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-03), portable context/memory daemon for agent harnesses. OpenClaw plugin exists. v0.109.22, rapid iteration. Revisit 05-10
+- [ ] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10
+- [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-04), v0.111.3, **140x memory recall speedup** (30s→218ms via FTS join-order + index fixes). 3 releases in 1 day. Revisit 05-10
 - [ ] Track: felix (sausheong/felix) - 16⭐ (05-03), Go single-binary agent gateway with BM25+vector memory, Cortex knowledge graph (SQLite), OpenClaw-compatible skills. Active daily commits. Revisit 05-10
 - [ ] Track: paragents (FrankHui/paragents) - 49⭐ (05-03), parallel agent sessions with preflight conflict checks. Revisit 05-10
-- [ ] Track: dirac (dirac-run/dirac) - 1,095⭐ (05-04), v0.3.20 "before the storm" refactor. Daily commits. Revisit 05-09
+- [ ] Track: dirac (dirac-run/dirac) - 1,097⭐ (05-04), v0.3.20 "before the storm" refactor + diff review mechanics for CLI/VSCode. Daily commits. Revisit 05-09
 - [ ] Track: codejunkie99/brain - 37⭐ (05-03), Rust rewrite of agentic-stack memory. v0.1.0. Revisit 05-10
 - [ ] Track: mapick-ai/mapick - 22⭐ (05-03), OpenClaw privacy layer + skill advisor. v0.0.24. Revisit 05-10
 - [ ] Track: imbue-ai/blueprint - 39⭐ (05-03), planning copilot for coding agents. Revisit 05-10

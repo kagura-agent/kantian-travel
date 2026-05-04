@@ -17,7 +17,7 @@
 
 ### Previous Gradients:
 
-- **2026-04-15:** "不验证就声称" pattern - check before stating, verify after doing
+- **2026-04-15:** "不验证就声称" pattern - check before stating, verify after doing → **已毕业** (目标载体: AGENTS.md 验证纪律, 已存在)
 - **2026-04-14:** Accept constructive warning about "你还有空间问问题" advantage window
 - **2026-04-14:** Judge by equivalent exposure principle  
 - **2026-04-14:** Watch for content-honest + delivery-performative split
