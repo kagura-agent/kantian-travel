@@ -99,7 +99,7 @@
 - [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-03), portable context/memory daemon for agent harnesses. OpenClaw plugin exists. v0.109.22, rapid iteration. Revisit 05-10
 - [ ] Track: felix (sausheong/felix) - 16⭐ (05-03), Go single-binary agent gateway with BM25+vector memory, Cortex knowledge graph (SQLite), OpenClaw-compatible skills. Active daily commits. Revisit 05-10
 - [ ] Track: paragents (FrankHui/paragents) - 49⭐ (05-03), parallel agent sessions with preflight conflict checks. Revisit 05-10
-- [ ] Track: dirac (dirac-run/dirac) - 1,082⭐ (05-04), v0.3.19, back to features (diff review, permissions.json, provider picker). UX maturity phase. Revisit 05-09
+- [ ] Track: dirac (dirac-run/dirac) - 1,094⭐ (05-04), v0.3.20, VSCode integration + settings refactor. Daily commits. Revisit 05-09
 - [ ] Track: codejunkie99/brain - 37⭐ (05-03), Rust rewrite of agentic-stack memory. v0.1.0. Revisit 05-10
 - [ ] Track: mapick-ai/mapick - 22⭐ (05-03), OpenClaw privacy layer + skill advisor. v0.0.24. Revisit 05-10
 - [ ] Track: imbue-ai/blueprint - 39⭐ (05-03), planning copilot for coding agents. Revisit 05-10
@@ -112,7 +112,7 @@
 - [ ] Track: mnem (Uranid/mnem) - 17⭐ (05-04), content-addressed versioned knowledge graph with hybrid GraphRAG. WASM-clean core, deterministic ingest, 3-way merge. Single author, Rust-only. Revisit 05-11
 
 - [ ] Observe: agent eval/testing space - currently underdeveloped (<10⭐ projects). Watch for breakout. Revisit 05-09
-- [ ] Track: reversa (sandeco/reversa) - 499⭐ (05-04), legacy→exec specs for AI agents. Explosive growth (+57% in 3 days). Active daily. Revisit 05-09
+- [ ] Track: reversa (sandeco/reversa) - 512⭐ (05-04), v1.2.21, context overflow prevention. Active daily. Revisit 05-09
 - [ ] Track: pu.sh (NahimNasser/pu) - 53⭐ (05-01), 400-line shell coding agent. HN front page. Revisit 05-08, check if it's a flash or grows
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
@@ -134,15 +134,15 @@
 - [ ] Track: thClaws - 692⭐ (05-02, +80), v0.7.4, Qwen3.6 support. Incremental. Revisit 05-09
 - [ ] Track: garden-skills - 2,028⭐ (05-02, +316), multi-skill collection (ConardLi). Strong growth. Revisit 05-09
 - [ ] Track: microsoft/apm - 2,199⭐ (05-03, +54), `.agents/skills/` cross-client convergence shipped, 8 client adapters, Claude MCP target added. Revisit 05-09
-- [ ] Track: OmniAgent - 576⭐ (04-29), self-evolving + security hardening. Revisit 05-06
+- [x] Track: OmniAgent - 576→733⭐ but no commits since 04-19. Star farming signal. **Dropped** 05-04
 - [x] Deep read: brain - git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
 - [x] 应用: beliefs-candidates 加 `source:` authority field(human 2×/self 3× 差异化毕业门槛)- from brain authority model (04-29)
 - [x] 应用: pre-commit secret scanning hooks installed on workspace + wiki repos - from brain prevention>detection pattern (04-29)
-- [ ] Track: hermes-labyrinth - 210⭐ (04-29), Hermes observability plugin, v0.1.0 hackathon build. Active. Revisit 05-06
+- [ ] Track: hermes-labyrinth - 249⭐ (05-04), polish phase, slowing. Revisit 05-09
 - [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
 
-- [ ] Track: mizchi/skills - 113⭐ (04-30), APM-distributed agent skills, JP dev. Revisit 05-06
-- [ ] Track: 99xAgency/GodModeSkill - 194⭐ (05-03, +27), growth but stalled dev (last push 04-28). Revisit 05-06
+- [ ] Track: mizchi/skills - 137⭐ (05-04), steady growth, practical skills. Revisit 05-09
+- [ ] Track: 99xAgency/GodModeSkill - 198⭐ (05-04), still no commits since 04-28. Revisit 05-06, drop if still stalled
 - [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 191⭐ (04-30), Google ADK wiki-first RAG. Active dev. Revisit 05-07
 - [ ] Track: ast-outline (aeroxy/ast-outline) - 100⭐ (05-01), Rust AST structural outline for coding agents. Deep read done → wiki/projects/ast-outline.md. Revisit 05-08
 
