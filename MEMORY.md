@@ -141,3 +141,12 @@
 (cleaned 05-04: 合并重复清理标记。dreaming 噪音均已移除，原文在 memory/日期.md)
 
 (cleaned 05-04: 移除 05-03/05-04 dreaming 自动 promotion 噪音 — 均为 confidence 0.62 的 patrol/study fragments，无新信息。原文在 memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-05-04)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:18:20 -->
+- - recalls: 0 - status: staged - Candidate: 失败分析: No failures this round. Clean execution. - confidence: 0.62 - evidence: memory/2026-04-28.md:15-15 - recalls: 0 - status: staged - Candidate: 沉淀: **项目级**: Updated wiki/projects/stss.md with PR #2 review fix log; **跨项目**: No new cross-project insights — this was tactical execution; **方法论**: Already captured in code-review-lessons card [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-28.md:135-142]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-28.md:23:24 -->
+- - recalls: 0 - status: staged - Candidate: 沉淀: **项目级**: Updated wiki/projects/stss.md with PR #2 review fix log; **跨项目**: No new cross-project insights — this was tactical execution; **方法论**: Already captured in code-review-lessons card - confidence: 0.62 - evidence: memory/2026-04-28.md:18-20 - recalls: 0 - status: staged - Candidate: 方向影响: STSS contribution on track. Waiting for Ken's response on PR #2 (now with review fixes) and Issue #3 (LICENSE); Next: if Ken responds positively → chain tracer blind spots PR. If silent → move on after 5 days [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-28.md:140-147]
+<!-- openclaw-memory-promotion:memory:memory/2026-04-27.md:4:4 -->
+- **PR Summary:** 39 open PRs, 0 merged this cycle, 15 flagged for attention [score=0.823 recalls=0 avg=0.620 source=memory/2026-04-27.md:4-4]
