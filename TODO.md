@@ -94,6 +94,7 @@
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,834⭐ (05-04), v0.13.0 transfer TUI. Incremental. Revisit 05-11
+- [ ] Track: invincat (dog-qiuqiu) - 269⭐ (05-04), best-in-class Memory Agent (score/tier injection, structured ops, evidence-gating). Deep read done. Revisit 05-11
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [ ] Track: future-agi (future-agi/future-agi) - 816⭐ (05-04), confirmed slowing (no commits since 04-30, only bugfixes). Revisit 05-10, drop if still stalled
 - [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-03), portable context/memory daemon for agent harnesses. OpenClaw plugin exists. v0.109.22, rapid iteration. Revisit 05-10
