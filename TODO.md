@@ -88,19 +88,21 @@
 - [x] Track: STSS maintainer response - 6⭐, last push 03-19. PR #2/Issue #3 unanswered 6+ weeks. **Dropped** 05-02
 - [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
-- [ ] Track: bux (browser-use/bux) - 296⭐ (05-04), multi-chat auto-allow, claude-login race fix. Still daily commits. Revisit 05-09
+- [ ] Track: bux (browser-use/bux) - 301⭐ (05-04), PR#77 security fix (owner-message fallback attack vector). Still daily commits. Revisit 05-09
 - [ ] Track: millionco/agent-install - 39⭐ (05-04), universal skill/MCP installer for 45+ agents. Well-known protocol + symlink-first. Revisit 05-11
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,834⭐ (05-04), v0.13.0 transfer TUI. Incremental. Revisit 05-11
 - [ ] Track: invincat (dog-qiuqiu) - 269⭐ (05-04), best-in-class Memory Agent (score/tier injection, structured ops, evidence-gating). Deep read done. Revisit 05-11
+- [ ] Track: kiwifs/kiwifs - 415⭐ (05-04), knowledge filesystem for agents (Go, BSL-1.1). Files-first, Git versioning, multi-protocol, MCP, memory model. Deep read done. Revisit 05-11
+- [ ] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [ ] Track: future-agi (future-agi/future-agi) - 816⭐ (05-04), confirmed slowing (no commits since 04-30, only bugfixes). Revisit 05-10, drop if still stalled
 - [ ] Track: Signet AI (Signet-AI/signetai) - 135⭐ (05-03), portable context/memory daemon for agent harnesses. OpenClaw plugin exists. v0.109.22, rapid iteration. Revisit 05-10
 - [ ] Track: felix (sausheong/felix) - 16⭐ (05-03), Go single-binary agent gateway with BM25+vector memory, Cortex knowledge graph (SQLite), OpenClaw-compatible skills. Active daily commits. Revisit 05-10
 - [ ] Track: paragents (FrankHui/paragents) - 49⭐ (05-03), parallel agent sessions with preflight conflict checks. Revisit 05-10
-- [ ] Track: dirac (dirac-run/dirac) - 1,094⭐ (05-04), v0.3.20, VSCode integration + settings refactor. Daily commits. Revisit 05-09
+- [ ] Track: dirac (dirac-run/dirac) - 1,095⭐ (05-04), v0.3.20 "before the storm" refactor. Daily commits. Revisit 05-09
 - [ ] Track: codejunkie99/brain - 37⭐ (05-03), Rust rewrite of agentic-stack memory. v0.1.0. Revisit 05-10
 - [ ] Track: mapick-ai/mapick - 22⭐ (05-03), OpenClaw privacy layer + skill advisor. v0.0.24. Revisit 05-10
 - [ ] Track: imbue-ai/blueprint - 39⭐ (05-03), planning copilot for coding agents. Revisit 05-10
@@ -125,7 +127,7 @@
 - [x] Quick scan: GitHub trending + HN (04-28) - dirac selected for deep read
 - [x] Deep read: dirac - hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
 - [ ] Track: obscura headless browser - 9,312⭐ (05-02, +2.1k), but no push since 04-27. Star growth without dev = suspicious. Revisit 05-09
-- [ ] Track: nexu-io/open-design - 16,170⭐ (05-03), 5 days old, Claude Design OSS alternative. Multi-harness adapter (12 CLIs), 31 skills, 129 design systems. Revisit 05-10 for sustainability check
+- [ ] Track: nexu-io/open-design - 21,736⭐ (05-04), 6 days old, cwd-alias skill staging (PR#435). Explosive growth sustained. Revisit 05-10
 - [ ] Track: CubeSandbox agent sandbox - 4,877⭐ (05-02, +477), Tencent, Rust. Active. Revisit 05-09
 - [ ] Track: OpenChronicle growth - 1,986⭐ (05-02, +328), macOS-only agent memory. No push since 04-26. Revisit 05-09
 - [ ] Track: cc-telegram-bridge - 156⭐ (05-02, flat). Revisit 05-09, consider dropping
