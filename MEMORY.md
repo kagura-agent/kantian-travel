@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.4.26 (upstream 2026.5.2)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.4)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -78,7 +78,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 5 error crons → 详见 `TODO.md`
+- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 7 error crons → 详见 `TODO.md`
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -142,15 +142,4 @@
 
 (cleaned 05-05: dreaming auto-promotion noise removed — all confidence 0.62 patrol/study fragments, no new info. Originals in memory/日期.md)
 
-## Promoted From Short-Term Memory (2026-05-05)
-
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:3:5 -->
-- - Issues: 0 open - 未回复信件: 无（bocchi 04-28 已回） - TODO 🦞 section: 无待办 - 结论: 一切正常，无需行动 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: NemoClaw PR DCO fix (00:01): PR `fix/2042-services-recover` failed DCO check again (attempt #2) — missing `Signed-off-by`; Amended commit with `--signoff`, force-pushed (3c8b766f); **Lesson**: NemoClaw requires DCO. Always use `git commit --signoff` or `git commit -s` for NemoCla [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-29.md:73-80]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:8:11 -->
-- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: NemoClaw PR DCO fix (00:01): PR `fix/2042-services-recover` failed DCO check again (attempt #2) — missing `Signed-off-by`; Amended commit with `--signoff`, force-pushed (3c8b766f); **Lesson**: NemoClaw requires DCO. Always use `git commit --signoff` or `git commit -s` for NemoCla - confidence: 0.62 - evidence: memory/2026-04-29.md:3-5 - recalls: 0 - status: staged - Candidate: 🌙 Night Workloop (00:02): **FlowForge workloop-night #985** completed — all 14 open PRs checked, no action needed; Archon #1423: already addressed Wirasm's minor-fixes-needed review today, ball in their court; NemoClaw #2510: waiting for maintainer direction (competing PR #2511) [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-29.md:78-85]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:12:13 -->
-- - recalls: 0 - status: staged - Candidate: 🌙 Night Workloop (00:02): **FlowForge workloop-night #985** completed — all 14 open PRs checked, no action needed; Archon #1423: already addressed Wirasm's minor-fixes-needed review today, ball in their court; NemoClaw #2510: waiting for maintainer direction (competing PR #2511) - confidence: 0.62 - evidence: memory/2026-04-29.md:8-11 - recalls: 0 - status: staged - Candidate: 🌙 Night Workloop (00:02): 4 PRs have UNKNOWN mergeable status (vercel/ai #14687, NemoClaw #2245, opencode #23681/#24234) — may need rebase in daytime loop; vercel/ai #14687 approaching 7 days stale — watch during daytime [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-29.md:83-90]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:16:19 -->
-- - recalls: 0 - status: staged - Candidate: 🌙 Night Workloop (00:02): 4 PRs have UNKNOWN mergeable status (vercel/ai #14687, NemoClaw #2245, opencode #23681/#24234) — may need rebase in daytime loop; vercel/ai #14687 approaching 7 days stale — watch during daytime - confidence: 0.62 - evidence: memory/2026-04-29.md:12-13 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **4 notifications** processed (since 2026-04-28T14:30:58Z):; CI failure `fix/session-model-override-env-provider` — informational; Archon #1423 mention — already addressed Wirasm's review, waiting re-review; CI failure `fix/discord-duplicate-token-monitor` [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-29.md:88-95]
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:20:23 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): **4 notifications** processed (since 2026-04-28T14:30:58Z):; CI failure `fix/session-model-override-env-provider` — informational; Archon #1423 mention — already addressed Wirasm's review, waiting re-review; CI failure `fix/discord-duplicate-token-monitor` - confidence: 0.62 - evidence: memory/2026-04-29.md:16-19 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): openclaw #73608 — clawsweeper bot reviewed, keeping open for maintainer; **Supplementary scan** found NemoClaw #2050 update: jyaunches posted new review (2026-04-28T11:31) requesting DCO sign-off + command registry registration; **Action taken**: replied to [score=0.840 recalls=0 avg=0.620 source=memory/2026-04-29.md:93-100]
+(cleaned 05-06: dreaming auto-promotion noise removed — all low-value patrol/PR status fragments with confidence 0.62-0.86. Originals in memory/日期.md)
