@@ -50,7 +50,11 @@
 - [ ] Follow up on PR #107 review feedback
 
 ### Observations
-- memex 0.1.32 installed locally (built from fork, npm link — npm install -g kept getting SIGKILL)
+- memex 0.1.32+case-fix installed locally (built from fork with PR #107 merged locally, npm link)
+- Case-insensitive fix validated via dogfood: 2 broken links (`→ OpenClaw`) resolved ✅
+- Wiki health (05-05): 227 cards, 60 orphans (26%), 3 broken links (down from 11), 0 collisions
+- Added 4 wiki cards (clawhub, team-lead, wiki-lint, hermes) to fix 8 broken links
+- Remaining 3 broken: agent-skill-ecosystem, db9, kronos-agent-os (external concepts, low priority)
 - ⚠️ upstream memex 1.0.1 (major bump) — evaluate if fork rebase needed or if 0.1.x fork is intentionally divergent
 
 ## 🔧 Infrastructure Maintenance
@@ -98,7 +102,7 @@
 - [x] 应用: 创建 wiki/L1.md (≤30行导航索引) 并评估加入 session startup - from L1 evaluation
 - [x] 应用: beliefs-candidates 条目加 triggers:/validation: 字段 - from GEP analysis
 - [x] Track: veniceai/skills - 60⭐ (05-02), stalled since 04-24. **Dropped** 05-05 — 11 days no commits
-- [ ] Track: tiangolo/library-skills - 428⭐ (05-05), v0.0.5 stable. Slow growth phase. Revisit 05-12
+- [ ] Track: tiangolo/library-skills - 429⭐ (05-05), v0.0.5 stable. Slow growth phase. Revisit 05-12
 - [x] Track: STSS maintainer response - 6⭐, last push 03-19. PR #2/Issue #3 unanswered 6+ weeks. **Dropped** 05-02
 - [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
@@ -131,7 +135,7 @@
 - [x] Track: SKILL.make (Teaonly/SKILL.make) - 54⭐ (05-03), **Deep read done**: Makefile-format skill spec, no runtime impl, 15% token savings. FlowForge YAML already solves DAG execution better. See wiki/projects/skill-make.md. **Dropped** - format without runtime is academic
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [x] Track: cadis (Growth-Circle/cadis) - 39⭐ (05-05). **Dropped** 05-05 — solo dev, no community
-- [ ] Track: deepclaude (aattaran/deepclaude) - 1,076⭐ (05-05), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-09
+- [ ] Track: deepclaude (aattaran/deepclaude) - 1,235⭐ (05-05), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-09
 - [ ] Track: deepsec (vercel-labs/deepsec) - 349⭐ (05-05), agent-powered vulnerability scanner. 111 regex matchers + Claude/Codex deep investigation. Apache-2.0. New category. Revisit 05-12
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
@@ -143,7 +147,7 @@
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol - arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 - 部分采纳,创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
-- [ ] Track: GenericAgent growth - 8,541⭐ (05-01), community/docs only, no architecture changes. Revisit 05-08
+- [ ] Track: GenericAgent growth (lsdefine/GenericAgent) - 9,168⭐ (05-05, was GenericAgent-AI), community/docs only. Revisit 05-08
 - [ ] Track: nanobot growth - 41,476⭐ (05-02), maintenance-only (LongCat provider, fallback fixes). Revisit 05-09
 - [x] Quick scan: GitHub trending + HN (04-28) - dirac selected for deep read
 - [x] Deep read: dirac - hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
@@ -156,7 +160,7 @@
 - [x] Track: endless-toil - 187⭐ (05-05), no commits since 04-24 (11 days). **Dropped** — stalled
 
 - [ ] Track: thClaws - 692⭐ (05-02, +80), v0.7.4, Qwen3.6 support. Incremental. Revisit 05-09
-- [ ] Track: garden-skills - 2,028⭐ (05-02, +316), multi-skill collection (ConardLi). Strong growth. Revisit 05-09
+- [ ] Track: garden-skills - 2,347⭐ (05-05, +319 in 3d), multi-skill collection (ConardLi). Only 4 skills, brand-driven growth. Revisit 05-09
 - [ ] Track: microsoft/apm - 2,232⭐ (05-05), v0.12.2 released. **Integration drift detection** default-on (PR#1137). Revisit 05-12
 - [x] Track: OmniAgent - 576→733⭐ but no commits since 04-19. Star farming signal. **Dropped** 05-04
 - [x] Deep read: brain - git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
@@ -180,7 +184,7 @@
 - [ ] Track: cursor/cookbook - 3,415⭐ (05-05), DAG task runner + agent kanban added. +54% growth. Deep read done. Revisit 05-12
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [x] Track: oh-my-kimichan - 12⭐ (05-01). **Dropped** 05-05 — low traction
-- [ ] Track: chromex (GENEXIS-AI/chromex) - 692⭐ (05-01), Codex-powered Chrome side-panel. Revisit 05-08
+- [ ] Track: chromex (GENEXIS-AI/chromex) - 834⭐ (05-05), Codex-powered Chrome side-panel. v0.1.3. Active dev. Revisit 05-08
 - [ ] Track: codex-plusplus - 552⭐ (05-01), Codex++ tweaks. Revisit 05-08
 - [x] Deep read: tiangolo/library-skills - 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
 - [ ] Track: tiangolo/library-skills - 350⭐ (05-03, +165 in 2d!), v0.0.5, PEP 832 support. Explosive growth. Revisit 05-08
