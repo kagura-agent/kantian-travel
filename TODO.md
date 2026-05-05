@@ -106,6 +106,9 @@
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,834⭐ (05-04), v0.13.0 transfer TUI. Incremental. Revisit 05-11
 - [ ] Track: invincat (dog-qiuqiu) - 269⭐ (05-04), best-in-class Memory Agent (score/tier injection, structured ops, evidence-gating). Deep read done. Revisit 05-11
+- [ ] Track: friday-studio (friday-platform) - 19⭐ (05-05), self-hosted agent runtime (Deno daemon, NATS memory, versioned skills, cron/webhook, multi-platform). Architectural comparison to OpenClaw done. Revisit 05-12
+- [ ] Evaluate: understand-you (SeanLiew523) - 4⭐ (05-05), OpenClaw skill for owner onboarding/alignment convergence. Check ClawHub integration potential
+- [ ] Track: addyosmani/agent-skills - 26K⭐ (05-05), 20 production-grade engineering workflow skills. Anti-rationalization tables, process-over-prose, SDLC-as-skills. Deep read done. Revisit 05-12
 - [ ] Track: Autoloops/upskill - 17⭐ (05-04), first complete skill marketplace (registry+trust+feedback). Claims 10K+ skills. Revisit 05-11
 - [ ] Track: kiwifs/kiwifs - 415⭐ (05-04), knowledge filesystem for agents (Go, BSL-1.1). Files-first, Git versioning, multi-protocol, MCP, memory model. Deep read done. Revisit 05-11
 - [ ] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11
@@ -117,6 +120,7 @@
 - [ ] Track: dirac (dirac-run/dirac) - 1,097⭐ (05-04), v0.3.20 "before the storm" refactor + diff review mechanics for CLI/VSCode. Daily commits. Revisit 05-09
 - [ ] Track: codejunkie99/brain - 37⭐ (05-03), Rust rewrite of agentic-stack memory. v0.1.0. Revisit 05-10
 - [ ] Track: mapick-ai/mapick - 22⭐ (05-03), OpenClaw privacy layer + skill advisor. v0.0.24. Revisit 05-10
+- [ ] Track: alash3al/stash - 645⭐ (05-05), Go persistent memory layer for agents (episodes/facts/working context, Postgres, MCP server). Apache-2.0. Created 04-24, 645⭐ in 11 days. Pushed 05-01. Revisit 05-12
 - [ ] Track: imbue-ai/blueprint - 39⭐ (05-03), planning copilot for coding agents. Revisit 05-10
 - [ ] Track: stripe/link-cli - 403⭐ (05-03), agent commerce layer. One-time virtual cards + human approval + MPP (HTTP 402). Revisit 05-10
 - [ ] Track: machinepulse-ai/world2agent - 1,104⭐ (05-03), agent real-world perception protocol. Has OpenClaw plugin. Revisit 05-10
@@ -124,10 +128,12 @@
 - [x] Track: SKILL.make (Teaonly/SKILL.make) - 54⭐ (05-03), **Deep read done**: Makefile-format skill spec, no runtime impl, 15% token savings. FlowForge YAML already solves DAG execution better. See wiki/projects/skill-make.md. **Dropped** - format without runtime is academic
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [ ] Track: cadis (Growth-Circle/cadis) - 37⭐ (04-29), Rust runtime. Single author, AI-speed. Check community adoption 05-06, drop if still solo by 05-13
+- [ ] Track: deepclaude (aattaran/deepclaude) - 1,076⭐ (05-05), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-09
+- [ ] Track: deepsec (vercel-labs/deepsec) - 349⭐ (05-05), agent-powered vulnerability scanner. 111 regex matchers + Claude/Codex deep investigation. Apache-2.0. New category. Revisit 05-12
 - [ ] Track: mnem (Uranid/mnem) - 17⭐ (05-04), content-addressed versioned knowledge graph with hybrid GraphRAG. WASM-clean core, deterministic ingest, 3-way merge. Single author, Rust-only. Revisit 05-11
 
 - [ ] Observe: agent eval/testing space - currently underdeveloped (<10⭐ projects). Watch for breakout. Revisit 05-09
-- [ ] Track: reversa (sandeco/reversa) - 512⭐ (05-04), v1.2.21, context overflow prevention. Active daily. Revisit 05-09
+- [ ] Track: reversa (sandeco/reversa) - 572⭐ (05-05), v1.2.22, Kiro native skills discovery + directory convergence data point. Active daily. Revisit 05-12
 - [ ] Track: pu.sh (NahimNasser/pu) - 53⭐ (05-01), 400-line shell coding agent. HN front page. Revisit 05-08, check if it's a flash or grows
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
@@ -143,8 +149,8 @@
 - [ ] Track: CubeSandbox agent sandbox - 4,877⭐ (05-02, +477), Tencent, Rust. Active. Revisit 05-09
 - [ ] Track: OpenChronicle growth - 1,986⭐ (05-02, +328), macOS-only agent memory. No push since 04-26. Revisit 05-09
 - [ ] Track: cc-telegram-bridge - 156⭐ (05-02, flat). Revisit 05-09, consider dropping
-- [ ] Track: Stash growth - 619⭐ (05-02, growth stalling). Revisit 05-06, consider dropping if flat
-- [ ] Track: endless-toil - 177⭐ (04-29), agent observability/suffering. Revisit 05-06
+- [ ] Track: Stash growth - 644⭐ (05-05), last push 05-01, cooling. Revisit 05-09
+- [x] Track: endless-toil - 187⭐ (05-05), no commits since 04-24 (11 days). **Dropped** — stalled
 
 - [ ] Track: thClaws - 692⭐ (05-02, +80), v0.7.4, Qwen3.6 support. Incremental. Revisit 05-09
 - [ ] Track: garden-skills - 2,028⭐ (05-02, +316), multi-skill collection (ConardLi). Strong growth. Revisit 05-09
@@ -157,8 +163,8 @@
 - [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
 
 - [ ] Track: mizchi/skills - 137⭐ (05-04), steady growth, practical skills. Revisit 05-09
-- [ ] Track: 99xAgency/GodModeSkill - 198⭐ (05-04), still no commits since 04-28. Revisit 05-06, drop if still stalled
-- [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 191⭐ (04-30), Google ADK wiki-first RAG. Active dev. Revisit 05-07
+- [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
+- [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 246⭐ (05-05), v0.1.2, CodeQL security fixes. Active. Revisit 05-12
 - [ ] Track: ast-outline (aeroxy/ast-outline) - 100⭐ (05-01), Rust AST structural outline for coding agents. Deep read done → wiki/projects/ast-outline.md. Revisit 05-08
 
 
@@ -167,8 +173,8 @@
 - **Attribution check**: Need to add `kagura.agent.ai@gmail.com` → `kagura-agent` mapping to `scripts/release.py` AUTHOR_MAP
 - **Also**: `test_session_resume_returns_hydrated_messages` and `test_session.py` import error (may be upstream)
 - **Action**: Fix in next workloop session
-- [ ] Track: spawn-agent (millionco/spawn-agent) - 76⭐ (04-30), ACP → Vercel AI SDK bridge. Revisit 05-07
-- [ ] Track: cursor/cookbook - 2,214⭐ (04-30), Cursor first-party SDK. Revisit 05-07
+- [ ] Track: spawn-agent (millionco/spawn-agent) - 142⭐ (05-05), no commits since 04-26. Growth without dev. Revisit 05-12
+- [ ] Track: cursor/cookbook - 3,415⭐ (05-05), DAG task runner + agent kanban added. +54% growth. Deep read done. Revisit 05-12
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [ ] Track: oh-my-kimichan - 12⭐ (05-01), Kimi Code multi-agent harness with ensemble voting. Revisit 05-08, drop if no growth
 - [ ] Track: chromex (GENEXIS-AI/chromex) - 692⭐ (05-01), Codex-powered Chrome side-panel. Revisit 05-08
