@@ -107,6 +107,8 @@
 - [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [ ] Track: bux (browser-use/bux) - 310⭐ (05-05), Telegram token binding security fix (PR#90). Active. Revisit 05-12
+- [ ] Track: openmelon (eight-acres-lab) - 57⭐ (05-05), content-creation runtime with provenance + compilable skills (Skill-Plus). Go core. Novel compilation model. Revisit 05-12
+- [ ] Track: skillplus (eight-acres-lab) - 42⭐ (05-05), compilable skill package standard, companion to openmelon. Revisit 05-12
 - [ ] Track: millionco/agent-install - 40⭐ (05-05), universal skill/MCP installer for 45+ agents. Well-known protocol + symlink-first. Revisit 05-11
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
