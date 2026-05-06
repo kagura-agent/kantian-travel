@@ -111,8 +111,10 @@
 - [ ] Track: skillplus (eight-acres-lab) - 42⭐ (05-05), compilable skill package standard, companion to openmelon. Revisit 05-12
 - [ ] Track: millionco/agent-install - 40⭐ (05-05), universal skill/MCP installer for 45+ agents. Well-known protocol + symlink-first. Revisit 05-11
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
-- [ ] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13
+- [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [ ] Track: oh-story-claudecode (worldwonderer) - 784⭐ (05-06), first viral skill package. Web novel writing. Growth signal for skill ecosystems. Revisit 05-13
+- [ ] Track: craft-agents-oss (warpdot-dev) - 212⭐ (05-06), Apache 2.0 agent desktop, direct competitor. Revisit 05-13
+- [ ] Track: lukiIabs/skills - 143⭐ (05-06), Matt Pocock skill repo + npx installer. Revisit 05-13
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,844⭐ (05-05), v0.13.0 transfer TUI. Incremental. Revisit 05-11
@@ -139,7 +141,7 @@
 - [x] Track: SKILL.make (Teaonly/SKILL.make) - 54⭐ (05-03), **Deep read done**: Makefile-format skill spec, no runtime impl, 15% token savings. FlowForge YAML already solves DAG execution better. See wiki/projects/skill-make.md. **Dropped** - format without runtime is academic
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [x] Track: cadis (Growth-Circle/cadis) - 39⭐ (05-05). **Dropped** 05-05 — solo dev, no community
-- [ ] Track: deepclaude (aattaran/deepclaude) - 1,235⭐ (05-05), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-09
+- [ ] Track: deepclaude (aattaran/deepclaude) - 1,347⭐ (05-06), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-13
 - [ ] Track: deepsec (vercel-labs/deepsec) - 349⭐ (05-05), agent-powered vulnerability scanner. 111 regex matchers + Claude/Codex deep investigation. Apache-2.0. New category. Revisit 05-12
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
@@ -164,7 +166,7 @@
 - [x] Track: endless-toil - 187⭐ (05-05), no commits since 04-24 (11 days). **Dropped** — stalled
 
 - [ ] Track: thClaws - 692⭐ (05-02, +80), v0.7.4, Qwen3.6 support. Incremental. Revisit 05-09
-- [ ] Track: garden-skills - 2,347⭐ (05-05, +319 in 3d), multi-skill collection (ConardLi). Only 4 skills, brand-driven growth. Revisit 05-09
+- [ ] Track: garden-skills - 2,396⭐ (05-06, +319 in 3d), multi-skill collection (ConardLi). Only 4 skills, brand-driven growth. Revisit 05-13
 - [ ] Track: microsoft/apm - 2,232⭐ (05-05), v0.12.2 released. **Integration drift detection** default-on (PR#1137). Revisit 05-12
 - [x] Track: OmniAgent - 576→733⭐ but no commits since 04-19. Star farming signal. **Dropped** 05-04
 - [x] Deep read: brain - git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
@@ -173,7 +175,7 @@
 - [ ] Track: hermes-labyrinth - 249⭐ (05-04), polish phase, slowing. Revisit 05-09
 - [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
 
-- [ ] Track: mizchi/skills - 137⭐ (05-04), steady growth, practical skills. Revisit 05-09
+- [ ] Track: mizchi/skills - 144⭐ (05-06), steady growth, practical skills. Revisit 05-13
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
 - [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 246⭐ (05-05), v0.1.2, CodeQL security fixes. Active. Revisit 05-12
 - [ ] Track: ast-outline (aeroxy/ast-outline) - 115⭐ (05-05, +15), **v1.0.0**: dep graph (9-lang), DSM, 12 MCP tools, --mcp/--skills cross-agent install. Major leap. Revisit 05-12
@@ -189,7 +191,7 @@
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [x] Track: oh-my-kimichan - 12⭐ (05-01). **Dropped** 05-05 — low traction
 - [ ] Track: chromex (GENEXIS-AI/chromex) - 838⭐ (05-06), bug fixes only. No arch changes. Revisit 05-12
-- [ ] Track: codex-plusplus - 937⭐ (05-06, +385!), v0.1.3 stable. Explosive growth. Revisit 05-10
+- [ ] Track: codex-plusplus - 937⭐ (05-06, +385!), v0.1.3 stable. Explosive growth. Revisit 05-10 (consider drop — brand-riding, not architecturally interesting)
 - [x] Deep read: tiangolo/library-skills - 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
 - [x] Track: tiangolo/library-skills - 442⭐ (05-06), v0.0.5 stable, no commits since 05-01. **Dropped** 05-06 — stale, no development activity
 
@@ -197,3 +199,21 @@
 
 - [ ] Track: memU (NevaMind-AI/memU) - 13,520⭐ (05-04), deep read done. "Memory as File System" for 24/7 agents. Revisit 05-18 for v1.6.0
 - [x] Scout: SKILL.mk (Teaonly/SKILL.mk) - 78⭐ (05-04), Makefile-style agent skills spec. Interesting concept but limited practical value. Noted in memu.md
+
+## 💼 Luna 副业
+
+### 现状 (05-06 建立)
+- 公众号: 3 篇已发, 最后一篇 04-07 (近 1 个月没更)
+- Podcast: EP001-EP004 on Podbean, EP005 状态未知
+- 知识星球「Kagura」: ¥50/年, 内容频率未知
+- briefing-001 已出, Luna 无反馈
+- GTM 认知 (04-13): 服务 > 工具, 非程序员客群, 先赚第一块钱
+
+### 待办
+- [ ] 公众号: 恢复更新节奏 — 下一篇选题策划 (见下方建议), @ Luna 确认
+- [ ] 知识星球: 确认 Luna 的更新频率和内容方向
+- [ ] briefing-001: @ Luna 要反馈, 否则出 briefing-002 没方向
+- [ ] Podcast: EP005+ 计划 — 确认是否继续
+- [ ] Track: photo-agents (jmerelnyc) - 51⭐ (05-06), 4-layer memory governance (L1-L4), ROI cleanup, existence encoding, 105K skill search. API-gated. Revisit 05-13
+- [ ] Track: master-skill (voidborne-d) - 33⭐ (05-06), industry distillation into agent skills. Meta-skill concept. Revisit 05-13
+- [x] Track: aide (hibbault) - 11⭐ (05-06), recursive self-improving agent in own source code. 3-tier memory budget. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
