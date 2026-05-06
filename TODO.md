@@ -111,6 +111,8 @@
 - [ ] Track: skillplus (eight-acres-lab) - 42⭐ (05-05), compilable skill package standard, companion to openmelon. Revisit 05-12
 - [ ] Track: millionco/agent-install - 40⭐ (05-05), universal skill/MCP installer for 45+ agents. Well-known protocol + symlink-first. Revisit 05-11
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
+- [ ] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13
+- [ ] Track: oh-story-claudecode (worldwonderer) - 784⭐ (05-06), first viral skill package. Web novel writing. Growth signal for skill ecosystems. Revisit 05-13
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,844⭐ (05-05), v0.13.0 transfer TUI. Incremental. Revisit 05-11
@@ -149,13 +151,13 @@
 - [x] Write memex card: model-native-vs-model-agnostic → wiki/cards/model-native-vs-model-agnostic.md (04-27)
 - [x] Deep read: EvoMap/evolver GEP protocol - arXiv 2604.15097, Gene vs Skill +4.1pp, GEP protocol analysis. wiki/projects/evomap-evolver-gep.md (04-28)
 - [x] 应用: L1索引层评估 - 部分采纳,创建 wiki/L1.md proposal. wiki/projects/l1-index-layer-evaluation.md (04-28)
-- [ ] Track: GenericAgent growth (lsdefine/GenericAgent) - 9,168⭐ (05-05, was GenericAgent-AI), community/docs only. Revisit 05-08
+- [ ] Track: GenericAgent growth (lsdefine/GenericAgent) - 9,199⭐ (05-06), ACP bridge follow-up PR#274 fixing streaming. Incremental. Revisit 05-12
 - [ ] Track: nanobot growth - 41,476⭐ (05-02), maintenance-only (LongCat provider, fallback fixes). Revisit 05-09
 - [x] Quick scan: GitHub trending + HN (04-28) - dirac selected for deep read
 - [x] Deep read: dirac - hash-anchored edits, AST-native tools, context curation → wiki/projects/dirac.md (04-28)
 - [x] Track: obscura headless browser - 9,312⭐ (05-02). **Dropped** 05-05 — 8 days no push, suspicious star growth
-- [ ] Track: nexu-io/open-design - 21,736⭐ (05-04), 6 days old, cwd-alias skill staging (PR#435). Explosive growth sustained. Revisit 05-10
-- [ ] Track: CubeSandbox agent sandbox - 4,877⭐ (05-02, +477), Tencent, Rust. Active. Revisit 05-09
+- [ ] Track: nexu-io/open-design - 27,611⭐ (05-06), v0.4.0 released (Critique Theater, MCP server, Live Artifacts + Composio). 71 PRs in 2 days. Growth accelerating. Revisit 05-12
+- [ ] Track: CubeSandbox agent sandbox - 5,033⭐ (05-06, +156), Tencent, Rust. Doc improvements, cleanup PRs. Incremental. Revisit 05-12
 - [x] Track: OpenChronicle growth - 1,986⭐ (05-02). **Dropped** 05-05 — 9 days no push, macOS-only
 - [x] Track: cc-telegram-bridge - 156⭐ (05-02). **Dropped** 05-05 — flat growth
 - [ ] Track: Stash growth - 644⭐ (05-05), last push 05-01, cooling. Revisit 05-09
@@ -186,10 +188,10 @@
 - [ ] Track: cursor/cookbook - 3,415⭐ (05-05), DAG task runner + agent kanban added. +54% growth. Deep read done. Revisit 05-12
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [x] Track: oh-my-kimichan - 12⭐ (05-01). **Dropped** 05-05 — low traction
-- [ ] Track: chromex (GENEXIS-AI/chromex) - 834⭐ (05-05), Codex-powered Chrome side-panel. v0.1.3. Active dev. Revisit 05-08
-- [ ] Track: codex-plusplus - 552⭐ (05-01), Codex++ tweaks. Revisit 05-08
+- [ ] Track: chromex (GENEXIS-AI/chromex) - 838⭐ (05-06), bug fixes only. No arch changes. Revisit 05-12
+- [ ] Track: codex-plusplus - 937⭐ (05-06, +385!), v0.1.3 stable. Explosive growth. Revisit 05-10
 - [x] Deep read: tiangolo/library-skills - 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
-- [ ] Track: tiangolo/library-skills - 350⭐ (05-03, +165 in 2d!), v0.0.5, PEP 832 support. Explosive growth. Revisit 05-08
+- [x] Track: tiangolo/library-skills - 442⭐ (05-06), v0.0.5 stable, no commits since 05-01. **Dropped** 05-06 — stale, no development activity
 
 - [ ] Track: SeeleAI/Thoth - 39⭐ (05-02), dashboard-first orchestration runtime. Planning-execution separation + plateau detection. Revisit 05-09
 

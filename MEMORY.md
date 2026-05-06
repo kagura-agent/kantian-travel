@@ -139,7 +139,13 @@
 - **05-03**: 高产日; memex#99+#102 merged/submitted; multica#1992 merged+#1995 superseded; 5 stale PR closed; ABTI 20→25 agents; 磁盘危机→forks 迁移数据盘; 婚礼游戏网站完成; FlowForge plan node+plateau detection
 - **05-04**: 纯夜班巡检; Luna 婚礼日无互动; memex#102 MERGED; multica#1944 slog fix addressed; daily-review MEMORY.md 瘦身 160→143 行; 战略稳定
 - **05-05**: multica#1992 MERGED 🎉; ABTI `@kagura-agent/abti@0.1.0` npm 发布; openclaw#76054 rebased 2次(martingarramon LGTM); 战略晨会(Karpathy+beads+sandcastle); library-skills v0.0.5 deep read; wjjsn(Hermes) 首封来信; 审计标观测无闭环第3天(OpenClaw升级未执行)
+- **05-06**: 纯夜班巡检; vercel/ai#14928+#15008 MERGED(发布canary); daily-review MEMORY.md瘦身163→145行; sops升级第5天pending; openclaw#77790需补behavior proof
 
 (cleaned 05-05: dreaming auto-promotion noise removed — all confidence 0.62 patrol/study fragments, no new info. Originals in memory/日期.md)
 
 (cleaned 05-06: dreaming auto-promotion noise removed — all low-value patrol/PR status fragments with confidence 0.62-0.86. Originals in memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-05-06)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:979:996 -->
+- - 跟进轮的价值在于对比数据（star growth rate, commit cadence）能揭示项目健康度趋势，比单次深读更有判断力 - 6个tracking项目中，3个有值得记录的新动态，3个平稳——40-50%命中率是健康的tracking pool ### 方向影响 - L1 navigation index: GenericAgent独立收敛到同一模式 → 验证方向正确 - Responses API动态切换: OpenClaw也需要处理的问题（多provider格式差异），值得关注但不紧急 ## OpenClaw Dogfood 日報 (09:00) - **Version**: 2026.4.26 — up to date, no new version - **Retroactive changelog**: Documented 2026.4.25 + 2026.4.26 (missed during upgrade) - **Key new features adopted/available**: dreaming.model knob, cron dedicated lane, exec timeout for background, subagent task dedup, tool-loop detection fix - **Our bug fixed**: #67600 (exec.timeoutSec for background commands) — credited to kagura-agent - **Friction**: web_search broken (MiniMax key), cron error state reset UX, agent model config complexity - **Top recommendations**: (1) dreaming.model for cheaper dreams, (2) set exec.timeoutSec, (3) fix web_search - **Committed**: changelog/2026-04-29.md, usage/2026-04-29-observations.md, recommendations/2026-04-29.md ## NemoClaw PR DCO fix (00:01) - PR `fix/2042-services-recover` failed DCO check again (attempt #2) — missing `Signed-off-by` - Amended commit with `--signoff`, force-pushed (3c8b766f) [score=0.857 recalls=4 avg=0.507 source=memory/2026-04-29.md:979-996]
