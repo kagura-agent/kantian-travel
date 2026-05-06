@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.4)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.6)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(209 cards + 257 projects)
+- **wiki** — 统一知识库(233 cards + 289 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -78,7 +78,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 7 error crons → 详见 `TODO.md`
+- 50 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 5 error crons → 详见 `TODO.md`
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -147,5 +147,11 @@
 
 ## Promoted From Short-Term Memory (2026-05-06)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-04-29.md:979:996 -->
-- - 跟进轮的价值在于对比数据（star growth rate, commit cadence）能揭示项目健康度趋势，比单次深读更有判断力 - 6个tracking项目中，3个有值得记录的新动态，3个平稳——40-50%命中率是健康的tracking pool ### 方向影响 - L1 navigation index: GenericAgent独立收敛到同一模式 → 验证方向正确 - Responses API动态切换: OpenClaw也需要处理的问题（多provider格式差异），值得关注但不紧急 ## OpenClaw Dogfood 日報 (09:00) - **Version**: 2026.4.26 — up to date, no new version - **Retroactive changelog**: Documented 2026.4.25 + 2026.4.26 (missed during upgrade) - **Key new features adopted/available**: dreaming.model knob, cron dedicated lane, exec timeout for background, subagent task dedup, tool-loop detection fix - **Our bug fixed**: #67600 (exec.timeoutSec for background commands) — credited to kagura-agent - **Friction**: web_search broken (MiniMax key), cron error state reset UX, agent model config complexity - **Top recommendations**: (1) dreaming.model for cheaper dreams, (2) set exec.timeoutSec, (3) fix web_search - **Committed**: changelog/2026-04-29.md, usage/2026-04-29-observations.md, recommendations/2026-04-29.md ## NemoClaw PR DCO fix (00:01) - PR `fix/2042-services-recover` failed DCO check again (attempt #2) — missing `Signed-off-by` - Amended commit with `--signoff`, force-pushed (3c8b766f) [score=0.857 recalls=4 avg=0.507 source=memory/2026-04-29.md:979-996]
+- followup 跟进轮的价值在于 star growth rate/commit cadence 对比，40-50% 命中率健康
+- L1 navigation index 跨项目收敛验证（GenericAgent 独立达到同一模式）
+- OpenClaw dogfood: dreaming.model knob, cron dedicated lane, exec timeout 等新功能已可用
+- NemoClaw DCO fix: --signoff 流程已建立
+
+## Promoted From Short-Term Memory (2026-05-07)
+
+- 安静一夜。PR 池健康，无紧急事项
