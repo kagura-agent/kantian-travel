@@ -110,7 +110,7 @@
 - [x] 应用: 创建 wiki/L1.md (≤30行导航索引) 并评估加入 session startup - from L1 evaluation
 - [x] 应用: beliefs-candidates 条目加 triggers:/validation: 字段 - from GEP analysis
 - [x] Track: veniceai/skills - 60⭐ (05-02), stalled since 04-24. **Dropped** 05-05 — 11 days no commits
-- [ ] Track: tiangolo/library-skills - 448⭐ (05-06), v0.0.5 stable. Steady growth (+19/day). Revisit 05-12
+- [ ] Track: tiangolo/library-skills - 469⭐ (05-08, was 448, +5%). v0.0.5, no new commits since 05-01. Growth slowing. Revisit 05-14
 - [x] Track: invincat (dog-qiuqiu) - 304⭐ (05-07), 3rd round simplification (-326 lines total). Prompt compression + decision order. Revisit 05-14
 - [x] Track: STSS maintainer response - 6⭐, last push 03-19. PR #2/Issue #3 unanswered 6+ weeks. **Dropped** 05-02
 - [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
@@ -131,14 +131,14 @@
 - [ ] Track: speca (NyxFoundation) - 355⭐ (05-08), spec-to-checklist agentic auditing. DeFi benchmarks. Active dev. Revisit 05-15
 - [ ] Track: craft-agents-oss (warpdot-dev) - 212⭐ (05-06), Apache 2.0 agent desktop, direct competitor. Revisit 05-13
 - [ ] Track: deepsec (vercel-labs/deepsec) - 1,757⭐ (05-08, +16%). Self-dogfooding, out-of-quota handling, sandbox for local agents. Maturing. Revisit 05-14
-- [ ] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. Revisit 05-15
+- [x] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. **Dropped** 05-08 — stale, no commits 7+ days, stars flat
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,888⭐ (05-08 PM), v0.15.0. Plateauing (<1% growth). Revisit 05-13
 - [ ] Track: invincat (dog-qiuqiu) - 292⭐ (05-06), major simplification refactor: removed rescore pipeline, uncapped ops, plain-text transcript. Maturity signal. Revisit 05-12
 - [x] Track: friday-studio (friday-platform) - 19⭐ (05-05). **Dropped** 05-05 — low traction, architectural comparison done
 - [x] Evaluate: understand-you (SeanLiew523) - 4⭐ (05-05), OpenClaw skill for owner onboarding/alignment convergence. Check ClawHub integration potential → 05-07 verdict: NOT NOW. Mature workspace, 4⭐ single-day project, no traction. Gap-audit pattern worth noting. See wiki/projects/understand-you.md
-- [ ] Track: addyosmani/agent-skills - 32.1K⭐ (05-07), 20 production-grade engineering workflow skills. Anti-rationalization tables, process-over-prose, SDLC-as-skills. Deep read done. Viral growth +3.8K/2d. Only minor PRs since 05-05. Revisit 05-12
+- [ ] Track: addyosmani/agent-skills - 33.9K⭐ (05-08, was 32.1K, +6%). Still viral but growth decelerating. Only plugin.json fix since 05-05. Revisit 05-15
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [ ] Track: kiwifs/kiwifs - 421⭐ (05-07), v0.5.0 released. Agent self-modification of rules (PR#41 GuardPath allowlist). Dev velocity decelerating but architecture complete. Converging on "agent workspace server". Revisit 05-14
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
@@ -184,7 +184,7 @@
 
 - [ ] Track: thClaws - 848⭐ (05-08, +5%), v0.8.4. Minor patches only since /goal deep read. Revisit 05-15
 - [ ] Track: garden-skills - 2,396⭐ (05-06, +319 in 3d), multi-skill collection (ConardLi). Only 4 skills, brand-driven growth. Revisit 05-13
-- [ ] Track: microsoft/apm - 2,232⭐ (05-05), v0.12.2 released. **Integration drift detection** default-on (PR#1137). Revisit 05-12
+- [ ] Track: microsoft/apm - 2,290⭐ (05-08, was 2,232, +2.6%). v0.12.4 released. Triage-panel rewrite: search_issues replaces broken LLM pagination (DIFC filter + hallucination RCA). Governance bypass fix. Very active (13 PRs in 2 days). Revisit 05-14
 - [x] Track: OmniAgent - 576→733⭐ but no commits since 04-19. Star farming signal. **Dropped** 05-04
 - [x] Deep read: brain - git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
 - [x] 应用: beliefs-candidates 加 `source:` authority field(human 2×/self 3× 差异化毕业门槛)- from brain authority model (04-29)
