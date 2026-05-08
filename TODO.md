@@ -111,24 +111,25 @@
 - [x] 应用: 创建 wiki/L1.md (≤30行导航索引) 并评估加入 session startup - from L1 evaluation
 - [x] 应用: beliefs-candidates 条目加 triggers:/validation: 字段 - from GEP analysis
 - [x] Track: veniceai/skills - 60⭐ (05-02), stalled since 04-24. **Dropped** 05-05 — 11 days no commits
-- [ ] Track: tiangolo/library-skills - 469⭐ (05-08, was 448, +5%). v0.0.5, no new commits since 05-01. Growth slowing. Revisit 05-14
+- [x] Track: tiangolo/library-skills - 174⭐ (05-08). **Dropped** 05-08 — duplicate drop entry, already dropped 05-06 (stale, no commits since 05-01)
 - [x] Track: invincat (dog-qiuqiu) - 304⭐ (05-07), 3rd round simplification (-326 lines total). Prompt compression + decision order. Revisit 05-14
 - [x] Track: STSS maintainer response - 6⭐, last push 03-19. PR #2/Issue #3 unanswered 6+ weeks. **Dropped** 05-02
-- [x] Track: Orb (KarryViber) - 54⭐ (05-02), **v0.4.0 deep read done**: system-scope skills, context provider abstraction, lesson candidate pipeline, governance spec. See wiki/projects/orb.md. Revisit 05-09 for v0.5.0
+- [x] Track: Orb (KarryViber) - 60⭐ (05-08, was 54, +11%). Still v0.4.0, no commits since 05-02 (6 days). Growth steady but dev paused. No v0.5.0 yet. Revisit 05-15
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [x] Track: bux (browser-use/bux) - 311⭐ (05-06), flat growth. **Dropped** 05-06 — flat star growth, no traction signal
 - [x] Track: openmelon (eight-acres-lab) - 58⭐ (05-06), flat growth. Go core. **Dropped** 05-06 — flat star growth despite active commits
-- [ ] Track: skillplus (eight-acres-lab) - 174⭐ (05-08, was 132, +32%). Expanding into CN social media content skills (Douyin/Xiaohongshu/Weibo). 9 skills. Revisit 05-14
+- [ ] Track: skillplus (eight-acres-lab) - 469⭐ (05-08, was ~450 est). 8 skills now: food/travel/avatar realism + Douyin/Xiaohongshu/Weibo copywriting. Active daily commits (latest 05-07). Compilable skill packages → multi-target (OpenMelon/skill-md/prompt-bundle). Growing fast, CN social media content niche. Revisit 05-14
 - [x] Track: millionco/agent-install - 40⭐ (05-06), flat. **Dropped** 05-06 — stale (last push 05-01), low traction
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
-- [ ] Track: mirage (strukto-ai/mirage) - 1,105⭐ (05-08 PM), unified VFS for AI agents. Growth continues but no new commits since 05-06. Revisit 05-14
+- [ ] Track: mirage (strukto-ai/mirage) - 1,286⭐ (05-08 late PM, was 1,105 earlier), unified VFS for AI agents. Explosive growth. Revisit 05-14
 - [ ] Track: oh-story-claudecode (worldwonderer) - 831⭐ (05-07), steady growth. Revisit 05-13
 - [ ] Track: RunbookHermes (Tommy-yw) - 530⭐ (05-07), Hermes-native AIOps agent. Deep read done. Revisit 05-21
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
 - [x] Track: girl-agent (TheSashaDev) - 188⭐ (05-07), growth flat, no new architectural features. **Dropped** 05-07
 - [ ] Track: deepclaude (aattaran) - 1,610⭐ (05-08 PM), healthy 5% growth. Thin wrapper pattern. Revisit 05-13
-- [ ] Track: agent-skills-eval (darkrishabh) - 204⭐ (05-08), test runner for agentskills.io skills. TypeScript CLI. Skill evaluation tooling. Revisit 05-14
+- [ ] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM), test runner for agentskills.io skills. with/without A/B eval. TypeScript CLI. Revisit 05-14
+- [ ] Track: downy (bensenescu) - 157⭐ (05-08), OpenClaw Alternative on Cloudflare DOs. Web-only, single-user. Created 04-30. Revisit 05-15
 - [ ] Track: speca (NyxFoundation) - 355⭐ (05-08), spec-to-checklist agentic auditing. DeFi benchmarks. Active dev. Revisit 05-15
 - [ ] Track: craft-agents-oss (warpdot-dev) - 212⭐ (05-06), Apache 2.0 agent desktop, direct competitor. Revisit 05-13
 - [ ] Track: deepsec (vercel-labs/deepsec) - 1,757⭐ (05-08, +16%). Self-dogfooding, out-of-quota handling, sandbox for local agents. Maturing. Revisit 05-14
@@ -136,7 +137,7 @@
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
 - [ ] Track: agentic-stack (codejunkie99) - 1,888⭐ (05-08 PM), v0.15.0. Plateauing (<1% growth). Revisit 05-13
-- [ ] Track: invincat (dog-qiuqiu) - 292⭐ (05-06), major simplification refactor: removed rescore pipeline, uncapped ops, plain-text transcript. Maturity signal. Revisit 05-12
+- [ ] Track: invincat (dog-qiuqiu) - 304⭐ (05-08 PM). Multi-model pivot: DeepSeek thinking support + model registration refactor. Continued prompt simplification. Revisit 05-14
 - [x] Track: friday-studio (friday-platform) - 19⭐ (05-05). **Dropped** 05-05 — low traction, architectural comparison done
 - [x] Evaluate: understand-you (SeanLiew523) - 4⭐ (05-05), OpenClaw skill for owner onboarding/alignment convergence. Check ClawHub integration potential → 05-07 verdict: NOT NOW. Mature workspace, 4⭐ single-day project, no traction. Gap-audit pattern worth noting. See wiki/projects/understand-you.md
 - [ ] Track: addyosmani/agent-skills - 33.9K⭐ (05-08, was 32.1K, +6%). Still viral but growth decelerating. Only plugin.json fix since 05-05. Revisit 05-15
@@ -145,7 +146,7 @@
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
-- [ ] Track: Signet AI (Signet-AI/signetai) - 136⭐ (05-05), v0.111.3 deep read done (PR#627: CROSS JOIN FTS fix, per-stage timing). Plateauing growth. Revisit 05-12
+- [ ] Track: Signet AI (Signet-AI/signetai) - 137⭐ (05-08 PM), flat growth. Still active (pushed today). Revisit 05-15
 - [x] Track: felix (sausheong/felix) - 16⭐ (05-03). **Dropped** 05-05 — low traction
 - [x] Track: paragents (FrankHui/paragents) - 81⭐ (05-05). **Dropped** 05-05 — growth without dev
 - [x] Track: dirac (dirac-run/dirac) - 1,113⭐ (05-05), v0.3.22 UI fixes + image paste. Daily commits but incremental. Revisit 05-11 **Dropped** 05-06 — incremental UI, not architecturally relevant
@@ -160,11 +161,11 @@
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [x] Track: cadis (Growth-Circle/cadis) - 39⭐ (05-05). **Dropped** 05-05 — solo dev, no community
 - [ ] Track: deepclaude (aattaran/deepclaude) - 1,347⭐ (05-06), Claude Code backend-swap proxy (DeepSeek 17x cheaper). 443-line proxy, thinking block stripping, live backend switch. Deep read done. Revisit 05-13
-- [ ] Track: deepsec (vercel-labs/deepsec) - 349⭐ (05-05), agent-powered vulnerability scanner. 111 regex matchers + Claude/Codex deep investigation. Apache-2.0. New category. Revisit 05-12
+- [ ] Track: deepsec (vercel-labs/deepsec) - 1,777⭐ (05-08 PM), +1% incremental. Active. Revisit 05-15
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [ ] Observe: agent eval/testing space - still underdeveloped. Top: Margin-Lab/evals 59⭐ (stalled 04-24), Calibre-Labs/reforge-ai-evals 42⭐ (active). No breakout. Revisit 05-15
-- [ ] Track: reversa (sandeco/reversa) - 702⭐ (05-08, was 572, +23%), v1.2.33, daily releases. Strong growth. Revisit 05-12
+- [ ] Track: reversa (sandeco/reversa) - 707⭐ (05-08 PM). v1.2.31-33 UI polish, no arch changes. Growth decelerating (+0.7%). Revisit 05-15
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
@@ -195,7 +196,7 @@
 
 - [ ] Track: mizchi/skills - 144⭐ (05-06), steady growth, practical skills. Revisit 05-13
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
-- [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 246⭐ (05-05), v0.1.2, CodeQL security fixes. Active. Revisit 05-12
+- [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 270⭐ (05-08 PM), +10% growth. Active dev. Revisit 05-15
 - [x] Track: ast-outline (aeroxy/ast-outline) - 140⭐ (05-08, +22%), **v1.1.0**: incremental rebuild with tombstones, scope filters, compaction. Production maturity signal. Revisit 05-14
 
 
@@ -205,10 +206,10 @@
 - **Also**: `test_session_resume_returns_hydrated_messages` and `test_session.py` import error (may be upstream)
 - **Action**: Fix in next workloop session
 - [x] Track: spawn-agent (millionco/spawn-agent) - 142⭐ (05-05). **Dropped** 05-05 — 9 days no commits
-- [ ] Track: cursor/cookbook - 3,415⭐ (05-05), DAG task runner + agent kanban added. +54% growth. Deep read done. Revisit 05-12
+- [ ] Track: cursor/cookbook - 3,679⭐ (05-08 PM). No commits since 05-01. Organic/viral growth (+7.7%) without new content. Dev stalled. Revisit 05-15
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [x] Track: oh-my-kimichan - 12⭐ (05-01). **Dropped** 05-05 — low traction
-- [ ] Track: chromex (GENEXIS-AI/chromex) - 838⭐ (05-06), bug fixes only. No arch changes. Revisit 05-12
+- [ ] Track: chromex (GENEXIS-AI/chromex) - 935⭐ (05-08 PM), v0.1.5. +12% growth on bug fixes only. Strong demand signal. Revisit 05-15
 - [x] Track: codex-plusplus - 937⭐ (05-06, +385!), v0.1.3 stable. Explosive growth. Revisit 05-10 (consider drop — brand-riding, not architecturally interesting) **Dropped** 05-06 — brand-riding, not architecturally interesting
 - [x] Deep read: tiangolo/library-skills - 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
 - [x] Track: tiangolo/library-skills - 442⭐ (05-06), v0.0.5 stable, no commits since 05-01. **Dropped** 05-06 — stale, no development activity
