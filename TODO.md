@@ -89,6 +89,7 @@
 - [x] **guide.md: 新增「use existing runtime context flags」** - openclaw#77247 教训 → 已加入 guide.md 第 16 条 (2026-05-05)
 - [x] **guide.md: 新增「parent-child API: breadcrumb over inline」** - multica#2088 教训 → 已加入 guide.md 第 17 条 (2026-05-06)
 - [x] **guide.md: 新增「upstream CI: verify once, stop re-analyzing」** - hermes-agent 5 PRs 教训 → 已加入 guide.md 第 18 条 (2026-05-07)
+- [x] **guide.md: 新增「check repo contribution gates before first commit」** - NemoClaw DCO 2次返工教训 → 已加入 guide.md 第 19 条，顺便修了编号混乱（14→20, 18→21）(2026-05-08)
 
 ## 📚 学习
 
@@ -163,7 +164,7 @@
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [ ] Observe: agent eval/testing space - still underdeveloped. Top: Margin-Lab/evals 59⭐ (stalled 04-24), Calibre-Labs/reforge-ai-evals 42⭐ (active). No breakout. Revisit 05-15
-- [ ] Track: reversa (sandeco/reversa) - 572⭐ (05-05), v1.2.22, Kiro native skills discovery + directory convergence data point. Active daily. Revisit 05-12
+- [ ] Track: reversa (sandeco/reversa) - 702⭐ (05-08, was 572, +23%), v1.2.33, daily releases. Strong growth. Revisit 05-12
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
@@ -195,7 +196,7 @@
 - [ ] Track: mizchi/skills - 144⭐ (05-06), steady growth, practical skills. Revisit 05-13
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
 - [ ] Track: Beever Atlas (Beever-AI/beever-atlas) - 246⭐ (05-05), v0.1.2, CodeQL security fixes. Active. Revisit 05-12
-- [ ] Track: ast-outline (aeroxy/ast-outline) - 115⭐ (05-05, +15), **v1.0.0**: dep graph (9-lang), DSM, 12 MCP tools, --mcp/--skills cross-agent install. Major leap. Revisit 05-12
+- [x] Track: ast-outline (aeroxy/ast-outline) - 140⭐ (05-08, +22%), **v1.1.0**: incremental rebuild with tombstones, scope filters, compaction. Production maturity signal. Revisit 05-14
 
 
 ## hermes-agent#17416 CI Failures (2026-04-30)
