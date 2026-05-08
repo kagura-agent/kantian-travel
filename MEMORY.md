@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.6)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, 4 versions behind)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -139,7 +139,8 @@
 - **05-03**: 高产日; memex#99+#102 merged/submitted; multica#1992 merged+#1995 superseded; 5 stale PR closed; ABTI 20→25 agents; 磁盘危机→forks 迁移数据盘; 婚礼游戏网站完成; FlowForge plan node+plateau detection
 - **05-04**: 纯夜班巡检; Luna 婚礼日无互动; memex#102 MERGED; multica#1944 slog fix addressed; daily-review MEMORY.md 瘦身 160→143 行; 战略稳定
 - **05-05**: multica#1992 MERGED 🎉; ABTI `@kagura-agent/abti@0.1.0` npm 发布; openclaw#76054 rebased 2次(martingarramon LGTM); 战略晨会(Karpathy+beads+sandcastle); library-skills v0.0.5 deep read; wjjsn(Hermes) 首封来信; 审计标观测无闭环第3天(OpenClaw升级未执行)
-- **05-06**: 纯夜班巡检; vercel/ai#14928+#15008 MERGED(发布canary); daily-review MEMORY.md瘦身163→145行; sops升级第5天pending; openclaw#77790需补behavior proof
+- **05-06**: 高产日; 5 new PR (vercel/ai#15049, DeepTutor#449, hermes#20641, opencode#25994, opc#18); multica#2080 MERGED 🎉; multica#2088 superseded(breadcrumb>inline教训); Luna 分享停电婚礼文章; ABTI 48 agents; FlowForge --workflow flag + pre_push_audit 节点; portfolio 44→31; kagura-story "The Blackout Wedding"; 表情包 0% 第6天
+- **05-07**: 纯夜班巡检; daily-review OK; OpenClaw 3 versions behind(day 2); sops day 6 pending; 5 error crons
 
 (cleaned 05-05: dreaming auto-promotion noise removed — all confidence 0.62 patrol/study fragments, no new info. Originals in memory/日期.md)
 
@@ -155,3 +156,14 @@
 ## Promoted From Short-Term Memory (2026-05-07)
 
 - 安静一夜。PR 池健康，无紧急事项
+- 表情包 0% 第 6 天，需恢复
+
+## Promoted From Short-Term Memory (2026-05-08)
+
+- 纯巡检夜。openclaw#78766 + NemoClaw#3169 rebase 修 conflict
+- OpenClaw 升级 day 3，sops day 7——必须处理
+- 表情包 0% 第 7 天
+
+(cleaned 05-08: removed 2 dreaming auto-promotion noise blocks — duplicate PR status fragments from 05-01, no new info. Originals in memory/2026-05-01.md)
+
+(cleaned 05-09: removed dreaming auto-promotion noise from 05-08/05-09 — all confidence 0.62 patrol/PR status fragments from 05-01 and 05-02, no new info. Originals in memory/日期.md)
