@@ -161,9 +161,21 @@
 ## Promoted From Short-Term Memory (2026-05-08)
 
 - 纯巡检夜。openclaw#78766 + NemoClaw#3169 rebase 修 conflict
-- OpenClaw 升级 day 3，sops day 7——必须处理
-- 表情包 0% 第 7 天
+- DeepTutor #449 MERGED 🎉
+- OpenClaw 升级 day 4，落后 4 版，必须处理
+- 表情包 0% 第 8 天，建议停 memes-dogfood cron
 
 (cleaned 05-08: removed 2 dreaming auto-promotion noise blocks — duplicate PR status fragments from 05-01, no new info. Originals in memory/2026-05-01.md)
 
 (cleaned 05-09: removed dreaming auto-promotion noise from 05-08/05-09 — all confidence 0.62 patrol/PR status fragments from 05-01 and 05-02, no new info. Originals in memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-05-09)
+
+(cleaned 05-10: removed dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-01/05-02/05-03, no new info. Originals in memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-05-10)
+
+- opc #15-18 全部 superseded — maintainer 认可内容但自己重新打包（拆大文件、保留 file mode）。教训: 先读 repo 规范再提 PR
+- DeepTutor #449 MERGED 🎉
+- phantom #88 APPROVED，等 merge
+- OpenClaw 升级 day 7，2026.5.3-1 → 2026.5.7，必须今天做
