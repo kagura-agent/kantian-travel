@@ -90,6 +90,7 @@
 - [x] **guide.md: 新增「parent-child API: breadcrumb over inline」** - multica#2088 教训 → 已加入 guide.md 第 17 条 (2026-05-06)
 - [x] **guide.md: 新增「upstream CI: verify once, stop re-analyzing」** - hermes-agent 5 PRs 教训 → 已加入 guide.md 第 18 条 (2026-05-07)
 - [x] **guide.md: 新增「check repo contribution gates before first commit」** - NemoClaw DCO 2次返工教训 → 已加入 guide.md 第 19 条，顺便修了编号混乱（14→20, 18→21）(2026-05-08)
+- [x] **guide.md: 新增「triage reviewer feedback: must-fix → should-fix → defer」** - memex#123 review 处理教训 → 已加入 guide.md 第 21 条 (2026-05-09)
 
 ## 📚 学习
 
@@ -118,8 +119,8 @@
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [x] Track: bux (browser-use/bux) - 311⭐ (05-06), flat growth. **Dropped** 05-06 — flat star growth, no traction signal
 - [x] Track: openmelon (eight-acres-lab) - 58⭐ (05-06), flat growth. Go core. **Dropped** 05-06 — flat star growth despite active commits
-- [ ] Track: skillplus (eight-acres-lab) - 469⭐ (05-08, was ~450 est). 8 skills now: food/travel/avatar realism + Douyin/Xiaohongshu/Weibo copywriting. Active daily commits (latest 05-07). Compilable skill packages → multi-target (OpenMelon/skill-md/prompt-bundle). Growing fast, CN social media content niche. Revisit 05-14
-- [ ] Track: garden-skills (ConardLi) - 2,842⭐ (05-09, was 2,396 on 05-06, +19%). 4 skills (gpt-image-2/kb-retriever/web-design-engineer/web-video-presentation). Brand-driven growth, proper release infra. Fork-heavy community (467 forks). Revisit 05-15
+- [ ] Track: skillplus (eight-acres-lab) - 194⭐ (05-09, corrected from inflated 469). 10 skills now incl video-hook-script + social-bio-writer. Active daily commits (latest 05-08). CN social media content niche. Revisit 05-14
+- [ ] Track: garden-skills (ConardLi) - 2,951⭐ (05-09, was 2,842 on 05-06, +3.8%). 4 skills, version bumps only. Brand-driven, solo maintainer (0 merged external PRs). 481 forks. Revisit 05-15
 - [x] Track: millionco/agent-install - 40⭐ (05-06), flat. **Dropped** 05-06 — stale (last push 05-01), low traction
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
@@ -187,14 +188,16 @@
 - [x] Track: endless-toil - 187⭐ (05-05), no commits since 04-24 (11 days). **Dropped** — stalled
 
 - [ ] Track: thClaws - 848⭐ (05-08, +5%), v0.8.4. Minor patches only since /goal deep read. Revisit 05-15
-- [ ] Track: garden-skills - 2,842⭐ (05-09, was 2,396 on 05-06, +19% in 3d). web-video-presentation v1.1.3 actively developed. 4 skills total. Brand-driven growth (ConardLi). Revisit 05-15
+- [x] Track: garden-skills - duplicate entry, see line ~122. **Removed**
+- [ ] Track: Aegis (GanyuanRan) - 140⭐ (05-09, created 04-30). Architecture-driven method pack, 18 skills, zero deps. Skills-as-methodology pattern. Revisit 05-16
 - [ ] Track: microsoft/apm - 2,293⭐ (05-09). Gitea virtual package support (#587), ADO PAT→bearer fallback, error UX polish. Steady development, no major arch changes. Revisit 05-14
 - [x] Track: OmniAgent - 576→733⭐ but no commits since 04-19. Star farming signal. **Dropped** 05-04
 - [x] Deep read: brain - git event log, bitemporal, 6-layer, authority model, secret prefilter. wiki/projects/brain-git-memory.md (04-29)
 - [x] 应用: beliefs-candidates 加 `source:` authority field(human 2×/self 3× 差异化毕业门槛)- from brain authority model (04-29)
 - [x] 应用: pre-commit secret scanning hooks installed on workspace + wiki repos - from brain prevention>detection pattern (04-29)
 - [x] Track: hermes-labyrinth - 249⭐ (05-04), polish phase, slowing. Revisit 05-09 **Dropped** 05-06 — slowing, deep read already done
-- [ ] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30)
+- [x] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30) → 05-09 done, agentic-stack PR#49 (getting-started.md update). <15 min idea-to-PR. Strategy validated.
+- [ ] Track: agentic-stack PR#49 merge result — docs-first entry validation. If merged, attempt code PR next. Revisit 05-14
 
 - [x] Track: mizchi/skills - 155⭐ (05-09). 🔴 SOLO (0/6), stale 9 days. **Dropped** 05-09
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
