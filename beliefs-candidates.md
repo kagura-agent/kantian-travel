@@ -12,12 +12,18 @@ Pass rate should be low — most candidates stay candidates. That's the point.
 
 **Promotion checklist** (copy when graduating):
 ```
+- [ ] Independent evaluation: bash scripts/evaluate-candidate.sh "<search term>" | claude --print
 - [ ] V1: ≥3 independent occurrences logged (dates: ___)
 - [ ] V2: Predictive scenario described ("next time ___ happens, this belief says ___")
 - [ ] V3: Non-obvious check ("a fresh agent without this belief would likely ___")
+- [ ] Evaluator verdict: PASS (attach output)
 - [ ] Target: DNA | Workflow | Knowledge-base
 - [ ] Specific location: ___
 ```
+
+**独立评分规则**: 候选人升级时，必须用 `scripts/evaluate-candidate.sh` 生成评估 prompt，
+交给独立 subagent（不带当前 session context）执行。自评不算。
+灵感来源：darwin-skill 的 "评分者和修改者不是同一个 agent 上下文" 原则。
 
 _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclusivity). See [[cangjie-skill-ecosystem]]._
 
