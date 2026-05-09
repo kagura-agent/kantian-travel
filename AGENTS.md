@@ -122,7 +122,7 @@ DNA 文件（SOUL.md, AGENTS.md, HEARTBEAT.md, IDENTITY.md, NUDGE.md, beliefs-ca
 **更新规则：**
 1. 每次改 DNA 必须飞书通知 Luna（改了什么、为什么、什么 gradient 驱动的）
 2. 更新依据三条：**重复性**（同一反馈反复出现）、**影响面**（影响一次行为还是所有行为）、**可验证性**（改了能观察到行为变化）
-3. beliefs-candidates.md 是进化的候选管线——gradient 积累到重复 3 次以上，选择最佳载体升级：
+3. beliefs-candidates.md 是进化的候选管线——gradient 必须通过 **Triple Verification** 门控（Cross-context ≥3 / Predictive Power / Non-obvious）才能升级，选择最佳载体：
    - **始终适用的原则** → DNA（AGENTS.md / SOUL.md）
    - **特定任务的流程** → Workflow（workloop.yaml 节点 task 描述）
    - **特定领域/项目经验** → Knowledge-base（projects/ 笔记或 cards/ 卡片）
