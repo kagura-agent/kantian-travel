@@ -58,18 +58,17 @@
 
 ### Next
 - [ ] Find next contribution opportunity — review upstream issues/roadmap for gaps
-- [ ] Fix remaining broken links: create stub cards for mcp-vs-native-tools, compose-performance-skills; decide on kagura-story card
 
 ### Observations
 - memex 0.1.32 installed locally (synced to upstream/main fdf7915, npm link)
 - PR #107 closed — maintainer picked up case-insensitive fix themselves (#142, better approach with runtime FS detection). TIL.
 - PR #123 merged ✅ — after addressing review (MCP consistency, shared scan utility, self-reference guard). Code in upstream.
-- Upstream active since 05-07: semantic embedding enrichment, search query capping, GitLab sync docs, CI improvements
-- Wiki health (05-09): 244 cards, 67 orphans (27%), 6 broken links, 0 collisions
-  - Cards grew 237 → 244 (+7), orphans grew 48 → 67 (+19) — new cards not yet linked
-  - Fixed 1 broken link (tracking-health.sh was script ref, not card)
-  - Remaining 6 broken: mcp-vs-native-tools, agent-skill-ecosystem, kagura-story, compose-performance-skills, db9, kronos-agent-os
-- Contribution score: 4 PRs merged (PR #78, #80, #92, #95, #99, #102, #123 = 7 total), 1 closed (maintainer superseded)
+- Upstream quiet since 05-08: GitLab sync docs (#146), search query capping, embedding enrichment. Only 1 open issue (#96 GitLab support). Clean codebase (0 TODOs/FIXMEs)
+- Wiki health (05-10): 253 cards, 67 orphans (26%), 0 broken links, 0 collisions ✅
+  - Created 7 stub cards to resolve all broken links: mcp-vs-native-tools, compose-performance-skills, verify-claims, kagura-story, db9, kronos-agent-os, agent-skill-ecosystem
+  - Fixed 1 wikilink slug mismatch (re_gent → re-gent)
+  - Cards grew 246 → 253 (+7), orphans stable at 67 (26% down from 28%)
+- Contribution score: 7 PRs merged (#78, #80, #92, #95, #99, #102, #123), 1 closed (maintainer superseded)
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -145,11 +144,13 @@
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [ ] Track: mirage (strukto-ai/mirage) - 1,695⭐ (05-10 PM). ALL @eouzoe critiques addressed (PR#22+#23 merged). ContextVar/AsyncLocalStorage capability enforcement, 255-line test suite covering every shell composition vector. Major maturity signal. Revisit 05-17
 - [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
+- [ ] Track: whale (usewhale/whale) - 69⭐ (05-10). DeepSeek-native CLI agent, Go, prefix-cache optimization. Active (pushed daily, external PRs). Revisit 05-17
 - [ ] Track: oh-story-claudecode (worldwonderer) - 946⭐ (05-10, +5%). v0.5.0: story-researcher subagent (CDP browser research), scene routing (开书/日更/大修), reference compression. 7 commits in 2 days — not stabilizing, accelerating. Revisit 05-15
 - [x] Track: mizchi/skills - 155⭐ (05-09, was 144 on 05-06). 🔴 SOLO (0/6 community health), last push 04-30 (9 days stale). **Dropped** 05-09 — solo project, stalled, no external engagement
 - [ ] Track: RunbookHermes (Tommy-yw) - 530⭐ (05-07), Hermes-native AIOps agent. Deep read done. Revisit 05-21
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
 - [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
+- [ ] Track: whale (usewhale/whale) - 69⭐ (05-10). DeepSeek-native CLI agent, Go, prefix-cache optimization. Active (pushed daily, external PRs). Revisit 05-17
 - [x] Track: girl-agent (TheSashaDev) - 188⭐ (05-07), growth flat, no new architectural features. **Dropped** 05-07
 - [x] Track: deepclaude (aattaran) - 1,642⭐ (05-09, flat). **Dropped** 05-09 — no commits since 05-05, slowing, duplicate entry
 - [ ] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM), test runner for agentskills.io skills. with/without A/B eval. TypeScript CLI. Revisit 05-14
@@ -274,3 +275,6 @@
 - [ ] Track: cangjie-skill (kangarooking) - 800⭐ (05-09 PM). Book→Skill distillation pipeline (RIA-TV++). 14 skill packs. Part of nuwa/darwin ecosystem. Revisit 05-16
 - [ ] Evaluate: V2 Predictive Power test for beliefs-candidates upgrade gate (inspired by cangjie-skill triple verification) — "can this belief predict behavior in unseen scenarios?"
 - [x] Track: Workspace-Bench (OpenDataBox) - 8⭐ (05-10). **Dropped** 05-10 — low traction, dataset still unreleased
+- [ ] Track: OpenViking (volcengine/OpenViking) - 23,725⭐ (05-10). ByteDance context database, L0/L1/L2 tiered model. AGPL-3.0, Python+Rust. Validates our wiki architecture. Revisit 05-24
+- [ ] Track: MemOS (MemTensor/MemOS) - 9,007⭐ (05-10). TypeScript memory OS with OpenClaw plugin, L1-L3+Skills evolution. Apache-2.0. Revisit 05-24
+- [ ] Apply: Script wiki/L1.md auto-regeneration from wiki content (inspired by OpenViking SemanticProcessor)
