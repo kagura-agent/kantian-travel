@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, 4 versions behind)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, 落后4版本)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -169,13 +169,11 @@
 
 (cleaned 05-09: removed dreaming auto-promotion noise from 05-08/05-09 — all confidence 0.62 patrol/PR status fragments from 05-01 and 05-02, no new info. Originals in memory/日期.md)
 
-## Promoted From Short-Term Memory (2026-05-09)
-
-(cleaned 05-10: removed dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-01/05-02/05-03, no new info. Originals in memory/日期.md)
-
 ## Promoted From Short-Term Memory (2026-05-10)
 
-- opc #15-18 全部 superseded — maintainer 认可内容但自己重新打包（拆大文件、保留 file mode）。教训: 先读 repo 规范再提 PR
+- opc #15-18 全部 superseded — maintainer 认可内容但自己重新打包。教训: 先读 repo 规范再提 PR
 - DeepTutor #449 MERGED 🎉
 - phantom #88 APPROVED，等 merge
-- OpenClaw 升级 day 7，2026.5.3-1 → 2026.5.7，必须今天做
+- OpenClaw 升级 day 7，2026.5.3-1 → 2026.5.7，必须做
+
+(cleaned 05-11: removed 05-09/05-10/05-11 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-04, duplicated existing entries. Originals in memory/日期.md)
