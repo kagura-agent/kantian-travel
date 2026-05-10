@@ -7,16 +7,22 @@
 - [x] PR #8 - closed (superseded by #11)
 
 ### Open PRs (awaiting review)
-- PR #15 - add 36 tests for criteria-lint.mjs - submitted 05-01
-- PR #16 - add 49 tests for eval-parser.mjs - submitted 05-02
-- PR #17 - add 69 tests for flow-core.mjs - submitted 05-03
-- PR #18 - docs: fix stale extension path references - submitted 05-06
-- [ ] Follow up if still no review by 05-12 (2 weeks since oldest)
+(none)
 
 ### Closed (not merged)
 - PR #12 - JSON.parse guard (closed 05-07, no review after 10 days)
 - PR #13 - util.mjs tests (closed)
 - PR #14 - audit.mjs tests (closed 05-07, backlog management)
+- PR #15 - criteria-lint.mjs tests (closed 05-09, maintainer wrote own: 3e19e59)
+- PR #16 - eval-parser.mjs tests (closed 05-09, maintainer wrote own: ea16e89)
+- PR #17 - flow-core.mjs tests (closed 05-09, maintainer wrote own: c8b3fb3)
+- PR #18 - docs fix (closed 05-09, cherry-picked as 0d18d18 — NTFS file mode issue)
+
+### Pattern (05-10)
+- 3 merged (all docs: #9, #10, #11), 8 closed/superseded
+- Maintainer consistently writes own version of tests/fixes rather than merging PRs
+- This is a solo-maintainer repo — contributions outside docs have low merge rate
+- Consider: pause contributions unless a real functional gap is found
 
 ## 📘 Moltbook
 
@@ -38,29 +44,32 @@
 ## 🧠 Memex
 
 ### Done
+- [x] PR #123 - feat(links): count inbound links from extraLinkDirs (merged 05-08, fixes #122, addressed review: MCP consistency + shared scan utility) ✅
+- [x] PR #107 - fix(links): case-insensitive wikilink resolution (closed 05-08, maintainer superseded with #142) 
 - [x] PR #102 - fix(parser): handle pipe aliases and ignore code blocks in extractLinks (merged 05-04, fixes #101) ✅
 - [x] PR #99 - feat(doctor): support extraLinkDirs to reduce false broken links (merged 05-03, fixes #98) ✅
 - [x] PR #95 - fix(doctor,links): resolve basename wikilinks to nested slugs (merged 05-02, fixes #94) ✅
-- [x] PR #92 - feat: `links --json` flag for machine-readable output (submitted 04-30, fixes #91) - MERGED ✅ 05-01
+- [x] PR #92 - feat: `links --json` flag for machine-readable output (merged 05-01, fixes #91) ✅
 - [x] PR #89 - fix `sync --init` master/main branch divergence (merged 04-29, fixes #82)
 - [x] PR #80 - fix `--json` flag ignored with `--check-collisions` (merged 04-27, fixes #79)
 - [x] PR #78 - `doctor --json` flag for machine-readable output (merged 04-27)
 - [x] PR #76 - `doctor --verbose` flag (merged 04-27)
-- [x] Updated local memex to 0.1.32 (built from fork, npm link)
+- [x] Updated local memex to 0.1.32 (synced upstream fdf7915, npm link)
 
 ### Next
-- [ ] PR #107 - fix(links): case-insensitive wikilink resolution (submitted 05-04, fixes #106) — awaiting review
-- [ ] PR #123 - feat(links): count inbound links from extraLinkDirs in orphan detection (submitted 05-07, fixes #122) — awaiting review
-- [ ] Follow up on PR #107 review feedback
+- [ ] Find next contribution opportunity — review upstream issues/roadmap for gaps
+- [ ] Fix remaining broken links: create stub cards for mcp-vs-native-tools, compose-performance-skills; decide on kagura-story card
 
 ### Observations
-- memex 0.1.32+case-fix+extralinks installed locally (built from fork with PR #107 + #123 merged locally, npm link)
-- Case-insensitive fix validated via dogfood: 2 broken links (`→ OpenClaw`) resolved ✅
-- Wiki health (05-07): 237 cards, 48 orphans (20%), 3 broken links, 0 collisions
-  - Orphan improvement: 67 → 48 after extraLinkDirs inbound counting (PR #123)
-  - 5 new orphan cards today (agent-budget-control, composable-prompt-assembly, llm-decision-layer-pattern, memory-complexity-pendulum, tiered-memory-retrieval) — all concept cards, will link naturally over time
-- Remaining 3 broken: agent-skill-ecosystem, db9, kronos-agent-os (external concepts, low priority)
-- Upstream quiet: last commit 05-04 (A-MEM skill), no new activity
+- memex 0.1.32 installed locally (synced to upstream/main fdf7915, npm link)
+- PR #107 closed — maintainer picked up case-insensitive fix themselves (#142, better approach with runtime FS detection). TIL.
+- PR #123 merged ✅ — after addressing review (MCP consistency, shared scan utility, self-reference guard). Code in upstream.
+- Upstream active since 05-07: semantic embedding enrichment, search query capping, GitLab sync docs, CI improvements
+- Wiki health (05-09): 244 cards, 67 orphans (27%), 6 broken links, 0 collisions
+  - Cards grew 237 → 244 (+7), orphans grew 48 → 67 (+19) — new cards not yet linked
+  - Fixed 1 broken link (tracking-health.sh was script ref, not card)
+  - Remaining 6 broken: mcp-vs-native-tools, agent-skill-ecosystem, kagura-story, compose-performance-skills, db9, kronos-agent-os
+- Contribution score: 4 PRs merged (PR #78, #80, #92, #95, #99, #102, #123 = 7 total), 1 closed (maintainer superseded)
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -119,23 +128,34 @@
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [x] Track: bux (browser-use/bux) - 311⭐ (05-06), flat growth. **Dropped** 05-06 — flat star growth, no traction signal
 - [x] Track: openmelon (eight-acres-lab) - 58⭐ (05-06), flat growth. Go core. **Dropped** 05-06 — flat star growth despite active commits
-- [ ] Track: skillplus (eight-acres-lab) - 194⭐ (05-09, corrected from inflated 469). 10 skills now incl video-hook-script + social-bio-writer. Active daily commits (latest 05-08). CN social media content niche. Revisit 05-14
-- [ ] Track: garden-skills (ConardLi) - 2,951⭐ (05-09, was 2,842 on 05-06, +3.8%). 4 skills, version bumps only. Brand-driven, solo maintainer (0 merged external PRs). 481 forks. Revisit 05-15
+- [ ] Track: skillplus (eight-acres-lab) - 216⭐ (05-10, was 194, +11%). Active. Revisit 05-14
+- [ ] Track: garden-skills (ConardLi) - 3,280⭐ (05-10, was 2,951, +11%). Brand-driven, solo maintainer. Revisit 05-15
+- [ ] Track: re_gent (regent-vcs/re_gent) - 297⭐ (05-10 PM). Quiet Sunday — cosmetic branding commit only. Issues #16-#25 are roadmap items. No architectural changes. Revisit 05-16
+- [ ] Track: OpenSquilla (opensquilla/opensquilla) - 173⭐ (05-10). Token-efficient agent with local ML router (SquillaRouter). Apache-2.0, Python. 4 days old, strong traction. Revisit 05-17
+- [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
+- [x] Track: aide (hibbault/aide) - 15⭐ (05-10). **Dropped** 05-10 — repo 404 (deleted/renamed)
+- [ ] Track: Photo-agents (jmerelnyc/Photo-agents) - 364⭐ (05-10). Self-evolving agent with vision-grounded layered memory + self-written skills. MIT, Python. 6 days old, strong traction. Revisit 05-17
+- [ ] Track: OpenSquilla (OpenSquilla/opensquilla) - 170⭐ (05-10). Token-efficient agent with ML-based SquillaRouter (BGE+LightGBM+MLP → T0-T3 thinking + P0-P2 prompt). 4 days old, Apache-2.0. Revisit 05-17
+- [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
+- [ ] Track: agent-skills-eval (darkrishabh) - 265⭐ (05-10). Test runner for agentskills.io-style skills, with/without baseline comparison. Skill ecosystem maturing. Revisit 05-17
+- [x] Deep read: cwc-long-running-agents Default-FAIL pattern → adopted. Created default-fail-gate.sh, integrated into workloop pre_push_audit (05-10)
 - [x] Track: millionco/agent-install - 40⭐ (05-06), flat. **Dropped** 05-06 — stale (last push 05-01), low traction
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
-- [ ] Track: mirage (strukto-ai/mirage) - 1,487⭐ (05-09 PM, +1.8%). Growth decelerating. PR#10 "prompt isolation" = dependency isolation (misleading title), not session isolation. Critical arch issues #15-#19 still open, 0 maintainer response after 48h. New bug #14 (grep mount path). Revisit 05-14
-- [ ] Track: oh-story-claudecode (worldwonderer) - 901⭐ (05-09, flat). v0.4.1 consolidation: desymlinking CI, banned-words fix, cross-skill reference cleanup. 8 PRs in one day. Stabilizing, not growing. Revisit 05-15
+- [ ] Track: mirage (strukto-ai/mirage) - 1,695⭐ (05-10 PM). ALL @eouzoe critiques addressed (PR#22+#23 merged). ContextVar/AsyncLocalStorage capability enforcement, 255-line test suite covering every shell composition vector. Major maturity signal. Revisit 05-17
+- [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
+- [ ] Track: oh-story-claudecode (worldwonderer) - 946⭐ (05-10, +5%). v0.5.0: story-researcher subagent (CDP browser research), scene routing (开书/日更/大修), reference compression. 7 commits in 2 days — not stabilizing, accelerating. Revisit 05-15
 - [x] Track: mizchi/skills - 155⭐ (05-09, was 144 on 05-06). 🔴 SOLO (0/6 community health), last push 04-30 (9 days stale). **Dropped** 05-09 — solo project, stalled, no external engagement
 - [ ] Track: RunbookHermes (Tommy-yw) - 530⭐ (05-07), Hermes-native AIOps agent. Deep read done. Revisit 05-21
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
+- [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
 - [x] Track: girl-agent (TheSashaDev) - 188⭐ (05-07), growth flat, no new architectural features. **Dropped** 05-07
 - [x] Track: deepclaude (aattaran) - 1,642⭐ (05-09, flat). **Dropped** 05-09 — no commits since 05-05, slowing, duplicate entry
 - [ ] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM), test runner for agentskills.io skills. with/without A/B eval. TypeScript CLI. Revisit 05-14
 - [ ] Track: downy (bensenescu) - 157⭐ (05-08), OpenClaw Alternative on Cloudflare DOs. Web-only, single-user. Created 04-30. Revisit 05-15
 - [ ] Track: speca (NyxFoundation) - 355⭐ (05-08), spec-to-checklist agentic auditing. DeFi benchmarks. Active dev. Revisit 05-15
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
-- [ ] Track: deepsec (vercel-labs/deepsec) - 1,899⭐ (05-09 PM). Provenance, sandbox fix, quota handling. PR#69 (skills folder) + PR#70 (Ollama) still open. 23 open issues. Community PRs growing. Revisit 05-14
+- [ ] Track: deepsec (vercel-labs/deepsec) - 2,055⭐ (05-10, +8%). Pushed 05-07. PR#69 (skills folder) + PR#70 (Ollama) still open. Community PRs growing. Revisit 05-14
 - [x] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. **Dropped** 05-08 — stale, no commits 7+ days, stars flat
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
@@ -165,6 +185,8 @@
 - [x] Track: cadis (Growth-Circle/cadis) - 39⭐ (05-05). **Dropped** 05-05 — solo dev, no community
 - [x] Track: deepclaude (aattaran/deepclaude) - 1,347⭐ (05-06). **Dropped** 05-09 — merged with above, project stalling
 - [ ] Track: deepsec (vercel-labs/deepsec) - 1,777⭐ (05-08 PM), +1% incremental. Active. Revisit 05-15
+- [x] Track: centaur-loop (finewood2008/centaur-loop) - 16⭐ (05-10). **Dropped** 05-10 — low traction, too small
+- [ ] Deep read: Sentra RAG failure mode taxonomy — independent study for evaluating retrieval systems. From krusch-context-mcp scout.
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [ ] Observe: agent eval/testing space - still underdeveloped. Top: Margin-Lab/evals 59⭐ (stalled 04-24), Calibre-Labs/reforge-ai-evals 42⭐ (active). No breakout. Revisit 05-15
@@ -238,7 +260,8 @@
 - [ ] 知识星球: 确认 Luna 的更新频率和内容方向
 - [ ] briefing-001: @ Luna 要反馈, 否则出 briefing-002 没方向
 - [ ] Podcast: EP005+ 计划 — 确认是否继续
-- [ ] Track: photo-agents (jmerelnyc) - 184⭐ (05-07), 3.6× growth. Commercial (API key gated). Vision-grounded layered memory. Revisit 05-14
+- [ ] Track: photo-agents (jmerelnyc) - 363⭐ (05-09, was 184 on 05-07, +97%). Commercial (API key gated). Vision-grounded layered memory. Revisit 05-14
+- [ ] Track: agent-skills-eval (darkrishabh) - 250⭐ (05-09). Test runner for agentskills.io skills. A/B eval with judge model. Skill ecosystem maturity signal. Revisit 05-16
 - [ ] Track: master-skill (voidborne-d) - 48⭐ (05-09, was 33 on 05-06, +45%). 10 industry distillations now (bazi-metaphysics added 05-08). Solo but very active. Revisit 05-15
 - [x] Track: aide (hibbault) - 11⭐ (05-06), recursive self-improving agent in own source code. 3-tier memory budget. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [ ] **预 clone 大 repo**: eliza (648MB) 需要在非高峰时段或通过 VPN 提前 clone，否则 workloop 完全浪费。考虑在 heartbeat 里检查 gogetajob DB 中 repo size 并自动预 clone（到期 2026-05-13）
@@ -249,3 +272,4 @@
 - [ ] Track: agent-harness-kit (enmanuelmag) - 124⭐ (05-08), MCP multi-agent harness with Lead/Explorer/Builder/Reviewer pipeline + SQLite state. Atomic task claiming. Revisit 05-15
 - [ ] Track: cangjie-skill (kangarooking) - 800⭐ (05-09 PM). Book→Skill distillation pipeline (RIA-TV++). 14 skill packs. Part of nuwa/darwin ecosystem. Revisit 05-16
 - [ ] Evaluate: V2 Predictive Power test for beliefs-candidates upgrade gate (inspired by cangjie-skill triple verification) — "can this belief predict behavior in unseen scenarios?"
+- [x] Track: Workspace-Bench (OpenDataBox) - 8⭐ (05-10). **Dropped** 05-10 — low traction, dataset still unreleased
