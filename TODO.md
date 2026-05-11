@@ -135,15 +135,15 @@
 - [ ] Track: re_gent (regent-vcs/re_gent) - 361⭐ (05-11, was 357, +1%). Professional security review offer (Issue #26). Branding polish only. Growth leveling off after viral spike. Revisit 05-18
 - [ ] Track: OpenSquilla (opensquilla/opensquilla) - 196⭐ (05-11, was 194, +1%). Feishu reliability fixes, Bug #14 async generator from real user. Incremental. Revisit 05-18
 - [ ] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-11). Memory runtime with provenance. Very active (daily commits, v0.7.2). Revisit 05-18
-- [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
+- [ ] Track: buddyme (virgo777) - 54⭐ (05-11, was 30, +80%). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. 🟡 GROWING fast. Revisit 05-17
 - [x] Track: aide (hibbault/aide) - 15⭐ (05-10). **Dropped** 05-10 — repo 404 (deleted/renamed)
 - [ ] Track: Photo-agents (jmerelnyc/Photo-agents) - 364⭐ (05-10). Self-evolving agent with vision-grounded layered memory + self-written skills. MIT, Python. Revisit 05-17
-- [ ] Track: agent-skills-eval (darkrishabh) - 265⭐ (05-10). Test runner for agentskills.io-style skills, with/without baseline comparison. Skill ecosystem maturing. Revisit 05-17
+- [ ] Track: agent-skills-eval (darkrishabh) - 372⭐ (05-11, was 265, +40%). Test runner for agentskills.io-style skills. 🟡 GROWING fast. Revisit 05-17
 - [x] Deep read: cwc-long-running-agents Default-FAIL pattern → adopted. Created default-fail-gate.sh, integrated into workloop pre_push_audit (05-10)
 - [x] Track: millionco/agent-install - 40⭐ (05-06), flat. **Dropped** 05-06 — stale (last push 05-01), low traction
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
-- [ ] Track: mirage (strukto-ai/mirage) - 1,695⭐ (05-10 PM). ALL @eouzoe critiques addressed (PR#22+#23 merged). ContextVar/AsyncLocalStorage capability enforcement, 255-line test suite covering every shell composition vector. Major maturity signal. Revisit 05-17
+- [ ] Track: mirage (strukto-ai/mirage) - 1,874⭐ (05-11, was 1,695, +11%). Still accelerating post-security fixes. Revisit 05-17
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). **Dropped** 05-11 — low traction, duplicate entries cleaned
 - [ ] Track: whale (usewhale/whale) - 69⭐ (05-10). DeepSeek-native CLI agent, Go, prefix-cache optimization. Active (pushed daily, external PRs). Revisit 05-17
 - [ ] Track: oh-story-claudecode (worldwonderer) - 955⭐ (05-11, was 946). story-researcher subagent, scene routing, reference compression, writing formula references. 5 commits in 2 days, still accelerating. Revisit 05-17
@@ -167,7 +167,7 @@
 - [x] Track: invincat (dog-qiuqiu) - 306⭐ (05-11, was 304). Scheduler subsystem shipped (PR#21): SQLite cron + one-shot + WeCom delivery + TUI manager. Stars flat but feature velocity high. Revisit 05-17
 - [x] Track: friday-studio (friday-platform) - 19⭐ (05-05). **Dropped** 05-05 — low traction, architectural comparison done
 - [x] Evaluate: understand-you (SeanLiew523) - 4⭐ (05-05), OpenClaw skill for owner onboarding/alignment convergence. Check ClawHub integration potential → 05-07 verdict: NOT NOW. Mature workspace, 4⭐ single-day project, no traction. Gap-audit pattern worth noting. See wiki/projects/understand-you.md
-- [ ] Track: addyosmani/agent-skills - 33.9K⭐ (05-08, was 32.1K, +6%). Still viral but growth decelerating. Only plugin.json fix since 05-05. Revisit 05-15
+- [ ] Track: addyosmani/agent-skills - 39.2K⭐ (05-11, was 33.9K, +16%). Still viral, growth RE-accelerating. Revisit 05-15
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [ ] Track: kiwifs/kiwifs - 419⭐ (05-11). v0.10.0 released! Security primitives (scoped tokens, visibility, audit logging, rate limiting), markdown auto-format + kiwi_lint MCP tool (10 rules). 🟢 THRIVING (6/6). Velocity accelerating — v0.5→v0.10 in 3 days. Revisit 05-17
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
