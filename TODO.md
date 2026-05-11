@@ -134,6 +134,7 @@
 - [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
 - [ ] Track: re_gent (regent-vcs/re_gent) - 361⭐ (05-11, was 357, +1%). Professional security review offer (Issue #26). Branding polish only. Growth leveling off after viral spike. Revisit 05-18
 - [ ] Track: OpenSquilla (opensquilla/opensquilla) - 196⭐ (05-11, was 194, +1%). Feishu reliability fixes, Bug #14 async generator from real user. Incremental. Revisit 05-18
+- [ ] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-11). Memory runtime with provenance. Very active (daily commits, v0.7.2). Revisit 05-18
 - [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
 - [x] Track: aide (hibbault/aide) - 15⭐ (05-10). **Dropped** 05-10 — repo 404 (deleted/renamed)
 - [ ] Track: Photo-agents (jmerelnyc/Photo-agents) - 364⭐ (05-10). Self-evolving agent with vision-grounded layered memory + self-written skills. MIT, Python. Revisit 05-17
@@ -189,7 +190,7 @@
 - [x] Track: deepclaude (aattaran/deepclaude) - 1,347⭐ (05-06). **Dropped** 05-09 — merged with above, project stalling
 - [x] Track: deepsec (vercel-labs/deepsec) - 1,777⭐ (05-08 PM). **Duplicate** — consolidated to 2,171⭐ entry above
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 16⭐ (05-10). **Dropped** 05-10 — low traction, too small
-- [ ] Deep read: Sentra RAG failure mode taxonomy — independent study for evaluating retrieval systems. From krusch-context-mcp scout.
+- [x] Deep read: Sentra RAG failure mode taxonomy — independent study for evaluating retrieval systems. From krusch-context-mcp scout. → 2026-05-11 done, wiki/projects/sentra-rag-failure-modes.md. 8 failure modes (F1-F8) with mitigation playbook. Key takeaway: RAG = similarity oracle, not memory; multi-primitive system needed. Our hybrid search.sh already addresses F1/F2.
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [ ] Observe: agent eval/testing space - still underdeveloped. Top: Margin-Lab/evals 59⭐ (stalled 04-24), Calibre-Labs/reforge-ai-evals 42⭐ (active). No breakout. Revisit 05-15
