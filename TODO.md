@@ -128,46 +128,45 @@
 - [x] Track: agent-session-resume - 156⭐, no push since 04-25. **Dropped** 05-02 (stalled 7+ days)
 - [x] Track: bux (browser-use/bux) - 311⭐ (05-06), flat growth. **Dropped** 05-06 — flat star growth, no traction signal
 - [x] Track: openmelon (eight-acres-lab) - 58⭐ (05-06), flat growth. Go core. **Dropped** 05-06 — flat star growth despite active commits
-- [ ] Track: skillplus (eight-acres-lab) - 216⭐ (05-10, was 194, +11%). Active. Revisit 05-14
-- [ ] Track: garden-skills (ConardLi) - 3,280⭐ (05-10, was 2,951, +11%). Brand-driven, solo maintainer. Revisit 05-15
-- [ ] Track: re_gent (regent-vcs/re_gent) - 297⭐ (05-10 PM). Quiet Sunday — cosmetic branding commit only. Issues #16-#25 are roadmap items. No architectural changes. Revisit 05-16
-- [ ] Track: OpenSquilla (opensquilla/opensquilla) - 173⭐ (05-10). Token-efficient agent with local ML router (SquillaRouter). Apache-2.0, Python. 4 days old, strong traction. Revisit 05-17
+- [ ] Track: skillplus (eight-acres-lab) - 242⭐ (05-11, was 216, +12%). 9 skills now (cs-player-card added). Active daily commits. Revisit 05-18
+- [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
+- [ ] Track: re_gent (regent-vcs/re_gent) - 361⭐ (05-11, was 357, +1%). Professional security review offer (Issue #26). Branding polish only. Growth leveling off after viral spike. Revisit 05-18
+- [ ] Track: OpenSquilla (opensquilla/opensquilla) - 196⭐ (05-11, was 194, +1%). Feishu reliability fixes, Bug #14 async generator from real user. Incremental. Revisit 05-18
 - [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
 - [x] Track: aide (hibbault/aide) - 15⭐ (05-10). **Dropped** 05-10 — repo 404 (deleted/renamed)
-- [ ] Track: Photo-agents (jmerelnyc/Photo-agents) - 364⭐ (05-10). Self-evolving agent with vision-grounded layered memory + self-written skills. MIT, Python. 6 days old, strong traction. Revisit 05-17
-- [ ] Track: OpenSquilla (OpenSquilla/opensquilla) - 170⭐ (05-10). Token-efficient agent with ML-based SquillaRouter (BGE+LightGBM+MLP → T0-T3 thinking + P0-P2 prompt). 4 days old, Apache-2.0. Revisit 05-17
-- [ ] Track: buddyme (virgo777) - 30⭐ (05-10). Heartbeat+personality agent framework, CN model ecosystem. Near-identical DNA structure to ours. Revisit 05-17
+- [ ] Track: Photo-agents (jmerelnyc/Photo-agents) - 364⭐ (05-10). Self-evolving agent with vision-grounded layered memory + self-written skills. MIT, Python. Revisit 05-17
 - [ ] Track: agent-skills-eval (darkrishabh) - 265⭐ (05-10). Test runner for agentskills.io-style skills, with/without baseline comparison. Skill ecosystem maturing. Revisit 05-17
 - [x] Deep read: cwc-long-running-agents Default-FAIL pattern → adopted. Created default-fail-gate.sh, integrated into workloop pre_push_audit (05-10)
 - [x] Track: millionco/agent-install - 40⭐ (05-06), flat. **Dropped** 05-06 — stale (last push 05-01), low traction
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [ ] Track: mirage (strukto-ai/mirage) - 1,695⭐ (05-10 PM). ALL @eouzoe critiques addressed (PR#22+#23 merged). ContextVar/AsyncLocalStorage capability enforcement, 255-line test suite covering every shell composition vector. Major maturity signal. Revisit 05-17
-- [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
+- [x] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). **Dropped** 05-11 — low traction, duplicate entries cleaned
 - [ ] Track: whale (usewhale/whale) - 69⭐ (05-10). DeepSeek-native CLI agent, Go, prefix-cache optimization. Active (pushed daily, external PRs). Revisit 05-17
-- [ ] Track: oh-story-claudecode (worldwonderer) - 946⭐ (05-10, +5%). v0.5.0: story-researcher subagent (CDP browser research), scene routing (开书/日更/大修), reference compression. 7 commits in 2 days — not stabilizing, accelerating. Revisit 05-15
+- [ ] Track: oh-story-claudecode (worldwonderer) - 955⭐ (05-11, was 946). story-researcher subagent, scene routing, reference compression, writing formula references. 5 commits in 2 days, still accelerating. Revisit 05-17
 - [x] Track: mizchi/skills - 155⭐ (05-09, was 144 on 05-06). 🔴 SOLO (0/6 community health), last push 04-30 (9 days stale). **Dropped** 05-09 — solo project, stalled, no external engagement
 - [ ] Track: RunbookHermes (Tommy-yw) - 530⭐ (05-07), Hermes-native AIOps agent. Deep read done. Revisit 05-21
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
-- [ ] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). Human-governed feedback loop workbench, 9-stage state machine. TypeScript/React, MIT. Revisit 05-17
-- [ ] Track: whale (usewhale/whale) - 69⭐ (05-10). DeepSeek-native CLI agent, Go, prefix-cache optimization. Active (pushed daily, external PRs). Revisit 05-17
 - [x] Track: girl-agent (TheSashaDev) - 188⭐ (05-07), growth flat, no new architectural features. **Dropped** 05-07
 - [x] Track: deepclaude (aattaran) - 1,642⭐ (05-09, flat). **Dropped** 05-09 — no commits since 05-05, slowing, duplicate entry
-- [ ] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM), test runner for agentskills.io skills. with/without A/B eval. TypeScript CLI. Revisit 05-14
-- [ ] Track: downy (bensenescu) - 157⭐ (05-08), OpenClaw Alternative on Cloudflare DOs. Web-only, single-user. Created 04-30. Revisit 05-15
-- [ ] Track: speca (NyxFoundation) - 355⭐ (05-08), spec-to-checklist agentic auditing. DeFi benchmarks. Active dev. Revisit 05-15
+- [x] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM). **Duplicate** — consolidated to 265⭐ entry above
+- [ ] Track: downy (bensenescu) - 182⭐ (05-11, was 157, +16%). MCP reconnect fix, local model fallback. 🟡 GROWING. Revisit 05-18
+- [ ] Track: speca (NyxFoundation/speca) - 375⭐ (05-11, was 355, +6%). Dropped Anthropic SDK→claude CLI (ClaudeRunner). Ethereum past-fix dataset. 🟢 THRIVING. Revisit 05-18
+- [ ] Track: agentops (boshu2/agentops) - 342⭐ (05-11). CDLC framework, decay-ranked retrieval, multi-model councils. Solo dev, CLI rough but active (8 commits/day). Revisit 05-18
+- [ ] Track: poco-claw (poco-ai/poco-claw) - 1,318⭐ (05-11). Direct OpenClaw competitor. Web UI + Docker sandbox + Claude Agent SDK + channel collab. 3-core-dev team, very active. Deep-read done. Revisit 05-18
+- [ ] Track: ironcurtain (provos/ironcurtain) - 391⭐ (05-11). Constitutional agent security. English intent → deterministic rules → MCP enforcement. Research prototype. Revisit 05-25
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
-- [ ] Track: deepsec (vercel-labs/deepsec) - 2,055⭐ (05-10, +8%). Pushed 05-07. PR#69 (skills folder) + PR#70 (Ollama) still open. Community PRs growing. Revisit 05-14
+- [ ] Track: deepsec (vercel-labs/deepsec) - 2,171⭐ (05-11, was 2,055, +6%). Pushed 05-07. Provenance, sandbox fix, quota handling. 22 open issues. Revisit 05-17
 - [x] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. **Dropped** 05-08 — stale, no commits 7+ days, stars flat
 - [x] Evaluate: wiki-lint secret scanning - add credential pattern detection (inspired by Harmonist memory secret scanner, ~30 patterns) → 04-28 done, added 25 patterns to wiki-lint.py section 9, zero false positives on 493 files, committed+pushed
 - [x] Evaluate: agent observability - data layer concept for OpenClaw cron/session monitoring(inspired by agentic-stack v0.11 data-layer skill)→ 04-27 verdict: NOT NOW. Trajectory JSONL has all data, 50-line PoC works. See [[cron-observability-metrics]]
-- [ ] Track: agentic-stack (codejunkie99) - 1,900⭐ (05-09, was 1,858 on 05-06). v0.15.0 dashboard TUI. 🟢 THRIVING community (6/6). Open issues #46/#47 reveal manifest drift + doctor false-positive bugs — instructive for skill lifecycle. Revisit 05-14
-- [ ] Track: invincat (dog-qiuqiu) - 304⭐ (05-08 PM). Multi-model pivot: DeepSeek thinking support + model registration refactor. Continued prompt simplification. Revisit 05-14
+- [x] Track: agentic-stack (codejunkie99) - 1,928⭐ (05-11, was 1,900). v0.16→v0.18 in 2 days: Copilot/Gemini adapters, Mission Control dashboard, lesson retraction, Brain memory bridge. Our docs PR #49 merged! 🟢 THRIVING (5/6). Revisit 05-17
+- [x] Track: invincat (dog-qiuqiu) - 306⭐ (05-11, was 304). Scheduler subsystem shipped (PR#21): SQLite cron + one-shot + WeCom delivery + TUI manager. Stars flat but feature velocity high. Revisit 05-17
 - [x] Track: friday-studio (friday-platform) - 19⭐ (05-05). **Dropped** 05-05 — low traction, architectural comparison done
 - [x] Evaluate: understand-you (SeanLiew523) - 4⭐ (05-05), OpenClaw skill for owner onboarding/alignment convergence. Check ClawHub integration potential → 05-07 verdict: NOT NOW. Mature workspace, 4⭐ single-day project, no traction. Gap-audit pattern worth noting. See wiki/projects/understand-you.md
 - [ ] Track: addyosmani/agent-skills - 33.9K⭐ (05-08, was 32.1K, +6%). Still viral but growth decelerating. Only plugin.json fix since 05-05. Revisit 05-15
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
-- [ ] Track: kiwifs/kiwifs - 421⭐ (05-07), v0.5.0 released. Agent self-modification of rules (PR#41 GuardPath allowlist). Dev velocity decelerating but architecture complete. Converging on "agent workspace server". Revisit 05-14
+- [ ] Track: kiwifs/kiwifs - 419⭐ (05-11). v0.10.0 released! Security primitives (scoped tokens, visibility, audit logging, rate limiting), markdown auto-format + kiwi_lint MCP tool (10 rules). 🟢 THRIVING (6/6). Velocity accelerating — v0.5→v0.10 in 3 days. Revisit 05-17
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
@@ -186,7 +185,7 @@
 - [x] Evaluate: FlowForge plan-first phase - Blueprint's Q&A→plan→code pattern applied to workloop. Added `plan` node between study→implement. Commit fef0639 (05-03)
 - [x] Track: cadis (Growth-Circle/cadis) - 39⭐ (05-05). **Dropped** 05-05 — solo dev, no community
 - [x] Track: deepclaude (aattaran/deepclaude) - 1,347⭐ (05-06). **Dropped** 05-09 — merged with above, project stalling
-- [ ] Track: deepsec (vercel-labs/deepsec) - 1,777⭐ (05-08 PM), +1% incremental. Active. Revisit 05-15
+- [x] Track: deepsec (vercel-labs/deepsec) - 1,777⭐ (05-08 PM). **Duplicate** — consolidated to 2,171⭐ entry above
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 16⭐ (05-10). **Dropped** 05-10 — low traction, too small
 - [ ] Deep read: Sentra RAG failure mode taxonomy — independent study for evaluating retrieval systems. From krusch-context-mcp scout.
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
@@ -221,7 +220,7 @@
 - [x] 应用: pre-commit secret scanning hooks installed on workspace + wiki repos - from brain prevention>detection pattern (04-29)
 - [x] Track: hermes-labyrinth - 249⭐ (05-04), polish phase, slowing. Revisit 05-09 **Dropped** 05-06 — slowing, deep read already done
 - [x] Experiment: try docs-first contribution strategy on 1 new repo (inspired by iris-clawd study 04-30) → 05-09 done, agentic-stack PR#49 (getting-started.md update). <15 min idea-to-PR. Strategy validated.
-- [ ] Track: agentic-stack PR#49 merge result — docs-first entry validation. If merged, attempt code PR next. Revisit 05-14
+- [x] Track: agentic-stack PR#49 merged 05-09! Docs-first entry validated. Next: consider code PR (brain bridge or adapter area). Revisit 05-17
 
 - [x] Track: mizchi/skills - 155⭐ (05-09). 🔴 SOLO (0/6), stale 9 days. **Dropped** 05-09
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
@@ -238,7 +237,7 @@
 - [x] Track: cursor/cookbook - 3,679⭐ (05-08 PM). **Dropped** 05-09 — no commits since 05-01, growth is viral/organic without new content
 - [ ] Security: APIMitmHack (ez-lbz/APIMitmHack) - 43⭐ (04-30), malicious proxy targeting openclaw/claudecode/opencode via response injection. Monitor
 - [x] Track: oh-my-kimichan - 12⭐ (05-01). **Dropped** 05-05 — low traction
-- [ ] Track: chromex (GENEXIS-AI/chromex) - 935⭐ (05-08 PM), v0.1.5. +12% growth on bug fixes only. Strong demand signal. Revisit 05-15
+- [ ] Track: chromex (GENEXIS-AI/chromex) - 1,057⭐ (05-11, was 935, +13%). Windows support, external feature PRs, multilingual. 🟢 THRIVING. Revisit 05-18
 - [x] Track: codex-plusplus - 937⭐ (05-06, +385!), v0.1.3 stable. Explosive growth. Revisit 05-10 (consider drop — brand-riding, not architecturally interesting) **Dropped** 05-06 — brand-riding, not architecturally interesting
 - [x] Deep read: tiangolo/library-skills - 166⭐ (05-01), library-embedded agent skills via symlink. FastAPI already ships skills. wiki/projects/library-skills.md
 - [x] Track: tiangolo/library-skills - 442⭐ (05-06), v0.0.5 stable, no commits since 05-01. **Dropped** 05-06 — stale, no development activity
@@ -262,19 +261,23 @@
 - [ ] 知识星球: 确认 Luna 的更新频率和内容方向
 - [ ] briefing-001: @ Luna 要反馈, 否则出 briefing-002 没方向
 - [ ] Podcast: EP005+ 计划 — 确认是否继续
-- [ ] Track: photo-agents (jmerelnyc) - 363⭐ (05-09, was 184 on 05-07, +97%). Commercial (API key gated). Vision-grounded layered memory. Revisit 05-14
-- [ ] Track: agent-skills-eval (darkrishabh) - 250⭐ (05-09). Test runner for agentskills.io skills. A/B eval with judge model. Skill ecosystem maturity signal. Revisit 05-16
-- [ ] Track: master-skill (voidborne-d) - 48⭐ (05-09, was 33 on 05-06, +45%). 10 industry distillations now (bazi-metaphysics added 05-08). Solo but very active. Revisit 05-15
+- [x] Track: photo-agents (jmerelnyc) - 363⭐ (05-09). **Duplicate** — consolidated to 364⭐ entry above
+- [x] Track: agent-skills-eval (darkrishabh) - 250⭐ (05-09). **Duplicate** — consolidated to 265⭐ entry above
+- [x] Track: master-skill (voidborne-d) - 48⭐ (05-09). **Dropped** 05-11 — solo, low stars, industry distillation niche not aligned
 - [x] Track: aide (hibbault) - 11⭐ (05-06), recursive self-improving agent in own source code. 3-tier memory budget. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [ ] **预 clone 大 repo**: eliza (648MB) 需要在非高峰时段或通过 VPN 提前 clone，否则 workloop 完全浪费。考虑在 heartbeat 里检查 gogetajob DB 中 repo size 并自动预 clone（到期 2026-05-13）
 - [ ] **gogetajob: 竞争 PR 预筛**: 当前选题效率低（15 issues 查 15 次 gh pr list）。考虑让 gogetajob feed 同时输出竞争 PR 数量（到期 2026-05-13）
-- [ ] Track: paragents (FrankHui/paragents) - 112⭐ (05-07), preflight conflict detection. Single push 04-30. Watch for revival. Revisit 05-14
-- [ ] Track: oh-my-kimi (dmae97) - 56⭐ (05-07), Kimi Code CLI multi-agent harness. Non-Claude ecosystem data point. Revisit 05-14
-- [ ] Track: speca (NyxFoundation/speca) - 332⭐ (05-07), spec-to-checklist agentic auditing. Python, MIT, actively pushed. Revisit 05-14
+- [x] Track: paragents (FrankHui/paragents) - 112⭐ (05-07). **Dropped** 05-11 — single push 04-30, no revival after 11 days
+- [x] Track: oh-my-kimi (dmae97) - 56⭐ (05-07). **Dropped** 05-11 — low traction, non-critical ecosystem data point
+- [x] Track: speca (NyxFoundation/speca) - 332⭐ (05-07). **Duplicate** — consolidated to 355⭐ entry above
 - [ ] Track: agent-harness-kit (enmanuelmag) - 124⭐ (05-08), MCP multi-agent harness with Lead/Explorer/Builder/Reviewer pipeline + SQLite state. Atomic task claiming. Revisit 05-15
 - [ ] Track: cangjie-skill (kangarooking) - 800⭐ (05-09 PM). Book→Skill distillation pipeline (RIA-TV++). 14 skill packs. Part of nuwa/darwin ecosystem. Revisit 05-16
 - [ ] Evaluate: V2 Predictive Power test for beliefs-candidates upgrade gate (inspired by cangjie-skill triple verification) — "can this belief predict behavior in unseen scenarios?"
 - [x] Track: Workspace-Bench (OpenDataBox) - 8⭐ (05-10). **Dropped** 05-10 — low traction, dataset still unreleased
 - [ ] Track: OpenViking (volcengine/OpenViking) - 23,725⭐ (05-10). ByteDance context database, L0/L1/L2 tiered model. AGPL-3.0, Python+Rust. Validates our wiki architecture. Revisit 05-24
 - [ ] Track: MemOS (MemTensor/MemOS) - 9,007⭐ (05-10). TypeScript memory OS with OpenClaw plugin, L1-L3+Skills evolution. Apache-2.0. Revisit 05-24
+- [ ] Track: gread (NitroRCr/gread) - 36⭐ (05-11). Hosted code reader API+MCP for agents. No-checkout partial clone, git grep, tree+read. Apache-2.0, Bun. Revisit 05-18
 - [ ] Apply: Script wiki/L1.md auto-regeneration from wiki content (inspired by OpenViking SemanticProcessor)
+- [ ] Track: ClawMem (yoloshii/ClawMem) - 158⭐ (05-11). On-device memory layer for AI agents, BM25+Vector+Graph hybrid, 3-layer merge safety, integrates with OpenClaw. Deep read done. Revisit 05-18
+- [ ] Apply: Evaluate content-type half-lives for memex search (ClawMem pattern: decisions=∞, notes=60d, handoffs=30d)
+- [ ] Apply: Evaluate co-activation tracking for wiki search (docs frequently surfaced together get boosted)
