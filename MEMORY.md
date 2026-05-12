@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, 落后4版本, day 9 必须升级)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, day 10 未升级, blocked on Luna)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -78,7 +78,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 6 error crons → 详见 `TODO.md`
+- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 0 error crons, 1 never-run (coros-token-refresh)
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -188,3 +188,15 @@
 (cleaned 05-11: removed 05-09/05-10/05-11 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-04, duplicated existing entries. Originals in memory/日期.md)
 
 (cleaned 05-12: removed 05-11/05-12 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-03/05-05, duplicated existing entries. Originals in memory/日期.md)
+
+## Promoted From Short-Term Memory (2026-05-12)
+
+- 纯夜班巡检日。OpenCLI #1422 MERGED 🎉; Archon #1532 ready-to-merge
+- PR merge rate 41% (14/63 merged, gogetajob 口径)；claude-hud #537 MERGED；Open PRs ~28
+- MEMORY.md 清理 208→190 行
+- OpenClaw 升级 day 9，连续 flagged，#1 优先级
+- 安全主线零投入连续 10+ 天；6 error crons 未修复；beliefs 管线偏冷（5条均 count=1）
+
+## Promoted From Short-Term Memory (2026-05-13)
+
+(cleaned 05-13: removed dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-05/05-07, duplicated existing entries. Originals in memory/日期.md)
