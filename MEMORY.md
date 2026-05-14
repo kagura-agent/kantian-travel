@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.7, day 11 未升级, blocked on Luna)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.12, day 12 未升级, blocked on Luna)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(261 cards + 352 projects)
+- **wiki** — 统一知识库(264 cards + 359 projects)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -41,7 +41,7 @@
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
 - 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
-- PR merge rate: 30% (18/60, gogetajob API 口径) [已验证 05-14]
+- PR merge rate: 47% (18/65 resolved, gogetajob API 口径) [已验证 05-15]
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
 ## 战略与产品方向
@@ -79,7 +79,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 1 error cron (memex-dogfood-review), 1 never-run (coros-token-refresh)
+- 51 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 2 error crons (work-loop, canvas-loop), 1 never-run (coros-token-refresh)
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -199,3 +199,6 @@
 - 安全主线零投入连续 10+ 天；6 error crons 未修复；beliefs 管线偏冷（5条均 count=1）
 
 (cleaned 05-14: removed dreaming auto-promotion noise from 05-13/05-14 — all confidence 0.62 patrol/PR fragments, duplicated existing entries. Originals in memory/日期.md)
+
+(cleaned 05-15: removed 05-14/05-15 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments, no new info. Originals in memory/日期.md)
+
