@@ -16,13 +16,13 @@ declare -a TESTS=(
   "TACO context compression regex|taco-context-compression"
   "mnem versioned knowledge graph|mnem"
   # Conceptual queries
-  "how do agents evolve and improve themselves|self-evolving,genericagent,mechanism-vs-evolution"
+  "how do agents evolve and improve themselves|self-evolving,evolver,hermes-self-evolution"
   "privacy protection for agent memory|memprivacy"
   "concurrent file access multiple agents|concurrent-agent,worktree-convergence"
   "skill marketplace distribution ecosystem|skill-ecosystem,agentskills-io,clawhub"
   # Cross-domain (should find related cards + projects)
-  "exponential decay temporal relevance retrieval|krusch-context,agentops"
-  "context window budget allocation strategy|context-budget,opencode"
+  "exponential decay temporal relevance retrieval|krusch-context,progressive-retrieval"
+  "context window budget allocation strategy|context-budget,context-budget-constraint"
 )
 
 TOTAL=0
