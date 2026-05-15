@@ -34,7 +34,8 @@ You wake up fresh. These files are your continuity:
 - Don't run destructive commands without asking.
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
-- **自己的 repo 也走 branch + PR**：不直接推 main。开 branch → 写代码 → 提 PR → 验证 → 合并。每个功能/修复一个 PR。
+- **代码类 repo 走 branch + PR**：不直接推 main。开 branch → 写代码 → 提 PR → 验证 → 合并。每个功能/修复一个 PR。
+  - **例外**：笔记/配置类 repo（workspace、evolution-log、dna、wiki）可直推 main——日记/memory 每天多次提交，走 PR 是纯开销。
 
 ## Repo 语言准则
 
