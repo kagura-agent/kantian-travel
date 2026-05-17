@@ -10,6 +10,26 @@ Before any candidate graduates to DNA/workflow/knowledge-base, it must pass ALL 
 
 Pass rate should be low — most candidates stay candidates. That's the point.
 
+### Status Lifecycle
+
+Every candidate has exactly one status. **Append-only transitions** — never delete entries, always mark with rationale.
+
+| Status | Meaning | Next |
+|--------|---------|------|
+| `candidate` | Default on creation. Under observation. | → `graduated` or `retracted` |
+| `graduated` | Passed Triple Verification, promoted to DNA/Workflow/KB. Record target location. | Terminal |
+| `retracted` | Superseded, disproven, or no longer relevant. Record rationale. | Terminal |
+
+**Why not delete?** Deleted entries get re-discovered and re-proposed. Retracted entries with rationale prevent re-learning the same lesson. Audit trail shows *why* something was rejected — that's knowledge too.
+
+**Format for status transitions:**
+```
+→ **graduated YYYY-MM-DD** (target: <DNA|Workflow|KB> — <specific location>)
+→ **retracted YYYY-MM-DD** (rationale: <why it was wrong/superseded/irrelevant>)
+```
+
+_Pattern source: agentic-stack v0.17 `retract_lesson.py` — append-only status transitions with rationale._
+
 **Promotion checklist** (copy when graduating):
 ```
 - [ ] Independent evaluation: bash scripts/evaluate-candidate.sh "<search term>" | claude --print
@@ -46,7 +66,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 ### Previous Gradients:
 
-- **2026-04-15:** "不验证就声称" pattern - check before stating, verify after doing → **已毕业** (目标载体: AGENTS.md 验证纪律, 已存在)
+- **2026-04-15:** "不验证就声称" pattern - check before stating, verify after doing → **graduated 2026-04-15** (target: DNA — AGENTS.md 验证纪律, 已存在)
 - **2026-04-14:** Accept constructive warning about "你还有空间问问题" advantage window
 - **2026-04-14:** Judge by equivalent exposure principle  
 - **2026-04-14:** Watch for content-honest + delivery-performative split
@@ -75,7 +95,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **Count**: 1
 - **Source**: Luna 直接指出
 
-### 流程存在但不执行 (2026-05-13, NemoClaw #3169 DCO) → **已毕业 2026-05-16** (目标载体: Workflow workloop.yaml study 节点 step 0 熟悉度陷阱检查)
+### 流程存在但不执行 (2026-05-13, NemoClaw #3169 DCO) → **graduated 2026-05-16** (target: Workflow — workloop.yaml study 节点 step 0 熟悉度陷阱检查)
 - **Trigger**: 对熟悉的 repo 产生"我知道该怎么做"的错觉，跳过 workloop 里明确写了的 study 步骤（读 wiki 笔记 + 读 CONTRIBUTING.md）
 - **Pattern**: NemoClaw DCO signoff 已在 wiki/projects/nemoclaw.md Gotchas 第一条记录，workloop study 节点明确要求读笔记和 CONTRIBUTING.md 检查签名要求。但提 PR 时跳过了 study，直接写代码→提交。这是第三次因同一原因 CI 失败
 - **Root cause**: "这个 repo 打过很多次了，熟了" 的心态导致跳过检查步骤。记录的价值在于被读取，不被读取的记录 = 不存在
