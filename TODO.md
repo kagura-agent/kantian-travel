@@ -66,22 +66,15 @@
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
 
 ### Observations
-- memex 0.2.0 installed locally (synced to upstream/main 27cf659, npm link)
-- PR #147 merged 05-14 ✅ — maintainer approved with glowing review
-- PR #107 closed — maintainer picked up case-insensitive fix themselves (#142, better approach with runtime FS detection). TIL.
-- PR #123 merged ✅ — after addressing review (MCP consistency, shared scan utility, self-reference guard). Code in upstream.
-- Upstream quiet since 05-08: GitLab sync docs (#146), search query capping, embedding enrichment. Only 1 open issue (#96 GitLab support). Clean codebase (0 TODOs/FIXMEs)
-- Wiki health (05-13): 261 cards, 46 orphans (17%), 0 broken links, 0 collisions ✅
-  - Created 3 stub cards: code-review, source-driven-development, functional-area-resolver
-  - Fixed 1 slug typo (agent-skill-ecosystems → agent-skill-ecosystem)
-  - Cards grew 258 → 261, orphans down to 46 (17%)
-- Contribution score: 8 PRs merged (#78, #80, #92, #95, #99, #102, #123, #147), 1 closed (maintainer superseded)
-- Upstream v0.2.0 shipped: sensitive-input guardrails (secret rejection, URL redaction, Shannon entropy detection), recall description fix, Pi extension semantic param
-- Wiki health (05-15): 265 cards, 69 orphans (26%), 0 broken links, 0 collisions ✔
-  - 1 card added since yesterday (264→265), orphans up slightly (68→69)
-- Upstream: 2 new commits (GitLab sync docs #152, #153) — docs only
-- PR #154 submitted: add AWS/GCP/Stripe/npm secret patterns + expand credential path warnings (6 new tests, 17 total pass)
-- Contribution score: 8 PRs merged, 1 open (#154), 1 closed (maintainer superseded)
+- memex 0.2.0 installed locally (synced to upstream/main 7058de4, npm link)
+- Wiki health (05-16): 269 cards, 73 orphans (27%), 0 broken links, 0 collisions ✔
+  - 4 cards added since yesterday (265→269), orphans up (69→73)
+- Upstream since last check: PR #154 merged (my secret patterns PR) + 1 commit (test retry fix for sync cleanup)
+- Issue #151 opened: user question about Codex auto-retro behavior. Maintainer handling, mentions hooks integration roadmap
+- 0 open issues for contribution, 0 open PRs from me. Clean codebase (0 TODOs/FIXMEs)
+- All tests pass locally (17 sensitive-input, 114 core, 79 util, 25 sync = 235+ tests)
+- Contribution score: 9 PRs merged (#78, #80, #89, #92, #95, #99, #102, #123, #154), 1 closed (maintainer superseded)
+- Next check: 05-17 — watch for hooks integration work (from #151 discussion) or new issues
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -342,3 +335,4 @@
 - [ ] **cc-connect PR #990: fix lint failure** — `EffectiveDisplay` now returns 7 values but test expects 5. Fix `tests/release_local/config_matrix/config_matrix_test.go` lines 87, 114, 184. Next workloop should pick this up.
 - [ ] Track: html-anything (nexu-io) - 1,087⭐ (05-15, was 831, +30.8%). PR#14 adapter pattern + env extension hooks. Windows spawn issues (#15/#16). 🟢 THRIVING 6/6. Revisit 05-22
 - [ ] Track: Tactile (yliust) - 228⭐ (05-15). Accessibility-first OS layer for agents. Novel direction. Revisit 05-22
+- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 247⭐ (05-17, created 05-15). Personal-Model-first self-evolving agent. Four-lens model, intent-aware recall, proactive curiosity. Solo (Xunzhuo). No license. Revisit 05-24
