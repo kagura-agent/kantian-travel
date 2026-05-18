@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.12, day 15 未升级, blocked on Luna)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.18, day 16 未升级, blocked on Luna)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(270 cards + 362 projects)
+- **wiki** — 统一知识库(694 files, 75 orphans 28%, 0 broken links)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -79,7 +79,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 50 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 1 error cron (email-dev) [已验证 05-18]
+- 48 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 2 error crons (memes-collect, kagura-story-evening — edit race) [已验证 05-19]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -212,13 +212,4 @@
 
 ## Promoted From Short-Term Memory (2026-05-18)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-05-08.md:560:568 -->
-- <!-- openclaw:dreaming:rem:start --> ### Reflections - Theme: `let` kept surfacing across 3512 memories. - confidence: 0.75 - evidence: memory/.dreams/session-corpus/2026-04-29.txt:67-67, memory/.dreams/session-corpus/2026-04-29.txt:71-71, memory/.dreams/session-corpus/2026-04-29.txt:72-72 - note: reflection ### Possible Lasting Truths - ## NemoClaw PR DCO fix (00:01) - PR `fix/2042-services-recover` failed DCO check again (attempt #2) — missing `Signed-off-by` - Amended commit with `--signoff`, force-pushed (3c8b766f) - **Lesson**: NemoClaw requires DCO. Always use `git commit --signoff` or `git commit -s` for NemoClaw PRs. This is the SECOND time — no more excuses. ## 🌙 Night Workloop (00:02) - **FlowForge workloop-night #985** completed — all 14 open PRs checked, no action needed - Archon #1423: already addressed Wirasm's minor-fixes-needed review today, ball in their court - NemoClaw #2510: waiting for maintainer direction (competing PR #2511) - hermes-agent #15166: CI failures are upstream (import errors from renamed [confidence=0.72 evidence=memory/2026-04-29.md:1-22] [score=0.871 recalls=4 avg=0.555 source=memory/2026-05-08.md:560-568]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:3:6 -->
-- - PRs: 0, Issues: 0 - 未回复信件: 无（kagura inbox 05-12 from bocchi → 已回复 05-12） - TODO 🦞 section: 不存在，无待办 - 结论: 一切正常，无需行动 ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: GitHub Patrol (00:10): **通知**: 1 条 — openclaw/openclaw PR #80961 CI failure (OpenGrep workflow); **ClawSweeper review on #80961**: 3 P2 findings — sanitize model strings in doctor + debug warnings, drop stale changelog. Code changes deferred to workloop; **补充扫描**: PR #57199 (COMM [score=0.813 recalls=0 avg=0.620 source=memory/2026-05-13.md:50-57]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:7:10 -->
-- ## Light Sleep <!-- openclaw:dreaming:light:start --> - Candidate: GitHub Patrol (00:10): **通知**: 1 条 — openclaw/openclaw PR #80961 CI failure (OpenGrep workflow); **ClawSweeper review on #80961**: 3 P2 findings — sanitize model strings in doctor + debug warnings, drop stale changelog. Code changes deferred to workloop; **补充扫描**: PR #57199 (COMM - confidence: 0.62 - evidence: memory/2026-05-13.md:3-6 - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): All external MERGEABLE, no conflicts, no reviews pending action; NemoClaw #3241 + #3228: 5 days old, watch for staleness; **行动**: 0 (code changes to workloop, no pings needed yet); **负面事件**: 无 [score=0.813 recalls=0 avg=0.620 source=memory/2026-05-13.md:55-62]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:13:16 -->
-- - recalls: 0 - status: staged - Candidate: GitHub Patrol (00:10): All external MERGEABLE, no conflicts, no reviews pending action; NemoClaw #3241 + #3228: 5 days old, watch for staleness; **行动**: 0 (code changes to workloop, no pings needed yet); **负面事件**: 无 - confidence: 0.62 - evidence: memory/2026-05-13.md:7-10 - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): git pull: up to date; PRs: 0 open; Issues: 0 open; 未回复信件: 无（Bocchi 05-12 来信已回复） [score=0.813 recalls=0 avg=0.620 source=memory/2026-05-13.md:60-67]
-<!-- openclaw-memory-promotion:memory:memory/2026-05-13.md:22:22 -->
-- - recalls: 0 - status: staged - Candidate: 🦞 虾信巡检 (00:40): TODO 无 🦞 section，无待办; 状态: 全清 ✅ - confidence: 0.62 - evidence: memory/2026-05-13.md:17-18 - recalls: 0 - status: staged - Candidate: 🌙 Workloop Night — 01:02 AM: **FlowForge workloop-night #1895** — 晚间 PR 跟进完成，无需处理。 [score=0.813 recalls=0 avg=0.620 source=memory/2026-05-13.md:70-77]
+(cleaned 05-19: removed dreaming auto-promotion noise from 05-13/05-14/05-08 — all confidence 0.62-0.87 patrol/PR status fragments, no new info beyond what's already captured above. Originals in memory/日期.md)
