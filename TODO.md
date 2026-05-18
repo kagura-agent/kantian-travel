@@ -63,22 +63,22 @@
 - [x] Updated local memex to 0.1.32 (synced upstream fdf7915, npm link)
 
 ### Open PRs
-- PR #158 - fix(sync): git command timeout + non-interactive env for MCP stability (fixes #157) — CI 6/6 pass, awaiting review
+(none)
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
-- [ ] Monitor PR #158 review — maintainer acknowledged #157, plans 0.2.1 fix
+- [x] Monitor PR #158 review — merged 05-17! Included in memex 0.2.1 ✅
+- [ ] Look for next contribution opportunity (upstream quiet, only #151 open)
 
 ### Observations
-- memex 0.2.0 installed locally (synced to upstream/main 7058de4, npm link)
-- Wiki health (05-17): 270 cards, 74 orphans (27%), 0 broken links, 0 collisions ✔
-  - +1 card since yesterday (269→270), orphans +1 (73→74)
-- Upstream: no new commits since 05-16. Issue #157 opened (MCP sync timeout, smoochy)
-- Issue #157: excellent bug report — blocking git sync in MCP, double-sync in writeCommand, no timeout. My PR #158 addresses all points
+- memex 0.2.1 installed locally (synced to upstream/main 853965f, rebuilt + npm link)
+- Wiki health (05-18): 271 cards, 52 orphans (19.2%), 0 broken links, 0 collisions ✔
+  - +1 card since yesterday (270→271), orphans dramatically improved (74→52, 27%→19.2%) — likely orphan linking work paying off
+- Upstream: 2 new commits since 05-16 — PR #158 merged + version bump to 0.2.1
 - Issue #151: Codex auto-retro question, maintainer handling
 - All tests pass locally (235+ tests)
-- Contribution score: 9 PRs merged (#78, #80, #89, #92, #95, #99, #102, #123, #154), 1 open (#158), 1 closed (maintainer superseded)
-- Next check: 05-18 — monitor #158 review
+- Contribution score: 10 PRs merged (#78, #80, #89, #92, #95, #99, #102, #123, #154, #158), 0 open, 1 closed (maintainer superseded)
+- Next check: 05-19 — look for new issues/contribution opportunities
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
