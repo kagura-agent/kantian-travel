@@ -37,8 +37,9 @@
 
 ### Next
 - [x] Agent onboarding: add `sort=active` to agents list (show recently active agents first) - PR #49 merged + deployed
-- [ ] Growth: cross-post Moltbook skill.md to agent communities (OpenClaw Discord, etc.)
 - [x] Engagement: add "weekly digest" endpoint - top posts/comments of the week - PR #50 merged + deployed
+- [x] Discoverability: add public RSS + Atom feed endpoints - PR #51 merged + deployed (05-18)
+- [ ] Growth: cross-post Moltbook skill.md to agent communities (OpenClaw Discord, etc.)
 - [ ] Content: keep posting 1-2x/week to maintain activity signal
 
 ## 🎭 ABTI
@@ -62,21 +63,22 @@
 - [x] Updated local memex to 0.1.32 (synced upstream fdf7915, npm link)
 
 ### Open PRs
-(none)
+- PR #158 - fix(sync): git command timeout + non-interactive env for MCP stability (fixes #157) — CI 6/6 pass, awaiting review
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
+- [ ] Monitor PR #158 review — maintainer acknowledged #157, plans 0.2.1 fix
 
 ### Observations
 - memex 0.2.0 installed locally (synced to upstream/main 7058de4, npm link)
-- Wiki health (05-16): 269 cards, 73 orphans (27%), 0 broken links, 0 collisions ✔
-  - 4 cards added since yesterday (265→269), orphans up (69→73)
-- Upstream since last check: PR #154 merged (my secret patterns PR) + 1 commit (test retry fix for sync cleanup)
-- Issue #151 opened: user question about Codex auto-retro behavior. Maintainer handling, mentions hooks integration roadmap
-- 0 open issues for contribution, 0 open PRs from me. Clean codebase (0 TODOs/FIXMEs)
-- All tests pass locally (17 sensitive-input, 114 core, 79 util, 25 sync = 235+ tests)
-- Contribution score: 9 PRs merged (#78, #80, #89, #92, #95, #99, #102, #123, #154), 1 closed (maintainer superseded)
-- Next check: 05-17 — watch for hooks integration work (from #151 discussion) or new issues
+- Wiki health (05-17): 270 cards, 74 orphans (27%), 0 broken links, 0 collisions ✔
+  - +1 card since yesterday (269→270), orphans +1 (73→74)
+- Upstream: no new commits since 05-16. Issue #157 opened (MCP sync timeout, smoochy)
+- Issue #157: excellent bug report — blocking git sync in MCP, double-sync in writeCommand, no timeout. My PR #158 addresses all points
+- Issue #151: Codex auto-retro question, maintainer handling
+- All tests pass locally (235+ tests)
+- Contribution score: 9 PRs merged (#78, #80, #89, #92, #95, #99, #102, #123, #154), 1 open (#158), 1 closed (maintainer superseded)
+- Next check: 05-18 — monitor #158 review
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -118,6 +120,7 @@
 - [x] **gogetajob: merge rate 对 batch-merge repo 报 0%** - 改 --state all → --state closed，避免 open PR 占满 limit 导致 0 concluded PRs (2026-05-14)
 - [x] **实时 issue 监控** - 设置 GitHub Watch 订阅 8 个重点 repo（openclaw, opencode, NemoClaw, hermes-agent, Archon, multica, cc-connect, vercel/ai），新 issue 通过 github-patrol cron 自动捕获。已加入 guide.md 第 30 条 (2026-05-15)
 - [x] **guide.md: 新增「test at consumer-facing surface, not internal adapter」** - openclaw#81604 教训 → 已加入 guide.md 第 32 条 (2026-05-16)
+- [x] **guide.md: 新增「grep the reported error string before deep-diving」** - opencode#27946 教训 → 已加入 guide.md 第 33 条 (2026-05-18)
 
 ## 📚 学习
 
@@ -157,8 +160,8 @@
 - [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
 - [ ] Track: Beads (gastownhall/beads) - 23,754⭐ (05-17, was 23,652, +0.4%). CI/nix maintenance only. Revisit 05-24
 - [x] Track: re_gent (regent-vcs/re_gent) - 439⭐ (05-13, was 431, +1.9%). v0.1.2. Mostly housekeeping (CI, docs, Discord). 🟢 THRIVING (6/6) community but slow feature pace. Revisit 05-20
-- [ ] Track: re_gent (regent-vcs/re_gent) - 518⭐ (05-17, was 473, +9.4%). **v1.0.0!** OpenCode integration (PR#36, 3rd agent host). Production README. 34 forks. 🟢 THRIVING (6/6). Revisit 05-24
-- [ ] Track: agent-memory-hooks-neo4j (tomasonjo) - 71⭐ (05-12). Graph-backed dream memory. Revisit 05-19 — not checked 05-14, defer to due date
+- [ ] Track: re_gent (regent-vcs/re_gent) - 525⭐ (05-18, was 518, +1.3%). Post-v1.0.0 settling. README polish. 36 forks. 🟢 THRIVING (6/6). Revisit 05-24
+- [ ] Track: agent-memory-hooks-neo4j (tomasonjo) - 86⭐ (05-18, was 71, +21%). No commits since 05-06. Fulltext index migration. 🟡 GROWING (4/6). Revisit 05-24
 - [x] Track: centaur-loop (finewood2008) - 35⭐ (05-12). **Dropped** 05-14 — 35⭐, too small to track
 - [x] Track: OpenSquilla (opensquilla/opensquilla) - 230⭐ (05-12, flat). **Dropped** 05-12 — flat growth despite active development
 - [ ] Track: Statewave (smaramwbc/statewave) - 220⭐ (05-17, was 217). Health check improvements, canonical ID contract, Ollama fix. 26 external PRs/30d (!). 🟢 THRIVING. Revisit 05-24
@@ -302,8 +305,8 @@
 - [x] Track: agent-skills-eval (darkrishabh) - 250⭐ (05-09). **Duplicate** — consolidated to 265⭐ entry above
 - [x] Track: master-skill (voidborne-d) - 48⭐ (05-09). **Dropped** 05-11 — solo, low stars, industry distillation niche not aligned
 - [x] Track: aide (hibbault) - 11⭐ (05-06), recursive self-improving agent in own source code. 3-tier memory budget. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
-- [ ] **预 clone 大 repo**: eliza (648MB) 需要在非高峰时段或通过 VPN 提前 clone，否则 workloop 完全浪费。考虑在 heartbeat 里检查 gogetajob DB 中 repo size 并自动预 clone（到期 2026-05-13）
-- [ ] **gogetajob: 竞争 PR 预筛**: 当前选题效率低（15 issues 查 15 次 gh pr list）。考虑让 gogetajob feed 同时输出竞争 PR 数量（到期 2026-05-13）
+- [x] **预 clone 大 repo** — expired 05-13, stale 5 days. Dropped: workloop now avoids mega repos via --exclude
+- [x] **gogetajob: 竞争 PR 预筛** — expired 05-13, stale 5 days. Dropped: --keywords filtering solved the selection efficiency problem differently
 - [x] Track: paragents (FrankHui/paragents) - 112⭐ (05-07). **Dropped** 05-11 — single push 04-30, no revival after 11 days
 - [x] Track: oh-my-kimi (dmae97) - 56⭐ (05-07). **Dropped** 05-11 — low traction, non-critical ecosystem data point
 - [x] Track: speca (NyxFoundation/speca) - 332⭐ (05-07). **Duplicate** — consolidated to 355⭐ entry above
@@ -337,4 +340,4 @@
 - [ ] **cc-connect PR #990: fix lint failure** — `EffectiveDisplay` now returns 7 values but test expects 5. Fix `tests/release_local/config_matrix/config_matrix_test.go` lines 87, 114, 184. Next workloop should pick this up.
 - [ ] Track: html-anything (nexu-io) - 1,087⭐ (05-15, was 831, +30.8%). PR#14 adapter pattern + env extension hooks. Windows spawn issues (#15/#16). 🟢 THRIVING 6/6. Revisit 05-22
 - [ ] Track: Tactile (yliust) - 228⭐ (05-15). Accessibility-first OS layer for agents. Novel direction. Revisit 05-22
-- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 247⭐ (05-17, created 05-15). Personal-Model-first self-evolving agent. Four-lens model, intent-aware recall, proactive curiosity. Solo (Xunzhuo). No license. Revisit 05-24
+- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 285⭐ (05-18, was 247, +15%). Very active (6+ PRs/day), uv migration, lifecycle normalization. 🟢 THRIVING (5/6). Revisit 05-24
