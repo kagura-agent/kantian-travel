@@ -154,8 +154,8 @@
 - [x] Scout: Ecosystem in consolidation phase (05-12). Infrastructure (mirage +20%, deepsec +42%) > features. Skill ecosystem flat. No new breakout projects.
 - [x] Scout: Ecosystem still in consolidation (05-12 PM). gbrain 15K⭐ (v0.33), functional-area-resolver pattern deep-read. No new breakout projects. obsidian-wiki (1.1K⭐) noted but not tracked.
 - [x] Scout: Skill/memory convergence continues (05-13). buddyme 75⭐ deep-read (brain files + three-tier skill + memory decay). mercury-agent-skills 102⭐ (130+ curated SKILL.md). token-tracker 84⭐. octo-adapters (OpenClaw channels).
-- [ ] Track: buddyme (virgo777) - 75⭐ (05-13). Python agent framework, personality evolution + three-tier skill loading + heartbeat memory. Chinese LLM ecosystem. No license. Revisit 05-20
-- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 102⭐ (05-13). 130+ curated SKILL.md playbooks, MIT. Cross-agent compatible. Revisit 05-20
+- [x] Track: buddyme (virgo777) - 269⭐ (05-19). **Dropped** 05-19 — star farming without community (🟠 NASCENT 1/6, zero external PRs despite 269⭐)
+- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 124⭐ (05-19). 8-section skill standard v1.0, external PRs merging. 🟡 GROWING (4/6). Revisit 05-27
 - [x] Apply: Evaluate functional-area-resolver pattern for our available_skills when count exceeds ~30 (currently ~25). From gbrain v0.32.3.0 → 05-12: Not needed now (25 skills, ~3-4KB context). Sweet spot is 40-50+ skills. Key: `(dispatcher for: ...)` clause is load-bearing, without it accuracy collapses. Revisit at ~40 skills.
 - [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
 - [ ] Track: Beads (gastownhall/beads) - 23,754⭐ (05-17, was 23,652, +0.4%). CI/nix maintenance only. Revisit 05-24
@@ -325,7 +325,7 @@
 - [ ] Apply: Evaluate co-activation tracking for wiki search (docs frequently surfaced together get boosted)
 - [x] Track: Needle (cactus-compute/needle) - 372⭐ (05-13). 26M FFN-free function call model (SAN architecture). Distilled from Gemini. Deep read done. Revisit 05-27
 - [x] Track: Needle (cactus-compute/needle) - 988⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
-- [ ] Track: Tactile (yliust/Tactile) - 191⭐ (05-13). Accessibility-first agent operating layer. AX > OCR > visual. macOS + Windows. Deep read done. Revisit 05-20
+- [ ] Track: Tactile (yliust/Tactile) - 308⭐ (05-19). Merged into next entry.
 - [ ] Track: susurration (sghy1717/susurration) - 65⭐ (05-13). Agent-to-agent signal network. 5 primitive verbs, SSE/webhook/cloud. Trading domain. TypeScript, MIT. Revisit 05-27
 - [x] Track: Adrian (secureagentics/Adrian) - 35⭐ (05-13). **Dropped** 05-14 — 35⭐, too small
 - [ ] Track: OpenClaw-AWD-Arena (LYiHub) - 177⭐ (05-13). LLM agent CTF platform, Docker-based, OpenClaw+Hermes backends. Deep read done. Revisit 05-27
@@ -339,5 +339,5 @@
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [ ] **cc-connect PR #990: fix lint failure** — `EffectiveDisplay` now returns 7 values but test expects 5. Fix `tests/release_local/config_matrix/config_matrix_test.go` lines 87, 114, 184. Next workloop should pick this up.
 - [ ] Track: html-anything (nexu-io) - 1,087⭐ (05-15, was 831, +30.8%). PR#14 adapter pattern + env extension hooks. Windows spawn issues (#15/#16). 🟢 THRIVING 6/6. Revisit 05-22
-- [ ] Track: Tactile (yliust) - 228⭐ (05-15). Accessibility-first OS layer for agents. Novel direction. Revisit 05-22
+- [ ] Track: Tactile (yliust) - 308⭐ (05-19). Regex element_filter for MCP, native AX scroll. 🟢 THRIVING (5/6). +35% stars/week. Revisit 05-25
 - [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 285⭐ (05-18, was 247, +15%). Very active (6+ PRs/day), uv migration, lifecycle normalization. 🟢 THRIVING (5/6). Revisit 05-24
