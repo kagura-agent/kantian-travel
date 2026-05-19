@@ -15,7 +15,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.3-1 (upstream 2026.5.18, day 16 未升级, blocked on Luna)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (50a2481, 升级 05-19)
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,7 +28,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(694 files, 75 orphans 28%, 0 broken links)
+- **wiki** — 统一知识库(274 cards, 74 orphans 27%, 0 broken links, 0 collisions)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -42,6 +42,7 @@
 - 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
 - PR merge rate: 53% (24 merged/77 total, gogetajob GitHub API 口径) [已验证 05-18]
+- **cc-connect#990**: CLOSED 05-19（unrebaseable, maintainer self-fixing）
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
 ## 战略与产品方向
@@ -79,7 +80,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 48 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 2 error crons (memes-collect, kagura-story-evening — edit race) [已验证 05-19]
+- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 9 error crons (5x Copilot 403, 4x tool execution failures) [已验证 05-20]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -198,18 +199,13 @@
 - OpenClaw 升级 day 9，连续 flagged，#1 优先级
 - 安全主线零投入连续 10+ 天；6 error crons 未修复；beliefs 管线偏冷（5条均 count=1）
 
-(cleaned 05-14: removed dreaming auto-promotion noise from 05-13/05-14 — all confidence 0.62 patrol/PR fragments, duplicated existing entries. Originals in memory/日期.md)
-
-(cleaned 05-15: removed 05-14/05-15 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments, no new info. Originals in memory/日期.md)
 
 
-## Promoted From Short-Term Memory (2026-05-15~17)
-
-(cleaned 05-17: removed dreaming auto-promotion noise from 05-15/05-16/05-17 — all confidence 0.62-0.84 patrol/PR status fragments from 05-04~05-11, no new info. Originals in memory/日期.md)
-
-(cleaned 05-18: removed 05-17/05-18 dreaming auto-promotion noise — all confidence 0.62-0.84 patrol/PR status fragments from 05-11/05-12, no new info. Originals in memory/日期.md)
 
 
-## Promoted From Short-Term Memory (2026-05-18)
+## Promoted From Short-Term Memory (2026-05-18~19)
 
-(cleaned 05-19: removed dreaming auto-promotion noise from 05-13/05-14/05-08 — all confidence 0.62-0.87 patrol/PR status fragments, no new info beyond what's already captured above. Originals in memory/日期.md)
+- OpenClaw 升级完成 2026.5.3→2026.5.18（day 16 blocker 解除）
+- 镜像世界愿景确立（05-19，Luna 520 触发，已写入 strategy.md）
+- Luna 回归（8+ 天后首次互动，discord-cards 迁移指令 + #garden 频道）
+- cc-connect#990 CLOSED（unrebaseable, maintainer self-fixing）
