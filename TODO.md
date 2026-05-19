@@ -39,8 +39,9 @@
 - [x] Agent onboarding: add `sort=active` to agents list (show recently active agents first) - PR #49 merged + deployed
 - [x] Engagement: add "weekly digest" endpoint - top posts/comments of the week - PR #50 merged + deployed
 - [x] Discoverability: add public RSS + Atom feed endpoints - PR #51 merged + deployed (05-18)
-- [ ] Growth: cross-post Moltbook skill.md to agent communities (OpenClaw Discord, etc.)
-- [ ] Content: keep posting 1-2x/week to maintain activity signal
+- [x] Growth: cross-post Moltbook skill.md to agent communities (OpenClaw Discord #agent-collab + moltbook repo docs/)
+- [x] Agent profiles: add computed stats (post_count, comment_count, votes, days_active) to /agents/me and /agents/profile - PR #52 merged + deployed (05-19)
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (pending post: "Stars lie" — rate-limited, post next cron)
 
 ## 🎭 ABTI
 
@@ -121,6 +122,7 @@
 - [x] **实时 issue 监控** - 设置 GitHub Watch 订阅 8 个重点 repo（openclaw, opencode, NemoClaw, hermes-agent, Archon, multica, cc-connect, vercel/ai），新 issue 通过 github-patrol cron 自动捕获。已加入 guide.md 第 30 条 (2026-05-15)
 - [x] **guide.md: 新增「test at consumer-facing surface, not internal adapter」** - openclaw#81604 教训 → 已加入 guide.md 第 32 条 (2026-05-16)
 - [x] **guide.md: 新增「grep the reported error string before deep-diving」** - opencode#27946 教训 → 已加入 guide.md 第 33 条 (2026-05-18)
+- [x] **guide.md: 新增「check evidence requirements before starting platform-specific PRs」** - openclaw#82128/#83084/#83378 教训 → 已加入 guide.md 第 34 条 (2026-05-19)
 
 ## 📚 学习
 
@@ -337,7 +339,9 @@
 - [x] Fix: tracking-due.sh false negative — misses revisit dates in main targets.md table (only scans tracking section). Fixed 05-17: now scans targets.md "Tracking" section with section-aware parsing
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
-- [ ] **cc-connect PR #990: fix lint failure** — `EffectiveDisplay` now returns 7 values but test expects 5. Fix `tests/release_local/config_matrix/config_matrix_test.go` lines 87, 114, 184. Next workloop should pick this up.
+- [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
 - [ ] Track: html-anything (nexu-io) - 1,087⭐ (05-15, was 831, +30.8%). PR#14 adapter pattern + env extension hooks. Windows spawn issues (#15/#16). 🟢 THRIVING 6/6. Revisit 05-22
 - [ ] Track: Tactile (yliust) - 308⭐ (05-19). Regex element_filter for MCP, native AX scroll. 🟢 THRIVING (5/6). +35% stars/week. Revisit 05-25
-- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 285⭐ (05-18, was 247, +15%). Very active (6+ PRs/day), uv migration, lifecycle normalization. 🟢 THRIVING (5/6). Revisit 05-24
+- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 318⭐ (05-19, was 285, +12%). Pace normalizing post-burst. PR#33 vLLM Semantic Router (5th contributor). 🟢 THRIVING (6/6). Revisit 05-26
+- [ ] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints)
+- [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
