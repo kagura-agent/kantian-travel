@@ -19,20 +19,35 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Read all stdin
-INPUT=$(cat)
-TOTAL_LINES=$(echo "$INPUT" | wc -l)
+# Byte-cap constants (protect against huge single lines / massive output)
+# head -n alone is unsafe: one minified JSON line can be 10MB.
+# Based on agents-md-context-patterns "byte-cap over line-cap" pattern.
+MAX_INPUT_BYTES=524288   # 512KB total input cap
+MAX_LINE_BYTES=4000      # 4KB per line (truncate longer lines)
+
+# Use a temp file to avoid SIGPIPE with pipefail when piping large strings
+# through head/tail (pre-existing bug: echo "$big" | head -n 5 → SIGPIPE)
+TMPFILE=$(mktemp)
+trap 'rm -f "$TMPFILE"' EXIT
+
+# Read stdin with byte cap + line truncation in one pass
+# head -c may SIGPIPE upstream; that's OK (we trap EXIT for cleanup)
+head -c "$MAX_INPUT_BYTES" | awk -v max="$MAX_LINE_BYTES" '{print substr($0, 1, max)}' > "$TMPFILE" || true
+
+TOTAL_LINES=$(wc -l < "$TMPFILE")
 
 # Short output — pass through unchanged
 if [[ "$TOTAL_LINES" -le 30 ]]; then
-    echo "$INPUT"
+    cat "$TMPFILE"
     exit 0
 fi
 
-# Always keep first 5 and last 10 lines
-HEAD=$(echo "$INPUT" | head -n 5)
-TAIL=$(echo "$INPUT" | tail -n 10)
-MIDDLE=$(echo "$INPUT" | tail -n +6 | head -n $((TOTAL_LINES - 15)))
+# Always keep first 5 and last 10 lines (file-based = no SIGPIPE)
+HEAD=$(head -n 5 "$TMPFILE")
+TAIL=$(tail -n 10 "$TMPFILE")
+MIDDLE=$(tail -n +6 "$TMPFILE" | head -n $((TOTAL_LINES - 15)))
+# Read full input for domain ID extraction
+INPUT=$(cat "$TMPFILE")
 
 # Extract domain-specific identifiers from middle before compression.
 # Inspired by RunbookHermes EvidenceStack pattern: compression should preserve
