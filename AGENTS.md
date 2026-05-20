@@ -116,6 +116,15 @@ GitHub 是全球平台，默认英文。
 
 **检查方法：** 每次写下「发现 X 问题」时，同一轮必须有对应的行动（提 issue / 修代码 / 至少创建 TODO）。如果只有观测没有行动，问自己——「我在等什么？」
 
+## 建议≠行动
+
+**Review/audit 写下"建议做X"时，必须同步创建 TODO 或 issue。** 不能只写建议然后等下次 review 再写一遍同样的建议。
+
+具体规则：
+1. "建议做X" → 同一轮创建 TODO.md 条目或 GitHub issue
+2. 连续 3 天写同一条建议但无对应行动 → 该建议是噪音，要么立刻做要么正式降级/删除
+3. "blocked on Luna" 不是免死金牌 — 如果 blocked 超过 3 天且未 @ Luna，那不是 blocked，是遗忘
+
 ## DNA Self-Governance
 
 DNA 文件（SOUL.md, AGENTS.md, HEARTBEAT.md, IDENTITY.md, NUDGE.md, beliefs-candidates.md）由你自主更新，不需要 Luna 审批。
