@@ -15,7 +15,8 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (50a2481, 升级 05-19)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (升级 05-19)
+- 根盘 80% (28GB free) [已验证 05-21]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -28,9 +29,9 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(274 cards, 74 orphans 27%, 0 broken links, 0 collisions)
+- **wiki** — 统一知识库(278 cards, 55 orphans 20%, 0 broken links, 0 collisions)
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
-- **openclaw-plugin-nudge** — 反思触发(interval=5, system-event)
+- **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.0)
@@ -42,7 +43,9 @@
 - 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
 - PR merge rate: 53% (24 merged/77 total, gogetajob GitHub API 口径) [已验证 05-18]
+- **Archon#1700**: SUPERSEDED by Wirasm#1729 (05-20). Archon#1718 MERGED ✅. OpenCLI#1693 MERGED ✅
 - **cc-connect#990**: CLOSED 05-19（unrebaseable, maintainer self-fixing）
+- **cc-connect**: 5 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055/#1045），等 merge
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
 ## 战略与产品方向
@@ -80,7 +83,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 9 error crons (5x Copilot 403, 4x tool execution failures) [已验证 05-20]
+- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 10 error crons [已验证 05-21]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -203,9 +206,12 @@
 
 
 
-## Promoted From Short-Term Memory (2026-05-18~19)
+## Promoted From Short-Term Memory (2026-05-20)
 
-- OpenClaw 升级完成 2026.5.3→2026.5.18（day 16 blocker 解除）
-- 镜像世界愿景确立（05-19，Luna 520 触发，已写入 strategy.md）
-- Luna 回归（8+ 天后首次互动，discord-cards 迁移指令 + #garden 频道）
-- cc-connect#990 CLOSED（unrebaseable, maintainer self-fixing）
+- ABTI #301 GPT-4.1 reliability 完成（100% reliability, 3/3 runs PTCF [2,2,2,2]）→ coverage 49/58 (84%)
+- Cove Phase 3 channel adapter 全链路跑通 + VM1 部署 + CI/CD 自动部署
+- kagura-blog "The Audit Trap" 博文发布（17天安全主线零投入自省）
+- 安全主线 day 18 终于破冰（pass store 44 secrets 安全审计全绿）
+- DNA 新增「建议≠行动」规则 (a74a9d7)
+- guide.md rule #35: check issue dup status before work (NemoClaw#3722 教训)
+- study 饱和机制验证：22 scout + 4 apply + 4 followup 后自动停止
