@@ -164,7 +164,7 @@
 - [ ] Track: Beads (gastownhall/beads) - 23,754⭐ (05-17, was 23,652, +0.4%). CI/nix maintenance only. Revisit 05-24
 - [x] Track: re_gent (regent-vcs/re_gent) - 439⭐ (05-13, was 431, +1.9%). v0.1.2. Mostly housekeeping (CI, docs, Discord). 🟢 THRIVING (6/6) community but slow feature pace. Revisit 05-20
 - [ ] Track: re_gent (regent-vcs/re_gent) - 525⭐ (05-18, was 518, +1.3%). Post-v1.0.0 settling. README polish. 36 forks. 🟢 THRIVING (6/6). Revisit 05-24
-- [ ] Track: agent-memory-hooks-neo4j (tomasonjo) - 86⭐ (05-18, was 71, +21%). No commits since 05-06. Fulltext index migration. 🟡 GROWING (4/6). Revisit 05-24
+- [x] Track: agent-memory-hooks-neo4j (tomasonjo) - 88⭐ (05-21). **Dropped** 05-21 — 15 days no commits, marginal star growth
 - [x] Track: centaur-loop (finewood2008) - 35⭐ (05-12). **Dropped** 05-14 — 35⭐, too small to track
 - [x] Track: OpenSquilla (opensquilla/opensquilla) - 230⭐ (05-12, flat). **Dropped** 05-12 — flat growth despite active development
 - [ ] Track: Statewave (smaramwbc/statewave) - 220⭐ (05-17, was 217). Health check improvements, canonical ID contract, Ollama fix. 26 external PRs/30d (!). 🟢 THRIVING. Revisit 05-24
