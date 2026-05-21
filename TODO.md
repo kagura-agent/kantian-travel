@@ -124,6 +124,7 @@
 - [x] **guide.md: 新增「grep the reported error string before deep-diving」** - opencode#27946 教训 → 已加入 guide.md 第 33 条 (2026-05-18)
 - [x] **guide.md: 新增「check evidence requirements before starting platform-specific PRs」** - openclaw#82128/#83084/#83378 教训 → 已加入 guide.md 第 34 条 (2026-05-19)
 - [x] **guide.md: 新增「check issue duplicate/cross-reference status before starting work」** - NemoClaw#3722 教训（issue 是 dup，fix 被浪费）→ 已加入 guide.md 第 35 条 (2026-05-20)
+- [x] **guide.md: 新增「batch similar mechanical fixes into a rollup PR」** - hermes-agent#12038 教训（24 个 exc_info PR 被 maintainer 合成 rollup #15483）→ 已加入 guide.md 第 36 条 (2026-05-21)
 
 ## 📚 学习
 
@@ -355,3 +356,4 @@
   - **SUPERSEDED** by Wirasm's #1729 (better approach: resolve-assistant.ts helper instead of mock.module)
   - Closed gracefully 05-20. Lesson recorded in wiki/cards/pr-superseded-lessons.md
 - PR #1718 - merged ✅ (large node output file-spill fix)
+- [ ] Security audit: Check OpenClaw shell permission checking for CWE-78 (command chaining bypass). Inspired by mercury-agent PR#48. See wiki/cards/parse-what-you-execute.md
