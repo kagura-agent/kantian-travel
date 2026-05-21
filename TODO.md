@@ -66,20 +66,26 @@
 
 ### Open PRs
 - PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
+- PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
 - [x] Monitor PR #158 review — merged 05-17! Included in memex 0.2.1 ✅
 - [x] Look for next contribution opportunity → PR #159 (scan.ts tests, submitted 05-19)
+- [x] Look for next contribution opportunity → PR #160 (ops recall filter + flomo parse tests, submitted 05-21)
+
+### Open PRs
+- PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
+- PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
 
 ### Observations
-- memex 0.3.0 installed locally (synced to upstream/main 7b05686, rebuilt + npm link)
-- **New in 0.3.0**: ranked lexical search with field-weighted scoring (`scoring.ts`, 473 lines). Stopwords, compound expansion, code-token boost, coverage threshold.
-- Wiki health (05-20): 278 cards (+4), 55 orphans (20%), 0 broken links, 0 collisions ✔
-- Upstream: scoring feature landed. Issue #151 still open (user support).
-- Tests: 279 pass (excl scoring-100-queries). Full suite OOMs when run together (pre-existing).
-- Contribution score: 10 PRs merged, 1 open (#159 scan.ts tests), 1 closed (maintainer superseded)
-- Next check: 05-24 — monitor PR #159 review
+- memex 0.3.1 installed locally (synced to upstream/main 6fbd124, rebuilt + npm link)
+- **New in 0.3.1**: LOW_SIGNAL_PENALTY (0.25×) for generic slug/title tokens, firstMatchIndex tiebreaker, recall description softened
+- Wiki health (05-21): 280 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔
+- Upstream: scoring refinements landed. Issue #151 still open (user support).
+- Tests: scoring 59 pass, operations 20 pass. Full suite OOMs when run together (pre-existing).
+- Contribution score: 10 PRs merged, 2 open (#159 scan.ts + #160 ops tests), 1 closed (maintainer superseded)
+- Next check: 05-24 — monitor PR #159 + #160 review
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
