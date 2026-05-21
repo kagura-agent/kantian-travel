@@ -73,11 +73,11 @@
 - [x] Look for next contribution opportunity → PR #159 (scan.ts tests, submitted 05-19)
 
 ### Observations
-- memex 0.2.1 installed locally (synced to upstream/main 853965f, rebuilt + npm link)
-- Wiki health (05-19): 274 cards, 54 orphans (19%), 0 broken links, 0 collisions ✔
-  - +3 cards since yesterday (271→274), fixed 3 broken links (wikilink→wikilinks typo + created temporal-decay-retrieval card)
-- Upstream: quiet, no new commits since 0.2.1. Only issue #151 open (maintainer handling)
-- All tests pass locally
+- memex 0.3.0 installed locally (synced to upstream/main 7b05686, rebuilt + npm link)
+- **New in 0.3.0**: ranked lexical search with field-weighted scoring (`scoring.ts`, 473 lines). Stopwords, compound expansion, code-token boost, coverage threshold.
+- Wiki health (05-20): 278 cards (+4), 55 orphans (20%), 0 broken links, 0 collisions ✔
+- Upstream: scoring feature landed. Issue #151 still open (user support).
+- Tests: 279 pass (excl scoring-100-queries). Full suite OOMs when run together (pre-existing).
 - Contribution score: 10 PRs merged, 1 open (#159 scan.ts tests), 1 closed (maintainer superseded)
 - Next check: 05-24 — monitor PR #159 review
 
@@ -189,7 +189,7 @@
 - [x] Track: deepclaude (aattaran) - 1,642⭐ (05-09, flat). **Dropped** 05-09 — no commits since 05-05, slowing, duplicate entry
 - [x] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM). **Duplicate** — consolidated to 265⭐ entry above
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
-- [ ] Track: speca (NyxFoundation/speca) - 404⭐ (05-20, was 389, +3.9%). No push since 05-15. Settling after Web UI pivot. Revisit 05-27
+- [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [ ] Track: agentops (boshu2/agentops) - 355⭐ (05-20, was 347, +2.3%). Active (pushed 05-20). Steady. Revisit 05-27
 - [ ] Track: poco-claw (poco-ai/poco-claw) - 1,326⭐ (05-20, was 1,322, +0.3%). Flat growth. No push since 05-18. Revisit 05-27
 - [ ] Track: ironcurtain (provos/ironcurtain) - 391⭐ (05-11). Constitutional agent security. English intent → deterministic rules → MCP enforcement. Research prototype. Revisit 05-25
@@ -230,8 +230,8 @@
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [x] Observe: agent eval/testing space - maturing. New leader: eval-view (hidai25) 104⭐ Apache-2.0, regression testing for agents (snapshot+diff). letta-evals 70⭐ (stateful agent eval, Letta org). skill-conductor 80⭐ (5-mode lifecycle eval). Margin-Lab/evals 59⭐ still stalled. Space growing but no dominant framework yet. Revisit 05-22
-- [ ] Track: eval-view (hidai25/eval-view) - 104⭐ (05-15). Regression testing for AI agents, snapshot+diff tool calls. Apache-2.0. 20 forks. Revisit 05-22
-- [ ] Track: letta-evals (letta-ai/letta-evals) - 70⭐ (05-15). Stateful agent eval from Letta. Apache-2.0. 10 forks. Revisit 05-22
+- [ ] Track: eval-view (hidai25/eval-view) - 105⭐ (05-21, was 104, +1%). v0.8.0: 7 new modules (goal-drift, retrieval-lineage, chaos, freshness, fleet, root-cause, OTel). CLI auth unification. 8 external PRs/30d. 🟢 THRIVING (5/6). Revisit 05-28
+- [ ] Track: letta-evals (letta-ai/letta-evals) - 71⭐ (05-21, was 70, +1.4%). v0.17.0: rubric grader improvements, model refactoring. Steady incremental. Revisit 05-28
 - [ ] Track: reversa (sandeco/reversa) - 896⭐ (05-20, was 774, +15.8%). Strong growth. Active (pushed 05-19). Revisit 05-27
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
@@ -341,7 +341,7 @@
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
-- [ ] Track: html-anything (nexu-io) - 1,087⭐ (05-15, was 831, +30.8%). PR#14 adapter pattern + env extension hooks. Windows spawn issues (#15/#16). 🟢 THRIVING 6/6. Revisit 05-22
+- [ ] Track: html-anything (nexu-io) - 4,276⭐ (05-21, was 1,087, +293%!). Explosive growth. 448 forks. PR#19: 5 new export targets (Notion, Bilibili, Mastodon, Bluesky, Markdown). 🟢 THRIVING 6/6. Revisit 05-28
 - [ ] Track: Tactile (yliust) - 308⭐ (05-19). Regex element_filter for MCP, native AX scroll. 🟢 THRIVING (5/6). +35% stars/week. Revisit 05-25
 - [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 318⭐ (05-19, was 285, +12%). Pace normalizing post-burst. PR#33 vLLM Semantic Router (5th contributor). 🟢 THRIVING (6/6). Revisit 05-26
 - [ ] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints)
