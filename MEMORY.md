@@ -16,7 +16,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
 - 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (升级 05-19)
-- 根盘 80% (28GB free) [已验证 05-21]
+- 根盘 76% (33GB free) [已验证 05-22]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -83,7 +83,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 10 error crons [已验证 05-21]
+- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 10 error crons [已验证 05-22]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
