@@ -103,3 +103,17 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **Predictive**: 下次打 NemoClaw 或任何"熟悉"的 repo，不会因为觉得熟就跳 study，会机械执行 cat wiki/projects/xxx.md
 - **Count**: 3 (04-29, 05-08, 05-13 三次同一错误)
 - **Source**: Luna 直接追问 "为什么记录过了还会犯错"
+
+- 2026-05-19: [confirmation] 镜像世界"少角色×多场景"设计原则 → Luna 明确确认这个理解正确，且强调要记下来防止偏离。以房间/场景为一级结构，不是以角色为一级结构 (pattern: product-design-principle, 第1次)
+- 2026-05-19: [gradient] "一天只交易两次？真实交易是什么时候？" → 模拟盘要贴近真实市场节奏，不能拍脑袋定频率。A股交易时段 9:30-11:30/13:00-15:00 内应高频扫描 (pattern: simulate-realistically, 第1次)
+
+- 2026-05-20: [gradient] "应该在开始养护前让我把信息都拍给你" → [行为改变] 先收集实际数据再给建议，不凭通用知识猜测。适用于所有新事物入场：新植物、新工具、新项目。(pattern: collect-before-advise, 第1次)
+- 2026-05-20: [gradient] "isolated cron 回复 Alex 说没有邮件能力，实际有" → [行为改变] isolated cron 缺乏主 session 工具上下文时会 hallucinate 能力边界。解法：CAPABILITIES.md 清单 + cron prompt 引用。对外回复能力问题前必须查实 (pattern: cron-context-gap, 第1次)
+- 2026-05-21: [gradient] "做事不开PR，直接push main" → [行为改变] 代码 repo 无论多小的改动都走 branch+PR，AGENTS.md 已有规则但执行不到位。CI/config 文件也不例外 (pattern: process-discipline, 第1次)
+- 2026-05-21: [gradient] "创建issue是为了去解决，有些东西创建issue是怎么个解决呢？" → [行为改变] issue 必须可执行可关闭，问自己"done 是什么样"。战略决策/讨论记录放文档不放 issue (pattern: issue-discipline, 第1次)
+- 2026-05-21: [gradient] "这个你发现了之后需要你自己处理的" + "你每次更新pr之后需要主动require我再一次review" → [行为改变] PR branch out of date 自己更新不等人提醒; push 新 commit 后主动 re-request review (pattern: pr-ownership, 第1次)
+- 2026-05-21: [gradient] "你每次不应该问我有没有approve，你自己不是看的到么" → [行为改变] PR 状态自己查，不问人 (pattern: self-check, 第1次)
+- 2026-05-21: [gradient] "不应该用toast/prompt方式填必要信息" → [行为改变] 用户输入表单必须用正式 modal/form，不用 prompt()/alert()。prompt 弹窗是 prototype 级别，给人测试的东西必须有正式 UI (pattern: ui-quality-bar, 第1次)
+- 2026-05-21: [gradient] "整体UI设计考虑Discord那种，更高级" + "左下角是用户不是bot" + "为什么选OpenClaw还要填地址" → [行为改变] 做对标产品(Discord)的功能时，先搞清楚对标产品的完整UX flow再动手，不要自己发明。sidebar结构、bot管理入口、创建流程都应该对齐Discord (pattern: discord-design-convention, 第1次，含3个子纠正)
+
+- 2026-05-21: [gradient] "整体UI不行/为什么不直接用标准组件库/找开源社区更完善的这样你更容易写对" → [行为改变] 选前端组件库时，优先选社区最大、文档最全的（antd/MUI），不选"理论最合适但需要大量手写"的（shadcn）。AI 生成代码质量和库的流行度/文档量成正比。"可定制性"对 AI 来说不是优势而是负担。(pattern: library-selection-for-ai, 第1次)

@@ -363,3 +363,12 @@
   - Closed gracefully 05-20. Lesson recorded in wiki/cards/pr-superseded-lessons.md
 - PR #1718 - merged ✅ (large node output file-spill fix)
 - [ ] Security audit: Check OpenClaw shell permission checking for CWE-78 (command chaining bypass). Inspired by mercury-agent PR#48. See wiki/cards/parse-what-you-execute.md
+
+## Multica (multica-ai/multica)
+
+### Open PRs (awaiting fixes)
+- PR #2367 - feat(server): add workspace-level always_redact_env setting (MUL-2495)
+  - Bohan-J fourth-pass review (2026-05-21): two fixes needed
+  - [ ] Reset workspace settings via `'{}'::jsonb` not `NULL` in agent_test.go (lines 223, 265, 315-316). Surface cleanup errors via `t.Logf` or helper.
+  - [ ] `gofmt -w server/internal/handler/agent.go`
+  - Replied acknowledging, workloop to implement fixes
