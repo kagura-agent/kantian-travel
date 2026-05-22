@@ -16,7 +16,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
 - 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (升级 05-19)
-- 根盘 76% (33GB free) [已验证 05-22]
+- 根盘 75% (34GB free) [已验证 05-23]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -34,7 +34,7 @@
 - **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
-- **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.0)
+- **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
 - **evolution-log** — 进化原始记录(public) https://github.com/kagura-agent/evolution-log
 - **kagura-story** — 故事,stories/ 中英双版,图文并茂 → kagura-storyteller skill
 
@@ -83,7 +83,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 10 error crons [已验证 05-22]
+- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 2 error crons [已验证 05-23]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
