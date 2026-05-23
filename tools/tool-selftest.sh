@@ -144,8 +144,33 @@ else
   [[ $FF_PASS -gt 0 ]] && pass "$FF_PASS YAMLs valid"
 fi
 
-# 7. search-bench.sh — should run and report precision
-echo "7. search-bench.sh"
+# 7. flowforge-analytics.sh — should run all 3 modes without error
+echo "7. flowforge-analytics.sh"
+if [[ -x tools/flowforge-analytics.sh ]]; then
+  FA_OUT=$(bash tools/flowforge-analytics.sh 2>/dev/null) || true
+  if echo "$FA_OUT" | grep -q "Run counts\|Total:"; then
+    pass "overview mode"
+  else
+    fail "flowforge-analytics.sh" "overview didn't produce run counts"
+  fi
+  FA_BN=$(bash tools/flowforge-analytics.sh --bottlenecks 2>/dev/null) || true
+  if echo "$FA_BN" | grep -q "Bottleneck\|avg"; then
+    pass "bottleneck mode"
+  else
+    fail "flowforge-analytics.sh" "bottleneck mode failed"
+  fi
+  FA_BR=$(bash tools/flowforge-analytics.sh --branches 2>/dev/null) || true
+  if echo "$FA_BR" | grep -q "Branch\|study\|workloop"; then
+    pass "branch mode"
+  else
+    fail "flowforge-analytics.sh" "branch mode failed"
+  fi
+else
+  fail "flowforge-analytics.sh" "not executable"
+fi
+
+# 8. search-bench.sh — should run and report precision
+echo "8. search-bench.sh"
 if [[ -x tools/search-bench.sh ]]; then
   BENCH_OUT=$(bash tools/search-bench.sh 2>/dev/null | tail -5) || true
   if echo "$BENCH_OUT" | grep -qi "precision\|score\|pass\|%"; then

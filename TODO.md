@@ -67,6 +67,7 @@
 ### Open PRs
 - PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
 - PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
+- PR #163 - fix(deps): resolve high-severity vulnerabilities via npm audit fix (fixes #162) — submitted 05-22
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
@@ -84,8 +85,10 @@
 - Wiki health (05-21): 280 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔
 - Upstream: scoring refinements landed. Issue #151 still open (user support).
 - Tests: scoring 59 pass, operations 20 pass. Full suite OOMs when run together (pre-existing).
-- Contribution score: 10 PRs merged, 2 open (#159 scan.ts + #160 ops tests), 1 closed (maintainer superseded)
-- Next check: 05-24 — monitor PR #159 + #160 review
+- Contribution score: 10 PRs merged, 3 open (#159 scan.ts + #160 ops tests + #163 npm audit fix), 1 closed (maintainer superseded)
+- Wiki health (05-22): 282 cards, 58 orphans (21%), 0 broken links, 0 collisions ✔
+- vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
+- Next check: 05-24 — monitor PR #159 + #160 + #163 review
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -119,6 +122,7 @@
 - [x] **guide.md: 新增「forward-compat PRs have a shelf life in fast-moving repos」** - openclaw#79755 教训 → 已加入 guide.md 第 22 条 (2026-05-10)
 - [x] **guide.md: 新增「repo file conventions: size limits and mode bits」** - opc#15-18 教训（4 PRs superseded）→ 已加入 guide.md 第 26 条 (2026-05-11)
 - [x] **guide.md: 新增「check upstream branches, not just main」** - multica#2376 + hermes-agent#23173 教训 → 已加入 guide.md 第 27 条，同时交叉引用 rule #4 (2026-05-12)
+- [x] **gogetajob: scan --all timeout** — Added `--skip-recent <hours>` option. Cron/subagent can use `--skip-recent 12` to skip repos scanned within 12h, reducing scan from 49 repos to only stale ones. Tested: 44/49 skipped, runs in seconds vs 300s+ timeout. (2026-05-22)
 - [x] **blocklist: 加入 claude-hud** - repo 不 merge 外部 PR，5+ PRs 零 review → 已加入黑名单 + 更新 targets.md (2026-05-11)
 - [x] **guide.md: 新增「agent ecosystem is saturated with contributors」** - 2026-05-13 全面扫描教训 → 已加入 guide.md 第 28 条
 - [x] **guide.md: 新增「anti-AI sentiment is spreading」** - mcp-use#1486 教训 → 已加入 guide.md 第 29 条
@@ -168,13 +172,14 @@
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 124⭐ (05-19). 8-section skill standard v1.0, external PRs merging. 🟡 GROWING (4/6). Revisit 05-27
 - [x] Apply: Evaluate functional-area-resolver pattern for our available_skills when count exceeds ~30 (currently ~25). From gbrain v0.32.3.0 → 05-12: Not needed now (25 skills, ~3-4KB context). Sweet spot is 40-50+ skills. Key: `(dispatcher for: ...)` clause is load-bearing, without it accuracy collapses. Revisit at ~40 skills.
 - [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
-- [ ] Track: Beads (gastownhall/beads) - 23,754⭐ (05-17, was 23,652, +0.4%). CI/nix maintenance only. Revisit 05-24
+- [x] Track: Beads (gastownhall/beads) - 24,020⭐ (05-23, was 23,754, +1.1%). Active daily: count-only default, sync.Once test cleanup. Mature/steady. Revisit 05-30
+- [x] Track: re_gent (regent-vcs/re_gent) - 584⭐ (05-23, was 525, +11.2%!). Major: OpenCode integration (#36) + Codex capture parity (#31). Multi-agent VCS expanding agent coverage. External contributors active. 🟢 THRIVING. Revisit 05-30
 - [x] Track: re_gent (regent-vcs/re_gent) - 439⭐ (05-13, was 431, +1.9%). v0.1.2. Mostly housekeeping (CI, docs, Discord). 🟢 THRIVING (6/6) community but slow feature pace. Revisit 05-20
-- [ ] Track: re_gent (regent-vcs/re_gent) - 525⭐ (05-18, was 518, +1.3%). Post-v1.0.0 settling. README polish. 36 forks. 🟢 THRIVING (6/6). Revisit 05-24
+- [x] Track: re_gent — merged into single entry above
 - [x] Track: agent-memory-hooks-neo4j (tomasonjo) - 88⭐ (05-21). **Dropped** 05-21 — 15 days no commits, marginal star growth
 - [x] Track: centaur-loop (finewood2008) - 35⭐ (05-12). **Dropped** 05-14 — 35⭐, too small to track
 - [x] Track: OpenSquilla (opensquilla/opensquilla) - 230⭐ (05-12, flat). **Dropped** 05-12 — flat growth despite active development
-- [ ] Track: Statewave (smaramwbc/statewave) - 220⭐ (05-17, was 217). Health check improvements, canonical ID contract, Ollama fix. 26 external PRs/30d (!). 🟢 THRIVING. Revisit 05-24
+- [x] Track: Statewave (smaramwbc/statewave) - 212⭐ (05-23, was 220, -3.6% ⚠️ stars dropped). Recent PRs all from solo maintainer (docs/readme). Community signal weakening. Revisit 05-30
 - [x] Track: buddyme (virgo777) - 58⭐ (05-13). **Dropped** 05-13 — persistent 🔴 SOLO (0/6), no community engagement despite star growth
 - [x] Track: aide (hibbault/aide) - 15⭐ (05-10). **Dropped** 05-10 — repo 404 (deleted/renamed)
 - [x] Track: Photo-agents (jmerelnyc/Photo-agents) - 733⭐ (05-13). **Dropped** 05-14 — star-farming pattern, zero issues/PRs, idle
@@ -324,8 +329,8 @@
 - [x] Track: cangjie-skill (kangarooking) - 852⭐ (05-13). **Dropped** 05-13 — stalled 9 days (last push 05-04), content accumulation without innovation
 - [ ] Evaluate: V2 Predictive Power test for beliefs-candidates upgrade gate (inspired by cangjie-skill triple verification) — "can this belief predict behavior in unseen scenarios?"
 - [x] Track: Workspace-Bench (OpenDataBox) - 8⭐ (05-10). **Dropped** 05-10 — low traction, dataset still unreleased
-- [ ] Track: OpenViking (volcengine/OpenViking) - 23,725⭐ (05-10). ByteDance context database, L0/L1/L2 tiered model. AGPL-3.0, Python+Rust. Validates our wiki architecture. Revisit 05-24
-- [ ] Track: MemOS (MemTensor/MemOS) - 9,007⭐ (05-10). TypeScript memory OS with OpenClaw plugin, L1-L3+Skills evolution. Apache-2.0. Revisit 05-24
+- [x] Track: OpenViking (volcengine/OpenViking) - 24,525⭐ (05-23, was 23,725, +3.4%). Active. Growing steadily. Revisit 05-30
+- [x] Track: MemOS (MemTensor/MemOS) - 9,337⭐ (05-23, was 9,007, +3.7%). Active. Growing steadily. Revisit 05-30
 - [x] Track: gread (NitroRCr/gread) - 36⭐ (05-11). **Dropped** 05-14 — 36⭐, not aligned with core interests
 - [ ] Apply: Script wiki/L1.md auto-regeneration from wiki content (inspired by OpenViking SemanticProcessor)
 - [x] Track: ClawMem (yoloshii/ClawMem) - 164⭐ (05-14). **Dropped** 05-14 — no commits since 05-08, stale signal
@@ -366,9 +371,17 @@
 
 ## Multica (multica-ai/multica)
 
+### Merged ✅
+- [x] PR #2367 - feat(server): add workspace-level always_redact_env setting (MUL-2495) — merged 05-22 by Bohan-J
+
+### Open PRs
+- PR #3059 - fix(runtime): inject workspace context into agent brief (fixes #3031) — OPEN, awaiting review
+
+## NemoClaw (NVIDIA/NemoClaw)
+
 ### Open PRs (awaiting fixes)
-- PR #2367 - feat(server): add workspace-level always_redact_env setting (MUL-2495)
-  - Bohan-J fourth-pass review (2026-05-21): two fixes needed
-  - [ ] Reset workspace settings via `'{}'::jsonb` not `NULL` in agent_test.go (lines 223, 265, 315-316). Surface cleanup errors via `t.Logf` or helper.
-  - [ ] `gofmt -w server/internal/handler/agent.go`
-  - Replied acknowledging, workloop to implement fixes
+- PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files
+  - CodeRabbit review (05-22): 2 issues
+  - [ ] mkdirSync({recursive:true, mode:0o700}) doesn't fix existing dir permissions → need explicit chmodSync fallback
+  - [ ] CI budget check failing — onboard.ts grew +9 lines, refactor permissions into helper module
+  - Workloop to implement fixes
