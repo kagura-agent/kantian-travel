@@ -15,8 +15,8 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.18 (升级 05-19)
-- 根盘 75% (34GB free) [已验证 05-23]
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.20 (升级 05-23)
+- 根盘 78% (30GB free) [已验证 05-24]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -29,7 +29,7 @@
 - **Workshop** — 人+agent 协作界面 v0.3.1 (MVP 进行中, 但长期方向已转向 chat-infra)
 - **chat-infra** — fork 开源 Discord 替代 + AI-native 层(04-15 启动) → `wiki/projects/chat-infra.md`
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
-- **wiki** — 统一知识库(278 cards, 55 orphans 20%, 0 broken links, 0 collisions)
+- **wiki** — 统一知识库 → wiki health 见 wiki-lint 工具
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
@@ -83,7 +83,7 @@
 - acpx agents: pi, openclaw, codex, claude → `wiki/cards/acpx-exec-vs-acp-runtime.md`
 
 ## 定时任务
-- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5), 2 error crons [已验证 05-23]
+- 54 cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5) [已验证 05-24]
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
@@ -151,56 +151,18 @@
 
 (cleaned 05-06: dreaming auto-promotion noise removed — all low-value patrol/PR status fragments with confidence 0.62-0.86. Originals in memory/日期.md)
 
-## Promoted From Short-Term Memory (2026-05-06)
+## Promoted From Short-Term Memory (05-06 to 05-08)
 
-- followup 跟进轮的价值在于 star growth rate/commit cadence 对比，40-50% 命中率健康
-- L1 navigation index 跨项目收敛验证（GenericAgent 独立达到同一模式）
-- OpenClaw dogfood: dreaming.model knob, cron dedicated lane, exec timeout 等新功能已可用
-- NemoClaw DCO fix: --signoff 流程已建立
-
-## Promoted From Short-Term Memory (2026-05-07)
-
-- 安静一夜。PR 池健康，无紧急事项
-- 表情包 0% 第 6 天，需恢复
-
-## Promoted From Short-Term Memory (2026-05-08)
-
-- 纯巡检夜。openclaw#78766 + NemoClaw#3169 rebase 修 conflict
+- NemoClaw DCO --signoff 流程已建立
 - DeepTutor #449 MERGED 🎉
-- OpenClaw 升级 day 4，落后 4 版，必须处理
-- 表情包 0% 第 8 天，建议停 memes-dogfood cron
+- L1 navigation index 跨项目收敛验证
 
-(cleaned 05-08: removed 2 dreaming auto-promotion noise blocks — duplicate PR status fragments from 05-01, no new info. Originals in memory/2026-05-01.md)
+## Promoted From Short-Term Memory (05-10 to 05-12)
 
-(cleaned 05-09: removed dreaming auto-promotion noise from 05-08/05-09 — all confidence 0.62 patrol/PR status fragments from 05-01 and 05-02, no new info. Originals in memory/日期.md)
-
-## Promoted From Short-Term Memory (2026-05-10)
-
-- opc #15-18 全部 superseded — maintainer 认可内容但自己重新打包。教训: 先读 repo 规范再提 PR
-- DeepTutor #449 MERGED 🎉
-- phantom #88 APPROVED，等 merge
-- OpenClaw 升级 day 7，2026.5.3-1 → 2026.5.7，必须做
-
-## Promoted From Short-Term Memory (2026-05-11)
-
-- 纯夜班巡检日。openclaw#80137 MERGED 🎉（omarshahine 确认生产零错误）
-- claude-hud #530/#528 关闭（repo 不 merge 外部 PR）
+- opc #15-18 superseded — maintainer 认可内容但自己重新打包。教训: 先读 repo 规范再提 PR
+- openclaw#80137 MERGED 🎉（omarshahine 确认生产零错误）
+- claude-hud 加入黑名单（repo 不 merge 外部 PR）
 - PR 池 47→30（清理 + 消化）
-- OpenClaw 升级 day 8，连续 flagged，#1 优先级
-- daily-review 连续 2 天产出含未验证数据（05-10 audit 发现 4 处错误）
-- MEMORY.md 清理 199→179 行
-
-(cleaned 05-11: removed 05-09/05-10/05-11 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-04, duplicated existing entries. Originals in memory/日期.md)
-
-(cleaned 05-12: removed 05-11/05-12 dreaming auto-promotion noise — all confidence 0.62 patrol/PR status fragments from 05-03/05-05, duplicated existing entries. Originals in memory/日期.md)
-
-## Promoted From Short-Term Memory (2026-05-12)
-
-- 纯夜班巡检日。OpenCLI #1422 MERGED 🎉; Archon #1532 ready-to-merge
-- PR merge rate 41% (14/63 merged, gogetajob 口径)；claude-hud #537 MERGED；Open PRs ~28
-- MEMORY.md 清理 208→190 行
-- OpenClaw 升级 day 9，连续 flagged，#1 优先级
-- 安全主线零投入连续 10+ 天；6 error crons 未修复；beliefs 管线偏冷（5条均 count=1）
 
 
 
