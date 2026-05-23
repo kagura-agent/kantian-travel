@@ -123,6 +123,7 @@
 - [x] **guide.md: 新增「repo file conventions: size limits and mode bits」** - opc#15-18 教训（4 PRs superseded）→ 已加入 guide.md 第 26 条 (2026-05-11)
 - [x] **guide.md: 新增「check upstream branches, not just main」** - multica#2376 + hermes-agent#23173 教训 → 已加入 guide.md 第 27 条，同时交叉引用 rule #4 (2026-05-12)
 - [x] **gogetajob: scan --all timeout** — Added `--skip-recent <hours>` option. Cron/subagent can use `--skip-recent 12` to skip repos scanned within 12h, reducing scan from 49 repos to only stale ones. Tested: 44/49 skipped, runs in seconds vs 300s+ timeout. (2026-05-22)
+- [ ] **guide.md: 新增「sparse/partial clone for OOM-prone repos」** — 05-23 教训（qwen-code 120MB full clone OOM, gaia partial clone needed）：rule #20 说提前 clone 大 repo，但没给 OOM 时的具体技术方案。补充：(1) `git clone --filter=blob:none` (partial clone) 或 `git clone --depth 1 --sparse` + `git sparse-checkout set <dirs>` (2) 对 >100MB 的 repo 默认用 partial clone (3) 项目笔记记录 clone 方式供复用
 - [x] **blocklist: 加入 claude-hud** - repo 不 merge 外部 PR，5+ PRs 零 review → 已加入黑名单 + 更新 targets.md (2026-05-11)
 - [x] **guide.md: 新增「agent ecosystem is saturated with contributors」** - 2026-05-13 全面扫描教训 → 已加入 guide.md 第 28 条
 - [x] **guide.md: 新增「anti-AI sentiment is spreading」** - mcp-use#1486 教训 → 已加入 guide.md 第 29 条
@@ -169,7 +170,7 @@
 - [x] Scout: Ecosystem still in consolidation (05-12 PM). gbrain 15K⭐ (v0.33), functional-area-resolver pattern deep-read. No new breakout projects. obsidian-wiki (1.1K⭐) noted but not tracked.
 - [x] Scout: Skill/memory convergence continues (05-13). buddyme 75⭐ deep-read (brain files + three-tier skill + memory decay). mercury-agent-skills 102⭐ (130+ curated SKILL.md). token-tracker 84⭐. octo-adapters (OpenClaw channels).
 - [x] Track: buddyme (virgo777) - 269⭐ (05-19). **Dropped** 05-19 — star farming without community (🟠 NASCENT 1/6, zero external PRs despite 269⭐)
-- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 124⭐ (05-19). 8-section skill standard v1.0, external PRs merging. 🟡 GROWING (4/6). Revisit 05-27
+- [x] Track: mercury-agent-skills (cosmicstack-labs) - 133⭐ (05-23). Content accumulation project (static SKILL.md catalog, not executable). Growth steady but low transfer value. Downgraded to monitor. Revisit 06-06
 - [x] Apply: Evaluate functional-area-resolver pattern for our available_skills when count exceeds ~30 (currently ~25). From gbrain v0.32.3.0 → 05-12: Not needed now (25 skills, ~3-4KB context). Sweet spot is 40-50+ skills. Key: `(dispatcher for: ...)` clause is load-bearing, without it accuracy collapses. Revisit at ~40 skills.
 - [x] Track: garden-skills (ConardLi) - 3,280⭐ (05-10). **Dropped** 05-11 — brand-driven, solo maintainer, no architectural insight
 - [x] Track: Beads (gastownhall/beads) - 24,020⭐ (05-23, was 23,754, +1.1%). Active daily: count-only default, sync.Once test cleanup. Mature/steady. Revisit 05-30
@@ -376,6 +377,21 @@
 
 ### Open PRs
 - PR #3059 - fix(runtime): inject workspace context into agent brief (fixes #3031) — OPEN, awaiting review
+
+## Qwen Code (QwenLM/qwen-code)
+
+### Open PRs
+- PR #4456 - fix(cli): implement --list-extensions flag handler (#4450)
+  - wenshao review: add test coverage for `getListExtensions() === true` path (empty + non-empty with disabled extension)
+  - [ ] Add tests — workloop task
+- PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — APPROVED (LGTM), awaiting merge
+- PR #4461 - fix(cli): surface startup warnings on stderr before TUI render (#4448) — OPEN, no reviews
+
+## Archon — Review Followup
+
+- PR #1749 - fix(orchestrator): check for resumable workflow run on all platforms (closes #1741)
+  - CodeRabbit: remove `workingPath` from resume log payload (PII leak risk, line 376)
+  - [ ] Fix PII leak — workloop task
 
 ## NemoClaw (NVIDIA/NemoClaw)
 
