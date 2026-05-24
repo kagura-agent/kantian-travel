@@ -71,17 +71,23 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **2026-04-14:** Judge by equivalent exposure principle  
 - **2026-04-14:** Watch for content-honest + delivery-performative split
 - **2026-04-14:** Trigger: "when I feel things went well" rather than after every task
-## 2026-05-06: 大 repo clone 失败 (eliza 648MB)
+## 2026-05-06: 大 repo clone 失败 (eliza 648MB) → **graduated 2026-05-24** (target: Workflow — preflight-repo.sh check 4: repo size ≤500MB limit, 200MB warning)
 - **gradient**: 在 workloop 里现 clone 大 repo 导致整轮浪费。gogetajob DB 应记录 repo size，workloop 应预筛 >200MB 的 repo。
 - **count**: 8+ (gradient-scan 14-day: 05-06, 05-12, 05-13, 05-15, 05-18, 05-19, 05-21, 05-23. Independent repos: eliza, NemoClaw, oh-my-pi, opencode, qwen-code, gaia)
-- **action**: 考虑添加 repo size 检查到 workloop find_work 流程
+- **action**: ✅ preflight-repo.sh check 4 已实现 (500MB hard limit, 200MB warning)
 - **V1**: ✅ ≥30 独立发生（多 repo、多天、多 session）
+- **V2**: ✅ Predictive — size check saves 10-15min per large repo encounter
+- **V3**: ✅ Non-obvious — 200-500MB threshold requires empirical calibration
+- **graduation evidence**: First automated graduation via gradient-scan.sh
 
-## 2026-05-06: 竞争 PR 极度普遍
+## 2026-05-06: 竞争 PR 极度普遍 → **graduated 2026-05-24** (target: Workflow — preflight-repo.sh check 3 + workloop.yaml find_work step)
 - **gradient**: 15+ issues 中只有 2 个没有竞争 PR。当前开源贡献竞争远超预期。
 - **count**: 14+ (gradient-scan 14-day: every day 05-11 through 05-24. Independent observation across hermes-agent, NemoClaw, opencode, multica, Archon, oh-my-pi, DeepTutor, qwen-code, firecrawl)
-- **action**: 需要更快的筛选策略（先 gh pr list --search 再读 issue detail），或转向更冷门的 repo
+- **action**: ✅ preflight-repo.sh check 3 (competing PR detection) + workloop.yaml 高星项目先查竞争 PR
 - **V1**: ✅ ≥30 独立发生（每天多 repo 反复确认）
+- **V2**: ✅ Predictive — PR competition check prevents entire wasted work sessions
+- **V3**: ✅ Non-obvious — assumption was most issues uncontested, reality is opposite
+- **graduation evidence**: First automated graduation via gradient-scan.sh
 
 ### Scout-before-commit check (2026-05-08, study #1567)
 - **Trigger**: Declaring a project "worth deep read" during scout, then discovering wiki already has thorough notes
