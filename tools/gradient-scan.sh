@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+# gradient-scan.sh — Scan recent memory for evidence matching existing beliefs-candidates patterns
+# Inspired by Elephant Agent PR#43 "Signal Extraction" (pure code, no LLM)
+#
+# Usage: bash tools/gradient-scan.sh [--days N] [--verbose]
+#
+# Scans memory/YYYY-MM-DD.md files for keywords matching beliefs-candidates pattern tags.
+# Reports which patterns have new evidence (potential count increments).
+# Does NOT auto-modify beliefs-candidates.md — human/agent review required.
+
+set -euo pipefail
+
+WORKSPACE="${HOME}/.openclaw/workspace"
+BC_FILE="${WORKSPACE}/beliefs-candidates.md"
+MEMORY_DIR="${WORKSPACE}/memory"
+DAYS=7
+VERBOSE=false
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --days) DAYS="$2"; shift 2 ;;
+    --verbose) VERBOSE=true; shift ;;
+    *) echo "Unknown arg: $1"; exit 1 ;;
+  esac
+done
+
+# Extract pattern tags and their keywords from beliefs-candidates.md
+# Format: "pattern: <tag>, 第N次" or section headers with keywords
+declare -A PATTERNS  # pattern_tag -> search_keywords
+declare -A PATTERN_DATES  # pattern_tag -> dates already logged
+declare -A PATTERN_STATUS  # pattern_tag -> graduated/retracted/candidate
+
+# Extract patterns with their tags
+while IFS= read -r line; do
+  if [[ "$line" =~ pattern:\ ([a-zA-Z0-9_-]+) ]]; then
+    tag="${BASH_REMATCH[1]}"
+    PATTERNS["$tag"]="$tag"
+    # Extract date
+    if [[ "$line" =~ ^-\ ([0-9]{4}-[0-9]{2}-[0-9]{2}) ]]; then
+      PATTERN_DATES["$tag"]="${PATTERN_DATES[$tag]:-} ${BASH_REMATCH[1]}"
+    fi
+    # Check status
+    if [[ "$line" =~ graduated ]]; then
+      PATTERN_STATUS["$tag"]="graduated"
+    elif [[ "$line" =~ retracted ]]; then
+      PATTERN_STATUS["$tag"]="retracted"
+    else
+      PATTERN_STATUS["$tag"]="candidate"
+    fi
+  fi
+done < "$BC_FILE"
+
+# Also extract section-based candidates (## headers)
+while IFS= read -r line; do
+  if [[ "$line" =~ ^##\ [0-9]{4}-[0-9]{2}-[0-9]{2}:\ (.+) ]]; then
+    title="${BASH_REMATCH[1]}"
+    # Skip graduated/retracted
+    if [[ "$line" =~ graduated|retracted ]]; then
+      continue
+    fi
+  fi
+done < "$BC_FILE"
+
+# Build keyword map for each pattern
+# Map pattern tags to grep-friendly search terms
+declare -A KEYWORDS
+# Tight keywords — each should match ONLY the specific behavioral pattern, not general context
+# Rule: keyword should identify the BEHAVIOR/ERROR, not the domain
+KEYWORDS["product-design-principle"]="少角色.*多场景|场景为一级结构|角色为一级结构"
+KEYWORDS["simulate-realistically"]="拍脑袋定频率|贴近真实.*节奏|模拟.*不真实"
+KEYWORDS["collect-before-advise"]="先收集.*数据.*再|先拍.*信息|collect.*data.*before.*advise"
+KEYWORDS["cron-context-gap"]="isolated.*cron.*能力|cron.*hallucinate|CAPABILITIES.md.*cron"
+KEYWORDS["process-discipline"]="直接.*push.*main|不开PR|没走.*branch|push.*main.*不该"
+KEYWORDS["issue-discipline"]="issue.*可执行.*可关闭|issue.*done.*是什么|战略.*不放.*issue"
+KEYWORDS["pr-ownership"]="out.of.date.*自己|re-request.*review|主动.*require.*review|branch.*behind.*自己"
+KEYWORDS["self-check"]="不应该问.*有没有.*approve|自己.*看得到|PR.*状态.*自己查"
+KEYWORDS["ui-quality-bar"]="prompt.*弹窗.*不该|toast.*填.*必要|prototype.*级别"
+KEYWORDS["discord-design-convention"]="对标.*Discord.*UX|Discord.*完整.*flow|sidebar.*对齐.*Discord"
+KEYWORDS["library-selection-for-ai"]="组件库.*流行度|AI.*生成.*质量.*库|shadcn.*手写"
+KEYWORDS["大repo"]="clone.*OOM|clone.*失败|repo.*too.*large|sparse.*checkout.*OOM|clone.*大.*repo"
+KEYWORDS["竞争PR"]="competing.*PR|已有.*competing|every.*issue.*competing|hyper-competitive|竞争.*极度"
+KEYWORDS["code-review-rounding"]="premature.*round|rounded.*display.*value|raw.*calculation.*value"
+KEYWORDS["scout-before-commit"]="wiki.*already.*has|already.*wiki.*notes|redundant.*deep.read"
+KEYWORDS["pr-closed-self-reflect"]="PR.*close.*自省|PR.*reject.*先看.*质量|slop.*PR"
+KEYWORDS["familiarity-trap"]="熟悉.*跳过.*检查|skip.*because.*familiar|熟了.*跳过"
+
+echo "📊 Gradient Scan — $(date +%Y-%m-%d)"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Scanning last ${DAYS} days of memory for pattern matches"
+echo ""
+
+# Build list of memory files to scan
+MEMORY_FILES=()
+for i in $(seq 0 $((DAYS - 1))); do
+  d=$(date -d "-${i} days" +%Y-%m-%d 2>/dev/null || date -v-${i}d +%Y-%m-%d 2>/dev/null)
+  f="${MEMORY_DIR}/${d}.md"
+  [[ -f "$f" ]] && MEMORY_FILES+=("$f")
+done
+
+if [[ ${#MEMORY_FILES[@]} -eq 0 ]]; then
+  echo "❌ No memory files found for the last ${DAYS} days"
+  exit 0
+fi
+
+echo "📁 Files: ${#MEMORY_FILES[@]} memory files"
+echo ""
+
+FOUND=0
+TOTAL_MATCHES=0
+
+for tag in "${!KEYWORDS[@]}"; do
+  status="${PATTERN_STATUS[$tag]:-candidate}"
+  # Skip graduated/retracted
+  if [[ "$status" == "graduated" || "$status" == "retracted" ]]; then
+    continue
+  fi
+
+  keywords="${KEYWORDS[$tag]}"
+  matches=0
+  match_files=()
+  match_lines=()
+
+  for f in "${MEMORY_FILES[@]}"; do
+    fname=$(basename "$f" .md)
+    # Skip dates already logged for this pattern
+    already_logged="${PATTERN_DATES[$tag]:-}"
+    if [[ "$already_logged" == *"$fname"* ]]; then
+      continue
+    fi
+
+    count=$(grep -cEi "$keywords" "$f" 2>/dev/null || true)
+    if [[ "$count" -gt 0 ]]; then
+      matches=$((matches + count))
+      match_files+=("$fname")
+      if $VERBOSE; then
+        while IFS= read -r line; do
+          match_lines+=("  [$fname] $line")
+        done < <(grep -Ei "$keywords" "$f" 2>/dev/null | head -3)
+      fi
+    fi
+  done
+
+  if [[ "$matches" -gt 0 ]]; then
+    FOUND=$((FOUND + 1))
+    TOTAL_MATCHES=$((TOTAL_MATCHES + matches))
+    echo "🔍 pattern:${tag} — ${matches} hits in ${#match_files[@]} days"
+    echo "   Status: ${status} | Dates with evidence: ${match_files[*]}"
+    if $VERBOSE && [[ ${#match_lines[@]} -gt 0 ]]; then
+      for ml in "${match_lines[@]}"; do
+        echo "$ml"
+      done
+    fi
+    echo ""
+  fi
+done
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "📊 Summary: ${FOUND} patterns with new evidence, ${TOTAL_MATCHES} total hits"
+if [[ $FOUND -eq 0 ]]; then
+  echo "✅ No new pattern evidence found in last ${DAYS} days"
+else
+  echo "⚡ Review matches above — potential count increments for beliefs-candidates"
+fi
