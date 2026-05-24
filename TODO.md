@@ -124,7 +124,7 @@
 - [x] **guide.md: 新增「repo file conventions: size limits and mode bits」** - opc#15-18 教训（4 PRs superseded）→ 已加入 guide.md 第 26 条 (2026-05-11)
 - [x] **guide.md: 新增「check upstream branches, not just main」** - multica#2376 + hermes-agent#23173 教训 → 已加入 guide.md 第 27 条，同时交叉引用 rule #4 (2026-05-12)
 - [x] **gogetajob: scan --all timeout** — Added `--skip-recent <hours>` option. Cron/subagent can use `--skip-recent 12` to skip repos scanned within 12h, reducing scan from 49 repos to only stale ones. Tested: 44/49 skipped, runs in seconds vs 300s+ timeout. (2026-05-22)
-- [ ] **guide.md: 新增「sparse/partial clone for OOM-prone repos」** — 05-23 教训（qwen-code 120MB full clone OOM, gaia partial clone needed）：rule #20 说提前 clone 大 repo，但没给 OOM 时的具体技术方案。补充：(1) `git clone --filter=blob:none` (partial clone) 或 `git clone --depth 1 --sparse` + `git sparse-checkout set <dirs>` (2) 对 >100MB 的 repo 默认用 partial clone (3) 项目笔记记录 clone 方式供复用
+- [x] **guide.md: 新增「sparse/partial clone for OOM-prone repos」** — 05-23 教训 → 已扩展 guide.md 第 20 条（大 repo 预检 + OOM 防护：partial clone / shallow+sparse / GitHub API 直推三级策略）(2026-05-24)
 - [x] **blocklist: 加入 claude-hud** - repo 不 merge 外部 PR，5+ PRs 零 review → 已加入黑名单 + 更新 targets.md (2026-05-11)
 - [x] **guide.md: 新增「agent ecosystem is saturated with contributors」** - 2026-05-13 全面扫描教训 → 已加入 guide.md 第 28 条
 - [x] **guide.md: 新增「anti-AI sentiment is spreading」** - mcp-use#1486 教训 → 已加入 guide.md 第 29 条
