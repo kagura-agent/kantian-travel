@@ -16,7 +16,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
 - 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.20 (升级 05-23)
-- 根盘 79% (29GB free) [已验证 05-25]
+- 根盘 78% (30GB free) [已验证 05-26]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity

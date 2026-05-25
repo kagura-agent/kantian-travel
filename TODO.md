@@ -69,6 +69,7 @@
 - PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
 - PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
 - PR #163 - fix(deps): resolve high-severity vulnerabilities via npm audit fix (fixes #162) — submitted 05-22
+- PR #164 - test(import): add unit tests for importCommand (7 tests) — submitted 05-25
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
@@ -76,20 +77,18 @@
 - [x] Look for next contribution opportunity → PR #159 (scan.ts tests, submitted 05-19)
 - [x] Look for next contribution opportunity → PR #160 (ops recall filter + flomo parse tests, submitted 05-21)
 
-### Open PRs
-- PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
-- PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
-
 ### Observations
 - memex 0.3.1 installed locally (synced to upstream/main 6fbd124, rebuilt + npm link)
 - **New in 0.3.1**: LOW_SIGNAL_PENALTY (0.25×) for generic slug/title tokens, firstMatchIndex tiebreaker, recall description softened
 - Wiki health (05-21): 280 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔
 - Upstream: scoring refinements landed. Issue #151 still open (user support).
 - Tests: scoring 59 pass, operations 20 pass. Full suite OOMs when run together (pre-existing).
-- Contribution score: 10 PRs merged, 3 open (#159 scan.ts + #160 ops tests + #163 npm audit fix), 1 closed (maintainer superseded)
+- Contribution score: 10 PRs merged, 4 open (#159 scan.ts + #160 ops tests + #163 npm audit fix + #164 importCommand tests), 1 closed (maintainer superseded)
 - Wiki health (05-22): 282 cards, 58 orphans (21%), 0 broken links, 0 collisions ✔
+- Wiki health (05-25): 280 cards, 55 orphans (19%), 1 broken link (prompt-cache-optimization→context-window-management), 0 collisions ✔
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
-- Next check: 05-24 — monitor PR #159 + #160 + #163 review
+- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis)
+- Next check: 05-28 — monitor PR #159 + #160 + #163 + #164 review
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -206,7 +205,7 @@
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [ ] Track: agentops (boshu2/agentops) - 355⭐ (05-20, was 347, +2.3%). Active (pushed 05-20). Steady. Revisit 05-27
 - [ ] Track: poco-claw (poco-ai/poco-claw) - 1,326⭐ (05-20, was 1,322, +0.3%). Flat growth. No push since 05-18. Revisit 05-27
-- [ ] Track: ironcurtain (provos/ironcurtain) - 391⭐ (05-11). Constitutional agent security. English intent → deterministic rules → MCP enforcement. Research prototype. Revisit 05-25
+- [ ] Track: ironcurtain (provos/ironcurtain) - 461⭐ (05-25, was 391, +17.9%). v0.11.0 released: evolved from security layer into full agent workflow orchestration platform (vuln-discovery FSM, Svelte 5 web UI, XState workflow engine, shared-container mode, SKILL.md support). 🟢 THRIVING (5/6, 30 external PRs/30d). Revisit 06-01
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
 - [x] Track: deepsec (vercel-labs/deepsec) - 2,431⭐ (05-13). **Dropped** 05-14 — maintainer silent 7+ days, 71 unmerged community PRs, Vercel showcase pattern
 - [x] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. **Dropped** 05-08 — stale, no commits 7+ days, stars flat
@@ -356,9 +355,9 @@
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
 - [ ] Track: html-anything (nexu-io) - 4,276⭐ (05-21, was 1,087, +293%!). Explosive growth. 448 forks. PR#19: 5 new export targets (Notion, Bilibili, Mastodon, Bluesky, Markdown). 🟢 THRIVING 6/6. Revisit 05-28
-- [ ] Track: Tactile (yliust) - 308⭐ (05-19). Regex element_filter for MCP, native AX scroll. 🟢 THRIVING (5/6). +35% stars/week. Revisit 05-25
+- [ ] Track: Tactile (yliust) - 381⭐ (05-25, was 308, +23.7%). Star explosion (191→381 since 05-13) but code slowed after 05-15 MCP update. 🟢 THRIVING (5/6) but mostly solo. Some external PRs (trace logging, Apple Music skill). Revisit 06-01
 - [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 318⭐ (05-19, was 285, +12%). Pace normalizing post-burst. PR#33 vLLM Semantic Router (5th contributor). 🟢 THRIVING (6/6). Revisit 05-26
-- [ ] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints)
+- [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
 - [ ] Apply: Evaluate GenericAgent multi-observer perspective shifting (user/reviewer/attacker) for our goal/task management prompts (from goal_mode 05-20 rewrite)
 
