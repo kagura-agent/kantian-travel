@@ -83,6 +83,38 @@ KEYWORDS["code-review-rounding"]="premature.*round|rounded.*display.*value|raw.*
 KEYWORDS["scout-before-commit"]="wiki.*already.*has|already.*wiki.*notes|redundant.*deep.read"
 KEYWORDS["pr-closed-self-reflect"]="PR.*close.*自省|PR.*reject.*先看.*质量|slop.*PR"
 KEYWORDS["familiarity-trap"]="熟悉.*跳过.*检查|skip.*because.*familiar|熟了.*跳过"
+KEYWORDS["readonly-ripple-check"]="readonly.*break.*site|readonly.*mutation.*method|.push.*readonly.*type|.splice.*readonly.*array"
+KEYWORDS["premature-conclusion"]="根因确认.*错|找到了.*但|premature.*conclusion|误判.*根因|false.*root.*cause"
+KEYWORDS["wrong-debug-layer"]="先查配置.*再查|调试顺序.*配置|debug.*config.*first|源码.*其实.*配置"
+KEYWORDS["architecture-misunderstanding"]="channel-as-service.*spawn|sessions_send.*不是.*spawn|架构.*理解.*错"
+KEYWORDS["plan-before-act"]="先.*告诉.*准备.*怎么改|大改动.*先.*计划|plan.*before.*act|先陈述.*计划"
+KEYWORDS["machine-identity-verification"]="SSH.*验证.*hostname|机器.*身份.*确认|VM.*编号.*不一致|IP.*VM.*映射"
+KEYWORDS["workflow-enforcement"]="不按.*流程|workflow.*yaml.*手动|FlowForge.*执行.*不能|跳过.*workflow"
+
+# Cross-check: scan beliefs-candidates section by section for graduated/retracted status
+# Handles cases where pattern: tag is on a line BELOW a graduated ## header
+current_section_status=""
+while IFS= read -r line; do
+  if [[ "$line" =~ ^##\ [0-9]{4} ]]; then
+    if [[ "$line" =~ graduated ]]; then
+      current_section_status="graduated"
+    elif [[ "$line" =~ retracted ]]; then
+      current_section_status="retracted"
+    else
+      current_section_status="candidate"
+    fi
+  fi
+  if [[ "$current_section_status" == "graduated" || "$current_section_status" == "retracted" ]]; then
+    if [[ "$line" =~ pattern:\ ([a-zA-Z0-9_-]+) ]]; then
+      PATTERN_STATUS["${BASH_REMATCH[1]}"]="$current_section_status"
+    fi
+  fi
+done < "$BC_FILE"
+
+# Hardcoded graduated patterns that use Chinese names in headers (no pattern: tag)
+# These must be manually maintained when Chinese-named patterns graduate
+PATTERN_STATUS["大repo"]="graduated"
+PATTERN_STATUS["竞争PR"]="graduated"
 
 echo "📊 Gradient Scan — $(date +%Y-%m-%d)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -128,14 +160,14 @@ for tag in "${!KEYWORDS[@]}"; do
       continue
     fi
 
-    count=$(grep -cEi "$keywords" "$f" 2>/dev/null || true)
+    count=$(grep -Ei "$keywords" "$f" 2>/dev/null | grep -cvEi "gradient|beliefs.candidates|pattern:|gradient.scan|count=[0-9]|existing.*pattern|flags.*pattern|dedup" 2>/dev/null || true)
     if [[ "$count" -gt 0 ]]; then
       matches=$((matches + count))
       match_files+=("$fname")
       if $VERBOSE; then
         while IFS= read -r line; do
           match_lines+=("  [$fname] $line")
-        done < <(grep -Ei "$keywords" "$f" 2>/dev/null | head -3)
+        done < <(grep -Ei "$keywords" "$f" 2>/dev/null | grep -vEi "gradient|beliefs.candidates|pattern:|gradient.scan|count=[0-9]|existing.*pattern|flags.*pattern|dedup" | head -3)
       fi
     fi
   done
