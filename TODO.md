@@ -221,7 +221,7 @@
 - [x] Track: addyosmani/agent-skills - 40.4K⭐ (05-13). **Dropped** 05-14 — repo 404 (deleted/renamed)
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
-- [ ] Track: kiwifs/kiwifs - 440⭐ (05-20, was 425, +3.5%). Active (pushed 05-20). Growth picking up. Revisit 05-27
+- [ ] Track: kiwifs/kiwifs - 747⭐ (05-26, was 440, +69.8%🔥). Explosive growth. Airbyte Cloud API support (v0.20.0). Revisit 06-02
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
@@ -248,7 +248,7 @@
 - [x] Observe: agent eval/testing space - maturing. New leader: eval-view (hidai25) 104⭐ Apache-2.0, regression testing for agents (snapshot+diff). letta-evals 70⭐ (stateful agent eval, Letta org). skill-conductor 80⭐ (5-mode lifecycle eval). Margin-Lab/evals 59⭐ still stalled. Space growing but no dominant framework yet. Revisit 05-22
 - [ ] Track: eval-view (hidai25/eval-view) - 105⭐ (05-21, was 104, +1%). v0.8.0: 7 new modules (goal-drift, retrieval-lineage, chaos, freshness, fleet, root-cause, OTel). CLI auth unification. 8 external PRs/30d. 🟢 THRIVING (5/6). Revisit 05-28
 - [ ] Track: letta-evals (letta-ai/letta-evals) - 71⭐ (05-21, was 70, +1.4%). v0.17.0: rubric grader improvements, model refactoring. Steady incremental. Revisit 05-28
-- [ ] Track: reversa (sandeco/reversa) - 896⭐ (05-20, was 774, +15.8%). Strong growth. Active (pushed 05-19). Revisit 05-27
+- [ ] Track: reversa (sandeco/reversa) - 1,076⭐ (05-26, was 896, +20.1%). Crossed 1K. Active (pushed 05-24). Revisit 06-02
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)

@@ -129,3 +129,17 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-25: [gradient] "When making a type readonly, grep for all mutation methods (.push, .pop, .splice, .sort, .reverse, .shift, .unshift) on that type across the codebase BEFORE committing. A "one-line type change" can break N call sites." → [行为改变] Run grep -rn "\.push\|\.pop\|\.splice\|\.sort\|\.reverse" on the type name before pushing. Fix all mutation sites first.. (pattern: readonly-ripple-check, 第1次)
   - **Trigger**: Adding readonly modifier to an exported type
+
+- 2026-05-26: [gradient] "连续 5 次误判根因，每次都说'找到了！'" → [行为改变] 找到可疑线索后，先做对照实验验证，不要宣布"根因确认"。设计实验：改变一个变量，保持其他不变，看结果是否改变。(pattern: premature-conclusion, 第1次 — 但其实是老毛病)
+- 2026-05-26: [gradient] "在源码里找bug而不检查配置" → [行为改变] 调试顺序：先查配置（简单可改）→ 再查运行时状态 → 最后才看源码。openclaw.json 的 agents.defaults.models 就是个配置项，但我花了2小时读源码才发现。(pattern: wrong-debug-layer, 第1次)
+
+- 2026-05-26: [gradient] "channel-as-service 不是你自己 spawn subagent，而是发消息到 channel 让它自己处理" → [行为改变] channel-as-service 模式下，调用方只 sessions_send 到目标 channel，不在外部 spawn subagent (pattern: architecture-misunderstanding, 第1次)
+- 2026-05-26: [gradient] "先不要改，先告诉我你准备怎么改" → [行为改变] 大改动前先陈述完整计划等确认，不直接动手 (pattern: plan-before-act, 第1次)
+- 2026-05-26: [gradient] "你自己去搜火山引擎的配置呢" → [行为改变] 先自己查资料再问人要信息，resourceful first (pattern: ask-before-search, 第1次)
+- 2026-05-26: [directive] "每个 agent 用自己的 bot，不能污染 kagura" → agent 隔离原则：测试用 agent 必须有独立 bot identity
+
+- 2026-05-26: [gradient] "用了vm1的数据" / "这个是vm几呢" → [行为改变] SSH 连接前先验证 hostname + 在跑服务来确认机器身份，不依赖 IP-to-VM 的记忆映射。文档里的 VM 编号可能跟实际 hostname/角色不一致。 (pattern: machine-identity-verification, 第1次)
+- 2026-05-26: [directive] "千万不能动104.43.91.188上面的东西" → 写入 llm-infra/docs/setup.md，VM2 条目标注 DO NOT TOUCH。已落地。
+
+- 2026-05-26: [gradient] "怎么不按code-review流程走？" → [行为改变] 有 workflow.yaml 的 skill 必须通过 FlowForge 执行，不能读 SKILL.md 后手动拼步骤。SKILL.md 应该指向 FlowForge 而不是重复描述流程步骤 (pattern: workflow-enforcement, 第1次)
+- 2026-05-26: [directive] "如果是别的channel发来的 那么应该要还给别的channel" → channel-as-service 返回路由原则：结果必须 sessions_send 回请求方 channel，不能发到其他地方。已更新 code-review SKILL.md
