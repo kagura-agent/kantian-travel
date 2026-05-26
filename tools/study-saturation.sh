@@ -9,12 +9,18 @@ DATE="${1:-$(date +%Y-%m-%d)}"
 MEM_FILE="$HOME/.openclaw/workspace/memory/${DATE}.md"
 DOW=$(date -d "$DATE" +%u 2>/dev/null || date -j -f "%Y-%m-%d" "$DATE" +%u 2>/dev/null || echo "?")
 
-# Count occurrences
+# Count occurrences — ONLY from ## Study section headers, not any line mentioning keywords
+# Previous version matched any line with "Scout"/"scout" etc., causing massive false positives
+# from dreaming candidates, summaries, and other non-study content.
 if [[ -f "$MEM_FILE" ]]; then
-    SCOUT_COUNT=$(grep -c "Scout\|scout\|quick_scout\|Quick Scan" "$MEM_FILE" 2>/dev/null) || SCOUT_COUNT=0
-    QUICK_COUNT=$(grep -c "quick_scout\|quick_scan\|Quick Scan\|Quick Scout" "$MEM_FILE" 2>/dev/null) || QUICK_COUNT=0
-    APPLY_COUNT=$(grep -c "^## Study Apply\|^## Study.*Apply" "$MEM_FILE" 2>/dev/null) || APPLY_COUNT=0
-    FOLLOWUP_COUNT=$(grep -c "^## Study Followup\|^## Study.*Followup\|^## Study.*Follow" "$MEM_FILE" 2>/dev/null) || FOLLOWUP_COUNT=0
+    # Scout: ## Study Scout headers (deep scout sessions)
+    DEEP_SCOUT=$(grep -c "^## Study Scout" "$MEM_FILE" 2>/dev/null) || DEEP_SCOUT=0
+    # Quick scan: ## Study Quick headers
+    QUICK_COUNT=$(grep -c "^## Study Quick" "$MEM_FILE" 2>/dev/null) || QUICK_COUNT=0
+    # Total scout = deep scout + quick scan
+    SCOUT_COUNT=$((DEEP_SCOUT + QUICK_COUNT))
+    APPLY_COUNT=$(grep -c "^## Study Apply" "$MEM_FILE" 2>/dev/null) || APPLY_COUNT=0
+    FOLLOWUP_COUNT=$(grep -c "^## Study Followup\|^## Study Follow" "$MEM_FILE" 2>/dev/null) || FOLLOWUP_COUNT=0
 else
     SCOUT_COUNT=0
     QUICK_COUNT=0
@@ -52,7 +58,7 @@ fi
 YESTERDAY=$(date -d "$DATE - 1 day" +%Y-%m-%d 2>/dev/null || date -j -v-1d -f "%Y-%m-%d" "$DATE" +%Y-%m-%d 2>/dev/null || echo "")
 YESTERDAY_QUICK=0
 if [[ -n "$YESTERDAY" && -f "$HOME/.openclaw/workspace/memory/${YESTERDAY}.md" ]]; then
-    YESTERDAY_QUICK=$(grep -c "quick_scout\|quick_scan\|Quick Scan\|Quick Scout" "$HOME/.openclaw/workspace/memory/${YESTERDAY}.md" 2>/dev/null) || YESTERDAY_QUICK=0
+    YESTERDAY_QUICK=$(grep -c "^## Study Quick" "$HOME/.openclaw/workspace/memory/${YESTERDAY}.md" 2>/dev/null) || YESTERDAY_QUICK=0
 fi
 QUICK_DEGRADED=false
 if (( YESTERDAY_QUICK >= 3 && QUICK_COUNT >= 3 )); then
