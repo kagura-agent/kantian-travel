@@ -86,9 +86,11 @@
 - Contribution score: 10 PRs merged, 4 open (#159 scan.ts + #160 ops tests + #163 npm audit fix + #164 importCommand tests), 1 closed (maintainer superseded)
 - Wiki health (05-22): 282 cards, 58 orphans (21%), 0 broken links, 0 collisions ✔
 - Wiki health (05-25): 280 cards, 55 orphans (19%), 1 broken link (prompt-cache-optimization→context-window-management), 0 collisions ✔
+- Wiki health (05-26): 283 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔ (fixed prompt-cache-optimization→context-window-management by creating card)
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
 - Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis)
 - Next check: 05-28 — monitor PR #159 + #160 + #163 + #164 review
+- 4 PRs open 7+ days with no maintainer review — hold on new PRs until queue clears
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -246,8 +248,8 @@
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [x] Observe: agent eval/testing space - maturing. New leader: eval-view (hidai25) 104⭐ Apache-2.0, regression testing for agents (snapshot+diff). letta-evals 70⭐ (stateful agent eval, Letta org). skill-conductor 80⭐ (5-mode lifecycle eval). Margin-Lab/evals 59⭐ still stalled. Space growing but no dominant framework yet. Revisit 05-22
-- [ ] Track: eval-view (hidai25/eval-view) - 105⭐ (05-21, was 104, +1%). v0.8.0: 7 new modules (goal-drift, retrieval-lineage, chaos, freshness, fleet, root-cause, OTel). CLI auth unification. 8 external PRs/30d. 🟢 THRIVING (5/6). Revisit 05-28
-- [ ] Track: letta-evals (letta-ai/letta-evals) - 71⭐ (05-21, was 70, +1.4%). v0.17.0: rubric grader improvements, model refactoring. Steady incremental. Revisit 05-28
+- [x] Track: eval-view (hidai25/eval-view) - 111⭐ (05-26, was 105, +5.7%). Pushed today. ROADMAP added. But PRs still solo-maintainer (hidai25) except 1 external. Downgrade to 🟠 SOLO-DRIVEN (3/6). Revisit 06-02
+- [x] Track: letta-evals (letta-ai/letta-evals) - 72⭐ (05-26, was 71, +1.4%). v0.18.0: Modal sandboxes, self-hosted server support. Steady incremental but low star traction. Revisit 06-02
 - [ ] Track: reversa (sandeco/reversa) - 1,076⭐ (05-26, was 896, +20.1%). Crossed 1K. Active (pushed 05-24). Revisit 06-02
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
@@ -269,7 +271,7 @@
 
 - [x] Track: thClaws - 879⭐ (05-13), v0.9.4. 3 releases in 24h. LINE bridge (messaging as remote control, wire protocol documented), ChatGPT Codex provider, SSO/OIDC+PKCE. 🟢 Extreme velocity. Revisit 05-20
 - [x] Track: thClaws - 905⭐ (05-14, was 879, +2.8%). v0.9.7! 3 releases in 24h. 42 unique issue authors + 42 external PRs in 30d. PR#89 (multi-wire-format) rejected — quality bar maintained. Followup done 05-14
-- [ ] Track: thClaws - 949⭐ (05-20, was 905, +4.9%). Active (pushed 05-20). Approaching 1K⭐. Revisit 05-27
+- [x] Track: thClaws - 1,043⭐ (05-26, was 949, +9.9%). Crossed 1K⭐! v0.20.0 (Telegram channels + forum topics + streaming preview). 4+ external contributors in last 3 days. 🟢 THRIVING (6/6). Revisit 06-02
 - [x] Track: garden-skills - duplicate entry, see line ~122. **Removed**
 - [x] Track: Aegis (GanyuanRan) - 180⭐ (05-13). **Dropped** 05-13 — persistent 🔴 SOLO (0/6), zero external PRs/issues despite star growth
 - [x] Track: microsoft/apm - 2,333⭐ (05-12). v0.13.0: `apm update` command, `--frozen` flag, agent-written docs pipeline (Opus 4.7 multi-wave + CONTEXT-PACK), GitLab marketplace. See wiki. Revisit 05-18
