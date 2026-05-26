@@ -136,6 +136,7 @@
 - [x] **guide.md: 新增「check evidence requirements before starting platform-specific PRs」** - openclaw#82128/#83084/#83378 教训 → 已加入 guide.md 第 34 条 (2026-05-19)
 - [x] **guide.md: 新增「check issue duplicate/cross-reference status before starting work」** - NemoClaw#3722 教训（issue 是 dup，fix 被浪费）→ 已加入 guide.md 第 35 条 (2026-05-20)
 - [x] **guide.md: 新增「batch similar mechanical fixes into a rollup PR」** - hermes-agent#12038 教训（24 个 exc_info PR 被 maintainer 合成 rollup #15483）→ 已加入 guide.md 第 36 条 (2026-05-21)
+- [x] **guide.md: 新增「APPROVED PRs rot fast — rebase and ping proactively」** - qwen-code#4459 教训（APPROVED 但 100+ conflicts 导致无法 rebase，被迫 self-close）→ 已加入 guide.md 第 39 条 (2026-05-26)
 
 ## 📚 学习
 
@@ -190,22 +191,24 @@
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [x] Track: mirage (strukto-ai/mirage) - 2,446⭐ (05-20, was 2,158, +13.4%). Security sprint: 3-mode daemon auth (PR#63), DNS rebinding fix (PR#58). Generic command consolidation (PR#68, -7.7K lines, 240-case cross-backend harness). S3 key_prefix for multi-tenant (PR#60). 🟢 THRIVING (6/6), 163 forks, 21 issue authors. Revisit 05-27
-- [ ] Track: Needle (cactus-compute/needle) - 2,300⭐ (05-20, was 1,408, +63.3%). Explosive growth. No new push since 05-16. Revisit 05-27
+- [ ] Track: mirage (strukto-ai/mirage) - 2,618⭐ (05-26, was 2,446, +7.0%). Pushed 05-26 (today!). 179 forks. 🟢 THRIVING. Revisit 06-02
+- [ ] Track: Needle (cactus-compute/needle) - 2,450⭐ (05-26, was 2,300, +6.5%). No push since 05-16 (10d!). Stars growing but dev stalled. ⚠️ Revisit 06-02 — if still no push, drop
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). **Dropped** 05-11 — low traction, duplicate entries cleaned
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14, was 94, +24%). Skills system overhaul (PR#32: when/requires frontmatter, availability buckets, TUI manager). Cross-workspace resume. 🟢 THRIVING (5/6). Deep read done 05-14: 4-bucket availability, symlink-aware security, cross-agent skill compat issue #35
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14). **Dropped** 05-20 — repo 404 (deleted/renamed)
-- [ ] Track: oh-story-claudecode (worldwonderer) - 1,280⭐ (05-20, was 1,070, +19.6%). v0.6.5: writing skill executability refactor, prompt density fixes. Active daily pushes. Revisit 05-27
+- [ ] Track: oh-story-claudecode (worldwonderer) - 1,499⭐ (05-26, was 1,280, +17.1%!). Pushed 05-25. Strong growth. 🟢. Revisit 06-02
 - [x] Track: mizchi/skills - 155⭐ (05-09, was 144 on 05-06). 🔴 SOLO (0/6 community health), last push 04-30 (9 days stale). **Dropped** 05-09 — solo project, stalled, no external engagement
-- [ ] Track: RunbookHermes (Tommy-yw) - 629⭐ (05-20, was 530, +18.7%). Active (pushed 05-18). Revisit 05-27
+- [x] Track: RunbookHermes (Tommy-yw) - 632⭐ (05-26, was 629, +0.5%). **Dropped** 05-26 — flat stars + no push since 05-18 (8d)
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
 - [x] Track: girl-agent (TheSashaDev) - 188⭐ (05-07), growth flat, no new architectural features. **Dropped** 05-07
 - [x] Track: deepclaude (aattaran) - 1,642⭐ (05-09, flat). **Dropped** 05-09 — no commits since 05-05, slowing, duplicate entry
 - [x] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM). **Duplicate** — consolidated to 265⭐ entry above
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
-- [ ] Track: agentops (boshu2/agentops) - 355⭐ (05-20, was 347, +2.3%). Active (pushed 05-20). Steady. Revisit 05-27
-- [ ] Track: poco-claw (poco-ai/poco-claw) - 1,326⭐ (05-20, was 1,322, +0.3%). Flat growth. No push since 05-18. Revisit 05-27
+- [ ] Track: agentops (boshu2/agentops) - 367⭐ (05-26, was 355, +3.4%). Pushed 05-25. Steady. Revisit 06-02
+- [ ] Track: poco-claw (poco-ai/poco-claw) - 1,328⭐ (05-26, was 1,326, +0.2%). Flat stars but pushed 05-25. Revisit 06-02
 - [ ] Track: ironcurtain (provos/ironcurtain) - 461⭐ (05-25, was 391, +17.9%). v0.11.0 released: evolved from security layer into full agent workflow orchestration platform (vuln-discovery FSM, Svelte 5 web UI, XState workflow engine, shared-container mode, SKILL.md support). 🟢 THRIVING (5/6, 30 external PRs/30d). Revisit 06-01
+- [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
 - [x] Track: deepsec (vercel-labs/deepsec) - 2,431⭐ (05-13). **Dropped** 05-14 — maintainer silent 7+ days, 71 unmerged community PRs, Vercel showcase pattern
 - [x] Track: lukiIabs/skills - 241⭐ (05-08 PM), no commits since 05-01. Growth stalled. **Dropped** 05-08 — stale, no commits 7+ days, stars flat
@@ -356,7 +359,7 @@
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
 - [ ] Track: html-anything (nexu-io) - 4,276⭐ (05-21, was 1,087, +293%!). Explosive growth. 448 forks. PR#19: 5 new export targets (Notion, Bilibili, Mastodon, Bluesky, Markdown). 🟢 THRIVING 6/6. Revisit 05-28
 - [ ] Track: Tactile (yliust) - 381⭐ (05-25, was 308, +23.7%). Star explosion (191→381 since 05-13) but code slowed after 05-15 MCP update. 🟢 THRIVING (5/6) but mostly solo. Some external PRs (trace logging, Apple Music skill). Revisit 06-01
-- [ ] Track: Elephant Agent (agentic-in/elephant-agent) - 318⭐ (05-19, was 285, +12%). Pace normalizing post-burst. PR#33 vLLM Semantic Router (5th contributor). 🟢 THRIVING (6/6). Revisit 05-26
+- [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
 - [ ] Apply: Evaluate GenericAgent multi-observer perspective shifting (user/reviewer/attacker) for our goal/task management prompts (from goal_mode 05-20 rewrite)
@@ -369,6 +372,12 @@
   - Closed gracefully 05-20. Lesson recorded in wiki/cards/pr-superseded-lessons.md
 - PR #1718 - merged ✅ (large node output file-spill fix)
 - [ ] Security audit: Check OpenClaw shell permission checking for CWE-78 (command chaining bypass). Inspired by mercury-agent PR#48. See wiki/cards/parse-what-you-execute.md
+
+## 🔧 LLM Management
+
+### Next
+- [ ] Create #llm-management channel (Services category) + private repo for config/monitoring
+- [ ] Fix Gemini model routing in code-review: Copilot compat layer forces `openai-completions` transport for "gemini" models, conflicting with our Floway proxy's `anthropic-messages` API
 
 ## Multica (multica-ai/multica)
 
@@ -384,7 +393,7 @@
 - PR #4456 - fix(cli): implement --list-extensions flag handler (#4450)
   - wenshao review: add test coverage for `getListExtensions() === true` path (empty + non-empty with disabled extension)
   - [x] Add tests — completed workloop #2700 (05-24)
-- PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — APPROVED (LGTM), awaiting merge
+- PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — CLOSED (100+ conflicts, unrebaseable despite APPROVED)
 - PR #4461 - fix(cli): surface startup warnings on stderr before TUI render (#4448) — APPROVED but wenshao verification ❌ FAIL: propagation break between loadAndMigrate and TUI startup
   - [ ] Fix propagation: corruption warning never reaches `startupWarnings` at runtime
   - kagura-agent acknowledged issue 05-24, needs code fix
@@ -400,11 +409,9 @@
 
 ## NemoClaw (NVIDIA/NemoClaw)
 
-### Open PRs (awaiting fixes)
-- PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files
-  - CodeRabbit review (05-22): 2 issues
-  - [ ] mkdirSync({recursive:true, mode:0o700}) doesn't fix existing dir permissions → need explicit chmodSync fallback
-  - [ ] CI budget check failing — onboard.ts grew +9 lines, refactor permissions into helper module
-  - Workloop to implement fixes
+### Merged ✅
+- [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [ ] Track: centaur (paradigmxyz/centaur) - 431⭐ (05-24). Shared agent platform for teams, K8s sandboxes, Slack-native. paradigm (Reth/Foundry team). Strong early traction (46 forks, 24 issues in 6 days). Revisit 05-31
 - [ ] Track: smallcode (Doorman11991) - 1313⭐ (05-24). Small-LLM coding agent, 87% benchmark w/ 4B model. 1300+ stars in 6 days. Revisit 05-31
+- [ ] Track: Lucarne (tuchg/Lucarne) - 158⭐ (05-26). Rust mobile agent bridge. Solo maintainer, real Chinese users. Revisit 05-30
+- [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
