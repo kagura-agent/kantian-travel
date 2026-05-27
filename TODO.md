@@ -194,7 +194,7 @@
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [x] Track: mirage (strukto-ai/mirage) - 2,446⭐ (05-20, was 2,158, +13.4%). Security sprint: 3-mode daemon auth (PR#63), DNS rebinding fix (PR#58). Generic command consolidation (PR#68, -7.7K lines, 240-case cross-backend harness). S3 key_prefix for multi-tenant (PR#60). 🟢 THRIVING (6/6), 163 forks, 21 issue authors. Revisit 05-27
 - [ ] Track: mirage (strukto-ai/mirage) - 2,618⭐ (05-26, was 2,446, +7.0%). Pushed 05-26 (today!). 179 forks. 🟢 THRIVING. Revisit 06-02
-- [ ] Track: Needle (cactus-compute/needle) - 2,450⭐ (05-26, was 2,300, +6.5%). No push since 05-16 (10d!). Stars growing but dev stalled. ⚠️ Revisit 06-02 — if still no push, drop
+- [x] Track: Needle (cactus-compute/needle) - 2,489⭐ (05-27). **Dropped** 05-27 — no push since 05-16 (11d), stars growing but dev stalled, confirmed drop per previous warning
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). **Dropped** 05-11 — low traction, duplicate entries cleaned
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14, was 94, +24%). Skills system overhaul (PR#32: when/requires frontmatter, availability buckets, TUI manager). Cross-workspace resume. 🟢 THRIVING (5/6). Deep read done 05-14: 4-bucket availability, symlink-aware security, cross-agent skill compat issue #35
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14). **Dropped** 05-20 — repo 404 (deleted/renamed)
@@ -287,6 +287,7 @@
 - [x] Track: 99xAgency/GodModeSkill - 199⭐ (05-05), no commits since 04-28 (7 days). **Dropped** — stalled
 - [x] Track: Beever Atlas (Beever-AI/beever-atlas) - 309⭐ (05-13). **Dropped** 05-14 — dependabot only, no feature work since 05-08
 - [x] Track: ast-outline (aeroxy/ast-outline) - 166⭐ (05-12, +19%), minor updates only. Steady growth. Revisit 05-18
+- [ ] Evaluate: OTel GenAI semantic conventions for agent tracing — inspired by Elephant Agent issue #17 (05-27). Spans: `invoke_agent`, `execute_tool`, `chat`. Auto-instrumentation for OpenAI/Anthropic Python clients.
 
 
 ## hermes-agent#17416 CI Failures (2026-04-30)
@@ -338,7 +339,7 @@
 - [x] Track: OpenViking (volcengine/OpenViking) - 24,525⭐ (05-23, was 23,725, +3.4%). Active. Growing steadily. Revisit 05-30
 - [x] Track: MemOS (MemTensor/MemOS) - 9,337⭐ (05-23, was 9,007, +3.7%). Active. Growing steadily. Revisit 05-30
 - [x] Track: gread (NitroRCr/gread) - 36⭐ (05-11). **Dropped** 05-14 — 36⭐, not aligned with core interests
-- [ ] Apply: Script wiki/L1.md auto-regeneration from wiki content (inspired by OpenViking SemanticProcessor)
+- [x] Apply: Script wiki/L1.md auto-regeneration from wiki content (inspired by OpenViking SemanticProcessor) → 2026-05-27 created wiki/scripts/regen-l1.sh, integrated into review.yaml memory_hygiene
 - [x] Track: ClawMem (yoloshii/ClawMem) - 164⭐ (05-14). **Dropped** 05-14 — no commits since 05-08, stale signal
 - [x] Track: Interaction Models (ThinkingMachines) - **Dropped** 05-14 — research preview only, no repo/weights available
 - [x] Track: PaperGuru-Benchmark (PaperGuru-AI) - 109⭐ (05-12). **Dropped** 05-14 — benchmark only, no code released
@@ -347,13 +348,13 @@
 - [x] Track: Needle (cactus-compute/needle) - 372⭐ (05-13). 26M FFN-free function call model (SAN architecture). Distilled from Gemini. Deep read done. Revisit 05-27
 - [x] Track: Needle (cactus-compute/needle) - 988⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [ ] Track: Tactile (yliust/Tactile) - 308⭐ (05-19). Merged into next entry.
-- [ ] Track: susurration (sghy1717/susurration) - 65⭐ (05-13). Agent-to-agent signal network. 5 primitive verbs, SSE/webhook/cloud. Trading domain. TypeScript, MIT. Revisit 05-27
+- [x] Track: susurration (sghy1717/susurration) - 70⭐ (05-27, was 65, +7.7%). UX polish (landing, onboarding). Steady. Revisit 06-10
 - [x] Track: Adrian (secureagentics/Adrian) - 35⭐ (05-13). **Dropped** 05-14 — 35⭐, too small
-- [ ] Track: OpenClaw-AWD-Arena (LYiHub) - 177⭐ (05-13). LLM agent CTF platform, Docker-based, OpenClaw+Hermes backends. Deep read done. Revisit 05-27
+- [x] Track: OpenClaw-AWD-Arena (LYiHub) - 245⭐ (05-27, was 177, +38%). Stars grow but no push since 05-09. Concept repo risk. Revisit 06-10
 - [x] Track: Needle (cactus-compute/needle) - 850⭐ (05-13 PM, was 372 AM, +129%). HN front page 468pts. Revisit moved 05-27→05-20
 - [x] Track: OCTO (Mininglamp-OSS/octo-web + octo-adapters) - 30⭐/14⭐ (05-13). **Dropped** 05-14 — too small, too early to track
-- [ ] Track: Yansu (Isoform/yansu-skill) - 47⭐ (05-13). Desktop app observes work patterns → crystallizes into portable agent skill. Commercial (yansu.app). MIT skill. "Observe → crystallize → deliver" pipeline. Revisit 05-27
-- [ ] Track: text-to-cad (earthtojake) - 2,527⭐ (05-13). Vertical domain skills for CAD/robotics. 6 skills, 10 benchmarks, SendCutSend manufacturing. MIT. Revisit 05-27
+- [x] Track: Yansu (Isoform/yansu-skill) - 145⭐ (05-27, was 47, +208%). No push 14d. Stars from marketing, not activity. Downgraded. Revisit 06-10
+- [x] Track: text-to-cad (earthtojake) - 4,909⭐ (05-27, was 2,527, +94%!). 2 new skills (render, step-parts), docs site, persistent viewer. Skill-to-skill orchestration pattern. Revisit 06-03
 - [x] Fix: tracking-health.sh false positive — fixed 05-16 09:23. Specific phrases + THRIVING/HEALTHY negative gate. 4 test cases pass.
 - [x] Fix: tracking-due.sh false negative — misses revisit dates in main targets.md table (only scans tracking section). Fixed 05-17: now scans targets.md "Tracking" section with section-aware parsing
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
@@ -417,3 +418,5 @@
 - [ ] Track: smallcode (Doorman11991) - 1313⭐ (05-24). Small-LLM coding agent, 87% benchmark w/ 4B model. 1300+ stars in 6 days. Revisit 05-31
 - [ ] Track: Lucarne (tuchg/Lucarne) - 158⭐ (05-26). Rust mobile agent bridge. Solo maintainer, real Chinese users. Revisit 05-30
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
+- [ ] Track: ai-memory (akitaonrails/ai-memory) - 290⭐ (05-27). Rust cross-agent memory, Karpathy wiki pattern, healthy community (36+ PRs). OpenClaw native support. Revisit 06-03
+- [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
