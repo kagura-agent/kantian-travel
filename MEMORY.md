@@ -14,9 +14,9 @@
 ## Setup
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
-- 网络:日本 VM(v2ray) + 新加坡 VM(xray Reality),本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.20 (升级 05-23)
-- 根盘 80% (28GB free) [已验证 05-27]
+- 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.22 (升级 05-27)
+- 根盘 69% (41GB free) [已验证 05-28]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -101,7 +101,7 @@
 
 ## 飞书发图
 - `openclaw message send --media <path>` | 白名单:workspace ✅ /tmp ❌
-- 表情包:kagura-agent/memes(134 files)| agent-memes skill
+- 表情包:kagura-agent/memes(~146 files)| agent-memes skill
 - 详见 `TOOLS.md`
 
 ## 虾信(lobster-post)

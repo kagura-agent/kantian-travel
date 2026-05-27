@@ -14,6 +14,8 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+**Prospective Memory Check**: When processing a user message in direct chat, run `bash tools/prospective-triggers.sh check "<user message snippet>"`. If a trigger fires, surface its action naturally in your response. Mark it fired after acting on it.
+
 ## Memory
 
 You wake up fresh. These files are your continuity:

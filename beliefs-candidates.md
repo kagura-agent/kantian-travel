@@ -148,3 +148,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-26: [gradient] "怎么不按code-review流程走？" → [行为改变] 有 workflow.yaml 的 skill 必须通过 FlowForge 执行，不能读 SKILL.md 后手动拼步骤。SKILL.md 应该指向 FlowForge 而不是重复描述流程步骤 (pattern: workflow-enforcement, 第1次)
 - 2026-05-26: [directive] "如果是别的channel发来的 那么应该要还给别的channel" → channel-as-service 返回路由原则：结果必须 sessions_send 回请求方 channel，不能发到其他地方。已更新 code-review SKILL.md
+
+- 2026-05-27: [gradient] "你确定这个是我们卡死的原因么" → [行为改变] 诊断问题时不要停在第一个异常（sessions_list 超时），要看系统级全貌（资源争抢、并发量、时序）。第一个看到的异常往往是症状不是根因 (pattern: premature-diagnosis, 第1次)
+
+- 2026-05-27: [directive] "spawn 时设 delivery 让完成结果直接 announce 到对应 channel" → 长任务 spawn 必须加 delivery announce 到发起 channel，不能依赖 sessions_yield + heartbeat 唤醒（会路由到错误 channel）
+- 2026-05-27: [gradient] "Discord UI 理解错误：左侧是 channel list 不是 DM list，右侧 member list 显示 bot" → 做 UI 前先截图对照原版，不要凭记忆描述 (pattern: 未验证假设, 第1次)
