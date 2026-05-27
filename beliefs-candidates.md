@@ -89,11 +89,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **V3**: ✅ Non-obvious — assumption was most issues uncontested, reality is opposite
 - **graduation evidence**: First automated graduation via gradient-scan.sh
 
-### Scout-before-commit check (2026-05-08, study #1567)
+### Scout-before-commit check (2026-05-08, study #1567) → **graduated 2026-05-27** (target: Workflow — study.yaml scout/quick_scout step 0 wiki-check)
 - **Trigger**: Declaring a project "worth deep read" during scout, then discovering wiki already has thorough notes
 - **Fix**: During quick_scout, always `grep -l "project-name" wiki/projects/` before labeling anything as "new" or "worth deep read"
 - **Validation**: Next scout that avoids redundant deep-read = evidence this works
-- **Count**: 1
+- **Count**: 12 (cross-context, 10 days)
+- **Graduation rationale**: V1 ✅ 12 hits across 10 days. V2 ✅ Predicts behavior in every future scout. V3 ✅ Fresh agents default to "investigate" over "verify existing knowledge." Already embedded in study.yaml step 0.
 
 ### PR closed 先自省质量 (2026-05-11, vscode-icons #4040)
 - **Trigger**: PR 被 close/reject 时，第一反应归因于外部（bot 身份、maintainer 偏见）而不是自查 PR 质量
@@ -140,6 +141,10 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-26: [gradient] "用了vm1的数据" / "这个是vm几呢" → [行为改变] SSH 连接前先验证 hostname + 在跑服务来确认机器身份，不依赖 IP-to-VM 的记忆映射。文档里的 VM 编号可能跟实际 hostname/角色不一致。 (pattern: machine-identity-verification, 第1次)
 - 2026-05-26: [directive] "千万不能动104.43.91.188上面的东西" → 写入 llm-infra/docs/setup.md，VM2 条目标注 DO NOT TOUCH。已落地。
+
+- 2026-05-27: [gradient] "报告≠行动：记录 broken 不是修 broken" → [行为改变] 审计/巡检发现 X broken 时，同一轮必须跑诊断三件套（which/ls 路径/build），3 分钟能修直接修，修不了才记 TODO。"记下 broken" 不算行动。(pattern: report-vs-fix, 第1次，实际是 观测不闭环 的具体子 pattern)
+  - **Trigger**: 任何 cron/审计报告某工具/服务 broken
+  - **Evidence**: gogetajob 连续 4 天被标 broken，实际只是 nvm symlink 断了，30 秒可修
 
 - 2026-05-26: [gradient] "怎么不按code-review流程走？" → [行为改变] 有 workflow.yaml 的 skill 必须通过 FlowForge 执行，不能读 SKILL.md 后手动拼步骤。SKILL.md 应该指向 FlowForge 而不是重复描述流程步骤 (pattern: workflow-enforcement, 第1次)
 - 2026-05-26: [directive] "如果是别的channel发来的 那么应该要还给别的channel" → channel-as-service 返回路由原则：结果必须 sessions_send 回请求方 channel，不能发到其他地方。已更新 code-review SKILL.md
