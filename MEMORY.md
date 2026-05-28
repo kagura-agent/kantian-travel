@@ -31,7 +31,7 @@
 - **agent-id** — 贡献信誉基础设施(⏸️ 暂停)
 - **wiki** — 统一知识库 → wiki health 见 wiki-lint 工具
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
-- **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions
+- **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions，typing indicator + streaming reply 已完成
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
@@ -45,7 +45,7 @@
 - PR merge rate: 53% (24 merged/77 total, gogetajob GitHub API 口径) [已验证 05-18]
 - **Archon#1700**: SUPERSEDED by Wirasm#1729 (05-20). Archon#1718 MERGED ✅. OpenCLI#1693 MERGED ✅
 - **cc-connect#990**: CLOSED 05-19（unrebaseable, maintainer self-fixing）
-- **cc-connect**: 5 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055/#1045），等 merge
+- **cc-connect**: 4 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055），等 merge。#1045 CLOSED（unrebaseable）
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
 ## 战略与产品方向
@@ -84,7 +84,7 @@
 
 ## 定时任务
 - cron active（含 dreaming managed cron）+ nudge(agent_end, interval=5)
-- Dreaming 已恢复（05-25 03:15 首次输出，中断 05-20~05-24 共 5 天，根因 recall store 35.9MB 超限）
+- Dreaming 已恢复（05-25 03:15 首次输出）。Issue #6 uniform 0.62 confidence 根因已查明：`DAILY_INGESTION_SCORE` 硬编码常量 → filed upstream openclaw#87485
 - daily-review 3:00 | daily-handoff 3:30 | daily-audit 6:00 | morning-briefing 7:00
 - work-loop hourly 8-20 | study-loop 2x/h 8-22 | kagura-story 14:00+21:00
 - github-check every 2h | community-ops every 2h | memex-dogfood 22:00 | weekly-eval Mon 9:00
