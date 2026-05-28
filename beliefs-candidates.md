@@ -153,3 +153,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-27: [directive] "spawn 时设 delivery 让完成结果直接 announce 到对应 channel" → 长任务 spawn 必须加 delivery announce 到发起 channel，不能依赖 sessions_yield + heartbeat 唤醒（会路由到错误 channel）
 - 2026-05-27: [gradient] "Discord UI 理解错误：左侧是 channel list 不是 DM list，右侧 member list 显示 bot" → 做 UI 前先截图对照原版，不要凭记忆描述 (pattern: 未验证假设, 第1次)
+
+- 2026-05-28: [gradient] "Flagging an issue repeatedly without investigating source code is performative observation. Day-1 response to persistent unexplained behavior: read the source code." → [行为改变] Read the source code on day 1. Uniform outputs trace to hardcoded inputs.. (pattern: observation-without-investigation, 第1次)
+  - **Trigger**: When an issue stays open for 3+ days with repeated 'still open, no progress' notes
