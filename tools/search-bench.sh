@@ -19,7 +19,7 @@ declare -a TESTS=(
   "how do agents evolve and improve themselves|self-evolving,evolver,hermes-self-evolution"
   "privacy protection for agent memory|memprivacy"
   "concurrent file access multiple agents|concurrent-agent,worktree-convergence"
-  "skill marketplace distribution ecosystem|skill-ecosystem,agentskills-io,clawhub"
+  "skill marketplace distribution ecosystem|skill-ecosystem,skill-distribution,agent-skill-ecosystem"
   # Cross-domain (should find related cards + projects)
   "exponential decay temporal relevance retrieval|krusch-context,progressive-retrieval"
   "context window budget allocation strategy|context-budget,context-budget-constraint"
