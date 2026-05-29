@@ -140,6 +140,7 @@
 - [x] **guide.md: 新增「batch similar mechanical fixes into a rollup PR」** - hermes-agent#12038 教训（24 个 exc_info PR 被 maintainer 合成 rollup #15483）→ 已加入 guide.md 第 36 条 (2026-05-21)
 - [x] **guide.md: 新增「APPROVED PRs rot fast — rebase and ping proactively」** - qwen-code#4459 教训（APPROVED 但 100+ conflicts 导致无法 rebase，被迫 self-close）→ 已加入 guide.md 第 39 条 (2026-05-26)
 - [x] **guide.md: 新增「read comment history before closing any PR」** - stagehand#2026 教训（pirate 明确要求 keep open 但 stale-close 逻辑没检查就关了，被当面纠正）→ 已加入 guide.md 第 43 条 (2026-05-27)
+- [ ] **guide.md: 新增「resolve CHANGES_REQUESTED before opening new PRs in same repo」** - qwen-code#4456/#4474/#4461 教训：同 repo 3+ PRs 同时 CHANGES_REQUESTED，每轮 followup 列出来但多天未处理（认知过载 + 维护者印象差）。应为：同 repo 有未处理 CHANGES_REQUESTED → 先修再开新 PR
 
 ## 📚 学习
 
@@ -361,7 +362,7 @@
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
-- [ ] Track: html-anything (nexu-io) - 4,276⭐ (05-21, was 1,087, +293%!). Explosive growth. 448 forks. PR#19: 5 new export targets (Notion, Bilibili, Mastodon, Bluesky, Markdown). 🟢 THRIVING 6/6. Revisit 05-28
+- [ ] Track: html-anything (nexu-io) - 5,213⭐ (05-28, was 4,276 on 05-21, +22%). Growth decelerating from viral phase but still strong. Last push 05-22 (6d quiet). 🟢 THRIVING 5/6 (growth slowing). Revisit 06-04
 - [ ] Track: Tactile (yliust) - 381⭐ (05-25, was 308, +23.7%). Star explosion (191→381 since 05-13) but code slowed after 05-15 MCP update. 🟢 THRIVING (5/6) but mostly solo. Some external PRs (trace logging, Apple Music skill). Revisit 06-01
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
@@ -414,16 +415,27 @@
 ### Merged ✅
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [ ] Track: centaur (paradigmxyz/centaur) - 431⭐ (05-24). Shared agent platform for teams, K8s sandboxes, Slack-native. paradigm (Reth/Foundry team). Strong early traction (46 forks, 24 issues in 6 days). Revisit 05-31
-- [ ] Track: smallcode (Doorman11991) - 1313⭐ (05-24). Small-LLM coding agent, 87% benchmark w/ 4B model. 1300+ stars in 6 days. Revisit 05-31
+- [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
 - [ ] Track: Lucarne (tuchg/Lucarne) - 158⭐ (05-26). Rust mobile agent bridge. Solo maintainer, real Chinese users. Revisit 05-30
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 290⭐ (05-27). Rust cross-agent memory, Karpathy wiki pattern, healthy community (36+ PRs). OpenClaw native support. Revisit 06-03
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
-## QwenLM/qwen-code#4456 — Fix init ordering bug (R6 review)
-- **Priority**: HIGH
-- **Added**: 2026-05-27 22:15
-- **Issue**: `--list-extensions` handler at line 736 runs BEFORE `config.initialize()` at line 849. `getExtensions()` always returns `[]`.
-- **Fix**: Move handler placement after `config.initialize()` call, or call `config.initialize()` inside the handler before `getExtensions()`
-- **Reviewer**: wenshao (R6, CHANGES_REQUESTED)
-- **Note**: Don't reply until fix is pushed. Already claimed "addressed" once incorrectly.
+## QwenLM/qwen-code#4456 — ✅ APPROVED (R12)
+- **Status**: APPROVED by wenshao (R12, 2026-05-28 18:29)
+- **Note**: 12 rounds of review, all critical findings resolved. Waiting for maintainer merge.
+- ~~Priority: HIGH~~
+- ~~Fix: init ordering bug~~
+
+## Pending from GitHub Patrol (2026-05-28 12:15)
+
+- [ ] **NemoClaw #4236 follow-up PR**: Change `true` → `false` in `promptYesNoOrDefault("Continue with onboarding?", null, true)` at `src/lib/onboard.ts`. Update related tests. PR #4273 was merged but didn't fix the right call site.
+- [ ] **qwen-code #4456**: Address wenshao's latest suggestions (02:52 UTC) — migration warning duplication, raw mode cleanup on exit, mock.results indexing, extension name sanitization.
+- [x] Track: mercury-agent (cosmicstack-labs/mercury-agent) - 2,467⭐ (05-28, was ~1,214 04-26, +100%). PR #67: `mercury skills` CLI with registry + install + search + intent routing. Skills ecosystem now end-to-end. Domain migrated to mercuryagent.sh. 🟢 GROWING. Revisit 06-04
+- [x] Followup: GenericAgent active (TUI v2/v3 polish, external PRs from shenhao-stu), bux (Codex fixes), ccglass (v0.5/0.6 dashboard). No architectural signals worth deep read
+- [ ] **openclaw PRs rebase**: #86301 (sort tool defs), #85705 (reasoning retry group chats), #82128 (strip truncation sentinels) — all CONFLICTING, need rebase on upstream main
+
+## GitHub Patrol 2026-05-28 22:10
+- [ ] amd/gaia #1209: Fix race condition in `_tls_hostname` — refactor to request-scoped hostname + add concurrent multi-host tests (CHANGES_REQUESTED by itomek, promised fix 05-25, overdue). Already replied, needs code push.
+- [ ] amd/gaia #1210: Fix remaining stale test assertions — 1) ARIA labels rename chat→task in test_electron_chat_app.js:1086-1087, 2) Electron version mismatch v40 vs v42 (CHANGES_REQUESTED by itomek). Already replied, needs code push.
+- [ ] amd/gaia #1208: Fix CI lint failures (Black formatting, isort, Pylint) on fix/spinner-prompt-race-1089 branch

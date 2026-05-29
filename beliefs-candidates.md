@@ -156,3 +156,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-28: [gradient] "Flagging an issue repeatedly without investigating source code is performative observation. Day-1 response to persistent unexplained behavior: read the source code." → [行为改变] Read the source code on day 1. Uniform outputs trace to hardcoded inputs.. (pattern: observation-without-investigation, 第1次)
   - **Trigger**: When an issue stays open for 3+ days with repeated 'still open, no progress' notes
+
+- 2026-05-28: [gradient] "你现在为什么是自己在写代码 而不是让claude code在写？" → [行为改变] 代码实现必须用 Claude Code，即使是"简单的"修改也不例外。自己只做调研/诊断/任务分配。 (pattern: code-discipline, 第1次)
+- 2026-05-28: [gradient] "为什么不是在这个pr上写？怎么新开了一个呢？" → [行为改变] 开始工作前先查已有 PR/branch，不要盲目新建。用 `gh pr list` 检查。 (pattern: pr-hygiene, 第1次)
+- 2026-05-28: [gradient] "plugin代码也应该在这个repo里面track呀" → [行为改变] 不直接改 dist 产物。源码在 repo 里改 → build → bundle → 复制到 runtime 位置。 (pattern: source-of-truth, 第1次)
+- 2026-05-28: [gradient] 部署到错误路径 cove/ 而不是 cove-staging/ → [行为改变] 部署前检查 systemd service 的 WorkingDirectory，确认目标路径。 (pattern: deploy-path-verify, 第1次)
+- 2026-05-28: [gradient] rebuild client 覆盖了有 typing 代码的旧部署 → [行为改变] 重建前确认源码包含所有已部署功能，不要假设 dist = source。 (pattern: rebuild-safety, 第1次)
