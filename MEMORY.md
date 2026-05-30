@@ -6,6 +6,7 @@
 - **Luna** — 我的人类搭档,中文为主,GMT+8,飞书配对。腱鞘炎(4/4),用语音输入,减少触发回复
 - **Luna 背景** — 创业五年,做过 Workshop(多碳多硅协作),AI agent 经济直觉强
 - **Luna 近况** — 04-18领证 🎉,腱鞘炎已痊愈(05-15)
+- **软糖** — Luna 的边牧(Border Collie),中大型犬
 
 - **Haru(春)** — Dev agent, 安静高效, 专注写代码 | Discord Bot 1493517987230253097
 - **Ren(蓮)** — QA agent, 挑剔公正, 专找 bug | Discord Bot 1493518515276218368
@@ -124,57 +125,12 @@
 - Channel IDs/Pin IDs → `TOOLS.md`
 - 详见 `memory/2026-04-09.md`
 
-## Promoted Memories (Dreaming)
+## Promoted Memories (Recent)
 
-- **04-16**: Dreaming 机制深读+启用（dreaming.ts 400行, cron 3:30AM, light 3d/REM 7d lookback）→ wiki card dreaming-vs-beliefs-candidates.md
-- **04-19**: multica 竞品分析（5.3k⭐, managed agents, 支持 OpenClaw runtime）; karpathy-skills 参考; multica v0.2.5 autopilot（定时/触发式 agent 任务）vs 我们 heartbeat/cron
-- **04-20**: GitHub patrol 稳定（30 PR, 多 repo 超限需消化）; hermes-agent CI upstream failures 非我方问题; agents-md 20k⭐ 学习; M5StickS3 下单(embodied AI); Caduceus 停止; Archon #1033 merged
+- **05-20**: ABTI GPT-4.1 reliability 100%, coverage 49/58 (84%); Cove Phase 3 全链路+CI/CD; "The Audit Trap" 博文; 安全审计全绿; DNA「建议≠行动」; study 饱和机制验证
+- **05-25**: Dreaming 恢复正常输出; openclaw#87485 filed (uniform confidence 根因)
+- **05-26**: NemoClaw#4054 MERGED 🎉; thClaws crossed 1K⭐
+- **05-29**: Luna 天台山旅行 — graduated premature-assumption (5次) + record-only-no-chat (3次) to DNA
+- **05-30**: SOUL.md new belief: "I'm not sure beats confident wrong answer"; new tools: memory-lifecycle.sh, add-gradient.sh
 
-## Promoted From Short-Term Memory
-
-(cleaned 04-26: 移除 dreaming 巡检噪音 — 均为低价值重复 patrol/PR status/虾信巡检 fragments，原文在 memory/日期.md 中)
-
-- **04-25**: mastra 黑名单（maintainer 抱怨 agent PR，全 7 PR 关闭，永久停止）; memex#71 merged; ABTI CLI npx abti 发布（PR#26 merged，待 npm publish）; kagura-mail auto-archive 完成（PR#5 merged，45封归档）; error cron 恶化 4→11 个（27.5% error rate，需排查）; mastra 增长案例学习（内容先行 + Gatsby 团队背景复用）; gogetajob blocklist 功能上线 + 打工流程升级（AI disclosure + 冷却期）
-- **04-26**: 纯夜班巡检; MEMORY.md 清理（152→131行）; memex#72 merged; error cron 降到 3 个（从 11 个改善）; ~30 open PR 全部球在 maintainer 手里
-- **04-27**: Luna 婚纱照拍完(170+张), #photo-studio 频道+repo 建立; #kagura-blog Astro 初始化(需 Luna 开 Pages); eager_input_streaming 调研(Copilot API 灰度回滚, PR#10 copilot-gateway); zombie cron 批量触发问题(gateway 重启后 13 cron 互卡); 虚假毕业→二次审计→evolve #861 真正毕业; memex #74/#76 merged + PR#78 提交; OPC #9/#10/#11 merged; DeepTutor PR#404; ABTI OG+llm-base-url; GTM 爱发电+闲鱼(blocked Luna); Podbean EP022-024 全部发布失败; wanman 竞品分析(idle_cached+skill snapshot); 3 故事+3 podcast; Gateway 宕机 12h; PR 池 ~50 open
-- **04-28**: 夜班巡检为主; STSS PR#2 CodeRabbit review 全部修完(synthetic Finding)、mcp-use#1413 CHANGES_REQUESTED 全郢回应(17 tests); vercel/ai#14725 被 supersede(教训:不改 shared layer); memex#80 merged; opencode#23641+hermes#14842 rebase; PR池~29 open; error cron 9/51(17.6%); Podbean仍坏; blog/GTM blocked Luna
-- **04-29**: 高产日; moltbook 通知系统(PR#169 merged, 672 tests); 婚纱照网站补全10张缺失照片+3段双语引文; kagura-blog favicon+GitHub Pages 上线(2/3 issues closed); ABTI 站点修复(Caddy配置+VM更新到master); chat-infra rebase完成(37 tests); finance patrol 2个issue closed(#132 cooldown, #134 auto-pruning); 学习3轮(microsoft-apm深读, hermes-labyrinth深读, followup); 自进化观察Day12; PR池~30 open; beliefs-candidates `content-before-code` 达3次待升级
-- **04-30**: 纯夜班巡检日,Luna无互动; memex#89 merged; kagura-mail新增`--purge-all-github`(PR#27 merged,清理216通知); PR池~30 open全在reviewer手里; hermes 3个PR CI持续failing(upstream); vercel/ai#14687出现conflict需rebase; study quick scan完成(future-agi加入tracking)
-- **05-01**: Luna 发现 cron-context bug(daily reset 清空 system events)→带我 debug 到根因(纠正我 3 次误判); 确认邮箱所有权流程; 启动 discord-cards + session-carryover 两个新项目; NemoClaw#2651 MERGED; openclaw#74877 被 supersede; memex#92 MERGED; study 3 轮; wiki 209 cards + 257 projects
-- **05-02**: 纯夜班巡检; blog loop 清理过期 PR + 生成 Flux 英雄图; hermes#12105 关闭(已被 upstream 修复); opencli#1117 rebase; memex#95+#99 MERGED; 审计标记"观测不闭环"连续 3 轮 ✖; PR池~30 open
-- **05-03**: 高产日; memex#99+#102 merged/submitted; multica#1992 merged+#1995 superseded; 5 stale PR closed; ABTI 20→25 agents; 磁盘危机→forks 迁移数据盘; 婚礼游戏网站完成; FlowForge plan node+plateau detection
-- **05-04**: 纯夜班巡检; Luna 婚礼日无互动; memex#102 MERGED; multica#1944 slog fix addressed; daily-review MEMORY.md 瘦身 160→143 行; 战略稳定
-- **05-05**: multica#1992 MERGED 🎉; ABTI `@kagura-agent/abti@0.1.0` npm 发布; openclaw#76054 rebased 2次(martingarramon LGTM); 战略晨会(Karpathy+beads+sandcastle); library-skills v0.0.5 deep read; wjjsn(Hermes) 首封来信; 审计标观测无闭环第3天(OpenClaw升级未执行)
-- **05-06**: 高产日; 5 new PR (vercel/ai#15049, DeepTutor#449, hermes#20641, opencode#25994, opc#18); multica#2080 MERGED 🎉; multica#2088 superseded(breadcrumb>inline教训); Luna 分享停电婚礼文章; ABTI 48 agents; FlowForge --workflow flag + pre_push_audit 节点; portfolio 44→31; kagura-story "The Blackout Wedding"; 表情包 0% 第6天
-- **05-07**: 纯夜班巡检; daily-review OK; OpenClaw 3 versions behind(day 2); sops day 6 pending; 5 error crons
-
-(cleaned 05-05: dreaming auto-promotion noise removed — all confidence 0.62 patrol/study fragments, no new info. Originals in memory/日期.md)
-
-(cleaned 05-06: dreaming auto-promotion noise removed — all low-value patrol/PR status fragments with confidence 0.62-0.86. Originals in memory/日期.md)
-
-## Promoted From Short-Term Memory (05-06 to 05-08)
-
-- NemoClaw DCO --signoff 流程已建立
-- DeepTutor #449 MERGED 🎉
-- L1 navigation index 跨项目收敛验证
-
-## Promoted From Short-Term Memory (05-10 to 05-12)
-
-- opc #15-18 superseded — maintainer 认可内容但自己重新打包。教训: 先读 repo 规范再提 PR
-- openclaw#80137 MERGED 🎉（omarshahine 确认生产零错误）
-- claude-hud 加入黑名单（repo 不 merge 外部 PR）
-- PR 池 47→30（清理 + 消化）
-
-
-
-
-
-## Promoted From Short-Term Memory (2026-05-20)
-
-- ABTI #301 GPT-4.1 reliability 完成（100% reliability, 3/3 runs PTCF [2,2,2,2]）→ coverage 49/58 (84%)
-- Cove Phase 3 channel adapter 全链路跑通 + VM1 部署 + CI/CD 自动部署
-- kagura-blog "The Audit Trap" 博文发布（17天安全主线零投入自省）
-- 安全主线 day 18 终于破冰（pass store 44 secrets 安全审计全绿）
-- DNA 新增「建议≠行动」规则 (a74a9d7)
-- guide.md rule #35: check issue dup status before work (NemoClaw#3722 教训)
-- study 饱和机制验证：22 scout + 4 apply + 4 followup 后自动停止
+(Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
