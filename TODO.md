@@ -141,6 +141,7 @@
 - [x] **guide.md: 新增「APPROVED PRs rot fast — rebase and ping proactively」** - qwen-code#4459 教训（APPROVED 但 100+ conflicts 导致无法 rebase，被迫 self-close）→ 已加入 guide.md 第 39 条 (2026-05-26)
 - [x] **guide.md: 新增「read comment history before closing any PR」** - stagehand#2026 教训（pirate 明确要求 keep open 但 stale-close 逻辑没检查就关了，被当面纠正）→ 已加入 guide.md 第 43 条 (2026-05-27)
 - [x] **guide.md: 新增「resolve CHANGES_REQUESTED before opening new PRs in same repo」** - qwen-code#4456/#4474/#4461 教训 → 已加入 guide.md 第 44 条 (2026-05-29)
+- [x] **guide.md: 新增「set up commit signing before contributing to repos that require it」** - vercel/ai#15584 教训（unsigned commits 导致被 supersede）→ 已加入 guide.md 第 45 条 (2026-05-30)
 
 ## 📚 学习
 
@@ -226,6 +227,7 @@
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
 - [ ] Track: kiwifs/kiwifs - 747⭐ (05-26, was 440, +69.8%🔥). Explosive growth. Airbyte Cloud API support (v0.20.0). Revisit 06-02
+- [ ] Track: quarqlabs/agent-oss (Quarq Agent) - 180⭐ (05-30). Evidence-gated memory runtime, competitor to Hermes/OpenClaw. 0 issues, no tests, single-file monolith. Worth watching for REQUIRED_DATA pattern. Revisit 06-06
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
@@ -416,7 +418,7 @@
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [ ] Track: centaur (paradigmxyz/centaur) - 431⭐ (05-24). Shared agent platform for teams, K8s sandboxes, Slack-native. paradigm (Reth/Foundry team). Strong early traction (46 forks, 24 issues in 6 days). Revisit 05-31
 - [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
-- [ ] Track: Lucarne (tuchg/Lucarne) - 158⭐ (05-26). Rust mobile agent bridge. Solo maintainer, real Chinese users. Revisit 05-30
+- [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 290⭐ (05-27). Rust cross-agent memory, Karpathy wiki pattern, healthy community (36+ PRs). OpenClaw native support. Revisit 06-03
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
@@ -439,3 +441,7 @@
 - [ ] amd/gaia #1209: Fix race condition in `_tls_hostname` — refactor to request-scoped hostname + add concurrent multi-host tests (CHANGES_REQUESTED by itomek, promised fix 05-25, overdue). Already replied, needs code push.
 - [ ] amd/gaia #1210: Fix remaining stale test assertions — 1) ARIA labels rename chat→task in test_electron_chat_app.js:1086-1087, 2) Electron version mismatch v40 vs v42 (CHANGES_REQUESTED by itomek). Already replied, needs code push.
 - [ ] amd/gaia #1208: Fix CI lint failures (Black formatting, isort, Pylint) on fix/spinner-prompt-race-1089 branch
+- [ ] Track: Beads (gastownhall/beads) - 24,218⭐ (05-30, +0.8%). Active daily. Mature/steady. Revisit 06-06
+- [ ] Track: re_gent (regent-vcs/re_gent) - 639⭐ (05-30, +9.4%). Growing. Last push 05-24. Revisit 06-06
+- [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
+- [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
