@@ -66,7 +66,51 @@ else
   echo "  ❌ Prompt file missing: $WORKSPACE/$PROMPT_FILE"
 fi
 
-# 2. Evidence of nudge output in recent memory
+# 2. Audit log (ground truth)
+echo ""
+echo "## Audit Log (.nudge-audit.log)"
+AUDIT_LOG="$WORKSPACE/.nudge-audit.log"
+if [[ -f "$AUDIT_LOG" ]]; then
+  echo "  ✅ Audit log exists ($(wc -l < "$AUDIT_LOG") entries)"
+
+  # Count triggers vs skips in the last N days
+  AUDIT_TRIGGERS=0
+  AUDIT_SKIPS=0
+  AUDIT_ERRORS=0
+  for i in $(seq 0 $((DAYS - 1))); do
+    DAY=$(date -d "$i days ago" +%Y-%m-%d 2>/dev/null || date -v-${i}d +%Y-%m-%d 2>/dev/null)
+    DAY_TRIGGERS=$(grep -c "^${DAY}.*Triggering reflection" "$AUDIT_LOG" 2>/dev/null); DAY_TRIGGERS=${DAY_TRIGGERS:-0}
+    DAY_SKIPS=$(grep -c "^${DAY}.*Skipped" "$AUDIT_LOG" 2>/dev/null); DAY_SKIPS=${DAY_SKIPS:-0}
+    DAY_ERRORS=$(grep -c "^${DAY}.*Error\|^${DAY}.*Failed\|^${DAY}.*error" "$AUDIT_LOG" 2>/dev/null); DAY_ERRORS=${DAY_ERRORS:-0}
+    AUDIT_TRIGGERS=$((AUDIT_TRIGGERS + DAY_TRIGGERS))
+    AUDIT_SKIPS=$((AUDIT_SKIPS + DAY_SKIPS))
+    AUDIT_ERRORS=$((AUDIT_ERRORS + DAY_ERRORS))
+    if [[ $VERBOSE -eq 1 ]]; then
+      echo "    $DAY: triggers=$DAY_TRIGGERS skips=$DAY_SKIPS errors=$DAY_ERRORS"
+    fi
+  done
+
+  AUDIT_SUCCESS=$(grep -c "enqueued successfully\|spawned successfully" "$AUDIT_LOG" 2>/dev/null || echo 0)
+  # Filter to recent days for success count
+  AUDIT_SUCCESS_RECENT=0
+  for i in $(seq 0 $((DAYS - 1))); do
+    DAY=$(date -d "$i days ago" +%Y-%m-%d 2>/dev/null || date -v-${i}d +%Y-%m-%d 2>/dev/null)
+    DAY_SUCCESS=$(grep "^${DAY}" "$AUDIT_LOG" 2>/dev/null | grep -c "enqueued successfully\|spawned successfully"); DAY_SUCCESS=${DAY_SUCCESS:-0}
+    AUDIT_SUCCESS_RECENT=$((AUDIT_SUCCESS_RECENT + DAY_SUCCESS))
+  done
+
+  echo "  Triggers (${DAYS}d): $AUDIT_TRIGGERS"
+  echo "  Successful deliveries (${DAYS}d): $AUDIT_SUCCESS_RECENT"
+  echo "  Skipped (heartbeat/cron): $AUDIT_SKIPS"
+  echo "  Errors: $AUDIT_ERRORS"
+  echo ""
+  echo "  Last 5 entries:"
+  tail -5 "$AUDIT_LOG" | while read -r line; do echo "    $line"; done
+else
+  echo "  ❌ No audit log found — nudge plugin may be outdated (pre-audit-log version)"
+fi
+
+# 3. Evidence of nudge output in recent memory
 echo ""
 echo "## Nudge Output Evidence (last ${DAYS} days)"
 
@@ -119,7 +163,7 @@ echo "  Diary-style nudge writes: $DIARY_WRITES"
 
 TOTAL_EVIDENCE=$((GRADIENT_COUNT + RECENT_BC + SKILL_CANDIDATE_COUNT + DIARY_WRITES))
 
-# 3. Expected vs observed analysis
+# 4. Expected vs observed analysis
 echo ""
 echo "## Firing Rate Estimate"
 
@@ -149,28 +193,35 @@ echo "  Observed evidence total: $TOTAL_EVIDENCE"
 echo ""
 echo "## Verdict"
 
-if [[ $EXPECTED_FIRES -eq 0 ]]; then
-  echo "  ⚠️  Too few eligible turns to estimate. Check gateway logs directly."
+# Use audit log as primary signal when available, fall back to memory evidence
+if [[ -f "$AUDIT_LOG" && $AUDIT_TRIGGERS -gt 0 ]]; then
+  echo "  📊 Primary signal: audit log (ground truth)"
+  echo "  Nudge fired $AUDIT_TRIGGERS times in ${DAYS}d ($AUDIT_SUCCESS_RECENT successful)"
+  if [[ $AUDIT_ERRORS -gt 0 ]]; then
+    echo "  ⚠️  $AUDIT_ERRORS errors detected — check audit log for details"
+  elif [[ $AUDIT_TRIGGERS -eq 0 && $AUDIT_SKIPS -gt 10 ]]; then
+    echo "  🟡 All turns were skipped (heartbeat/cron). Nudge works but needs non-cron turns to fire."
+  else
+    echo "  🟢 HEALTHY — Nudge is firing and delivering successfully."
+  fi
+  if [[ $TOTAL_EVIDENCE -eq 0 ]]; then
+    echo "  ℹ️  Note: Nudge fires but produces NO_REPLY (all trivial). This is normal for routine days."
+  fi
+elif [[ $EXPECTED_FIRES -eq 0 ]]; then
+  echo "  ⚠️  Too few eligible turns to estimate. Check .nudge-audit.log or gateway logs."
 elif [[ $TOTAL_EVIDENCE -eq 0 && $EXPECTED_FIRES -gt 5 ]]; then
-  echo "  🔴 UNHEALTHY — Expected ~$EXPECTED_FIRES firings but ZERO evidence in memory."
-  echo "     Possible causes:"
-  echo "     - Nudge is firing but always returning NO_REPLY (all trivial)"
-  echo "     - Nudge is not actually firing (plugin broken)"
-  echo "     - Nudge output going to wrong location"
-  echo ""
-  echo "  Diagnostic steps:"
-  echo "     1. Check gateway logs: journalctl -u openclaw --since '1 hour ago' | grep -i 'nudge\\|plugin'"
-  echo "     2. Check if plugin process exists in gateway status"
-  echo "     3. Run a manual test: have a non-trivial conversation and check if nudge fires after $INTERVAL turns"
+  echo "  🔴 UNHEALTHY — Expected ~$EXPECTED_FIRES firings but ZERO evidence."
+  echo "     Check .nudge-audit.log for ground truth, or:"
+  echo "     1. journalctl -u openclaw --since '1 hour ago' | grep -i nudge"
+  echo "     2. cat $WORKSPACE/.nudge-audit.log | tail -20"
 elif [[ $TOTAL_EVIDENCE -gt 0 && $TOTAL_EVIDENCE -lt $(( EXPECTED_FIRES / 10 )) ]]; then
   echo "  🟡 LOW — Evidence exists ($TOTAL_EVIDENCE) but much less than expected (~$EXPECTED_FIRES firings)."
   echo "     This is likely normal if most sessions are routine/cron work."
-  echo "     Monitor: if Luna correction sessions don't produce gradients, investigate."
 else
   echo "  🟢 HEALTHY — Evidence ($TOTAL_EVIDENCE) consistent with expected nudge activity."
 fi
 
-# 4. Gateway log check (quick)
+# 5. Gateway log check (quick)
 echo ""
 echo "## Gateway Log (last 1h, nudge-related)"
 NUDGE_LOGS=$(journalctl -u openclaw --since "1 hour ago" 2>/dev/null | grep -i "nudge\|plugin.*fire\|plugin.*trigger" | tail -5)
