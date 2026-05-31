@@ -54,6 +54,29 @@ if (( FOLLOWUP_COUNT >= 4 )); then
     FOLLOWUP_LOCKED=true
 fi
 
+# Check consecutive same-mode runs (GenericAgent "diminishing returns" pattern)
+# "Same dimension improved 2 rounds with no J lift → saturated, switch direction"
+# Extract the last 2 study mode headers from today's memory
+CONSEC_WARN=""
+if [[ -f "$MEM_FILE" ]]; then
+    # Get last 3 study mode types (Scout/Quick/Apply/Followup) from section headers
+    LAST_MODES=$(grep -o '^## Study [A-Za-z]*' "$MEM_FILE" | tail -3 | sed 's/^## Study //' | tr '[:upper:]' '[:lower:]')
+    LAST_MODES_ARR=()
+    while IFS= read -r m; do [[ -n "$m" ]] && LAST_MODES_ARR+=("$m"); done <<< "$LAST_MODES"
+    if (( ${#LAST_MODES_ARR[@]} >= 2 )); then
+        LAST1="${LAST_MODES_ARR[-1]}"
+        LAST2="${LAST_MODES_ARR[-2]}"
+        if [[ "$LAST1" == "$LAST2" ]]; then
+            CONSEC_WARN="$LAST1"
+            # If 3 consecutive same mode, stronger warning
+            if (( ${#LAST_MODES_ARR[@]} >= 3 )); then
+                LAST3="${LAST_MODES_ARR[-3]}"
+                [[ "$LAST1" == "$LAST3" ]] && CONSEC_WARN="${LAST1}:3"
+            fi
+        fi
+    fi
+fi
+
 # Check consecutive-day quick scan (yesterday)
 YESTERDAY=$(date -d "$DATE - 1 day" +%Y-%m-%d 2>/dev/null || date -j -v-1d -f "%Y-%m-%d" "$DATE" +%Y-%m-%d 2>/dev/null || echo "")
 YESTERDAY_QUICK=0
@@ -75,6 +98,14 @@ echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' ||
 echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
+if [[ -n "$CONSEC_WARN" ]]; then
+    CONSEC_MODE="${CONSEC_WARN%%:*}"
+    if [[ "$CONSEC_WARN" == *":3" ]]; then
+        echo "  🔴 3 consecutive ${CONSEC_MODE} runs — diminishing returns, SWITCH mode"
+    else
+        echo "  🟡 2 consecutive ${CONSEC_MODE} runs — consider switching mode"
+    fi
+fi
 echo ""
 
 # Recommendations
@@ -93,9 +124,19 @@ fi
 echo "Available modes: ${AVAILABLE[*]}"
 
 # Smart recommendation
+# If consecutive same-mode detected, deprioritize that mode
+CONSEC_MODE_LOWER=""
+[[ -n "$CONSEC_WARN" ]] && CONSEC_MODE_LOWER="${CONSEC_WARN%%:*}"
+
 RECOMMEND=""
 if $IS_WEEKEND; then
-    if ! $APPLY_LOCKED; then
+    if ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
+        RECOMMEND="apply"
+    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+        RECOMMEND="scout"
+    elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
+        RECOMMEND="followup"
+    elif ! $APPLY_LOCKED; then
         RECOMMEND="apply"
     elif ! $SCOUT_LOCKED; then
         RECOMMEND="scout"
@@ -103,13 +144,19 @@ if $IS_WEEKEND; then
         RECOMMEND="followup"
     fi
 else
-    # Weekday: balance based on counts
-    if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED; then
+    # Weekday: balance based on counts, avoid consecutive same mode
+    if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
-    elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED; then
+    elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
-    elif (( FOLLOWUP_COUNT == 0 )) && ! $FOLLOWUP_LOCKED; then
+    elif (( FOLLOWUP_COUNT == 0 )) && ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
+    elif ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
+        RECOMMEND="apply"
+    elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
+        RECOMMEND="followup"
+    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+        RECOMMEND="scout"
     elif ! $APPLY_LOCKED; then
         RECOMMEND="apply"
     elif ! $FOLLOWUP_LOCKED; then
