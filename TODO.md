@@ -87,10 +87,11 @@
 - Wiki health (05-22): 282 cards, 58 orphans (21%), 0 broken links, 0 collisions ✔
 - Wiki health (05-25): 280 cards, 55 orphans (19%), 1 broken link (prompt-cache-optimization→context-window-management), 0 collisions ✔
 - Wiki health (05-26): 283 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔ (fixed prompt-cache-optimization→context-window-management by creating card)
+- Wiki health (05-31): 367 cards, 162 orphans (44%), 0 broken links (fixed 3: karpathy-llm-wiki→llm-wiki-karpathy), 0 collisions ✔
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
-- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis)
-- Next check: 05-28 — monitor PR #159 + #160 + #163 + #164 review
-- 4 PRs open 7+ days with no maintainer review — hold on new PRs until queue clears
+- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25
+- 4 PRs open 6-12 days with no maintainer review — hold on new PRs until queue clears
+- Next check: 06-03 — monitor PR #159 + #160 + #163 + #164 review
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -416,7 +417,7 @@
 
 ### Merged ✅
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
-- [ ] Track: centaur (paradigmxyz/centaur) - 431⭐ (05-24). Shared agent platform for teams, K8s sandboxes, Slack-native. paradigm (Reth/Foundry team). Strong early traction (46 forks, 24 issues in 6 days). Revisit 05-31
+- [ ] Track: centaur (paradigmxyz/centaur) - 673⭐ (05-31, was 431, +57%). 🟢 THRIVING (6/6). 99 forks, 57 issues, 93 external PRs/30d. Tool-server sidecar + iron-proxy hardening phase. No new arch patterns. Revisit 06-07
 - [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
 - [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
@@ -445,3 +446,5 @@
 - [ ] Track: re_gent (regent-vcs/re_gent) - 639⭐ (05-30, +9.4%). Growing. Last push 05-24. Revisit 06-06
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
 - [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
+- [ ] Track: autonomous-qa-loop (MaxwellCCC) - 54⭐ (05-31). Fresh-agent QA loop pattern — bias-free review via zero-history agents. Directly relevant to subagent quality. Revisit 06-07
+- [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
