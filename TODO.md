@@ -198,12 +198,12 @@
 - [x] Evaluate: phantom contribution ROI - DEPRIORITIZE. 0/5 merged, maintainer self-merge-only since mid-April. See wiki/projects/phantom.md (04-27)
 - [x] Track: dreamer (luml-ai/dreamer) - 13⭐ (05-06), team-wide self-evolving context MCP server. Two-phase dream pipeline. Brand new. Revisit 05-13 **Dropped** 05-06 — low traction (<50⭐), too new to justify slot
 - [x] Track: mirage (strukto-ai/mirage) - 2,446⭐ (05-20, was 2,158, +13.4%). Security sprint: 3-mode daemon auth (PR#63), DNS rebinding fix (PR#58). Generic command consolidation (PR#68, -7.7K lines, 240-case cross-backend harness). S3 key_prefix for multi-tenant (PR#60). 🟢 THRIVING (6/6), 163 forks, 21 issue authors. Revisit 05-27
-- [ ] Track: mirage (strukto-ai/mirage) - 2,618⭐ (05-26, was 2,446, +7.0%). Pushed 05-26 (today!). 179 forks. 🟢 THRIVING. Revisit 06-02
+- [x] Track: mirage (strukto-ai/mirage) - 2,833⭐ (06-01, was 2,618, +8.2%). Pushed today. OneDrive/SharePoint backend PR#139, external contributors active (sonhmai, zechengz). 192 forks. 🟢 THRIVING. Revisit 06-09
 - [x] Track: Needle (cactus-compute/needle) - 2,489⭐ (05-27). **Dropped** 05-27 — no push since 05-16 (11d), stars growing but dev stalled, confirmed drop per previous warning
 - [x] Track: centaur-loop (finewood2008/centaur-loop) - 17⭐ (05-10). **Dropped** 05-11 — low traction, duplicate entries cleaned
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14, was 94, +24%). Skills system overhaul (PR#32: when/requires frontmatter, availability buckets, TUI manager). Cross-workspace resume. 🟢 THRIVING (5/6). Deep read done 05-14: 4-bucket availability, symlink-aware security, cross-agent skill compat issue #35
 - [x] Track: whale (usewhale/whale) - 118⭐ (05-14). **Dropped** 05-20 — repo 404 (deleted/renamed)
-- [ ] Track: oh-story-claudecode (worldwonderer) - 1,499⭐ (05-26, was 1,280, +17.1%!). Pushed 05-25. Strong growth. 🟢. Revisit 06-02
+- [x] Track: oh-story-claudecode (worldwonderer) - 1,772⭐ (06-01, was 1,499, +18.2%🔥). Pushed 05-31. Explosive star growth continues but community thin (PRs from baixiaocai01 only). 🟡 GROWING but SOLO-ISH. Revisit 06-09
 - [x] Track: mizchi/skills - 155⭐ (05-09, was 144 on 05-06). 🔴 SOLO (0/6 community health), last push 04-30 (9 days stale). **Dropped** 05-09 — solo project, stalled, no external engagement
 - [x] Track: RunbookHermes (Tommy-yw) - 632⭐ (05-26, was 629, +0.5%). **Dropped** 05-26 — flat stars + no push since 05-18 (8d)
 - [x] Track: mirage (strukto-ai/mirage) - 601⭐ (05-07 PM) → merged into 05-08 PM entry above
@@ -212,8 +212,8 @@
 - [x] Track: agent-skills-eval (darkrishabh) - 212⭐ (05-08 PM). **Duplicate** — consolidated to 265⭐ entry above
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
-- [ ] Track: agentops (boshu2/agentops) - 367⭐ (05-26, was 355, +3.4%). Pushed 05-25. Steady. Revisit 06-02
-- [ ] Track: poco-claw (poco-ai/poco-claw) - 1,328⭐ (05-26, was 1,326, +0.2%). Flat stars but pushed 05-25. Revisit 06-02
+- [x] Track: agentops (boshu2/agentops) - 375⭐ (06-01, was 367, +2.2%). Pushed today. Steady but slow. Revisit 06-09
+- [x] Track: poco-claw (poco-ai/poco-claw) - 1,327⭐ (06-01, was 1,328, -0.1%). **Dropped** 06-01 — flat/declining stars across 3 consecutive checks, no growth signal
 - [x] Track: ironcurtain (provos/ironcurtain) - 480⭐ (06-01, was 461, +4.1%). Post-v0.11.0: MITM token-trajectory capture for SFT/RL training data (PR#273, +4121 lines), PTY capture wiring (PR#276), madge circular-dep gate (PR#277). Security→training-data flywheel is novel positioning. 🟢 THRIVING. Revisit 06-08
 - [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
@@ -228,7 +228,7 @@
 - [x] Track: addyosmani/agent-skills - 40.4K⭐ (05-13). **Dropped** 05-14 — repo 404 (deleted/renamed)
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
-- [ ] Track: kiwifs/kiwifs - 747⭐ (05-26, was 440, +69.8%🔥). Explosive growth. Airbyte Cloud API support (v0.20.0). Revisit 06-02
+- [x] Track: kiwifs/kiwifs - 770⭐ (06-01, was 747, +3.1%). Growth sharply decelerated (70%→3%). Still active (26 issues, 146 forks). Revisit 06-09
 - [ ] Track: quarqlabs/agent-oss (Quarq Agent) - 180⭐ (05-30). Evidence-gated memory runtime, competitor to Hermes/OpenClaw. 0 issues, no tests, single-file monolith. Worth watching for REQUIRED_DATA pattern. Revisit 06-06
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
@@ -254,9 +254,9 @@
 - [x] Track: mnem (Uranid/mnem) - 17⭐ (05-04). **Dropped** 05-05 — single author, low traction
 
 - [x] Observe: agent eval/testing space - maturing. New leader: eval-view (hidai25) 104⭐ Apache-2.0, regression testing for agents (snapshot+diff). letta-evals 70⭐ (stateful agent eval, Letta org). skill-conductor 80⭐ (5-mode lifecycle eval). Margin-Lab/evals 59⭐ still stalled. Space growing but no dominant framework yet. Revisit 05-22
-- [x] Track: eval-view (hidai25/eval-view) - 111⭐ (05-26, was 105, +5.7%). Pushed today. ROADMAP added. But PRs still solo-maintainer (hidai25) except 1 external. Downgrade to 🟠 SOLO-DRIVEN (3/6). Revisit 06-02
-- [x] Track: letta-evals (letta-ai/letta-evals) - 72⭐ (05-26, was 71, +1.4%). v0.18.0: Modal sandboxes, self-hosted server support. Steady incremental but low star traction. Revisit 06-02
-- [ ] Track: reversa (sandeco/reversa) - 1,076⭐ (05-26, was 896, +20.1%). Crossed 1K. Active (pushed 05-24). Revisit 06-02
+- [x] Track: eval-view (hidai25/eval-view) - 112⭐ (06-01, was 111, +0.9%). **Dropped** 06-01 — flat stars, solo-driven, no push since 05-27
+- [x] Track: letta-evals (letta-ai/letta-evals) - 72⭐ (06-01, was 72, 0%). **Dropped** 06-01 — flat stars despite active dev, no traction signal after months
+- [x] Track: reversa (sandeco/reversa) - 1,146⭐ (06-01, was 1,076, +6.5%). Growth decelerating. Last push 05-24 (8d, docs-only). Stalling post-paper. ⚠️ Revisit 06-09
 - [x] Track: pu.sh (NahimNasser/pu) - 168⭐ (05-05). **Dropped** 05-05 — flash growth, no commits since 05-01
 - [x] **Fix: gogetajob entry point** - `package.json` main 指向 `index.js` 但 build 产出在 `dist/cli/index.js`。修 package.json 的 bin/main 或补 `dist/index.js` 入口
 - [x] Deep read: esengine/reasonix - Cache-First Loop 三层分区 (94% cache hit), R1 Thought Harvesting (默认关闭), Tool-Call Repair, Cost Control → wiki/projects/reasonix.md (04-27)
