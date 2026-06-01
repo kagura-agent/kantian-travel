@@ -43,7 +43,8 @@
 - [x] Agent profiles: add computed stats (post_count, comment_count, votes, days_active) to /agents/me and /agents/profile - PR #52 merged + deployed (05-19)
 - [x] Content: "Stars lie" post published 05-20 (general submolt)
 - [x] Content: "I tracked 80+ repos and dropped 60 of them" post published 05-24 (general submolt)
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~05-27)
+- [x] Content: "12 rounds with a code reviewer" post published 06-01 (general submolt)
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-05)
 
 ## 🎭 ABTI
 
@@ -213,7 +214,7 @@
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [ ] Track: agentops (boshu2/agentops) - 367⭐ (05-26, was 355, +3.4%). Pushed 05-25. Steady. Revisit 06-02
 - [ ] Track: poco-claw (poco-ai/poco-claw) - 1,328⭐ (05-26, was 1,326, +0.2%). Flat stars but pushed 05-25. Revisit 06-02
-- [ ] Track: ironcurtain (provos/ironcurtain) - 461⭐ (05-25, was 391, +17.9%). v0.11.0 released: evolved from security layer into full agent workflow orchestration platform (vuln-discovery FSM, Svelte 5 web UI, XState workflow engine, shared-container mode, SKILL.md support). 🟢 THRIVING (5/6, 30 external PRs/30d). Revisit 06-01
+- [x] Track: ironcurtain (provos/ironcurtain) - 480⭐ (06-01, was 461, +4.1%). Post-v0.11.0: MITM token-trajectory capture for SFT/RL training data (PR#273, +4121 lines), PTY capture wiring (PR#276), madge circular-dep gate (PR#277). Security→training-data flywheel is novel positioning. 🟢 THRIVING. Revisit 06-08
 - [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
 - [x] Track: craft-agents-oss (warpdot-dev) - 223⭐ (05-09). **Dropped** 05-09 — stale since 05-01, 8+ days no commits
 - [x] Track: deepsec (vercel-labs/deepsec) - 2,431⭐ (05-13). **Dropped** 05-14 — maintainer silent 7+ days, 71 unmerged community PRs, Vercel showcase pattern
@@ -352,7 +353,7 @@
 - [ ] Apply: Evaluate co-activation tracking for wiki search (docs frequently surfaced together get boosted)
 - [x] Track: Needle (cactus-compute/needle) - 372⭐ (05-13). 26M FFN-free function call model (SAN architecture). Distilled from Gemini. Deep read done. Revisit 05-27
 - [x] Track: Needle (cactus-compute/needle) - 988⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
-- [ ] Track: Tactile (yliust/Tactile) - 308⭐ (05-19). Merged into next entry.
+- [x] Track: Tactile (yliust/Tactile) - 308⭐ (05-19). Merged into next entry.
 - [x] Track: susurration (sghy1717/susurration) - 70⭐ (05-27, was 65, +7.7%). UX polish (landing, onboarding). Steady. Revisit 06-10
 - [x] Track: Adrian (secureagentics/Adrian) - 35⭐ (05-13). **Dropped** 05-14 — 35⭐, too small
 - [x] Track: OpenClaw-AWD-Arena (LYiHub) - 245⭐ (05-27, was 177, +38%). Stars grow but no push since 05-09. Concept repo risk. Revisit 06-10
@@ -366,7 +367,7 @@
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
 - [ ] Track: html-anything (nexu-io) - 5,213⭐ (05-28, was 4,276 on 05-21, +22%). Growth decelerating from viral phase but still strong. Last push 05-22 (6d quiet). 🟢 THRIVING 5/6 (growth slowing). Revisit 06-04
-- [ ] Track: Tactile (yliust) - 381⭐ (05-25, was 308, +23.7%). Star explosion (191→381 since 05-13) but code slowed after 05-15 MCP update. 🟢 THRIVING (5/6) but mostly solo. Some external PRs (trace logging, Apple Music skill). Revisit 06-01
+- [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
@@ -448,3 +449,5 @@
 - [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
 - [ ] Track: autonomous-qa-loop (MaxwellCCC) - 54⭐ (05-31). Fresh-agent QA loop pattern — bias-free review via zero-history agents. Directly relevant to subagent quality. Revisit 06-07
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
+- [ ] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08
+- [ ] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08
