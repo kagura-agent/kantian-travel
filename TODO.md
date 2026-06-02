@@ -146,6 +146,8 @@
 - [x] **guide.md: 新增「set up commit signing before contributing to repos that require it」** - vercel/ai#15584 教训（unsigned commits 导致被 supersede）→ 已加入 guide.md 第 45 条 (2026-05-30)
 - [x] **guide.md: 新增「approve-but-never-merge repos are a followup trap」** - cc-connect 教训（4 PRs APPROVED, ping 3+次, 连续 2 周未 merge 占据每晚 followup）→ 已加入 guide.md 第 46 条 (2026-06-01)
 
+- [x] **guide.md: 新增「sparse checkout repos break rebase — re-create branch」** - qwen-code#4456 R12 nit fix 教训（sparse checkout 100+ conflicts，重建分支比 rebase 快 10 倍）→ 已加入 guide.md 第 47 条 (2026-06-02)
+
 ## 📚 学习
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
@@ -214,7 +216,7 @@
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [x] Track: agentops (boshu2/agentops) - 375⭐ (06-01, was 367, +2.2%). Pushed today. Steady but slow. Revisit 06-09
-- [ ] Track: vigils (duncatzat/vigils) - 50⭐ (06-01, created 05-31). Local-first agent control plane: hash-chain audit, default-deny firewall, credential lease broker, MCP descriptor drift detection. Rust+Tauri. Most architecturally sophisticated agent safety project seen. Deep read done. Revisit 06-08
+- [ ] Track: vigils (duncatzat/vigils) - 100⭐ (06-02, was 50, +100%🔥). Local-first agent control plane: hash-chain audit, default-deny firewall, credential lease broker, MCP descriptor drift detection. Rust+Tauri. Explosive growth validates agent safety category. Revisit 06-08
 - [x] Track: poco-claw (poco-ai/poco-claw) - 1,327⭐ (06-01, was 1,328, -0.1%). **Dropped** 06-01 — flat/declining stars across 3 consecutive checks, no growth signal
 - [x] Track: ironcurtain (provos/ironcurtain) - 480⭐ (06-01, was 461, +4.1%). Post-v0.11.0: MITM token-trajectory capture for SFT/RL training data (PR#273, +4121 lines), PTY capture wiring (PR#276), madge circular-dep gate (PR#277). Security→training-data flywheel is novel positioning. 🟢 THRIVING. Revisit 06-08
 - [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
@@ -423,7 +425,7 @@
 - [ ] Track: centaur (paradigmxyz/centaur) - 673⭐ (05-31, was 431, +57%). 🟢 THRIVING (6/6). 99 forks, 57 issues, 93 external PRs/30d. Tool-server sidecar + iron-proxy hardening phase. No new arch patterns. Revisit 06-07
 - [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
 - [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
-- [ ] Track: claude-soul (DomDemetz/claude-soul) - 77⭐ (05-26, was 75). External contributors active (3 merged PRs). Tiered reflection broken (Issue #6). Revisit 06-02
+- [ ] Track: claude-soul (DomDemetz/claude-soul) - 83⭐ (06-02, was 77). v0.2.5: identity drift detection, concurrent reflection lock, Issue #6 fixed (per-tier signal consumption). Revisit 06-07
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 290⭐ (05-27). Rust cross-agent memory, Karpathy wiki pattern, healthy community (36+ PRs). OpenClaw native support. Revisit 06-03
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
