@@ -43,7 +43,7 @@
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
 - 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
-- PR merge rate: 53% (24 merged/77 total, gogetajob GitHub API 口径) [已验证 05-18]
+- PR merge rate: 38% (6 merged/40 total, gogetajob GitHub API 口径) [已验证 06-03]
 - **Archon#1700**: SUPERSEDED by Wirasm#1729 (05-20). Archon#1718 MERGED ✅. OpenCLI#1693 MERGED ✅
 - **cc-connect#990**: CLOSED 05-19（unrebaseable, maintainer self-fixing）
 - **cc-connect**: 4 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055），等 merge。#1045 CLOSED（unrebaseable）

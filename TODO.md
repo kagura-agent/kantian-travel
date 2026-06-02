@@ -89,10 +89,11 @@
 - Wiki health (05-25): 280 cards, 55 orphans (19%), 1 broken link (prompt-cache-optimization→context-window-management), 0 collisions ✔
 - Wiki health (05-26): 283 cards, 78 orphans (28%), 0 broken links, 0 collisions ✔ (fixed prompt-cache-optimization→context-window-management by creating card)
 - Wiki health (05-31): 367 cards, 162 orphans (44%), 0 broken links (fixed 3: karpathy-llm-wiki→llm-wiki-karpathy), 0 collisions ✔
+- Wiki health (06-02): 364 cards, 50 orphans (14%), 0 broken links (fixed: flux2-klein→bonsai-image-4b), 0 collisions ✔
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
-- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25
-- 4 PRs open 6-12 days with no maintainer review — hold on new PRs until queue clears
-- Next check: 06-03 — monitor PR #159 + #160 + #163 + #164 review
+- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (8+ days dormant)
+- 4 PRs open 8-14 days with no maintainer review — hold on new PRs until queue clears
+- Next check: 06-03 — if still no review, consider closing stale PRs
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
