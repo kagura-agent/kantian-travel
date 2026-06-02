@@ -4,7 +4,7 @@
 
 Before any candidate graduates to DNA/workflow/knowledge-base, it must pass ALL three:
 
-1. **V1 Cross-context** (≥3 independent occurrences): The pattern appeared in ≥3 separate sessions/tasks, not just repeated in the same context. Each occurrence should be independently logged with date.
+1. **V1 Cross-context** (≥3.0 weighted occurrences): The pattern appeared in ≥3 separate sessions/tasks, not just repeated in the same context. Each occurrence should be independently logged with date. **Self-referential discount**: self-generated evidence (source: nudge/study/reflect/workloop) counts at **0.5x weight**; externally-triggered evidence (source: luna/manual, PR review feedback) counts at **1.0x**. This prevents bootstrapping own confidence — a pattern observed 6 times by self-reflection alone scores 3.0, equivalent to 3 external observations. _Inspired by claude-soul 0.5x self-referential discount._
 2. **V2 Predictive Power**: The belief helps in scenarios we haven't encountered yet — "if X happens, I'd do Y differently because of this belief." If it only describes what already happened, it's a note, not a belief.
 3. **V3 Non-obvious**: Not something any competent agent would do by default. Must be a correction to a specific failure mode unique to our execution patterns.
 
@@ -172,3 +172,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-29: [gradient] Luna 指出游记两处事实错误："直通车不需要门票"（我看标牌想当然）、"罗汉棋盘硬币是寺里摆的不是游客投的"（我凭常识猜的）→ [行为改变] 旅行中看到的信息不要凭"常识"推断含义，如果不确定就问Luna或说"我不确定"，不要自信断言后写进游记变成事实错误 (pattern: premature-assumption, 第5次) → **graduated 2026-05-30** (target: DNA — SOUL.md Beliefs section)
 
 - 2026-05-29: [gradient] "channel patrol 报 quiet hour 但实际在跟 Luna 聊天" → [行为改变] 任何形式的人类互动都算活动，不能只看 cron 产出来判断是否 quiet。已修复 patrol prompt。(pattern: 狭隘活动定义, 第1次)
+
+- 2026-06-02: [gradient] "When debugging a pipeline (A→B→C), check receiver-end instructions before diving into middleware internals. The fix is often at the endpoint, not the plumbing." → [行为改变] First verify: does the receiving workflow/node have explicit instructions to perform the expected action? Missing instructions > broken plumbing.. (pattern: debug-receiver-first, 第1次) (Source: study)
+  - **Trigger**: Spending time reading plugin/middleware source code to understand why a pipeline produces no output

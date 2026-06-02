@@ -42,6 +42,33 @@ fi
 # Count occurrences in memory files (V1 evidence)
 OCCURRENCE_COUNT=$(grep -rl "$SEARCH" "$MEMORY_DIR"/*.md 2>/dev/null | wc -l)
 
+# Source-weighted evidence scoring (claude-soul 0.5x self-referential discount)
+# Self-generated sources (nudge/study/reflect/workloop) count 0.5x
+# External sources (luna/manual/pr-review) count 1.0x
+GRADIENT_LOG="$HOME/.openclaw/workspace/tools/.gradient-log.jsonl"
+SELF_COUNT=0
+EXTERNAL_COUNT=0
+if [ -f "$GRADIENT_LOG" ]; then
+  SELF_COUNT=$(grep -i "$SEARCH" "$GRADIENT_LOG" 2>/dev/null | jq -r '.source // "unknown"' 2>/dev/null | grep -cE '^(nudge|study|reflect|workloop)$' || true)
+  EXTERNAL_COUNT=$(grep -i "$SEARCH" "$GRADIENT_LOG" 2>/dev/null | jq -r '.source // "unknown"' 2>/dev/null | grep -cvE '^(nudge|study|reflect|workloop)$' || true)
+  SELF_COUNT=${SELF_COUNT:-0}
+  EXTERNAL_COUNT=${EXTERNAL_COUNT:-0}
+fi
+# Also check beliefs-candidates.md source tags
+CAND_SELF=$(echo "$CANDIDATE_TEXT" | grep -cE '\(Source: (nudge|study|reflect|workloop)\)' || true)
+CAND_EXT=$(echo "$CANDIDATE_TEXT" | grep -cE '\(Source: (luna|manual)\)' || true)
+CAND_SELF=${CAND_SELF:-0}
+CAND_EXT=${CAND_EXT:-0}
+SELF_COUNT=$((SELF_COUNT + CAND_SELF))
+EXTERNAL_COUNT=$((EXTERNAL_COUNT + CAND_EXT))
+# Weighted score: self=0.5x, external=1.0x
+if command -v bc &>/dev/null; then
+  WEIGHTED_SCORE=$(echo "scale=1; $EXTERNAL_COUNT * 1.0 + $SELF_COUNT * 0.5" | bc)
+else
+  # Fallback: integer math, self counts half (rounded down)
+  WEIGHTED_SCORE=$((EXTERNAL_COUNT + SELF_COUNT / 2))
+fi
+
 echo "═══════════════════════════════════════════"
 echo "🔍 Independent Candidate Evaluation"
 echo "═══════════════════════════════════════════"
@@ -50,6 +77,8 @@ echo "📋 Candidate:"
 echo "$CANDIDATE_TEXT"
 echo ""
 echo "📊 Memory occurrences found: $OCCURRENCE_COUNT"
+echo "📊 Evidence sources: ${EXTERNAL_COUNT} external (1.0x) + ${SELF_COUNT} self-generated (0.5x) = ${WEIGHTED_SCORE} weighted"
+echo "   (Self-referential discount: self-generated evidence counts at 0.5x weight)"
 echo ""
 echo "═══════════════════════════════════════════"
 echo ""
@@ -66,14 +95,17 @@ $CANDIDATE_TEXT
 
 ## Evidence from memory logs:
 Occurrences in separate daily logs: $OCCURRENCE_COUNT
+Evidence sources: ${EXTERNAL_COUNT} external (1.0x weight) + ${SELF_COUNT} self-generated (0.5x weight) = ${WEIGHTED_SCORE} weighted score
 
 ## Scoring Criteria (ALL must pass):
 
-### V1: Cross-context (≥3 independent occurrences)
+### V1: Cross-context (≥3 independent occurrences, source-weighted)
 - The pattern must appear in ≥3 SEPARATE sessions/tasks
 - Repeated mentions in one session = 1 occurrence, not 3
 - Memory log count: $OCCURRENCE_COUNT (raw, may include duplicates)
-- Score: PASS if genuinely ≥3 independent contexts, FAIL otherwise
+- **Self-referential discount**: Self-generated evidence (from nudge, study, reflect, workloop) counts at **0.5x weight**. Only externally-triggered evidence (Luna feedback, PR reviews, manual observations) counts at full 1.0x weight. This prevents the agent from bootstrapping its own confidence.
+- Weighted evidence score: ${WEIGHTED_SCORE} (need ≥3.0 to pass)
+- Score: PASS if weighted evidence ≥3.0, FAIL otherwise
 
 ### V2: Predictive Power
 - Does this belief help in FUTURE scenarios not yet encountered?
