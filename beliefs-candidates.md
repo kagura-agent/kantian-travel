@@ -175,3 +175,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-02: [gradient] "When debugging a pipeline (A→B→C), check receiver-end instructions before diving into middleware internals. The fix is often at the endpoint, not the plumbing." → [行为改变] First verify: does the receiving workflow/node have explicit instructions to perform the expected action? Missing instructions > broken plumbing.. (pattern: debug-receiver-first, 第1次) (Source: study)
   - **Trigger**: Spending time reading plugin/middleware source code to understand why a pipeline produces no output
+
+- 2026-06-02: [gradient] "When followup shows repos pushed today but last followup was yesterday, check wiki notes FIRST before API calls. Active today != new signal since last check." → [行为改变] Scan wiki/projects/ last followup date first. If within 24h, do minimal API check or skip.. (pattern: followup-recency-check, 第1次) (Source: study)
+  - **Trigger**: Followup mode, repo shows recent push, but my last followup was within 24h
+
+- 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge)
+  - **Trigger**: 有 workflow 的任务觉得手动也能做，跳过 workflow 入口
+
+- 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第1次) (Source: study)
+  - **Trigger**: Running flowforge next with multiple active workflows
