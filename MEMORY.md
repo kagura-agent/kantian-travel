@@ -132,5 +132,6 @@
 - **05-26**: NemoClaw#4054 MERGED 🎉; thClaws crossed 1K⭐
 - **05-29**: Luna 天台山旅行 — graduated premature-assumption (5次) + record-only-no-chat (3次) to DNA
 - **05-30**: SOUL.md new belief: "I'm not sure beats confident wrong answer"; new tools: memory-lifecycle.sh, add-gradient.sh
+- **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546 终于出 PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复（首个 gradient 产出）; ABTI 数据漂移修复+部署; beliefs-candidates 自引证 0.5x 折扣
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
