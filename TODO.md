@@ -66,11 +66,11 @@
 - [x] PR #76 - `doctor --verbose` flag (merged 04-27)
 - [x] Updated local memex to 0.1.32 (synced upstream fdf7915, npm link)
 
-### Open PRs
-- PR #159 - test(scan): add unit tests for scanMarkdownFiles utility (5 tests) — submitted 05-19
-- PR #160 - test(ops): add recall filter and flomo_import_parse validation tests (9 tests) — submitted 05-21
-- PR #163 - fix(deps): resolve high-severity vulnerabilities via npm audit fix (fixes #162) — submitted 05-22
-- PR #164 - test(import): add unit tests for importCommand (7 tests) — submitted 05-25
+### Closed (stale — no review)
+- PR #159 - test(scan): scanMarkdownFiles tests — closed 06-03 (15d no review)
+- PR #160 - test(ops): recall filter + flomo parse tests — closed 06-03 (13d no review)
+- PR #163 - fix(deps): npm audit fix — closed 06-03 (12d no review)
+- PR #164 - test(import): importCommand tests — closed 06-03 (9d no review)
 
 ### Next
 - [x] Explore v0.2.0 sensitive-input guardrails — look for edge cases or missing patterns → PR #154 (merged 05-16 ✅)
@@ -92,8 +92,8 @@
 - Wiki health (06-02): 364 cards, 50 orphans (14%), 0 broken links (fixed: flux2-klein→bonsai-image-4b), 0 collisions ✔
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
 - Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (8+ days dormant)
-- 4 PRs open 8-14 days with no maintainer review — hold on new PRs until queue clears
-- Next check: 06-03 — if still no review, consider closing stale PRs
+- All 4 stale PRs closed 06-03 (no review after 9-15 days, upstream dormant since 05-25)
+- Contribution score: 10 PRs merged, 0 open, 5 closed (1 maintainer superseded + 4 stale)
 
 ## 🔧 Infrastructure Maintenance
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
@@ -148,6 +148,7 @@
 - [x] **guide.md: 新增「approve-but-never-merge repos are a followup trap」** - cc-connect 教训（4 PRs APPROVED, ping 3+次, 连续 2 周未 merge 占据每晚 followup）→ 已加入 guide.md 第 46 条 (2026-06-01)
 
 - [x] **guide.md: 新增「sparse checkout repos break rebase — re-create branch」** - qwen-code#4456 R12 nit fix 教训（sparse checkout 100+ conflicts，重建分支比 rebase 快 10 倍）→ 已加入 guide.md 第 47 条 (2026-06-02)
+- [x] **guide.md: 新增「don't stack PRs in repos with no review velocity」** - memex 4 PRs batch-closed + opc 5 PRs stacking 教训（dormant repo 堆 PR = 沉没成本 + 认知负担零回报）→ 已加入 guide.md 第 48 条 (2026-06-03)
 
 ## 📚 学习
 
@@ -217,7 +218,7 @@
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [x] Track: agentops (boshu2/agentops) - 375⭐ (06-01, was 367, +2.2%). Pushed today. Steady but slow. Revisit 06-09
-- [ ] Track: vigils (duncatzat/vigils) - 100⭐ (06-02, was 50, +100%🔥). Local-first agent control plane: hash-chain audit, default-deny firewall, credential lease broker, MCP descriptor drift detection. Rust+Tauri. Explosive growth validates agent safety category. Revisit 06-08
+- [ ] Track: vigils (duncatzat/vigils) - 199⭐ (06-03, was 100, +99%🔥). 4x in 3d, security audit 9.9/10, hash-chain v2, vigil-sdk on crates.io. 🟢 CONFIRMED INTERESTING but SOLO (0 PRs/issues). Revisit 06-10
 - [x] Track: poco-claw (poco-ai/poco-claw) - 1,327⭐ (06-01, was 1,328, -0.1%). **Dropped** 06-01 — flat/declining stars across 3 consecutive checks, no growth signal
 - [x] Track: ironcurtain (provos/ironcurtain) - 480⭐ (06-01, was 461, +4.1%). Post-v0.11.0: MITM token-trajectory capture for SFT/RL training data (PR#273, +4121 lines), PTY capture wiring (PR#276), madge circular-dep gate (PR#277). Security→training-data flywheel is novel positioning. 🟢 THRIVING. Revisit 06-08
 - [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
