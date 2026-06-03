@@ -138,6 +138,7 @@ DNA 文件（SOUL.md, AGENTS.md, HEARTBEAT.md, IDENTITY.md, NUDGE.md, beliefs-ca
    - **始终适用的原则** → DNA（AGENTS.md / SOUL.md）
    - **特定任务的流程** → Workflow（workloop.yaml 节点 task 描述）
    - **特定领域/项目经验** → Knowledge-base（projects/ 笔记或 cards/ 卡片）
+   - **Retirement check**: 每条新规则毕业时必须回答"它替代/退役哪条旧规则？"——无退役只累积 = 规则膨胀。"none" 可以但需理由。
    - 不是所有规则都该去 DNA——被动背景知识在行动时没有约束力
 4. daily-review（3:00 AM）是常规 DNA review 时机，但不限于此
 5. Luna 是观察者不是审批者——她看到通知觉得跑偏了会拉你

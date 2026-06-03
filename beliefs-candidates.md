@@ -39,6 +39,8 @@ _Pattern source: agentic-stack v0.17 `retract_lesson.py` — append-only status 
 - [ ] Evaluator verdict: PASS (attach output)
 - [ ] Target: DNA | Workflow | Knowledge-base
 - [ ] Specific location: ___
+- [ ] Retirement check: What existing rule/belief does this retire or supersede? ("none" is valid but must be justified — accumulation is the default failure mode)
+- [ ] If retiring: mark old rule with `→ retired YYYY-MM-DD (superseded by: <new rule>)`
 ```
 
 **独立评分规则**: 候选人升级时，必须用 `scripts/evaluate-candidate.sh` 生成评估 prompt，

@@ -125,3 +125,7 @@ echo "📊 Summary: ${ELIGIBLE_COUNT} candidate(s) pass V1 (cross-context), pend
 echo ""
 echo "⚡ Next: Agent should evaluate V2 (predictive power) + V3 (non-obvious) for each."
 echo "   PASS all 3 → graduate. Use: bash tools/add-gradient.sh --graduate '<pattern-name>'"
+echo ""
+echo "🔄 Retirement check: For each graduating candidate, answer:"
+echo "   'What existing DNA rule does this retire or supersede?'"
+echo "   If none: justify why accumulation is acceptable here."
