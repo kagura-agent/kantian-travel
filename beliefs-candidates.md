@@ -192,3 +192,24 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-03: [gradient] "preflight 500MB repo size limit blocks all openclaw/openclaw issues despite having a local clone. The limit was designed to prevent slow clones during workloop, but is a false positive when the repo is already cloned locally. Should add a check: if local clone exists AND is fresh (fetched recently), skip the size check." → [行为改变] update preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/<repo>. (pattern: preflight-false-positive, 第1次) (Source: workloop)
   - **Trigger**: selecting openclaw/openclaw issues (1466MB repo)
+
+- 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] Always specify -w <workflow> when multiple flowforge instances are active. (pattern: multi-instance-disambiguation, 第1次) (Source: study)
+  - **Trigger**: Running flowforge next without -w flag while multiple instances active
+
+- 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第1次) (Source: nudge)
+  - **Trigger**: Task matches a known workflow but steps feel familiar
+
+- 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna)
+  - **Trigger**: 做UI header/panel/footer对齐时
+
+- 2026-06-03: [gradient] "followup 节点发现 assigned-but-no-PR 的 issue 后，用分析/计划合理化跳过，去找新活而不是当轮解决。#3836 PR 被关了都没跟进。" → [行为改变] followup 发现未兑现 assigned issue → 本轮不允许进 find_work，必须先处理完所有 assigned（提 PR / unassign / 评论放弃）. (pattern: assigned-issue-neglect, 第1次) (Source: nudge)
+  - **Trigger**: followup 检查 assigned issues 时发现未兑现的
+
+- 2026-06-03: [gradient] "Discord Markdown 功能连续说错两次：先说不渲染heading后说渲染，被Luna纠正" → [行为改变] 不确定就说不确定，不要凭印象断言。被纠正后不要矫枉过正又往反方向猜. (pattern: verify-before-claim, 第1次) (Source: luna)
+  - **Trigger**: 陈述第三方产品功能时
+
+- 2026-06-03: [gradient] "subagent 在 implement 阶段自行 push+提 PR，跳过了主 agent 的验证和 submit 流程。根因：task 约束没有明确禁止 push/PR" → [行为改变] implement task 末尾加 BOUNDARY 约束：只 commit 不 push 不提 PR，push/PR 统一在 submit 节点. (pattern: subagent-boundary-leak, 第1次) (Source: nudge)
+  - **Trigger**: implement 节点 spawn subagent 做代码时
+
+- 2026-06-03: [gradient] "自己手写了 ChatMarkdown 解析器，结果写出空行无限循环 OOM bug，Luna 两次提醒要用 Claude Code 写代码" → [行为改变] 代码实现必须用 Claude Code，自己不写。AGENTS.md 已有此规则但未执行. (pattern: code-authorship-discipline, 第1次) (Source: luna)
+  - **Trigger**: 想直接写代码而不是交给 Claude Code 时
