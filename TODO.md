@@ -427,7 +427,7 @@
 - [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
 - [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 83⭐ (06-02, was 77). v0.2.5: identity drift detection, concurrent reflection lock, Issue #6 fixed (per-tier signal consumption). Revisit 06-07
-- [ ] Track: ai-memory (akitaonrails/ai-memory) - 290⭐ (05-27). Rust cross-agent memory, Karpathy wiki pattern, healthy community (36+ PRs). OpenClaw native support. Revisit 06-03
+- [ ] Track: ai-memory (akitaonrails/ai-memory) - 503⭐ (06-03, was 290, +73%🔥). v0.9.0! Bounded buffers, admin root-only, move-project, web wikilinks, openai-compat strict. External PRs from djalmajr/brunoomariano/rikelmyso7. 52 forks. 🟢 THRIVING breakout. Revisit 06-10
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
 ## QwenLM/qwen-code#4456 — ✅ APPROVED (R12)
