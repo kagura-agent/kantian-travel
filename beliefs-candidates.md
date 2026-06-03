@@ -189,3 +189,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-03: [gradient] "UI对齐: 数值对齐不等于视觉对齐, minHeight因内容不同导致实际高度不同" → [行为改变] 用固定height而非minHeight; 统一所有区域left padding到同一值; 请Luna开Layout Inspector截图验证. (pattern: ui-visual-alignment, 第1次) (Source: nudge)
   - **Trigger**: 做UI header/panel对齐时用minHeight
+
+- 2026-06-03: [gradient] "preflight 500MB repo size limit blocks all openclaw/openclaw issues despite having a local clone. The limit was designed to prevent slow clones during workloop, but is a false positive when the repo is already cloned locally. Should add a check: if local clone exists AND is fresh (fetched recently), skip the size check." → [行为改变] update preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/<repo>. (pattern: preflight-false-positive, 第1次) (Source: workloop)
+  - **Trigger**: selecting openclaw/openclaw issues (1466MB repo)
