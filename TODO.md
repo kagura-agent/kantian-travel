@@ -221,7 +221,7 @@
 - [x] Track: downy (bensenescu) - 183⭐ (05-12). **Dropped** 05-12 — no push since 05-06 (6 days), development stalling despite star growth
 - [x] Track: speca (NyxFoundation/speca) - 404⭐ (05-21). **Dropped** 05-21 — no push since 05-15 (6d), settling after Web UI pivot, no community traction
 - [x] Track: agentops (boshu2/agentops) - 375⭐ (06-01, was 367, +2.2%). Pushed today. Steady but slow. Revisit 06-09
-- [ ] Track: vigils (duncatzat/vigils) - 199⭐ (06-03, was 100, +99%🔥). 4x in 3d, security audit 9.9/10, hash-chain v2, vigil-sdk on crates.io. 🟢 CONFIRMED INTERESTING but SOLO (0 PRs/issues). Revisit 06-10
+- [x] Track: vigils (duncatzat/vigils) - 205⭐ (06-04). **Dropped** 06-04 — 🟠 NASCENT (1/6), zero community despite 205⭐, star farming pattern
 - [x] Track: poco-claw (poco-ai/poco-claw) - 1,327⭐ (06-01, was 1,328, -0.1%). **Dropped** 06-01 — flat/declining stars across 3 consecutive checks, no growth signal
 - [x] Track: ironcurtain (provos/ironcurtain) - 480⭐ (06-01, was 461, +4.1%). Post-v0.11.0: MITM token-trajectory capture for SFT/RL training data (PR#273, +4121 lines), PTY capture wiring (PR#276), madge circular-dep gate (PR#277). Security→training-data flywheel is novel positioning. 🟢 THRIVING. Revisit 06-08
 - [x] Apply: Evaluate SmallCode Contract/DoD hard-gate pattern for OpenClaw subagent completion detection → 05-26 verdict: NOT NOW. Structural gate interesting but our runtime already has completion via sessions_spawn. Quality gap exists (subagent can "complete" without really finishing). Revisit when subagent quality becomes recurring problem
