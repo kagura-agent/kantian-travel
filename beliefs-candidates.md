@@ -258,3 +258,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-05: [gradient] "Repos with 3+ consecutive star declines should be auto-flagged as drop candidates by tracking-health.sh" → [行为改变] Add consecutive-decline detection to tracking-health.sh auto-drop candidates. (pattern: consecutive-star-decline-auto-drop, 第1次) (Source: study)
   - **Trigger**: followup shows stars declining for 3rd time
+
+- 2026-06-05: [gradient] "手动SSH部署覆盖CI版本" → [行为改变] 用CI自动部署,不手动SSH操作. (pattern: use-ci-cd, 第1次) (Source: nudge)
+  - **Trigger**: 项目有CI/CD pipeline时
+
+- 2026-06-05: [gradient] "项目文档放私人wiki而非项目repo" → [行为改变] 放项目repo的README/CONTRIBUTING/docs,wiki只放跨项目知识. (pattern: docs-in-repo, 第1次) (Source: nudge)
+  - **Trigger**: 写项目专属文档时
+
+- 2026-06-05: [gradient] "When all tracked repos have saturated competition and large repos fail the 500MB gate, the round becomes unproductive. Need to either: (1) maintain a pipeline of pre-vetted small repos (<500MB) with merge history, or (2) override the 500MB gate when a local clone already exists." → [行为改变] Pre-build a repo pipeline during low-activity hours (heartbeat). When stuck on find_work 3rd time, skip to reflect instead of burning more time searching.. (pattern: issue-finding-saturation, 第1次) (Source: workloop)
+  - **Trigger**: When find_work loops 3+ times without selecting an issue
