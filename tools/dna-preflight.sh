@@ -200,3 +200,29 @@ if [[ $dna_violations -gt 0 ]]; then
   echo "⚠️  ${dna_violations}/${#UNIQUE_PATTERNS[@]} violations were rules that ALREADY EXIST in DNA."
   echo "   The problem isn't knowing — it's doing."
 fi
+
+# === Feedback Loop: Log surfaced reminders + detect recidivism ===
+# Inspired by metatron's "agent rates served priors" feedback mechanism.
+# If the same pattern keeps appearing despite preflight warnings, the reminder
+# isn't working — something structural needs to change.
+PREFLIGHT_LOG="${WORKSPACE}/.preflight-log"
+
+# Log this run's surfaced patterns
+while IFS= read -r line; do
+  tag=$(echo "$line" | awk '{print $2}')
+  [[ -n "$tag" ]] && echo "$(date +%Y-%m-%dT%H:%M)|${CONTEXT:-any}|${tag}" >> "$PREFLIGHT_LOG"
+done <<< "$sorted"
+
+# Recidivism detection: patterns surfaced 5+ times = structural problem
+if [[ -f "$PREFLIGHT_LOG" ]]; then
+  recidivists=$(cut -d'|' -f3 "$PREFLIGHT_LOG" | sort | uniq -c | sort -rn | awk '$1 >= 5 {print $1, $2}')
+  if [[ -n "$recidivists" ]]; then
+    echo ""
+    echo "🔁 Recidivism Alert — these patterns survive repeated preflight warnings:"
+    while IFS= read -r r; do
+      count=$(echo "$r" | awk '{print $1}')
+      pattern=$(echo "$r" | awk '{print $2}')
+      echo "   ${pattern} (surfaced ${count}× — preflight alone won't fix this; needs structural change)"
+    done <<< "$recidivists"
+  fi
+fi

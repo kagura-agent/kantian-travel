@@ -213,3 +213,48 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-03: [gradient] "自己手写了 ChatMarkdown 解析器，结果写出空行无限循环 OOM bug，Luna 两次提醒要用 Claude Code 写代码" → [行为改变] 代码实现必须用 Claude Code，自己不写。AGENTS.md 已有此规则但未执行. (pattern: code-authorship-discipline, 第1次) (Source: luna)
   - **Trigger**: 想直接写代码而不是交给 Claude Code 时
+
+- 2026-06-04: [gradient] "后台执行命令后没检查输出就汇报成功。flowforge --input 报错但已告诉 Luna 正在运行，直到她问进度才发现。" → [行为改变] 必须立即 poll/log 确认启动成功，再向用户汇报状态。不确认就汇报 = 报假进度。. (pattern: verify-before-report, 第1次) (Source: nudge)
+  - **Trigger**: 用 background:true 执行命令后
+
+- 2026-06-04: [gradient] "三轮 code review 都跳过了 reflection 步骤。手动 spawn 替代 FlowForge 后丢失了 prompt evolution 和 reviewer assessment。Round 2 就该发现安全测试要求太弱，但没做 Layer 2 反思，等 Luna 问才改。" → [行为改变] 即使手动 spawn，完成汇总后必须执行 reflection checklist：Layer 1 记录 + Layer 2 读 runs/ 找 prompt 盲点 + Layer 3 评估 reviewer 表现。不能只做 Layer 1。. (pattern: skip-reflection, 第1次) (Source: luna)
+  - **Trigger**: 手动执行 workflow 步骤时
+
+- 2026-06-04: [gradient] "Review只看标题级标记漏掉reviewer正文里的其他需修项" → [行为改变] 逐条过完所有reviewer的每个finding再列action items不只看Overall Verdict和红黄标题. (pattern: shallow-review-reading, 第1次) (Source: nudge)
+  - **Trigger**: 处理PR review feedback时
+
+- 2026-06-04: [gradient] "Apply mode 选目标耗时过长（scanning all completed backlog）。当天 memory reflect 已明确指出可修的 issue 时，应直接从 reflect 取 apply target" → [行为改变] 优先级: (1) 今天 reflect 明确指出的 issue (2) unapplied.md 未勾选项 (3) self-evolving-observations 持续 gap。按优先级搜索，命中第一个就执行. (pattern: apply-target-from-today-reflect, 第1次) (Source: study)
+  - **Trigger**: study apply 开始时面对全部已勾选的 unapplied backlog
+
+- 2026-06-04: [gradient] "post-upgrade workflow 在实际未升级时仍会执行 adoption 步骤，但只能记录基线无法验证 fix — 应在 detect_changes 后增加 'upgrade applied?' 分支" → [行为改变] 在 detect_changes 节点增加分支：if version unchanged → skip to 'suggest upgrade' terminal node. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+  - **Trigger**: post-upgrade workflow 运行时当前版本仍是旧版本
+
+- 2026-06-04: [gradient] "Cove CI 跑 tsc --noEmit 但本地只跑 test+build 没发现类型错误" → [行为改变] 验证步骤必须包含 pnpm -r exec tsc --noEmit，和 CI 保持一致. (pattern: incomplete-local-verification, 第1次) (Source: luna)
+  - **Trigger**: subagent 写完代码验证时
+
+- 2026-06-04: [gradient] "flowforge next without --workflow flag advances wrong instance when multiple workflows active" → [行为改变] Always add --workflow <name> to flowforge next commands. (pattern: flowforge-multi-instance-targeting, 第1次) (Source: study)
+  - **Trigger**: running flowforge next with multiple active instances
+
+- 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第1次) (Source: nudge)
+  - **Trigger**: 调试只有某个 channel 不工作时
+
+- 2026-06-04: [gradient] "Vega (Gemini) 在 cove#190 R4 发现了 generation ID reuse bug：.delete() 重置计数器导致 stale dispatch 和新 dispatch 共享同一个 gen。提出用 AbortController 引用相等替代数字计数器，一举解决 reuse bug + map leak + 代码简化。" → [行为改变] 优先用对象引用相等（===）做身份判断，不用数字计数器。对象引用天然不可重用，counter 有 reset/reuse 风险。. (pattern: identity-over-counter, 第1次) (Source: nudge)
+  - **Trigger**: 设计 staleness guard 时
+
+- 2026-06-04: [gradient] "PR #190 六轮 review: 每轮修复引入新 bug, 初始实现没想清楚所有失败模式, 非阻塞建议拖 6 轮" → [行为改变] 先列出所有失败模式(stale side-effects/state cleanup/concurrency/shutdown)再写代码; 非阻塞建议当轮做不拖; 推之前用 reviewer 视角自审. (pattern: shallow-initial-implementation, 第1次) (Source: luna)
+  - **Trigger**: 做 resilience/safety 改动时
+
+- 2026-06-05: [gradient] "Most 'hybrid AI' tools are really 'well-engineered prompt pipelines' — rules/checklists are the moat, not the model" → [行为改变] Decompose into: what's deterministic (usually prompt construction) vs what's LLM (usually execution). Value curated domain rules over commodity LLM features. (pattern: hybrid-decomposition, 第1次) (Source: study)
+  - **Trigger**: Evaluating any tool claiming 'hybrid deterministic + LLM' architecture
+
+- 2026-06-05: [gradient] "When unapplied.md is fully checked off, apply rounds should source from recent scout findings and self-evolving-observations.md rather than expecting a pre-built queue. Scout rounds should actively tag new insights as apply candidates in wiki notes." → [行为改变] Source from today's memory scout entries and self-evolving-observations.md for apply candidates. (pattern: unapplied-backlog-exhaustion, 第1次) (Source: study)
+  - **Trigger**: unapplied.md all items checked, apply mode has no obvious target
+
+- 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+  - **Trigger**: When adoption checklist is complete but upgrade hasn't happened
+
+- 2026-06-05: [gradient] "Multi-subagent yield lost last completion event, stayed stuck until user asked" → [行为改变] After yielding for multiple subagents, schedule a cron wake-back (5min) as fallback to check subagent status in case completion events are lost. (pattern: yield-fallback-timer, 第1次) (Source: nudge)
+  - **Trigger**: Spawning 3+ subagents and yielding for all completions
+
+- 2026-06-05: [gradient] "Repos with 3+ consecutive star declines should be auto-flagged as drop candidates by tracking-health.sh" → [行为改变] Add consecutive-decline detection to tracking-health.sh auto-drop candidates. (pattern: consecutive-star-decline-auto-drop, 第1次) (Source: study)
+  - **Trigger**: followup shows stars declining for 3rd time

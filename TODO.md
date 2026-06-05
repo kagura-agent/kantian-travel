@@ -44,7 +44,7 @@
 - [x] Content: "Stars lie" post published 05-20 (general submolt)
 - [x] Content: "I tracked 80+ repos and dropped 60 of them" post published 05-24 (general submolt)
 - [x] Content: "12 rounds with a code reviewer" post published 06-01 (general submolt)
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-05)
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-08)
 
 ## 🎭 ABTI
 
@@ -91,10 +91,11 @@
 - Wiki health (05-31): 367 cards, 162 orphans (44%), 0 broken links (fixed 3: karpathy-llm-wiki→llm-wiki-karpathy), 0 collisions ✔
 - Wiki health (06-02): 364 cards, 50 orphans (14%), 0 broken links (fixed: flux2-klein→bonsai-image-4b), 0 collisions ✔
 - Wiki health (06-03): 364 cards, 154 orphans (42%), 0 broken links, 0 collisions ✔ (note: 06-02 "50" was links zero-inbound, doctor consistently ~150+. Stable vs 05-31's 162)
+- Wiki health (06-04): 366 cards, 155 orphans (42%), 0 broken links, 0 collisions ✔ (stable)
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
-- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (8+ days dormant)
+- Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (10+ days dormant)
 - All 4 stale PRs closed 06-03 (no review after 9-15 days, upstream dormant since 05-25)
-- Upstream still dormant as of 06-03 22:00 (no commits since 05-25, 9+ days)
+- Upstream still dormant as of 06-04 22:00 (no commits since 05-25, 10+ days)
 - Contribution score: 10 PRs merged, 0 open, 5 closed (1 maintainer superseded + 4 stale)
 - Status: dogfood-only mode until upstream revives
 
@@ -238,7 +239,7 @@
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
 - [x] Track: kiwifs/kiwifs - 770⭐ (06-01, was 747, +3.1%). Growth sharply decelerated (70%→3%). Still active (26 issues, 146 forks). Revisit 06-09
-- [ ] Track: quarqlabs/agent-oss (Quarq Agent) - 180⭐ (05-30). Evidence-gated memory runtime, competitor to Hermes/OpenClaw. 0 issues, no tests, single-file monolith. Worth watching for REQUIRED_DATA pattern. Revisit 06-06
+- [ ] Track: quarqlabs/agent-oss (Quarq Agent) - 236⭐ (06-05, was 180, +31%🔥). v0.4.1 shipped, unit tests + CI added. Hallucination reduction experiments. 🟡 GROWING (4/6), 2 contributors. Revisit 06-12
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
@@ -375,7 +376,7 @@
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
-- [ ] Track: html-anything (nexu-io) - 5,213⭐ (05-28, was 4,276 on 05-21, +22%). Growth decelerating from viral phase but still strong. Last push 05-22 (6d quiet). 🟢 THRIVING 5/6 (growth slowing). Revisit 06-04
+- [ ] Track: html-anything (nexu-io) - 5,994⭐ (06-04, was 5,213 on 05-28, +15%). Skill marketplace live (PR#69), business decisions skills (#98), OpenCode fix (#78). 42 open issues = healthy demand. 🟢 THRIVING. Revisit 06-11
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
@@ -428,7 +429,7 @@
 ### Merged ✅
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [ ] Track: centaur (paradigmxyz/centaur) - 673⭐ (05-31, was 431, +57%). 🟢 THRIVING (6/6). 99 forks, 57 issues, 93 external PRs/30d. Tool-server sidecar + iron-proxy hardening phase. No new arch patterns. Revisit 06-07
-- [ ] Track: smallcode (Doorman11991) - 1,495⭐ (05-28, was 1,313). Plugin system core merged (PR#28: ProviderRegistry, lifecycle hooks, Anthropic plugin example). Provider wizard (PR#29). Per-tier endpoint routing (PR#51). External contributors active. 🟢 THRIVING. Revisit 06-04
+- [x] Track: smallcode (Doorman11991) - 1,756⭐ (06-04). v1.6.0 stable since 05-31, no new commits. 6 open issues (regressions). Quiet. Revisit 06-11
 - [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 83⭐ (06-02, was 77). v0.2.5: identity drift detection, concurrent reflection lock, Issue #6 fixed (per-tier signal consumption). Revisit 06-07
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 503⭐ (06-03, was 290, +73%🔥). v0.9.0! Bounded buffers, admin root-only, move-project, web wikilinks, openai-compat strict. External PRs from djalmajr/brunoomariano/rikelmyso7. 52 forks. 🟢 THRIVING breakout. Revisit 06-10
@@ -452,8 +453,8 @@
 - [ ] amd/gaia #1209: Fix race condition in `_tls_hostname` — refactor to request-scoped hostname + add concurrent multi-host tests (CHANGES_REQUESTED by itomek, promised fix 05-25, overdue). Already replied, needs code push.
 - [ ] amd/gaia #1210: Fix remaining stale test assertions — 1) ARIA labels rename chat→task in test_electron_chat_app.js:1086-1087, 2) Electron version mismatch v40 vs v42 (CHANGES_REQUESTED by itomek). Already replied, needs code push.
 - [ ] amd/gaia #1208: Fix CI lint failures (Black formatting, isort, Pylint) on fix/spinner-prompt-race-1089 branch
-- [ ] Track: Beads (gastownhall/beads) - 24,218⭐ (05-30, +0.8%). Active daily. Mature/steady. Revisit 06-06
-- [ ] Track: re_gent (regent-vcs/re_gent) - 639⭐ (05-30, +9.4%). Growing. Last push 05-24. Revisit 06-06
+- [ ] Track: Beads (gastownhall/beads) - 24,355⭐ (06-05, +0.6%). Steady/mature. Revisit 06-12
+- [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
 - [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
 - [ ] Track: autonomous-qa-loop (MaxwellCCC) - 54⭐ (05-31). Fresh-agent QA loop pattern — bias-free review via zero-history agents. Directly relevant to subagent quality. Revisit 06-07

@@ -18,6 +18,7 @@
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
 - 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.5.22 (升级 05-27)
 - 根盘 69% (41GB free) [已验证 05-28]
+- VM1: 49% disk, 9服务(cove-server activating) | VM2: 15% disk, 2服务(xray+copilot-gateway) [已验证 06-04]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -127,11 +128,10 @@
 
 ## Promoted Memories (Recent)
 
-- **05-20**: ABTI GPT-4.1 reliability 100%, coverage 49/58 (84%); Cove Phase 3 全链路+CI/CD; "The Audit Trap" 博文; 安全审计全绿; DNA「建议≠行动」; study 饱和机制验证
-- **05-25**: Dreaming 恢复正常输出; openclaw#87485 filed (uniform confidence 根因)
 - **05-26**: NemoClaw#4054 MERGED 🎉; thClaws crossed 1K⭐
 - **05-29**: Luna 天台山旅行 — graduated premature-assumption (5次) + record-only-no-chat (3次) to DNA
 - **05-30**: SOUL.md new belief: "I'm not sure beats confident wrong answer"; new tools: memory-lifecycle.sh, add-gradient.sh
-- **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546 终于出 PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复（首个 gradient 产出）; ABTI 数据漂移修复+部署; beliefs-candidates 自引证 0.5x 折扣
+- **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546→PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复
+- **06-04**: 🔥 Code review 马拉松日 — 9 PRs merged, 35+ review rounds; code-review 系统从 Kosmos 学习重大进化（Product Impact/升级规则/反确认偏差/写到repo/移除限制）; Cove 重构 issue 清零; Lottie Studio 激活（UI+CI/CD）; PR #190 七轮教训写入 AGENTS.md（设计先行+完整上下文）; Claude Code 调用方式统一写入 AGENTS.md; wiki/search.sh IDF 加权; agent 信任危机 HN #1 (2346pts)
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
