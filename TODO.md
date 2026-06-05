@@ -153,6 +153,7 @@
 
 - [x] **guide.md: 新增「sparse checkout repos break rebase — re-create branch」** - qwen-code#4456 R12 nit fix 教训（sparse checkout 100+ conflicts，重建分支比 rebase 快 10 倍）→ 已加入 guide.md 第 47 条 (2026-06-02)
 - [x] **guide.md: 新增「don't stack PRs in repos with no review velocity」** - memex 4 PRs batch-closed + opc 5 PRs stacking 教训（dormant repo 堆 PR = 沉没成本 + 认知负担零回报）→ 已加入 guide.md 第 48 条 (2026-06-03)
+- [x] **guide.md: 新增「re-read all issue comments before starting work」** - NemoClaw#4710 教训（基于 issue body 做了完整分析+实现计划，但 comment 中已有不同 root cause 分析，方向完全错误，全部白费）→ 已加入 guide.md 第 49 条 (2026-06-05)
 
 ## 📚 学习
 
@@ -462,5 +463,5 @@
 - [ ] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08
 - [ ] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08
 - [ ] Track: sandboxes (tastyeffectco/sandboxes) - 395⭐ (06-05, 2 days old, ~200⭐/day). Self-hosted agent sandbox engine. Breakout growth. Revisit 06-12
-- [ ] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). Convention extraction from codebase via tree-sitter + MCP. Small but architecturally interesting. Revisit 06-12
+- [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 258⭐ (06-05, was 133 on 05-23, +94%). Growth spike worth investigating. Revisit 06-12
