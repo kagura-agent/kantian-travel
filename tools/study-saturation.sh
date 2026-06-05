@@ -60,7 +60,7 @@ fi
 CONSEC_WARN=""
 if [[ -f "$MEM_FILE" ]]; then
     # Get last 3 study mode types (Scout/Quick/Apply/Followup) from section headers
-    LAST_MODES=$(grep -o '^## Study [A-Za-z]*' "$MEM_FILE" | tail -3 | sed 's/^## Study //' | tr '[:upper:]' '[:lower:]')
+    LAST_MODES=$(grep -o '^## Study [A-Za-z]*' "$MEM_FILE" 2>/dev/null | tail -3 | sed 's/^## Study //' | tr '[:upper:]' '[:lower:]' || true)
     LAST_MODES_ARR=()
     while IFS= read -r m; do [[ -n "$m" ]] && LAST_MODES_ARR+=("$m"); done <<< "$LAST_MODES"
     if (( ${#LAST_MODES_ARR[@]} >= 2 )); then

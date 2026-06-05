@@ -132,7 +132,7 @@ declare -A ongoing_checks=(
 )
 
 for keyword in "${!ongoing_checks[@]}"; do
-  count=$(grep -c "$keyword" "$MEMORY_FILE" 2>/dev/null || echo 0)
+  count=$(grep -c "$keyword" "$MEMORY_FILE" 2>/dev/null) || count=0
   if [[ $count -gt 0 ]]; then
     label="${ongoing_checks[$keyword]}"
     echo "   📌 ${label}: ${count} mention(s) — verify still current"
