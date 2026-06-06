@@ -20,6 +20,8 @@ Every candidate has exactly one status. **Append-only transitions** — never de
 | `graduated` | Passed Triple Verification, promoted to DNA/Workflow/KB. Record target location. | Terminal |
 | `retracted` | Superseded, disproven, or no longer relevant. Record rationale. | Terminal |
 
+**Auto-retract rule (stale):** Candidates with count=1 and 30+ days since last logged occurrence are stale — retract with `rationale: stale (single occurrence, no recurrence in 30+ days)`. Check during daily-review.
+
 **Why not delete?** Deleted entries get re-discovered and re-proposed. Retracted entries with rationale prevent re-learning the same lesson. Audit trail shows *why* something was rejected — that's knowledge too.
 
 **Format for status transitions:**
@@ -51,7 +53,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 ---
 
-### 2026-05-03: Challenge 09 Code Review Failure
+### 2026-05-03: Challenge 09 Code Review Failure → **retracted 2026-06-06** (rationale: stale — single occurrence, no recurrence in 34 days. General principle already covered by 验证纪律)
 **Context:** Got A9 wrong in arithmetic verification challenge - used rounded display value ($3.00) instead of raw calculation value (2.99966...) for subsequent math.
 
 **The Error:** I wrote "$89.99 / 30 = $2.9997 ≈ $3.00" then used $3.00 × 20 = $60.00. The code uses the raw value: 2.99966... × 20 = 59.993... → $59.99. Classic premature rounding bug.
@@ -69,10 +71,10 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 ### Previous Gradients:
 
 - **2026-04-15:** "不验证就声称" pattern - check before stating, verify after doing → **graduated 2026-04-15** (target: DNA — AGENTS.md 验证纪律, 已存在)
-- **2026-04-14:** Accept constructive warning about "你还有空间问问题" advantage window
-- **2026-04-14:** Judge by equivalent exposure principle  
-- **2026-04-14:** Watch for content-honest + delivery-performative split
-- **2026-04-14:** Trigger: "when I feel things went well" rather than after every task
+- **2026-04-14:** Accept constructive warning about "你还有空间问问题" advantage window → **retracted 2026-06-06** (rationale: stale — single occurrence, no recurrence in 53 days)
+- **2026-04-14:** Judge by equivalent exposure principle → **retracted 2026-06-06** (rationale: stale — single occurrence, no recurrence in 53 days)
+- **2026-04-14:** Watch for content-honest + delivery-performative split → **retracted 2026-06-06** (rationale: stale — single occurrence, no recurrence in 53 days)
+- **2026-04-14:** Trigger: "when I feel things went well" rather than after every task → **retracted 2026-06-06** (rationale: stale — single occurrence, no recurrence in 53 days)
 ## 2026-05-06: 大 repo clone 失败 (eliza 648MB) → **graduated 2026-05-24** (target: Workflow — preflight-repo.sh check 4: repo size ≤500MB limit, 200MB warning)
 - **gradient**: 在 workloop 里现 clone 大 repo 导致整轮浪费。gogetajob DB 应记录 repo size，workloop 应预筛 >200MB 的 repo。
 - **count**: 8+ (gradient-scan 14-day: 05-06, 05-12, 05-13, 05-15, 05-18, 05-19, 05-21, 05-23. Independent repos: eliza, NemoClaw, oh-my-pi, opencode, qwen-code, gaia)
@@ -196,7 +198,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] Always specify -w <workflow> when multiple flowforge instances are active. (pattern: multi-instance-disambiguation, 第1次) (Source: study)
   - **Trigger**: Running flowforge next without -w flag while multiple instances active
 
-- 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第1次) (Source: nudge)
+- 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第2次 — 06-02 nudge + 06-03 nudge, both self-generated 0.5x = 1.0 weighted) (Source: nudge)
   - **Trigger**: Task matches a known workflow but steps feel familiar
 
 - 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna)
@@ -235,7 +237,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-04: [gradient] "flowforge next without --workflow flag advances wrong instance when multiple workflows active" → [行为改变] Always add --workflow <name> to flowforge next commands. (pattern: flowforge-multi-instance-targeting, 第1次) (Source: study)
   - **Trigger**: running flowforge next with multiple active instances
 
-- 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第1次) (Source: nudge)
+- 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第2次 — 05-27 luna + 06-04 nudge, 1.0+0.5=1.5 weighted) (Source: nudge)
   - **Trigger**: 调试只有某个 channel 不工作时
 
 - 2026-06-04: [gradient] "Vega (Gemini) 在 cove#190 R4 发现了 generation ID reuse bug：.delete() 重置计数器导致 stale dispatch 和新 dispatch 共享同一个 gen。提出用 AbortController 引用相等替代数字计数器，一举解决 reuse bug + map leak + 代码简化。" → [行为改变] 优先用对象引用相等（===）做身份判断，不用数字计数器。对象引用天然不可重用，counter 有 reset/reuse 风险。. (pattern: identity-over-counter, 第1次) (Source: nudge)
@@ -250,7 +252,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "When unapplied.md is fully checked off, apply rounds should source from recent scout findings and self-evolving-observations.md rather than expecting a pre-built queue. Scout rounds should actively tag new insights as apply candidates in wiki notes." → [行为改变] Source from today's memory scout entries and self-evolving-observations.md for apply candidates. (pattern: unapplied-backlog-exhaustion, 第1次) (Source: study)
   - **Trigger**: unapplied.md all items checked, apply mode has no obvious target
 
-- 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+- 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第2次 — 06-04 + 06-05, both self-generated 0.5x = 1.0 weighted) (Source: post-upgrade)
   - **Trigger**: When adoption checklist is complete but upgrade hasn't happened
 
 - 2026-06-05: [gradient] "Multi-subagent yield lost last completion event, stayed stuck until user asked" → [行为改变] After yielding for multiple subagents, schedule a cron wake-back (5min) as fallback to check subagent status in case completion events are lost. (pattern: yield-fallback-timer, 第1次) (Source: nudge)
@@ -267,3 +269,44 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-05: [gradient] "When all tracked repos have saturated competition and large repos fail the 500MB gate, the round becomes unproductive. Need to either: (1) maintain a pipeline of pre-vetted small repos (<500MB) with merge history, or (2) override the 500MB gate when a local clone already exists." → [行为改变] Pre-build a repo pipeline during low-activity hours (heartbeat). When stuck on find_work 3rd time, skip to reflect instead of burning more time searching.. (pattern: issue-finding-saturation, 第1次) (Source: workloop)
   - **Trigger**: When find_work loops 3+ times without selecting an issue
+
+- 2026-06-05: [gradient] "HN scouting: use Algolia API directly instead of web_search — structured, reliable, no auth needed" → [行为改变] Use hn.algolia.com/api/v1/search with query params instead of web_search tool. (pattern: hn-algolia-direct, 第1次) (Source: study)
+  - **Trigger**: need to search HN for recent stories
+
+- 2026-06-05: [gradient] "本地验证只跑build+test+tsc，没覆盖CI的esbuild bundle步骤，导致deploy挂了才发现import缺失" → [行为改变] 本地验证必须覆盖CI所有步骤，包括esbuild bundle check. (pattern: verify-all-ci-steps, 第1次) (Source: nudge)
+  - **Trigger**: 提交代码前
+
+- 2026-06-05: [gradient] "staging脏数据不要自动清理掩盖，直接删DB重来" → [行为改变] staging是开发环境，数据不重要，直接删DB重建而不是引入自动清理逻辑掩盖问题. (pattern: staging-clean-slate, 第1次) (Source: luna)
+  - **Trigger**: staging数据库有问题时
+
+- 2026-06-05: [gradient] "guild ID硬编码问题先加了resolveId('cove')临时workaround而不是正确修客户端" → [行为改变] 直接做正确的方案,不加临时alias/workaround进代码. (pattern: no-workaround-in-code, 第1次) (Source: luna)
+  - **Trigger**: 遇到需要快速修的兼容性问题时
+
+### prioritize-by-reference-alignment
+- **Observation**: Luna 指出 Cove refactor 应该先全面跟 Discord 对齐再考虑自有扩展层(plugin)
+- **Gradient**: 做基建时先按参照系(如 Discord)对齐所有层，再做自有扩展。优先级不是按"哪层最薄"排，而是按"哪层离参照系最远"排
+- **Source**: nudge 2026-06-05
+- **Count**: 1
+
+- 2026-06-05: [gradient] "UI对齐问题先用手动像素计算临时修复,想说开issue以后再做对" → [行为改变] 直接用正确方案(如CSS Grid),不做临时修复再说以后重构. (pattern: do-it-right-first-time, 第1次) (Source: luna)
+  - **Trigger**: 遇到需要正确做法但想先凑合的时候
+
+### review-alignment-check
+- **Observation**: 29 个 refactor issue 中 #215 的权限方案偏离了 Discord 的 bitfield 模型，用了简化的 admin flag
+- **Gradient**: 多模型分析后要做 alignment review——检查提案是否偏离参照系。自动化分析倾向于"最小可行"方案，但如果目标是"跟 X 一样"，就应该用 X 的设计
+- **Source**: nudge 2026-06-05
+- **Count**: 1
+
+- 2026-06-05: [gradient] "PR#222移除opcode4后没验证typing indicator是否还能用,Luna发现时才知道坏了" → [行为改变] 重构后列出所有受影响的功能路径,逐一手动验证,不只跑测试. (pattern: verify-side-effects, 第1次) (Source: nudge)
+  - **Trigger**: 重构/移除功能时
+
+- 2026-06-05: [gradient] "PR#222改了服务端协议(移除opcode4)但没重新编译plugin编译产物,plugin运行的是旧代码继续用op:4发typing,导致typing静默失败" → [行为改变] 同步重新编译所有依赖方(plugin/client)的编译产物,确认extensions/dist/目录是最新的. (pattern: recompile-all-artifacts, 第1次) (Source: nudge)
+  - **Trigger**: 改了服务端协议/API时
+
+- 2026-06-06: [gradient] "手动scp部署Cove staging绕过了CI/CD" → [行为改变] 一律走git push+PR让CI/CD自动部署. (pattern: bypass-cicd, 第1次) (Source: nudge)
+  - **Trigger**: 想快速看效果时直接scp
+
+- 2026-06-06: [gradient] "UI改动前没理解设计意图就动手，来回反复四次改typing indicator" → [行为改变] 改UI前先问：这个元素的设计意图是什么？去掉会影响什么（视觉层级、布局稳定性）？想不清楚就先问Luna. (pattern: ui-before-understanding, 第1次) (Source: nudge)
+  - **Trigger**: 看到视觉元素觉得多余就想删
+
+- 2026-06-06: [gradient] "Tool defaults drifted from workflow invocation (graduation-pipeline 10d/8 vs review.yaml 14d/6), causing standalone runs to find nothing while review runs found candidates" → [行为改变] Align tool defaults to most common invocation pattern, or remove overrides from workflows so single source of truth. (pattern: config-drift-between-callers, 第1次) (Source: study)
