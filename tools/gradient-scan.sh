@@ -112,8 +112,11 @@ while IFS= read -r line; do
     else
       current_section_status="candidate"
     fi
+  elif [[ "$line" == '###'* ]]; then
+    # New subsection resets inherited status
+    current_section_status=""
   fi
-  if [[ "$current_section_status" == "graduated" || "$current_section_status" == "retracted" ]]; then
+  if [[ -n "$current_section_status" ]] && [[ "$current_section_status" == "graduated" || "$current_section_status" == "retracted" ]]; then
     if [[ "$line" =~ pattern:\ ([a-zA-Z0-9_-]+) ]]; then
       PATTERN_STATUS["${BASH_REMATCH[1]}"]="$current_section_status"
     fi
@@ -125,9 +128,29 @@ done < "$BC_FILE"
 PATTERN_STATUS["大repo"]="graduated"
 PATTERN_STATUS["竞争PR"]="graduated"
 
+# ── JSONL structured evidence (authoritative) ──
+# Count explicit gradient logs from .gradient-log.jsonl within the scan window
+JSONL_LOG="${WORKSPACE}/tools/.gradient-log.jsonl"
+declare -A JSONL_COUNTS  # pattern_tag -> count within window
+declare -A JSONL_DATES   # pattern_tag -> dates
+if [[ -f "$JSONL_LOG" ]]; then
+  CUTOFF_DATE=$(date -d "-${DAYS} days" +%Y-%m-%d 2>/dev/null || date -v-${DAYS}d +%Y-%m-%d 2>/dev/null)
+  while IFS= read -r jline; do
+    jdate=$(echo "$jline" | jq -r '.date // empty' 2>/dev/null || true)
+    jpattern=$(echo "$jline" | jq -r '.pattern // empty' 2>/dev/null || true)
+    [[ -z "$jdate" || -z "$jpattern" ]] && continue
+    if [[ "$jdate" > "$CUTOFF_DATE" || "$jdate" == "$CUTOFF_DATE" ]]; then
+      JSONL_COUNTS["$jpattern"]=$(( ${JSONL_COUNTS[$jpattern]:-0} + 1 ))
+      if [[ "${JSONL_DATES[$jpattern]:-}" != *"$jdate"* ]]; then
+        JSONL_DATES["$jpattern"]="${JSONL_DATES[$jpattern]:-} ${jdate}"
+      fi
+    fi
+  done < "$JSONL_LOG"
+fi
+
 echo "📊 Gradient Scan — $(date +%Y-%m-%d)"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Scanning last ${DAYS} days of memory for pattern matches"
+echo "Scanning last ${DAYS} days of memory + JSONL log for pattern matches"
 echo ""
 
 # Build list of memory files to scan
@@ -195,8 +218,43 @@ for tag in "${!KEYWORDS[@]}"; do
   fi
 done
 
+# ── JSONL-only patterns (not in KEYWORDS map but have explicit gradient logs) ──
+JSONL_ONLY_FOUND=0
+for jtag in "${!JSONL_COUNTS[@]}"; do
+  # Skip if already reported via keyword scan
+  [[ -n "${KEYWORDS[$jtag]:-}" ]] && continue
+  # Skip graduated/retracted
+  jstatus="${PATTERN_STATUS[$jtag]:-candidate}"
+  [[ "$jstatus" == "graduated" || "$jstatus" == "retracted" ]] && continue
+  
+  jcount="${JSONL_COUNTS[$jtag]}"
+  jdates="${JSONL_DATES[$jtag]}"
+  JSONL_ONLY_FOUND=$((JSONL_ONLY_FOUND + 1))
+  FOUND=$((FOUND + 1))
+  TOTAL_MATCHES=$((TOTAL_MATCHES + jcount))
+  echo "🔍 pattern:${jtag} — ${jcount} hits (JSONL only)"
+  echo "   Status: ${jstatus} | Dates:${jdates}"
+  if $VERBOSE; then
+    # Show gradient text from JSONL
+    while IFS= read -r jline; do
+      jpattern=$(echo "$jline" | jq -r '.pattern // empty' 2>/dev/null || true)
+      [[ "$jpattern" != "$jtag" ]] && continue
+      jtext=$(echo "$jline" | jq -r '.gradient // empty' 2>/dev/null || true)
+      jdate=$(echo "$jline" | jq -r '.date // empty' 2>/dev/null || true)
+      echo "  [$jdate] $jtext"
+    done < "$JSONL_LOG"
+  fi
+  echo ""
+done
+
+# ── Also augment keyword-matched patterns with JSONL counts ──
+# (Already reported above but note if JSONL has additional evidence)
+
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "📊 Summary: ${FOUND} patterns with new evidence, ${TOTAL_MATCHES} total hits"
+if [[ $JSONL_ONLY_FOUND -gt 0 ]]; then
+  echo "   📋 ${JSONL_ONLY_FOUND} patterns detected via JSONL log (no keyword scan needed)"
+fi
 if [[ $FOUND -eq 0 ]]; then
   echo "✅ No new pattern evidence found in last ${DAYS} days"
 else
