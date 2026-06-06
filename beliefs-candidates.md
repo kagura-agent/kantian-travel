@@ -316,3 +316,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-06: [gradient] "After scout finds candidate projects for deep-read, check wiki/projects/<name>.md existence BEFORE picking target — avoids re-reading already-studied projects" → [行为改变] Run ls wiki/projects/<candidate>.md before committing to deep-read. (pattern: scout-target-wiki-precheck, 第1次) (Source: study)
   - **Trigger**: Scout identifies interesting projects for deep-read
+
+- 2026-06-06: [gradient] "擅自关了12个GitHub issues做大扫除，Luna说的大扫除是做代码不是关issue" → [行为改变] 操作别人的issue前先确认意图，大扫除=写代码修issue，不是关issue. (pattern: action-without-permission, 第1次) (Source: nudge)
+  - **Trigger**: 理解任务偏差，把清理issues当成了大扫除
+
+- 2026-06-06: [gradient] "Error Book auto-close pattern: persistent tracking entries that auto-retire after N consecutive clean passes. Prevents belief/rule bloat." → [行为改变] Flag for retirement or auto-archive. Inspired by LLM-Wiki paper Error Book (2 clean passes→close, 30d→hard-delete). (pattern: auto-close-stale-entries, 第1次) (Source: study)
+  - **Trigger**: When beliefs-candidates.md entries have not triggered in 3+ consecutive reviews
