@@ -186,7 +186,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge)
   - **Trigger**: 有 workflow 的任务觉得手动也能做，跳过 workflow 入口
 
-- 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第1次) (Source: study)
+- 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第3次 — merged from flowforge-workflow-targeting/multi-instance-disambiguation/flowforge-multi-instance-targeting: 06-02 study + 06-03 study + 06-04 study, all self-generated 0.5x = 1.5 weighted) (Source: study)
   - **Trigger**: Running flowforge next with multiple active workflows
 
 - 2026-06-03: [gradient] "UI对齐: 数值对齐不等于视觉对齐, minHeight因内容不同导致实际高度不同" → [行为改变] 用固定height而非minHeight; 统一所有区域left padding到同一值; 请Luna开Layout Inspector截图验证. (pattern: ui-visual-alignment, 第1次) (Source: nudge)
@@ -195,7 +195,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-03: [gradient] "preflight 500MB repo size limit blocks all openclaw/openclaw issues despite having a local clone. The limit was designed to prevent slow clones during workloop, but is a false positive when the repo is already cloned locally. Should add a check: if local clone exists AND is fresh (fetched recently), skip the size check." → [行为改变] update preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/<repo>. (pattern: preflight-false-positive, 第1次) (Source: workloop)
   - **Trigger**: selecting openclaw/openclaw issues (1466MB repo)
 
-- 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] Always specify -w <workflow> when multiple flowforge instances are active. (pattern: multi-instance-disambiguation, 第1次) (Source: study)
+- 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] → **merged into flowforge-workflow-targeting (06-02 entry)** (pattern: multi-instance-disambiguation → merged) (Source: study)
   - **Trigger**: Running flowforge next without -w flag while multiple instances active
 
 - 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第2次 — 06-02 nudge + 06-03 nudge, both self-generated 0.5x = 1.0 weighted) (Source: nudge)
@@ -234,7 +234,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-04: [gradient] "Cove CI 跑 tsc --noEmit 但本地只跑 test+build 没发现类型错误" → [行为改变] 验证步骤必须包含 pnpm -r exec tsc --noEmit，和 CI 保持一致. (pattern: incomplete-local-verification, 第1次) (Source: luna)
   - **Trigger**: subagent 写完代码验证时
 
-- 2026-06-04: [gradient] "flowforge next without --workflow flag advances wrong instance when multiple workflows active" → [行为改变] Always add --workflow <name> to flowforge next commands. (pattern: flowforge-multi-instance-targeting, 第1次) (Source: study)
+- 2026-06-04: [gradient] "flowforge next without --workflow flag advances wrong instance when multiple workflows active" → [行为改变] → **merged into flowforge-workflow-targeting (06-02 entry)** (pattern: flowforge-multi-instance-targeting → merged) (Source: study)
   - **Trigger**: running flowforge next with multiple active instances
 
 - 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第2次 — 05-27 luna + 06-04 nudge, 1.0+0.5=1.5 weighted) (Source: nudge)
@@ -322,3 +322,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-06: [gradient] "Error Book auto-close pattern: persistent tracking entries that auto-retire after N consecutive clean passes. Prevents belief/rule bloat." → [行为改变] Flag for retirement or auto-archive. Inspired by LLM-Wiki paper Error Book (2 clean passes→close, 30d→hard-delete). (pattern: auto-close-stale-entries, 第1次) (Source: study)
   - **Trigger**: When beliefs-candidates.md entries have not triggered in 3+ consecutive reviews
+
+- 2026-06-06: [gradient] "Star count decline does not mean project is unhealthy — check external PRs, unique issue authors, and commit frequency before recommending drop. Statewave had 3rd consecutive decline flag but 55 ext PRs/30d and 5 commits in one day." → [行为改变] Always check community metrics (ext PRs, issue authors) alongside star count. Do not recommend drop based on stars alone.. (pattern: stars-not-health, 第1次) (Source: study)
+  - **Trigger**: When evaluating project health for drop decisions
