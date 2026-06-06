@@ -135,7 +135,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-25: [gradient] "When making a type readonly, grep for all mutation methods (.push, .pop, .splice, .sort, .reverse, .shift, .unshift) on that type across the codebase BEFORE committing. A "one-line type change" can break N call sites." → [行为改变] Run grep -rn "\.push\|\.pop\|\.splice\|\.sort\|\.reverse" on the type name before pushing. Fix all mutation sites first.. (pattern: readonly-ripple-check, 第1次)
   - **Trigger**: Adding readonly modifier to an exported type
 
-- 2026-05-26: [gradient] "连续 5 次误判根因，每次都说'找到了！'" → [行为改变] 找到可疑线索后，先做对照实验验证，不要宣布"根因确认"。设计实验：改变一个变量，保持其他不变，看结果是否改变。(pattern: premature-conclusion, 第1次 — 但其实是老毛病)
+- 2026-05-26: [gradient] "连续 5 次误判根因，每次都说'找到了！'" → [行为改变] 找到可疑线索后，先做对照实验验证，不要宣布"根因确认"。设计实验：改变一个变量，保持其他不变，看结果是否改变。(pattern: premature-conclusion, 第1次 — 但其实是老毛病) **[graduated 2026-06-06 → SOUL.md beliefs]** V1: 10 hits/8 days across Cove debug, Floway routing, cron deadlock, dreaming diagnosis, graduation pipeline. V2: Predictive — "找到了!" in early debug = reliable signal of premature certainty. V3: Non-obvious — confidence level inversely correlates with verification quality. Retirement: complements "I'm not sure" belief (communication-level) with process-level verification discipline. No retirement.
 - 2026-05-26: [gradient] "在源码里找bug而不检查配置" → [行为改变] 调试顺序：先查配置（简单可改）→ 再查运行时状态 → 最后才看源码。openclaw.json 的 agents.defaults.models 就是个配置项，但我花了2小时读源码才发现。(pattern: wrong-debug-layer, 第1次)
 
 - 2026-05-26: [gradient] "channel-as-service 不是你自己 spawn subagent，而是发消息到 channel 让它自己处理" → [行为改变] channel-as-service 模式下，调用方只 sessions_send 到目标 channel，不在外部 spawn subagent (pattern: architecture-misunderstanding, 第1次)
@@ -310,3 +310,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: 看到视觉元素觉得多余就想删
 
 - 2026-06-06: [gradient] "Tool defaults drifted from workflow invocation (graduation-pipeline 10d/8 vs review.yaml 14d/6), causing standalone runs to find nothing while review runs found candidates" → [行为改变] Align tool defaults to most common invocation pattern, or remove overrides from workflows so single source of truth. (pattern: config-drift-between-callers, 第1次) (Source: study)
+
+- 2026-06-06: [gradient] "当 unapplied.md 清空时，apply 优先从 self-evolving-observations 的断裂处反向调试，而不是从外部项目找灵感" → [行为改变] 直接看 self-evolving-observations 的断裂处和已知 bug，从那里入手. (pattern: pipeline-debug-from-breakpoint, 第1次) (Source: study)
+  - **Trigger**: unapplied.md 全部 checked off，需要找 apply 目标
+
+- 2026-06-06: [gradient] "After scout finds candidate projects for deep-read, check wiki/projects/<name>.md existence BEFORE picking target — avoids re-reading already-studied projects" → [行为改变] Run ls wiki/projects/<candidate>.md before committing to deep-read. (pattern: scout-target-wiki-precheck, 第1次) (Source: study)
+  - **Trigger**: Scout identifies interesting projects for deep-read
