@@ -92,6 +92,8 @@
 - Wiki health (06-02): 364 cards, 50 orphans (14%), 0 broken links (fixed: flux2-klein→bonsai-image-4b), 0 collisions ✔
 - Wiki health (06-03): 364 cards, 154 orphans (42%), 0 broken links, 0 collisions ✔ (note: 06-02 "50" was links zero-inbound, doctor consistently ~150+. Stable vs 05-31's 162)
 - Wiki health (06-04): 366 cards, 155 orphans (42%), 0 broken links, 0 collisions ✔ (stable)
+- Wiki health (06-05): 773 files, 164 orphans (21%), 0 broken links (fixed 1: mastra-growth-playbook→workshop), 0 collisions ✔
+- Upstream dormant 11+ days (last commit 05-25, v0.3.2). Dogfood-only mode continues
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
 - Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (10+ days dormant)
 - All 4 stale PRs closed 06-03 (no review after 9-15 days, upstream dormant since 05-25)
@@ -404,20 +406,16 @@
 ### Merged ✅
 - [x] PR #2367 - feat(server): add workspace-level always_redact_env setting (MUL-2495) — merged 05-22 by Bohan-J
 
-### Open PRs
-- PR #3059 - fix(runtime): inject workspace context into agent brief (fixes #3031) — OPEN, awaiting review
+### Closed (not merged)
+- PR #3059 - fix(runtime): inject workspace context into agent brief (fixes #3031) — CLOSED (06-06 confirmed, no review)
 
 ## Qwen Code (QwenLM/qwen-code)
 
 ### Open PRs
-- PR #4456 - fix(cli): implement --list-extensions flag handler (#4450)
-  - wenshao review: add test coverage for `getListExtensions() === true` path (empty + non-empty with disabled extension)
-  - [x] Add tests — completed workloop #2700 (05-24)
+- PR #4456 - fix(cli): implement --list-extensions flag handler (#4450) — MERGED ✅ (confirmed 06-06, 12 rounds of review + dual APPROVED)
 - PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — CLOSED (100+ conflicts, unrebaseable despite APPROVED)
 - PR #4461 - fix(cli): surface startup warnings on stderr before TUI render (#4448) — MERGED ✅ (05-27)
-- PR #4474 - fix(config): load home .env vars before settings ${VAR} resolution (#4466) — 🚨 CHANGES_REQUESTED (round 2 by wenshao)
-  - [ ] Fix round 2 criticals: (1) test 3 broken mock (2) other critical from wenshao
-  - kagura-agent acknowledged 05-24, needs code fix
+- PR #4474 - fix(config): load home .env vars before settings ${VAR} resolution (#4466) — MERGED ✅ (confirmed 06-06, dual APPROVED by wenshao + yiliang114)
 
 ## Archon — Review Followup
 
@@ -431,21 +429,20 @@
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [ ] Track: centaur (paradigmxyz/centaur) - 673⭐ (05-31, was 431, +57%). 🟢 THRIVING (6/6). 99 forks, 57 issues, 93 external PRs/30d. Tool-server sidecar + iron-proxy hardening phase. No new arch patterns. Revisit 06-07
 - [x] Track: smallcode (Doorman11991) - 1,756⭐ (06-04). v1.6.0 stable since 05-31, no new commits. 6 open issues (regressions). Quiet. Revisit 06-11
-- [x] Track: Lucarne (tuchg/Lucarne) - 194⭐ (05-30, was 158, +22.8%). v0.4.2 released. Active development. Revisit 06-06
+- [x] Track: Lucarne (tuchg/Lucarne) - 264⭐ (06-06, was 194, +36.1%). Pushed 06-03. Growth accelerating. Active development continues. Revisit 06-13
 - [ ] Track: claude-soul (DomDemetz/claude-soul) - 83⭐ (06-02, was 77). v0.2.5: identity drift detection, concurrent reflection lock, Issue #6 fixed (per-tier signal consumption). Revisit 06-07
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 503⭐ (06-03, was 290, +73%🔥). v0.9.0! Bounded buffers, admin root-only, move-project, web wikilinks, openai-compat strict. External PRs from djalmajr/brunoomariano/rikelmyso7. 52 forks. 🟢 THRIVING breakout. Revisit 06-10
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
-## QwenLM/qwen-code#4456 — ✅ APPROVED (R12)
-- **Status**: APPROVED by wenshao (R12, 2026-05-28 18:29)
-- **Note**: 12 rounds of review, all critical findings resolved. Waiting for maintainer merge.
-- ~~Priority: HIGH~~
-- ~~Fix: init ordering bug~~
+## QwenLM/qwen-code#4456 — ✅ MERGED
+- **Status**: MERGED (confirmed 06-06)
+- **Note**: 12 rounds of review, all critical findings resolved. Dual approval by wenshao + yiliang114.
 
 ## Pending from GitHub Patrol (2026-05-28 12:15)
 
 - [ ] **NemoClaw #4236 follow-up PR**: Change `true` → `false` in `promptYesNoOrDefault("Continue with onboarding?", null, true)` at `src/lib/onboard.ts`. Update related tests. PR #4273 was merged but didn't fix the right call site.
-- [ ] **qwen-code #4456**: Address wenshao's latest suggestions (02:52 UTC) — migration warning duplication, raw mode cleanup on exit, mock.results indexing, extension name sanitization.
+- [ ] **NemoClaw PR #4706 CHANGES_REQUESTED (prekshivyas, 06-05)**: Narrow scope — drop reinstall-avoidance claim from description, use stable token instead of `Date.now()`, file follow-up issue for `isManagedModelRouterCurrent` short-circuit fix. Already replied with plan (option 1).
+- [x] **qwen-code #4456**: MERGED ✅ (06-06 confirmed)
 - [x] Track: mercury-agent (cosmicstack-labs/mercury-agent) - 2,467⭐ (05-28, was ~1,214 04-26, +100%). PR #67: `mercury skills` CLI with registry + install + search + intent routing. Skills ecosystem now end-to-end. Domain migrated to mercuryagent.sh. 🟢 GROWING. Revisit 06-04
 - [x] Followup: GenericAgent active (TUI v2/v3 polish, external PRs from shenhao-stu), bux (Codex fixes), ccglass (v0.5/0.6 dashboard). No architectural signals worth deep read
 - [ ] **openclaw PRs rebase**: #86301 (sort tool defs), #85705 (reasoning retry group chats), #82128 (strip truncation sentinels) — all CONFLICTING, need rebase on upstream main
@@ -465,3 +462,4 @@
 - [ ] Track: sandboxes (tastyeffectco/sandboxes) - 395⭐ (06-05, 2 days old, ~200⭐/day). Self-hosted agent sandbox engine. Breakout growth. Revisit 06-12
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 258⭐ (06-05, was 133 on 05-23, +94%). Growth spike worth investigating. Revisit 06-12
+- [ ] Track: 21-day-self-interview (Forlives) - 128⭐ (06-06, 2 days old). Agent as existential psychology mirror. Non-coding skill with strong traction. Revisit 06-13

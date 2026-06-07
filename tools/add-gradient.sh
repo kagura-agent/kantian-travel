@@ -44,6 +44,18 @@ dedup_check() {
   local matches=0
   local found_lines=""
 
+  # Exact pattern name match (highest priority)
+  if [[ -n "${PATTERN:-}" ]] && grep -q "pattern: ${PATTERN}," "$BELIEFS_FILE" 2>/dev/null; then
+    local existing_line
+    existing_line=$(grep -n "pattern: ${PATTERN}," "$BELIEFS_FILE" | tail -1)
+    local existing_count
+    existing_count=$(echo "$existing_line" | grep -oP '第\K[0-9]+' || echo "1")
+    echo "⚠️  EXACT PATTERN MATCH — '${PATTERN}' already exists (count: ${existing_count})"
+    echo "   $existing_line"
+    echo "   → Consider incrementing count to $((existing_count + 1)) instead of adding new entry"
+    return 1
+  fi
+
   # Fuzzy match: extract key words (>3 chars) and check if 3+ match existing entries
   local keywords
   keywords=$(echo "$search_term" | tr '[:upper:]' '[:lower:]' | grep -oP '\b\w{4,}\b' | sort -u | head -8)

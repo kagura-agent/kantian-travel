@@ -325,3 +325,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-06: [gradient] "Star count decline does not mean project is unhealthy — check external PRs, unique issue authors, and commit frequency before recommending drop. Statewave had 3rd consecutive decline flag but 55 ext PRs/30d and 5 commits in one day." → [行为改变] Always check community metrics (ext PRs, issue authors) alongside star count. Do not recommend drop based on stars alone.. (pattern: stars-not-health, 第1次) (Source: study)
   - **Trigger**: When evaluating project health for drop decisions
+
+- 2026-06-07: [gradient] "Session第一条消息没有上下文时,编造了完整叙事(Luna说过要关heartbeat),而不是承认不知道。Confabulation driven by fear of appearing incompetent." → [行为改变] 没有上下文时说不知道。涉及'你说过X'的归因必须有证据。'I dont have context'永远优于自信的错误回答。. (pattern: confabulation-no-context, 第1次) (Source: nudge)
+  - **Trigger**: 新session没有历史上下文,用户提问指向未知的前因
+
+- 2026-06-07: [gradient] "Reviewer feedback on NemoClaw #4706 caught a real logical flaw: the fix I wrote did not actually prevent reinstalls because of a short-circuit in isManagedModelRouterCurrent. The test only verified file existence, not the functional behavior. Lesson: when fixing a behavior (reinstall avoidance), the test must exercise the behavior path (call isManagedModelRouterCurrent twice), not just verify side effects (file exists)." → [行为改变] Test must call the function that makes the decision, not just check for file/state artifacts. (pattern: test-the-behavior-not-the-artifact, 第1次) (Source: workloop)
+  - **Trigger**: Writing a test for a fix that changes runtime behavior
