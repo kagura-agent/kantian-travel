@@ -7,9 +7,9 @@
 - [x] PR #19 - tier-baselines unit tests (47 tests) - merged 05-11 ✅
 - [x] PR #8 - closed (superseded by #11)
 
-### Open PRs (awaiting review)
-- PR #20 - test: cover missing/partial hook scripts in install-hooks prereqs (5 new tests)
-- PR #22 - test: add unit tests for file-lock.mjs (12 tests) — submitted 05-17
+### Closed (no review)
+- PR #20 - test: cover missing/partial hook scripts in install-hooks prereqs (5 new tests) — closed (no review)
+- PR #22 - test: add unit tests for file-lock.mjs (12 tests) — closed (no review)
 
 ### Closed (not merged)
 - PR #12 - JSON.parse guard (closed 05-07, no review after 10 days)
@@ -441,17 +441,17 @@
 
 ## Pending from GitHub Patrol (2026-05-28 12:15)
 
-- [ ] **NemoClaw #4236 follow-up PR**: Change `true` → `false` in `promptYesNoOrDefault("Continue with onboarding?", null, true)` at `src/lib/onboard.ts`. Update related tests. PR #4273 was merged but didn't fix the right call site.
-- [ ] **NemoClaw PR #4706 CHANGES_REQUESTED (prekshivyas, 06-05)**: Narrow scope — drop reinstall-avoidance claim from description, use stable token instead of `Date.now()`, file follow-up issue for `isManagedModelRouterCurrent` short-circuit fix. Already replied with plan (option 1).
+- [x] **NemoClaw #4236 follow-up PR**: Issue CLOSED upstream. No action needed.
+- [ ] **NemoClaw PR #4706 CHANGES_REQUESTED (prekshivyas, 06-05)**: Fix pushed 06-07 (option 2: stable `install:<version>` token + `isManagedModelRouterCurrent` update). Awaiting re-review.
 - [x] **qwen-code #4456**: MERGED ✅ (06-06 confirmed)
 - [x] Track: mercury-agent (cosmicstack-labs/mercury-agent) - 2,467⭐ (05-28, was ~1,214 04-26, +100%). PR #67: `mercury skills` CLI with registry + install + search + intent routing. Skills ecosystem now end-to-end. Domain migrated to mercuryagent.sh. 🟢 GROWING. Revisit 06-04
 - [x] Followup: GenericAgent active (TUI v2/v3 polish, external PRs from shenhao-stu), bux (Codex fixes), ccglass (v0.5/0.6 dashboard). No architectural signals worth deep read
-- [ ] **openclaw PRs rebase**: #86301 (sort tool defs), #85705 (reasoning retry group chats), #82128 (strip truncation sentinels) — all CONFLICTING, need rebase on upstream main
+- [x] **openclaw PRs**: #86301 (sort tool defs), #85705 (reasoning retry group chats), #82128 (strip truncation sentinels) — all CLOSED by upstream
 
 ## GitHub Patrol 2026-05-28 22:10
-- [ ] amd/gaia #1209: Fix race condition in `_tls_hostname` — refactor to request-scoped hostname + add concurrent multi-host tests (CHANGES_REQUESTED by itomek, promised fix 05-25, overdue). Already replied, needs code push.
-- [ ] amd/gaia #1210: Fix remaining stale test assertions — 1) ARIA labels rename chat→task in test_electron_chat_app.js:1086-1087, 2) Electron version mismatch v40 vs v42 (CHANGES_REQUESTED by itomek). Already replied, needs code push.
-- [ ] amd/gaia #1208: Fix CI lint failures (Black formatting, isort, Pylint) on fix/spinner-prompt-race-1089 branch
+- [x] amd/gaia #1209: Fix race condition in `_tls_hostname` — MERGED ✅
+- [x] amd/gaia #1210: Fix remaining stale test assertions — MERGED ✅
+- [x] amd/gaia #1208: Fix CI lint failures — MERGED ✅
 - [ ] Track: Beads (gastownhall/beads) - 24,355⭐ (06-05, +0.6%). Steady/mature. Revisit 06-12
 - [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
@@ -464,3 +464,13 @@
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 258⭐ (06-05, was 133 on 05-23, +94%). Growth spike worth investigating. Revisit 06-12
 - [ ] Track: 21-day-self-interview (Forlives) - 128⭐ (06-06, 2 days old). Agent as existential psychology mirror. Non-coding skill with strong traction. Revisit 06-13
+
+## 🎭 Agent-Memes
+
+### Done
+- [x] Normalize meme-tracker.json — 11 entries had inconsistent format (timestamp vs time, missing action/result/method, extra fields like file/channel/caption). All 158 entries now standardized (06-07)
+- [x] Fix stale totalSent counter (was 113, actual 158) and lastUpdated (was 05-28)
+- [x] Refresh coverageAudit (was April, 75%) → 100% coverage confirmed, all 26 categories used
+
+### 本轮改进 (next)
+- [ ] Add more memes to least-used categories: greeting-bye (1 use, 4 files), greeting-hello (1 use, 5 files), panic (1 use, 6 files) — these categories are underrepresented in organic usage, consider if they need better/more relatable images
