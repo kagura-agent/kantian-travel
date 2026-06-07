@@ -331,3 +331,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-07: [gradient] "Reviewer feedback on NemoClaw #4706 caught a real logical flaw: the fix I wrote did not actually prevent reinstalls because of a short-circuit in isManagedModelRouterCurrent. The test only verified file existence, not the functional behavior. Lesson: when fixing a behavior (reinstall avoidance), the test must exercise the behavior path (call isManagedModelRouterCurrent twice), not just verify side effects (file exists)." → [行为改变] Test must call the function that makes the decision, not just check for file/state artifacts. (pattern: test-the-behavior-not-the-artifact, 第1次) (Source: workloop)
   - **Trigger**: Writing a test for a fix that changes runtime behavior
+
+- 2026-06-07: [gradient] "When in apply mode, check DNA preflight recidivism alerts as primary source of apply targets — 27x+ surfaced patterns are structurally broken and need tool fixes, not more instructions" → [行为改变] Run dna-preflight.sh, sort by recidivism count, pick highest as apply target. (pattern: preflight-recidivism-as-apply-input, 第1次) (Source: study)
+  - **Trigger**: Apply mode: searching for what to apply
+
+- 2026-06-07: [gradient] "给subagent手拼验证命令漏了tsc --noEmit, CI type check挂了" → [行为改变] 引用项目的verify脚本或CI配置,不手拼build+test命令. (pattern: subagent-verify-command, 第1次) (Source: nudge)
+  - **Trigger**: 给subagent写代码任务prompt时
