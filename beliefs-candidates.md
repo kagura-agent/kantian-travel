@@ -337,3 +337,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-07: [gradient] "给subagent手拼验证命令漏了tsc --noEmit, CI type check挂了" → [行为改变] 引用项目的verify脚本或CI配置,不手拼build+test命令. (pattern: subagent-verify-command, 第1次) (Source: nudge)
   - **Trigger**: 给subagent写代码任务prompt时
+
+- 2026-06-07: [gradient] "Pair academic paper with industry blog post on same topic for higher-confidence conclusions" → [行为改变] Actively seek paper+practice pairs during scout phase instead of reading only one type. (pattern: academic-industry-pairing, 第1次) (Source: study)
+  - **Trigger**: Scouting a topic that has both research papers and industry blog posts
+
+- 2026-06-07: [gradient] "When applying optimization insights (reduce tokens, compress output, restructure files), always measure before AND after with exact numbers. Makes apply rounds verifiable vs cosmetic." → [行为改变] Record exact metrics before making changes, then measure again after and include both in the report. (pattern: measure-before-after, 第1次) (Source: study)
+  - **Trigger**: Starting an apply round that claims to optimize/reduce/improve something
+
+- 2026-06-07: [gradient] "For architecture study of config-heavy repos, GitHub API content reading is faster and more reliable than git clone" → [行为改变] Use gh api repos/owner/repo/contents/ to read specific files instead of cloning. (pattern: api-over-clone-for-config-repos, 第1次) (Source: study)
+  - **Trigger**: studying a repo that is primarily markdown/yaml/config with limited executable code
