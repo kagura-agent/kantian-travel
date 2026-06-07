@@ -102,6 +102,7 @@
 - Status: dogfood-only mode until upstream revives
 
 ## 🔧 Infrastructure Maintenance
+- [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
 - [ ] sops 3.9.4 → 3.12.2 upgrade (flagged since 05-02, no security urgency but 3 major versions behind)
 - [x] Evaluate memex 0.1.32 fork vs upstream 1.0.1: npm `memex@1.0.1` is different package (2016). No rebase needed. Resolved 05-06
@@ -427,10 +428,10 @@
 
 ### Merged ✅
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
-- [ ] Track: centaur (paradigmxyz/centaur) - 673⭐ (05-31, was 431, +57%). 🟢 THRIVING (6/6). 99 forks, 57 issues, 93 external PRs/30d. Tool-server sidecar + iron-proxy hardening phase. No new arch patterns. Revisit 06-07
+- [x] Track: centaur (paradigmxyz/centaur) - 728⭐ (06-07). Minor fixes only. Growth slowing (+0.6%). Revisit 06-14
 - [x] Track: smallcode (Doorman11991) - 1,756⭐ (06-04). v1.6.0 stable since 05-31, no new commits. 6 open issues (regressions). Quiet. Revisit 06-11
 - [x] Track: Lucarne (tuchg/Lucarne) - 264⭐ (06-06, was 194, +36.1%). Pushed 06-03. Growth accelerating. Active development continues. Revisit 06-13
-- [ ] Track: claude-soul (DomDemetz/claude-soul) - 83⭐ (06-02, was 77). v0.2.5: identity drift detection, concurrent reflection lock, Issue #6 fixed (per-tier signal consumption). Revisit 06-07
+- [x] Track: claude-soul (DomDemetz/claude-soul) - 84⭐ (06-07). No push since 05-29 (9d). Growth stalled. Revisit 06-14
 - [ ] Track: ai-memory (akitaonrails/ai-memory) - 503⭐ (06-03, was 290, +73%🔥). v0.9.0! Bounded buffers, admin root-only, move-project, web wikilinks, openai-compat strict. External PRs from djalmajr/brunoomariano/rikelmyso7. 52 forks. 🟢 THRIVING breakout. Revisit 06-10
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
@@ -455,7 +456,7 @@
 - [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
 - [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
-- [ ] Track: autonomous-qa-loop (MaxwellCCC) - 54⭐ (05-31). Fresh-agent QA loop pattern — bias-free review via zero-history agents. Directly relevant to subagent quality. Revisit 06-07
+- [x] Track: autonomous-qa-loop (MaxwellCCC) - 59⭐ (06-07, +9%). Lightweight QA validation commit 06-06. Still tiny. Revisit 06-14
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
 - [ ] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08
 - [ ] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08
