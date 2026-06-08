@@ -352,3 +352,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-08: [gradient] "修配置时加了重复条目(models.providers.openai)却没删旧的(memorySearch.remote)，Luna指出应单一数据源" → [行为改变] 优先指向正确的已有配置，不创建重复。改完检查是否有旧配置该删. (pattern: config-single-source, 第1次) (Source: nudge)
   - **Trigger**: 修复配置问题时新增条目
+
+- 2026-06-08: [gradient] "When a gradient pattern describes a tool misbehaving (wrong default, silent fallback), graduate by fixing the tool code rather than adding a DNA rule. Tool enforcement eliminates failure mode; behavioral rules add cognitive load." → [行为改变] Check if the tool can be modified to prevent the error structurally before defaulting to a DNA rule. (pattern: structural-fix-over-behavioral-rule, 第1次) (Source: study)
+  - **Trigger**: graduating a beliefs-candidate that involves tool behavior
