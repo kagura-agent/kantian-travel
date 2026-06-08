@@ -97,9 +97,10 @@
 - vitest Bus error / OOM on NTFS data disk — pre-existing, blocks local test runs
 - Upstream synced to 0.3.2 (assertive recall prompt for 0-card wikis), no new commits since 05-25 (10+ days dormant)
 - All 4 stale PRs closed 06-03 (no review after 9-15 days, upstream dormant since 05-25)
-- Upstream still dormant as of 06-04 22:00 (no commits since 05-25, 10+ days)
+- Upstream still dormant as of 06-07 22:00 (no commits since 05-25, 13+ days)
 - Contribution score: 10 PRs merged, 0 open, 5 closed (1 maintainer superseded + 4 stale)
 - Status: dogfood-only mode until upstream revives
+- Wiki health (06-07): 382 files, 51 orphans (13%), 0 broken links (fixed 1: invariant-gated-verdict→premature-conclusion), 0 collisions ✔
 
 ## 🔧 Infrastructure Maintenance
 - [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
@@ -472,5 +473,7 @@
 - [x] Fix stale totalSent counter (was 113, actual 158) and lastUpdated (was 05-28)
 - [x] Refresh coverageAudit (was April, 75%) → 100% coverage confirmed, all 26 categories used
 
+- [x] Add more memes to least-used categories: greeting-bye (4→6 files), greeting-hello (5→7 files), panic (6→8 files) — added bye-bye-wave, peace-out, hey-there, hello-wave, this-is-fine, panicking (06-07)
+
 ### 本轮改进 (next)
-- [ ] Add more memes to least-used categories: greeting-bye (1 use, 4 files), greeting-hello (1 use, 5 files), panic (1 use, 6 files) — these categories are underrepresented in organic usage, consider if they need better/more relatable images
+- [ ] Review meme selection logic in agent-memes skill — ensure new files are discoverable (check if memes.sh globs the folder or uses a hardcoded list)

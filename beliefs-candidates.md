@@ -186,7 +186,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge)
   - **Trigger**: 有 workflow 的任务觉得手动也能做，跳过 workflow 入口
 
-- 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第3次 — merged from flowforge-workflow-targeting/multi-instance-disambiguation/flowforge-multi-instance-targeting: 06-02 study + 06-03 study + 06-04 study, all self-generated 0.5x = 1.5 weighted) (Source: study)
+- 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第3次 — merged from flowforge-workflow-targeting/multi-instance-disambiguation/flowforge-multi-instance-targeting: 06-02 study + 06-03 study + 06-04 study, all self-generated 0.5x = 1.5 weighted) (Source: study) → **graduated 2026-06-08** (target: Tool code — flowforge engine.ts requireActiveInstance() now errors when multiple instances active and no -w flag. Structural fix eliminates the failure mode entirely. Retires: no prior rule — this is a new structural guard)
   - **Trigger**: Running flowforge next with multiple active workflows
 
 - 2026-06-03: [gradient] "UI对齐: 数值对齐不等于视觉对齐, minHeight因内容不同导致实际高度不同" → [行为改变] 用固定height而非minHeight; 统一所有区域left padding到同一值; 请Luna开Layout Inspector截图验证. (pattern: ui-visual-alignment, 第1次) (Source: nudge)
@@ -346,3 +346,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-07: [gradient] "For architecture study of config-heavy repos, GitHub API content reading is faster and more reliable than git clone" → [行为改变] Use gh api repos/owner/repo/contents/ to read specific files instead of cloning. (pattern: api-over-clone-for-config-repos, 第1次) (Source: study)
   - **Trigger**: studying a repo that is primarily markdown/yaml/config with limited executable code
+
+- 2026-06-07: [gradient] "Followup mode selected by saturation system but all repos were checked same-day with nothing due — entire run was a predictable no-op" → [行为改变] Pre-run tracking-activity.sh at entry node; if all repos QUIET or checked same-day with no due items, auto-select saturated exit. (pattern: study-followup-freshness-gate, 第1次) (Source: study)
+  - **Trigger**: study followup chosen when all tracked repos were already checked today and no revisit dates are due
+
+- 2026-06-08: [gradient] "修配置时加了重复条目(models.providers.openai)却没删旧的(memorySearch.remote)，Luna指出应单一数据源" → [行为改变] 优先指向正确的已有配置，不创建重复。改完检查是否有旧配置该删. (pattern: config-single-source, 第1次) (Source: nudge)
+  - **Trigger**: 修复配置问题时新增条目
