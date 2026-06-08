@@ -213,16 +213,73 @@ while IFS= read -r line; do
   [[ -n "$tag" ]] && echo "$(date +%Y-%m-%dT%H:%M)|${CONTEXT:-any}|${tag}" >> "$PREFLIGHT_LOG"
 done <<< "$sorted"
 
-# Recidivism detection: patterns surfaced 5+ times = structural problem
+# Auto-close: prune graduated patterns + age-decay from preflight log
+# Two mechanisms:
+# 1. Remove entries for graduated patterns (structural fix = retire tracking)
+# 2. Remove entries older than 14 days (prevents unbounded count inflation)
 if [[ -f "$PREFLIGHT_LOG" ]]; then
-  recidivists=$(cut -d'|' -f3 "$PREFLIGHT_LOG" | sort | uniq -c | sort -rn | awk '$1 >= 5 {print $1, $2}')
+  BEFORE=$(wc -l < "$PREFLIGHT_LOG")
+
+  # 1. Find graduated patterns in beliefs-candidates
+  GRADUATED_PATTERNS=$(grep -oP 'pattern: \K[a-zA-Z0-9_-]+' "$BC_FILE" | while read -r pat; do
+    if grep -q "pattern: ${pat}.*graduated\|graduated.*pattern: ${pat}" "$BC_FILE" 2>/dev/null; then
+      echo "$pat"
+    fi
+  done | sort -u)
+
+  # 2. Age cutoff: 14 days
+  AGE_CUTOFF=$(date -d "-14 days" +%Y-%m-%d 2>/dev/null || date -v-14d +%Y-%m-%d 2>/dev/null)
+
+  # Apply both filters
+  if [[ -n "$GRADUATED_PATTERNS" ]]; then
+    PRUNE_RE=$(echo "$GRADUATED_PATTERNS" | paste -sd'|')
+    awk -F'|' -v cutoff="$AGE_CUTOFF" -v prune_re="$PRUNE_RE" '
+      BEGIN { n = split(prune_re, patterns, "|") }
+      {
+        date = substr($1, 1, 10)
+        if (date < cutoff) next
+        pat = $NF
+        skip = 0
+        for (i = 1; i <= n; i++) {
+          if (pat == patterns[i]) { skip = 1; break }
+        }
+        if (!skip) print
+      }
+    ' "$PREFLIGHT_LOG" > "${PREFLIGHT_LOG}.tmp"
+  else
+    # Only age filter
+    awk -F'|' -v cutoff="$AGE_CUTOFF" '
+      { date = substr($1, 1, 10); if (date >= cutoff) print }
+    ' "$PREFLIGHT_LOG" > "${PREFLIGHT_LOG}.tmp"
+  fi
+
+  mv "${PREFLIGHT_LOG}.tmp" "$PREFLIGHT_LOG"
+  AFTER=$(wc -l < "$PREFLIGHT_LOG")
+  PRUNED=$((BEFORE - AFTER))
+  if [[ $PRUNED -gt 0 ]]; then
+    echo ""
+    echo "🧹 Auto-closed ${PRUNED} stale/graduated entries (14d age limit + graduated patterns)"
+  fi
+fi
+
+# Recidivism detection: count unique DAYS a pattern was surfaced (not raw entries)
+# This prevents inflation from multiple runs per day.
+if [[ -f "$PREFLIGHT_LOG" ]]; then
+  recidivists=$(awk -F'|' '{
+    date = substr($1, 1, 10)
+    pat = $NF
+    key = pat "|" date
+    if (!(key in seen)) { seen[key] = 1; count[pat]++ }
+  } END {
+    for (p in count) if (count[p] >= 3) print count[p], p
+  }' "$PREFLIGHT_LOG" | sort -rn)
   if [[ -n "$recidivists" ]]; then
     echo ""
-    echo "🔁 Recidivism Alert — these patterns survive repeated preflight warnings:"
+    echo "🔁 Recidivism Alert — patterns surfaced on 3+ unique days:"
     while IFS= read -r r; do
       count=$(echo "$r" | awk '{print $1}')
       pattern=$(echo "$r" | awk '{print $2}')
-      echo "   ${pattern} (surfaced ${count}× — preflight alone won't fix this; needs structural change)"
+      echo "   ${pattern} (${count} days — preflight alone won't fix this; needs structural change)"
     done <<< "$recidivists"
   fi
 fi
