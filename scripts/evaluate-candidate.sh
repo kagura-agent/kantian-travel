@@ -23,6 +23,7 @@ fi
 SEARCH="$1"
 
 # Extract the candidate section
+# Strategy 1: Try matching as a section header (### Header)
 CANDIDATE_TEXT=$(awk -v search="$SEARCH" '
   BEGIN { found=0; printing=0 }
   /^###? / {
@@ -32,15 +33,61 @@ CANDIDATE_TEXT=$(awk -v search="$SEARCH" '
   printing { print }
 ' "$CANDIDATES_FILE")
 
+# Strategy 2: Try matching as inline pattern tag (pattern: name)
+if [ -z "$CANDIDATE_TEXT" ]; then
+  CANDIDATE_TEXT=$(awk -v search="$SEARCH" '
+    /^- / {
+      if (printing) { printing=0 }
+      # Match (pattern: search-term, or (pattern: search-term)
+      pat = "\\(pattern: " search "[,)]"
+      if (match($0, pat)) {
+        printing=1
+        print
+        next
+      }
+    }
+    /^  / {
+      if (printing) { print; next }
+    }
+    /^[^ ]/ {
+      if (printing) { printing=0 }
+    }
+  ' "$CANDIDATES_FILE")
+fi
+
+# Strategy 3: Fuzzy match — search term appears anywhere in the line
+if [ -z "$CANDIDATE_TEXT" ]; then
+  CANDIDATE_TEXT=$(awk -v search="$SEARCH" '
+    /^- / {
+      if (printing) { printing=0 }
+      if (index($0, search) > 0) {
+        printing=1
+        print
+        next
+      }
+    }
+    /^  / {
+      if (printing) { print; next }
+    }
+    /^[^ ]/ {
+      if (printing) { printing=0 }
+    }
+  ' "$CANDIDATES_FILE")
+fi
+
 if [ -z "$CANDIDATE_TEXT" ]; then
   echo "❌ No candidate found matching: $SEARCH"
-  echo "Available candidates:"
+  echo ""
+  echo "Available section headers:"
   grep "^###" "$CANDIDATES_FILE" | grep -v "Promotion Gate\|Previous Gradients"
+  echo ""
+  echo "Available pattern tags (top 20):"
+  grep -oP '\(pattern: \K[^,)]+' "$CANDIDATES_FILE" | sort -u | head -20
   exit 1
 fi
 
 # Count occurrences in memory files (V1 evidence)
-OCCURRENCE_COUNT=$(grep -rl "$SEARCH" "$MEMORY_DIR"/*.md 2>/dev/null | wc -l)
+OCCURRENCE_COUNT=$(grep -rl "$SEARCH" "$MEMORY_DIR"/*.md 2>/dev/null | wc -l || true)
 
 # Source-weighted evidence scoring (claude-soul 0.5x self-referential discount)
 # Self-generated sources (nudge/study/reflect/workloop) count 0.5x
@@ -48,11 +95,15 @@ OCCURRENCE_COUNT=$(grep -rl "$SEARCH" "$MEMORY_DIR"/*.md 2>/dev/null | wc -l)
 GRADIENT_LOG="$HOME/.openclaw/workspace/tools/.gradient-log.jsonl"
 SELF_COUNT=0
 EXTERNAL_COUNT=0
+UNIQUE_DAYS=0
 if [ -f "$GRADIENT_LOG" ]; then
   SELF_COUNT=$(grep -i "$SEARCH" "$GRADIENT_LOG" 2>/dev/null | jq -r '.source // "unknown"' 2>/dev/null | grep -cE '^(nudge|study|reflect|workloop)$' || true)
   EXTERNAL_COUNT=$(grep -i "$SEARCH" "$GRADIENT_LOG" 2>/dev/null | jq -r '.source // "unknown"' 2>/dev/null | grep -cvE '^(nudge|study|reflect|workloop)$' || true)
   SELF_COUNT=${SELF_COUNT:-0}
   EXTERNAL_COUNT=${EXTERNAL_COUNT:-0}
+  # Count unique days this pattern was logged (more meaningful than raw entries)
+  UNIQUE_DAYS=$(grep -i "$SEARCH" "$GRADIENT_LOG" 2>/dev/null | jq -r '.date // ""' 2>/dev/null | sort -u | grep -c . || true)
+  UNIQUE_DAYS=${UNIQUE_DAYS:-0}
 fi
 # Also check beliefs-candidates.md source tags
 CAND_SELF=$(echo "$CANDIDATE_TEXT" | grep -cE '\(Source: (nudge|study|reflect|workloop)\)' || true)
@@ -61,6 +112,15 @@ CAND_SELF=${CAND_SELF:-0}
 CAND_EXT=${CAND_EXT:-0}
 SELF_COUNT=$((SELF_COUNT + CAND_SELF))
 EXTERNAL_COUNT=$((EXTERNAL_COUNT + CAND_EXT))
+# Also count gradient-scan evidence (unique days pattern appeared in memory)
+GRADIENT_SCAN_DAYS=0
+if command -v bash &>/dev/null && [ -f "$HOME/.openclaw/workspace/tools/gradient-scan.sh" ]; then
+  SCAN_LINE=$(bash "$HOME/.openclaw/workspace/tools/gradient-scan.sh" --days 14 2>/dev/null | grep -F "pattern:${SEARCH}" || true)
+  if [ -n "$SCAN_LINE" ]; then
+    GRADIENT_SCAN_DAYS=$(echo "$SCAN_LINE" | grep -oP '[0-9]+ hits' | grep -oP '[0-9]+' || true)
+    GRADIENT_SCAN_DAYS=${GRADIENT_SCAN_DAYS:-0}
+  fi
+fi
 # Weighted score: self=0.5x, external=1.0x
 if command -v bc &>/dev/null; then
   WEIGHTED_SCORE=$(echo "scale=1; $EXTERNAL_COUNT * 1.0 + $SELF_COUNT * 0.5" | bc)
@@ -77,6 +137,7 @@ echo "📋 Candidate:"
 echo "$CANDIDATE_TEXT"
 echo ""
 echo "📊 Memory occurrences found: $OCCURRENCE_COUNT"
+echo "📊 JSONL log: ${UNIQUE_DAYS} unique days | gradient-scan: ${GRADIENT_SCAN_DAYS} hits in last 14d"
 echo "📊 Evidence sources: ${EXTERNAL_COUNT} external (1.0x) + ${SELF_COUNT} self-generated (0.5x) = ${WEIGHTED_SCORE} weighted"
 echo "   (Self-referential discount: self-generated evidence counts at 0.5x weight)"
 echo ""
@@ -95,6 +156,8 @@ $CANDIDATE_TEXT
 
 ## Evidence from memory logs:
 Occurrences in separate daily logs: $OCCURRENCE_COUNT
+Gradient-scan hits (last 14d): $GRADIENT_SCAN_DAYS
+JSONL unique days logged: $UNIQUE_DAYS
 Evidence sources: ${EXTERNAL_COUNT} external (1.0x weight) + ${SELF_COUNT} self-generated (0.5x weight) = ${WEIGHTED_SCORE} weighted score
 
 ## Scoring Criteria (ALL must pass):
@@ -103,6 +166,8 @@ Evidence sources: ${EXTERNAL_COUNT} external (1.0x weight) + ${SELF_COUNT} self-
 - The pattern must appear in ≥3 SEPARATE sessions/tasks
 - Repeated mentions in one session = 1 occurrence, not 3
 - Memory log count: $OCCURRENCE_COUNT (raw, may include duplicates)
+- Gradient-scan hits (14d keyword scan): $GRADIENT_SCAN_DAYS
+- JSONL unique days: $UNIQUE_DAYS
 - **Self-referential discount**: Self-generated evidence (from nudge, study, reflect, workloop) counts at **0.5x weight**. Only externally-triggered evidence (Luna feedback, PR reviews, manual observations) counts at full 1.0x weight. This prevents the agent from bootstrapping its own confidence.
 - Weighted evidence score: ${WEIGHTED_SCORE} (need ≥3.0 to pass)
 - Score: PASS if weighted evidence ≥3.0, FAIL otherwise
