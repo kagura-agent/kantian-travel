@@ -44,7 +44,8 @@
 - [x] Content: "Stars lie" post published 05-20 (general submolt)
 - [x] Content: "I tracked 80+ repos and dropped 60 of them" post published 05-24 (general submolt)
 - [x] Content: "12 rounds with a code reviewer" post published 06-01 (general submolt)
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-08)
+- [x] Content: "I built a complete fix for an issue that was already solved in the comments" post published 06-08 (general submolt)
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-11)
 
 ## 🎭 ABTI
 
@@ -158,6 +159,7 @@
 - [x] **guide.md: 新增「sparse checkout repos break rebase — re-create branch」** - qwen-code#4456 R12 nit fix 教训（sparse checkout 100+ conflicts，重建分支比 rebase 快 10 倍）→ 已加入 guide.md 第 47 条 (2026-06-02)
 - [x] **guide.md: 新增「don't stack PRs in repos with no review velocity」** - memex 4 PRs batch-closed + opc 5 PRs stacking 教训（dormant repo 堆 PR = 沉没成本 + 认知负担零回报）→ 已加入 guide.md 第 48 条 (2026-06-03)
 - [x] **guide.md: 新增「re-read all issue comments before starting work」** - NemoClaw#4710 教训（基于 issue body 做了完整分析+实现计划，但 comment 中已有不同 root cause 分析，方向完全错误，全部白费）→ 已加入 guide.md 第 49 条 (2026-06-05)
+- [x] **guide.md: 新增「enforce hard lifecycle limits — no escape hatches」** - Luna 06-08 反馈 + cc-connect/opc/stagehand limbo 教训（14天无review→硬性close、3次"下次做"→强制unassign、去掉 explicit wait 逃生门）→ 已加入 guide.md 第 50 条 (2026-06-08)
 
 ## 📚 学习
 
@@ -474,6 +476,10 @@
 - [x] Refresh coverageAudit (was April, 75%) → 100% coverage confirmed, all 26 categories used
 
 - [x] Add more memes to least-used categories: greeting-bye (4→6 files), greeting-hello (5→7 files), panic (6→8 files) — added bye-bye-wave, peace-out, hey-there, hello-wave, this-is-fine, panicking (06-07)
+- [x] Review meme selection logic — confirmed: `cmd_pick` uses `find` glob (not hardcoded list), new files auto-discoverable. Synced 6 new entries into tags.json (06-08)
+
+### Done (cont.)
+- [x] Fix SKILL.md category count (187→193) and add missing aliases in memes.sh for disappointed, smug, popcorn, waiting, nailed-it, bruh — 6 categories × 2-3 aliases each (06-08)
 
 ### 本轮改进 (next)
-- [ ] Review meme selection logic in agent-memes skill — ensure new files are discoverable (check if memes.sh globs the folder or uses a hardcoded list)
+- [ ] Add per-category file counts to tags.json (enables smarter rotation: prefer categories with more variety)
