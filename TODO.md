@@ -102,6 +102,8 @@
 - Contribution score: 10 PRs merged, 0 open, 5 closed (1 maintainer superseded + 4 stale)
 - Status: dogfood-only mode until upstream revives
 - Wiki health (06-07): 382 files, 51 orphans (13%), 0 broken links (fixed 1: invariant-gated-verdict→premature-conclusion), 0 collisions ✔
+- Wiki health (06-08): 875 files (383 cards + 413 projects), 164 orphans (43%), 0 broken links, 0 collisions ✔ (orphan count stable vs 06-05)
+- Upstream still dormant as of 06-08 22:00 (no commits since 05-25, 14 days)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
@@ -481,5 +483,8 @@
 ### Done (cont.)
 - [x] Fix SKILL.md category count (187→193) and add missing aliases in memes.sh for disappointed, smug, popcorn, waiting, nailed-it, bruh — 6 categories × 2-3 aliases each (06-08)
 
+### Done (cont. 2)
+- [x] Add per-category file counts to tags.json `_meta.categoryCounts` + `update-counts.sh` auto-regenerator (06-08)
+
 ### 本轮改进 (next)
-- [ ] Add per-category file counts to tags.json (enables smarter rotation: prefer categories with more variety)
+- [ ] Use categoryCounts in `memes random` to weight towards categories with more variety (avoid always landing on cute-animals' 30 files)
