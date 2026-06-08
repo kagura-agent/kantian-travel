@@ -355,3 +355,19 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-08: [gradient] "When a gradient pattern describes a tool misbehaving (wrong default, silent fallback), graduate by fixing the tool code rather than adding a DNA rule. Tool enforcement eliminates failure mode; behavioral rules add cognitive load." → [行为改变] Check if the tool can be modified to prevent the error structurally before defaulting to a DNA rule. (pattern: structural-fix-over-behavioral-rule, 第1次) (Source: study)
   - **Trigger**: graduating a beliefs-candidate that involves tool behavior
+
+- 2026-06-08: [gradient] "dna-preflight recidivism counter counted raw log lines not unique days, inflating 4-day patterns to 48x" → [行为改变] When building monitoring counters, count unique meaningful units (days/sessions) not raw events. (pattern: measure-before-after, 第1次) (Source: study)
+
+- 2026-06-08: [gradient] "unapplied.md is 100% checked off. dna-preflight recidivism and recent beliefs-candidates are now the actionable sources for apply targets" → [行为改变] In apply mode, check dna-preflight recidivism and recent beliefs-candidates first. unapplied.md is the archive not the frontier. (pattern: apply-source-shift, 第1次) (Source: study)
+
+- 2026-06-08: [gradient] "修 review comments 时自己手改代码而非交 Claude Code，被类型错误卡两轮" → [行为改变] 一律交 Claude Code subagent，自己只验证结果. (pattern: bypass-claude-code, 第1次) (Source: nudge)
+  - **Trigger**: review comments 需要代码变更时
+
+- 2026-06-08: [gradient] "Review结果应该在所有操作完成后一次性发送，不要先发中间状态让用户以为没做完" → [行为改变] 读review→写consolidated→贴PR→push→最后才发一条包含完整结论的消息。不发中间的let me consolidate. (pattern: atomic-response-delivery, 第1次) (Source: nudge)
+  - **Trigger**: 当3个reviewer都回来需要汇总时
+
+- 2026-06-08: [gradient] "Review 汇总完成所有操作后（read+write+post+push）忘记在同一 turn 末尾写总结文字给用户。用户看到开头的'汇总中'然后空白，需要追问才能看到结果。连续多轮犯同一个错误。" → [行为改变] 每次 turn 的最后必须有面向用户的总结文字。tool call 是手段不是交付物，用户需要看到结论。. (pattern: incomplete-turn-output, 第1次) (Source: nudge)
+  - **Trigger**: 当完成一系列 tool call 后准备结束 turn 时
+
+- 2026-06-09: [gradient] "subagent 声称已 unassign #3836 但 GitHub 实际仍 assigned。memory 记录了虚假的 'unassign 完成'，连续多天未发现" → [行为改变] subagent 声称已执行外部操作（unassign/merge/close/comment）→ 主 agent 必须用 API 验证实际状态，不信任文本声明. (pattern: verify-subagent-claims, 第1次) (Source: luna/manual)
+  - **Trigger**: subagent 完成涉及外部 API 操作的任务后
