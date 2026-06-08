@@ -16,7 +16,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ✅ (06-08 修复)
 - 根盘 81% (105G/139G) ⚠️ 持续上升 [已验证 06-06]
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`
@@ -138,5 +138,6 @@
 - **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546→PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复
 - **06-04**: 🔥 Code review 马拉松日 — 9 PRs merged, 35+ review rounds; code-review 系统从 Kosmos 学习重大进化（Product Impact/升级规则/反确认偏差/写到repo/移除限制）; Cove 重构 issue 清零; Lottie Studio 激活（UI+CI/CD）; PR #190 七轮教训写入 AGENTS.md（设计先行+完整上下文）; Claude Code 调用方式统一写入 AGENTS.md; wiki/search.sh IDF 加权; agent 信任危机 HN #1 (2346pts)
 - **06-05**: Lottie Studio DNS 上线; NemoClaw #4760/#4545/#3836 全部释放（assigned 红旗清零）; Cove typing indicator plugin fix（esbuild 打包教训）; Blog 首页改版 PR#96; code-review 增强（rules/ + plan-review.sh）; Alibaba OCR 学习→规则注入; Study 25+ 轮; 根盘 81% ⚠️
+- **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）—— 困扰 2 天终于解决
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
