@@ -168,6 +168,18 @@ You're a participant, not their voice or proxy. Don't share their stuff in group
 
 **Reactions** (Discord/Slack): Use emoji reactions naturally (👍❤️😂🤔💡✅) to acknowledge without cluttering chat. One reaction per message max.
 
+## Workflow Guard (structural enforcement)
+
+**Spawning subagents for multi-step tasks? Run `workflow-guard.sh` first.**
+
+```bash
+bash tools/workflow-guard.sh <intent>  # review, study, workloop, reflect, audit, evolve, refactor
+```
+
+Exit 0 = active instance, proceed. Exit 1 = **STOP, start FlowForge first**. Exit 2 = no matching workflow, free to proceed.
+
+This is a structural fix for `workflow-bypass` (4-day recidivist). Graduated from behavioral rule → tool enforcement.
+
 ## Subagent 代码规则
 
 **代码实现必须用 Claude Code，subagent 不自己手写代码。**
