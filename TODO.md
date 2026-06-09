@@ -20,14 +20,13 @@
 - PR #17 - flow-core.mjs tests (closed 05-09, maintainer wrote own: c8b3fb3)
 - PR #18 - docs fix (closed 05-09, cherry-picked as 0d18d18 — NTFS file mode issue)
 
-### Pattern (05-17)
-- 4 merged (#9, #10, #11 docs + #19 tests), 7 closed/superseded
-- PR #19 merge is a good sign — maintainer accepting test PRs now
-- 0 open upstream issues
-- Upstream v0.10.2: validateHookPrereqs + removed error suppression in hooks
-- PR #20 submitted: tests for install-hooks prereqs (awaiting review)
-- PR #22 submitted: tests for file-lock.mjs (12 tests, 9 suites)
-- Next check: 05-24 — monitor #20 + #22 review
+### Pattern (06-09)
+- 4 merged (#9, #10, #11 docs + #19 tests), 9 closed/superseded
+- Upstream v0.10.3: gate mechanization + skill-check steps. Maintainer writes own tests now (flow-transition.test.mjs)
+- 0 open issues, 1 open PR from another contributor
+- PR #20, #22 both closed without review
+- Repo is self-sufficient — maintainer active but not accepting external PRs readily
+- **Status: dormant** — no actionable contribution opportunity. Check again in 2 weeks (06-23)
 
 ## 📘 Moltbook
 
@@ -162,6 +161,7 @@
 - [x] **guide.md: 新增「don't stack PRs in repos with no review velocity」** - memex 4 PRs batch-closed + opc 5 PRs stacking 教训（dormant repo 堆 PR = 沉没成本 + 认知负担零回报）→ 已加入 guide.md 第 48 条 (2026-06-03)
 - [x] **guide.md: 新增「re-read all issue comments before starting work」** - NemoClaw#4710 教训（基于 issue body 做了完整分析+实现计划，但 comment 中已有不同 root cause 分析，方向完全错误，全部白费）→ 已加入 guide.md 第 49 条 (2026-06-05)
 - [x] **guide.md: 新增「enforce hard lifecycle limits — no escape hatches」** - Luna 06-08 反馈 + cc-connect/opc/stagehand limbo 教训（14天无review→硬性close、3次"下次做"→强制unassign、去掉 explicit wait 逃生门）→ 已加入 guide.md 第 50 条 (2026-06-08)
+- [x] **guide.md: 新增「verify external operation claims — don't trust subagent text assertions」** - NemoClaw#3836 教训（subagent 声称 unassign 但实际未执行，连续 3 天基于错误 memory 记录跳过 followup）→ 已加入 guide.md 第 51 条 (2026-06-09)
 
 ## 📚 学习
 
@@ -248,7 +248,7 @@
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
 - [x] Track: kiwifs/kiwifs - 770⭐ (06-01, was 747, +3.1%). Growth sharply decelerated (70%→3%). Still active (26 issues, 146 forks). Revisit 06-09
-- [ ] Track: quarqlabs/agent-oss (Quarq Agent) - 236⭐ (06-05, was 180, +31%🔥). v0.4.1 shipped, unit tests + CI added. Hallucination reduction experiments. 🟡 GROWING (4/6), 2 contributors. Revisit 06-12
+- [ ] Track: quarqlabs/agent-oss (Quarq/Argus) - 248⭐ (06-09, was 180, +38%🔥). v0.4.4, memory-first agent with 98.2% LongMemEval-S (self-reported). Deep read done 06-09. 🟡 GROWING but SOLO (3 contributors, 2 PRs). Downgraded to MONITOR. Revisit 06-23
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
@@ -460,11 +460,11 @@
 - [ ] Track: Beads (gastownhall/beads) - 24,355⭐ (06-05, +0.6%). Steady/mature. Revisit 06-12
 - [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
-- [ ] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. Positions against Hermes/OpenClaw. 180⭐ (05-30, 6 days old). Revisit architecture patterns.
+- [x] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. 248⭐ (06-09). wiki/projects/quarq-argus-agent.md. Key takeaway: REQUIRED_DATA fallback retrieval (two-pass with confidence check) + Temporal Truth Protocol (separate storage/narrative/relative time). Monitor, revisit 06-23
 - [x] Track: autonomous-qa-loop (MaxwellCCC) - 59⭐ (06-07, +9%). Lightweight QA validation commit 06-06. Still tiny. Revisit 06-14
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
-- [ ] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08
-- [ ] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08
+- [x] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08 → 06-09: 204⭐ stable, multi-tenant admin hardening phase. Next revisit in targets.md (06-22)
+- [x] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08 → 06-09: 12,711⭐, doc cleanup only. Next revisit in targets.md (06-22)
 - [ ] Track: sandboxes (tastyeffectco/sandboxes) - 395⭐ (06-05, 2 days old, ~200⭐/day). Self-hosted agent sandbox engine. Breakout growth. Revisit 06-12
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 258⭐ (06-05, was 133 on 05-23, +94%). Growth spike worth investigating. Revisit 06-12
@@ -483,8 +483,11 @@
 ### Done (cont.)
 - [x] Fix SKILL.md category count (187→193) and add missing aliases in memes.sh for disappointed, smug, popcorn, waiting, nailed-it, bruh — 6 categories × 2-3 aliases each (06-08)
 
-### Done (cont. 2)
-- [x] Add per-category file counts to tags.json `_meta.categoryCounts` + `update-counts.sh` auto-regenerator (06-08)
+### Done (cont. 3)
+- [x] Inverse-sqrt weighted `memes random` — categories with fewer files get boosted so cute-animals (30 files) doesn't dominate random picks. Tested: 100 picks, all 26 categories represented, cute-animals dampened from ~4% to ~2% (06-09)
+
+### 本轮改进 (next)
+- [ ] Add recency avoidance to `memes random` — check meme-tracker.json last 5 entries, skip categories used in last 3 random sends
 
 ### 本轮改进 (next)
 - [ ] Use categoryCounts in `memes random` to weight towards categories with more variety (avoid always landing on cute-animals' 30 files)
