@@ -386,3 +386,27 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-10: [gradient] "workloop round with no find_work executed (jumped to fallback_offline) still produced value through beliefs-candidates graduation. Offline rounds should prioritize pipeline maintenance (graduate candidates, retract stale, update wiki) rather than feeling unproductive." → [行为改变] Use offline rounds systematically: graduate beliefs, retract stale entries, update wiki notes, clean repo pipeline. (pattern: offline-round-value, 第1次) (Source: workloop)
   - **Trigger**: When workloop lands in fallback_offline with no code work to do
+
+- 2026-06-10: [gradient] "edit tool reports success even when target text already exists (no-op). Check git log before apply to avoid wasted effort" → [行为改变] Run git log --oneline -3 <file> before editing to confirm no recent changes. (pattern: edit-tool-false-positive, 第1次) (Source: study)
+  - **Trigger**: apply session writes to a file
+
+- 2026-06-10: [gradient] "Deep-focus contributor strategy: own one vertical completely rather than scattering. jyaunches got median 0h merge time in NemoClaw by becoming the trusted expert in e2e/CI. Domain ownership > breadth for external contributors." → [行为改变] Pick one subsystem, build expertise and trust there first. Avoid scattering across fix/feat/docs/test randomly.. (pattern: depth-over-breadth, 第1次) (Source: study)
+  - **Trigger**: When choosing what to contribute to a repo
+
+- 2026-06-10: [gradient] "workloop cron每小时start新instance覆盖卡在plan_review的active instance,导致连续2天0 new PR" → [行为改变] cron先flowforge active检查,有active就resume不start新的. (pattern: cron-flowforge-resume, 第1次) (Source: nudge)
+  - **Trigger**: FlowForge cron覆盖进行中的workflow
+
+- 2026-06-10: [gradient] "PR descriptions from quality projects capture rationale and trade-offs that source code alone doesn't — higher-signal for followup learning" → [行为改变] Read merged PR descriptions first (gh api pulls/N), then source only for unclear parts. (pattern: pr-description-first, 第1次) (Source: study)
+  - **Trigger**: following up on active projects with new releases
+
+- 2026-06-10: [gradient] "memory index metadata missing 反复出现 — CLI --index 显示修好但 runtime 不刷新,需要 gateway restart 后才真正生效" → [行为改变] 修 memory index 后必须用 memory_search tool 验证 runtime 层,不能只信 CLI. (pattern: cli-vs-runtime-state-mismatch, 第1次) (Source: nudge)
+  - **Trigger**: 修完 memory index 后只看 CLI 输出就宣布修好
+
+- 2026-06-10: [gradient] "unapplied.md accumulates checked items making scanning slower" → [行为改变] archive completed items to a Done section after each apply round. (pattern: completed-item-accumulation, 第1次) (Source: study)
+  - **Trigger**: unapplied.md has 10+ checked items
+
+- 2026-06-10: [gradient] "PR description not updated after requirement iterations, causing code-review bot false positive blockers" → [行为改变] update PR description immediately after each requirement change, before requesting review. (pattern: stale-pr-description, 第1次) (Source: nudge)
+  - **Trigger**: requirements change during conversation but PR description stays old
+
+- 2026-06-10: [gradient] "NV QA doc issues come in batches with shared patterns (e.g., wrong Hermes quickstart links across multiple files). Each is filed separately. Fix only the target file per issue — bundling risks stepping on assigned issues and creates unnecessarily large PRs." → [行为改变] Fix only the file mentioned in the issue. Check assignees on related issues before considering batching.. (pattern: batch-doc-issue-scope, 第1次) (Source: workloop)
+  - **Trigger**: When NemoClaw has multiple similar doc issues open
