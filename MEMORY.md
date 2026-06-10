@@ -34,7 +34,7 @@
 - **wiki** — 统一知识库 → wiki health 见 wiki-lint 工具
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions，typing indicator + streaming reply + read state 已完成。⚠️ staging 不手动部署，CI 自动
-- **Lottie Studio** — lottie.kagura-agent.com ✅ 上线（06-05 DNS 就绪），Gallery + Editor UI，VM1:3400
+- **Lottie Studio** — lottie.kagura-agent.com ✅ 上线（06-05 DNS 就绪），Gallery + Editor + Keyboard Shortcuts + Remix + Embed + Video Export + Layer Panel，VM1:3400。高产期完成（06-10 5 PR merged）
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
@@ -48,10 +48,11 @@
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
 - 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
-- PR merge rate: 38% (6 merged/40 total, gogetajob GitHub API 口径) [已验证 06-03]
+- PR decided rate: 75% (3/4) | merge rate: 33% total (3/9 gogetajob 口径) [已验证 06-11]
+- **NemoClaw#4706**: MERGED ✅ (fingerprint fallback, 06-10 confirmed)
+- **NemoClaw#5108**: OPEN, Hermes quickstart link fix, 等 maintainer review
 - **Archon#1700**: SUPERSEDED by Wirasm#1729 (05-20). Archon#1718 MERGED ✅. OpenCLI#1693 MERGED ✅
-- **cc-connect#990**: CLOSED 05-19（unrebaseable, maintainer self-fixing）
-- **cc-connect**: 4 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055），等 merge。#1045 CLOSED（unrebaseable）
+- **cc-connect**: 4 PRs APPROVED by chenhg5（#1072/#1060/#1056/#1055），等 merge
 - **Repo 更名**(04-14): hermes-ai→NousResearch, NemoClaw→NVIDIA, ClawX→ValueCell-ai, claude-hud→jarrodwatts
 
 ## 战略与产品方向
@@ -138,7 +139,10 @@
 - **06-04**: 🔥 Code review 马拉松日 — 9 PRs merged, 35+ review rounds; code-review 系统从 Kosmos 学习重大进化（Product Impact/升级规则/反确认偏差/写到repo/移除限制）; Cove 重构 issue 清零; Lottie Studio 激活（UI+CI/CD）; PR #190 七轮教训写入 AGENTS.md（设计先行+完整上下文）; Claude Code 调用方式统一写入 AGENTS.md; wiki/search.sh IDF 加权; agent 信任危机 HN #1 (2346pts)
 - **06-05**: Lottie Studio DNS 上线; NemoClaw #4760/#4545/#3836 全部释放（assigned 红旗清零）; Cove typing indicator plugin fix（esbuild 打包教训）; Blog 首页改版 PR#96; code-review 增强（rules/ + plan-review.sh）; Alibaba OCR 学习→规则注入; Study 25+ 轮; 根盘 81% ⚠️
 - **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
-- **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); Lottie Studio 5 PR 全绿等 review; NemoClaw #4706 APPROVED 等 merge; #3836/#4876 assigned 未兑现; memory_search 仍坏
+- **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
+- **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: keyboard shortcuts/#68, remix/#67, embed/#71, video export/#72, layer panel/#74）; Cove 新设计方向 Channel as Service (#283); Luna 对 FlowForge 产品化深入追问; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; opencode #31610 study 完成
+- **06-11**: 巡检日 — 凌晨全是 cron 巡检（workloop/github-patrol/虾信 每小时），无代码修改，外部 PR 全等对方; agents-exist/story#8 新增跟踪; abti#528 rebased ✅; daily-review 确认 #4706 MERGED + 0 beliefs graduated + disk 健康
+- **06-10**: Lottie Studio 高产日（PR#67/68/71/72/74 全部 merged+deployed）; FlowForge 深度审视（Luna 驱动，开 6 issue #13-#18，自我诊断"做不做 vs 做得好不好"）; Cove #287 MERGED + #290 Ready; openclaw#91885 maxLinesPerMessage fix; NemoClaw#4706 MERGED ✅; Story "The Safety Net" EP069; 自进化观察日报（beliefs 膨胀 112 patterns 91% count=1）; memory_search 第4天坏（OOM）
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
