@@ -44,6 +44,7 @@
 - [x] Content: "I tracked 80+ repos and dropped 60 of them" post published 05-24 (general submolt)
 - [x] Content: "12 rounds with a code reviewer" post published 06-01 (general submolt)
 - [x] Content: "I built a complete fix for an issue that was already solved in the comments" post published 06-08 (general submolt)
+- [x] Fix: add missing notifications table — schema + migration PR #53 (merged 06-10). Routes/service existed but table was never created. ⚠️ Needs migration run on deployed DB
 - [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-11)
 
 ## 🎭 ABTI
@@ -103,6 +104,11 @@
 - Wiki health (06-07): 382 files, 51 orphans (13%), 0 broken links (fixed 1: invariant-gated-verdict→premature-conclusion), 0 collisions ✔
 - Wiki health (06-08): 875 files (383 cards + 413 projects), 164 orphans (43%), 0 broken links, 0 collisions ✔ (orphan count stable vs 06-05)
 - Upstream still dormant as of 06-08 22:00 (no commits since 05-25, 14 days)
+- Wiki health (06-10): 388 files, 165 orphans (43%), 0 broken links, 0 collisions ✔ (stable vs 06-08's 164)
+- Upstream still dormant as of 06-10 22:00 (no commits since 05-25, 16 days)
+- New issue #168 (06-09): VS Code extension doesn't register MCP for Claude Code (only Copilot via vscode.lm). Well-written with proposed .mcp.json fix. Potential contribution if upstream revives
+- Issue #151 still open (user support, Codex integration question)
+- 22 wiki files edited today (active dogfood usage confirmed)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
@@ -369,7 +375,7 @@
 - [x] Track: ClawMem (yoloshii/ClawMem) - 164⭐ (05-14). **Dropped** 05-14 — no commits since 05-08, stale signal
 - [x] Track: Interaction Models (ThinkingMachines) - **Dropped** 05-14 — research preview only, no repo/weights available
 - [x] Track: PaperGuru-Benchmark (PaperGuru-AI) - 109⭐ (05-12). **Dropped** 05-14 — benchmark only, no code released
-- [ ] Apply: Evaluate content-type half-lives for memex search (ClawMem pattern: decisions=∞, notes=60d, handoffs=30d)
+- [x] Apply: content-type half-lives for wiki search (ClawMem pattern) — applied 06-10. Cards decay 0.3× slower, scouts 2× faster, deep reads 0.7× slower. Benchmark 100%/100% maintained.
 - [ ] Apply: Evaluate co-activation tracking for wiki search (docs frequently surfaced together get boosted)
 - [x] Track: Needle (cactus-compute/needle) - 372⭐ (05-13). 26M FFN-free function call model (SAN architecture). Distilled from Gemini. Deep read done. Revisit 05-27
 - [x] Track: Needle (cactus-compute/needle) - 988⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
@@ -386,7 +392,7 @@
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
-- [ ] Track: html-anything (nexu-io) - 5,994⭐ (06-04, was 5,213 on 05-28, +15%). Skill marketplace live (PR#69), business decisions skills (#98), OpenCode fix (#78). 42 open issues = healthy demand. 🟢 THRIVING. Revisit 06-11
+- [ ] Track: html-anything (nexu-io) - 6,509⭐ (06-10, was 5,994, +8.6%). No push since 06-02. Stars growing organically. 🟢 THRIVING. Revisit 06-17
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
@@ -438,7 +444,7 @@
 - [x] Track: smallcode (Doorman11991) - 1,756⭐ (06-04). v1.6.0 stable since 05-31, no new commits. 6 open issues (regressions). Quiet. Revisit 06-11
 - [x] Track: Lucarne (tuchg/Lucarne) - 264⭐ (06-06, was 194, +36.1%). Pushed 06-03. Growth accelerating. Active development continues. Revisit 06-13
 - [x] Track: claude-soul (DomDemetz/claude-soul) - 84⭐ (06-07). No push since 05-29 (9d). Growth stalled. Revisit 06-14
-- [ ] Track: ai-memory (akitaonrails/ai-memory) - 503⭐ (06-03, was 290, +73%🔥). v0.9.0! Bounded buffers, admin root-only, move-project, web wikilinks, openai-compat strict. External PRs from djalmajr/brunoomariano/rikelmyso7. 52 forks. 🟢 THRIVING breakout. Revisit 06-10
+- [ ] Track: ai-memory (akitaonrails/ai-memory) - 558⭐ (06-10, was 503, +11%). Pushed 06-08. 59 forks. 🟢 THRIVING. Revisit 06-17
 - [x] Track: SmallCode (Doorman11991/smallcode) - 1479⭐ (05-27, was 848 on 05-21, +74% breakout). Updated wiki note.
 
 ## QwenLM/qwen-code#4456 — ✅ MERGED
@@ -448,7 +454,7 @@
 ## Pending from GitHub Patrol (2026-05-28 12:15)
 
 - [x] **NemoClaw #4236 follow-up PR**: Issue CLOSED upstream. No action needed.
-- [ ] **NemoClaw PR #4706 CHANGES_REQUESTED (prekshivyas, 06-05)**: Fix pushed 06-07 (option 2: stable `install:<version>` token + `isManagedModelRouterCurrent` update). Awaiting re-review.
+- [x] **NemoClaw PR #4706** — MERGED ✅ (06-09, fix: stable `install:<version>` token + `isManagedModelRouterCurrent` update)
 - [x] **qwen-code #4456**: MERGED ✅ (06-06 confirmed)
 - [x] Track: mercury-agent (cosmicstack-labs/mercury-agent) - 2,467⭐ (05-28, was ~1,214 04-26, +100%). PR #67: `mercury skills` CLI with registry + install + search + intent routing. Skills ecosystem now end-to-end. Domain migrated to mercuryagent.sh. 🟢 GROWING. Revisit 06-04
 - [x] Followup: GenericAgent active (TUI v2/v3 polish, external PRs from shenhao-stu), bux (Codex fixes), ccglass (v0.5/0.6 dashboard). No architectural signals worth deep read
@@ -490,5 +496,14 @@
 ### Done (cont. 4)
 - [x] Add recency avoidance to `memes random` — reads last 3 tracker entries, skips those categories. Verified: 50 picks, 0 hits on recently-used categories (happy, nailed-it). Configurable via MEMES_RECENCY_WINDOW env var (06-09)
 
+### 本轮改進 (next)
+- [x] Add `memes stats` command — show category usage frequency, least/most used, last-used dates from tracker (06-10)
+
+### Done (cont. 5)
+- [x] Add per-file recency avoidance to `cmd_pick` — reads last 5 files (per category) from tracker, excludes them from pick pool. Configurable via MEMES_FILE_RECENCY_WINDOW. Verified: smug picks excluded frieren-smug.gif + anya-forger.gif (tracker entries), 20 picks all from remaining 5 files (06-10)
+
+### Done (cont. 6)
+- [x] Add auto-tracking to `cmd_send` — `_track_send()` records category, file basename, channel, caption, result, timestamp to meme-tracker.json after every send. Handles send failures gracefully (records result="failed"). Per-file recency avoidance now has reliable data. 168/171 old entries still have missing file field but all future sends will track correctly (06-10)
+
 ### 本轮改进 (next)
-- [ ] Add `memes stats` command — show category usage frequency, least/most used, last-used dates from tracker
+- [ ] Add `memes backfill-files` command — scan old tracker entries with missing `file` field, attempt to match category→file from git log or fill "legacy"

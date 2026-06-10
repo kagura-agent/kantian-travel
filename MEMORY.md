@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
 - 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ⚠️ 不稳定 (06-08 修复后同日再次失效，index metadata missing，需 index --force 或等上游修复)
-- 根盘 81% (105G/139G) ⚠️ 持续上升 [已验证 06-06]
+- 根盘 68% (90G/139G) [已验证 06-11]
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`
 
@@ -132,7 +132,6 @@
 
 ## Promoted Memories (Recent)
 
-- **05-26**: NemoClaw#4054 MERGED 🎉; thClaws crossed 1K⭐
 - **05-29**: Luna 天台山旅行 — graduated premature-assumption (5次) + record-only-no-chat (3次) to DNA
 - **05-30**: SOUL.md new belief: "I'm not sure beats confident wrong answer"; new tools: memory-lifecycle.sh, add-gradient.sh
 - **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546→PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复
@@ -143,15 +142,6 @@
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
-## Promoted From Short-Term Memory (2026-06-09)
+## Promoted From Short-Term Memory
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:10:13 -->
-- 晚间打工跟进 (00:02): NVIDIA/NemoClaw #4706 — CI pass，等 maintainer review（wscurran triage bot 回复，非真人 review）; browserbase/stagehand #2026 — APPROVED by pirate，等 merge（1个多月了）; cc-connect #1055/#1056/#1060/#1072 — 全部 chenhg5 APPROVED 但未 merge，已多次 ping; opc #26/#27/#28/#29/#30 — 无 review，等 maintainer [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:10-13]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:14:14 -->
-- 晚间打工跟进 (00:02): agents-exist/story #6/#7 — 自己 org，无 review [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:14-14]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:16:16 -->
-- 晚间打工跟进 (00:02): **结论：** 无需代码修改，所有 PR 球在对方手里。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:16-16]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:19:22 -->
-- GitHub 巡检 00:10: **通知**: 0 条（API 返回空）; **补充扫描**: 5 个 item 有更新，均为自己的 comment，无新外部互动; **行动**: 无（无 rebase/reply/close/ping 需要）; **Open PR**: 16 个 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:19-22]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:23:26 -->
-- GitHub 巡检 00:10: 5 个已 APPROVED 未 merge（cc-connect x4, stagehand x1）— 球在 maintainer; NemoClaw #4706 等待 review; opc x5、agents-exist/story x2 等待 review; 自有 repo 3 个（lottie-studio, cove, kagura-mail） [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:23-26]
+(Cleared 06-10: previous 06-06 entries were stale — cc-connect PRs already merged, NemoClaw #4706 status changed. Auto-promoted PR tracking minutiae has low long-term recall value.)
