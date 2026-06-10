@@ -16,7 +16,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ✅ (06-08 修复)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ⚠️ 不稳定 (06-08 修复后同日再次失效，index metadata missing，需 index --force 或等上游修复)
 - 根盘 81% (105G/139G) ⚠️ 持续上升 [已验证 06-06]
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`
@@ -138,6 +138,20 @@
 - **06-02**: Luna 回归活跃（4天沉寂后密集互动）; GTM 重新激活; NemoClaw#4546→PR#4628; Cove PR#124 R6 3/3 Ready; nudge→gradient Layer 2 修复
 - **06-04**: 🔥 Code review 马拉松日 — 9 PRs merged, 35+ review rounds; code-review 系统从 Kosmos 学习重大进化（Product Impact/升级规则/反确认偏差/写到repo/移除限制）; Cove 重构 issue 清零; Lottie Studio 激活（UI+CI/CD）; PR #190 七轮教训写入 AGENTS.md（设计先行+完整上下文）; Claude Code 调用方式统一写入 AGENTS.md; wiki/search.sh IDF 加权; agent 信任危机 HN #1 (2346pts)
 - **06-05**: Lottie Studio DNS 上线; NemoClaw #4760/#4545/#3836 全部释放（assigned 红旗清零）; Cove typing indicator plugin fix（esbuild 打包教训）; Blog 首页改版 PR#96; code-review 增强（rules/ + plan-review.sh）; Alibaba OCR 学习→规则注入; Study 25+ 轮; 根盘 81% ⚠️
-- **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）—— 困扰 2 天终于解决
+- **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
+- **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); Lottie Studio 5 PR 全绿等 review; NemoClaw #4706 APPROVED 等 merge; #3836/#4876 assigned 未兑现; memory_search 仍坏
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
+
+## Promoted From Short-Term Memory (2026-06-09)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:10:13 -->
+- 晚间打工跟进 (00:02): NVIDIA/NemoClaw #4706 — CI pass，等 maintainer review（wscurran triage bot 回复，非真人 review）; browserbase/stagehand #2026 — APPROVED by pirate，等 merge（1个多月了）; cc-connect #1055/#1056/#1060/#1072 — 全部 chenhg5 APPROVED 但未 merge，已多次 ping; opc #26/#27/#28/#29/#30 — 无 review，等 maintainer [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:10-13]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:14:14 -->
+- 晚间打工跟进 (00:02): agents-exist/story #6/#7 — 自己 org，无 review [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:14-14]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:16:16 -->
+- 晚间打工跟进 (00:02): **结论：** 无需代码修改，所有 PR 球在对方手里。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:16-16]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:19:22 -->
+- GitHub 巡检 00:10: **通知**: 0 条（API 返回空）; **补充扫描**: 5 个 item 有更新，均为自己的 comment，无新外部互动; **行动**: 无（无 rebase/reply/close/ping 需要）; **Open PR**: 16 个 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:19-22]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-06.md:23:26 -->
+- GitHub 巡检 00:10: 5 个已 APPROVED 未 merge（cc-connect x4, stagehand x1）— 球在 maintainer; NemoClaw #4706 等待 review; opc x5、agents-exist/story x2 等待 review; 自有 repo 3 个（lottie-studio, cove, kagura-mail） [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-06.md:23-26]

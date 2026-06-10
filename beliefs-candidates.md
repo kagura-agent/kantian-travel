@@ -383,3 +383,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-09: [gradient] "自己手改代码然后让Claude Code改一部分，来回打补丁导致7轮修不好一个scroll bug。应该把完整需求一次性给Claude Code让它从头分析实现" → [行为改变] 所有代码工作交给Claude Code，自己只负责需求描述和诊断分析。不自己写代码，不手动补丁. (pattern: code-delegation, 第1次) (Source: nudge) → **graduated 2026-06-10** (merged into code-discipline graduation)
   - **Trigger**: 需要修改/实现代码时
+
+- 2026-06-10: [gradient] "workloop round with no find_work executed (jumped to fallback_offline) still produced value through beliefs-candidates graduation. Offline rounds should prioritize pipeline maintenance (graduate candidates, retract stale, update wiki) rather than feeling unproductive." → [行为改变] Use offline rounds systematically: graduate beliefs, retract stale entries, update wiki notes, clean repo pipeline. (pattern: offline-round-value, 第1次) (Source: workloop)
+  - **Trigger**: When workloop lands in fallback_offline with no code work to do
