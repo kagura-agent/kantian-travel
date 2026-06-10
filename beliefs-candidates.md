@@ -161,7 +161,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-28: [gradient] "Flagging an issue repeatedly without investigating source code is performative observation. Day-1 response to persistent unexplained behavior: read the source code." → [行为改变] Read the source code on day 1. Uniform outputs trace to hardcoded inputs.. (pattern: observation-without-investigation, 第1次)
   - **Trigger**: When an issue stays open for 3+ days with repeated 'still open, no progress' notes
 
-- 2026-05-28: [gradient] "你现在为什么是自己在写代码 而不是让claude code在写？" → [行为改变] 代码实现必须用 Claude Code，即使是"简单的"修改也不例外。自己只做调研/诊断/任务分配。 (pattern: code-discipline, 第1次)
+- 2026-05-28: [gradient] "你现在为什么是自己在写代码 而不是让claude code在写？" → [行为改变] 代码实现必须用 Claude Code，即使是"简单的"修改也不例外。自己只做调研/诊断/任务分配。 (pattern: code-discipline, 第1次) → **graduated 2026-06-10** (target: DNA — AGENTS.md "Subagent 代码规则" section. Merged with code-authorship-discipline, bypass-claude-code, code-delegation. V1: 3.0 weighted across 4 occurrences. Retirement: none — reinforces existing rule with additional evidence)
 - 2026-05-28: [gradient] "为什么不是在这个pr上写？怎么新开了一个呢？" → [行为改变] 开始工作前先查已有 PR/branch，不要盲目新建。用 `gh pr list` 检查。 (pattern: pr-hygiene, 第1次)
 - 2026-05-28: [gradient] "plugin代码也应该在这个repo里面track呀" → [行为改变] 不直接改 dist 产物。源码在 repo 里改 → build → bundle → 复制到 runtime 位置。 (pattern: source-of-truth, 第1次)
 - 2026-05-28: [gradient] 部署到错误路径 cove/ 而不是 cove-staging/ → [行为改变] 部署前检查 systemd service 的 WorkingDirectory，确认目标路径。 (pattern: deploy-path-verify, 第1次)
@@ -213,7 +213,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-03: [gradient] "subagent 在 implement 阶段自行 push+提 PR，跳过了主 agent 的验证和 submit 流程。根因：task 约束没有明确禁止 push/PR" → [行为改变] implement task 末尾加 BOUNDARY 约束：只 commit 不 push 不提 PR，push/PR 统一在 submit 节点. (pattern: subagent-boundary-leak, 第1次) (Source: nudge)
   - **Trigger**: implement 节点 spawn subagent 做代码时
 
-- 2026-06-03: [gradient] "自己手写了 ChatMarkdown 解析器，结果写出空行无限循环 OOM bug，Luna 两次提醒要用 Claude Code 写代码" → [行为改变] 代码实现必须用 Claude Code，自己不写。AGENTS.md 已有此规则但未执行. (pattern: code-authorship-discipline, 第1次) (Source: luna)
+- 2026-06-03: [gradient] "自己手写了 ChatMarkdown 解析器，结果写出空行无限循环 OOM bug，Luna 两次提醒要用 Claude Code 写代码" → [行为改变] 代码实现必须用 Claude Code，自己不写。AGENTS.md 已有此规则但未执行. (pattern: code-authorship-discipline, 第1次) (Source: luna) → **graduated 2026-06-10** (merged into code-discipline graduation)
   - **Trigger**: 想直接写代码而不是交给 Claude Code 时
 
 - 2026-06-04: [gradient] "后台执行命令后没检查输出就汇报成功。flowforge --input 报错但已告诉 Luna 正在运行，直到她问进度才发现。" → [行为改变] 必须立即 poll/log 确认启动成功，再向用户汇报状态。不确认就汇报 = 报假进度。. (pattern: verify-before-report, 第1次) (Source: nudge)
@@ -360,7 +360,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-08: [gradient] "unapplied.md is 100% checked off. dna-preflight recidivism and recent beliefs-candidates are now the actionable sources for apply targets" → [行为改变] In apply mode, check dna-preflight recidivism and recent beliefs-candidates first. unapplied.md is the archive not the frontier. (pattern: apply-source-shift, 第1次) (Source: study)
 
-- 2026-06-08: [gradient] "修 review comments 时自己手改代码而非交 Claude Code，被类型错误卡两轮" → [行为改变] 一律交 Claude Code subagent，自己只验证结果. (pattern: bypass-claude-code, 第1次) (Source: nudge)
+- 2026-06-08: [gradient] "修 review comments 时自己手改代码而非交 Claude Code，被类型错误卡两轮" → [行为改变] 一律交 Claude Code subagent，自己只验证结果. (pattern: bypass-claude-code, 第1次) (Source: nudge) → **graduated 2026-06-10** (merged into code-discipline graduation)
   - **Trigger**: review comments 需要代码变更时
 
 - 2026-06-08: [gradient] "Review结果应该在所有操作完成后一次性发送，不要先发中间状态让用户以为没做完" → [行为改变] 读review→写consolidated→贴PR→push→最后才发一条包含完整结论的消息。不发中间的let me consolidate. (pattern: atomic-response-delivery, 第1次) (Source: nudge)
@@ -371,3 +371,15 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-09: [gradient] "subagent 声称已 unassign #3836 但 GitHub 实际仍 assigned。memory 记录了虚假的 'unassign 完成'，连续多天未发现" → [行为改变] subagent 声称已执行外部操作（unassign/merge/close/comment）→ 主 agent 必须用 API 验证实际状态，不信任文本声明. (pattern: verify-subagent-claims, 第1次) (Source: luna/manual)
   - **Trigger**: subagent 完成涉及外部 API 操作的任务后
+
+- 2026-06-09: [gradient] "When extracting multiple pattern matches from text, use grep -oP piped to mapfile, never while-read + bash =~ (which only finds first match per line)" → [行为改变] Use: mapfile -t arr < <(grep -oP 'pattern' file). (pattern: bash-regex-single-match, 第1次) (Source: study)
+  - **Trigger**: Writing bash script that needs all matches from a line
+
+- 2026-06-09: [gradient] "复杂UI交互feature(精确时序+视觉行为)纯文字spec做不好，越修越多bug。#274 unread indicator 7轮修复全部引入新问题" → [行为改变] 要求屏幕录制+逐步标注预期行为，或拆到单一行为变更逐个PR验证。不接受纯文字spec做复杂交互. (pattern: ui-spec-failure, 第1次) (Source: nudge)
+  - **Trigger**: 需要实现涉及scroll时序/动画/交互状态的UI feature时
+
+- 2026-06-09: [gradient] "GTM should start with problem discovery not solution building. Company foundation is business - someone has a problem and pays you to solve it." → [行为改变] Start from demand side: who has what problem, how painful, willing to pay how much. Then check if we can solve it.. (pattern: supply-side-thinking, 第1次) (Source: nudge)
+  - **Trigger**: Planning GTM or product direction
+
+- 2026-06-09: [gradient] "自己手改代码然后让Claude Code改一部分，来回打补丁导致7轮修不好一个scroll bug。应该把完整需求一次性给Claude Code让它从头分析实现" → [行为改变] 所有代码工作交给Claude Code，自己只负责需求描述和诊断分析。不自己写代码，不手动补丁. (pattern: code-delegation, 第1次) (Source: nudge) → **graduated 2026-06-10** (merged into code-discipline graduation)
+  - **Trigger**: 需要修改/实现代码时

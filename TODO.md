@@ -162,6 +162,7 @@
 - [x] **guide.md: 新增「re-read all issue comments before starting work」** - NemoClaw#4710 教训（基于 issue body 做了完整分析+实现计划，但 comment 中已有不同 root cause 分析，方向完全错误，全部白费）→ 已加入 guide.md 第 49 条 (2026-06-05)
 - [x] **guide.md: 新增「enforce hard lifecycle limits — no escape hatches」** - Luna 06-08 反馈 + cc-connect/opc/stagehand limbo 教训（14天无review→硬性close、3次"下次做"→强制unassign、去掉 explicit wait 逃生门）→ 已加入 guide.md 第 50 条 (2026-06-08)
 - [x] **guide.md: 新增「verify external operation claims — don't trust subagent text assertions」** - NemoClaw#3836 教训（subagent 声称 unassign 但实际未执行，连续 3 天基于错误 memory 记录跳过 followup）→ 已加入 guide.md 第 51 条 (2026-06-09)
+- [x] **guide.md: 新增「CI 'files modified by hooks' after rebase → re-rebase onto latest upstream, don't deep-dive formatting」** - NemoClaw#4706 教训（rebase 后 CI 报 biome format drift，实际是 upstream main 在 rebase 期间又 advance 了 3 commits，re-rebase 即修复。连续 2 次误判为格式问题浪费时间）→ 已加入 guide.md 第 52 条 (2026-06-10)
 
 ## 📚 学习
 
@@ -486,8 +487,8 @@
 ### Done (cont. 3)
 - [x] Inverse-sqrt weighted `memes random` — categories with fewer files get boosted so cute-animals (30 files) doesn't dominate random picks. Tested: 100 picks, all 26 categories represented, cute-animals dampened from ~4% to ~2% (06-09)
 
-### 本轮改进 (next)
-- [ ] Add recency avoidance to `memes random` — check meme-tracker.json last 5 entries, skip categories used in last 3 random sends
+### Done (cont. 4)
+- [x] Add recency avoidance to `memes random` — reads last 3 tracker entries, skips those categories. Verified: 50 picks, 0 hits on recently-used categories (happy, nailed-it). Configurable via MEMES_RECENCY_WINDOW env var (06-09)
 
 ### 本轮改进 (next)
-- [ ] Use categoryCounts in `memes random` to weight towards categories with more variety (avoid always landing on cute-animals' 30 files)
+- [ ] Add `memes stats` command — show category usage frequency, least/most used, last-used dates from tracker
