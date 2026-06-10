@@ -413,3 +413,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-10: [gradient] "Large repos (>1GB) like openclaw cannot run vitest locally (OOM). Manual code review + pattern matching with existing code is the practical verification method. Accept CI as primary test surface for these repos." → [行为改变] Skip local vitest, rely on CI. Focus manual review on pattern correctness (same imports, same resolution pattern, same return type).. (pattern: large-repo-testing, 第1次) (Source: workloop)
   - **Trigger**: When working on repos >500MB and vitest/tsc gets OOM killed
+
+- 2026-06-10: [gradient] "When writing generic channel config resolvers (resolveMaxLinesPerMessage, etc.), always resolve the channel defaultAccount before normalizing accountId. normalizeAccountId(undefined) returns "default" which skips configured defaultAccount overrides. Pattern: effectiveAccountId = accountId ?? channelSection.defaultAccount." → [行为改变] Always read channelSection.defaultAccount when accountId is undefined, before calling normalizeAccountId. (pattern: channel-default-account-resolution, 第1次) (Source: workloop)
+  - **Trigger**: Writing any channel config resolver that takes accountId parameter
