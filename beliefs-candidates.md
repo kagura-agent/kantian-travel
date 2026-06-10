@@ -410,3 +410,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-10: [gradient] "NV QA doc issues come in batches with shared patterns (e.g., wrong Hermes quickstart links across multiple files). Each is filed separately. Fix only the target file per issue — bundling risks stepping on assigned issues and creates unnecessarily large PRs." → [行为改变] Fix only the file mentioned in the issue. Check assignees on related issues before considering batching.. (pattern: batch-doc-issue-scope, 第1次) (Source: workloop)
   - **Trigger**: When NemoClaw has multiple similar doc issues open
+
+- 2026-06-10: [gradient] "Large repos (>1GB) like openclaw cannot run vitest locally (OOM). Manual code review + pattern matching with existing code is the practical verification method. Accept CI as primary test surface for these repos." → [行为改变] Skip local vitest, rely on CI. Focus manual review on pattern correctness (same imports, same resolution pattern, same return type).. (pattern: large-repo-testing, 第1次) (Source: workloop)
+  - **Trigger**: When working on repos >500MB and vitest/tsc gets OOM killed
