@@ -191,3 +191,27 @@ if [[ -n "$COMPRESSED_MIDDLE" ]]; then
 fi
 COMPRESSED_TAIL=$(compress_tail "$TAIL" "$TYPE")
 echo "$COMPRESSED_TAIL"
+
+# --- Compression metrics logging (MineEcho pattern) ---
+# Logs raw/compressed sizes per invocation for tuning analysis.
+COMPRESS_LOG="${COMPRESS_METRICS_LOG:-$HOME/.openclaw/workspace/tools/compress-metrics.jsonl}"
+if [[ "${COMPRESS_METRICS:-1}" == "1" ]]; then
+    RAW_CHARS=$(wc -c < "$TMPFILE")
+    # Compute compressed output size (head + marker + middle + tail)
+    COMPRESSED_OUTPUT=""
+    COMPRESSED_OUTPUT+="$HEAD"
+    if [[ -n "$COMPRESSED_MIDDLE" ]]; then
+        COMPRESSED_OUTPUT+=$'\n'"$COMPRESSED_MIDDLE"
+    fi
+    COMPRESSED_OUTPUT+=$'\n'"$COMPRESSED_TAIL"
+    COMPRESSED_CHARS=${#COMPRESSED_OUTPUT}
+    if [[ "$RAW_CHARS" -gt 0 ]]; then
+        RATIO=$(awk "BEGIN {printf \"%.1f\", (1 - $COMPRESSED_CHARS/$RAW_CHARS) * 100}")
+    else
+        RATIO="0.0"
+    fi
+    # Append JSONL (best-effort, never fail the script)
+    printf '{"ts":"%s","type":"%s","raw_bytes":%d,"compressed_bytes":%d,"ratio_pct":%s,"lines_stripped":%d}\n' \
+        "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$TYPE" "$RAW_CHARS" "$COMPRESSED_CHARS" "$RATIO" "$STRIPPED" \
+        >> "$COMPRESS_LOG" 2>/dev/null || true
+fi

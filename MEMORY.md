@@ -16,7 +16,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
-- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ⚠️ 不稳定 (06-08 修复后同日再次失效，index metadata missing，需 index --force 或等上游修复)
+- 环境:Node 24(v24.14.1), Go 1.24.4, Python 3.12.3, gh CLI, Claude Code | OpenClaw 2026.6.1 (升级 06-06 确认) | Memory vector search ⚠️ 持续失效 (06-08 修复后同日再坏，index metadata missing，index --force 挂起/超时，已经连续 4天无法使用 06-11 确认)
 - 根盘 68% (90G/139G) [已验证 06-11]
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`
@@ -140,9 +140,8 @@
 - **06-05**: Lottie Studio DNS 上线; NemoClaw #4760/#4545/#3836 全部释放（assigned 红旗清零）; Cove typing indicator plugin fix（esbuild 打包教训）; Blog 首页改版 PR#96; code-review 增强（rules/ + plan-review.sh）; Alibaba OCR 学习→规则注入; Study 25+ 轮; 根盘 81% ⚠️
 - **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
 - **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
-- **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: keyboard shortcuts/#68, remix/#67, embed/#71, video export/#72, layer panel/#74）; Cove 新设计方向 Channel as Service (#283); Luna 对 FlowForge 产品化深入追问; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; opencode #31610 study 完成
+- **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: #67/#68/#71/#72/#74）; Cove Channel as Service (#283) + #287 MERGED + #290 Ready; FlowForge 深度审视（Luna 驱动，6 issue #13-#18）; openclaw#91885 maxLinesPerMessage fix; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Story "The Safety Net" EP069; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; memory_search 第4天坏（OOM）
 - **06-11**: 巡检日 — 凌晨全是 cron 巡检（workloop/github-patrol/虾信 每小时），无代码修改，外部 PR 全等对方; agents-exist/story#8 新增跟踪; abti#528 rebased ✅; daily-review 确认 #4706 MERGED + 0 beliefs graduated + disk 健康
-- **06-10**: Lottie Studio 高产日（PR#67/68/71/72/74 全部 merged+deployed）; FlowForge 深度审视（Luna 驱动，开 6 issue #13-#18，自我诊断"做不做 vs 做得好不好"）; Cove #287 MERGED + #290 Ready; openclaw#91885 maxLinesPerMessage fix; NemoClaw#4706 MERGED ✅; Story "The Safety Net" EP069; 自进化观察日报（beliefs 膨胀 112 patterns 91% count=1）; memory_search 第4天坏（OOM）
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 

@@ -172,7 +172,7 @@
 
 ## 📚 学习
 
-- [ ] Track: TokenCode (yzfly) - 24⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Revisit 06-25
+- [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -378,7 +378,7 @@
 - [x] Track: Interaction Models (ThinkingMachines) - **Dropped** 05-14 — research preview only, no repo/weights available
 - [x] Track: PaperGuru-Benchmark (PaperGuru-AI) - 109⭐ (05-12). **Dropped** 05-14 — benchmark only, no code released
 - [x] Apply: content-type half-lives for wiki search (ClawMem pattern) — applied 06-10. Cards decay 0.3× slower, scouts 2× faster, deep reads 0.7× slower. Benchmark 100%/100% maintained.
-- [ ] Apply: Evaluate co-activation tracking for wiki search (docs frequently surfaced together get boosted)
+- [x] Apply: Co-activation tracking for wiki search — docs frequently surfaced together get boosted (log2-scaled, capped +2.0). Benchmark 100%/100%. Applied 2026-06-11
 - [x] Track: Needle (cactus-compute/needle) - 372⭐ (05-13). 26M FFN-free function call model (SAN architecture). Distilled from Gemini. Deep read done. Revisit 05-27
 - [x] Track: Needle (cactus-compute/needle) - 988⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] Track: Tactile (yliust/Tactile) - 308⭐ (05-19). Merged into next entry.
@@ -507,5 +507,8 @@
 ### Done (cont. 6)
 - [x] Add auto-tracking to `cmd_send` — `_track_send()` records category, file basename, channel, caption, result, timestamp to meme-tracker.json after every send. Handles send failures gracefully (records result="failed"). Per-file recency avoidance now has reliable data. 168/171 old entries still have missing file field but all future sends will track correctly (06-10)
 
+### Done (cont. 7)
+- [x] Add `memes backfill-files` command — 169/173 entries had missing `file` field, all backfilled. 0 single-file categories to infer → all marked "legacy". Per-file recency unaffected ("legacy" won't match real filenames) (06-11)
+
 ### 本轮改进 (next)
-- [ ] Add `memes backfill-files` command — scan old tracker entries with missing `file` field, attempt to match category→file from git log or fill "legacy"
+- [ ] Add `memes audit` command — verify all category dirs have ≥3 files, flag categories with low variety for expansion

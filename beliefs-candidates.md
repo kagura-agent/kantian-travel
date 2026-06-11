@@ -419,3 +419,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-10: [gradient] "flowforge start with workloop-night.yaml created a "workloop" instance instead of "workloop-night", causing the night follow-up to enter daytime workloop nodes (find_work, discover, reflect). Need to investigate why the workflow name mapping is wrong." → [行为改变] verify flowforge active shows correct workflow name after start; if wrong, check yaml name field vs filename. (pattern: flowforge-workflow-name-mismatch, 第1次) (Source: workloop)
   - **Trigger**: starting workloop-night.yaml via flowforge start
+
+- 2026-06-11: [gradient] "两个独立话题并行讨论时，把前一个话题(loop runtime用用户身份)的结论自动带入下一个话题(bridge方案)，导致回答跑偏被Luna纠正" → [行为改变] 多个话题并行时，明确区分当前在讨论哪个，不要把前一个话题的结论自动带入下一个话题. (pattern: topic-bleed, 第1次) (Source: nudge)
+
+- 2026-06-11: [gradient] "Scout 时用 hn.algolia.com/api/v1/search 替代 web_fetch HN front page" → [行为改变] web_fetch https://hn.algolia.com/api/v1/search?query=X&tags=story. (pattern: use-hn-algolia-api, 第1次) (Source: study)
+  - **Trigger**: 需要获取 HN 最新讨论但 web_fetch timeout 或 kimi 不支持 freshness

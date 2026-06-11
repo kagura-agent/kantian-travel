@@ -11,3 +11,4 @@
 !travel/
 !travel/**
 .nudge-audit.log
+tools/compress-metrics.jsonl
