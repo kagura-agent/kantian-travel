@@ -169,7 +169,7 @@
 - [x] **guide.md: 新增「enforce hard lifecycle limits — no escape hatches」** - Luna 06-08 反馈 + cc-connect/opc/stagehand limbo 教训（14天无review→硬性close、3次"下次做"→强制unassign、去掉 explicit wait 逃生门）→ 已加入 guide.md 第 50 条 (2026-06-08)
 - [x] **guide.md: 新增「verify external operation claims — don't trust subagent text assertions」** - NemoClaw#3836 教训（subagent 声称 unassign 但实际未执行，连续 3 天基于错误 memory 记录跳过 followup）→ 已加入 guide.md 第 51 条 (2026-06-09)
 - [x] **guide.md: 新增「CI 'files modified by hooks' after rebase → re-rebase onto latest upstream, don't deep-dive formatting」** - NemoClaw#4706 教训（rebase 后 CI 报 biome format drift，实际是 upstream main 在 rebase 期间又 advance 了 3 commits，re-rebase 即修复。连续 2 次误判为格式问题浪费时间）→ 已加入 guide.md 第 52 条 (2026-06-10)
-- [ ] **guide.md: 新增「claim without prompt delivery → get scooped」** - opencode#30662 教训（claim issue 后没及时提 PR，beenotung 提了 PR #31092 覆盖同一 issue，claim 变废纸）。rule #40 覆盖「忘记承诺」，本条覆盖「慢兑现」：活跃 repo 的 issue 有竞争时间窗口，claim 后 24-48h 内不提 PR → 被 scoop 概率极高
+- [x] **guide.md: 新增「claim without prompt delivery → get scooped」** - opencode#30662 教训（claim issue 后没及时提 PR，beenotung 提了 PR #31092 覆盖同一 issue，claim 变废纸）。rule #40 覆盖「忘记承诺」，本条覆盖「慢兑现」：活跃 repo 的 issue 有竞争时间窗口，claim 后 24-48h 内不提 PR → 被 scoop 概率极高
 
 ## 📚 学习
 
