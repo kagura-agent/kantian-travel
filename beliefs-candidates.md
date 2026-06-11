@@ -432,3 +432,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-11: [gradient] "Fresh-context reviewer can give factually incorrect MEDIUM findings (e.g., claiming open npm uses gnome-open/kde-open when it does not). Verify reviewer claims against actual source code before implementing fixes." → [行为改变] Check the actual library source code to confirm whether the reviewer claim is accurate before spending time on changes. (pattern: reviewer-claim-verification, 第1次) (Source: workloop)
   - **Trigger**: When fresh-context review returns NEEDS_WORK with MEDIUM findings
+
+- 2026-06-11: [gradient] "Claude Code bridge 调试中积累的多个教训：(1) --input-format stream-json 的 user_message 格式不被 claude 处理，需要用 -p 每次 spawn (2) --session-id 会锁定 session，进程崩溃后锁不释放 (3) assistant 事件没有 subtype:text，不能靠 subtype 过滤 (4) CLAUDE_WORKING_DIR 决定 Claude Code 的身份，不能指向自己的 workspace" → [行为改变] Claude Code CLI 集成时：用 -p 传消息不用 stdin stream-json；用 randomUUID 不用 deterministic session ID；不检查 subtype 直接匹配 type；working dir 要独立. (pattern: claude-code-bridge-integration, 第1次) (Source: nudge)
+
+- 2026-06-11: [gradient] "Workloop can pick the same issue twice if prior instance completed but a new instance starts before gogetajob tracking is confirmed. The find_work node should check for existing open PRs by kagura-agent on the issue before selecting it." → [行为改变] Add a check in find_work: gh pr list --repo owner/repo --author=kagura-agent --search="issue_number" before claiming an issue. (pattern: duplicate-issue-selection, 第1次) (Source: workloop)
+  - **Trigger**: find_work selects an issue that already has an open PR from me
