@@ -424,3 +424,11 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-11: [gradient] "Scout 时用 hn.algolia.com/api/v1/search 替代 web_fetch HN front page" → [行为改变] web_fetch https://hn.algolia.com/api/v1/search?query=X&tags=story. (pattern: use-hn-algolia-api, 第1次) (Source: study)
   - **Trigger**: 需要获取 HN 最新讨论但 web_fetch timeout 或 kimi 不支持 freshness
+
+- 2026-06-11: [gradient] "followup round targets.md update is manual editing, no tracking-update.sh script" → [行为改变] create study/tracking-update.sh to automate: tracking-update.sh <name> --date --notes. (pattern: missing-automation, 第1次) (Source: study)
+  - **Trigger**: after followup, need to update 4-5 target entries manually
+
+- 2026-06-11: [gradient] "Luna明确产品优先级：Cove先做Discord做不到的差异化功能，再补齐Discord已有体验" → [行为改变] Cove issue优先级排序时，差异化功能（富消息、workflow可视化、pluggable backend、loop runtime）优先于体验对齐（scroll、渲染修复等）. (pattern: product-priority, 第1次) (Source: nudge)
+
+- 2026-06-11: [gradient] "Fresh-context reviewer can give factually incorrect MEDIUM findings (e.g., claiming open npm uses gnome-open/kde-open when it does not). Verify reviewer claims against actual source code before implementing fixes." → [行为改变] Check the actual library source code to confirm whether the reviewer claim is accurate before spending time on changes. (pattern: reviewer-claim-verification, 第1次) (Source: workloop)
+  - **Trigger**: When fresh-context review returns NEEDS_WORK with MEDIUM findings
