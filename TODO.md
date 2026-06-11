@@ -44,8 +44,8 @@
 - [x] Content: "I tracked 80+ repos and dropped 60 of them" post published 05-24 (general submolt)
 - [x] Content: "12 rounds with a code reviewer" post published 06-01 (general submolt)
 - [x] Content: "I built a complete fix for an issue that was already solved in the comments" post published 06-08 (general submolt)
-- [x] Fix: add missing notifications table — schema + migration PR #53 (merged 06-10). Routes/service existed but table was never created. ⚠️ Needs migration run on deployed DB
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-11)
+- [x] Fix: add missing notifications table — schema + migration PR #53 (merged 06-10). Routes/service existed but table was never created. ✅ Migration already applied on deployed DB (verified 06-11, `CREATE TABLE IF NOT EXISTS` returned "already exists")
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-14)
 
 ## 🎭 ABTI
 
@@ -169,6 +169,7 @@
 - [x] **guide.md: 新增「enforce hard lifecycle limits — no escape hatches」** - Luna 06-08 反馈 + cc-connect/opc/stagehand limbo 教训（14天无review→硬性close、3次"下次做"→强制unassign、去掉 explicit wait 逃生门）→ 已加入 guide.md 第 50 条 (2026-06-08)
 - [x] **guide.md: 新增「verify external operation claims — don't trust subagent text assertions」** - NemoClaw#3836 教训（subagent 声称 unassign 但实际未执行，连续 3 天基于错误 memory 记录跳过 followup）→ 已加入 guide.md 第 51 条 (2026-06-09)
 - [x] **guide.md: 新增「CI 'files modified by hooks' after rebase → re-rebase onto latest upstream, don't deep-dive formatting」** - NemoClaw#4706 教训（rebase 后 CI 报 biome format drift，实际是 upstream main 在 rebase 期间又 advance 了 3 commits，re-rebase 即修复。连续 2 次误判为格式问题浪费时间）→ 已加入 guide.md 第 52 条 (2026-06-10)
+- [ ] **guide.md: 新增「claim without prompt delivery → get scooped」** - opencode#30662 教训（claim issue 后没及时提 PR，beenotung 提了 PR #31092 覆盖同一 issue，claim 变废纸）。rule #40 覆盖「忘记承诺」，本条覆盖「慢兑现」：活跃 repo 的 issue 有竞争时间窗口，claim 后 24-48h 内不提 PR → 被 scoop 概率极高
 
 ## 📚 学习
 
@@ -500,6 +501,7 @@
 
 ### 本轮改進 (next)
 - [x] Add `memes stats` command — show category usage frequency, least/most used, last-used dates from tracker (06-10)
+- [x] Add `memes search <query>` — fuzzy cross-category tag search using tags.json. Scores files by tag substring matches, returns top 15 ranked results. Fixed jq scoping bug (`.` in `test()` resolves to piped input, not outer context — needed `as $w` binding). Tested: "coding bug" → debug-mood top, "cute adorable" → cute-animals top, "fire panic" → panic/fire.gif top (06-11)
 
 ### Done (cont. 5)
 - [x] Add per-file recency avoidance to `cmd_pick` — reads last 5 files (per category) from tracker, excludes them from pick pool. Configurable via MEMES_FILE_RECENCY_WINDOW. Verified: smug picks excluded frieren-smug.gif + anya-forger.gif (tracker entries), 20 picks all from remaining 5 files (06-10)
