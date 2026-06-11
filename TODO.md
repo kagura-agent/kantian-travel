@@ -172,6 +172,8 @@
 
 ## 📚 学习
 
+- [ ] Track: TokenCode (yzfly) - 24⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Revisit 06-25
+
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
 - [x] STSS 贡献:开 issue 问 LICENSE(MIT/Apache-2.0)→ Issue #3 opened 04-27
