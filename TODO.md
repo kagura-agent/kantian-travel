@@ -105,10 +105,12 @@
 - Wiki health (06-08): 875 files (383 cards + 413 projects), 164 orphans (43%), 0 broken links, 0 collisions ✔ (orphan count stable vs 06-05)
 - Upstream still dormant as of 06-08 22:00 (no commits since 05-25, 14 days)
 - Wiki health (06-10): 388 files, 165 orphans (43%), 0 broken links, 0 collisions ✔ (stable vs 06-08's 164)
-- Upstream still dormant as of 06-10 22:00 (no commits since 05-25, 16 days)
-- New issue #168 (06-09): VS Code extension doesn't register MCP for Claude Code (only Copilot via vscode.lm). Well-written with proposed .mcp.json fix. Potential contribution if upstream revives
+- Upstream still dormant as of 06-11 22:00 (no commits since 05-25, 17 days)
+- New issue #169 (06-10): MCP memex_write/memex_retro silently fails autoSync when remote uses SSH (SSH_AUTH_SOCK not inherited). Well-written with root cause + 3 suggested fixes. Real fix opportunity but holding off per rule #48 (dormant upstream)
+- Issue #168 (06-09): VS Code extension doesn't register MCP for Claude Code (only Copilot via vscode.lm). Well-written with proposed .mcp.json fix. Potential contribution if upstream revives
 - Issue #151 still open (user support, Codex integration question)
-- 22 wiki files edited today (active dogfood usage confirmed)
+- Wiki health (06-11): 392 files, 52 orphans (13%), 0 broken links, 0 collisions ✔
+- 24 wiki files edited today (active dogfood usage confirmed)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
@@ -475,9 +477,9 @@
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
 - [x] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08 → 06-09: 204⭐ stable, multi-tenant admin hardening phase. Next revisit in targets.md (06-22)
 - [x] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08 → 06-09: 12,711⭐, doc cleanup only. Next revisit in targets.md (06-22)
-- [ ] Track: sandboxes (tastyeffectco/sandboxes) - 395⭐ (06-05, 2 days old, ~200⭐/day). Self-hosted agent sandbox engine. Breakout growth. Revisit 06-12
+- [ ] Track: sandboxes (tastyeffectco/sandboxes) - 572⭐ (06-12, was 395 on 06-05, +45%). Per-sandbox idle_policy feature. Very active. Revisit 06-19
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
-- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 258⭐ (06-05, was 133 on 05-23, +94%). Growth spike worth investigating. Revisit 06-12
+- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 345⭐ (06-12, was 258 on 06-05, +34%). New skills: github-repo-tour, repo-promo. Revisit 06-19
 - [ ] Track: 21-day-self-interview (Forlives) - 128⭐ (06-06, 2 days old). Agent as existential psychology mirror. Non-coding skill with strong traction. Revisit 06-13
 
 ## 🎭 Agent-Memes
@@ -511,6 +513,9 @@
 
 ### Done (cont. 7)
 - [x] Add `memes backfill-files` command — 169/173 entries had missing `file` field, all backfilled. 0 single-file categories to infer → all marked "legacy". Per-file recency unaffected ("legacy" won't match real filenames) (06-11)
+
+### Done (cont. 8)
+- [x] Fix alias-tracking bug — `cmd_send` was recording raw alias (e.g. "celebrate") instead of resolved category ("happy"). Extracted `_resolve_category()` helper, `cmd_send` now resolves before tracking. Remapped 7 phantom "celebrate" entries → "happy" in tracker. Verified: `memes pick celebrate` → happy/, stats clean (06-11)
 
 ### 本轮改进 (next)
 - [ ] Add `memes audit` command — verify all category dirs have ≥3 files, flag categories with low variety for expansion
