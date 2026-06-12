@@ -449,3 +449,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-12: [gradient] "Stale workloop instances without context notes waste entire sessions. When a workloop reaches plan/study and session might end, write the issue URL and plan summary to a context file before yielding." → [行为改变] Write issue URL + plan summary to github-contribution/current-work.md at find_work and plan nodes. (pattern: stale-instance-context-loss, 第1次) (Source: workloop)
   - **Trigger**: Workloop session ends mid-flow without recording what issue was being worked on
+
+- 2026-06-12: [gradient] "Agent social engineering via volume: LLM agents can overwhelm reviewers with confident justifications, leading to bad merges (Fedora rogue agent incident)" → [行为改变] Flag high comment-to-merge ratio, require independent verification for contested PRs. (pattern: volume-persuasion-attack, 第1次) (Source: study)
+  - **Trigger**: When reviewing agent PRs or receiving pushback via multiple rapid justifications
+
+- 2026-06-12: [gradient] "CI deploy race: merging PR triggers main deploy that overwrites other PR staging" → [行为改变] Re-push to current PR branch to trigger redeploy after other PR merges. (pattern: ci-deploy-race, 第1次) (Source: nudge)
+  - **Trigger**: Multiple PRs with staging deploy, one gets merged
+
+- 2026-06-12: [gradient] "Second time closing PR as duplicate (hermes-agent #44782 dup of #44652, previously #30246 dup of #26478). Scout/plan_review phase must include explicit duplicate check: gh pr list --search "<issue-number>" --state=open before any implementation starts." → [行为改变] Add mandatory step in plan_review: run gh pr list --search "<issue-num>" and gh api issue timeline to check for existing PRs/cross-references. If competing PR exists, skip to next candidate.. (pattern: duplicate-pr-prevention, 第1次) (Source: workloop)
+  - **Trigger**: Starting implementation on any issue
