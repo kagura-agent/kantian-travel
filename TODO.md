@@ -113,7 +113,7 @@
 - 24 wiki files edited today (active dogfood usage confirmed)
 
 ## 🔧 Infrastructure Maintenance
-- [ ] 🔴 **memory_search 完全失效** — providerKey hash 不匹配（API key 变更后）。Vector store: unknown。需 `openclaw memory index --force` 在资源充足时运行，或 Luna 确认 API key 变更原因。已知 3+ 天。
+- [x] ~~memory_search 完全失效~~ — 2026-06-12 验证恢复正常，返回相关结果（text+vector 混合搜索）。可能在某次 gateway restart 后自动修复。
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
 - [ ] sops 3.9.4 → 3.12.2 upgrade (flagged since 05-02, no security urgency but 3 major versions behind)
 - [x] Evaluate memex 0.1.32 fork vs upstream 1.0.1: npm `memex@1.0.1` is different package (2016). No rebase needed. Resolved 05-06
@@ -176,6 +176,7 @@
 ## 📚 学习
 
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
+- [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -518,4 +519,15 @@
 - [x] Fix alias-tracking bug — `cmd_send` was recording raw alias (e.g. "celebrate") instead of resolved category ("happy"). Extracted `_resolve_category()` helper, `cmd_send` now resolves before tracking. Remapped 7 phantom "celebrate" entries → "happy" in tracker. Verified: `memes pick celebrate` → happy/, stats clean (06-11)
 
 ### 本轮改进 (next)
-- [ ] Add `memes audit` command — verify all category dirs have ≥3 files, flag categories with low variety for expansion
+- [x] Add `memes audit` command — verify all category dirs have ≥3 files, check tag coverage, flag low-variety categories. Default min=3 (all 26 pass), configurable threshold. Fixed tags.json flat-key lookup bug during implementation (06-12)
+
+### Done (cont. 9)
+- [x] Add `memes trending [days]` command — compares recent N days vs previous N days per category. Shows delta with 📈/📉 arrows, highlights top riser and faller. Default 7d, configurable. Tested: 7d and 14d windows, correct counts (06-12)
+
+### 本轮改进 (next)
+- [ ] Add memes to underused categories — trending shows 10+ categories with 0 recent sends (greeting-*, bruh, encourage, love, popcorn, sad, thanks, waiting). Pick 3 lowest and add 2 fresh memes each
+
+## hermes-agent PR #44782 — CLOSED (duplicate)
+- [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
+- CI fix was completed but PR closed before merge
+- **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
