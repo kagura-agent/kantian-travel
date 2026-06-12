@@ -440,3 +440,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-12: [gradient] "Stale flowforge instances create overhead — when work is done in one session but the instance isn't advanced, the next cron run has to manually fast-forward through all nodes. Consider adding a "mark complete" shortcut to flowforge." → [行为改变] Always advance flowforge to completion before session ends. If work is done, run through remaining nodes in the same session.. (pattern: stale-instance-overhead, 第1次) (Source: workloop)
   - **Trigger**: When resuming a workloop instance that was already completed in a prior session
+
+- 2026-06-12: [gradient] "saturation script should consider inter-day interval — consecutive-day scouts with same query yield 80%+ overlap" → [行为改变] Use narrower/different topic queries or switch to followup mode. (pattern: scout-interval-awareness, 第1次) (Source: study)
+  - **Trigger**: saturation says scout=open but last scout was <2 days ago
+
+- 2026-06-12: [gradient] "tracking-update.sh breaks on notes containing pipe or slash chars due to sed quoting bug" → [行为改变] use simple notes or manually edit targets.md; fix sed quoting in script. (pattern: tool-friction, 第1次) (Source: study)
+  - **Trigger**: using tracking-update.sh with special chars in notes
+
+- 2026-06-12: [gradient] "Stale workloop instances without context notes waste entire sessions. When a workloop reaches plan/study and session might end, write the issue URL and plan summary to a context file before yielding." → [行为改变] Write issue URL + plan summary to github-contribution/current-work.md at find_work and plan nodes. (pattern: stale-instance-context-loss, 第1次) (Source: workloop)
+  - **Trigger**: Workloop session ends mid-flow without recording what issue was being worked on
