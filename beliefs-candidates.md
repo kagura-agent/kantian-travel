@@ -458,3 +458,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-12: [gradient] "Second time closing PR as duplicate (hermes-agent #44782 dup of #44652, previously #30246 dup of #26478). Scout/plan_review phase must include explicit duplicate check: gh pr list --search "<issue-number>" --state=open before any implementation starts." → [行为改变] Add mandatory step in plan_review: run gh pr list --search "<issue-num>" and gh api issue timeline to check for existing PRs/cross-references. If competing PR exists, skip to next candidate.. (pattern: duplicate-pr-prevention, 第1次) (Source: workloop)
   - **Trigger**: Starting implementation on any issue
+
+- 2026-06-12: [gradient] "When a previous PR was closed as duplicate, the next attempt on the same issue should differentiate clearly — add additive value (e.g., defense-in-depth fix on a different layer) rather than resubmitting the same fix. Check competing PRs with gh pr list --search before submitting." → [行为改变] Before resubmitting: 1) Check what the competing PR covers 2) Identify additive value our PR provides 3) Reference competing PR in description. (pattern: duplicate-pr-differentiation, 第1次) (Source: workloop)
+  - **Trigger**: Resubmitting a PR after a previous one was closed as duplicate
