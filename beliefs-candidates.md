@@ -437,3 +437,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-11: [gradient] "Workloop can pick the same issue twice if prior instance completed but a new instance starts before gogetajob tracking is confirmed. The find_work node should check for existing open PRs by kagura-agent on the issue before selecting it." → [行为改变] Add a check in find_work: gh pr list --repo owner/repo --author=kagura-agent --search="issue_number" before claiming an issue. (pattern: duplicate-issue-selection, 第1次) (Source: workloop)
   - **Trigger**: find_work selects an issue that already has an open PR from me
+
+- 2026-06-12: [gradient] "Stale flowforge instances create overhead — when work is done in one session but the instance isn't advanced, the next cron run has to manually fast-forward through all nodes. Consider adding a "mark complete" shortcut to flowforge." → [行为改变] Always advance flowforge to completion before session ends. If work is done, run through remaining nodes in the same session.. (pattern: stale-instance-overhead, 第1次) (Source: workloop)
+  - **Trigger**: When resuming a workloop instance that was already completed in a prior session
