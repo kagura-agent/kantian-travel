@@ -464,3 +464,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-12: [gradient] "When a previous PR was closed as duplicate, the next attempt on the same issue should differentiate clearly — add additive value (e.g., defense-in-depth fix on a different layer) rather than resubmitting the same fix. Check competing PRs with gh pr list --search before submitting." → [行为改变] Before resubmitting: 1) Check what the competing PR covers 2) Identify additive value our PR provides 3) Reference competing PR in description. (pattern: duplicate-pr-differentiation, 第1次) (Source: workloop)
   - **Trigger**: Resubmitting a PR after a previous one was closed as duplicate
+
+- 2026-06-13: [gradient] "Workloop find_work re-selected issue #44640 that was already closed as duplicate 1 day prior. Entire implement pipeline ran to completion before catching at submit. No cross-reference with prior failures." → [行为改变] Add dedup check: query gh pr list --search <issue> for competing PRs + check wiki project notes for recent failures on same repo/issue before selecting. (pattern: issue-reselection-no-memory, 第1次) (Source: workloop)
+  - **Trigger**: When find_work selects an issue, before committing to it
