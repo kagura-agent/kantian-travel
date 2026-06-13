@@ -177,7 +177,7 @@
 
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
-- [ ] Track: thu-nmrc/openloop - 55⭐ (06-13). Agent-agnostic loop engineering framework, Python, THU origin. Stall detection unimplemented = contribution opportunity. Revisit 06-27
+- [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -475,14 +475,14 @@
 - [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
 - [x] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. 248⭐ (06-09). wiki/projects/quarq-argus-agent.md. Key takeaway: REQUIRED_DATA fallback retrieval (two-pass with confidence check) + Temporal Truth Protocol (separate storage/narrative/relative time). Monitor, revisit 06-23
-- [x] Track: autonomous-qa-loop (MaxwellCCC) - 59⭐ (06-07, +9%). Lightweight QA validation commit 06-06. Still tiny. Revisit 06-14
+- [x] Track: autonomous-qa-loop (MaxwellCCC) - 59⭐ (06-13, flat). **Dropped** 06-13 — flat growth (59→59⭐), 0 PRs, 0 issues, solo dev, no community signal
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
 - [x] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08 → 06-09: 204⭐ stable, multi-tenant admin hardening phase. Next revisit in targets.md (06-22)
 - [x] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08 → 06-09: 12,711⭐, doc cleanup only. Next revisit in targets.md (06-22)
 - [ ] Track: sandboxes (tastyeffectco/sandboxes) - 572⭐ (06-12, was 395 on 06-05, +45%). Per-sandbox idle_policy feature. Very active. Revisit 06-19
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 345⭐ (06-12, was 258 on 06-05, +34%). New skills: github-repo-tour, repo-promo. Revisit 06-19
-- [ ] Track: 21-day-self-interview (Forlives) - 128⭐ (06-06, 2 days old). Agent as existential psychology mirror. Non-coding skill with strong traction. Revisit 06-13
+- [x] Track: 21-day-self-interview (Forlives) - 153⭐ (06-13, was 128, +20%). **Dropped** 06-13 — phantomstars bot flagged fake engagement (issue #1). Only 2 commits, 1 external PR (metadata fix). Star farming pattern
 
 ## 🎭 Agent-Memes
 
