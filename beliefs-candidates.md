@@ -207,6 +207,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: 做UI header/panel/footer对齐时
 
 - 2026-06-03: [gradient] "followup 节点发现 assigned-but-no-PR 的 issue 后，用分析/计划合理化跳过，去找新活而不是当轮解决。#3836 PR 被关了都没跟进。" → [行为改变] followup 发现未兑现 assigned issue → 本轮不允许进 find_work，必须先处理完所有 assigned（提 PR / unassign / 评论放弃）. (pattern: assigned-issue-neglect, 第1次) (Source: nudge)
+  **Status: graduated 2026-06-14** → Workflow (workloop.yaml resolve_assigned gate — followup node Step 0 enforces assigned-issue check before find_work). Express path: 81 hits across 10+ days + structural enforcement (workloop followup gate). V2 PASS: predicts excuses to skip stale assignments in favor of new work. V3 PASS: fresh agent would naturally gravitate toward new issues over cleaning up old commitments. Retires: none (novel pattern — structural gate was built in response to this gradient).
   - **Trigger**: followup 检查 assigned issues 时发现未兑现的
 
 - 2026-06-03: [gradient] "Discord Markdown 功能连续说错两次：先说不渲染heading后说渲染，被Luna纠正" → [行为改变] 不确定就说不确定，不要凭印象断言。被纠正后不要矫枉过正又往反方向猜. (pattern: verify-before-claim, 第1次) (Source: luna)
