@@ -467,3 +467,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "Workloop find_work re-selected issue #44640 that was already closed as duplicate 1 day prior. Entire implement pipeline ran to completion before catching at submit. No cross-reference with prior failures." → [行为改变] Add dedup check: query gh pr list --search <issue> for competing PRs + check wiki project notes for recent failures on same repo/issue before selecting. (pattern: issue-reselection-no-memory, 第1次) (Source: workloop)
   - **Trigger**: When find_work selects an issue, before committing to it
+
+- 2026-06-13: [gradient] "architect-loop's frozen gates pattern — define acceptance criteria in committed files before dispatching subagents, making builder edits to gate files an automatic fail" → [行为改变] Write acceptance criteria to a file and commit BEFORE dispatch. Verify against criteria after completion, not during.. (pattern: frozen-acceptance-criteria, 第1次) (Source: study)
+  - **Trigger**: dispatching subagent code tasks without pre-defined acceptance criteria

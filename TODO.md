@@ -178,6 +178,8 @@
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
+- [ ] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
+- [ ] Track: DanMcInerney/architect-loop - 178⭐ (06-13, NEW). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
