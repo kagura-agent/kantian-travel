@@ -112,6 +112,9 @@
 - Issue #151 still open (user support, Codex integration question)
 - Wiki health (06-11): 392 files, 52 orphans (13%), 0 broken links, 0 collisions ✔
 - 24 wiki files edited today (active dogfood usage confirmed)
+- Wiki health (06-13): 396 files, 53 orphans (13%), 0 broken links, 0 collisions ✔ (stable)
+- 19 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant as of 06-13 22:00 (no commits since 05-25, 19 days)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -543,8 +546,11 @@
 ### Done (cont. 12)
 - [x] Clean up meme-tracker.json data — unified timestamp field (6 entries `timestamp`→`time`), removed 4 stale top-level category keys + stale coverageAudit, removed outlier fields (trigger/context/date/channelName), fixed 1 missing `file`, simplified jq fallback patterns in memes.sh (06-13)
 
+### Done (cont. 13)
+- [x] Add greeting-morning/greeting-night memes — morning 4→7 (lucky-star-yawn, anime-wave-morning, kitten-waking-up), night 5→7 (frieren-sleep, blanket-goodnight). All Tenor, GIF89a valid. tags.json 199→204, audit passes (06-13)
+
 ### 本轮改进 (next)
-- [ ] Add greeting-morning/greeting-night memes (both at 3 files, near minimum) — expand to 5+ each for better variety
+- [ ] Review meme-tracker.json health — tracker shows 0 sends + 0 history entries, investigate if tracking is broken after the 06-13 cleanup
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
