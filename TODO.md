@@ -113,7 +113,7 @@
 - 24 wiki files edited today (active dogfood usage confirmed)
 
 ## 🔧 Infrastructure Maintenance
-- [x] ~~memory_search 完全失效~~ — 2026-06-12 验证恢复正常，返回相关结果（text+vector 混合搜索）。可能在某次 gateway restart 后自动修复。
+- [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
 - [ ] sops 3.9.4 → 3.12.2 upgrade (flagged since 05-02, no security urgency but 3 major versions behind)
 - [x] Evaluate memex 0.1.32 fork vs upstream 1.0.1: npm `memex@1.0.1` is different package (2016). No rebase needed. Resolved 05-06
@@ -179,7 +179,8 @@
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
 - [ ] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
-- [ ] Track: DanMcInerney/architect-loop - 178⭐ (06-13, NEW). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
+- [ ] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
+- [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -473,8 +474,8 @@
 - [x] amd/gaia #1209: Fix race condition in `_tls_hostname` — MERGED ✅
 - [x] amd/gaia #1210: Fix remaining stale test assertions — MERGED ✅
 - [x] amd/gaia #1208: Fix CI lint failures — MERGED ✅
-- [ ] Track: Beads (gastownhall/beads) - 24,355⭐ (06-05, +0.6%). Steady/mature. Revisit 06-12
-- [ ] Track: re_gent (regent-vcs/re_gent) - 658⭐ (06-05, +3.0%). Pi harness PR#50, sessions JSON PR#47. External contributors active. 🟢 THRIVING. Revisit 06-12
+- [x] Track: Beads (gastownhall/beads) - 24,496⭐ (06-13, +0.6%). Very active infra sprint: proxied/embedded CLI parity, sqlbuild extraction, Dolt workarounds, CI overhaul. No new release since v1.0.5. Revisit 06-18
+- [x] Track: re_gent (regent-vcs/re_gent) - 686⭐ (06-13, +4.3%). Short hash support PR#59, Windows session ref fix. Moderate pace, last push 06-08. Revisit 06-19
 - [x] Track: Statewave (smaramwbc/statewave) - 213⭐ (05-30). **Dropped** 05-30 — flat growth (+0.5%), solo maintainer
 - [x] Deep read: agent-oss/Quarq (quarqlabs/agent-oss) — memory-native agent with hybrid retrieval, HyDE, temporal grounding. 248⭐ (06-09). wiki/projects/quarq-argus-agent.md. Key takeaway: REQUIRED_DATA fallback retrieval (two-pass with confidence check) + Temporal Truth Protocol (separate storage/narrative/relative time). Monitor, revisit 06-23
 - [x] Track: autonomous-qa-loop (MaxwellCCC) - 59⭐ (06-13, flat). **Dropped** 06-13 — flat growth (59→59⭐), 0 PRs, 0 issues, solo dev, no community signal
@@ -530,8 +531,11 @@
 ### Done (cont. 10)
 - [x] Add memes to underused categories — bruh (4→6), popcorn (4→6), love (5→7). Added: confused-dog-bruh, monkey-bruh, dis-gonna-be-good, spongebob-popcorn, cat-heart-eyes, sending-love. All from GIPHY, valid GIF89a, tags.json updated (200 entries). Audit passes (06-12)
 
+### Done (cont. 11)
+- [x] Update SKILL.md total meme count (193→199) and tags.json totalFiles. Category count confirmed 26. (06-13)
+
 ### 本轮改进 (next)
-- [ ] Update SKILL.md total meme count (was 193, now 199) and verify category count still 26
+- [ ] Clean up meme-tracker.json data inconsistency — `sends` array is empty while all 180 records live in `history` array. `_track_send()` likely writes to `history` but old code referenced `sends`. Unify to single array
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

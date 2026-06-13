@@ -16,7 +16,7 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.5 (5181e4f) | Memory vector search ❌ 完全不可用（embedding provider 已从 config 移除，索引存在但无法查询，连续 7 天+）。memory_get 100% 可靠
+- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.6 (8c802aa) | Memory vector search ❌ 不可用（06-13 三轮 eval: 0% 成功率。根因: openai-compatible embedding provider 已从 config 移除，当前 provider 全是 anthropic-messages 无 embedding 能力。索引存在 13,045 chunks 但无法查询。需重新配置 embedding provider 或 `openclaw memory index --force`）。memory_get 100% 可靠
 - 根盘 75% (98G/139G) [已验证 06-13 10:51]
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`

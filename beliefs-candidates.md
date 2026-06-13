@@ -470,3 +470,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "architect-loop's frozen gates pattern — define acceptance criteria in committed files before dispatching subagents, making builder edits to gate files an automatic fail" → [行为改变] Write acceptance criteria to a file and commit BEFORE dispatch. Verify against criteria after completion, not during.. (pattern: frozen-acceptance-criteria, 第1次) (Source: study)
   - **Trigger**: dispatching subagent code tasks without pre-defined acceptance criteria
+
+- 2026-06-13: [gradient] "tracking-update.sh sed delimiter collision breaks notes with forward slashes" → [行为改变] Fix sed to use alternate delimiter or pipe through a safe escaping function. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
+  - **Trigger**: followup updates notes containing /
