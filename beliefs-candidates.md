@@ -476,3 +476,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "When importing transitive dependencies (e.g. linkifyjs via @tiptap/extension-link), eslint import-x/no-extraneous-dependencies will fail in CI. Fix: eslint-disable comment, not adding to package.json (lockfile update may OOM on large monorepos)." → [行为改变] Use eslint-disable-next-line comment with explanation of why the dep is available. (pattern: transitive-dep-lint-fix, 第1次) (Source: workloop)
   - **Trigger**: importing a package that is a transitive dependency but not a direct dependency
+
+- 2026-06-13: [gradient] "When a previous PR was closed for only fixing part of a multi-path issue, check ALL code paths before planning. Tracing both resolveAnthropicCacheRetentionFamily and detectCompat end-to-end revealed the dual-gate pattern that #38221 missed." → [行为改变] Before implementing, trace the complete data flow end-to-end. Identify all gates/checks that need to agree. Document each one in the plan.. (pattern: dual-gate-trace, 第1次) (Source: workloop)
+  - **Trigger**: fixing a bug that a prior PR attempted but was closed/rejected
