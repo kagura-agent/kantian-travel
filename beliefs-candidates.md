@@ -100,7 +100,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **Count**: 12 (cross-context, 10 days)
 - **Graduation rationale**: V1 ✅ 12 hits across 10 days. V2 ✅ Predicts behavior in every future scout. V3 ✅ Fresh agents default to "investigate" over "verify existing knowledge." Already embedded in study.yaml step 0.
 
-### PR closed 先自省质量 (2026-05-11, vscode-icons #4040)
+### PR closed 先自省质量 (2026-05-11, vscode-icons #4040) → **retracted 2026-06-14** (rationale: stale — single occurrence, no recurrence in 34 days. Core principle already covered by SOUL.md "I'm not sure" belief + AGENTS.md 验证纪律)
 - **Trigger**: PR 被 close/reject 时，第一反应归因于外部（bot 身份、maintainer 偏见）而不是自查 PR 质量
 - **Pattern**: vscode-icons #4040 被叫 "slop"，我记录的教训只写了"bot 身份被拒"。Luna 指出 maintainer 在发现 bot 之前就已经说"does too much, needs more info"——PR 本身就有问题
 - **Fix**: PR 被 close 时，第一步看自己的 PR 质量（scope 是否太大、论证是否充分、是否逐条有据），不要急着归因外部。先自省，再判断是不是对方的问题
