@@ -177,6 +177,7 @@
 
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
+- [ ] Track: thu-nmrc/openloop - 55⭐ (06-13). Agent-agnostic loop engineering framework, Python, THU origin. Stall detection unimplemented = contribution opportunity. Revisit 06-27
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -524,8 +525,11 @@
 ### Done (cont. 9)
 - [x] Add `memes trending [days]` command — compares recent N days vs previous N days per category. Shows delta with 📈/📉 arrows, highlights top riser and faller. Default 7d, configurable. Tested: 7d and 14d windows, correct counts (06-12)
 
+### Done (cont. 10)
+- [x] Add memes to underused categories — bruh (4→6), popcorn (4→6), love (5→7). Added: confused-dog-bruh, monkey-bruh, dis-gonna-be-good, spongebob-popcorn, cat-heart-eyes, sending-love. All from GIPHY, valid GIF89a, tags.json updated (200 entries). Audit passes (06-12)
+
 ### 本轮改进 (next)
-- [ ] Add memes to underused categories — trending shows 10+ categories with 0 recent sends (greeting-*, bruh, encourage, love, popcorn, sad, thanks, waiting). Pick 3 lowest and add 2 fresh memes each
+- [ ] Update SKILL.md total meme count (was 193, now 199) and verify category count still 26
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
