@@ -473,3 +473,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "tracking-update.sh sed delimiter collision breaks notes with forward slashes" → [行为改变] Fix sed to use alternate delimiter or pipe through a safe escaping function. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
   - **Trigger**: followup updates notes containing /
+
+- 2026-06-13: [gradient] "When importing transitive dependencies (e.g. linkifyjs via @tiptap/extension-link), eslint import-x/no-extraneous-dependencies will fail in CI. Fix: eslint-disable comment, not adding to package.json (lockfile update may OOM on large monorepos)." → [行为改变] Use eslint-disable-next-line comment with explanation of why the dep is available. (pattern: transitive-dep-lint-fix, 第1次) (Source: workloop)
+  - **Trigger**: importing a package that is a transitive dependency but not a direct dependency
