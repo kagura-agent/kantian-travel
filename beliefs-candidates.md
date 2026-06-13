@@ -184,6 +184,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Followup mode, repo shows recent push, but my last followup was within 24h
 
 - 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge)
+  **Status: graduated 2026-06-13** → DNA (AGENTS.md "自己的工具必须用" section + Workflow Guard structural enforcement via workflow-guard.sh). Already encoded in DNA before formal graduation — marking retroactively. Retires: none (novel rule at time of encoding).
   - **Trigger**: 有 workflow 的任务觉得手动也能做，跳过 workflow 入口
 
 - 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第3次 — merged from flowforge-workflow-targeting/multi-instance-disambiguation/flowforge-multi-instance-targeting: 06-02 study + 06-03 study + 06-04 study, all self-generated 0.5x = 1.5 weighted) (Source: study) → **graduated 2026-06-08** (target: Tool code — flowforge engine.ts requireActiveInstance() now errors when multiple instances active and no -w flag. Structural fix eliminates the failure mode entirely. Retires: no prior rule — this is a new structural guard)
@@ -199,6 +200,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Running flowforge next without -w flag while multiple instances active
 
 - 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第2次 — 06-02 nudge + 06-03 nudge, both self-generated 0.5x = 1.0 weighted) (Source: nudge)
+  **Status: graduated 2026-06-13** → (see first entry)
   - **Trigger**: Task matches a known workflow but steps feel familiar
 
 - 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna)
@@ -220,6 +222,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: 用 background:true 执行命令后
 
 - 2026-06-04: [gradient] "三轮 code review 都跳过了 reflection 步骤。手动 spawn 替代 FlowForge 后丢失了 prompt evolution 和 reviewer assessment。Round 2 就该发现安全测试要求太弱，但没做 Layer 2 反思，等 Luna 问才改。" → [行为改变] 即使手动 spawn，完成汇总后必须执行 reflection checklist：Layer 1 记录 + Layer 2 读 runs/ 找 prompt 盲点 + Layer 3 评估 reviewer 表现。不能只做 Layer 1。. (pattern: skip-reflection, 第1次) (Source: luna)
+  **Status: graduated 2026-06-13** → Knowledge-base (wiki/cards/reflection-first-casualty.md). Express path: weighted evidence 2.0 (Luna-sourced) + structural enforcement (FlowForge workflow nodes). V2 PASS: predicts reflection will be cut first under any time pressure. V3 PASS: fresh agent would naturally prioritize "real work" over meta-reflection. Retires: none (novel insight).
   - **Trigger**: 手动执行 workflow 步骤时
 
 - 2026-06-04: [gradient] "Review只看标题级标记漏掉reviewer正文里的其他需修项" → [行为改变] 逐条过完所有reviewer的每个finding再列action items不只看Overall Verdict和红黄标题. (pattern: shallow-review-reading, 第1次) (Source: nudge)
