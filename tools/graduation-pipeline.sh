@@ -117,6 +117,13 @@ for tag in "${!ELIGIBLE_PATTERNS[@]}"; do
   echo "  │"
   echo "  │  Triple Verification checklist:"
   echo "  │    V1 Cross-context: ${hits} hits (≥3 needed) ✅"
+  # Check express path eligibility
+  PATTERN_SLUG=$(echo "$tag" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+  if grep -rlq "$PATTERN_SLUG\|$tag" "$HOME/.openclaw/workspace/tools/"*.sh 2>/dev/null || \
+     grep -rlq "$PATTERN_SLUG\|$tag" "$HOME/.openclaw/workspace/flowforge/workflows/"*.yaml 2>/dev/null || \
+     grep -q "$PATTERN_SLUG\|$tag" "$HOME/.openclaw/workspace/AGENTS.md" 2>/dev/null; then
+    echo "  │    ⚡ Express path: V1 threshold=2.0 (structural enforcement found)"
+  fi
   echo "  │    V2 Predictive Power: ? (needs agent evaluation)"
   echo "  │    V3 Non-obvious: ? (needs agent evaluation)"
   echo "  │"

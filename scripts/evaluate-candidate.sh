@@ -129,6 +129,20 @@ else
   WEIGHTED_SCORE=$((EXTERNAL_COUNT + SELF_COUNT / 2))
 fi
 
+# Express graduation path: if weighted ≥2.0 and structural enforcement exists,
+# V1 threshold relaxes from 3.0 to 2.0. "Proven by implementation, not repeated failure."
+# Check for structural enforcement: tool/script/workflow that enforces this pattern.
+STRUCTURAL_ENFORCEMENT=""
+HAS_STRUCTURAL=false
+# Check if pattern name appears in workflow files, tool scripts, or AGENTS.md enforcement sections
+PATTERN_SLUG=$(echo "$SEARCH" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+if grep -rlq "$PATTERN_SLUG\|$SEARCH" "$HOME/.openclaw/workspace/tools/"*.sh 2>/dev/null || \
+   grep -rlq "$PATTERN_SLUG\|$SEARCH" "$HOME/.openclaw/workspace/flowforge/workflows/"*.yaml 2>/dev/null || \
+   grep -q "$PATTERN_SLUG\|$SEARCH" "$HOME/.openclaw/workspace/AGENTS.md" 2>/dev/null; then
+  HAS_STRUCTURAL=true
+  STRUCTURAL_ENFORCEMENT="Pattern has structural enforcement (tool/workflow/DNA rule already enforces this behavior)"
+fi
+
 echo "═══════════════════════════════════════════"
 echo "🔍 Independent Candidate Evaluation"
 echo "═══════════════════════════════════════════"
@@ -140,6 +154,10 @@ echo "📊 Memory occurrences found: $OCCURRENCE_COUNT"
 echo "📊 JSONL log: ${UNIQUE_DAYS} unique days | gradient-scan: ${GRADIENT_SCAN_DAYS} hits in last 14d"
 echo "📊 Evidence sources: ${EXTERNAL_COUNT} external (1.0x) + ${SELF_COUNT} self-generated (0.5x) = ${WEIGHTED_SCORE} weighted"
 echo "   (Self-referential discount: self-generated evidence counts at 0.5x weight)"
+if [ "$HAS_STRUCTURAL" = true ]; then
+  echo "📊 Structural enforcement: ✅ FOUND — express path eligible (V1 threshold: 2.0 instead of 3.0)"
+  echo "   $STRUCTURAL_ENFORCEMENT"
+fi
 echo ""
 echo "═══════════════════════════════════════════"
 echo ""
@@ -170,7 +188,10 @@ Evidence sources: ${EXTERNAL_COUNT} external (1.0x weight) + ${SELF_COUNT} self-
 - JSONL unique days: $UNIQUE_DAYS
 - **Self-referential discount**: Self-generated evidence (from nudge, study, reflect, workloop) counts at **0.5x weight**. Only externally-triggered evidence (Luna feedback, PR reviews, manual observations) counts at full 1.0x weight. This prevents the agent from bootstrapping its own confidence.
 - Weighted evidence score: ${WEIGHTED_SCORE} (need ≥3.0 to pass)
-- Score: PASS if weighted evidence ≥3.0, FAIL otherwise
+- **Express graduation path**: If weighted evidence ≥2.0 AND structural enforcement exists (a tool, script, or workflow already enforces this behavior), V1 threshold relaxes to 2.0. Rationale: the behavior has been "proven by implementation" — a structural fix already prevents recurrence, so waiting for 3 more failures is pointless.
+  - Structural enforcement detected: $([ "$HAS_STRUCTURAL" = true ] && echo "YES — $STRUCTURAL_ENFORCEMENT" || echo "NO")
+  - Express path eligible: $([ "$HAS_STRUCTURAL" = true ] && echo "YES (threshold=2.0)" || echo "NO (standard threshold=3.0)")
+- Score: PASS if evidence meets applicable threshold, FAIL otherwise
 
 ### V2: Predictive Power
 - Does this belief help in FUTURE scenarios not yet encountered?
