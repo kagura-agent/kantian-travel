@@ -492,3 +492,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-14: [gradient] "tracking-update.sh sed escaping bug" → [行为改变] Fix sed delimiter in tracking-update.sh to use pipe or hash instead of slash. (pattern: tool-friction-sed-escaping, 第1次) (Source: study)
   - **Trigger**: followup notes contain slashes or special chars
+
+- 2026-06-14: [gradient] "Resuming a workloop that was partially completed in a previous session wastes time re-verifying already-committed code. When the implement node has already been done (branch exists, commits pushed, PR open), the flowforge state should reflect that so resume skips straight to the next unfinished node." → [行为改变] Check branch/PR existence first when resuming implement node. If code is committed and PR exists, advance immediately to pre_push_audit.. (pattern: workloop-resume-efficiency, 第1次) (Source: workloop)
+  - **Trigger**: When resuming a workloop with existing branch+PR
