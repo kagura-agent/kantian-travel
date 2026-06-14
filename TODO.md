@@ -184,10 +184,11 @@
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
-- [ ] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
-- [ ] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
-- [ ] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
+- [x] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
+- [x] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
+- [x] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
+- [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -412,6 +413,7 @@
 - [ ] Track: html-anything (nexu-io) - 6,509⭐ (06-10, was 5,994, +8.6%). No push since 06-02. Stars growing organically. 🟢 THRIVING. Revisit 06-17
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
+- [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
 - [ ] Apply: Evaluate GenericAgent multi-observer perspective shifting (user/reviewer/attacker) for our goal/task management prompts (from goal_mode 05-20 rewrite)

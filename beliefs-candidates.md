@@ -483,3 +483,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-14: [gradient] "FlowForge workloop gets stuck when cron session ends mid-workflow (plan_review approved but never advanced). Resume should be faster — check plan review subagent output, verify PR state, skip redundant steps instead of re-executing." → [行为改变] On resume: 1) read subagent outputs from session history 2) check if PR/implementation already exists 3) fast-forward through completed steps instead of re-running verifications from scratch. (pattern: workflow-resume-efficiency, 第1次) (Source: workloop)
   - **Trigger**: resuming a workloop instance that was paused mid-execution
+
+- 2026-06-14: [gradient] "Use HN Algolia API instead of firebaseio topstories for scouting — single call, structured JSON, no timeout" → [行为改变] Use hn.algolia.com/api/v1/search?tags=front_page instead of firebaseio topstories. (pattern: hn-algolia-preferred, 第1次) (Source: study)
+  - **Trigger**: Fetching HN front page data
