@@ -480,3 +480,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "When a previous PR was closed for only fixing part of a multi-path issue, check ALL code paths before planning. Tracing both resolveAnthropicCacheRetentionFamily and detectCompat end-to-end revealed the dual-gate pattern that #38221 missed." → [行为改变] Before implementing, trace the complete data flow end-to-end. Identify all gates/checks that need to agree. Document each one in the plan.. (pattern: dual-gate-trace, 第1次) (Source: workloop)
   - **Trigger**: fixing a bug that a prior PR attempted but was closed/rejected
+
+- 2026-06-14: [gradient] "FlowForge workloop gets stuck when cron session ends mid-workflow (plan_review approved but never advanced). Resume should be faster — check plan review subagent output, verify PR state, skip redundant steps instead of re-executing." → [行为改变] On resume: 1) read subagent outputs from session history 2) check if PR/implementation already exists 3) fast-forward through completed steps instead of re-running verifications from scratch. (pattern: workflow-resume-efficiency, 第1次) (Source: workloop)
+  - **Trigger**: resuming a workloop instance that was paused mid-execution
