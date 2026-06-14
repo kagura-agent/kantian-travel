@@ -190,6 +190,8 @@ This is a structural fix for `workflow-bypass` (4-day recidivist). Graduated fro
 
 **给 Claude Code 完整上下文，不替它抽象。** Claude Code 有自主分析能力——issue 原文、review 原文、错误日志、相关代码都直接给，让它自己判断什么重要。我的角色是给方向和约束，不是嚼碎了喂。
 
+**要求 spec pushback（Phase 0）。** Claude Code prompt 里加一段："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. Silent compliance = defect." 这不是客气——agent 看到了代码你没看到，它的反对意见是信号。来源：[[architect-loop]] Rule #3 "Disagreement is mandatory"。
+
 任何场景（heartbeat、自触发、FlowForge、手动 spawn）下 subagent 涉及代码工作时：
 ```
 cd /path/to/project && claude --print --permission-mode bypassPermissions "任务描述"
