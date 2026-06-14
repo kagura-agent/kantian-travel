@@ -185,6 +185,7 @@
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
 - [ ] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
+- [ ] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
 - [ ] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
 
