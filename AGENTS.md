@@ -192,6 +192,8 @@ This is a structural fix for `workflow-bypass` (4-day recidivist). Graduated fro
 
 **要求 spec pushback（Phase 0）。** Claude Code prompt 里加一段："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. Silent compliance = defect." 这不是客气——agent 看到了代码你没看到，它的反对意见是信号。来源：[[architect-loop]] Rule #3 "Disagreement is mandatory"。
 
+**YAGNI 六阶梯（代码生成最小化）。** Claude Code prompt 里加最小化约束——按顺序检查，停在第一个成立的阶梯：(1) 真的需要这段代码吗？不需要就不写。(2) 标准库能做？用标准库。(3) 平台原生功能？用原生。(4) 已安装的依赖能做？用已有依赖。(5) 能一行搞定？写一行。(6) 以上都不行，才写最小实现。简化的地方加 `// ponytail: <升级条件>` 注释标记升级路径。来源：[[ponytail-yagni-skill]] 6-rung ladder（965⭐，promptfoo 验证 80-94% less code）。
+
 任何场景（heartbeat、自触发、FlowForge、手动 spawn）下 subagent 涉及代码工作时：
 ```
 cd /path/to/project && claude --print --permission-mode bypassPermissions "任务描述"
