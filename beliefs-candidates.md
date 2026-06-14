@@ -489,3 +489,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-14: [gradient] "tracking-update.sh sed bug recidivist: notes with special chars break the script" → [行为改变] Fix the script to use alternate sed delimiter or pipe through escaping function. Do not manually work around it.. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
   - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or parens
+
+- 2026-06-14: [gradient] "tracking-update.sh sed escaping bug" → [行为改变] Fix sed delimiter in tracking-update.sh to use pipe or hash instead of slash. (pattern: tool-friction-sed-escaping, 第1次) (Source: study)
+  - **Trigger**: followup notes contain slashes or special chars
