@@ -100,7 +100,9 @@
 - 24 wiki files edited today (active dogfood usage confirmed)
 - Wiki health (06-13): 396 files, 53 orphans (13%), 0 broken links, 0 collisions ✔ (stable)
 - 19 wiki files edited today (active dogfood usage confirmed)
-- Upstream still dormant as of 06-13 22:00 (no commits since 05-25, 19 days)
+- Wiki health (06-14): 920 files, 167 orphans (42%), 0 broken links, 0 collisions ✔ (file count jump: wiki grew significantly from projects + cards)
+- 12 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant as of 06-14 22:00 (no commits since 05-25, 20 days)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -544,8 +546,11 @@
 ### Done (cont. 15)
 - [x] Add memes to lowest-variety categories — sad (5→7: sad-puppy, sad-pikachu), thanks (5→7: anime-thanks, grateful-heart), thinking (5→7: anime-thinking, math-lady), tired (5→7: exhausted-cat, face-desk). All GIPHY, GIF89a valid. tags.json 204→212, audit passes (06-14)
 
-### 本轮改进 (next)
-- [ ] Add 1 more meme to 8 categories still at 6 files (bruh, confused, disappointed, greeting-bye, popcorn, shrug, waiting, working) — bring all to 7+ standard
+### Done (cont. 16)
+- [x] Add 1 more meme to 8 categories still at 6 files (bruh, confused, disappointed, greeting-bye, popcorn, shrug, waiting, working) — all at 7+. tags.json updated (220 entries), SKILL.md count 212→220, audit passes (06-14)
+
+### 本轮改進 (next)
+- [ ] Review meme variety per category — check if any category has >50% same-style GIFs (e.g. all anime or all live-action). Add 1 contrasting-style meme where needed
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
