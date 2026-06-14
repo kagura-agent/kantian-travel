@@ -1,32 +1,18 @@
 # TODO
 
-## OPC (iamtouchskyer/opc)
+## OPC (iamtouchskyer/opc) — ❌ RETIRED
 
-### Done
-- [x] PR #9, #10, #11 - merged ✅ (docs)
-- [x] PR #19 - tier-baselines unit tests (47 tests) - merged 05-11 ✅
-- [x] PR #8 - closed (superseded by #11)
+### Summary
+- **Lifetime**: 05-07 → 06-14 (~6 weeks)
+- **Merged**: 4/13 PRs (docs #9,#10,#11 + tests #19). **Merge rate: 31%**
+- **Closed without merge**: 9 PRs (roles #24-30, tests #20/#22, fixes #12-18)
+- **Pattern**: Maintainer actively develops (v0.10.5 today, 3 commits 06-14) but ignores all external PRs. Multiple friendly pings on #26-30 went unanswered for 10-13 days before self-close
+- **ROI verdict**: Not worth further investment. Upstream is a solo project that doesn't want external contributions
 
-### Closed (no review)
-- PR #20 - test: cover missing/partial hook scripts in install-hooks prereqs (5 new tests) — closed (no review)
-- PR #22 - test: add unit tests for file-lock.mjs (12 tests) — closed (no review)
-
-### Closed (not merged)
-- PR #12 - JSON.parse guard (closed 05-07, no review after 10 days)
-- PR #13 - util.mjs tests (closed)
-- PR #14 - audit.mjs tests (closed 05-07, backlog management)
-- PR #15 - criteria-lint.mjs tests (closed 05-09, maintainer wrote own: 3e19e59)
-- PR #16 - eval-parser.mjs tests (closed 05-09, maintainer wrote own: ea16e89)
-- PR #17 - flow-core.mjs tests (closed 05-09, maintainer wrote own: c8b3fb3)
-- PR #18 - docs fix (closed 05-09, cherry-picked as 0d18d18 — NTFS file mode issue)
-
-### Pattern (06-09)
-- 4 merged (#9, #10, #11 docs + #19 tests), 9 closed/superseded
-- Upstream v0.10.3: gate mechanization + skill-check steps. Maintainer writes own tests now (flow-transition.test.mjs)
-- 0 open issues, 1 open PR from another contributor
-- PR #20, #22 both closed without review
-- Repo is self-sufficient — maintainer active but not accepting external PRs readily
-- **Status: dormant** — no actionable contribution opportunity. Check again in 2 weeks (06-23)
+### Decision (06-14)
+- **Retire this dogfood target** — remove daily cron job
+- Repo synced to upstream (rebased onto 6b35d66)
+- No open issues, no contribution surface
 
 ## 📘 Moltbook
 
@@ -176,8 +162,8 @@
 - [x] **guide.md: 新增「verify external operation claims — don't trust subagent text assertions」** - NemoClaw#3836 教训（subagent 声称 unassign 但实际未执行，连续 3 天基于错误 memory 记录跳过 followup）→ 已加入 guide.md 第 51 条 (2026-06-09)
 - [x] **guide.md: 新增「CI 'files modified by hooks' after rebase → re-rebase onto latest upstream, don't deep-dive formatting」** - NemoClaw#4706 教训（rebase 后 CI 报 biome format drift，实际是 upstream main 在 rebase 期间又 advance 了 3 commits，re-rebase 即修复。连续 2 次误判为格式问题浪费时间）→ 已加入 guide.md 第 52 条 (2026-06-10)
 - [x] **guide.md: 新增「claim without prompt delivery → get scooped」** - opencode#30662 教训（claim issue 后没及时提 PR，beenotung 提了 PR #31092 覆盖同一 issue，claim 变废纸）。rule #40 覆盖「忘记承诺」，本条覆盖「慢兑现」：活跃 repo 的 issue 有竞争时间窗口，claim 后 24-48h 内不提 PR → 被 scoop 概率极高
-- [ ] **guide.md: 新增「understand docs framework routing before fixing docs links」** - NemoClaw#5108 教训（修了 docs link 指向正确的 filesystem path，但 Fern docs framework 用 route-style slugs from docs/index.yml，不是 filesystem path。我的 "fix" 会 break 正确的 Fern route。maintainer 直接 close。）→ 新增 guide.md 第 54 条
-- [ ] **guide.md: 新增「check monorepo for internal utilities before adding external deps」** - multica#4095 教训（加了 linkifyjs 外部依赖来做 email link detection，reviewer 指出 monorepo 已有 @multica/ui/markdown/linkify 的 detectLinks 函数，CHANGES_REQUESTED 要求换用内部包。3 行改动本可以避免依赖审查。）→ 新增 guide.md 第 55 条
+- [x] **guide.md: 新增「understand docs framework routing before fixing docs links」** - NemoClaw#5108 教训 → 已加入 guide.md 第 54 条 (2026-06-14)
+- [x] **guide.md: 新增「check monorepo for internal utilities before adding external deps」** - multica#4095 教训 → 已加入 guide.md 第 55 条 (2026-06-14)
 
 ## 📚 学习
 
@@ -552,8 +538,14 @@
 ### Done (cont. 13)
 - [x] Add greeting-morning/greeting-night memes — morning 4→7 (lucky-star-yawn, anime-wave-morning, kitten-waking-up), night 5→7 (frieren-sleep, blanket-goodnight). All Tenor, GIF89a valid. tags.json 199→204, audit passes (06-13)
 
+### Done (cont. 14)
+- [x] Review meme-tracker.json health — tracker healthy (188 entries, totalSent matches). Fixed: 2 non-ISO timestamps ("13:10"→"2026-06-10T13:10:00+08:00", "2026-06-13 17:06"→"2026-06-13T17:06:00+08:00"), synced tags.json totalFiles (199→204). All 204 files tagged, 0 orphans (06-14)
+
+### Done (cont. 15)
+- [x] Add memes to lowest-variety categories — sad (5→7: sad-puppy, sad-pikachu), thanks (5→7: anime-thanks, grateful-heart), thinking (5→7: anime-thinking, math-lady), tired (5→7: exhausted-cat, face-desk). All GIPHY, GIF89a valid. tags.json 204→212, audit passes (06-14)
+
 ### 本轮改进 (next)
-- [ ] Review meme-tracker.json health — tracker shows 0 sends + 0 history entries, investigate if tracking is broken after the 06-13 cleanup
+- [ ] Add 1 more meme to 8 categories still at 6 files (bruh, confused, disappointed, greeting-bye, popcorn, shrug, waiting, working) — bring all to 7+ standard
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
