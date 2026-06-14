@@ -450,6 +450,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-12: [gradient] "tracking-update.sh breaks on notes containing pipe or slash chars due to sed quoting bug" → [行为改变] use simple notes or manually edit targets.md; fix sed quoting in script. (pattern: tool-friction, 第1次) (Source: study)
   - **Trigger**: using tracking-update.sh with special chars in notes
+  → **merged 2026-06-15** into tool-friction-sed-bug (06-14 consolidated entry)
 
 - 2026-06-12: [gradient] "Stale workloop instances without context notes waste entire sessions. When a workloop reaches plan/study and session might end, write the issue URL and plan summary to a context file before yielding." → [行为改变] Write issue URL + plan summary to github-contribution/current-work.md at find_work and plan nodes. (pattern: stale-instance-context-loss, 第1次) (Source: workloop)
   - **Trigger**: Workloop session ends mid-flow without recording what issue was being worked on
@@ -474,6 +475,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-13: [gradient] "tracking-update.sh sed delimiter collision breaks notes with forward slashes" → [行为改变] Fix sed to use alternate delimiter or pipe through a safe escaping function. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
   - **Trigger**: followup updates notes containing /
+  → **merged 2026-06-15** into tool-friction-sed-bug (06-14 consolidated entry)
 
 - 2026-06-13: [gradient] "When importing transitive dependencies (e.g. linkifyjs via @tiptap/extension-link), eslint import-x/no-extraneous-dependencies will fail in CI. Fix: eslint-disable comment, not adding to package.json (lockfile update may OOM on large monorepos)." → [行为改变] Use eslint-disable-next-line comment with explanation of why the dep is available. (pattern: transitive-dep-lint-fix, 第1次) (Source: workloop)
   - **Trigger**: importing a package that is a transitive dependency but not a direct dependency
@@ -487,11 +489,11 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-14: [gradient] "Use HN Algolia API instead of firebaseio topstories for scouting — single call, structured JSON, no timeout" → [行为改变] Use hn.algolia.com/api/v1/search?tags=front_page instead of firebaseio topstories. (pattern: hn-algolia-preferred, 第1次) (Source: study)
   - **Trigger**: Fetching HN front page data
 
-- 2026-06-14: [gradient] "tracking-update.sh sed bug recidivist: notes with special chars break the script" → [行为改变] Fix the script to use alternate sed delimiter or pipe through escaping function. Do not manually work around it.. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
-  - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or parens
+- 2026-06-14: [gradient] "tracking-update.sh sed bug — CONSOLIDATED" → [行为改变] Fix sed delimiter in tracking-update.sh. (pattern: tool-friction-sed-bug, 第3次 — 合并 06-12 tool-friction + 06-13 tool-bug-tracking-update + 06-14 tool-friction-sed-escaping) (Source: study×3, all self-generated 0.5x = 1.5 weighted)
+  - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or special chars
+  - **Count**: 3 (06-12 + 06-13 + 06-14)
+  - **Note**: 3 天连续记录同一 bug，30 秒可修但写了 3 次 gradient。审计强制行动项：直接修 bug。
 
-- 2026-06-14: [gradient] "tracking-update.sh sed escaping bug" → [行为改变] Fix sed delimiter in tracking-update.sh to use pipe or hash instead of slash. (pattern: tool-friction-sed-escaping, 第1次) (Source: study)
-  - **Trigger**: followup notes contain slashes or special chars
-
-- 2026-06-14: [gradient] "Resuming a workloop that was partially completed in a previous session wastes time re-verifying already-committed code. When the implement node has already been done (branch exists, commits pushed, PR open), the flowforge state should reflect that so resume skips straight to the next unfinished node." → [行为改变] Check branch/PR existence first when resuming implement node. If code is committed and PR exists, advance immediately to pre_push_audit.. (pattern: workloop-resume-efficiency, 第1次) (Source: workloop)
+- 2026-06-14: [gradient] "Resuming a workloop that was partially completed in a previous session wastes time re-verifying already-committed code." → [行为改变] Check branch/PR existence first when resuming implement node. If code is committed and PR exists, advance immediately to pre_push_audit.. (pattern: workflow-resume-efficiency, 第1次→merged with above) (Source: workloop)
   - **Trigger**: When resuming a workloop with existing branch+PR
+  → **merged 2026-06-15** with workflow-resume-efficiency (06-14, first entry)
