@@ -486,3 +486,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-14: [gradient] "Use HN Algolia API instead of firebaseio topstories for scouting — single call, structured JSON, no timeout" → [行为改变] Use hn.algolia.com/api/v1/search?tags=front_page instead of firebaseio topstories. (pattern: hn-algolia-preferred, 第1次) (Source: study)
   - **Trigger**: Fetching HN front page data
+
+- 2026-06-14: [gradient] "tracking-update.sh sed bug recidivist: notes with special chars break the script" → [行为改变] Fix the script to use alternate sed delimiter or pipe through escaping function. Do not manually work around it.. (pattern: tool-bug-tracking-update, 第1次) (Source: study)
+  - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or parens
