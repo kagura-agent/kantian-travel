@@ -510,3 +510,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-15: [gradient] "Competing PR check should happen at find_work or study stage, not just at submit. Issue #32371 had no comments/assignees but another PR appeared within hours. An early gh pr list --search check would have caught this and saved an entire implementation cycle." → [行为改变] Add competing PR search at find_work: gh pr list --search "issue-number OR keywords" --state=open. If existing PR found with CI green, skip the issue.. (pattern: competing-pr-early-check, 第1次) (Source: workloop)
   - **Trigger**: After selecting an issue, before starting study/plan
+
+- 2026-06-15: [gradient] "When deep-reading workflow engines, read gates/constraints first — they reveal actual safety philosophy. README = aspirational, gates = enforced." → [行为改变] Start with gates/constraints code, then tests, then README. (pattern: gates-over-readme, 第1次) (Source: study)
+  - **Trigger**: evaluating agent orchestration projects
+
+- 2026-06-15: [gradient] "Check for competing PRs at study/plan stage, not at submit. Use gh pr list --search "<issue-number>" before investing implementation time." → [行为改变] At study node: run gh pr list --search "issue-number" --state open to detect competing PRs before investing compute in implementation. (pattern: competing-pr-early-check, 第1次) (Source: workloop)
+  - **Trigger**: About to plan/implement a fix for an issue without checking if someone else is already working on it
