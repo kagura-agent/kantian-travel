@@ -404,7 +404,6 @@
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
-- [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
 - [ ] Apply: Evaluate GenericAgent multi-observer perspective shifting (user/reviewer/attacker) for our goal/task management prompts (from goal_mode 05-20 rewrite)
