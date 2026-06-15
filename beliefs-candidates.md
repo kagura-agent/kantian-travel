@@ -490,6 +490,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Fetching HN front page data
 
 - 2026-06-14: [gradient] "tracking-update.sh sed bug — CONSOLIDATED" → [行为改变] Fix sed delimiter in tracking-update.sh. (pattern: tool-friction-sed-bug, 第3次 — 合并 06-12 tool-friction + 06-13 tool-bug-tracking-update + 06-14 tool-friction-sed-escaping) (Source: study×3, all self-generated 0.5x = 1.5 weighted)
+  - **Status: ✅ RESOLVED 2026-06-15** — Fixed awk -v backslash interpretation (real bug) + echo→printf. Commit 8ff3e67 pushed to kagura-agent/study.
   - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or special chars
   - **Count**: 3 (06-12 + 06-13 + 06-14)
   - **Note**: 3 天连续记录同一 bug，30 秒可修但写了 3 次 gradient。审计强制行动项：直接修 bug。
