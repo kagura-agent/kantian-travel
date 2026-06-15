@@ -498,3 +498,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-14: [gradient] "Resuming a workloop that was partially completed in a previous session wastes time re-verifying already-committed code." → [行为改变] Check branch/PR existence first when resuming implement node. If code is committed and PR exists, advance immediately to pre_push_audit.. (pattern: workflow-resume-efficiency, 第1次→merged with above) (Source: workloop)
   - **Trigger**: When resuming a workloop with existing branch+PR
   → **merged 2026-06-15** with workflow-resume-efficiency (06-14, first entry)
+
+- 2026-06-15: [gradient] "Issue was already closed 3h before find_work selected it. find_work must verify issue state is OPEN before selecting, not just check labels/assignee." → [行为改变] Add gh issue view STATE check in find_work or scout — verify issue is OPEN and has no merged competing PRs before committing to implementation. (pattern: stale-issue-selection, 第1次) (Source: workloop)
+  - **Trigger**: find_work selects an issue for implementation
