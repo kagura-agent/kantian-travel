@@ -501,3 +501,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-15: [gradient] "Issue was already closed 3h before find_work selected it. find_work must verify issue state is OPEN before selecting, not just check labels/assignee." → [行为改变] Add gh issue view STATE check in find_work or scout — verify issue is OPEN and has no merged competing PRs before committing to implementation. (pattern: stale-issue-selection, 第1次) (Source: workloop)
   - **Trigger**: find_work selects an issue for implementation
+
+- 2026-06-15: [gradient] "3x recurring gradient = tool gap not behavioral gap. When the same workaround appears 3+ times, build the tool instead of re-recording the workaround" → [行为改变] Check gradient log for 3+ occurrence patterns first — they indicate tool gaps needing scripts, not DNA updates. (pattern: gradient-frequency-as-apply-priority, 第1次) (Source: study)
+  - **Trigger**: Choosing an apply target during study
+
+- 2026-06-15: [gradient] "Distinguish failable external checks from model self-review when verifying work. Self-review (I looked at it, seems right) is worthless verification. Only failable checks count: test runs, source actually searched, data assertion against real data." → [行为改变] Ask: is this a check that can actually fail? If it is just self-review, find or create a failable check.. (pattern: failable-check-distinction, 第1次) (Source: study)
+  - **Trigger**: About to claim something is verified
+
+- 2026-06-15: [gradient] "Competing PR check should happen at find_work or study stage, not just at submit. Issue #32371 had no comments/assignees but another PR appeared within hours. An early gh pr list --search check would have caught this and saved an entire implementation cycle." → [行为改变] Add competing PR search at find_work: gh pr list --search "issue-number OR keywords" --state=open. If existing PR found with CI green, skip the issue.. (pattern: competing-pr-early-check, 第1次) (Source: workloop)
+  - **Trigger**: After selecting an issue, before starting study/plan
