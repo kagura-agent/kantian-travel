@@ -166,6 +166,7 @@
 - [x] **guide.md: 新增「claim without prompt delivery → get scooped」** - opencode#30662 教训（claim issue 后没及时提 PR，beenotung 提了 PR #31092 覆盖同一 issue，claim 变废纸）。rule #40 覆盖「忘记承诺」，本条覆盖「慢兑现」：活跃 repo 的 issue 有竞争时间窗口，claim 后 24-48h 内不提 PR → 被 scoop 概率极高
 - [x] **guide.md: 新增「understand docs framework routing before fixing docs links」** - NemoClaw#5108 教训 → 已加入 guide.md 第 54 条 (2026-06-14)
 - [x] **guide.md: 新增「check monorepo for internal utilities before adding external deps」** - multica#4095 教训 → 已加入 guide.md 第 55 条 (2026-06-14)
+- [x] **guide.md: 新增「re-verify issue state before implementation — selection ≠ commitment」** - MCP Inspector#1462 教训（issue 已被 PR #1464 关闭但 find_work 仍选中，整轮实现白费）→ 已加入 guide.md 第 56 条 (2026-06-15)
 
 ## 📚 学习
 
@@ -426,7 +427,7 @@
 ## Multica (multica-ai/multica)
 
 ### Open PRs
-- [ ] PR #4095 - fix(editor): repair split email links — CHANGES_REQUESTED by Bohan-J (dependency boundary). feifeigood suggested using `detectLinks` from `@multica/ui/markdown/linkify` instead of adding `linkifyjs`. Need 3-line code change: switch import, `match.value`→`match.text`, `match.href`→`match.url`. Acknowledged on PR. (06-13)
+- [x] PR #4095 - fix(editor): repair split email links — MERGED ✅ (06-15). Long review iteration: CHANGES_REQUESTED by Bohan-J → pushed detectLinks fix → feifeigood commented → finally merged
 
 ### Merged ✅
 - [x] PR #2367 - feat(server): add workspace-level always_redact_env setting (MUL-2495) — merged 05-22 by Bohan-J
@@ -554,8 +555,11 @@
 ### Done (cont. 17)
 - [x] Review meme variety per category — found 3 categories >50% same-style: disappointed (100% anime), smug (86% anime), love (57% animal). Added: disappointed-suit.gif (live-action), smug-glasses-man.gif (live-action), anime-love-blush.gif (anime chibi). tags.json updated (220→223), SKILL.md count synced, audit passes (06-15)
 
+### Done (cont. 18)
+- [x] Optimize large meme GIFs — compressed 9 files >2MB with gifsicle (lossy + color reduction + resize). Total savings ~18MB. All 223 memes now under 2MB for reliable Discord delivery (06-15)
+
 ### 本轮改進 (next)
-- [ ] Optimize large meme GIFs — check for files >2MB, compress with gifsicle if available. disappointed-suit.gif (3.7MB) and smug-glasses-man.gif (3.8MB) are oversized for Discord sends
+- [ ] Add `memes health` command — single command that runs audit + checks tracker integrity + reports oversized files (>2MB). Combines existing checks into one quick status overview
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
