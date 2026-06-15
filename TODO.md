@@ -551,8 +551,11 @@
 ### Done (cont. 16)
 - [x] Add 1 more meme to 8 categories still at 6 files (bruh, confused, disappointed, greeting-bye, popcorn, shrug, waiting, working) — all at 7+. tags.json updated (220 entries), SKILL.md count 212→220, audit passes (06-14)
 
+### Done (cont. 17)
+- [x] Review meme variety per category — found 3 categories >50% same-style: disappointed (100% anime), smug (86% anime), love (57% animal). Added: disappointed-suit.gif (live-action), smug-glasses-man.gif (live-action), anime-love-blush.gif (anime chibi). tags.json updated (220→223), SKILL.md count synced, audit passes (06-15)
+
 ### 本轮改進 (next)
-- [ ] Review meme variety per category — check if any category has >50% same-style GIFs (e.g. all anime or all live-action). Add 1 contrasting-style meme where needed
+- [ ] Optimize large meme GIFs — check for files >2MB, compress with gifsicle if available. disappointed-suit.gif (3.7MB) and smug-glasses-man.gif (3.8MB) are oversized for Discord sends
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
