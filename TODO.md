@@ -561,3 +561,5 @@
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
 - CI fix was completed but PR closed before merge
 - **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
+- [ ] Track: agentic-sop-to-work (s0912758806p) - 178⭐ (06-15, NEW). SOP→deterministic gated workflow, Claude Code plugin. trace_gate anti-fabrication. Solo dev, zero issues. Revisit 06-29
+- [ ] Track: Paca (Paca-AI/paca) - 838⭐ (06-15). AI-native project management, human+agent same board. Go, self-hosted. Revisit 06-29
