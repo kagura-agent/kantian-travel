@@ -177,7 +177,7 @@
 - [x] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
-- [ ] Track: fable-mode (mrtooher) - 325⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Scanned — overlaps existing practices. Revisit 06-29
+- [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
@@ -404,7 +404,6 @@
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
-- [ ] Track: fable-mode (mrtooher) - 325⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Scanned — overlaps existing practices. Revisit 06-29
 - [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
 - [x] Apply: Audit OpenClaw tool ordering stability for Anthropic prompt cache hits (inspired by elephant-agent PR#39 — sort tools by ID, add cache_control breakpoints) → 2026-05-25 PR #86301 submitted
 - [ ] Apply: Audit OpenClaw context compaction for tool_calls/tool atomicity (elephant-agent PR#36 — split on group boundaries not message indices)
