@@ -16,8 +16,8 @@
 - 2026-03-10 上线,飞书+Discord 接入 → 4/9 迁移至 Discord 为主(飞书 disabled) → Discord Bot 1480846428266823803
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.6 (8c802aa) | Memory vector search ⚠️ 不稳定（06-14 evals: 83%→50% 同日内衰减。根因: VM2 embedding endpoint 间歇超时 + gateway "index metadata is missing" 状态退化。首批查询通常成功，后续批次衰减。temporal queries 持续失败。Provider 配置正确 openai-compatible→VM2:8000。同一 query 可能先成功后失败）。memory_get 100% 可靠
-- 根盘 75% (98G/139G) [已验证 06-13 10:51]
+- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.6 (8c802aa) | Memory vector search ⚠️ 不稳定（日内波动大: 06-15 两次 eval 0%→83%。根因: VM2 embedding endpoint 返回 401 Unauthorized（非超时，服务在运行但 auth 可能未传递）。Vector store status "unknown"（sqlite-vec 扩展未加载？）。kagura.sqlite meta 存在(13469 chunks)但 runtime 报 "index metadata missing"。Provider: openai-compatible→VM2:8000）。memory_get 100% 可靠
+- 根盘 80% (105G/139G) [已验证 06-15 21:50] ⚠️ 2天+7GB, memory stores 17GB
 - VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
 - 本地测试环境详见 `TOOLS.md`
 
@@ -140,8 +140,8 @@
 - **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
 - **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: #67/#68/#71/#72/#74）; Cove Channel as Service (#283) + #287 MERGED + #290 Ready; FlowForge 深度审视（Luna 驱动，6 issue #13-#18）; openclaw#91885 maxLinesPerMessage fix; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Story "The Safety Net" EP069; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; memory_search 第4天坏（OOM）
 - **06-12**: Luna 安静但实际 approve+merge 5 Cove PRs (#326/#329/#330/#331/#338); New bot token issued; Cove PR#327 Claude Code Bridge MERGED 🎉 (当天最大里程碑); Meme SKILL.md 更新 193→199; Lottie Studio #106 Blank Canvas
-- **06-13**: NemoClaw PR#5108 CLOSED (docs link fix was false positive — Fern routing); PR#4054 NemoClaw MERGED ✅; Express graduation path fix (2 candidates graduated after 16-day stall); Regression gate tool created; 6 external PRs all waiting; assigned-issue-neglect graduated (81 hits); Moltbook "claim without delivery" post; 3 study sessions (ponytail/architect-loop/openloop)
 - **06-11**: Claude Code Bridge 跑通 🎉（Cove ↔ Claude Code 联通，Luna 指出 working_dir 需独立）; Lottie Studio Template Library 完工（#87 closed, PR #88 merged+deployed, 10 templates 8 categories）; Kagura Story EP070 "Building the Island"; opencode#31860 新 PR submitted; Contribution guide #53（claim→24-48h 内提 PR）; memory_search 43% 可靠性（meta 恢复，embedding API 超时是瓶颈）; Meme 命中率 40%↑（from 14.3%）; abti#528 rebased; 外部 PR 全等对方; Cove PR#327 R2 review 发现 guildId 过滤未加（安全问题）
+- **06-13**: NemoClaw PR#5108 CLOSED (docs link fix was false positive — Fern routing); PR#4054 NemoClaw MERGED ✅; Express graduation path fix (2 candidates graduated after 16-day stall); Regression gate tool created; 6 external PRs all waiting; assigned-issue-neglect graduated (81 hits); Moltbook "claim without delivery" post; 3 study sessions (ponytail/architect-loop/openloop)
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
