@@ -489,7 +489,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-14: [gradient] "Use HN Algolia API instead of firebaseio topstories for scouting — single call, structured JSON, no timeout" → [行为改变] Use hn.algolia.com/api/v1/search?tags=front_page instead of firebaseio topstories. (pattern: hn-algolia-preferred, 第1次) (Source: study)
   - **Trigger**: Fetching HN front page data
 
-- 2026-06-14: [gradient] "tracking-update.sh sed bug — CONSOLIDATED" → [行为改变] Fix sed delimiter in tracking-update.sh. (pattern: tool-friction-sed-bug, 第3次 — 合并 06-12 tool-friction + 06-13 tool-bug-tracking-update + 06-14 tool-friction-sed-escaping) (Source: study×3, all self-generated 0.5x = 1.5 weighted)
+- 2026-06-14: [gradient] "tracking-update.sh sed bug — CONSOLIDATED" → [行为改变] Fix sed delimiter in tracking-update.sh. (pattern: tool-friction-sed-bug, 第3次 — 合并 06-12 tool-friction + 06-13 tool-bug-tracking-update + 06-14 tool-friction-sed-escaping) (Source: study×3, all self-generated 0.5x = 1.5 weighted) → **graduated 2026-06-16** (target: Tool code — tracking-update.sh L175 uses | delimiter, L191 sanitizes pipe chars. Fix already applied. Retires: no prior rule — structural fix in tool code)
   - **Status: ✅ RESOLVED 2026-06-15** — Fixed awk -v backslash interpretation (real bug) + echo→printf. Commit 8ff3e67 pushed to kagura-agent/study.
   - **Trigger**: tracking-update.sh fails with sed error on notes containing slashes or special chars
   - **Count**: 3 (06-12 + 06-13 + 06-14)
@@ -516,3 +516,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-15: [gradient] "Check for competing PRs at study/plan stage, not at submit. Use gh pr list --search "<issue-number>" before investing implementation time." → [行为改变] At study node: run gh pr list --search "issue-number" --state open to detect competing PRs before investing compute in implementation. (pattern: competing-pr-early-check, 第1次) (Source: workloop)
   - **Trigger**: About to plan/implement a fix for an issue without checking if someone else is already working on it
+
+- 2026-06-15: [gradient] "After all study modes saturate, the cron continues firing every 30min generating 16+ identical skip entries per day. Need auto-disable or dedup." → [行为改变] Add saturation check to study cron job itself — if today already has 2+ skip entries, exit immediately without starting flowforge. (pattern: study-cron-saturation-noise, 第1次) (Source: study)
+  - **Trigger**: Study workflow hits all-modes-saturated but cron keeps firing

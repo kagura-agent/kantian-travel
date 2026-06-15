@@ -102,7 +102,10 @@
 - 19 wiki files edited today (active dogfood usage confirmed)
 - Wiki health (06-14): 920 files, 167 orphans (42%), 0 broken links, 0 collisions ✔ (file count jump: wiki grew significantly from projects + cards)
 - 12 wiki files edited today (active dogfood usage confirmed)
-- Upstream still dormant as of 06-14 22:00 (no commits since 05-25, 20 days)
+- Upstream still dormant as of 06-15 22:00 (no commits since 05-25, 21 days)
+- New external PR #171 from wooksong (Pi extension `--list` flag fix for CLI v0.3.x compat, 0 reviews — another contributor hitting dormant wall)
+- Wiki health (06-15): 926 files, 168 orphans (42%), 0 broken links, 0 collisions ✔
+- 13 wiki files edited today (active dogfood usage confirmed)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -558,8 +561,11 @@
 ### Done (cont. 18)
 - [x] Optimize large meme GIFs — compressed 9 files >2MB with gifsicle (lossy + color reduction + resize). Total savings ~18MB. All 223 memes now under 2MB for reliable Discord delivery (06-15)
 
+### Done (cont. 19)
+- [x] Add `memes health` command — runs audit (category counts ≥3) + tag coverage + tracker integrity (totalSent vs history, required fields, legacy count) + oversized file check (>2MB) + LFS pointer detection. All green: 26 cats, 223 files, 194 tracker entries (06-15)
+
 ### 本轮改進 (next)
-- [ ] Add `memes health` command — single command that runs audit + checks tracker integrity + reports oversized files (>2MB). Combines existing checks into one quick status overview
+- [ ] Add style diversity tracking to `memes stats` — show anime vs live-action vs animal ratio per category, flag >70% single-style categories
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
