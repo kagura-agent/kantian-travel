@@ -178,7 +178,7 @@
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
-- [ ] Track: TreeTrace (Tree-Trace/treetrace) - 28⭐ (06-14, NEW). Correction-to-eval pipeline, local-first, zero deps, 13 failure types. Solo dev. Deep read done. Revisit 06-28
+- [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -263,7 +263,7 @@
 - [x] Track: Autoloops/upskill - 17⭐ (05-04). **Dropped** 05-05 — low traction, claims unverified
 - [x] Track: kiwifs/kiwifs - 423⭐ (05-13, was 419). v0.14.1! Graph analytics (PageRank, Louvain, betweenness), web clipper, canvas, bases/views, timeline, kanban — 9.8K line PR. 🟢 THRIVING (5/6). Star growth decelerating (+1%) despite massive feature output. Revisit 05-19
 - [x] Track: kiwifs/kiwifs - 770⭐ (06-01, was 747, +3.1%). Growth sharply decelerated (70%→3%). Still active (26 issues, 146 forks). Revisit 06-09
-- [ ] Track: quarqlabs/agent-oss (Quarq/Argus) - 248⭐ (06-09, was 180, +38%🔥). v0.4.4, memory-first agent with 98.2% LongMemEval-S (self-reported). Deep read done 06-09. 🟡 GROWING but SOLO (3 contributors, 2 PRs). Downgraded to MONITOR. Revisit 06-23
+- [x] Track: quarqlabs/agent-oss (Quarq/Argus) - 251⭐ (06-15). **Dropped** 06-15 — 251⭐, 3 contributors, no community growth. Self-reported benchmarks unverifiable
 - [x] Track: Teaonly/SKILL.mk - 80⭐ (05-04), Makefile-format skill spec with DAG + on-demand loading. PoC stage. Revisit 05-11 **Dropped** 05-06 — PoC stage, 93⭐, not actionable
 - [x] Evaluate: FlowForge workflows as packageable SKILL.md - NOT NOW. FlowForge needs runtime (not portable like evanflow multi-skill pattern). ClawHub empty, our workflows too personal. See study session 05-04
 - [x] Track: future-agi (future-agi/future-agi) - 820⭐ (05-04), recovered from stall — burst of 5+ PRs merged 05-04 (bugfixes/eval rendering). Revisit 05-10 **Dropped** 05-06 — bugfixes only, no new architectural insights
