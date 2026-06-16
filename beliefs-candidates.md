@@ -522,3 +522,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-16: [gradient] "Read-only study sessions should use gh api + web_fetch for code reading, not git clone. Clone adds disk usage, cleanup hassle, and failure risk." → [行为改变] Ask: do I need to build/test? No → API reading only.. (pattern: study-clone-vs-api, 第1次) (Source: study)
   - **Trigger**: Starting a study deep-read and reaching for git clone
+
+- 2026-06-16: [gradient] "study-saturation.sh recommends followup when no tracked items have due revisit dates — recommendation ignores actual TODO state" → [行为改变] cross-check TODO revisit dates before recommending followup; if none due, recommend scout or apply instead. (pattern: study-saturation-followup-no-due-items, 第1次) (Source: study)
+  - **Trigger**: saturation script recommends followup but all revisit dates are future
+
+- 2026-06-16: [gradient] "tracking-update.sh appends notes without truncation causing entry bloat in targets.md" → [行为改变] Add auto-truncate to tracking-update.sh to keep last 2-3 note entries. (pattern: targets-note-accumulation, 第1次) (Source: study)
+  - **Trigger**: followup updates tracking notes
+
+- 2026-06-16: [gradient] "Workloop re-selected issue #32371 that was already abandoned yesterday due to competing PR #32377. find_work and study nodes did not catch the duplicate, resulting in full implementation cycle wasted for the 2nd time. competing-pr-check.sh exists but subagent may not have executed it." → [行为改变] Add abandoned-issue blacklist to find_work selection criteria. Before selecting any issue, check memory/gogetajob for previous abandonment of the same issue number.. (pattern: competing-pr-reselection, 第1次) (Source: workloop)
+  - **Trigger**: find_work selects an issue that was previously abandoned
