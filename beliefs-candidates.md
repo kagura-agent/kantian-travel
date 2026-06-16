@@ -531,3 +531,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-16: [gradient] "Workloop re-selected issue #32371 that was already abandoned yesterday due to competing PR #32377. find_work and study nodes did not catch the duplicate, resulting in full implementation cycle wasted for the 2nd time. competing-pr-check.sh exists but subagent may not have executed it." → [行为改变] Add abandoned-issue blacklist to find_work selection criteria. Before selecting any issue, check memory/gogetajob for previous abandonment of the same issue number.. (pattern: competing-pr-reselection, 第1次) (Source: workloop)
   - **Trigger**: find_work selects an issue that was previously abandoned
+
+- 2026-06-16: [gradient] "Test API type mismatch: LoadOptions vs LoadContext — passing repoRoot/home to loadCapability() compiles locally (bun test fails on native addon, not type check) but fails CI tsgo. Must read the actual type definition, not guess from provider-side LoadContext." → [行为改变] Read the LoadOptions type first. For boundary control (repoRoot), use filesystem setup (.git directory) instead of parameters.. (pattern: test-api-type-mismatch, 第1次) (Source: workloop)
+  - **Trigger**: Writing tests that call loadCapability() or similar framework entry points
