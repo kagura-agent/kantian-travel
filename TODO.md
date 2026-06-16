@@ -170,6 +170,7 @@
 - [x] **guide.md: 新增「understand docs framework routing before fixing docs links」** - NemoClaw#5108 教训 → 已加入 guide.md 第 54 条 (2026-06-14)
 - [x] **guide.md: 新增「check monorepo for internal utilities before adding external deps」** - multica#4095 教训 → 已加入 guide.md 第 55 条 (2026-06-14)
 - [x] **guide.md: 新增「re-verify issue state before implementation — selection ≠ commitment」** - MCP Inspector#1462 教训（issue 已被 PR #1464 关闭但 find_work 仍选中，整轮实现白费）→ 已加入 guide.md 第 56 条 (2026-06-15)
+- [x] **guide.md: 新增「study recent merged PRs for reviewer expectations beyond formal gates」** - oh-my-pi#2764 教训（reviewer 要求 CHANGELOG.md entry，非 CI/template 硬性要求但所有 merged PR 都有）→ 已加入 guide.md 第 57 条 (2026-06-16)
 
 ## 📚 学习
 
@@ -576,8 +577,11 @@
 ### Done (cont. 20)
 - [x] Add style diversity tracking to `memes stats` — classified all 224 files into 5 styles (anime/animal/cartoon/live-action/meme) stored in tags.json `_styles`. Stats now shows per-category style breakdown table with counts + dominant style %. Flags categories >70% single-style (13 flagged: cute-animals 100% animal, disappointed 100% anime, smug 85% anime, plus 10 heavily-meme categories). jq-based, no external deps (06-16)
 
+### Done (cont. 21)
+- [x] Style diversity improvement — added 5 memes across 3 categories: disappointed (picard-facepalm, live-action), happy (carlton-dance live-action, snoopy-dance cartoon), working (anime-typing anime, office-hustle live-action). Fixed missing disappointed-suit.gif _styles entry. Results: disappointed 100%→78% anime, happy 83%→71% meme, working 86%→67% meme. 228 files total, audit+health green (06-16)
+
 ### 本轮改進 (next)
-- [ ] Improve style diversity in most-flagged non-obvious categories — pick 2-3 categories (e.g. disappointed, happy, working) and add memes in underrepresented styles
+- [ ] Review remaining flagged categories (panic 88% meme, greeting-bye 86% meme, shrug 86% meme) — add 1 diversifying meme each
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -586,3 +590,10 @@
 - [ ] Track: agentic-sop-to-work (s0912758806p) - 178⭐ (06-15, NEW). SOP→deterministic gated workflow, Claude Code plugin. trace_gate anti-fabrication. Solo dev, zero issues. Revisit 06-29
 - [ ] Track: Paca (Paca-AI/paca) - 838⭐ (06-15). AI-native project management, human+agent same board. Go, self-hosted. Revisit 06-29
 - [x] Track: Superlog (superloglabs/superlog) - 826⭐ (06-16, NEW). Agentic telemetry: OTLP ingest → incident fingerprinting → AI investigation → fix PRs. YC P26, Apache-2.0. "Talk to investigation" (resumable runs). Deep read done. Revisit 06-23
+
+## oh-my-pi #2764 — Review feedback from roboomp (2026-06-16)
+- [ ] Fix dedup: `contextFileCapability.key` uses `project:${depth}` which shadows same-depth CLAUDE.md from `result.items`. Need unique key per file.
+- [ ] Fix test: Assert `result.items` / `loadProjectContextFiles()` instead of `result.all`
+- [ ] Add CHANGELOG.md Unreleased entry for `packages/coding-agent`
+- Repo: can1357/oh-my-pi, branch: feat/discover-claude-md
+- Review: https://github.com/can1357/oh-my-pi/pull/2764#issuecomment-4718622434
