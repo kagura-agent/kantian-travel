@@ -183,6 +183,7 @@
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
+- [x] Track: Paca (Paca-AI/paca) - 928⭐ (06-16, NEW). AI-native Scrum platform, agents as first-class teammates. Go+React+Python, WASM plugin sandbox, MCP server, OpenHands SDK. Solo dev (pikann). Deep read done. Revisit 06-23
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -492,6 +493,14 @@
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [ ] Track: mercury-agent-skills (cosmicstack-labs) - 345⭐ (06-12, was 258 on 06-05, +34%). New skills: github-repo-tour, repo-promo. Revisit 06-19
 - [x] Track: 21-day-self-interview (Forlives) - 153⭐ (06-13, was 128, +20%). **Dropped** 06-13 — phantomstars bot flagged fake engagement (issue #1). Only 2 commits, 1 external PR (metadata fix). Star farming pattern
+
+## openclaw/openclaw PR #92665 — cacheRetention for LiteLLM
+- [ ] Address ClawSweeper bot review (06-13): patch rated 🧂 unranked krab
+  - P1: Gate LiteLLM cache_control on explicit cacheRetention (absent retention defaults to short, too broad)
+  - P1: Add serialized payload tests for explicit, missing-config, and non-Claude alias cases
+  - P1: Provide redacted live LiteLLM-to-Anthropic proxy proof (cache_control in outbound request + cache usage)
+  - P3: Update LiteLLM docs (`docs/providers/litellm.md`) — currently says proxy route gets no prompt-cache hints
+- Added by GitHub patrol 06-16 04:10
 
 ## 🎭 Agent-Memes
 

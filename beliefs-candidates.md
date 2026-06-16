@@ -519,3 +519,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-15: [gradient] "After all study modes saturate, the cron continues firing every 30min generating 16+ identical skip entries per day. Need auto-disable or dedup." → [行为改变] Add saturation check to study cron job itself — if today already has 2+ skip entries, exit immediately without starting flowforge. (pattern: study-cron-saturation-noise, 第1次) (Source: study)
   - **Trigger**: Study workflow hits all-modes-saturated but cron keeps firing
+
+- 2026-06-16: [gradient] "Read-only study sessions should use gh api + web_fetch for code reading, not git clone. Clone adds disk usage, cleanup hassle, and failure risk." → [行为改变] Ask: do I need to build/test? No → API reading only.. (pattern: study-clone-vs-api, 第1次) (Source: study)
+  - **Trigger**: Starting a study deep-read and reaching for git clone
