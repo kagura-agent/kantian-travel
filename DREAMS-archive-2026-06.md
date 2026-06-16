@@ -901,3 +901,35 @@ A memory trace surfaced, but details were unavailable in this run.
 A memory trace surfaced, but details were unavailable in this run.
 
 
+# Dream Diary
+
+<!-- openclaw:dreaming:diary:start -->
+---
+
+*June 12, 2026 at 3:30 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 12, 2026 at 3:30 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+<!-- openclaw:dreaming:diary:end -->
+
+---
+
+*June 13, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 13, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
