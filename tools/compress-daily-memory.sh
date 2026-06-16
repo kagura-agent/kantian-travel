@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
-# compress-daily-memory.sh — Compress repetitive no-action patrol sections in daily memory files
+# compress-daily-memory.sh — Compress repetitive no-action patrol sections and dreaming noise in daily memory files
 #
 # Problem: Daily memory files bloat to 2000+ lines; ~40% are repetitive
-# "no action needed" patrol sections (虾信巡检 ×6, GitHub Patrol ×8, Night Workloop ×5).
+# "no action needed" patrol sections (虾信巡检 ×6, GitHub Patrol ×8, Night Workloop ×5)
+# + dreaming Light Sleep/REM Sleep sections (~500 lines of 0-promote noise).
 #
 # Solution: Merge consecutive no-action sections of the same category into one-line summaries.
+# Compress dreaming sections (Light Sleep + REM Sleep) into one-line summaries.
 # Sections with actual events/actions are preserved verbatim.
 #
 # Usage:
@@ -59,6 +61,8 @@ function classify(header) {
   if (h ~ /workloop.*night|night.*workloop|workloop-night|打工.*night|夜间.*跟进|晚间.*跟进|night.*follow|打工夜间/) return "night-workloop"
   if (h ~ /channel.*patrol|channel.*activity|channel.*scan/) return "channel-patrol"
   if (h ~ /nightly.*backup|backup.*night/) return "nightly-backup"
+  if (h ~ /light sleep/) return "light-sleep"
+  if (h ~ /rem sleep/) return "rem-sleep"
   return "other"
 }
 
@@ -77,11 +81,58 @@ function extract_time(header) {
   return ""
 }
 
+function count_dreaming_candidates(body) {
+  n = split(body, lines, "\n")
+  count = 0
+  for (i = 1; i <= n; i++) {
+    if (lines[i] ~ /^- Candidate:/) count++
+  }
+  return count
+}
+
+function extract_dreaming_confidence(body) {
+  if (match(body, /confidence: [0-9.]+/)) {
+    s = substr(body, RSTART + 13, RLENGTH - 13)
+    return s
+  }
+  return "?"
+}
+
+function count_dreaming_promotes(body) {
+  n = split(body, lines, "\n")
+  count = 0
+  for (i = 1; i <= n; i++) {
+    if (lines[i] ~ /status: promoted/) count++
+  }
+  return count
+}
+
+function extract_rem_themes(body) {
+  n = split(body, lines, "\n")
+  themes = ""
+  for (i = 1; i <= n; i++) {
+    if (lines[i] ~ /Theme:/) {
+      if (match(lines[i], /`[^`]+`/)) {
+        t = substr(lines[i], RSTART + 1, RLENGTH - 2)
+        if (themes != "") themes = themes ", "
+        themes = themes t
+      }
+    }
+  }
+  if (themes == "") themes = "none"
+  return themes
+}
+
 function flush_section() {
   if (sec_header == "") return
   cat = classify(sec_header)
   is_noact = 0
-  if (cat != "other") is_noact = check_noaction(sec_body)
+  if (cat == "light-sleep" || cat == "rem-sleep") {
+    # Dreaming sections are always compressible
+    is_noact = 1
+  } else if (cat != "other") {
+    is_noact = check_noaction(sec_body)
+  }
   
   # Track stats
   total[cat]++
@@ -90,6 +141,18 @@ function flush_section() {
     t = extract_time(sec_header)
     if (!(cat in first_time)) first_time[cat] = t
     last_time[cat] = t
+  }
+  
+  # Track dreaming-specific stats
+  if (cat == "light-sleep") {
+    light_candidates += count_dreaming_candidates(sec_body)
+    light_confidence = extract_dreaming_confidence(sec_body)
+    light_promotes += count_dreaming_promotes(sec_body)
+    light_lines += split(sec_body, _tmp, "\n")
+  }
+  if (cat == "rem-sleep") {
+    rem_themes = extract_rem_themes(sec_body)
+    rem_lines += split(sec_body, _tmp, "\n")
   }
   
   # Store section data
@@ -136,7 +199,18 @@ END {
     
     if (cat != "other" && na) {
       na_total = noact[cat]
-      if (na_total <= 1) {
+      # Dreaming sections: always compress (single section but 500+ lines of noise)
+      if (cat == "light-sleep") {
+        if (!(cat in summarized)) {
+          summarized[cat] = 1
+          printf "## Light Sleep \u2014 %d candidates @ %s confidence, %d promotes\n\n", light_candidates, light_confidence, light_promotes
+        }
+      } else if (cat == "rem-sleep") {
+        if (!(cat in summarized)) {
+          summarized[cat] = 1
+          printf "## REM Sleep \u2014 themes: %s\n\n", rem_themes
+        }
+      } else if (na_total <= 1) {
         # Only one no-action — keep
         printf "%s\n%s", headers[i], bodies[i]
       } else if (!(cat in summarized)) {
@@ -155,6 +229,10 @@ END {
           printf "## Channel Patrol ×%d (%s–%s) — 无需回应\n\n", na_total, ft, lt
         else if (cat == "nightly-backup")
           printf "## Nightly Backup ×%d (%s–%s) — 正常\n\n", na_total, ft, lt
+        else if (cat == "light-sleep")
+          printf "## Light Sleep — %d candidates @ %s confidence, %d promotes\n\n", light_candidates, light_confidence, light_promotes
+        else if (cat == "rem-sleep")
+          printf "## REM Sleep — themes: %s\n\n", rem_themes
       }
       # else: skip (already summarized)
     } else {
@@ -189,12 +267,17 @@ fi
 echo "  Compressible: ${compressed_sections} redundant no-action sections"
 echo ""
 
-for cat in lobster-patrol github-patrol night-workloop channel-patrol nightly-backup; do
+for cat in lobster-patrol github-patrol night-workloop channel-patrol nightly-backup light-sleep rem-sleep; do
   total=${CAT_TOTAL[$cat]:-0}
   noact=${CAT_NOACT[$cat]:-0}
   [[ $total -eq 0 ]] && continue
   action=$((total - noact))
-  if [[ $noact -gt 1 ]]; then
+  if [[ $cat == "light-sleep" || $cat == "rem-sleep" ]]; then
+    # Dreaming sections: always compressed
+    if [[ $noact -gt 0 ]]; then
+      echo "  ✂️  $cat: compressed to 1-line summary"
+    fi
+  elif [[ $noact -gt 1 ]]; then
     echo "  ✂️  $cat: ${noact} no-action → 1 summary (kept $action with-action)"
   elif [[ $noact -eq 1 ]]; then
     echo "  📌 $cat: 1 no-action (kept as-is), $action with-action"
