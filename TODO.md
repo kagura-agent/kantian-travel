@@ -573,8 +573,11 @@
 ### Done (cont. 19)
 - [x] Add `memes health` command — runs audit (category counts ≥3) + tag coverage + tracker integrity (totalSent vs history, required fields, legacy count) + oversized file check (>2MB) + LFS pointer detection. All green: 26 cats, 223 files, 194 tracker entries (06-15)
 
+### Done (cont. 20)
+- [x] Add style diversity tracking to `memes stats` — classified all 224 files into 5 styles (anime/animal/cartoon/live-action/meme) stored in tags.json `_styles`. Stats now shows per-category style breakdown table with counts + dominant style %. Flags categories >70% single-style (13 flagged: cute-animals 100% animal, disappointed 100% anime, smug 85% anime, plus 10 heavily-meme categories). jq-based, no external deps (06-16)
+
 ### 本轮改進 (next)
-- [ ] Add style diversity tracking to `memes stats` — show anime vs live-action vs animal ratio per category, flag >70% single-style categories
+- [ ] Improve style diversity in most-flagged non-obvious categories — pick 2-3 categories (e.g. disappointed, happy, working) and add memes in underrepresented styles
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -582,3 +585,4 @@
 - **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
 - [ ] Track: agentic-sop-to-work (s0912758806p) - 178⭐ (06-15, NEW). SOP→deterministic gated workflow, Claude Code plugin. trace_gate anti-fabrication. Solo dev, zero issues. Revisit 06-29
 - [ ] Track: Paca (Paca-AI/paca) - 838⭐ (06-15). AI-native project management, human+agent same board. Go, self-hosted. Revisit 06-29
+- [x] Track: Superlog (superloglabs/superlog) - 826⭐ (06-16, NEW). Agentic telemetry: OTLP ingest → incident fingerprinting → AI investigation → fix PRs. YC P26, Apache-2.0. "Talk to investigation" (resumable runs). Deep read done. Revisit 06-23
