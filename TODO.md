@@ -106,6 +106,10 @@
 - New external PR #171 from wooksong (Pi extension `--list` flag fix for CLI v0.3.x compat, 0 reviews — another contributor hitting dormant wall)
 - Wiki health (06-15): 926 files, 168 orphans (42%), 0 broken links, 0 collisions ✔
 - 13 wiki files edited today (active dogfood usage confirmed)
+- Wiki health (06-16): 929 files, 168 orphans (42%), 0 broken links, 0 collisions ✔ (stable)
+- 7 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant as of 06-16 22:00 (no commits since 05-25, 22 days)
+- External PR #171 (wooksong) still 0 reviews after 3 days — another contributor hitting dormant wall
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -580,8 +584,11 @@
 ### Done (cont. 21)
 - [x] Style diversity improvement — added 5 memes across 3 categories: disappointed (picard-facepalm, live-action), happy (carlton-dance live-action, snoopy-dance cartoon), working (anime-typing anime, office-hustle live-action). Fixed missing disappointed-suit.gif _styles entry. Results: disappointed 100%→78% anime, happy 83%→71% meme, working 86%→67% meme. 228 files total, audit+health green (06-16)
 
+### Done (cont. 22)
+- [x] Style diversity improvement (batch 2) — added 3 memes: panic (kermit-panic cartoon), greeting-bye (farewell-wave live-action), shrug (shrug-liveaction live-action). Cleaned stale totalFiles key in tags.json. Results: panic 88%→77%, greeting-bye 86%→75%, shrug 86%→75%. 231 files total, health green (06-16)
+
 ### 本轮改進 (next)
-- [ ] Review remaining flagged categories (panic 88% meme, greeting-bye 86% meme, shrug 86% meme) — add 1 diversifying meme each
+- [ ] Review categories still >80% single-style (cute-animals 100%, smug 85%, tired 85%) — add 1 diversifying meme each
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
