@@ -596,8 +596,11 @@
 ### Done (cont. 22)
 - [x] Style diversity improvement (batch 2) — added 3 memes: panic (kermit-panic cartoon), greeting-bye (farewell-wave live-action), shrug (shrug-liveaction live-action). Cleaned stale totalFiles key in tags.json. Results: panic 88%→77%, greeting-bye 86%→75%, shrug 86%→75%. 231 files total, health green (06-16)
 
+### Done (cont. 23)
+- [x] Style diversity improvement (batch 3) — added 3 memes: smug (smug-cat-live live-action cat → counted as animal), tired (tired-sloth animal + tired-anime-yawn anime). Compressed anime-yawn (2.0MB→1.1MB). Updated tags.json (entries + _styles + categoryCounts), synced _meta.totalFiles 220→234 (also caught stale counts from earlier batches). Results: smug 85%→75% anime, tired 85%→66% meme. cute-animals 100% animal is by definition (category IS animals) — exempt. 234 files, health green (06-17)
+
 ### 本轮改進 (next)
-- [ ] Review categories still >80% single-style (cute-animals 100%, smug 85%, tired 85%) — add 1 diversifying meme each
+- [ ] Targeted style diversification for >70% dominant categories where it makes sense: disappointed (77% anime, add live-action), debug-mood (77% meme, add live-action person debugging), panic (77% meme, add anime), encourage (75% meme, add animal/anime). Exclude cute-animals (categorical by definition). One additive per round.
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
