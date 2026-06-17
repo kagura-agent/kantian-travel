@@ -190,7 +190,13 @@ This is a structural fix for `workflow-bypass` (4-day recidivist). Graduated fro
 
 **给 Claude Code 完整上下文，不替它抽象。** Claude Code 有自主分析能力——issue 原文、review 原文、错误日志、相关代码都直接给，让它自己判断什么重要。我的角色是给方向和约束，不是嚼碎了喂。
 
-**要求 spec pushback（Phase 0）。** Claude Code prompt 里加一段："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. Silent compliance = defect." 这不是客气——agent 看到了代码你没看到，它的反对意见是信号。来源：[[architect-loop]] Rule #3 "Disagreement is mandatory"。
+**要求 spec pushback（Phase 0）— 按 grade 缩放，不要一刀切。** 应用 [[why-was-fable-banned]] grade-scaling pattern + [[architect-loop]] Rule #3 "Disagreement is mandatory"：
+
+- **LIGHT**（单文件 trivial：typo/comment/rename/format）→ 跳过 Phase 0，只要求一行 runnable acceptance check（例："运行 X 应输出 Y"）。常见情况就是常见情况，不收 spec 税。
+- **STANDARD**（默认，functional change 或 2+ 文件）→ 加 Phase 0 prompt："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. Silent compliance = defect."
+- **HEAVY**（auth / payment / migration / schema / secret paths 或 ≥5 文件）→ Phase 0 + 强制 must_read 证据 + ≥2 rejected_alternatives + 风险列举。
+
+**结构性自动升级**（不允许自评降级）：触碰 ≥2 文件 → STANDARD 起步；触碰 auth/migration/schema/secret 路径 → HEAVY 起步。理由：grade-scaling-enforcement gradient (2026-06-17) 实测——blanket full-spec 让简单一行改动也付重 token 税，violation 反复出现。
 
 **YAGNI 六阶梯（代码生成最小化）。** Claude Code prompt 里加最小化约束——按顺序检查，停在第一个成立的阶梯：(1) 真的需要这段代码吗？不需要就不写。(2) 标准库能做？用标准库。(3) 平台原生功能？用原生。(4) 已安装的依赖能做？用已有依赖。(5) 能一行搞定？写一行。(6) 以上都不行，才写最小实现。简化的地方加 `// ponytail: <升级条件>` 注释标记升级路径。来源：[[ponytail-yagni-skill]] 6-rung ladder（965⭐，promptfoo 验证 80-94% less code）。
 
