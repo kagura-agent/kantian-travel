@@ -189,6 +189,7 @@
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
 - [x] Track: Paca (Paca-AI/paca) - 928⭐ (06-16, NEW). AI-native Scrum platform, agents as first-class teammates. Go+React+Python, WASM plugin sandbox, MCP server, OpenHands SDK. Solo dev (pikann). Deep read done. Revisit 06-23
+- [ ] Track: MetaHarness (ruvnet/agent-harness-generator) - 118⭐ (06-17, NEW). Meta-layer: factory for branded agent harnesses. DRACO benchmark proved harness degrades quality but wins 10x on cost. Solo dev extreme velocity. Deep read done. Revisit 06-24
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -410,7 +411,7 @@
 - [x] Track: fides_protocol (edwang2006/fides_protocol) - 21⭐ (05-14). **Dropped** 05-14 — 🔴 SOLO (0/6), no push since 05-04 (10 days), zero external engagement
 - [x] Track: Needle (cactus-compute/needle) - 1,044⭐ (05-13). **Deduped** 05-14 — consolidated into main Needle entry
 - [x] **cc-connect PR #990** — CLOSED (unrebaseable after repo restructuring, maintainer developing own fix). Dropped 05-19
-- [ ] Track: html-anything (nexu-io) - 6,509⭐ (06-10, was 5,994, +8.6%). No push since 06-02. Stars growing organically. 🟢 THRIVING. Revisit 06-17
+- [x] Track: html-anything (nexu-io) - 6,885⭐ (06-17, was 6,509, +5.8%). Growth plateauing. Renamed DeepSeek→CodeWhale. Downgraded to monitor. Revisit 07-01
 - [x] Track: Tactile (yliust) - 473⭐ (06-01, was 381, +24.1%). **Dropped** 06-01 — no commits since 05-15 (17d), zero external community (all PRs from maintainer/team), stars growing organically but dev stalled. Accessibility-first approach is interesting but project appears abandoned.
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 483⭐ (05-26, was 318, +52%). PR#50 60x startup perf by external contributor. Reflect unification + macOS polish. 6 contributors, haowu1234 leads PR count. 🟢 THRIVING. Revisit 06-02
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
