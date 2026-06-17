@@ -537,3 +537,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-17: [gradient] "When imposing process requirements on subagents, calibrate enforcement depth by structural complexity signals (file count, path sensitivity) not uniform full-spec for all tasks. Trivial one-file changes should pay minimal process overhead." → [行为改变] Omit heavy enforcement paragraphs for simple changes. Reserve full spec pushback for multi-file or risk-sensitive work.. (pattern: grade-scaling-enforcement, 第1次) (Source: study)
   - **Trigger**: About to add full spec-pushback + YAGNI to Claude Code prompt for a trivial one-file fix
+
+- 2026-06-17: [gradient] "Workflow state can get stuck when cron session ends after spawning a subagent but before advancing the node. The plan_review subagent returned APPROVED but the workflow stayed at plan_review for 8+ hours until the next cron run resumed it." → [行为改变] After spawning a subagent in a cron session, ensure the node is advanced before the session ends. If session timeout is approaching, prioritize advancing the workflow over any remaining work.. (pattern: flowforge-state-stuck-after-subagent, 第1次) (Source: workloop)
+  - **Trigger**: Resuming workloop and finding it stuck at a node where subagent already completed
