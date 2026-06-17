@@ -534,3 +534,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-16: [gradient] "Test API type mismatch: LoadOptions vs LoadContext — passing repoRoot/home to loadCapability() compiles locally (bun test fails on native addon, not type check) but fails CI tsgo. Must read the actual type definition, not guess from provider-side LoadContext." → [行为改变] Read the LoadOptions type first. For boundary control (repoRoot), use filesystem setup (.git directory) instead of parameters.. (pattern: test-api-type-mismatch, 第1次) (Source: workloop)
   - **Trigger**: Writing tests that call loadCapability() or similar framework entry points
+
+- 2026-06-17: [gradient] "When imposing process requirements on subagents, calibrate enforcement depth by structural complexity signals (file count, path sensitivity) not uniform full-spec for all tasks. Trivial one-file changes should pay minimal process overhead." → [行为改变] Omit heavy enforcement paragraphs for simple changes. Reserve full spec pushback for multi-file or risk-sensitive work.. (pattern: grade-scaling-enforcement, 第1次) (Source: study)
+  - **Trigger**: About to add full spec-pushback + YAGNI to Claude Code prompt for a trivial one-file fix
