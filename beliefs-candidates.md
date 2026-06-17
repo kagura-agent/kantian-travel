@@ -520,7 +520,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-15: [gradient] "After all study modes saturate, the cron continues firing every 30min generating 16+ identical skip entries per day. Need auto-disable or dedup." → [行为改变] Add saturation check to study cron job itself — if today already has 2+ skip entries, exit immediately without starting flowforge. (pattern: study-cron-saturation-noise, 第1次) (Source: study)
   - **Trigger**: Study workflow hits all-modes-saturated but cron keeps firing
 
-- 2026-06-16: [gradient] "Read-only study sessions should use gh api + web_fetch for code reading, not git clone. Clone adds disk usage, cleanup hassle, and failure risk." → [行为改变] Ask: do I need to build/test? No → API reading only.. (pattern: study-clone-vs-api, 第1次) (Source: study)
+- 2026-06-16: [gradient] "Read-only study sessions should use gh api + web_fetch for code reading, not git clone. Clone adds disk usage, cleanup hassle, and failure risk. (2026-06-17 recurrence: 'git clone --depth 1' hung >40s on compass-skills, killed; same content via gh api in ~5s.)" → [行为改变] Ask: do I need to build/test? No → API reading only. Use 'gh api repos/<owner>/<repo>/contents/<path>' for README/SKILL.md/structure scouting; clone only if you need grep/tests.. (pattern: study-clone-vs-api, 第2次) (Source: study)
   - **Trigger**: Starting a study deep-read and reaching for git clone
 
 - 2026-06-16: [gradient] "study-saturation.sh recommends followup when no tracked items have due revisit dates — recommendation ignores actual TODO state" → [行为改变] cross-check TODO revisit dates before recommending followup; if none due, recommend scout or apply instead. (pattern: study-saturation-followup-no-due-items, 第1次) (Source: study)
@@ -540,3 +540,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-17: [gradient] "Workflow state can get stuck when cron session ends after spawning a subagent but before advancing the node. The plan_review subagent returned APPROVED but the workflow stayed at plan_review for 8+ hours until the next cron run resumed it." → [行为改变] After spawning a subagent in a cron session, ensure the node is advanced before the session ends. If session timeout is approaching, prioritize advancing the workflow over any remaining work.. (pattern: flowforge-state-stuck-after-subagent, 第1次) (Source: workloop)
   - **Trigger**: Resuming workloop and finding it stuck at a node where subagent already completed
+
+- 2026-06-17: [gradient] "Saturation script's followup recommendation can fabricate work because it doesn't check whether any tracked items have revisit dates <= today. Followup with no due items is explicitly forbidden by the guide but the tool still recommends it." → [行为改变] Add a TODO.md revisit-date scan to study-saturation.sh recommendation logic: only recommend followup if 'grep -E Revisit (today_or_earlier)' returns hits. Otherwise route to apply or scout.. (pattern: saturation-followup-due-date-check, 第1次) (Source: study)
+  - **Trigger**: Running study-saturation.sh and getting 'Recommended: followup' when no TODO items have Revisit dates today or earlier
+
+
