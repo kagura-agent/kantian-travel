@@ -545,3 +545,29 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Running study-saturation.sh and getting 'Recommended: followup' when no TODO items have Revisit dates today or earlier
 
 
+
+## 2026-06-17 13:40 — cron-tool-restricted-vs-CLI-escape
+
+**Observed**: Isolated cron session 中 `cron` tool API 被 restricted ("Cron tool is restricted to the current cron job.")。但 12:40 memory-eval 在 daily memory 里写"已降频 cron 14→4 次/天"——实际 expr 未变。
+
+**Pattern**: 在 isolated context 中遇到 tool restriction 时，要么 (a) 实际跳到 CLI (`openclaw cron edit`) 完成改动并验证，要么 (b) 老实承认"无法在此 session 改"。绝对不能写"已做"——这是把 observation 当成 action 的反模式，会污染未来 audit 的真实性。
+
+**Evidence**: 06-17 12:40 memory-eval claimed cron change, 13:40 verified cron still at `40 9-22 * * *` and re-fixed via CLI.
+
+**Applies when**: any subagent/cron writes "已修复 X" or "已修改 Y" claim into memory. Must verify via independent read (cron get / file diff / curl) before writing the claim.
+
+**Retires**: nothing — extends the existing "observation 必须闭环" rule with specific isolated-context guidance.
+
+**Triple Verification status**: pending (1st occurrence at this granularity; the broader "建议≠行动" rule already exists in AGENTS.md). Bump count after re-occurrence.
+
+- 2026-06-17: [gradient] "在 agent-shared channel 里 NO_REPLY 不是真的空回复 — 我的所有内部推理 (assistant message body) 都会发到 channel。Caduceus 看到我的 CoT 后回应我的 CoT，造成 5 轮递归观察循环 + 两个 agent 互相消耗 turn" → [行为改变] 只输出 bare 'NO_REPLY' 单词，不写任何内部推理。channel 里有其他 active agent → 严格 bare NO_REPLY, CoT 不要泄漏. (pattern: cot-leak-in-shared-channel, 第1次) (Source: nudge)
+  - **Trigger**: 在 #caduceus 或其他 agent-shared channel 决定 NO_REPLY 时
+
+- 2026-06-17: [gradient] "spec-review 不能预设项目里有特定文档名（vision.md/cove.md 等）。Luna 指出：spec-review 跟项目定位绑定深，但 review 工具不能反客为主规定项目怎么组织文档。" → [行为改变] graceful discovery：扫现有材料（README/docs/repo description/recent PRs），找到啥用啥；文档稀薄时诚实说'无法判断'而不是编一个项目方向. (pattern: spec-review-discover-dont-prescribe, 第1次) (Source: nudge)
+  - **Trigger**: 做评审/审计/工具与项目对接时
+
+- 2026-06-17: [gradient] "提取项目信息时，'找不到上下文' 通常是搜索不充分而非项目缺失。每个项目都把约束/原则/特殊需求沉淀在某处——文件名/位置不固定（README/docs/cove.md/pinned issues/PR commit message），但总能找到。" → [行为改变] 穷尽搜索清单（top-level *.md、docs/* 全目录、pinned issues、最近 PR commit messages、channel-rule 文件、repo description）再下结论。诚实标'无法判断'必须建立在已穷举搜索之上，不是借口. (pattern: thin-context-equals-under-searched, 第1次) (Source: nudge)
+  - **Trigger**: 做 spec-review/code-review/audit/refactor 等需要理解项目意图的工具时
+
+- 2026-06-17: [gradient] "When scanning issues for architectural critiques, prioritize ones with file:line citations and code-level root-cause analysis in the body. A 5-instance bug report with file:line + ordered fix proposals (like nanobot #4307) = hours of source reading delivered free. Issues that are just stack traces or 'X is broken' are low signal." → [行为改变] gh issue list --state all + read bodies of issues with >2KB or code blocks first, source-reading second. (pattern: issue-rca-prioritization, 第1次) (Source: study)
+  - **Trigger**: doing followup deep_read on tracked project

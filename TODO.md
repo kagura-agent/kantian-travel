@@ -194,6 +194,9 @@
 - [ ] Track: MetaHarness (ruvnet/agent-harness-generator) - 118⭐ (06-17, NEW). Meta-layer: factory for branded agent harnesses. DRACO benchmark proved harness degrades quality but wins 10x on cost. Solo dev extreme velocity. Deep read done. Revisit 06-24
 - [ ] Track: why-was-fable-banned (SihyeonJeon) - 44⭐ (06-17, NEW). Deterministic spec-gate: hard-blocks agent edits until structured spec passes. Grade-scaling (LIGHT/STANDARD/HEAVY) + dynamic escalation. Claude Code hooks + Codex worktree-accept. Deep read done. Revisit 06-24
 - [ ] Track: compass-skills (dongshuyan) - 199⭐ (06-17, NEW, 2d). COMPASS = Personal Alignment Skills OS: portable Phase-0 skills (task-clarifier with 10-dim alignment tree, task-forest, user-profile-keeper). Explicitly supports OpenClaw. Pattern: convergent need-alignment before research/execution. Quick scan done — worth deep read. Revisit 06-24
+- [ ] Track: nanobot (HKUDS) - 44,343⭐ (06-17, +377 from 06-10). PR#4370 idle auto-compact default 0→15min (memory path reachability). Issue #4307 (open, 5 production instances) — post-turn consolidation wipes agent's own delivery message, 4 ordered fixes proposed. New card [[delivery-message-preservation]] created. Revisit 06-24
+- [ ] Track: centaur (paradigmxyz) - 768⭐ (06-17, +3.6% from 741). PR#617 multi-type secret grant priority resolved at config-assembly time (vs proxy ordering). PR#613 GitHub OAuth provider. PR#614 Slack ETL batch backfill (Postgres saturation). Multi-tenant credential model maturing. Revisit 06-24
+- [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26

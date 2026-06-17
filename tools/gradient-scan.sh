@@ -155,6 +155,7 @@ KEYWORDS["verify-before-report"]="没检查.*输出.*汇报|poll.*log.*确认.*�
 KEYWORDS["verify-side-effects"]="受影响.*功能.*路径|重构.*没验证.*还能用|verify.*side.*effect|移除.*功能.*验证|逐一.*手动验证"
 KEYWORDS["workflow-bypass"]="手动.*spawn.*跳过.*FlowForge|workflow.*bypass|绕过.*workflow|手动.*替代.*FlowForge|跳过.*FlowForge"
 KEYWORDS["yield-fallback-timer"]="yield.*lost.*completion|subagent.*stuck.*yield|fallback.*timer.*yield|cron.*wake.*back.*fallback|多.*subagent.*yield.*卡"
+KEYWORDS["cot-leak-in-shared-channel"]="CoT.*leak|chain.of.thought.*leak|NO_REPLY.*推理|internal monologue.*channel|递归观察|其他 agent.*回应.*我的|两个 agent.*互相消耗"
 
 # Cross-check: scan beliefs-candidates section by section for graduated/retracted status
 # Handles cases where pattern: tag is on a line BELOW a graduated ## header
