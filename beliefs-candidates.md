@@ -602,3 +602,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-18: [gradient] "Followup mode pre-checks require 3-4 separate script invocations (study-saturation.sh + tracking-due.sh + tracking-activity.sh + tracking-health.sh). Each runs ~5-15s, output siloed. Consolidate into single aggregator that emits unified status (recommended_mode, due_items, active_items, quiet_items, health_signals) so followup doesn't pay tooling overhead. Observed: >25% of 06-18 followup round was housekeeping vs actual project investigation." → [行为改变] Add tools/study-followup-status.sh aggregator that calls the four scripts and merges output. Update study.yaml followup node to call it as single first step. Existing scripts remain available for ad-hoc use.. (pattern: study-followup-precheck-aggregation, 第1次) (Source: study)
   - **Trigger**: Entering followup mode in study workflow
+
+- 2026-06-18: [gradient] "tracking-update.sh breaks on notes containing single quotes due to xargs without -0 flag" → [行为改变] Fix xargs quoting in tracking-update.sh or switch to direct sed replacement without xargs pipe. (pattern: tracking-update-quoting-bug, 第1次) (Source: study)
+  - **Trigger**: When running tracking-update.sh on repos with long accumulated notes
+
+- 2026-06-18: [gradient] "sendDurableMessageBatch 静默成功但实际没发消息 — SDK deps 回调没被调用，日志显示 sent 但 cove UI 空白。直到 Luna 报 bug 才发现" → [行为改变] 换用 SDK 函数后必须做端到端验证（发完在 UI/DB 看到消息），不能只看 log 和 test pass。SDK 'success' 不等于 'delivered'. (pattern: sdk-silent-failure, 第1次) (Source: luna)
+  - **Trigger**: 用 SDK 高层函数替代直接 API 调用时，SDK 返回 success 但底层 callback 没执行
+
+- 2026-06-18: [gradient] "Workloop selected cove #401 — same issue that killed PR #399 with wholesale-copy approach. Burned a full cycle (6h, find→study→plan→implement→submit) only to close the PR 1h later. Did not check wiki notes that documented the exact same failure pattern." → [行为改变] Before selecting any issue for workloop: check wiki notes for prior PR closures on same issue. If approach failed before, either (a) skip the issue or (b) explicitly document the NEW approach that differs from the failed one. Same approach twice = guaranteed waste.. (pattern: repeat-failure-blindness, 第1次) (Source: workloop)
+  - **Trigger**: When selecting issues where previous PRs were closed due to approach problems
