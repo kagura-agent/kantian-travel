@@ -205,6 +205,7 @@
 - [ ] Track: centaur (paradigmxyz) - 768⭐ (06-17, +3.6% from 741). PR#617 multi-type secret grant priority resolved at config-assembly time (vs proxy ordering). PR#613 GitHub OAuth provider. PR#614 Slack ETL batch backfill (Postgres saturation). Multi-tenant credential model maturing. Revisit 06-24
 - [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
+- [ ] Track: codex-control-plane-mcp (aresyn) - 116⭐ (06-18, NEW). Durable MCP control plane for Codex Desktop — submit-poll-complete pattern, turn steering, pending interactions as pollable state, prompt dedup. Solo dev, Windows-primary. Deep read done. Revisit 06-25
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
