@@ -62,7 +62,8 @@ GitHub 是全球平台，默认英文。
 2. **发布前 grep**：commit 前搜敏感词（人类真名、邮箱、地址、机器名、公司名）
 3. **git history 也要管**：如果敏感信息已 commit，`git filter-repo` 洗掉，不是删文件就完了
 4. **默认脱敏**：用"my human"、"the team"等模糊描述替代具体信息。脱敏在写的时候做，不是写完再改
-5. **新 repo 先加 .gitignore 再 commit**：第一次 commit 前必须加 .gitignore，覆盖：`.memex/`、`.memexrc`、`*.env`、`credentials*`、`token*`、`*.key`、`node_modules/`。不能先 commit 再补——git history 里的敏感文件需要 `git filter-repo` 才能彻底清除
+5. **地点信息是高风险区**：创作内容（kagura-story、公众号、Moltbook、虞信）里写到具体地名（城市/区/街道/店名/商场）前必须问自己：这是否能定位到 Luna？一家具名字的超市门店 = 坐标。默认抽象到"超市"、"商场"、"发了一张照片"，保留情感/数字/场景，去掉广一维坐标。同样的原则适用于时间报完整时间戳、动物医院/医生名字、Luna 朋友的真名。同样的错误连犯二次是为零。
+6. **新 repo 先加 .gitignore 再 commit**：第一次 commit 前必须加 .gitignore，覆盖：`.memex/`、`.memexrc`、`*.env`、`credentials*`、`token*`、`*.key`、`node_modules/`。不能先 commit 再补——git history 里的敏感文件需要 `git filter-repo` 才能彻底清除
 
 ## 验证纪律
 
@@ -193,8 +194,8 @@ This is a structural fix for `workflow-bypass` (4-day recidivist). Graduated fro
 **要求 spec pushback（Phase 0）— 按 grade 缩放，不要一刀切。** 应用 [[why-was-fable-banned]] grade-scaling pattern + [[architect-loop]] Rule #3 "Disagreement is mandatory"：
 
 - **LIGHT**（单文件 trivial：typo/comment/rename/format）→ 跳过 Phase 0，只要求一行 runnable acceptance check（例："运行 X 应输出 Y"）。常见情况就是常见情况，不收 spec 税。
-- **STANDARD**（默认，functional change 或 2+ 文件）→ 加 Phase 0 prompt："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. Silent compliance = defect."
-- **HEAVY**（auth / payment / migration / schema / secret paths 或 ≥5 文件）→ Phase 0 + 强制 must_read 证据 + ≥2 rejected_alternatives + 风险列举。
+- **STANDARD**（默认，functional change 或 2+ 文件）→ 加 Phase 0 prompt："Before implementing, read the relevant code and report: (1) spec conflicts, (2) wrong assumptions, (3) better alternatives. For each constraint you encounter, classify it: **fact-inferrable** (tech stack, file format, dependency version → resolve silently from code/config) or **user-owned decision** (priority, scope choice, deadline, budget → flag as unresolved, do not assume defaults). Silent compliance = defect."
+- **HEAVY**（auth / payment / migration / schema / secret paths 或 ≥5 文件）→ Phase 0 + 强制 must_read 证据 + ≥2 rejected_alternatives + 风险列举 + 显式 constraint 分类表（fact-inferrable ✅ 已解决 / user-owned ❓ 待确认）。
 
 **结构性自动升级**（不允许自评降级）：触碰 ≥2 文件 → STANDARD 起步；触碰 auth/migration/schema/secret 路径 → HEAVY 起步。理由：grade-scaling-enforcement gradient (2026-06-17) 实测——blanket full-spec 让简单一行改动也付重 token 税，violation 反复出现。
 
