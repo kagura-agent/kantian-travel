@@ -145,6 +145,7 @@
 - **06-15**: Cove PR #356 merged; finance PR #887 (validate_portfolio_history) merged; code-review Gemini 3.1→2.5 Pro 切换清理 (SKILL.md/stats.md/workflow.yaml 一致化); spec-review workflow first run; 周末降级生效 (study 10 session 全饱和正确跳过)
 - **06-16**: Cove PR #367/#369 (multi-account support) merged by Luna; beliefs sed-bug 碎片化修复+graduated (合并 3 条同 pattern); FlowForge 僵尸清理机制升级; superlog deep_read (826⭐ agentic telemetry); code-review tracking.json 66 entries 全 merged ground_truth complete
 - **06-17**: PR #190 七轮 review 教训写入 AGENTS.md (grade-scaling + YAGNI 六阶梯); cot-leak-in-shared-channel gradient (NO_REPLY 不应含 CoT body); spec-review-discover-dont-prescribe gradient (Luna 指出 review 工具不能反客为主); workflow-bypass tool guard 落地 (workflow-guard.sh structural fix); finance #938 paper-trading guard 设计 (basename matching 替代 relative-path); travel pet/pace 双 gradient (Luna directive); ponytail-yagni-skill 学习
+- **06-18**: SOUL.md 重写 (soul-grader rubric 41→73/100 +32pts); 5 beliefs 批量毕业 (workflow-bypass, assigned-issue-neglect, skip-reflection, dogfood-adoption, hn-algolia-direct); compass-skills fact-vs-decision constraint split 写入 AGENTS.md; FlowForge cleanup CLI 实现 (db.ts+engine.ts+index.ts); critical-cron-watchdog cron 创建; compress-daily-memory.sh 升级 (15+ no-action 指标); Luna carry meeting (VS Code extension 讨论)
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
