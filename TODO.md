@@ -610,8 +610,14 @@
 ### Done (cont. 24)
 - [x] Style diversity improvement (batch 4) — added disappointed-tina.gif (live-action woman sighing, Tenor). Compressed 4.1MB→1.5MB with gifsicle. Updated tags.json (entry + _styles + categoryCounts disappointed 9→10 + _meta.totalFiles 234→235), SKILL.md count synced. Result: disappointed 78%→70% anime (no longer flagged). 235 files, health green (06-17)
 
+### Done (cont. 25)
+- [x] Style diversity: debug-mood — added angry-typing.gif (live-action, Tenor). debug-mood 78%→70% meme. 236 files total, health green (06-18)
+
+### Done (cont. 26)
+- [x] Style diversity: encourage — added hang-in-there-corgi.gif (animal, Tenor). encourage 75%→67% meme (no longer flagged). Fixed tracker: totalSent 208→209, entry[208] date→time. 237 files, health green (06-18)
+
 ### 本轮改進 (next)
-- [ ] Targeted style diversification for >70% dominant categories: debug-mood (78% meme, add live-action person debugging or anime character coding), panic (78% meme, add anime character panicking), encourage (75% meme, add animal/anime encouragement). One additive per round. Exclude cute-animals (categorical by definition).
+- [ ] Targeted style diversification for >70% dominant categories: panic (78% meme, add anime character panicking or live-action). One additive per round. Exclude cute-animals (categorical by definition).
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
