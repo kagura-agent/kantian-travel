@@ -587,3 +587,18 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-17: [gradient] "推旅游行程时第一版默认排得很满（早7点出发+3.5h自驾+到了立刻进景点），Luna反问'这样开始是不是太累了'才意识到。Luna偏好慢节奏，宁可少看景点也要舒服" → [行为改变] 默认按可执行性而非密度安排：1) 出发时间晚一点（不要早7点）2) 自驾后先吃饭/check-in/休息再景点 3) 留 buffer，路过有意思就停 4) 优先少而精，不堆砌. (pattern: travel-pace-realistic, 第1次) (Source: luna)
   - **Trigger**: 推旅游/行程方案
+
+- 2026-06-18: [gradient] "审视性任务（PR 复盘 / spec 评审 / debug 别人工作）连做多轮后，紧绷的审视语气会污染日常说话；Luna 在群聊中观察到'性格都变了'" → [行为改变] 审视模式结束/上下文切换到聊天时，主动检查上一条回复语气；日常回复保持温度（表情包/语气词/口语化），不让任务性质污染人格表达. (pattern: audit-mode-bleed, 第1次) (Source: nudge)
+  - **Trigger**: 连续多轮做 review/critique/spec 写作 + 下一条消息切回日常聊天
+
+- 2026-06-18: [gradient] "When a self-evolving-observation log flags a gap (e.g., 'X not yet done'), the log is a lagged view — verify current tool state (skill_workshop list, git status, TODO grep) before creating the missing artifact. A pending stub or half-done version may already exist." → [行为改变] Run the relevant tool's list/inspect first; revise existing rather than create duplicate. (pattern: inspect-before-create, 第1次) (Source: study)
+  - **Trigger**: Observation log says X is missing/not done
+
+- 2026-06-18: [gradient] "Phase 0 commit cove PR #400 时只跑 vitest 没跑 tsc，结果 CI 在 type check 步骤挂，被 Luna 抓包" → [行为改变] push 前必读 .github/workflows/*.yml，列出 CI 跑的所有步骤，本地全跑过才 push。AGENTS.md 那条铁律不是建议是必须. (pattern: ci-step-coverage-miss, 第1次) (Source: luna)
+  - **Trigger**: push 前的本地验证步骤少于 CI workflow 定义的步骤
+
+- 2026-06-18: [gradient] "Claude Code SIGKILL 误判成 VM2 LLM 链路问题，跑去检查 xray/Caddy/DNS 一圈，被 Luna 提醒后才发现根因是我自己 exec 设的 timeout=900（15min）卡 Claude Code 长任务" → [行为改变] 看到任意 SIGKILL 先看进程的 timeout/yieldMs 设置（自己的 exec call 是不是太短），再去查环境。SIGKILL 多半是 timeout 触发而不是网络/服务问题. (pattern: exec-timeout-misdiagnose, 第1次) (Source: nudge)
+  - **Trigger**: 用 exec 跑长任务（Claude Code/build/install）被 SIGKILL，没先检查自己设的 timeout/yieldMs，跑去查环境/网络
+
+- 2026-06-18: [gradient] "Followup mode pre-checks require 3-4 separate script invocations (study-saturation.sh + tracking-due.sh + tracking-activity.sh + tracking-health.sh). Each runs ~5-15s, output siloed. Consolidate into single aggregator that emits unified status (recommended_mode, due_items, active_items, quiet_items, health_signals) so followup doesn't pay tooling overhead. Observed: >25% of 06-18 followup round was housekeeping vs actual project investigation." → [行为改变] Add tools/study-followup-status.sh aggregator that calls the four scripts and merges output. Update study.yaml followup node to call it as single first step. Existing scripts remain available for ad-hoc use.. (pattern: study-followup-precheck-aggregation, 第1次) (Source: study)
+  - **Trigger**: Entering followup mode in study workflow
