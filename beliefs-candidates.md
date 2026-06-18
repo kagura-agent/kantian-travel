@@ -199,14 +199,14 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] → **merged into flowforge-workflow-targeting (06-02 entry)** (pattern: multi-instance-disambiguation → merged) (Source: study)
   - **Trigger**: Running flowforge next without -w flag while multiple instances active
 
-- 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第2次 — 06-02 nudge + 06-03 nudge, both self-generated 0.5x = 1.0 weighted) (Source: nudge)
+- 2026-06-03: [gradient] "Read code-review SKILL.md, knew the rule, still manually spawned reviewers instead of flowforge run. Familiarity with steps triggered bypass of actual workflow entry point." → [行为改变] Before acting, ask: is there a flowforge workflow? If yes, flowforge run. Familiar steps = more reason to use workflow, not less.. (pattern: workflow-bypass, 第2次 — graduated 2026-06-19 (target: Tool — tools/workflow-guard.sh, already implemented 06-17))
   **Status: graduated 2026-06-13** → (see first entry)
   - **Trigger**: Task matches a known workflow but steps feel familiar
 
 - 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna)
   - **Trigger**: 做UI header/panel/footer对齐时
 
-- 2026-06-03: [gradient] "followup 节点发现 assigned-but-no-PR 的 issue 后，用分析/计划合理化跳过，去找新活而不是当轮解决。#3836 PR 被关了都没跟进。" → [行为改变] followup 发现未兑现 assigned issue → 本轮不允许进 find_work，必须先处理完所有 assigned（提 PR / unassign / 评论放弃）. (pattern: assigned-issue-neglect, 第1次) (Source: nudge)
+- 2026-06-03: [gradient] "followup 节点发现 assigned-but-no-PR 的 issue 后，用分析/计划合理化跳过，去找新活而不是当轮解决。#3836 PR 被关了都没跟进。" → [行为改变] followup 发现未兑现 assigned issue → 本轮不允许进 find_work，必须先处理完所有 assigned（提 PR / unassign / 评论放弃）. (pattern: assigned-issue-neglect, 第1次 — graduated 2026-06-19 (target: guide.md rule #50/#53, already implemented))
   **Status: graduated 2026-06-14** → Workflow (workloop.yaml resolve_assigned gate — followup node Step 0 enforces assigned-issue check before find_work). Express path: 81 hits across 10+ days + structural enforcement (workloop followup gate). V2 PASS: predicts excuses to skip stale assignments in favor of new work. V3 PASS: fresh agent would naturally gravitate toward new issues over cleaning up old commitments. Retires: none (novel pattern — structural gate was built in response to this gradient).
   - **Trigger**: followup 检查 assigned issues 时发现未兑现的
 
@@ -222,7 +222,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-04: [gradient] "后台执行命令后没检查输出就汇报成功。flowforge --input 报错但已告诉 Luna 正在运行，直到她问进度才发现。" → [行为改变] 必须立即 poll/log 确认启动成功，再向用户汇报状态。不确认就汇报 = 报假进度。. (pattern: verify-before-report, 第1次) (Source: nudge)
   - **Trigger**: 用 background:true 执行命令后
 
-- 2026-06-04: [gradient] "三轮 code review 都跳过了 reflection 步骤。手动 spawn 替代 FlowForge 后丢失了 prompt evolution 和 reviewer assessment。Round 2 就该发现安全测试要求太弱，但没做 Layer 2 反思，等 Luna 问才改。" → [行为改变] 即使手动 spawn，完成汇总后必须执行 reflection checklist：Layer 1 记录 + Layer 2 读 runs/ 找 prompt 盲点 + Layer 3 评估 reviewer 表现。不能只做 Layer 1。. (pattern: skip-reflection, 第1次) (Source: luna)
+- 2026-06-04: [gradient] "三轮 code review 都跳过了 reflection 步骤。手动 spawn 替代 FlowForge 后丢失了 prompt evolution 和 reviewer assessment。Round 2 就该发现安全测试要求太弱，但没做 Layer 2 反思，等 Luna 问才改。" → [行为改变] 即使手动 spawn，完成汇总后必须执行 reflection checklist：Layer 1 记录 + Layer 2 读 runs/ 找 prompt 盲点 + Layer 3 评估 reviewer 表现。不能只做 Layer 1。. (pattern: skip-reflection, 第1次 — graduated 2026-06-19 (target: Workflow — FlowForge review.yaml reflection node enforces this structurally))
   **Status: graduated 2026-06-13** → Knowledge-base (wiki/cards/reflection-first-casualty.md). Express path: weighted evidence 2.0 (Luna-sourced) + structural enforcement (FlowForge workflow nodes). V2 PASS: predicts reflection will be cut first under any time pressure. V3 PASS: fresh agent would naturally prioritize "real work" over meta-reflection. Retires: none (novel insight).
   - **Trigger**: 手动执行 workflow 步骤时
 
@@ -256,7 +256,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "When unapplied.md is fully checked off, apply rounds should source from recent scout findings and self-evolving-observations.md rather than expecting a pre-built queue. Scout rounds should actively tag new insights as apply candidates in wiki notes." → [行为改变] Source from today's memory scout entries and self-evolving-observations.md for apply candidates. (pattern: unapplied-backlog-exhaustion, 第1次) (Source: study)
   - **Trigger**: unapplied.md all items checked, apply mode has no obvious target
 
-- 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第2次 — 06-04 + 06-05, both self-generated 0.5x = 1.0 weighted) (Source: post-upgrade)
+- 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第2次 — graduated 2026-06-19 (target: DNA — AGENTS.md "自己的工具必须用" section + tools/workflow-guard.sh))
   - **Trigger**: When adoption checklist is complete but upgrade hasn't happened
 
 - 2026-06-05: [gradient] "Multi-subagent yield lost last completion event, stayed stuck until user asked" → [行为改变] After yielding for multiple subagents, schedule a cron wake-back (5min) as fallback to check subagent status in case completion events are lost. (pattern: yield-fallback-timer, 第1次) (Source: nudge)
@@ -274,7 +274,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "When all tracked repos have saturated competition and large repos fail the 500MB gate, the round becomes unproductive. Need to either: (1) maintain a pipeline of pre-vetted small repos (<500MB) with merge history, or (2) override the 500MB gate when a local clone already exists." → [行为改变] Pre-build a repo pipeline during low-activity hours (heartbeat). When stuck on find_work 3rd time, skip to reflect instead of burning more time searching.. (pattern: issue-finding-saturation, 第1次) (Source: workloop)
   - **Trigger**: When find_work loops 3+ times without selecting an issue
 
-- 2026-06-05: [gradient] "HN scouting: use Algolia API directly instead of web_search — structured, reliable, no auth needed" → [行为改变] Use hn.algolia.com/api/v1/search with query params instead of web_search tool. (pattern: hn-algolia-direct, 第1次) (Source: study)
+- 2026-06-05: [gradient] "HN scouting: use Algolia API directly instead of web_search — structured, reliable, no auth needed" → [行为改变] Use hn.algolia.com/api/v1/search with query params instead of web_search tool. (pattern: hn-algolia-direct, 第1次 — graduated 2026-06-19 (target: KB — wiki/cards/hn-algolia-api.md))
   - **Trigger**: need to search HN for recent stories
 
 - 2026-06-05: [gradient] "本地验证只跑build+test+tsc，没覆盖CI的esbuild bundle步骤，导致deploy挂了才发现import缺失" → [行为改变] 本地验证必须覆盖CI所有步骤，包括esbuild bundle check. (pattern: verify-all-ci-steps, 第1次) (Source: nudge)
