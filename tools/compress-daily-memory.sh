@@ -50,8 +50,8 @@ trap 'rm -f "$TMPOUT" "$TMPSTATS"' EXIT
 # Single awk pass: classify sections, detect no-action, output compressed version + stats
 awk '
 BEGIN {
-  # No-action indicators
-  split("无待办|无需行动|无需操作|no action needed|nothing new|一切正常|无变化|all clear|全清|全部清净|全部清洁|无新|no code change|ball on|no action tonight|无需调整|all ball on", noact_pats, "|")
+  # No-action indicators (expanded: catch patrol sections with no real action taken)
+  split("无待办|无需行动|无需操作|no action needed|nothing new|一切正常|无变化|all clear|全清|全部清净|全部清洁|无新|no code change|ball on|no action tonight|无需调整|all ball on|等对方|waiting on|no follow-up|跳过|skipped|no update|无更新|no change|nothing to do|not actionable|no response needed|无需回应|正常完成|completed normally|no issues|无异常|backup completed|备份完成", noact_pats, "|")
 }
 
 function classify(header) {
@@ -68,8 +68,24 @@ function classify(header) {
 
 function check_noaction(body) {
   b = tolower(body)
+  # Check explicit no-action indicators
   for (i in noact_pats) {
     if (index(b, noact_pats[i]) > 0) return 1
+  }
+  # Heuristic: short patrol sections (<=8 lines) without action verbs are effectively no-action
+  n = split(body, _lines, "\n")
+  real_lines = 0
+  for (i = 1; i <= n; i++) {
+    l = _lines[i]
+    # Skip empty lines and simple list markers
+    if (l ~ /^[[:space:]]*$/) continue
+    real_lines++
+  }
+  if (real_lines <= 8) {
+    # Check for actual action verbs (things we DID, not observations)
+    if (b !~ /提交|commit|push|merge|创建|create|修复|fix|更新|update|部署|deploy|发送|sent|安装|install|opened|closed|submitted/) {
+      return 1
+    }
   }
   return 0
 }
