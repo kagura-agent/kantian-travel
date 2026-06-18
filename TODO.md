@@ -183,6 +183,7 @@
 - [x] **guide.md: 新增「check monorepo for internal utilities before adding external deps」** - multica#4095 教训 → 已加入 guide.md 第 55 条 (2026-06-14)
 - [x] **guide.md: 新增「re-verify issue state before implementation — selection ≠ commitment」** - MCP Inspector#1462 教训（issue 已被 PR #1464 关闭但 find_work 仍选中，整轮实现白费）→ 已加入 guide.md 第 56 条 (2026-06-15)
 - [x] **guide.md: 新增「study recent merged PRs for reviewer expectations beyond formal gates」** - oh-my-pi#2764 教训（reviewer 要求 CHANGELOG.md entry，非 CI/template 硬性要求但所有 merged PR 都有）→ 已加入 guide.md 第 57 条 (2026-06-16)
+- [x] **guide.md: 新增「check for competing PRs before implementing」** - hermes-agent#44782 教训（完整实现后发现 4h 前已有 duplicate PR #44652，整轮白费）→ 已加入 guide.md 第 58 条 (2026-06-18)
 
 ## 📚 学习
 
