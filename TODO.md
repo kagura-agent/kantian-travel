@@ -113,6 +113,11 @@
 - 7 wiki files edited today (active dogfood usage confirmed)
 - Upstream still dormant as of 06-16 22:00 (no commits since 05-25, 22 days)
 - External PR #171 (wooksong) still 0 reviews after 3 days — another contributor hitting dormant wall
+- Wiki health (06-17): 937 files (403 cards + 452 projects), 169 orphans (42%), 0 broken links, 0 collisions ✔ (stable; +8 files vs yesterday)
+- 17 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant as of 06-17 22:00 (no commits since 05-25, 23 days)
+- External PR #171 (wooksong) still 0 reviews after 4 days — dormant wall persists
+- Open issues unchanged: #169 (SSH autoSync), #168 (VS Code Claude Code MCP), #151 (Codex question)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -198,6 +203,7 @@
 - [ ] Track: nanobot (HKUDS) - 44,343⭐ (06-17, +377 from 06-10). PR#4370 idle auto-compact default 0→15min (memory path reachability). Issue #4307 (open, 5 production instances) — post-turn consolidation wipes agent's own delivery message, 4 ordered fixes proposed. New card [[delivery-message-preservation]] created. Revisit 06-24
 - [ ] Track: centaur (paradigmxyz) - 768⭐ (06-17, +3.6% from 741). PR#617 multi-type secret grant priority resolved at config-assembly time (vs proxy ordering). PR#613 GitHub OAuth provider. PR#614 Slack ETL batch backfill (Postgres saturation). Multi-tenant credential model maturing. Revisit 06-24
 - [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
+- [ ] Track: soul-grader-skill (cobibean) - 29⭐ (06-18, NEW). 100-pt SOUL.md rubric + 11 categories + slop detector + scope classes. Self-graded my SOUL.md: 41/100 (Needs rewrite band). Deep read done. Revisit 07-01
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -599,8 +605,11 @@
 ### Done (cont. 23)
 - [x] Style diversity improvement (batch 3) — added 3 memes: smug (smug-cat-live live-action cat → counted as animal), tired (tired-sloth animal + tired-anime-yawn anime). Compressed anime-yawn (2.0MB→1.1MB). Updated tags.json (entries + _styles + categoryCounts), synced _meta.totalFiles 220→234 (also caught stale counts from earlier batches). Results: smug 85%→75% anime, tired 85%→66% meme. cute-animals 100% animal is by definition (category IS animals) — exempt. 234 files, health green (06-17)
 
+### Done (cont. 24)
+- [x] Style diversity improvement (batch 4) — added disappointed-tina.gif (live-action woman sighing, Tenor). Compressed 4.1MB→1.5MB with gifsicle. Updated tags.json (entry + _styles + categoryCounts disappointed 9→10 + _meta.totalFiles 234→235), SKILL.md count synced. Result: disappointed 78%→70% anime (no longer flagged). 235 files, health green (06-17)
+
 ### 本轮改進 (next)
-- [ ] Targeted style diversification for >70% dominant categories where it makes sense: disappointed (77% anime, add live-action), debug-mood (77% meme, add live-action person debugging), panic (77% meme, add anime), encourage (75% meme, add animal/anime). Exclude cute-animals (categorical by definition). One additive per round.
+- [ ] Targeted style diversification for >70% dominant categories: debug-mood (78% meme, add live-action person debugging or anime character coding), panic (78% meme, add anime character panicking), encourage (75% meme, add animal/anime encouragement). One additive per round. Exclude cute-animals (categorical by definition).
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
