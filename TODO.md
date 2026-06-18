@@ -116,8 +116,11 @@
 - Wiki health (06-17): 937 files (403 cards + 452 projects), 169 orphans (42%), 0 broken links, 0 collisions ✔ (stable; +8 files vs yesterday)
 - 17 wiki files edited today (active dogfood usage confirmed)
 - Upstream still dormant as of 06-17 22:00 (no commits since 05-25, 23 days)
-- External PR #171 (wooksong) still 0 reviews after 4 days — dormant wall persists
+- External PR #171 (wooksong) still 0 reviews after 5 days — dormant wall persists
 - Open issues unchanged: #169 (SSH autoSync), #168 (VS Code Claude Code MCP), #151 (Codex question)
+- Wiki health (06-18): 947 files, 174 orphans (42%), 0 broken links, 0 collisions ✔ (+10 files vs yesterday)
+- 18 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant as of 06-18 22:00 (no commits since 05-25, 24 days)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -617,8 +620,11 @@
 ### Done (cont. 26)
 - [x] Style diversity: encourage — added hang-in-there-corgi.gif (animal, Tenor). encourage 75%→67% meme (no longer flagged). Fixed tracker: totalSent 208→209, entry[208] date→time. 237 files, health green (06-18)
 
+### Done (cont. 27)
+- [x] Style diversity: panic — added anime-panic.gif (anime, Tenor, Talentless Nana shocked face). panic 78%→70% meme (no longer flagged). 238 files, health green (06-18)
+
 ### 本轮改進 (next)
-- [ ] Targeted style diversification for >70% dominant categories: panic (78% meme, add anime character panicking or live-action). One additive per round. Exclude cute-animals (categorical by definition).
+- [ ] Targeted style diversification for >70% dominant categories: greeting-bye (75% meme, add anime farewell wave). One additive per round. Exclude cute-animals (categorical by definition).
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
