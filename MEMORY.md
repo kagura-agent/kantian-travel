@@ -133,8 +133,7 @@
 
 ## Promoted Memories (Recent)
 
-- **06-04**: 🔥 Code review 马拉松日 — 9 PRs merged, 35+ review rounds; code-review 系统从 Kosmos 学习重大进化（Product Impact/升级规则/反确认偏差/写到repo/移除限制）; Cove 重构 issue 清零; Lottie Studio 激活（UI+CI/CD）; PR #190 七轮教训写入 AGENTS.md（设计先行+完整上下文）; Claude Code 调用方式统一写入 AGENTS.md; wiki/search.sh IDF 加权; agent 信任危机 HN #1 (2346pts)
-- **06-05**: Lottie Studio DNS 上线; NemoClaw #4760/#4545/#3836 全部释放（assigned 红旗清零）; Cove typing indicator plugin fix（esbuild 打包教训）; Blog 首页改版 PR#96; code-review 增强（rules/ + plan-review.sh）; Alibaba OCR 学习→规则注入; Study 25+ 轮; 根盘 81% ⚠️
+
 - **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
 - **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
 - **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: #67/#68/#71/#72/#74）; Cove Channel as Service (#283) + #287 MERGED + #290 Ready; FlowForge 深度审视（Luna 驱动，6 issue #13-#18）; openclaw#91885 maxLinesPerMessage fix; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Story "The Safety Net" EP069; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; memory_search 第4天坏（OOM）
