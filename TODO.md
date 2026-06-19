@@ -121,6 +121,13 @@
 - Wiki health (06-18): 947 files, 174 orphans (42%), 0 broken links, 0 collisions ✔ (+10 files vs yesterday)
 - 18 wiki files edited today (active dogfood usage confirmed)
 - Upstream still dormant as of 06-18 22:00 (no commits since 05-25, 24 days)
+- **🎉 Upstream revived!** 3 commits on 06-19: `fix(sync): memex_write triggers autoSync` (#169 fix), `bump 0.3.3`, `feat: memex mcp-config` (#168 fix). Issues #168 + #169 both CLOSED by maintainer
+- Wiki health (06-19): 957 files (414 cards + 458 projects), 178 orphans (43%), 0 broken links, 0 collisions ✔ (+10 files vs yesterday)
+- 9 wiki files edited today (active dogfood usage confirmed)
+- Local memex synced to 0.3.3 (rebuilt + npm link)
+- PR #173 submitted: test(mcp-config) — add 5 --claude-code path tests (writeClaudeCodeConfig untested in upstream)
+- PR #171 (wooksong, pi-extension fix) still open after 6 days
+- Contribution score: 10 PRs merged, 1 open (#173), 5 closed (1 superseded + 4 stale)
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -212,6 +219,7 @@
 - [ ] Track: codex-control-plane-mcp (aresyn) - 116⭐ (06-18, NEW). Durable MCP control plane for Codex Desktop — submit-poll-complete pattern, turn steering, pending interactions as pollable state, prompt dedup. Solo dev, Windows-primary. Deep read done. Revisit 06-25
 - [ ] Track: vercel/eve - 1,371⭐ (06-19, NEW, 3 days old). Vercel's filesystem-first durable agent framework. SKILL.md convention, Workflow SDK durability, sandbox isolation, 7+ channels, typed tools, subagents. Direct OpenClaw positioning competitor (framework vs runtime). Deep read done. Revisit 06-26
 - [ ] Track: scholar-loop (renee-jia/scholar-loop) - 126⭐ (06-19, NEW, 4d). Autonomous ML research loop with 5-layer anti-hallucination (VerifiedRegistry + frozen scorer + edit allowlist + CalibrationLog + cheater proof). Solo dev, Python. Deep read done. Revisit 06-26
+- [ ] Track: VisionForge-OU/foreman - 33⭐ (06-19, NEW, 2d). Boris-style TUI orchestrator for headless Claude Code agents. Gated pipeline + merge gate + worktree isolation + evals flywheel. Solo dev (n1arash). Deep read done. Revisit 06-26
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -517,9 +525,9 @@
 - [ ] Watch: Entire.io ($60M seed, ex-GitHub CEO Thomas Dohmke) — "next developer platform" for agent era. First product: Checkpoints (agent context in Git). Industry signal, no repo to track yet
 - [x] Track: Statewave (smaramwbc/statewave) - 214⭐ (06-01). Re-tracking: was dropped 05-30 as solo maintainer, but skarL007 emerged with 6 multi-tenancy PRs. 🟢 THRIVING (5/6). Community health dramatically improved. Revisit 06-08 → 06-09: 204⭐ stable, multi-tenant admin hardening phase. Next revisit in targets.md (06-22)
 - [x] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08 → 06-09: 12,711⭐, doc cleanup only. Next revisit in targets.md (06-22)
-- [ ] Track: sandboxes (tastyeffectco/sandboxes) - 572⭐ (06-12, was 395 on 06-05, +45%). Per-sandbox idle_policy feature. Very active. Revisit 06-19
+- [ ] Track: sandboxes (tastyeffectco/sandboxes) - 672⭐ (06-19, was 572 on 06-12, +17.5%). gVisor PR, timeout_s API, 3+ external contributors. Revisit 06-26
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
-- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 345⭐ (06-12, was 258 on 06-05, +34%). New skills: github-repo-tour, repo-promo. Revisit 06-19
+- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 352⭐ (06-19, plateau). No maintainer push 12d. Downgraded to cool. Revisit 07-19
 - [x] Track: 21-day-self-interview (Forlives) - 153⭐ (06-13, was 128, +20%). **Dropped** 06-13 — phantomstars bot flagged fake engagement (issue #1). Only 2 commits, 1 external PR (metadata fix). Star farming pattern
 
 ## openclaw/openclaw PR #92665 — cacheRetention for LiteLLM
@@ -625,8 +633,18 @@
 ### Done (cont. 27)
 - [x] Style diversity: panic — added anime-panic.gif (anime, Tenor, Talentless Nana shocked face). panic 78%→70% meme (no longer flagged). 238 files, health green (06-18)
 
+### Done (cont. 28)
+- [x] Tracker data cleanup — fixed 2 non-standard entries (missing action/result/method fields: entry 199 old date format, entry 208 extra fields). 0 non-standard entries remain (06-19)
+- [x] Added diversity nudge to `cmd_pick` — when a category is used ≥4x in 7d, prints stderr hint with 3 dormant alternatives. Configurable via MEMES_NUDGE_THRESHOLD. Addresses 13/26 categories dormant >7d (06-19)
+
+### Done (cont. 29)
+- [x] Style diversity: greeting-bye — added anime-bye-wave.gif (anime, Reze from Chainsaw Man waving, Tenor 682KB). greeting-bye 75%→67% meme (no longer flagged). 239 files, tags.json updated (06-19)
+
+### Done (cont. 30)
+- [x] Style diversity: shrug — added garfield-idk.gif (cartoon, Tenor 773KB). shrug 75%→67% meme (no longer flagged). 240 files, health green (06-19)
+
 ### 本轮改進 (next)
-- [ ] Targeted style diversification for >70% dominant categories: greeting-bye (75% meme, add anime farewell wave). One additive per round. Exclude cute-animals (categorical by definition).
+- [ ] Style diversity: greeting-hello (71% meme, add anime/cartoon/animal). Remaining >70%: greeting-hello (71% meme), happy (71% meme), smug (75% anime), wow (75% meme). One per round.
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
