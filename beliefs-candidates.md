@@ -614,3 +614,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-18: [gradient] "fresh-context-review.sh verdict parser uses anchored grep patterns (^PASS, PASS$) that miss markdown bold **PASS**. This caused a false NEEDS_WORK despite a clear PASS review. Fix the script to handle common formatting variants or instruct the reviewer model to output bare PASS/NEEDS_WORK." → [行为改变] Update fresh-context-review.sh grep to also match **PASS** and similar markdown variants, or add explicit format instruction to the reviewer prompt. (pattern: tool-format-mismatch, 第1次) (Source: workloop)
   - **Trigger**: fresh-context review returns UNCLEAR VERDICT when review content clearly passes
+
+- 2026-06-19: [gradient] "When a major company (Vercel, Google, Anthropic) enters a space with a new open-source project, prioritize it over solo-dev projects during scout — corporate entries signal market validation and ecosystem direction" → [行为改变] Prioritize corporate-backed repos for deep read; they indicate where the market is heading. (pattern: corporate-entry-priority-signal, 第1次) (Source: study)
+  - **Trigger**: Seeing a major company's new repo during scout alongside solo-dev projects
+
+- 2026-06-19: [gradient] "Workloop instances get stuck when a cron run spawns a subagent (plan_review) but the cron session ends before advancing the workflow. Next cron invocation has to detect the completed subagent output and advance manually." → [行为改变] When resuming at plan_review and finding the subagent already completed, check its output and advance immediately without re-spawning. (pattern: cron-session-continuity, 第1次) (Source: workloop)
+  - **Trigger**: Resuming a workflow that has been waiting across multiple cron invocations
