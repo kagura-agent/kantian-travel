@@ -632,3 +632,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-19: [gradient] "FlowForge plan_review node stuck when cron spawns reviewer subagent but session ends before advancing. Manual recovery works but wastes a full workloop cycle." → [行为改变] Check FlowForge log for time gaps between node entry and current time. If >2h and memory shows work done, advance through remaining nodes to catch up rather than re-doing work.. (pattern: flowforge-stuck-plan-review, 第1次) (Source: workloop)
   - **Trigger**: plan_review node shows as current but work was already done in a previous session
+
+- 2026-06-19: [gradient] "When a cron-triggered workloop spawns a subagent for plan_review but the cron session ends before advancing FlowForge, the state machine gets stuck. Recovery requires manual flowforge advance in next session." → [行为改变] After spawning reviewer subagent, ensure flowforge advance happens in the same session before returning. If cron times out, next workloop invocation should detect and recover stuck state.. (pattern: cron-session-flowforge-desync, 第1次) (Source: workloop)
+  - **Trigger**: FlowForge state stuck at a node where subagent was spawned by a cron session
