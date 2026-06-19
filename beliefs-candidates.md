@@ -620,3 +620,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-19: [gradient] "Workloop instances get stuck when a cron run spawns a subagent (plan_review) but the cron session ends before advancing the workflow. Next cron invocation has to detect the completed subagent output and advance manually." → [行为改变] When resuming at plan_review and finding the subagent already completed, check its output and advance immediately without re-spawning. (pattern: cron-session-continuity, 第1次) (Source: workloop)
   - **Trigger**: Resuming a workflow that has been waiting across multiple cron invocations
+
+- 2026-06-19: [gradient] "When selecting from multiple candidates (issues, ideas, approaches), propose N cheaply in parallel, screen against a minimal gate, then invest deep effort only in survivors. Don't go deep on the first viable option." → [行为改变] Cheap screen all candidates first (quick assessment), then commit full effort only to verified survivors. (pattern: population-funnel-for-exploration, 第1次) (Source: study)
+  - **Trigger**: Selecting from multiple candidate options for deep work

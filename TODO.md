@@ -210,6 +210,8 @@
 - [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [ ] Track: codex-control-plane-mcp (aresyn) - 116⭐ (06-18, NEW). Durable MCP control plane for Codex Desktop — submit-poll-complete pattern, turn steering, pending interactions as pollable state, prompt dedup. Solo dev, Windows-primary. Deep read done. Revisit 06-25
+- [ ] Track: vercel/eve - 1,371⭐ (06-19, NEW, 3 days old). Vercel's filesystem-first durable agent framework. SKILL.md convention, Workflow SDK durability, sandbox isolation, 7+ channels, typed tools, subagents. Direct OpenClaw positioning competitor (framework vs runtime). Deep read done. Revisit 06-26
+- [ ] Track: scholar-loop (renee-jia/scholar-loop) - 126⭐ (06-19, NEW, 4d). Autonomous ML research loop with 5-layer anti-hallucination (VerifiedRegistry + frozen scorer + edit allowlist + CalibrationLog + cheater proof). Solo dev, Python. Deep read done. Revisit 06-26
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
