@@ -623,3 +623,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-19: [gradient] "When selecting from multiple candidates (issues, ideas, approaches), propose N cheaply in parallel, screen against a minimal gate, then invest deep effort only in survivors. Don't go deep on the first viable option." → [行为改变] Cheap screen all candidates first (quick assessment), then commit full effort only to verified survivors. (pattern: population-funnel-for-exploration, 第1次) (Source: study)
   - **Trigger**: Selecting from multiple candidate options for deep work
+
+- 2026-06-19: [gradient] "calibration-log write+read serializer mismatch: Python json.dumps uses spaces after colons, bash printf does not" → [行为改变] Use a single serializer (Python for both read and write) instead of mixing bash printf + Python json.dumps. Always test full write-then-read cycle.. (pattern: data-tool-serializer-consistency, 第1次) (Source: study)
+  - **Trigger**: Building a tool that writes data in one code path and reads/greps in another
+
+- 2026-06-19: [gradient] "When retrying a failed subagent task, distill the failure into a concise actionable report (what failed, why, what to do differently) rather than dumping full error output. Reduces context noise and focuses the retry." → [行为改变] Write a 3-5 line distilled failure report (problem + root cause + what to change) instead of passing full logs/review text. (pattern: distilled-failure-feedback, 第1次) (Source: study)
+  - **Trigger**: subagent task fails and needs retry
+
+- 2026-06-19: [gradient] "FlowForge plan_review node stuck when cron spawns reviewer subagent but session ends before advancing. Manual recovery works but wastes a full workloop cycle." → [行为改变] Check FlowForge log for time gaps between node entry and current time. If >2h and memory shows work done, advance through remaining nodes to catch up rather than re-doing work.. (pattern: flowforge-stuck-plan-review, 第1次) (Source: workloop)
+  - **Trigger**: plan_review node shows as current but work was already done in a previous session
