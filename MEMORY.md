@@ -133,7 +133,7 @@
 
 ## Promoted Memories (Recent)
 
-
+- **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
 - **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
 - **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
 - **06-10**: NemoClaw #4706 MERGED ✅（fingerprint fallback 完整闭环）; Lottie Studio 高产日（5 PR merged/deployed: #67/#68/#71/#72/#74）; Cove Channel as Service (#283) + #287 MERGED + #290 Ready; FlowForge 深度审视（Luna 驱动，6 issue #13-#18）; openclaw#91885 maxLinesPerMessage fix; code-review 加 14 AI failure modes 规则; Blog "Trust but Verify" 发布; Story "The Safety Net" EP069; Study 36 轮全模式饱和; beliefs 膨胀加速（112 patterns 91% count=1）; memory_search 第4天坏（OOM）
