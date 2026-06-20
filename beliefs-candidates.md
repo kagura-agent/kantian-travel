@@ -635,3 +635,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-19: [gradient] "When a cron-triggered workloop spawns a subagent for plan_review but the cron session ends before advancing FlowForge, the state machine gets stuck. Recovery requires manual flowforge advance in next session." → [行为改变] After spawning reviewer subagent, ensure flowforge advance happens in the same session before returning. If cron times out, next workloop invocation should detect and recover stuck state.. (pattern: cron-session-flowforge-desync, 第1次) (Source: workloop)
   - **Trigger**: FlowForge state stuck at a node where subagent was spawned by a cron session
+
+- 2026-06-20: [gradient] "hermes-agent (189K⭐) issues with detailed community root-cause analysis get competing PRs within hours. DavidMetcalfe-style comments (file:line, test shape, workaround) act as blueprints that attract fast submitters. Our plan_review stuck ~9h due to flowforge-state-stuck compounded the loss." → [行为改变] For high-star repos: check competing PRs at study AND implement nodes, not just find_work. If a detailed blueprint comment exists, assume someone will submit within hours — speed matters more than thoroughness.. (pattern: high-star-repo-issue-race, 第1次) (Source: workloop)
+  - **Trigger**: selecting issues on 100K+ star repos with detailed analysis comments

@@ -51,6 +51,9 @@ declare -a RULES=(
   
   # Retire candidates changes → dry-run
   "wiki/scripts/retire-candidates.sh|bash wiki/scripts/retire-candidates.sh --dry-run 2>/dev/null|retire-candidates"
+  
+  # Test ratchet changes → self-test (detect + status)
+  "tools/test-ratchet.sh|bash tools/test-ratchet.sh detect ~/repos/forks/cove 2>/dev/null|test-ratchet"
 )
 
 # ── Functions ─────────────────────────────────────────────────────────
