@@ -200,10 +200,10 @@
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
-- [x] Track: DietrichGebert/ponytail - 966⭐ (06-13, NEW). YAGNI lazy dev skill, multi-agent portable, promptfoo benchmarked. Viral growth. Deep read done. Revisit 06-20
+- [x] Track: DietrichGebert/ponytail - 40,129⭐ (06-13→06-20: 966→40.1k, viral). YAGNI 6-rung ladder fully applied to DNA. Now in mass-adoption polish phase (Copilot/OpenClaw integrations, cross-platform bugs). No new architectural insights above >5k threshold. **Downgraded to monthly.** Revisit 07-20
 - [x] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
-- [x] Track: DanMcInerney/architect-loop - 213⭐ (06-13, was 178, +20%). Cross-vendor orchestration skill (Fable 5 + GPT-5.5). Source-backed 12 design rules. Deep read done. ⚠️ Fable 5 suspended by US govt. Revisit 06-20
-- [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13). QUIET 12d but community alive (28 PRs/30d). Downgraded to following. Revisit 06-20
+- [x] Track: DanMcInerney/architect-loop - 520⭐ (06-13→06-20: 213→520, +144% passive). Dev silent since 06-13 (Fable 5 suspension killed momentum). No commits 7d. Core design rules already in DNA (Phase 0, disagreement mandatory). **Downgraded to cool.** Revisit 07-20
+- [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13→06-20: flat). **Dropped** 06-20 — no commits 19d, flat stars, open WIP PRs abandoned. Mode abstraction pattern noted in wiki
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
