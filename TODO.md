@@ -678,3 +678,16 @@
 - [x] Add CHANGELOG.md Unreleased entry for `packages/coding-agent` (06-17)
 - Repo: can1357/oh-my-pi, branch: feat/discover-claude-md
 - Review: https://github.com/can1357/oh-my-pi/pull/2764#issuecomment-4718622434
+
+## 🔧 FlowForge Auto-Advance Root Fix
+
+**Priority**: HIGH — Day 5 carry-forward, caused real damage (06-20 SUPERSEDED PR)
+**Created**: 2026-06-21 (audit enforcement)
+**Problem**: When a subagent completes, FlowForge doesn't auto-advance the node. Instances get stuck until cleanup threshold (18h) triggers. This creates 10-18h dead time where PRs can be superseded by competitors.
+**Root cause**: FlowForge `advance` must be called manually after subagent returns. The subagent task template doesn't include post-completion advance logic.
+**Fix options**:
+1. Modify subagent spawn to include flowforge advance in post-completion handling
+2. Add a watcher/hook that detects subagent completion and auto-advances
+3. Reduce cleanup threshold to 2-4h (band-aid but reduces damage window)
+**Assigned**: Next workloop session (Claude Code implementation)
+**Evidence of damage**: 06-20 workloop #4684 stuck at plan_review for hours → hermes-agent#49307 SUPERSEDED by competing PR
