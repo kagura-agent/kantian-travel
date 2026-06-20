@@ -650,3 +650,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-20: [gradient] "When a workloop instance gets stuck at plan_review for hours and cron re-triggers, verify the PR already exists before re-running implement. Check gh pr list --author first — avoids redundant evidence collection." → [行为改变] At implement node: if PR already exists and CI passes, fast-path through pre_push_audit evidence collection and submit. (pattern: stale-workloop-recovery, 第1次) (Source: workloop)
   - **Trigger**: Resuming a workloop instance that has been stuck for hours
+
+- 2026-06-20: [gradient] "During followup rounds, default to --replace-notes when updating targets.md. Appending creates unwieldy entries. Each followup is a full-state snapshot." → [行为改变] Use --replace-notes by default, only append for incremental discoveries within a single round. (pattern: followup-notes-replace-default, 第1次) (Source: study)
+  - **Trigger**: followup round updating targets.md
+
+- 2026-06-20: [gradient] "find_work must exclude issues that already have my open PRs — re-selecting a completed issue wastes 3+ hours of study/plan cycles for zero output" → [行为改变] Add pre-filter in find_work: after candidate selection, run gh pr list --author=kagura-agent --search "<issue-number>" — if result is non-empty, skip to next candidate. (pattern: duplicate-issue-selection, 第1次) (Source: workloop)
+  - **Trigger**: find_work selects an issue, but gh pr list --author=kagura-agent already shows an open PR for it
