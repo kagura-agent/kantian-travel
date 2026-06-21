@@ -662,3 +662,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-21: [gradient] "Stale workloop fast-path works as designed — stale-pr-check.sh exit 10 correctly triggered Branch 3 skip, saving full implement cycle on an 8-day-old PR. The 2026-06-20 structural fix is validated in production." → [行为改变] Trust the gate — when stale-pr-check exits 10, skip immediately to pre_push_audit without second-guessing. (pattern: stale-workloop-recovery-validated, 第1次) (Source: workloop)
   - **Trigger**: workloop resumes at implement node with existing PR
+
+- 2026-06-21: [gradient] "Well-written issues with clear root cause and fix options are the fastest path to merged PRs - issue quality > repo familiarity for selection" → [行为改变] Score issue quality higher when it includes: root cause identified, fix options proposed, reproduction steps, version testing matrix. (pattern: issue-quality-selection, 第1次) (Source: workloop)
+  - **Trigger**: When selecting issues in find_work, prefer issues with clear root cause analysis and verified reproduction steps over familiar repos with vague issues
