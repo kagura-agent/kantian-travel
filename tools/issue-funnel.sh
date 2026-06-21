@@ -106,6 +106,16 @@ check_candidate() {
     return
   fi
 
+  # === Gate 3b: Already have OPEN PR for this issue ===
+  local open_prs_for_issue
+  open_prs_for_issue=$(gh pr list --repo "$repo" --author=kagura-agent --state=open \
+    --search "$issue_num" --json number -q 'length' 2>/dev/null || echo "0")
+  if [[ "$open_prs_for_issue" -gt 0 ]]; then
+    results["$candidate"]="FAIL"
+    reasons["$candidate"]="Already have $open_prs_for_issue open PR(s) for this issue"
+    return
+  fi
+
   # === Gate 4: Competing PRs ===
   if [[ -f "$SCRIPT_DIR/competing-pr-check.sh" ]]; then
     if ! bash "$SCRIPT_DIR/competing-pr-check.sh" "$repo" "$issue_num" >/dev/null 2>&1; then
