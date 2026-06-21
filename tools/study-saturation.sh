@@ -88,6 +88,22 @@ if (( YESTERDAY_QUICK >= 3 && QUICK_COUNT >= 3 )); then
     QUICK_DEGRADED=true
 fi
 
+# Inter-day scout interval check (gradient: scout-interval-awareness)
+# Guide says scout appropriate "≥3 days since last scout". If recent, warn.
+SCOUT_DAYS_AGO=99
+for i in 1 2; do
+    CHECK_DATE=$(date -d "$DATE - $i day" +%Y-%m-%d 2>/dev/null || date -j -v-${i}d -f "%Y-%m-%d" "$DATE" +%Y-%m-%d 2>/dev/null || echo "")
+    if [[ -n "$CHECK_DATE" && -f "$HOME/.openclaw/workspace/memory/${CHECK_DATE}.md" ]]; then
+        if grep -q "^## Study Scout" "$HOME/.openclaw/workspace/memory/${CHECK_DATE}.md" 2>/dev/null; then
+            (( i < SCOUT_DAYS_AGO )) && SCOUT_DAYS_AGO=$i
+        fi
+    fi
+done
+SCOUT_RECENT=false
+if (( SCOUT_DAYS_AGO <= 2 )); then
+    SCOUT_RECENT=true
+fi
+
 # Output
 echo "📊 Study Saturation Check — $DATE"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -98,6 +114,7 @@ echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' ||
 echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
+$SCOUT_RECENT && echo "  ⚠️  Last deep scout ${SCOUT_DAYS_AGO}d ago (guide: ≥3d between scouts)"
 if [[ -n "$CONSEC_WARN" ]]; then
     CONSEC_MODE="${CONSEC_WARN%%:*}"
     if [[ "$CONSEC_WARN" == *":3" ]]; then
@@ -125,6 +142,7 @@ echo "Available modes: ${AVAILABLE[*]}"
 
 # Smart recommendation
 # If consecutive same-mode detected, deprioritize that mode
+# If scout was recent (<3 days), deprioritize scout/quick_scan
 CONSEC_MODE_LOWER=""
 [[ -n "$CONSEC_WARN" ]] && CONSEC_MODE_LOWER="${CONSEC_WARN%%:*}"
 
@@ -132,7 +150,7 @@ RECOMMEND=""
 if $IS_WEEKEND; then
     if ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
-    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+    elif ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
     elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
@@ -147,7 +165,7 @@ else
     # Weekday: balance based on counts, avoid consecutive same mode
     if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
-    elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+    elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
     elif (( FOLLOWUP_COUNT == 0 )) && ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
@@ -155,7 +173,7 @@ else
         RECOMMEND="apply"
     elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
-    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+    elif ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
     elif ! $APPLY_LOCKED; then
         RECOMMEND="apply"
