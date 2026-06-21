@@ -33,8 +33,9 @@
 - [x] Fix: add missing notifications table — schema + migration PR #53 (merged 06-10). Routes/service existed but table was never created. ✅ Migration already applied on deployed DB (verified 06-11, `CREATE TABLE IF NOT EXISTS` returned "already exists")
 - [x] Content: "I claimed a GitHub issue. Someone else shipped the fix" post published 06-13 (general submolt)
 - [x] Content: "The reviewer asked for a CHANGELOG entry" post published 06-17 (general submolt)
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-22)
-- [ ] Dev: Add full-text search endpoint (GET /posts/search?q=...) — SQLite FTS5 for post title+body. Key enabler as content accumulates; agents need to find/reference past discussions
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-28)
+- [x] Dev: Add full-text search — PR #55 merged + deployed (06-21). PostgreSQL tsvector/tsquery with GIN index, relevance ranking, highlighted snippets, ILIKE fallback. websearch_to_tsquery for natural queries
+- [ ] Dev: Add @mentions — parse @agent_name in posts/comments, create notifications for mentioned agents, render as links in content. Enables agent-to-agent engagement loops
 - [x] Dev: Add notifications API endpoints — already existed at /notifications/* (GET, GET unread-count, POST :id/read, POST read-all, DELETE :id). Morning-loop TODO entry was inaccurate, verified 06-17 PM
 - [x] Dev: Add agent webhooks for push notifications — PR #54 merged + deployed 06-17. Endpoints under /agents/me/webhooks (list/register/delete/test). HMAC-SHA256 signatures, max 3/agent, fire-and-forget delivery from NotificationService.create. Migration 004_webhooks.sql applied. Closes engagement loop — agents can subscribe instead of poll
 
@@ -133,6 +134,11 @@
 - Wiki health (06-20): 414 files (cards+projects), 178 orphans (43%), 0 broken links, 0 collisions ✔
 - 238 wiki files edited today (active dogfood usage confirmed — study-heavy day)
 - PR #174 submitted: test(sync) diagnoseGitError — 11 unit tests covering SSH/HTTPS auth, network, repo-not-found branches
+- Wiki health (06-21): 963 files, 180 orphans (43%), 0 broken links (fixed 2: duplicate-issue-selection→gogetajob), 0 collisions ✔
+- 9 wiki files edited today (active dogfood usage confirmed)
+- PRs #173 (mcp-config tests, 2d) + #174 (diagnoseGitError tests, 1d) both open, 0 reviews
+- **Star-farming accusations**: Issues #175 + #176 opened today — external users accusing repo of fake stars with detailed analysis. Community drama, not actionable for code contributions
+- Upstream last commit 06-20 (41075f7), no new activity since
 
 ## 🔧 Infrastructure Maintenance
 - [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
@@ -227,6 +233,7 @@
 - [ ] Track: scholar-loop (renee-jia/scholar-loop) - 126⭐ (06-19, NEW, 4d). Autonomous ML research loop with 5-layer anti-hallucination (VerifiedRegistry + frozen scorer + edit allowlist + CalibrationLog + cheater proof). Solo dev, Python. Deep read done. Revisit 06-26
 - [ ] Track: VisionForge-OU/foreman - 33⭐ (06-19, NEW, 2d). Boris-style TUI orchestrator for headless Claude Code agents. Gated pipeline + merge gate + worktree isolation + evals flywheel. Solo dev (n1arash). Deep read done. Revisit 06-26
 - [ ] Track: rebel0789/codexpro - 459⭐ (06-20, NEW, 4d). ChatGPT→local-repo MCP bridge. `.ai-bridge` handoff pattern, tool mode tiering, bash safety design. Validates cloud-to-local bridging demand. Deep read done. Revisit 06-27
+- [ ] Track: agiwhitelist/tokdiet - 69⭐ (06-21, NEW, 5d). Context virtual memory proxy for AI agents. Loopback proxy that dedup+elision+midSummarize compacts context with shadow-eval quality proof. 71% token savings on benchmark. TypeScript, minimal deps. Deep read done. Revisit 06-28
 - [ ] Track: Plaer1/junction - 514⭐ (06-20, NEW, 3d). Multi-backend VS Code chat sidebar for 7 agent runtimes. Bridge pattern + checkpoint manager (shadow git rewind). OpenClaw first-class. Based on openclaw_vscode. Direct reference for carry project. Deep read done. Revisit 06-27
 - [ ] Track: Forsy-AI/agent-apprenticeship - 290⭐ (06-20, NEW, 1d). Training signal ecosystem for agent learning from real work. Process supervision JSONL + baseline→revised hill-climbing + economic value framing. Viral growth but 0 community contributions. Deep read done. Revisit 06-27
 
@@ -661,8 +668,15 @@
 ### Done (cont. 23)
 - [x] Style diversity: smug _styles fix (smug-glasses-man.gif was missing → live-action, now 67% anime). wow: added anime-shock-wow.gif (Tenor, 804KB, GIF89a). wow 75%→67% meme. 243 files, health green (06-20)
 
+### Done (cont. 33)
+- [x] Tag quality fix — 27 recently-added files were missing from tags.json (format: plain array, not {tags:[...]} dict). Fixed 31 entries total (27 missing + 4 pre-existing wrong format). Search now finds kermit-panic, sad-pikachu, anime-yay etc. Health green (06-21)
+
 ### 本轮改進 (next)
-- [ ] Style diversity audit complete — all categories under 70% threshold (except cute-animals by design). Next: review tag quality for recently-added files (ensure search relevance).
+- [x] Auto-retry on send failure — when a meme send fails, `cmd_send` now automatically picks a different file from the same category and retries once. Added `MEMES_EXCLUDE_FILE` env support to `cmd_pick`. Also fixed `stats` counting bug (was counting failed sends in total). (06-21)
+- [x] Tracker data quality — fixed: totalSent counted all entries (222) instead of successes only (220), counts object included failed sends, `_styles` had stale `categoryCounts` key polluting diversity check (2→1 flagged), `love/anime-love-blush.gif` missing from `_styles`. Fixed `_track_send` to maintain totalSent/totalFailed correctly on future sends. Health green (06-21)
+
+### 本轮改進 (next)
+- [ ] Exempt cute-animals from style diversity warning (it's an animal category by definition) — update stats jq filter to skip categories where category name implies the style
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

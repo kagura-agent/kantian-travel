@@ -18,7 +18,7 @@
 - 网络: VM1(日本 74.226.216.75, v2ray+应用) + VM2(新加坡 104.43.91.188, xray Reality+LLM Gateway), 本地双线
 - 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.6 (8c802aa) | Memory vector search ⚠️ 不稳定（日内波动大: 06-15 两次 eval 0%→83%。根因: VM2 embedding endpoint 返回 401 Unauthorized（非超时，服务在运行但 auth 可能未传递）。Vector store status "unknown"（sqlite-vec 扩展未加载？）。kagura.sqlite meta 存在(13469 chunks)但 runtime 报 "index metadata missing"。Provider: openai-compatible→VM2:8000）。memory_get 100% 可靠
 - 根盘 80% (105G/139G) [已验证 06-15 21:50] ⚠️ 2天+7GB, memory stores 17GB
-- VM1: 54% disk, 8服务(cove-prod 已停用, 只跑 staging) | VM2: 16% disk, 2服务(xray+copilot-gateway) [已验证 06-06]
+- VM1: 8服务 (cove staging + others) | VM2: 2服务 (xray+copilot-gateway) [disk stats stale, needs re-verify]
 - 本地测试环境详见 `TOOLS.md`
 
 ## GitHub & Identity
@@ -34,7 +34,7 @@
 - **wiki** — 统一知识库 → wiki health 见 wiki-lint 工具
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions，typing indicator + streaming reply + read state 已完成。⚠️ staging 不手动部署，CI 自动
-- **Lottie Studio** — lottie.kagura-agent.com ✅ 上线（06-05 DNS 就绪），Gallery + Editor + Keyboard Shortcuts + Remix + Embed + Video Export + Layer Panel，VM1:3400。高产期完成（06-10 5 PR merged）
+- **Lottie Studio** — lottie.kagura-agent.com ✅ 维护态（06-20 所有 issue 清零），Full feature set: Gallery + Editor + Remix + Embed + Video/GIF Export + Layer Panel + Keyframe Timeline + View Counts + Hero Welcome + Quality Guidelines + CI lint，VM1:3400
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
@@ -46,7 +46,7 @@
 
 ## Projects — 打工
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
-- 主力:NemoClaw, OpenClaw, Hermes | 辅助:Archon, stagehand, ClawX, DeepTutor
+- 主力:NemoClaw, OpenClaw | 辅助:Archon, stagehand, ClawX, DeepTutor | ⛔ hermes-agent 黑名单(>100K⭐, 0 merged/6+ attempts)
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
 - PR decided rate: 75% (3/4) | merge rate: 33% total (3/9 gogetajob 口径) [已验证 06-11]
 - **NemoClaw#4706**: MERGED ✅ (fingerprint fallback, 06-10 confirmed)
@@ -133,6 +133,7 @@
 
 ## Promoted Memories (Recent)
 
+- **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
 - **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
 - **06-08**: Memory vector search 修复 ✅（VM2 embedding config + gateway restart）但下午再次失效（index metadata missing），仍不稳定; Cove 高产日（PR #264/#269/#272/#274 四连）; cc-connect #1055/#1056 MERGED; Luna 反馈「提防答应了但迟迟没做的事」→ gogetajob rule #50; Cron 批量恢复（67 job）
 - **06-09**: GTM 战略转向 — Luna 提出 Problem Discovery（先找问题不做产品）; Cove scroll 重构（PR#274 close + PR#277 MERGED + PR#278 四根因修复）; Luna directive「代码交给 Claude Code」「做正确的事情」; Story "It's a Business"; ABTI Llama 3.3/4 Maverick reliability; Finance Day 50 (9 issues closed); #3836/#4876 assigned 未兑现; memory_search 仍坏
@@ -151,3 +152,8 @@
 ## Promoted From Short-Term Memory
 
 (Cleared 06-10: previous 06-06 entries were stale — cc-connect PRs already merged, NemoClaw #4706 status changed. Auto-promoted PR tracking minutiae has low long-term recall value.)
+
+## Promoted From Short-Term Memory (2026-06-22)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-06-19.md:7:10 -->
+- Workloop Night (01:02): **Assigned issues**: only NemoClaw#3836 (excluded) — no undelivered commitments; **External PRs (6)**: all ball with maintainers, no human review needing code changes; oh-my-pi#2764: roboomp review addressed (3 findings fixed Jun 16-17), MERGEABLE, waiting re-review; openclaw#92665: CLEAN, no review (5d) [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-19.md:7-10]
