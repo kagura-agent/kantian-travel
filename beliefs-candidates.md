@@ -656,3 +656,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-20: [gradient] "find_work must exclude issues that already have my open PRs — re-selecting a completed issue wastes 3+ hours of study/plan cycles for zero output" → [行为改变] Add pre-filter in find_work: after candidate selection, run gh pr list --author=kagura-agent --search "<issue-number>" — if result is non-empty, skip to next candidate. (pattern: duplicate-issue-selection, 第1次) (Source: workloop) **→ APPLIED 2026-06-21**: Added Gate 3b to issue-funnel.sh — checks open PRs matching specific issue number before allowing selection.
   - **Trigger**: find_work selects an issue, but gh pr list --author=kagura-agent already shows an open PR for it
+
+- 2026-06-21: [gradient] "When evaluating or building any optimization (compression, caching, summarization), demand measurable proof of quality preservation. Shadow-eval pattern (sample A/B post-serve) is the reference." → [行为改变] Add shadow-eval or equivalent measurement before claiming quality-neutral. (pattern: quality-proof-for-optimizations, 第1次) (Source: study)
+  - **Trigger**: building/evaluating optimization tools
+
+- 2026-06-21: [gradient] "Stale workloop fast-path works as designed — stale-pr-check.sh exit 10 correctly triggered Branch 3 skip, saving full implement cycle on an 8-day-old PR. The 2026-06-20 structural fix is validated in production." → [行为改变] Trust the gate — when stale-pr-check exits 10, skip immediately to pre_push_audit without second-guessing. (pattern: stale-workloop-recovery-validated, 第1次) (Source: workloop)
+  - **Trigger**: workloop resumes at implement node with existing PR
