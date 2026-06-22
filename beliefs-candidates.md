@@ -677,3 +677,5 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-22: [gradient] "Fresh-context review correctly caught weak test assertions (toBeDefined instead of precise expected values). Always write precise assertions first, not existence checks." → [行为改变] Use toBe/toEqual with specific expected values. If behavior is environment-dependent, use toContain with array of valid outcomes.. (pattern: precise-test-assertions, 第1次) (Source: workloop)
   - **Trigger**: Writing unit tests for any fix
+
+- 2026-06-22: [gradient] "No gradient this round — execution was smooth, deep read was efficient. sofagent's novel patterns (progressive thinning, memory write threshold) are project-level knowledge already captured in wiki note, not study-method improvements." → [行为改变] pending analysis. (pattern: study-no-gradient-justified, 第1次) (Source: study)

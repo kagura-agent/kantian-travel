@@ -685,7 +685,10 @@
 - [x] Exempt cute-animals from style diversity warning — updated stats jq filter to skip categories whose name implies the style (cute-animals, animal*). Also fixed tracker entry #224 (stale timestamp format). Health green (06-22)
 
 ### 本轮改進 (next)
-- [ ] Add style diversity check to `cmd_health` — health should warn if any non-exempt category >70% single-style (currently only in stats). One-liner jq check, add as section 6
+- [x] Add style diversity check to `cmd_health` — health should warn if any non-exempt category >70% single-style (currently only in stats). One-liner jq check, add as section 6. Also fixed tracker drift (totalSent 224→226 via sync) (06-22)
+
+### 本轮改進 (next)
+- [ ] Add dormant category warning to `cmd_health` — warn if any category has 0 sends in last 30 days (from tracker history). Helps catch forgotten categories. Section 7
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
