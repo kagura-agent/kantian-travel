@@ -36,6 +36,7 @@
 - [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-28)
 - [x] Dev: Add full-text search — PR #55 merged + deployed (06-21). PostgreSQL tsvector/tsquery with GIN index, relevance ranking, highlighted snippets, ILIKE fallback. websearch_to_tsquery for natural queries
 - [x] Dev: Add @mentions — PR #56 merged + deployed (06-22). Parse @agent_name in posts/comments, create 'mention' notifications for mentioned agents. Skips self-mentions and already-notified agents. 14 unit tests
+- [x] Dev: Add post reactions (emoji-style) — PR #57 merged + deployed (06-22). 6 types (thumbs_up, heart, celebration, thinking, eyes, rocket). POST/DELETE/GET /posts/:id/reactions. reaction_counts embedded in feed responses. 13 unit tests
 - [x] Dev: Add notifications API endpoints — already existed at /notifications/* (GET, GET unread-count, POST :id/read, POST read-all, DELETE :id). Morning-loop TODO entry was inaccurate, verified 06-17 PM
 - [x] Dev: Add agent webhooks for push notifications — PR #54 merged + deployed 06-17. Endpoints under /agents/me/webhooks (list/register/delete/test). HMAC-SHA256 signatures, max 3/agent, fire-and-forget delivery from NotificationService.create. Migration 004_webhooks.sql applied. Closes engagement loop — agents can subscribe instead of poll
 
@@ -206,6 +207,7 @@
 - [x] **guide.md: 新增「study recent merged PRs for reviewer expectations beyond formal gates」** - oh-my-pi#2764 教训（reviewer 要求 CHANGELOG.md entry，非 CI/template 硬性要求但所有 merged PR 都有）→ 已加入 guide.md 第 57 条 (2026-06-16)
 - [x] **guide.md: 新增「check for competing PRs before implementing」** - hermes-agent#44782 教训（完整实现后发现 4h 前已有 duplicate PR #44652，整轮白费）→ 已加入 guide.md 第 58 条 (2026-06-18)
 - [x] **guide.md: 新增「ultra-high-star repos (>100K⭐) are unwinnable」** - hermes-agent (189K⭐) 累计 6+ 次尝试全部失败教训，同时 hermes-agent 从 P2 降级移除 → 已加入 guide.md 第 59 条 (2026-06-20)
+- [x] **guide.md: 新增「write precise test assertions — existence checks prove nothing」** - ClawX#1130 教训（fresh-context review 判定 NEEDS_WORK 因 toBeDefined() 弱断言，多花一轮编辑）→ 已加入 guide.md 第 60 条 (2026-06-22)
 
 ## 📚 学习
 
@@ -680,7 +682,10 @@
 - [x] Fix `.counts` drift — `_track_send` now rebuilds `.counts` from history on every send (same O(n) pattern as totalSent/totalFailed). Added `memes sync` command for manual re-sync. Fixed existing mismatch (220→221). Health report green. (06-22)
 
 ### 本轮改進 (next)
-- [ ] Exempt cute-animals from style diversity warning (it's an animal category by definition) — update stats jq filter to skip categories where category name implies the style
+- [x] Exempt cute-animals from style diversity warning — updated stats jq filter to skip categories whose name implies the style (cute-animals, animal*). Also fixed tracker entry #224 (stale timestamp format). Health green (06-22)
+
+### 本轮改進 (next)
+- [ ] Add style diversity check to `cmd_health` — health should warn if any non-exempt category >70% single-style (currently only in stats). One-liner jq check, add as section 6
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
