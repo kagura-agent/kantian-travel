@@ -665,3 +665,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-21: [gradient] "Well-written issues with clear root cause and fix options are the fastest path to merged PRs - issue quality > repo familiarity for selection" → [行为改变] Score issue quality higher when it includes: root cause identified, fix options proposed, reproduction steps, version testing matrix. (pattern: issue-quality-selection, 第1次) (Source: workloop)
   - **Trigger**: When selecting issues in find_work, prefer issues with clear root cause analysis and verified reproduction steps over familiar repos with vague issues
+
+- 2026-06-22: [gradient] "When study-saturation.sh gives a specific mode recommendation, use it directly instead of running additional scripts that may give conflicting signals" → [行为改变] Trust saturation.sh recommendation at entry node; skip redundant cross-checks. (pattern: followup-mode-trust-saturation, 第1次) (Source: study)
+  - **Trigger**: Saturation script recommends a mode but you run extra checks that contradict it
+
+- 2026-06-22: [gradient] "First-run-of-measurement always finds bugs in lossy transformations. Shadow-eval primary value is as one-time audit, secondary as ongoing guard." → [行为改变] Add quality measurement FIRST before other changes. The measurement will likely reveal existing bugs more valuable than whatever you planned to improve.. (pattern: measurement-first-audit, 第1次) (Source: study)
+  - **Trigger**: Building or modifying lossy tools (compression, summarization, filtering)
