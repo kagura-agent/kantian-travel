@@ -148,19 +148,21 @@ compress_middle() {
         test)
             # Keep: FAIL lines, error details, summary line, skip reasons
             # Strip: individual PASS lines (keep count from summary)
-            echo "$input" | grep -E \
-                'FAIL|ERROR|error|✗|✘|×|skip|todo|pending|Tests:|Test Suites:|passed|failed|Ran [0-9]|[0-9]+ (passing|failing)|assert|expect|RUNS' \
+            echo "$input" | grep -iE \
+                'FAIL|ERROR|\berror\b|✗|✘|×|skip|todo|pending|Tests:|Test Suites:|passed|failed|Ran [0-9]|[0-9]+ (passing|failing)|assert|expect|RUNS' \
                 | grep -vE '^\s*(PASS|✓|✔|√)\s' \
                 || true
             ;;
         build)
             # Keep: errors, warnings (first 5), final status
-            # Strip: individual file compilation lines
+            # Strip: individual file compilation lines (unless they contain error)
             echo "$input" | grep -E \
                 'error|Error|ERROR|warning|Warning|WARN|Built|Success|Failed|Output|Bundle|chunk|entry' \
-                | grep -vE '^\s*(Compiling|Building|Bundling)\s(?!.*error)' \
+                | grep -vE '^\s*(Compiling|Building|Bundling)\s' \
                 | head -n 30 \
                 || true
+            # Also keep compilation lines that mention errors
+            echo "$input" | grep -E '^\s*(Compiling|Building|Bundling)\s' | grep -iE 'error' || true
             ;;
         *)
             # Generic: keep errors, warnings, summary-looking lines
@@ -192,8 +194,81 @@ fi
 COMPRESSED_TAIL=$(compress_tail "$TAIL" "$TYPE")
 echo "$COMPRESSED_TAIL"
 
-# --- Compression metrics logging (MineEcho pattern) ---
-# Logs raw/compressed sizes per invocation for tuning analysis.
+# --- Signal preservation quality check (tokdiet shadow-eval pattern) ---
+# Extracts critical signals from raw middle, checks how many survive compression.
+# Proves quality preservation, doesn't just assert compression ratio.
+signal_preservation_check() {
+    local raw_middle="$1"
+    local compressed_full="$2"
+    local type="$3"
+
+    local total=0
+    local preserved=0
+
+    # Critical signal categories:
+    # 1. Error lines (most important — must never be lost)
+    local error_lines
+    error_lines=$(echo "$raw_middle" | grep -iE 'error|ERROR|Error|fatal|FATAL|exception|traceback|panicked' | head -n 20)
+    if [[ -n "$error_lines" ]]; then
+        while IFS= read -r line; do
+            total=$((total + 1))
+            # Check if key fragment (first 60 chars) appears in compressed output
+            if echo "$compressed_full" | grep -qF "$(echo "$line" | head -c 60)"; then
+                preserved=$((preserved + 1))
+            fi
+        done <<< "$error_lines"
+    fi
+
+    # 2. Warning lines (important but lower priority)
+    local warn_lines
+    warn_lines=$(echo "$raw_middle" | grep -iE '^.*\b(warn|WARN|warning|WARNING)\b' | head -n 10)
+    if [[ -n "$warn_lines" ]]; then
+        while IFS= read -r line; do
+            total=$((total + 1))
+            if echo "$compressed_full" | grep -qF "$(echo "$line" | head -c 60)"; then
+                preserved=$((preserved + 1))
+            fi
+        done <<< "$warn_lines"
+    fi
+
+    # 3. Test failure names (for test type)
+    if [[ "$type" == "test" ]]; then
+        local fail_names
+        fail_names=$(echo "$raw_middle" | grep -iE 'FAIL|✗|✘|×' | grep -oE '[a-zA-Z0-9_./-]+\.(test|spec)\.[a-z]+' | sort -u | head -n 10)
+        if [[ -n "$fail_names" ]]; then
+            while IFS= read -r name; do
+                total=$((total + 1))
+                if echo "$compressed_full" | grep -qF "$name"; then
+                    preserved=$((preserved + 1))
+                fi
+            done <<< "$fail_names"
+        fi
+    fi
+
+    # 4. Numeric summaries (aggregate counts only, not per-file test counts)
+    local summary_nums
+    summary_nums=$(echo "$raw_middle" | grep -oE '[0-9]+ (passed|failed|errors?|warnings?|skipped|pending)' | sort -u | head -n 5)
+    if [[ -n "$summary_nums" ]]; then
+        while IFS= read -r num; do
+            total=$((total + 1))
+            if echo "$compressed_full" | grep -qF "$num"; then
+                preserved=$((preserved + 1))
+            fi
+        done <<< "$summary_nums"
+    fi
+
+    # Return: total signals, preserved count
+    if [[ "$total" -eq 0 ]]; then
+        echo "100.0 0 0"  # No signals to lose = perfect preservation
+    else
+        local pct
+        pct=$(awk "BEGIN {printf \"%.1f\", ($preserved/$total) * 100}")
+        echo "$pct $preserved $total"
+    fi
+}
+
+# --- Compression metrics logging (MineEcho pattern + shadow-eval) ---
+# Logs raw/compressed sizes AND signal preservation quality per invocation.
 COMPRESS_LOG="${COMPRESS_METRICS_LOG:-$HOME/.openclaw/workspace/tools/compress-metrics.jsonl}"
 if [[ "${COMPRESS_METRICS:-1}" == "1" ]]; then
     RAW_CHARS=$(wc -c < "$TMPFILE")
@@ -210,8 +285,21 @@ if [[ "${COMPRESS_METRICS:-1}" == "1" ]]; then
     else
         RATIO="0.0"
     fi
-    # Append JSONL (best-effort, never fail the script)
-    printf '{"ts":"%s","type":"%s","raw_bytes":%d,"compressed_bytes":%d,"ratio_pct":%s,"lines_stripped":%d}\n' \
+
+    # Shadow-eval: measure signal preservation quality
+    QUALITY_RESULT=$(signal_preservation_check "$MIDDLE" "$COMPRESSED_OUTPUT" "$TYPE")
+    SIGNAL_PCT=$(echo "$QUALITY_RESULT" | cut -d' ' -f1)
+    SIGNAL_PRESERVED=$(echo "$QUALITY_RESULT" | cut -d' ' -f2)
+    SIGNAL_TOTAL=$(echo "$QUALITY_RESULT" | cut -d' ' -f3)
+
+    # Append JSONL with quality metrics (best-effort, never fail the script)
+    printf '{"ts":"%s","type":"%s","raw_bytes":%d,"compressed_bytes":%d,"ratio_pct":%s,"lines_stripped":%d,"signal_preserved_pct":%s,"signals":%d,"signals_kept":%d}\n' \
         "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$TYPE" "$RAW_CHARS" "$COMPRESSED_CHARS" "$RATIO" "$STRIPPED" \
+        "$SIGNAL_PCT" "$SIGNAL_TOTAL" "$SIGNAL_PRESERVED" \
         >> "$COMPRESS_LOG" 2>/dev/null || true
+
+    # Emit warning to stderr if signal preservation drops below 80%
+    if [[ -n "$SIGNAL_PCT" ]] && awk "BEGIN {exit !($SIGNAL_PCT < 80.0 && $SIGNAL_TOTAL > 0)}" 2>/dev/null; then
+        echo "⚠️  compress-output: signal preservation ${SIGNAL_PCT}% ($SIGNAL_PRESERVED/$SIGNAL_TOTAL) — quality may be degraded" >&2
+    fi
 fi
