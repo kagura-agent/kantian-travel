@@ -39,6 +39,7 @@ SCOUT_LOCKED=false
 QUICK_LOCKED=false
 APPLY_LOCKED=false
 FOLLOWUP_LOCKED=false
+FOLLOWUP_EMPTY=false
 
 if (( SCOUT_COUNT >= 3 )); then
     SCOUT_LOCKED=true
@@ -112,7 +113,7 @@ echo ""
 echo "  Scout (all):   $SCOUT_COUNT/3  $( $SCOUT_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
-echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
+echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( ${FOLLOWUP_EMPTY:-false} && echo ' (0 items due)' || true )"
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
 $SCOUT_RECENT && echo "  ⚠️  Last deep scout ${SCOUT_DAYS_AGO}d ago (guide: ≥3d between scouts)"
 if [[ -n "$CONSEC_WARN" ]]; then
@@ -124,6 +125,21 @@ if [[ -n "$CONSEC_WARN" ]]; then
     fi
 fi
 echo ""
+
+# Pre-check: are there actually followup items due today?
+# (Prevents recommending followup when capacity is open but nothing is due)
+FOLLOWUP_DUE=0
+if ! $FOLLOWUP_LOCKED; then
+    FOLLOWUP_OUTPUT=$(bash "$HOME/.openclaw/workspace/tools/followup-status.sh" 2>/dev/null || true)
+    if [[ -n "$FOLLOWUP_OUTPUT" ]]; then
+        FOLLOWUP_DUE=$(echo "$FOLLOWUP_OUTPUT" | grep -oP '📌 \K[0-9]+(?= items due)' || echo "0")
+        if (( FOLLOWUP_DUE == 0 )); then
+            FOLLOWUP_LOCKED=true
+            FOLLOWUP_EMPTY=true
+        fi
+    fi
+    # If followup-status.sh produced no output (script error), don't lock — preserve original behavior
+fi
 
 # Recommendations
 AVAILABLE=()
