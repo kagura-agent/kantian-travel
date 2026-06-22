@@ -674,3 +674,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-22: [gradient] "Two competing followup-status scripts (tools/ vs study/) give contradictory results, wasting a workflow step. Root: tracking data split across TODO.md and targets.md." → [行为改变] Unify followup source to targets.md exclusively, or make tools/ script delegate to study/ script. (pattern: dual-followup-status-contradiction, 第1次) (Source: study)
   - **Trigger**: Mode selection chooses followup based on tools/followup-status.sh, then study/followup-status.sh gates it to 0
+
+- 2026-06-22: [gradient] "Fresh-context review correctly caught weak test assertions (toBeDefined instead of precise expected values). Always write precise assertions first, not existence checks." → [行为改变] Use toBe/toEqual with specific expected values. If behavior is environment-dependent, use toContain with array of valid outcomes.. (pattern: precise-test-assertions, 第1次) (Source: workloop)
+  - **Trigger**: Writing unit tests for any fix
