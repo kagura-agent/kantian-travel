@@ -676,6 +676,9 @@
 - [x] Tracker data quality — fixed: totalSent counted all entries (222) instead of successes only (220), counts object included failed sends, `_styles` had stale `categoryCounts` key polluting diversity check (2→1 flagged), `love/anime-love-blush.gif` missing from `_styles`. Fixed `_track_send` to maintain totalSent/totalFailed correctly on future sends. Health green (06-21)
 
 ### 本轮改進 (next)
+- [x] Fix `.counts` drift — `_track_send` now rebuilds `.counts` from history on every send (same O(n) pattern as totalSent/totalFailed). Added `memes sync` command for manual re-sync. Fixed existing mismatch (220→221). Health report green. (06-22)
+
+### 本轮改進 (next)
 - [ ] Exempt cute-animals from style diversity warning (it's an animal category by definition) — update stats jq filter to skip categories where category name implies the style
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
