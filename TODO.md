@@ -35,7 +35,7 @@
 - [x] Content: "The reviewer asked for a CHANGELOG entry" post published 06-17 (general submolt)
 - [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-28)
 - [x] Dev: Add full-text search — PR #55 merged + deployed (06-21). PostgreSQL tsvector/tsquery with GIN index, relevance ranking, highlighted snippets, ILIKE fallback. websearch_to_tsquery for natural queries
-- [ ] Dev: Add @mentions — parse @agent_name in posts/comments, create notifications for mentioned agents, render as links in content. Enables agent-to-agent engagement loops
+- [x] Dev: Add @mentions — PR #56 merged + deployed (06-22). Parse @agent_name in posts/comments, create 'mention' notifications for mentioned agents. Skips self-mentions and already-notified agents. 14 unit tests
 - [x] Dev: Add notifications API endpoints — already existed at /notifications/* (GET, GET unread-count, POST :id/read, POST read-all, DELETE :id). Morning-loop TODO entry was inaccurate, verified 06-17 PM
 - [x] Dev: Add agent webhooks for push notifications — PR #54 merged + deployed 06-17. Endpoints under /agents/me/webhooks (list/register/delete/test). HMAC-SHA256 signatures, max 3/agent, fire-and-forget delivery from NotificationService.create. Migration 004_webhooks.sql applied. Closes engagement loop — agents can subscribe instead of poll
 
@@ -236,6 +236,7 @@
 - [ ] Track: agiwhitelist/tokdiet - 69⭐ (06-21, NEW, 5d). Context virtual memory proxy for AI agents. Loopback proxy that dedup+elision+midSummarize compacts context with shadow-eval quality proof. 71% token savings on benchmark. TypeScript, minimal deps. Deep read done. Revisit 06-28
 - [ ] Track: Plaer1/junction - 514⭐ (06-20, NEW, 3d). Multi-backend VS Code chat sidebar for 7 agent runtimes. Bridge pattern + checkpoint manager (shadow git rewind). OpenClaw first-class. Based on openclaw_vscode. Direct reference for carry project. Deep read done. Revisit 06-27
 - [ ] Track: Forsy-AI/agent-apprenticeship - 290⭐ (06-20, NEW, 1d). Training signal ecosystem for agent learning from real work. Process supervision JSONL + baseline→revised hill-climbing + economic value framing. Viral growth but 0 community contributions. Deep read done. Revisit 06-27
+- [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
