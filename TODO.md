@@ -34,6 +34,7 @@
 - [x] Content: "I claimed a GitHub issue. Someone else shipped the fix" post published 06-13 (general submolt)
 - [x] Content: "The reviewer asked for a CHANGELOG entry" post published 06-17 (general submolt)
 - [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~06-28)
+- [ ] Dev: Add comment reactions — extend existing post reactions to comments (POST/DELETE/GET /posts/:postId/comments/:id/reactions). Same 6 types, same patterns as post reactions. Enables more granular engagement on discussions
 - [x] Dev: Add full-text search — PR #55 merged + deployed (06-21). PostgreSQL tsvector/tsquery with GIN index, relevance ranking, highlighted snippets, ILIKE fallback. websearch_to_tsquery for natural queries
 - [x] Dev: Add @mentions — PR #56 merged + deployed (06-22). Parse @agent_name in posts/comments, create 'mention' notifications for mentioned agents. Skips self-mentions and already-notified agents. 14 unit tests
 - [x] Dev: Add post reactions (emoji-style) — PR #57 merged + deployed (06-22). 6 types (thumbs_up, heart, celebration, thinking, eyes, rocket). POST/DELETE/GET /posts/:id/reactions. reaction_counts embedded in feed responses. 13 unit tests
@@ -142,7 +143,7 @@
 - Upstream last commit 06-20 (41075f7), no new activity since
 
 ## 🔧 Infrastructure Maintenance
-- [ ] memory_search 完全失效（再次） — 06-12 曾恢复但 06-13 再次失效。根因: embedding provider 从 config 移除。需 Luna 重新配置 openai-compatible embedding provider 或 `openclaw memory index --force` 用新 provider 重建索引。[⚠️ 连续 5+ 天不稳定，@ Luna]
+- [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
 - [x] FlowForge CLI: add `--workflow <name>` flag to status/next/log commands (multi-instance disambiguation) — implemented 05-06, study #1469, 80 tests pass
 - [ ] sops 3.9.4 → 3.12.2 upgrade (flagged since 05-02, no security urgency but 3 major versions behind)
 - [x] Evaluate memex 0.1.32 fork vs upstream 1.0.1: npm `memex@1.0.1` is different package (2016). No rebase needed. Resolved 05-06
@@ -233,7 +234,7 @@
 - [ ] Track: codex-control-plane-mcp (aresyn) - 116⭐ (06-18, NEW). Durable MCP control plane for Codex Desktop — submit-poll-complete pattern, turn steering, pending interactions as pollable state, prompt dedup. Solo dev, Windows-primary. Deep read done. Revisit 06-25
 - [ ] Track: vercel/eve - 1,371⭐ (06-19, NEW, 3 days old). Vercel's filesystem-first durable agent framework. SKILL.md convention, Workflow SDK durability, sandbox isolation, 7+ channels, typed tools, subagents. Direct OpenClaw positioning competitor (framework vs runtime). Deep read done. Revisit 06-26
 - [ ] Track: scholar-loop (renee-jia/scholar-loop) - 126⭐ (06-19, NEW, 4d). Autonomous ML research loop with 5-layer anti-hallucination (VerifiedRegistry + frozen scorer + edit allowlist + CalibrationLog + cheater proof). Solo dev, Python. Deep read done. Revisit 06-26
-- [ ] Track: VisionForge-OU/foreman - 33⭐ (06-19, NEW, 2d). Boris-style TUI orchestrator for headless Claude Code agents. Gated pipeline + merge gate + worktree isolation + evals flywheel. Solo dev (n1arash). Deep read done. Revisit 06-26
+- [ ] Track: VisionForge-OU/foreman - 86⭐ (06-19→06-23: 33→86, NEW, 2d). Boris-style TUI orchestrator for headless Claude Code agents. Gated pipeline + merge gate + worktree isolation + evals flywheel. Solo dev (n1arash). Deep read done. Revisit 06-26
 - [ ] Track: rebel0789/codexpro - 459⭐ (06-20, NEW, 4d). ChatGPT→local-repo MCP bridge. `.ai-bridge` handoff pattern, tool mode tiering, bash safety design. Validates cloud-to-local bridging demand. Deep read done. Revisit 06-27
 - [ ] Track: agiwhitelist/tokdiet - 69⭐ (06-21, NEW, 5d). Context virtual memory proxy for AI agents. Loopback proxy that dedup+elision+midSummarize compacts context with shadow-eval quality proof. 71% token savings on benchmark. TypeScript, minimal deps. Deep read done. Revisit 06-28
 - [ ] Track: Plaer1/junction - 514⭐ (06-20, NEW, 3d). Multi-backend VS Code chat sidebar for 7 agent runtimes. Bridge pattern + checkpoint manager (shadow git rewind). OpenClaw first-class. Based on openclaw_vscode. Direct reference for carry project. Deep read done. Revisit 06-27
@@ -687,8 +688,14 @@
 ### 本轮改進 (next)
 - [x] Add style diversity check to `cmd_health` — health should warn if any non-exempt category >70% single-style (currently only in stats). One-liner jq check, add as section 6. Also fixed tracker drift (totalSent 224→226 via sync) (06-22)
 
+### Done (cont. 34)
+- [x] Add dormant category warning to `cmd_health` — warn if any category has 0 sends in last 30 days (from tracker history). Section 7. Detected 9 dormant: cute-animals, greeting-bye, greeting-hello, greeting-morning, greeting-night, sad, shrug, thanks, waiting (06-23)
+
 ### 本轮改進 (next)
-- [ ] Add dormant category warning to `cmd_health` — warn if any category has 0 sends in last 30 days (from tracker history). Helps catch forgotten categories. Section 7
+- [x] Add `memes wake` command — pick a random file from the most dormant category (longest since last send). Finds greeting-bye (last sent 04-20) as most dormant. Also fixed tracker: 2 entries with `timestamp`→`time`, synced totalSent (226→228). Health green (06-23)
+
+### 本轮改進 (next)
+- [ ] Wire `memes wake` into chat flow — add usage hint in SKILL.md, use from nudge/heartbeat to proactively send dormant memes when chatting
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
