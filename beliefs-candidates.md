@@ -679,3 +679,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Writing unit tests for any fix
 
 - 2026-06-22: [gradient] "No gradient this round — execution was smooth, deep read was efficient. sofagent's novel patterns (progressive thinning, memory write threshold) are project-level knowledge already captured in wiki note, not study-method improvements." → [行为改变] pending analysis. (pattern: study-no-gradient-justified, 第1次) (Source: study)
+
+- 2026-06-23: [gradient] "followup-status.sh reports 12 due items while study-saturation.sh reports 0 — likely different data sources (targets.md vs TODO.md)" → [行为改变] investigate data source alignment before trusting either tool's count. (pattern: followup-saturation-data-discrepancy, 第1次) (Source: study)
+  - **Trigger**: when followup-status and saturation disagree on due items
+
+- 2026-06-23: [gradient] "Stale PR recovery fast-path works well — when workflow gets stuck at plan_review after previous run already completed the review, stale-pr-check.sh correctly detects existing green-CI PR and skips redundant implementation. Saves ~5min per recovery." → [行为改变] Trust the fast-path exits — they prevent duplicate work reliably. (pattern: stale-workloop-recovery-effective, 第1次) (Source: workloop)
+  - **Trigger**: workflow stuck at previously-completed node
