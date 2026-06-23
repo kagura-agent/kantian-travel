@@ -1,0 +1,5 @@
+# Exclude dreaming raw data from memory search index
+# session-corpus and state files are noise; dreaming reports (deep/light/rem) are useful
+# Fix: 2026-06-23 — memory/dreaming/ was wrongly excluded since Jun 17,
+# breaking Dream Diary access to its own report files for 6 days
+memory/.dreams/
