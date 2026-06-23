@@ -187,6 +187,38 @@ check_candidate() {
   # Low open-PR count bonus (less competition for attention)
   [[ "$open_prs" -eq 0 ]] && score=$((score + 5))
 
+  # === Issue body quality scoring (content signals) ===
+  # Addresses: issue-quality-selection gradient — issues with clear analysis
+  # and fix paths produce faster merges than familiar repos with vague issues.
+  local issue_body
+  issue_body=$(gh issue view "$issue_num" --repo "$repo" --json body --jq '.body // ""' 2>/dev/null || echo "")
+  local body_len=${#issue_body}
+
+  # Non-trivial detail (short issues = vague)
+  if [[ "$body_len" -ge 500 ]]; then
+    score=$((score + 5))
+  fi
+
+  # Has error messages / stack traces (root cause visible)
+  if echo "$issue_body" | grep -qiE 'error|traceback|stack trace|panic|exception|segfault|ENOENT|EACCES|TypeError|ValueError'; then
+    score=$((score + 10))
+  fi
+
+  # Has code blocks (clear examples / reproduction)
+  if echo "$issue_body" | grep -q '\`\`\`'; then
+    score=$((score + 5))
+  fi
+
+  # Has version info or reproduction steps (reproducible)
+  if echo "$issue_body" | grep -qiE 'version|repro|steps to|how to reproduce|node v|python [0-9]|v[0-9]+\.[0-9]'; then
+    score=$((score + 5))
+  fi
+
+  # Has fix suggestion (solution path known)
+  if echo "$issue_body" | grep -qiE 'could be fixed|fix would be|solution:|suggested fix|the fix is|we should|proposed change|root cause'; then
+    score=$((score + 10))
+  fi
+
   results["$candidate"]="PASS"
   scores["$candidate"]=$score
 }
