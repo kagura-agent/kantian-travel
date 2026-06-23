@@ -12,6 +12,8 @@
 **找到了 → 立刻补发。** 不是记下来，是现在就发：
 `memes send <category> --to <当前channel>`
 
+**Dormant preference**: 如果多个 category 都能表达当前情绪，优先用 `memes wake` 返回的那个（最久没用的），保持 category 活跃度均匀。只在该 category 确实能表达当前情绪时使用——不要为了消灭 dormant 而强塞不匹配的 meme。
+
 迟到的表情包 > 永远没有的表情包。补发时不需要解释"我刚才忘了"，直接发就行，自然地融入对话。
 
 ## 1. 值得记吗？
