@@ -55,6 +55,25 @@ if (( FOLLOWUP_COUNT >= 4 )); then
     FOLLOWUP_LOCKED=true
 fi
 
+# Pre-check: are there actually followup items due today?
+# Uses study/followup-status.sh (same script the followup node uses as its gate)
+# Prevents recommending followup when the node would immediately skip.
+# Must run BEFORE display so output reflects correct state.
+FOLLOWUP_DUE=0
+FOLLOWUP_EMPTY=false
+if ! $FOLLOWUP_LOCKED; then
+    FOLLOWUP_OUTPUT=$(bash "$HOME/.openclaw/workspace/study/followup-status.sh" 2>/dev/null || true)
+    if [[ -n "$FOLLOWUP_OUTPUT" ]]; then
+        # study/followup-status.sh outputs "⏰ DUE ITEMS (N):" when items are due
+        # or "✅ No items due today or overdue." when none
+        FOLLOWUP_DUE=$(echo "$FOLLOWUP_OUTPUT" | grep -oP 'DUE ITEMS \(\K[0-9]+' || echo "0")
+        if (( FOLLOWUP_DUE == 0 )); then
+            FOLLOWUP_LOCKED=true
+            FOLLOWUP_EMPTY=true
+        fi
+    fi
+fi
+
 # Check consecutive same-mode runs (GenericAgent "diminishing returns" pattern)
 # "Same dimension improved 2 rounds with no J lift → saturated, switch direction"
 # Extract the last 2 study mode headers from today's memory
@@ -113,7 +132,7 @@ echo ""
 echo "  Scout (all):   $SCOUT_COUNT/3  $( $SCOUT_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
-echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( ${FOLLOWUP_EMPTY:-false} && echo ' (0 items due)' || true )"
+echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $FOLLOWUP_EMPTY && echo ' (0 items due)' || true )"
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
 $SCOUT_RECENT && echo "  ⚠️  Last deep scout ${SCOUT_DAYS_AGO}d ago (guide: ≥3d between scouts)"
 if [[ -n "$CONSEC_WARN" ]]; then
@@ -125,21 +144,6 @@ if [[ -n "$CONSEC_WARN" ]]; then
     fi
 fi
 echo ""
-
-# Pre-check: are there actually followup items due today?
-# (Prevents recommending followup when capacity is open but nothing is due)
-FOLLOWUP_DUE=0
-if ! $FOLLOWUP_LOCKED; then
-    FOLLOWUP_OUTPUT=$(bash "$HOME/.openclaw/workspace/tools/followup-status.sh" 2>/dev/null || true)
-    if [[ -n "$FOLLOWUP_OUTPUT" ]]; then
-        FOLLOWUP_DUE=$(echo "$FOLLOWUP_OUTPUT" | grep -oP '📌 \K[0-9]+(?= items due)' || echo "0")
-        if (( FOLLOWUP_DUE == 0 )); then
-            FOLLOWUP_LOCKED=true
-            FOLLOWUP_EMPTY=true
-        fi
-    fi
-    # If followup-status.sh produced no output (script error), don't lock — preserve original behavior
-fi
 
 # Recommendations
 AVAILABLE=()
