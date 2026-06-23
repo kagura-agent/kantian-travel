@@ -42,6 +42,16 @@ declare -A INTENT_MAP=(
 # Resolve intent to workflow name
 WORKFLOW="${INTENT_MAP[$INTENT]:-$INTENT}"
 
+# --- Circuit breaker check ---
+SCRIPT_DIR="$(dirname "$0")"
+if [[ -x "$SCRIPT_DIR/circuit-breaker.sh" ]]; then
+  if ! bash "$SCRIPT_DIR/circuit-breaker.sh" check "$WORKFLOW" 2>/dev/null; then
+    echo "🔴 CIRCUIT OPEN — $WORKFLOW halted (consecutive failures exceeded threshold)"
+    echo "   Reset with: bash tools/circuit-breaker.sh reset $WORKFLOW"
+    exit 1
+  fi
+fi
+
 # Check if this is a known workflow
 if ! flowforge list 2>/dev/null | grep -qw "$WORKFLOW"; then
   # Not a known workflow — no guard needed

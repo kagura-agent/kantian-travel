@@ -13,9 +13,17 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(dirname "$0")"
 DATE=$(date +%Y-%m-%d)
 MEMORY_FILE="$HOME/.openclaw/workspace/memory/${DATE}.md"
 THRESHOLD=2
+
+# --- Layer 0: Circuit breaker check ---
+if ! bash "$SCRIPT_DIR/circuit-breaker.sh" check study >/dev/null 2>&1; then
+  echo "🔴 CIRCUIT OPEN — study workflow halted (consecutive failures exceeded threshold)"
+  echo "   Reset with: bash tools/circuit-breaker.sh reset study"
+  exit 1
+fi
 
 if [[ ! -f "$MEMORY_FILE" ]]; then
   echo "✅ OPEN — no memory file yet today"
