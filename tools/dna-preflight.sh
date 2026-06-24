@@ -98,11 +98,38 @@ declare -A CONTEXT_KEYWORDS=(
   ["code"]="code|test|push|PR|Claude Code|implement|branch|review|write"
 )
 
+# === Progressive Thinning: detect chronic recidivists BEFORE scoring ===
+# Source: SofAgent progressive thinning (reduce overhead for proven-ineffective reminders)
+# If a pattern has been surfaced 3+ unique days without resolution, demote it.
+# Rationale: showing the same warning 5 days in a row hasn't worked → it's noise.
+declare -A CHRONIC_RECIDIVIST=()
+if [[ -f "${WORKSPACE}/.preflight-log" ]]; then
+  while IFS= read -r r; do
+    days_count=$(echo "$r" | awk '{print $1}')
+    pat=$(echo "$r" | awk '{print $2}')
+    if [[ $days_count -ge 3 ]]; then
+      CHRONIC_RECIDIVIST["$pat"]="$days_count"
+    fi
+  done < <(awk -F'|' '{
+    date = substr($1, 1, 10)
+    pat = $NF
+    key = pat "|" date
+    if (!(key in seen)) { seen[key] = 1; count[pat]++ }
+  } END {
+    for (p in count) if (count[p] >= 3) print count[p], p
+  }' "${WORKSPACE}/.preflight-log")
+fi
+
 # Score each pattern for relevance
 declare -A PATTERN_SCORE=()
 for tag in "${UNIQUE_PATTERNS[@]}"; do
   score=1
   
+  # Progressive thinning penalty: chronic recidivists get demoted
+  if [[ -n "${CHRONIC_RECIDIVIST[$tag]:-}" ]]; then
+    score=$((score - 5))  # Heavy penalty — push below fresh violations
+  fi
+
   # Recurrence bonus: if this pattern appeared multiple times, it's more important
   count="${PATTERN_COUNT[$tag]:-1}"
   if [[ "$count" -ge 2 ]]; then
@@ -152,12 +179,18 @@ sorted=$(for tag in "${UNIQUE_PATTERNS[@]}"; do
   echo "${PATTERN_SCORE[$tag]:-0} $tag"
 done | sort -rn | head -3)
 
+# Count chronic patterns suppressed from top-3
+CHRONIC_COUNT=${#CHRONIC_RECIDIVIST[@]}
+
 echo "⚡ DNA Preflight — Recent Behavioral Reminders"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 if [[ -n "$CONTEXT" ]]; then
   echo "  Context: $CONTEXT | Window: ${DAYS}d | Total recent violations: ${#UNIQUE_PATTERNS[@]}"
 else
   echo "  Window: ${DAYS}d | Total recent violations: ${#UNIQUE_PATTERNS[@]}"
+fi
+if [[ $CHRONIC_COUNT -gt 0 ]]; then
+  echo "  📉 ${CHRONIC_COUNT} chronic patterns thinned (3+ days unresolved — fix structurally, not behaviorally)"
 fi
 echo ""
 
