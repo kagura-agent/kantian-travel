@@ -45,6 +45,10 @@ re_source='\(Source: ([^)]+)\)'
 while IFS= read -r line; do
   if [[ "$line" =~ $re_gradient ]]; then
     tag="${BASH_REMATCH[1]}"
+    # Skip resolved entries: retracted, applied, or graduated
+    if echo "$line" | grep -qiE '\*\*retracted\*\*|→.*retracted|APPLIED|graduated'; then
+      continue
+    fi
     # Extract date
     if [[ "$line" =~ $re_date ]]; then
       date="${BASH_REMATCH[1]}"
@@ -220,9 +224,9 @@ done <<< "$sorted"
 if [[ -f "$PREFLIGHT_LOG" ]]; then
   BEFORE=$(wc -l < "$PREFLIGHT_LOG")
 
-  # 1. Find graduated patterns in beliefs-candidates
+  # 1. Find graduated/retracted/applied patterns in beliefs-candidates
   GRADUATED_PATTERNS=$(grep -oP 'pattern: \K[a-zA-Z0-9_-]+' "$BC_FILE" | while read -r pat; do
-    if grep -q "pattern: ${pat}.*graduated\|graduated.*pattern: ${pat}" "$BC_FILE" 2>/dev/null; then
+    if grep -qiE "pattern: ${pat}.*(graduated|retracted|APPLIED)|(graduated|retracted|APPLIED).*pattern: ${pat}" "$BC_FILE" 2>/dev/null; then
       echo "$pat"
     fi
   done | sort -u)
