@@ -688,3 +688,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-24: [gradient] "For corporate code-drops (0 issues, single push date), skip gh issue scan and search for the associated blog post instead — design discussion lives there, not in public issues" → [行为改变] check for blog.company.com link in README or search HN for company+repo-name. (pattern: corporate-repo-blog-signal, 第1次) (Source: study)
   - **Trigger**: deep-reading a repo from a major company with 0 issues
+
+- 2026-06-24: [gradient] "competing-pr-check.sh receives repo name from flowforge context/find_work, but stale instances may have mismatched repo naming — always verify issue access directly before abandoning implementation" → [行为改变] double-check with gh api repos/OWNER/REPO/issues/N before trusting script exit code on non-standard repos. (pattern: verify-before-abandon, 第1次) (Source: workloop)
+  - **Trigger**: when competing-pr-check returns exit 1 with UNKNOWN state
