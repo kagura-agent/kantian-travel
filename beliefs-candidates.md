@@ -685,3 +685,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-23: [gradient] "Stale PR recovery fast-path works well — when workflow gets stuck at plan_review after previous run already completed the review, stale-pr-check.sh correctly detects existing green-CI PR and skips redundant implementation. Saves ~5min per recovery." → [行为改变] Trust the fast-path exits — they prevent duplicate work reliably. (pattern: stale-workloop-recovery-effective, 第1次) (Source: workloop) → **retracted 2026-06-23** (rationale: confirmation, not learning — third repetition of "tool works as designed", adds noise without behavioral change)
   - **Trigger**: workflow stuck at previously-completed node
+
+- 2026-06-24: [gradient] "For corporate code-drops (0 issues, single push date), skip gh issue scan and search for the associated blog post instead — design discussion lives there, not in public issues" → [行为改变] check for blog.company.com link in README or search HN for company+repo-name. (pattern: corporate-repo-blog-signal, 第1次) (Source: study)
+  - **Trigger**: deep-reading a repo from a major company with 0 issues
