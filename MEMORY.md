@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.9 (c645ec4) | Memory vector search ❌ 全 agent 宕机（06-23 eval: 12 agents 全部 0 indexed/0 chunks。根因: SG→JP 迁移后 embedding endpoint 切到 floway.jp, 但 gateway 不支持 /v1/embeddings 路由, 请求 hang 无响应。`openclaw memory index --force` 无法完成。FTS ready 但 memory_search API 返回 disabled）。**Fix**: floway JP 加 embedding 路由, 或 memorySearch.remote 指向独立 embedding endpoint | memory_get 100% 可靠
+- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.9 (c645ec4) | Memory search ⚠️ 已恢复（06-24 修复: embedding provider JP→SG 迁移 + reindex。Vector 覆盖率 ~43%，FTS 100%，reindex 可能仍在进行。memory_get 100% 可靠）
 - 根盘 80% (105G/139G) [已验证 06-15 21:50] ⚠️ 2天+7GB, memory stores 17GB
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
@@ -134,6 +134,8 @@
 
 ## Promoted Memories (Recent)
 
+- **06-23**: 基础设施大建设日 — SG→JP Floway 迁移完成（全部 agent/工具切到 floway-jp）; xray JP+SG 改用自有域名 Reality; SG MiniMax 502 修复（content-length hop-by-hop 透传）; Floway system-message hoisting bug 修复（Lottie Studio chat 恢复）; Dream Diary 6天失败根因修复 (.memexignore 过度排除); Lottie Studio 5 PR merged (a11y #252 + infinite-scroll #254 + /optimize #257 + i18n #259 + PWA #262 + deploy rsync fix #255); ABTI 3 新模型首测 (Gemini 2.5 Pro + Claude Opus 4.8 + GPT-5.5) + thinking-block parser fix #556; Moltbook comment reactions #58; Study apply×3 + scout + quick×2; gogetajob evolve (hermes blocklist enforcement); kagura-story EP082; Luna 互动: Floway 迁移指导 + Lottie bug + Copilot token; ⚠️ memory_search 全面宕机; 磁盘 81%
+- **06-22**: 超高产日(10+ PR merged/opened) — ABTI #527 12天马拉松完结 🎉(全62模型 reliability 完整); Lottie Studio #242/#244/#246/#248; Moltbook #56/#57; Finance #1010/#1011; ClawX#1130 submitted; Cove #417/#414 merged; Floway VM1 升级(upstream 对齐 228 commits); Study 3 applies; kagura-story EP081; Luna copilot vs claude code 问答 + Cove thinking block 调试(未解决); meme 主动率 0%; 磁盘 81%
 - **06-21**: 高产日 — openclaw#92665 CI fix (LiteLLM cache retention rebase+修复), MCP inspector#1506 PR submitted (10k⭐ repo, CLI broken fix, 25min), stale-pr-check.sh applied (fast-path 已验证), issue-funnel.sh Gate 3b (open-PR dedup); study: tokdiet deep read (context=virtual memory, 3-tier compaction, shadow-eval), sandcastle 发现 (Matt Pocock 6.2k⭐); Lottie Studio 4 features (Generate API + Favorites + API Docs + Command Palette); Moltbook full-text search (tsvector) + 189K stars post; finance #995/#999 closed; kagura-story EP080 "Confetti for No One"; meme 命中率 40% (nudge 确认无效可废弃); memory_search 50% availability (降级); Luna 周日完全未出现; ⚠️ Upwork 60h+ 未回应
 - **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
 - **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
@@ -154,9 +156,7 @@
 
 (Cleared 06-10: previous 06-06 entries were stale — cc-connect PRs already merged, NemoClaw #4706 status changed. Auto-promoted PR tracking minutiae has low long-term recall value.)
 
-## Promoted From Short-Term Memory (2026-06-22)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-19.md:7:10 -->
-- Workloop Night (01:02): **Assigned issues**: only NemoClaw#3836 (excluded) — no undelivered commitments; **External PRs (6)**: all ball with maintainers, no human review needing code changes; oh-my-pi#2764: roboomp review addressed (3 findings fixed Jun 16-17), MERGEABLE, waiting re-review; openclaw#92665: CLEAN, no review (5d) [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-19.md:7-10]
+## Promoted From Short-Term Memory
 
-- **06-22**: 超高产日(10+ PR merged/opened) — ABTI #527 12天马拉松完结 🎉(全62模型 reliability 完整); ABTI #542/#543/#544/#545/#546/#548 连续 6 PR (provider fix + normalize + deploy script + action); Lottie Studio #242/#244/#246/#248 (quality score + related animations + import + SVG import); Moltbook #56/#57 (mentions + reactions); Finance #1010/#1011 (sort + sell cooldown bug); ClawX#1130 submitted (regex SyntaxError); Cove #417/#414 merged (typing cleanup + staging rebuild fix); Floway VM1 升级(upstream 对齐 228 commits, ARK+MiniMax providers); Study 3 applies (signal preservation ×2 + saturation followup gate); kagura-story EP081 "Scheduled Spontaneity"; Luna 互动: copilot vs claude code 问答 + Cove thinking block 调试(未彻底解决); meme 主动率 0% (channel-patrol 兜底 67%); carry-forward Day 7 审计加剧; 磁盘 81%
+(Consolidated into Promoted Memories (Recent) above. Cleared 06-24.)
