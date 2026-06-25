@@ -142,6 +142,14 @@
 - PRs #173 (mcp-config tests, 2d) + #174 (diagnoseGitError tests, 1d) both open, 0 reviews
 - **Star-farming accusations**: Issues #175 + #176 opened today — external users accusing repo of fake stars with detailed analysis. Community drama, not actionable for code contributions
 - Upstream last commit 06-20 (41075f7), no new activity since
+- Wiki health (06-24): 423 cards, 185 orphans (44%), 0 broken links, 0 collisions ✔
+- 12 wiki files edited today (active dogfood usage confirmed)
+- PRs #173 (mcp-config tests, 5d) + #174 (diagnoseGitError tests, 4d) open, 0 reviews
+- External PR #171 (wooksong) 11 days without review — all 3 open PRs blocked
+- Upstream quiet since 06-20 revival burst (4 days). Brief activity pattern similar to pre-dormancy
+- 233 stars (stable)
+- Star-farming issues #175 + #176 still open (community drama, not actionable)
+- Status: dogfood-only mode, holding on PRs per rule #48
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -230,11 +238,11 @@
 - [x] Track: why-was-fable-banned (SihyeonJeon) - 45⭐ (06-17→06-24: stalled, no commits since 06-15). Grade-scaling pattern already in DNA. **Downgraded to monthly.** Revisit 07-24
 - [x] Track: compass-skills (dongshuyan) - 480⭐ (06-17→06-24: 199→480, +141%). Task clarifier examples added, portable startup. Growing steadily, docs-focused. Revisit 07-01
 - [x] Track: nanobot (HKUDS) - 44,642⭐ (06-18→06-24: +0.5%). v0.2.2 released. Maintenance: docs/news, minor webui fixes. No architectural changes. Mature. Revisit 07-01
-- [ ] Track: Beads (gastownhall/beads) - 24,596⭐ (06-18, +48 from 06-17). **Proxied-server mode fan-out completed** (PRs #4444-4446 close/show/delete). Hexagonal architecture verb-by-verb; embedded path untouched. Issue #4369 retention/TTL gap exposed by gascity platform (11k→98.7k in 36h). Two cross-cutting cards: [[ephemera-retention-primitive]], [[single-process-to-proxied-server-migration]]. Revisit 06-25
+- [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
 - [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
-- [ ] Track: codex-control-plane-mcp (aresyn) - 116⭐ (06-18, NEW). Durable MCP control plane for Codex Desktop — submit-poll-complete pattern, turn steering, pending interactions as pollable state, prompt dedup. Solo dev, Windows-primary. Deep read done. Revisit 06-25
+- [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [ ] Track: vercel/eve - 1,371⭐ (06-19, NEW, 3 days old). Vercel's filesystem-first durable agent framework. SKILL.md convention, Workflow SDK durability, sandbox isolation, 7+ channels, typed tools, subagents. Direct OpenClaw positioning competitor (framework vs runtime). Deep read done. Revisit 06-26
 - [ ] Track: scholar-loop (renee-jia/scholar-loop) - 126⭐ (06-19, NEW, 4d). Autonomous ML research loop with 5-layer anti-hallucination (VerifiedRegistry + frozen scorer + edit allowlist + CalibrationLog + cheater proof). Solo dev, Python. Deep read done. Revisit 06-26
 - [ ] Track: VisionForge-OU/foreman - 86⭐ (06-19→06-23: 33→86, NEW, 2d). Boris-style TUI orchestrator for headless Claude Code agents. Gated pipeline + merge gate + worktree isolation + evals flywheel. Solo dev (n1arash). Deep read done. Revisit 06-26
@@ -706,8 +714,11 @@
 ### 本轮改進 (next)
 - [x] Add `memes dormant-blast [n]` — send up to N dormant memes in one call (1 per dormant category, ordered by staleness). Default n=1. Supports --to, --channel, --caption. Skips on failure and continues. 1s delay between sends for rate limiting. Verified: dormancy sort correct (greeting-hello → cute-animals → greeting-night as top 3 dormant). (06-24)
 
+### Done (cont. 35)
+- [x] Add `dormant-blast` to SKILL.md Quick Start and command reference — documented alongside `wake` in new "Wake & Dormant Blast" section. Also fixed 3 tracker entries with `timestamp`→`time` + missing fields. Health: 1 issue (8 dormant categories — expected, `dormant-blast` exists to address this) (06-24)
+
 ### 本轮改進 (next)
-- [ ] Add `dormant-blast` to SKILL.md Quick Start and command reference — document the new command alongside `wake`
+- [ ] Run `dormant-blast 3` to clear top 3 dormant categories (greeting-hello, greeting-morning, greeting-night) — validate end-to-end send + tracker update
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

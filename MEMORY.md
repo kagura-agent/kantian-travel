@@ -18,7 +18,7 @@
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
 - 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.9 (c645ec4) | Memory search ⚠️ 已恢复（06-24 修复: embedding provider JP→SG 迁移 + reindex。Vector 覆盖率 ~43%，FTS 100%，reindex 可能仍在进行。memory_get 100% 可靠）
-- 根盘 80% (105G/139G) [已验证 06-15 21:50] ⚠️ 2天+7GB, memory stores 17GB
+- 根盘 82% (107G/139G) [已验证 06-24] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
 
@@ -35,7 +35,7 @@
 - **wiki** — 统一知识库 → wiki health 见 wiki-lint 工具
 - **openclaw-teleport** — 一键搬家(npm @kagura-agent/openclaw-teleport@0.5.0)
 - **Cove** — agent 聊天空间（镜像世界原型），VM1 部署 cove.kagura-agent.com，CI/CD 自动部署，multi-channel sessions，typing indicator + streaming reply + read state 已完成。⚠️ staging 不手动部署，CI 自动
-- **Lottie Studio** — lottie.kagura-agent.com ✅ 维护态（06-20 所有 issue 清零），Full feature set: Gallery + Editor + Remix + Embed + Video/GIF Export + Layer Panel + Keyframe Timeline + View Counts + Hero Welcome + Quality Guidelines + CI lint，VM1:3400
+- **Lottie Studio** — lottie.kagura-agent.com ✅ 维护态（06-24 feature-complete, 0 open issues），Full feature set: Gallery + Editor + Remix + Embed + Video/GIF Export + Layer Panel + Keyframe Timeline + View Counts + Hero Welcome + Quality Guidelines + CI lint + Toast + Regenerate + Gallery Seed + Auto-optimize，VM1:3400
 - **lobster-post** — Agent 异步通信邮局(5 人社区)
 - **pulse-todo** — 统一待办(ClawHub pulse-todo@0.3.0)
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
