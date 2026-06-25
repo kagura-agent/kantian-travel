@@ -18,9 +18,13 @@ fi
 REPO="$1"
 ISSUE="$2"
 STRICT=false
-if [[ "${3:-}" == "--strict" ]]; then
-  STRICT=true
-fi
+OVERRIDE_REASON=""
+for arg in "${@:3}"; do
+  case "$arg" in
+    --strict) STRICT=true ;;
+    --override-reason=*) OVERRIDE_REASON="${arg#--override-reason=}" ;;
+  esac
+done
 
 # Strip leading # if present
 ISSUE="${ISSUE#\#}"
@@ -133,8 +137,13 @@ elif [[ "$ISSUE_STATE" != "OPEN" ]]; then
 fi
 
 if [[ "$MY_CLOSED_COUNT" -gt 0 ]]; then
-  REASONS+=("Previous failed attempt(s) by me — do NOT retry same issue")
-  BLOCK=1
+  if [[ -n "$OVERRIDE_REASON" ]]; then
+    REASONS+=("Previous attempt(s) found — override provided: $OVERRIDE_REASON")
+    # Don't block — agent has a documented different approach
+  else
+    REASONS+=("Previous failed attempt(s) by me — need --override-reason to retry")
+    BLOCK=1
+  fi
 fi
 
 if [[ "$MERGED_COUNT" -gt 0 ]]; then
@@ -172,8 +181,37 @@ if [[ "$BLOCK" -eq 1 ]]; then
     echo "    Run: gh issue list --repo $REPO --state open --label 'good first issue' --limit 5"
   fi
   if [[ "$MY_CLOSED_COUNT" -gt 0 ]]; then
-    echo "  → You already tried this issue and failed. Skip it permanently."
-    echo "    Add to exclusion list or pick a fundamentally different issue."
+    echo "  → You previously failed on this issue ($MY_CLOSED_COUNT closed PR(s))."
+    # Search wiki/memory for failure context (repeat-failure-blindness structural fix)
+    echo ""
+    echo "  📖 Searching for failure context..."
+    REPO_SHORT=$(echo "$REPO" | sed 's|.*/||')
+    WIKI_HITS=$(bash ~/.openclaw/workspace/wiki/search.sh "$REPO_SHORT #$ISSUE PR closed failed" --limit 3 2>/dev/null | grep -A1 "^  🔍\|^## " | head -15)
+    if [[ -n "$WIKI_HITS" ]]; then
+      echo "  Found wiki notes about prior failures:"
+      echo "$WIKI_HITS" | sed 's/^/    /'
+    fi
+    # Also check memory for failure notes
+    MEMORY_HITS=$(grep -rl "$REPO_SHORT.*#$ISSUE\|#$ISSUE.*close\|#$ISSUE.*fail\|#$ISSUE.*abandon" ~/.openclaw/workspace/memory/2026-06-*.md 2>/dev/null | tail -3)
+    if [[ -n "$MEMORY_HITS" ]]; then
+      echo "  Related memory entries:"
+      for f in $MEMORY_HITS; do
+        LINE=$(grep -m1 "$REPO_SHORT.*#$ISSUE\|#$ISSUE.*close\|#$ISSUE.*fail\|#$ISSUE.*abandon" "$f" 2>/dev/null | head -c 120)
+        echo "    $(basename $f): $LINE"
+      done
+    fi
+    echo ""
+    if [[ -n "$OVERRIDE_REASON" ]]; then
+      echo "  ⚡ Override provided: \"$OVERRIDE_REASON\""
+      echo "  Allowing retry — ensure your approach is FUNDAMENTALLY different."
+      BLOCK=0
+    else
+      echo "  💡 Options:"
+      echo "    1. Skip this issue (safest — pick something else)"
+      echo "    2. If you have a DIFFERENT approach, re-run with:"
+      echo "       bash tools/competing-pr-check.sh $REPO $ISSUE --override-reason='<how this differs>'"
+      echo "    ⚠️  Same approach twice = guaranteed waste (cove #401 lesson)"
+    fi
   fi
   if [[ "$MERGED_COUNT" -gt 0 ]]; then
     echo "  → Verify the merged PR actually fixes the issue:"
