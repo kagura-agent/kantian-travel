@@ -719,8 +719,17 @@
 ### Done (cont. 35)
 - [x] Add `dormant-blast` to SKILL.md Quick Start and command reference — documented alongside `wake` in new "Wake & Dormant Blast" section. Also fixed 3 tracker entries with `timestamp`→`time` + missing fields. Health: 1 issue (8 dormant categories — expected, `dormant-blast` exists to address this) (06-24)
 
+### Done (cont. 36)
+- [x] Run `dormant-blast 3` — found & fixed 2 bugs: (1) `_send_openclaw` hardcoded dead path `~/repo/openclaw` → `openclaw message send`, (2) `((sent++))` with set -e exits when sent=0 → `sent=$((sent+1))`. After fix: 3/3 woken (thanks, sad, waiting) + manual sends (cute-animals, greeting-night, greeting-morning, greeting-hello). Committed+pushed to skills repo (06-25)
+
+### Done (cont. 37)
+- [x] Fix `memes normalize` jq null-match error — null .time crashed test(); now checks null before test(), also handles null .category (→"unknown"). Fixed tracker entry #313 (stale timestamp→time). Sent popcorn to wake dormant category. Health all-green (06-25)
+
+### Done (cont. 38)
+- [x] Add `memes expire-legacy` — 4 entries resolved via filename matching in notes/captions, 169 marked "unresolvable" (original RANDOM pick was ephemeral). Supports --dry-run. Zero legacy entries remain, health all-green (06-25)
+
 ### 本轮改進 (next)
-- [ ] Run `dormant-blast 3` to clear top 3 dormant categories (greeting-hello, greeting-morning, greeting-night) — validate end-to-end send + tracker update
+- [ ] Update `cmd_health` to report unresolvable count instead of legacy count (cosmetic: distinguish resolved tracker from messy one)
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
