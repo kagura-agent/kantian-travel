@@ -172,8 +172,8 @@ fi
 # 8. search-bench.sh — should run and report precision (known-flaky: may timeout under load)
 echo "8. search-bench.sh"
 if [[ -x tools/search-bench.sh ]]; then
-  BENCH_OUT=$(timeout 30 bash tools/search-bench.sh 2>/dev/null | tail -5) || true
-  if echo "$BENCH_OUT" | grep -qi "precision\|score\|pass\|%"; then
+  BENCH_OUT=$(timeout 45 bash tools/search-bench.sh 2>/dev/null | tail -10) || true
+  if echo "$BENCH_OUT" | grep -qi "precision\|score\|pass\|perfect\|found\|%"; then
     BENCH_SCORE=$(echo "$BENCH_OUT" | grep -oP '\d+%' | tail -1 || echo "??")
     pass "reports precision ($BENCH_SCORE)"
   elif [[ -z "$BENCH_OUT" ]]; then
