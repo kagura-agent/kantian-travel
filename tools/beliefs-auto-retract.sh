@@ -104,9 +104,20 @@ for c in "${candidates[@]}"; do
   escaped_pattern=$(printf '%s' "$pattern" | sed 's/[[\.*^$()+?{|]/\\&/g')
   escaped_date=$(printf '%s' "$date" | sed 's/[[\.*^$()+?{|]/\\&/g')
 
-  # Find the line and append retraction
-  if sed -i "0,/^- ${escaped_date}:.*pattern: ${escaped_pattern}.*第1次/{s/\(第1次\)\(.*\)(Source: \([^)]*\))/\1\2(Source: \3) → **retracted ${TODAY}** (rationale: stale — single occurrence, no recurrence in ${age}+ days)/}" "$BELIEFS_FILE"; then
+  # Find the line and append retraction — handle entries with and without (Source: ...) tag
+  # First try pattern with Source tag
+  before_hash=$(md5sum "$BELIEFS_FILE" | cut -d' ' -f1)
+  sed -i "0,/^- ${escaped_date}:.*pattern: ${escaped_pattern}.*第1次/{s/\(第1次\)\(.*\)(Source: \([^)]*\))/\1\2(Source: \3) → **retracted ${TODAY}** (rationale: stale — single occurrence, no recurrence in ${age}+ days)/}" "$BELIEFS_FILE"
+  after_hash=$(md5sum "$BELIEFS_FILE" | cut -d' ' -f1)
+  if [[ "$before_hash" != "$after_hash" ]]; then
     applied=$((applied + 1))
+  else
+    # No Source tag — append retraction after the closing paren of 第N次)
+    sed -i "0,/^- ${escaped_date}:.*pattern: ${escaped_pattern}.*第1次/{s/\(第1次)\)/\1) → **retracted ${TODAY}** (rationale: stale — single occurrence, no recurrence in ${age}+ days)/}" "$BELIEFS_FILE"
+    after_hash2=$(md5sum "$BELIEFS_FILE" | cut -d' ' -f1)
+    if [[ "$before_hash" != "$after_hash2" ]]; then
+      applied=$((applied + 1))
+    fi
   fi
 done
 
