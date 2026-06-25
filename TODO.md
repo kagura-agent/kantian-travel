@@ -251,6 +251,8 @@
 - [ ] Track: Plaer1/junction - 514⭐ (06-20, NEW, 3d). Multi-backend VS Code chat sidebar for 7 agent runtimes. Bridge pattern + checkpoint manager (shadow git rewind). OpenClaw first-class. Based on openclaw_vscode. Direct reference for carry project. Deep read done. Revisit 06-27
 - [ ] Track: Forsy-AI/agent-apprenticeship - 290⭐ (06-20, NEW, 1d). Training signal ecosystem for agent learning from real work. Process supervision JSONL + baseline→revised hill-climbing + economic value framing. Viral growth but 0 community contributions. Deep read done. Revisit 06-27
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
+- [ ] Track: NotASithLord/peerd - 71⭐ (06-25, NEW). Browser-native AI agent harness (Chrome/Firefox extension). Full agent loop inside browser, BYOK, trust-separated runner, P2P dweb (preview), 4 sandboxes. 2 active contributors. Deep read done. Revisit 07-02
+- [ ] Track: GenseeAI/gensee-crate - 47⭐ (06-25, NEW). Rust sidecar runtime safety for coding agents. Deterministic policy (allow/ask/deny), lineage graph, eslogger. macOS-first. Skim done. Revisit 07-02
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26

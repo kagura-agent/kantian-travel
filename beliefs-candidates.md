@@ -691,3 +691,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-24: [gradient] "competing-pr-check.sh receives repo name from flowforge context/find_work, but stale instances may have mismatched repo naming — always verify issue access directly before abandoning implementation" → [行为改变] double-check with gh api repos/OWNER/REPO/issues/N before trusting script exit code on non-standard repos. (pattern: verify-before-abandon, 第1次) (Source: workloop)
   - **Trigger**: when competing-pr-check returns exit 1 with UNKNOWN state
+
+- 2026-06-25: [gradient] "升级操作不能在 isolated cron session 中完成 (npm i -g 需要 root, elevated 在 cron 中 disabled)。导致 v2026.6.10 的 4 个 adopt 条目无法验证。upgrade_gate 节点假设了执行环境有升级权限。" → [行为改变] upgrade_gate 应检测权限后发通知给人类执行升级，而不是尝试自己执行。或在 workflow 中增加 'request-upgrade' 分支，发消息后暂停等待人类确认。. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+  - **Trigger**: 每次 post-upgrade workflow 遇到需要升级的版本
+
+- 2026-06-25: [gradient] "HN scan tool returning 0 results 3+ consecutive rounds — stop relying on it for scout" → [行为改变] Immediately switch to alternative source (web_search site:news.ycombinator.com or GitHub discussions) rather than accepting 0 results as valid. (pattern: hn-scan-broken-signal, 第1次) (Source: study)
+  - **Trigger**: hn-scan.sh returns empty results
