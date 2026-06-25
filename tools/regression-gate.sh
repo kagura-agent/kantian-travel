@@ -237,5 +237,17 @@ printf "Results: %d/%d passed" "$passed" "$total"
 [[ $failed -gt 0 ]] && printf " ${RED}(%d failed)${NC}" "$failed"
 echo ""
 
-[[ $failed -gt 0 ]] && exit 1
+if [[ $failed -gt 0 ]]; then
+  echo ""
+  echo "📋 Next Steps:"
+  echo "  → Revert or fix the change that caused regression"
+  echo "  → Re-run individual benchmarks to isolate which change broke them:"
+  while IFS='|' read -r name command; do
+    echo "    $name: $command"
+  done <<< "$benchmarks"
+  echo "  → If benchmark itself is flaky (not your change), add evidence and bypass:"
+  echo "    git stash && bash tools/regression-gate.sh && git stash pop"
+  echo "    (If it also fails without your changes, benchmark is broken)"
+  exit 1
+fi
 exit 0

@@ -1,5 +1,9 @@
-# Exclude dreaming raw data from memory search index
-# session-corpus and state files are noise; dreaming reports (deep/light/rem) are useful
-# Fix: 2026-06-23 — memory/dreaming/ was wrongly excluded since Jun 17,
-# breaking Dream Diary access to its own report files for 6 days
-memory/.dreams/
+# Exclude dreaming state/config files from memory search index
+# session-corpus MUST be indexed — Dream Diary subagent uses memory_search
+# to recall candidate details from these files. Excluding them causes
+# all diary entries to produce "details unavailable" fallback text.
+# Fix: 2026-06-25 — Day 8+ dreaming breakage root cause: blanket memory/.dreams/
+# exclusion blocked session-corpus access. Now only state files excluded.
+memory/.dreams/*.jsonl
+memory/.dreams/*.migrated
+memory/.dreams/*.bak*

@@ -105,6 +105,28 @@ if [[ "$BLOCK" -eq 1 ]]; then
   for r in "${REASONS[@]}"; do
     echo "  • $r"
   done
+  echo ""
+  echo "📋 Next Steps:"
+  # Emit actionable next steps based on specific block reasons
+  if [[ "$ISSUE_STATE" != "OPEN" ]]; then
+    echo "  → Issue is closed/resolved. Pick a different issue from the repo."
+    echo "    Run: gh issue list --repo $REPO --state open --label 'good first issue' --limit 5"
+  fi
+  if [[ "$MY_CLOSED_COUNT" -gt 0 ]]; then
+    echo "  → You already tried this issue and failed. Skip it permanently."
+    echo "    Add to exclusion list or pick a fundamentally different issue."
+  fi
+  if [[ "$MERGED_COUNT" -gt 0 ]]; then
+    echo "  → Verify the merged PR actually fixes the issue:"
+    echo "    Run: gh issue view $ISSUE --repo $REPO --comments | tail -20"
+    echo "    If issue is still open despite merged PR, the fix may be incomplete — assess carefully."
+  fi
+  if $HAS_COMPETITOR 2>/dev/null; then
+    echo "  → Other contributors are already working on this. Options:"
+    echo "    1. Pick a different issue (preferred)"
+    echo "    2. If competing PR is stale (>14d, no activity), comment asking status before starting"
+    echo "    3. If your approach is fundamentally different, note it in issue comments first"
+  fi
   exit 1
 else
   echo "✅ CLEAR — No competing PRs found, safe to proceed"
