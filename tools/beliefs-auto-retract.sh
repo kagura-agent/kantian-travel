@@ -14,6 +14,14 @@
 
 set -euo pipefail
 
+# Concurrency lock — prevent multiple parallel invocations from creating duplicate markers
+LOCKFILE="/tmp/beliefs-auto-retract.lock"
+if ! mkdir "$LOCKFILE" 2>/dev/null; then
+  echo "⚠️  Another instance is running (lockdir exists: $LOCKFILE). Skipping."
+  exit 0
+fi
+trap 'rmdir "$LOCKFILE" 2>/dev/null' EXIT
+
 # Defaults
 DRY_RUN=false
 AGE_DAYS=30
@@ -46,8 +54,8 @@ while IFS= read -r line; do
   entry_date=$(echo "$line" | grep -oP '^\- (\d{4}-\d{2}-\d{2})' | sed 's/^- //')
   if [[ -z "$entry_date" ]]; then continue; fi
 
-  # Skip if already retracted or graduated
-  if echo "$line" | grep -qiP 'retracted|graduated'; then
+  # Skip if already retracted or graduated (use grep -F for robustness on long lines)
+  if echo "$line" | grep -qi 'retracted\|graduated'; then
     skip_count=$((skip_count + 1))
     continue
   fi
@@ -105,8 +113,9 @@ for c in "${candidates[@]}"; do
   escaped_date=$(printf '%s' "$date" | sed 's/[[\.*^$()+?{|]/\\&/g')
 
   # Idempotency guard: skip if this entry is already retracted in the file
-  # (handles concurrent runs reading stale state)
-  if grep -q "^- ${escaped_date}:.*pattern: ${escaped_pattern}.*retracted" "$BELIEFS_FILE"; then
+  # (handles concurrent runs reading stale state + re-reads current file state)
+  if grep "^- ${escaped_date}:" "$BELIEFS_FILE" | grep -q "pattern: ${escaped_pattern}" && \
+     grep "^- ${escaped_date}:" "$BELIEFS_FILE" | grep "pattern: ${escaped_pattern}" | grep -qi 'retracted'; then
     continue
   fi
 
