@@ -220,6 +220,8 @@
 - [x] **guide.md: 新增「write precise test assertions — existence checks prove nothing」** - ClawX#1130 教训（fresh-context review 判定 NEEDS_WORK 因 toBeDefined() 弱断言，多花一轮编辑）→ 已加入 guide.md 第 60 条 (2026-06-22)
 - [x] **guide.md: 新增「enforce blocklist when adding exclusion rules — rules without gates are decoration」** - hermes-agent#51220 教训（rule #59 写了 3 天但 blocklist 没更新，workloop 照选不误）→ 已加入 guide.md 第 61 条 + blocklist 执行 (2026-06-23)
 - [x] **guide.md: 新增「audit shared mechanism blast radius — your fix target may be someone else's dependency」** - openclaw#96371 教训（fix 修改了共享 suppression path，reviewer 发现影响 heartbeat 安全性 + 混淆 static/dynamic 机制）→ 已加入 guide.md 第 62 条 (2026-06-24)
+- [x] **guide.md: 新增「in competitive repos, narrow proof beats broad scope」** - openclaw#96981 教训（4h cycle 太慢，narrower fix + real proof 被 merge，broad scope 被 supersede）→ 已加入 guide.md 第 63 条 (2026-06-26)
+- [x] **guide.md: 新增「narrow error handling beats catch-all」** - NemoClaw#5740 教训（broad try/catch 吞掉 disk-full/SSH-timeout 等真实失败，被 narrower regex-matched catch supersede）→ 已加入 guide.md 第 64 条 (2026-06-26)
 
 ## 📚 学习
 
@@ -255,6 +257,7 @@
 - [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10
 - [ ] Track: lemma-work/lemma-platform - 113⭐ (06-26, NEW). Human+agent workspace with pod model (tables/files/agents/workflows/permissions as plain files). Approval-as-primitive, daemon mode (local coding agents → task queue), multi-surface. Deep read done. Revisit 07-03
 - [ ] Track: GenseeAI/gensee-crate - 47⭐ (06-25, NEW). Rust sidecar runtime safety for coding agents. Deterministic policy (allow/ask/deny), lineage graph, eslogger. macOS-first. Skim done. Revisit 07-02
+- [ ] Track: oleksiijko/pmb - 87⭐ (06-26, NEW). Local-first persistent memory for AI coding agents via MCP. SQLite+LanceDB+BM25+PPR graph. Exploration memo cache, lesson follow-through tracking. Deep read done. Revisit 07-10
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -734,7 +737,10 @@
 - [x] Update `cmd_health` to report unresolvable count instead of legacy count — now shows "169 unresolvable (expired)" in health output. Distinguishes cleanly from "legacy" (which is 0 post-expire). Committed+pushed (06-26)
 
 ### 本轮改進 (next)
-- [ ] Add `memes quality` command — check for duplicate/near-duplicate filenames across categories, flag files with generic names (e.g. "giphy.gif"), and suggest renames
+- [x] Add `memes quality` command — 5-section check: cross-category duplicate filenames (with identical vs different content detection via md5sum), generic/uninformative filenames (giphy/tenor/download/etc), near-duplicate filenames in same category (prefix matching), untagged files, unstyled files. Results: 7 cross-category dupes (all different content), 8 near-dupes, 0 generic, 0 untagged/unstyled. 15 issues total (06-26)
+
+### 本轮改進 (next)
+- [ ] Fix near-duplicate filenames — rename `happy/anime.gif` → `happy/anime-happy.gif`, `greeting-hello/penguin2.gif` → `greeting-hello/penguin-wave.gif`, etc. Update tags.json + _styles entries to match
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -780,3 +786,10 @@
 **Reproduction**: "运行这个命令并报告结果：false" — any channel, any agent.
 
 **Also filed**: #96272 (thinking signature auto-repair pre-stream 400)
+
+## openclaw/openclaw PR #96981 — ClawHub fallback for official external plugins
+- **Status**: Open, needs code fixes per ClawSweeper review (2026-06-26)
+- **P1**: Extend fallback to cover scoped npm package path (`@openclaw/searxng-plugin`), not just bare plugin IDs
+- **P2**: Pass `expectedPluginId` into ClawHub fallback call + add mismatch test
+- **Proof needed**: Terminal output showing both `openclaw plugins install searxng` and `openclaw plugins install @openclaw/searxng-plugin` succeeding
+- Acknowledged review in comment, workloop to implement fixes
