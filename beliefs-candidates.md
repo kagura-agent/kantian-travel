@@ -697,3 +697,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-25: [gradient] "HN scan tool returning 0 results 3+ consecutive rounds — stop relying on it for scout" → [行为改变] Immediately switch to alternative source (web_search site:news.ycombinator.com or GitHub discussions) rather than accepting 0 results as valid. (pattern: hn-scan-broken-signal, 第1次) (Source: study)
   - **Trigger**: hn-scan.sh returns empty results
+
+- 2026-06-26: [gradient] "OpenClaw PRs require explicit "What Problem This Solves" and "Evidence" sections in PR body — standard summary+changes format fails the Real behavior proof CI check. Include structured evidence (behavior matrix, code path validation, lint output) upfront." → [行为改变] Always include "What Problem This Solves" and "Evidence" as H2 sections in OpenClaw PR body from the start. (pattern: openclaw-pr-body-format, 第1次) (Source: workloop)
+  - **Trigger**: Creating PR to openclaw/openclaw repo
