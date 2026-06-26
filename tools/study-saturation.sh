@@ -191,17 +191,21 @@ if $IS_WEEKEND; then
         RECOMMEND="followup"
     elif ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY; then
         RECOMMEND="apply"
-    elif ! $APPLY_LOCKED; then
-        RECOMMEND="apply (backlog empty — check preflight/observations)"
-    elif ! $SCOUT_LOCKED; then
-        RECOMMEND="scout"
+    # --- Modes-with-warnings tier (better than apply-with-empty-backlog) ---
+    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+        RECOMMEND="scout (recent, but better than empty-backlog apply)"
     elif ! $FOLLOWUP_LOCKED; then
         RECOMMEND="followup"
+    elif ! $SCOUT_LOCKED; then
+        RECOMMEND="scout"
+    elif ! $APPLY_LOCKED; then
+        RECOMMEND="apply (backlog empty — mine today's deep reads/observations for patterns, or skip)"
     fi
 else
     # Weekday: balance based on counts, avoid consecutive same mode
-    # Prefer apply with backlog, then scout, then followup
-    # Deprioritize apply when backlog empty (still available but not first pick)
+    # Priority: apply-with-backlog > scout > followup > modes-with-warnings > apply-without-backlog
+    # Key fix (06-26): apply-without-backlog should be LAST resort, not a mid-tier fallback.
+    # Modes with yellow warnings (consecutive-2, recent-scout) are better than apply-with-nothing.
     if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
     elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
@@ -216,13 +220,20 @@ else
         RECOMMEND="scout"
     elif ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY; then
         RECOMMEND="apply"
-    elif ! $APPLY_LOCKED; then
-        # Backlog empty but apply still possible from other sources (preflight, observations)
-        RECOMMEND="apply (backlog empty — check preflight/observations)"
-    elif ! $FOLLOWUP_LOCKED; then
-        RECOMMEND="followup"
+    # --- Modes-with-warnings tier (better than apply-with-empty-backlog) ---
+    elif ! $SCOUT_LOCKED && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
+        # Scout is available but was recent (<3d) — still better than applying nothing
+        RECOMMEND="scout (recent, but better than empty-backlog apply)"
+    elif ! $QUICK_LOCKED; then
+        # Quick scan with consecutive warning — still productive
+        RECOMMEND="quick_scan (consecutive runs — try different sources)"
     elif ! $SCOUT_LOCKED; then
         RECOMMEND="scout"
+    elif ! $FOLLOWUP_LOCKED; then
+        RECOMMEND="followup"
+    elif ! $APPLY_LOCKED; then
+        # True last resort: backlog empty, all other modes locked or warned
+        RECOMMEND="apply (backlog empty — mine today's deep reads/observations for patterns, or skip)"
     fi
 fi
 
