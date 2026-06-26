@@ -104,6 +104,12 @@ for c in "${candidates[@]}"; do
   escaped_pattern=$(printf '%s' "$pattern" | sed 's/[[\.*^$()+?{|]/\\&/g')
   escaped_date=$(printf '%s' "$date" | sed 's/[[\.*^$()+?{|]/\\&/g')
 
+  # Idempotency guard: skip if this entry is already retracted in the file
+  # (handles concurrent runs reading stale state)
+  if grep -q "^- ${escaped_date}:.*pattern: ${escaped_pattern}.*retracted" "$BELIEFS_FILE"; then
+    continue
+  fi
+
   # Find the line and append retraction — handle entries with and without (Source: ...) tag
   # First try pattern with Source tag
   before_hash=$(md5sum "$BELIEFS_FILE" | cut -d' ' -f1)
