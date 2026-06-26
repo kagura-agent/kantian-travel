@@ -739,8 +739,11 @@
 ### 本轮改進 (next)
 - [x] Add `memes quality` command — 5-section check: cross-category duplicate filenames (with identical vs different content detection via md5sum), generic/uninformative filenames (giphy/tenor/download/etc), near-duplicate filenames in same category (prefix matching), untagged files, unstyled files. Results: 7 cross-category dupes (all different content), 8 near-dupes, 0 generic, 0 untagged/unstyled. 15 issues total (06-26)
 
+### Done (cont. 40)
+- [x] Fix near-duplicate filenames — renamed 8 files (anime→anime-happy, penguin2→penguin-wave, penguin→penguin-hello, panic→freaking-out, tired→tired-done, thumbs-up→thumbs-up-classic, peace→peace-sign-bye, wave→wave-casual). Updated tags.json, _styles, tracker history. Quality: 0 near-dupes, 7 cross-category dupes (different content, by design). Health all-green (06-26)
+
 ### 本轮改進 (next)
-- [ ] Fix near-duplicate filenames — rename `happy/anime.gif` → `happy/anime-happy.gif`, `greeting-hello/penguin2.gif` → `greeting-hello/penguin-wave.gif`, etc. Update tags.json + _styles entries to match
+- [ ] Disambiguate cross-category duplicate filenames — rename 7 files that share names across categories (cat-typing, coffee, penguin, puppy-eyes, salute, this-is-fine, wave) with category-prefixed names to avoid confusion
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
