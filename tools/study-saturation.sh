@@ -55,6 +55,21 @@ if (( FOLLOWUP_COUNT >= 4 )); then
     FOLLOWUP_LOCKED=true
 fi
 
+# Pre-check: are there unapplied items in the backlog?
+# Prevents recommending apply when there's nothing actionable in unapplied.md
+# (though other sources like preflight gradients, observations may still exist)
+APPLY_BACKLOG=0
+APPLY_BACKLOG_EMPTY=false
+if ! $APPLY_LOCKED; then
+    UNAPPLIED_FILE="$HOME/.openclaw/workspace/study/unapplied.md"
+    if [[ -f "$UNAPPLIED_FILE" ]]; then
+        APPLY_BACKLOG=$(grep -c '^- \[ \]' "$UNAPPLIED_FILE" 2>/dev/null) || APPLY_BACKLOG=0
+    fi
+    if (( APPLY_BACKLOG == 0 )); then
+        APPLY_BACKLOG_EMPTY=true
+    fi
+fi
+
 # Pre-check: are there actually followup items due today?
 # Uses study/followup-status.sh (same script the followup node uses as its gate)
 # Prevents recommending followup when the node would immediately skip.
@@ -131,7 +146,7 @@ $IS_WEEKEND && echo "📅 Weekend mode active"
 echo ""
 echo "  Scout (all):   $SCOUT_COUNT/3  $( $SCOUT_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
-echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
+echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $APPLY_BACKLOG_EMPTY && echo ' (backlog empty)' || true )"
 echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $FOLLOWUP_EMPTY && echo ' (0 items due)' || true )"
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
 $SCOUT_RECENT && echo "  ⚠️  Last deep scout ${SCOUT_DAYS_AGO}d ago (guide: ≥3d between scouts)"
@@ -168,14 +183,16 @@ CONSEC_MODE_LOWER=""
 
 RECOMMEND=""
 if $IS_WEEKEND; then
-    if ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
+    if ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
     elif ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
     elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
-    elif ! $APPLY_LOCKED; then
+    elif ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY; then
         RECOMMEND="apply"
+    elif ! $APPLY_LOCKED; then
+        RECOMMEND="apply (backlog empty — check preflight/observations)"
     elif ! $SCOUT_LOCKED; then
         RECOMMEND="scout"
     elif ! $FOLLOWUP_LOCKED; then
@@ -183,20 +200,25 @@ if $IS_WEEKEND; then
     fi
 else
     # Weekday: balance based on counts, avoid consecutive same mode
-    if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
+    # Prefer apply with backlog, then scout, then followup
+    # Deprioritize apply when backlog empty (still available but not first pick)
+    if (( APPLY_COUNT == 0 )) && ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
     elif (( SCOUT_COUNT == 0 )) && ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
     elif (( FOLLOWUP_COUNT == 0 )) && ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
-    elif ! $APPLY_LOCKED && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
+    elif ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY && [[ "$CONSEC_MODE_LOWER" != "apply" ]]; then
         RECOMMEND="apply"
     elif ! $FOLLOWUP_LOCKED && [[ "$CONSEC_MODE_LOWER" != "followup" && "$CONSEC_MODE_LOWER" != "follow" ]]; then
         RECOMMEND="followup"
     elif ! $SCOUT_LOCKED && ! $SCOUT_RECENT && [[ "$CONSEC_MODE_LOWER" != "scout" && "$CONSEC_MODE_LOWER" != "quick" ]]; then
         RECOMMEND="scout"
-    elif ! $APPLY_LOCKED; then
+    elif ! $APPLY_LOCKED && ! $APPLY_BACKLOG_EMPTY; then
         RECOMMEND="apply"
+    elif ! $APPLY_LOCKED; then
+        # Backlog empty but apply still possible from other sources (preflight, observations)
+        RECOMMEND="apply (backlog empty — check preflight/observations)"
     elif ! $FOLLOWUP_LOCKED; then
         RECOMMEND="followup"
     elif ! $SCOUT_LOCKED; then
