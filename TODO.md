@@ -252,6 +252,7 @@
 - [ ] Track: Forsy-AI/agent-apprenticeship - 290⭐ (06-20, NEW, 1d). Training signal ecosystem for agent learning from real work. Process supervision JSONL + baseline→revised hill-climbing + economic value framing. Viral growth but 0 community contributions. Deep read done. Revisit 06-27
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
 - [ ] Track: NotASithLord/peerd - 71⭐ (06-25, NEW). Browser-native AI agent harness (Chrome/Firefox extension). Full agent loop inside browser, BYOK, trust-separated runner, P2P dweb (preview), 4 sandboxes. 2 active contributors. Deep read done. Revisit 07-02
+- [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10
 - [ ] Track: lemma-work/lemma-platform - 113⭐ (06-26, NEW). Human+agent workspace with pod model (tables/files/agents/workflows/permissions as plain files). Approval-as-primitive, daemon mode (local coding agents → task queue), multi-surface. Deep read done. Revisit 07-03
 - [ ] Track: GenseeAI/gensee-crate - 47⭐ (06-25, NEW). Rust sidecar runtime safety for coding agents. Deterministic policy (allow/ask/deny), lineage graph, eslogger. macOS-first. Skim done. Revisit 07-02
 
@@ -729,8 +730,11 @@
 ### Done (cont. 38)
 - [x] Add `memes expire-legacy` — 4 entries resolved via filename matching in notes/captions, 169 marked "unresolvable" (original RANDOM pick was ephemeral). Supports --dry-run. Zero legacy entries remain, health all-green (06-25)
 
+### Done (cont. 39)
+- [x] Update `cmd_health` to report unresolvable count instead of legacy count — now shows "169 unresolvable (expired)" in health output. Distinguishes cleanly from "legacy" (which is 0 post-expire). Committed+pushed (06-26)
+
 ### 本轮改進 (next)
-- [ ] Update `cmd_health` to report unresolvable count instead of legacy count (cosmetic: distinguish resolved tracker from messy one)
+- [ ] Add `memes quality` command — check for duplicate/near-duplicate filenames across categories, flag files with generic names (e.g. "giphy.gif"), and suggest renames
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
