@@ -700,3 +700,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-26: [gradient] "OpenClaw PRs require explicit "What Problem This Solves" and "Evidence" sections in PR body — standard summary+changes format fails the Real behavior proof CI check. Include structured evidence (behavior matrix, code path validation, lint output) upfront." → [行为改变] Always include "What Problem This Solves" and "Evidence" as H2 sections in OpenClaw PR body from the start. (pattern: openclaw-pr-body-format, 第1次) (Source: workloop)
   - **Trigger**: Creating PR to openclaw/openclaw repo
+
+- 2026-06-26: [gradient] "In high-activity repos (openclaw), narrower PRs with immediate behavior proof beat broader fixes needing multiple review rounds. Time-to-submit matters when competitors are working the same issue." → [行为改变] Submit the narrowest working fix first. If broader improvements are needed, file them as follow-up issues/PRs after the initial fix lands.. (pattern: speed-over-scope, 第1次) (Source: workloop)
+  - **Trigger**: When choosing between a minimal fix with proof vs a complete fix needing more time, especially on popular issues
