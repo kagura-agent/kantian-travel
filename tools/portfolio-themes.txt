@@ -1,0 +1,26 @@
+# Portfolio Theme Index — for scout novelty scoring
+# Format: THEME_NAME|keyword1,keyword2,keyword3,...
+# When a scout candidate matches keywords from a theme, it's "expected" (well-covered)
+# No match = "novel" (prioritize for deep-read) — surprise inversion principle
+#
+# Generated from 485 wiki/projects notes. Update periodically.
+
+agent-memory|memory,context,brain,recall,retrieval,rag,embedding,knowledge,graph,cache,semantic
+coding-agent|coding,code,editor,ide,copilot,cursor,codex,cline,autocomplete,completion,refactor
+agent-harness|harness,framework,runtime,orchestration,orchestrator,scaffold,wrapper,sdk,platform
+mcp-server|mcp,server,tool,protocol,bridge,plugin,extension,integration
+self-evolving|evolving,self-improving,evolution,meta,reflection,learning,adaptation,mutation
+security-trust|security,trust,sandbox,firewall,audit,permission,safety,guardrail,patrol
+compression-efficiency|compression,token,context-window,pruning,summariz,compact,diet,elision
+multi-agent|team,multi-agent,swarm,collaboration,coordinator,supervisor,delegate,parallel
+search-retrieval|search,index,retrieval,ranking,relevance,query,filter,semantic-search
+workflow-task|workflow,task,pipeline,scheduler,cron,queue,job,automation,orchestrate
+identity-personality|identity,personality,soul,persona,character,voice,tone,profile
+browser-web|browser,web,scrape,crawl,dom,page,headless,puppeteer,playwright
+docs-writing|documentation,docs,writing,readme,wiki,markdown,template,generate-docs
+testing-qa|test,testing,benchmark,eval,quality,assertion,coverage,regression,ci
+llm-provider|provider,model,api,inference,router,gateway,proxy,llm,openai,anthropic,gemini
+skill-standard|skill,standard,convention,specification,portable,interop,ecosystem
+agent-training|training,fine-tune,rl,reward,trajectory,simulation,environment,reinforcement
+data-analysis|data,analysis,finance,analytics,metrics,dashboard,visualization,chart
+devops-infra|deploy,server,container,docker,kubernetes,cloud,monitoring,infrastructure
