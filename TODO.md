@@ -255,10 +255,11 @@
 - [ ] Track: Plaer1/junction - 648⭐ (06-27, +26%). Modular bridge prep. Pace slow. Revisit 07-04
 - [ ] Track: Forsy-AI/agent-apprenticeship - 974⭐ (06-27, +236% viral). README-only updates, 0 code since 06-20. Revisit 07-04
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
-- [ ] Track: NotASithLord/peerd - 71⭐ (06-25, NEW). Browser-native AI agent harness (Chrome/Firefox extension). Full agent loop inside browser, BYOK, trust-separated runner, P2P dweb (preview), 4 sandboxes. 2 active contributors. Deep read done. Revisit 07-02
+- [ ] Track: NotASithLord/peerd - 141⭐ (06-25→06-27: +99%). Browser-native AI agent harness (Chrome/Firefox extension). Full agent loop inside browser, BYOK, trust-separated runner, P2P dweb (preview), 4 sandboxes. 2 active contributors. Deep read done. Revisit 07-02
 - [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10
 - [ ] Track: lemma-work/lemma-platform - 113⭐ (06-26, NEW). Human+agent workspace with pod model (tables/files/agents/workflows/permissions as plain files). Approval-as-primitive, daemon mode (local coding agents → task queue), multi-surface. Deep read done. Revisit 07-03
 - [ ] Track: GenseeAI/gensee-crate - 47⭐ (06-25, NEW). Rust sidecar runtime safety for coding agents. Deterministic policy (allow/ask/deny), lineage graph, eslogger. macOS-first. Skim done. Revisit 07-02
+- [ ] Track: YurunChen/repo-docs-skills - 62⭐ (06-27, NEW). Living docs skill for coding agents. Per-turn understanding sync, 3-layer knowledge separation, Python validator. Solo dev, 1 commit, burst-publish. Skim done. Revisit 07-11
 - [ ] Track: oleksiijko/pmb - 87⭐ (06-26, NEW). Local-first persistent memory for AI coding agents via MCP. SQLite+LanceDB+BM25+PPR graph. Exploration memo cache, lesson follow-through tracking. Deep read done. Revisit 07-10
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
