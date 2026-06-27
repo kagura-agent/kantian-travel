@@ -128,7 +128,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-21: [gradient] "这个你发现了之后需要你自己处理的" + "你每次更新pr之后需要主动require我再一次review" → [行为改变] PR branch out of date 自己更新不等人提醒; push 新 commit 后主动 re-request review (pattern: pr-ownership, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 - 2026-05-21: [gradient] "你每次不应该问我有没有approve，你自己不是看的到么" → [行为改变] PR 状态自己查，不问人 (pattern: self-check, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 - 2026-05-21: [gradient] "不应该用toast/prompt方式填必要信息" → [行为改变] 用户输入表单必须用正式 modal/form，不用 prompt()/alert()。prompt 弹窗是 prototype 级别，给人测试的东西必须有正式 UI (pattern: ui-quality-bar, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
-- 2026-05-21: [gradient] "整体UI设计考虑Discord那种，更高级" + "左下角是用户不是bot" + "为什么选OpenClaw还要填地址" → [行为改变] 做对标产品(Discord)的功能时，先搞清楚对标产品的完整UX flow再动手，不要自己发明。sidebar结构、bot管理入口、创建流程都应该对齐Discord (pattern: discord-design-convention, 第1次，含3个子纠正)
+- 2026-05-21: [gradient] "整体UI设计考虑Discord那种，更高级" + "左下角是用户不是bot" + "为什么选OpenClaw还要填地址" → [行为改变] 做对标产品(Discord)的功能时，先搞清楚对标产品的完整UX flow再动手，不要自己发明。sidebar结构、bot管理入口、创建流程都应该对齐Discord (pattern: discord-design-convention, 第1次，含3个子纠正) → **retracted 2026-06-28** (rationale: stale — single occurrence, no recurrence in 38+ days)
 
 - 2026-05-21: [gradient] "整体UI不行/为什么不直接用标准组件库/找开源社区更完善的这样你更容易写对" → [行为改变] 选前端组件库时，优先选社区最大、文档最全的（antd/MUI），不选"理论最合适但需要大量手写"的（shadcn）。AI 生成代码质量和库的流行度/文档量成正比。"可定制性"对 AI 来说不是优势而是负担。(pattern: library-selection-for-ai, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 
@@ -146,7 +146,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-26: [gradient] "用了vm1的数据" / "这个是vm几呢" → [行为改变] SSH 连接前先验证 hostname + 在跑服务来确认机器身份，不依赖 IP-to-VM 的记忆映射。文档里的 VM 编号可能跟实际 hostname/角色不一致。 (pattern: machine-identity-verification, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 - 2026-05-26: [directive] "千万不能动104.43.91.188上面的东西" → 写入 llm-infra/docs/setup.md，VM2 条目标注 DO NOT TOUCH。已落地。
 
-- 2026-05-27: [gradient] "报告≠行动：记录 broken 不是修 broken" → [行为改变] 审计/巡检发现 X broken 时，同一轮必须跑诊断三件套（which/ls 路径/build），3 分钟能修直接修，修不了才记 TODO。"记下 broken" 不算行动。(pattern: report-vs-fix, 第1次，实际是 观测不闭环 的具体子 pattern)
+- 2026-05-27: [gradient] "报告≠行动：记录 broken 不是修 broken" → [行为改变] 审计/巡检发现 X broken 时，同一轮必须跑诊断三件套（which/ls 路径/build），3 分钟能修直接修，修不了才记 TODO。"记下 broken" 不算行动。(pattern: report-vs-fix, 第1次，实际是 观测不闭环 的具体子 pattern) → **retracted 2026-06-28** (rationale: stale — single occurrence, no recurrence in 32+ days)
   - **Trigger**: 任何 cron/审计报告某工具/服务 broken
   - **Evidence**: gogetajob 连续 4 天被标 broken，实际只是 nvm symlink 断了，30 秒可修
 
@@ -166,7 +166,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-05-28: [gradient] "plugin代码也应该在这个repo里面track呀" → [行为改变] 不直接改 dist 产物。源码在 repo 里改 → build → bundle → 复制到 runtime 位置。 (pattern: source-of-truth, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 - 2026-05-28: [gradient] 部署到错误路径 cove/ 而不是 cove-staging/ → [行为改变] 部署前检查 systemd service 的 WorkingDirectory，确认目标路径。 (pattern: deploy-path-verify, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
 - 2026-05-28: [gradient] rebuild client 覆盖了有 typing 代码的旧部署 → [行为改变] 重建前确认源码包含所有已部署功能，不要假设 dist = source。 (pattern: rebuild-safety, 第1次)) → **retracted 2026-06-27** (rationale: stale — single occurrence, no recurrence in 30+ days)
-- 2026-05-29: [gradient] "CI自动部署的，你不需要手动部署" → [行为改变] 有 CI/CD 的项目不要手动部署，手动 cp 可能覆盖 CI 的 bundle 格式。需要重新部署时用 `gh run rerun` 触发 CI。 (pattern: ci-respect, 第1次)
+- 2026-05-29: [gradient] "CI自动部署的，你不需要手动部署" → [行为改变] 有 CI/CD 的项目不要手动部署，手动 cp 可能覆盖 CI 的 bundle 格式。需要重新部署时用 `gh run rerun` 触发 CI。 (pattern: ci-respect, 第1次) → **retracted 2026-06-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
 
 - 2026-05-29: [gradient] "怎么又是光记录不和我聊天呀" → [行为改变] 收到照片时先聊天互动再后台存档，不要进入"存档机器人"模式。Luna 要的是旅伴不是记录员 (pattern: record-only-no-chat, 第3次: 国清寺照片×1, 大瀑布石拱桥×1, 隋塔×1) → **graduated 2026-05-31** (target: DNA — SOUL.md Vibe section)
 - 2026-05-29: [gradient] "天梯是个电梯" + 距离高估 + 9:27催午饭 + 不需要回国清寺 → [行为改变] 不确定的事实不要自信断言，先问或标注"我不确定"。特别是景区设施/距离/时间，宁可说不知道也不要瞎猜 (pattern: premature-assumption, 第4次) → **graduated 2026-05-30** (target: DNA — SOUL.md Beliefs section)
@@ -175,7 +175,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-29: [gradient] Luna 指出游记两处事实错误："直通车不需要门票"（我看标牌想当然）、"罗汉棋盘硬币是寺里摆的不是游客投的"（我凭常识猜的）→ [行为改变] 旅行中看到的信息不要凭"常识"推断含义，如果不确定就问Luna或说"我不确定"，不要自信断言后写进游记变成事实错误 (pattern: premature-assumption, 第5次) → **graduated 2026-05-30** (target: DNA — SOUL.md Beliefs section)
 
-- 2026-05-29: [gradient] "channel patrol 报 quiet hour 但实际在跟 Luna 聊天" → [行为改变] 任何形式的人类互动都算活动，不能只看 cron 产出来判断是否 quiet。已修复 patrol prompt。(pattern: 狭隘活动定义, 第1次)
+- 2026-05-29: [gradient] "channel patrol 报 quiet hour 但实际在跟 Luna 聊天" → [行为改变] 任何形式的人类互动都算活动，不能只看 cron 产出来判断是否 quiet。已修复 patrol prompt。(pattern: 狭隘活动定义, 第1次) → **retracted 2026-06-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
 
 - 2026-06-02: [gradient] "When debugging a pipeline (A→B→C), check receiver-end instructions before diving into middleware internals. The fix is often at the endpoint, not the plumbing." → [行为改变] First verify: does the receiving workflow/node have explicit instructions to perform the expected action? Missing instructions > broken plumbing.. (pattern: debug-receiver-first, 第1次) (Source: study)
   - **Trigger**: Spending time reading plugin/middleware source code to understand why a pipeline produces no output
@@ -706,3 +706,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-27: [gradient] "calibration-log.sh verify uses no-space grep pattern but jsonl has spaced JSON. Direct python workaround needed until fixed." → [行为改变] Use python json approach or fix grep pattern in script. (pattern: calibration-log-json-spacing, 第1次) (Source: study)
   - **Trigger**: verify command says 'not found' for existing predictions
+
+- 2026-06-27: [gradient] "升级从发现(06-25)到完成核心adoption(06-27)花了48h，刚好卡在deadline边缘。主要延迟：06-26的run被gateway restart中断。自动生效类fix验证最快（看runs data即可），需配置类需实际触发场景，跨session类最难验证（需等真实场景）。" → [行为改变] 优先验证自动生效类和可观测类fix（数据已有），跨session类标记待观察而非阻塞流程。升级后第一天就开始验证，不等第二天。. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+  - **Trigger**: 下次升级后执行adoption时

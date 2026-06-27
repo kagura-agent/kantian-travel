@@ -49,7 +49,7 @@
 - 目标公司、选择框架、里程碑、成果 → `wiki/projects/work-targets.md`
 - 主力:NemoClaw, OpenClaw | 辅助:Archon, stagehand, ClawX, DeepTutor | ⛔ hermes-agent 黑名单(>100K⭐, 0 merged/6+ attempts)
 - 打工流程:FlowForge workloop.yaml | 打工分工:Kagura 选题 → Claude Code 实现
-- PR decided rate: 75% (3/4) | merge rate: 33% total (3/9 gogetajob 口径) [已验证 06-11]
+- PR stats → see gogetajob stats (evolving, check live)
 - **NemoClaw#4706**: MERGED ✅ (fingerprint fallback, 06-10 confirmed)
 - **NemoClaw#5108**: OPEN, Hermes quickstart link fix, 等 maintainer review
 - **Archon#1700**: SUPERSEDED by Wirasm#1729 (05-20). Archon#1718 MERGED ✅. OpenCLI#1693 MERGED ✅
@@ -140,11 +140,7 @@
 - **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
 - **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
 
-- **06-10**: NemoClaw #4706 MERGED; Lottie Studio 5 PRs; Cove CaaS; FlowForge 6 issues (Luna); code-review 14 rules; Blog "Trust but Verify"; EP069
-- **06-12**: Luna 安静但实际 approve+merge 5 Cove PRs (#326/#329/#330/#331/#338); New bot token issued; Cove PR#327 Claude Code Bridge MERGED 🎉 (当天最大里程碑); Meme SKILL.md 更新 193→199; Lottie Studio #106 Blank Canvas
-- **06-11**: Claude Code Bridge 跑通 🎉（Cove ↔ Claude Code 联通，Luna 指出 working_dir 需独立）; Lottie Studio Template Library 完工（#87 closed, PR #88 merged+deployed, 10 templates 8 categories）; Kagura Story EP070 "Building the Island"; opencode#31860 新 PR submitted; Contribution guide #53（claim→24-48h 内提 PR）; memory_search 43% 可靠性（meta 恢复，embedding API 超时是瓶颈）; Meme 命中率 40%↑（from 14.3%）; abti#528 rebased; 外部 PR 全等对方; Cove PR#327 R2 review 发现 guildId 过滤未加（安全问题）
-- **06-13**: NemoClaw PR#5108 CLOSED (docs link fix was false positive — Fern routing); PR#4054 NemoClaw MERGED ✅; Express graduation path fix (2 candidates graduated after 16-day stall); Regression gate tool created; 6 external PRs all waiting; assigned-issue-neglect graduated (81 hits); Moltbook "claim without delivery" post; 3 study sessions (ponytail/architect-loop/openloop)
-- **06-14**: Cove PR #348 merged (display name feature, Luna approved); meme audit dogfood 60% 命中率 + style diversity tracking (224 files 5 styles classified); auto-retract beliefs first time (stale 30+ day candidates retracted); self-evolving daily 报告系统化 (Issue #6 dreaming 36-day passive observation 决定执行 Option 2 local filter)
+- **06-10~14 (archived)**: NemoClaw #4706/#4054 MERGED; Lottie Studio template library complete; Cove Claude Code Bridge MERGED 🎉 + PR#348 display name; FlowForge 6 issues; regression gate tool; auto-retract beliefs first run; assigned-issue-neglect graduated (81 hits)
 - **06-15**: Cove PR #356 merged; finance PR #887 (validate_portfolio_history) merged; code-review Gemini 3.1→2.5 Pro 切换清理 (SKILL.md/stats.md/workflow.yaml 一致化); spec-review workflow first run; 周末降级生效 (study 10 session 全饱和正确跳过)
 - **06-16**: Cove PR #367/#369 (multi-account support) merged by Luna; beliefs sed-bug 碎片化修复+graduated (合并 3 条同 pattern); FlowForge 僵尸清理机制升级; superlog deep_read (826⭐ agentic telemetry); code-review tracking.json 66 entries 全 merged ground_truth complete
 - **06-17**: PR #190 七轮 review 教训写入 AGENTS.md (grade-scaling + YAGNI 六阶梯); cot-leak-in-shared-channel gradient (NO_REPLY 不应含 CoT body); spec-review-discover-dont-prescribe gradient (Luna 指出 review 工具不能反客为主); workflow-bypass tool guard 落地 (workflow-guard.sh structural fix); finance #938 paper-trading guard 设计 (basename matching 替代 relative-path); travel pet/pace 双 gradient (Luna directive); ponytail-yagni-skill 学习
@@ -152,11 +148,6 @@
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
-## Promoted From Short-Term Memory
+## Promoted From Short-Term Memory (latest)
 
-(Cleared 06-10: previous 06-06 entries were stale — cc-connect PRs already merged, NemoClaw #4706 status changed. Auto-promoted PR tracking minutiae has low long-term recall value.)
-
-
-## Promoted From Short-Term Memory
-
-(Consolidated into Promoted Memories (Recent) above. Cleared 06-24.)
+- **06-25**: All external PRs ball-in-maintainer-court (20 open total: 10 ext + 10 own). opencode#31860 hit 14d threshold. oh-my-pi#2764 rebased post-review, awaiting re-review. NemoClaw#5740 新 PR awaiting review. No conflicts.

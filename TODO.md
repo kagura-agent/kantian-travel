@@ -152,6 +152,14 @@
 - 233 stars (stable)
 - Star-farming issues #175 + #176 still open (community drama, not actionable)
 - Status: dogfood-only mode, holding on PRs per rule #48
+- Wiki health (06-27): 993 files, 186 orphans (44%), 0 broken links, 0 collisions ✔
+- 9 wiki files edited today (active dogfood usage confirmed)
+- PRs #173 (mcp-config tests, 8d) + #174 (diagnoseGitError tests, 7d) open, 0 reviews
+- External PR #171 (wooksong) 14 days without review — all 3 open PRs blocked
+- Upstream dormant again since 06-20 (7 days). Revival was 2-day burst only
+- ⚠️ Stars: 233 → 134 (-42%). GitHub likely purged fake stars after star-farming accusations (#175/#176)
+- Only 1 open issue (#151 Codex question). Issues #168/#169 closed by maintainer during 06-19 revival
+- Status: dogfood-only. PRs approaching 14-day lifecycle limit (rule #50). Will close #173/#174 at day 14 if still no review (07-03/07-04)
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -757,7 +765,10 @@
 - [x] Fix remaining near-duplicate warning: greeting-morning `morning.gif` → `good-morning-sun.gif` (different content from `morning-coffee.gif` and `sunrise.gif`, all distinct md5). quality+health all-green (06-27)
 
 ### 本轮改進 (next)
-- [ ] Add `memes lint` pre-commit hook — auto-run quality check on `git commit` in memes repo, block if issues found
+- [x] Add `memes lint` pre-commit hook — integrated into global git hooks (`~/.config/git/hooks/pre-commit`). Detects memes repo via `git rev-parse --show-toplevel`, runs `memes quality` on staged meme files (gif/png/jpg/webp) + tags.json changes. Blocks commit on issues (dupes, generic names, untagged, unstyled). Fixed `cmd_quality` to return exit code 1 on issues. Tested: untagged file correctly blocked, clean repo passes. Skip with `--no-verify` (06-27)
+
+### 本轮改進 (next)
+- [ ] Add `memes lint --fix` auto-fixer — auto-tag new files with basic tags, auto-add _styles entries for new files
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
