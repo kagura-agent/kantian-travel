@@ -242,6 +242,8 @@
 - [x] Track: nanobot (HKUDS) - 44,642⭐ (06-18→06-24: +0.5%). v0.2.2 released. Maintenance: docs/news, minor webui fixes. No architectural changes. Mature. Revisit 07-01
 - [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
+- [ ] Track: Qwen-AgentWorld (QwenLM) - 568⭐ (06-27, NEW). Language World Model — environment simulator for agent training. 7 domains, MoE 35B/3B, beats GPT-5.4 on AgentWorldBench. Deep read done. Revisit 07-04
+- [ ] Track: AgentSpace (HKUDS) - 453⭐ (06-27, NEW). Agent-native team workspace — "digital employees" with roles, permissions, audit. From nanobot team. Revisit 07-04
 - [ ] Track: dirac (dirac-run) - 1,342⭐ (06-27). Active maintenance (test fixes, telemetry cleanup). 15 open issues. Steady +2%. Revisit 07-04
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
