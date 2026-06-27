@@ -227,7 +227,7 @@
 
 - [x] Track: TokenCode (yzfly) - 26⭐ (06-11). Go parallel agent runtime, /race competitive mode, team engine positioning. Deep read done, CC-parity burst + ROADMAP Phase B analyzed. Revisit 06-25
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
-- [ ] Track: thu-nmrc/openloop - 55⭐ (06-13, flat). Agent-agnostic loop engineering framework, Python, THU origin. 3 days old, all commits "Add files via upload", zero PRs/issues. Too early to invest. Revisit 06-27
+- [x] Track: thu-nmrc/openloop - 55→11⭐ (collapsed). No commits since 06-10. **Dropped** 06-27 — dead project
 - [x] Track: DietrichGebert/ponytail - 40,129⭐ (06-13→06-20: 966→40.1k, viral). YAGNI 6-rung ladder fully applied to DNA. Now in mass-adoption polish phase (Copilot/OpenClaw integrations, cross-platform bugs). No new architectural insights above >5k threshold. **Downgraded to monthly.** Revisit 07-20
 - [x] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
 - [x] Track: DanMcInerney/architect-loop - 520⭐ (06-13→06-20: 213→520, +144% passive). Dev silent since 06-13 (Fable 5 suspension killed momentum). No commits 7d. Core design rules already in DNA (Phase 0, disagreement mandatory). **Downgraded to cool.** Revisit 07-20
@@ -242,16 +242,16 @@
 - [x] Track: nanobot (HKUDS) - 44,642⭐ (06-18→06-24: +0.5%). v0.2.2 released. Maintenance: docs/news, minor webui fixes. No architectural changes. Mature. Revisit 07-01
 - [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
-- [ ] Track: dirac (dirac-run) - 1,313⭐ (06-17, +12 from 06-14). Quiet 4 days since 06-13 push. Downgraded deep-dive→following. Conciseness-Accuracy Paradox card captures core insight. Revisit 06-27
+- [ ] Track: dirac (dirac-run) - 1,342⭐ (06-27). Active maintenance (test fixes, telemetry cleanup). 15 open issues. Steady +2%. Revisit 07-04
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [x] Track: vercel/eve - 2,598⭐ (06-26 followup, +89% from 1,371). v0.14.0: AI SDK 7, provider-agnostic reasoning, standardized approvals with session context, self-hosted workflow support, stream tool calls. HOT. Revisit 07-03
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
-- [ ] Track: rebel0789/codexpro - 459⭐ (06-20, NEW, 4d). ChatGPT→local-repo MCP bridge. `.ai-bridge` handoff pattern, tool mode tiering, bash safety design. Validates cloud-to-local bridging demand. Deep read done. Revisit 06-27
+- [ ] Track: rebel0789/codexpro - 944⭐ (06-27, +106%). Tool cards opt-in, loop fingerprints fix. MCP bridge maturing. HOT. Revisit 07-02
 - [ ] Track: agiwhitelist/tokdiet - 69⭐ (06-21, NEW, 5d). Context virtual memory proxy for AI agents. Loopback proxy that dedup+elision+midSummarize compacts context with shadow-eval quality proof. 71% token savings on benchmark. TypeScript, minimal deps. Deep read done. Revisit 06-28
-- [ ] Track: Plaer1/junction - 514⭐ (06-20, NEW, 3d). Multi-backend VS Code chat sidebar for 7 agent runtimes. Bridge pattern + checkpoint manager (shadow git rewind). OpenClaw first-class. Based on openclaw_vscode. Direct reference for carry project. Deep read done. Revisit 06-27
-- [ ] Track: Forsy-AI/agent-apprenticeship - 290⭐ (06-20, NEW, 1d). Training signal ecosystem for agent learning from real work. Process supervision JSONL + baseline→revised hill-climbing + economic value framing. Viral growth but 0 community contributions. Deep read done. Revisit 06-27
+- [ ] Track: Plaer1/junction - 648⭐ (06-27, +26%). Modular bridge prep. Pace slow. Revisit 07-04
+- [ ] Track: Forsy-AI/agent-apprenticeship - 974⭐ (06-27, +236% viral). README-only updates, 0 code since 06-20. Revisit 07-04
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
 - [ ] Track: NotASithLord/peerd - 71⭐ (06-25, NEW). Browser-native AI agent harness (Chrome/Firefox extension). Full agent loop inside browser, BYOK, trust-separated runner, P2P dweb (preview), 4 sandboxes. 2 active contributors. Deep read done. Revisit 07-02
 - [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10

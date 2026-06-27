@@ -703,3 +703,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-26: [gradient] "In high-activity repos (openclaw), narrower PRs with immediate behavior proof beat broader fixes needing multiple review rounds. Time-to-submit matters when competitors are working the same issue." → [行为改变] Submit the narrowest working fix first. If broader improvements are needed, file them as follow-up issues/PRs after the initial fix lands.. (pattern: speed-over-scope, 第1次) (Source: workloop)
   - **Trigger**: When choosing between a minimal fix with proof vs a complete fix needing more time, especially on popular issues
+
+- 2026-06-27: [gradient] "calibration-log.sh verify uses no-space grep pattern but jsonl has spaced JSON. Direct python workaround needed until fixed." → [行为改变] Use python json approach or fix grep pattern in script. (pattern: calibration-log-json-spacing, 第1次) (Source: study)
+  - **Trigger**: verify command says 'not found' for existing predictions
