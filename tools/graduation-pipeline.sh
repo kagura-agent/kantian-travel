@@ -79,7 +79,18 @@ if [[ $ELIGIBLE_COUNT -eq 0 ]]; then
   echo "✅ No patterns ready for graduation evaluation."
   echo ""
   echo "📊 Full scan output:"
-  echo "$SCAN_OUTPUT" | grep -E "^🔍|^📊|^✅" | head -10
+  while IFS= read -r scanline; do
+    if [[ "$scanline" =~ ^🔍[[:space:]]pattern:([^[:space:]]+) ]]; then
+      stag="${BASH_REMATCH[1]}"
+      if grep -qi "${stag}.*graduated\|graduated.*${stag}" "$BC_FILE" 2>/dev/null; then
+        echo "$scanline  ⚠️ (graduated)"
+      else
+        echo "$scanline"
+      fi
+    else
+      echo "$scanline"
+    fi
+  done <<< "$(echo "$SCAN_OUTPUT" | grep -E '^🔍|^📊|^✅' | head -15)"
   exit 0
 fi
 
