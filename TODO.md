@@ -615,8 +615,11 @@
 ### 本轮改進 (done)
 - [x] Optimize `_track_send` O(n)→O(1) — replaced 4× full-history scan with incremental counter updates. Added bounded history (MEMES_HISTORY_MAX=500, trims oldest entries). Lifetime counters (totalSent/totalFailed/counts) preserved through trimming. Benchmarked: 33% faster at 322 entries, scales better as history grows. `cmd_stats` shows trim notice when applicable. `cmd_sync` still available for full recalibration. (06-28)
 
+### 本轮改進 (done)
+- [x] Add `memes lint --fix` auto-fixer — auto-tag new files with category-based tags + filename-derived tag, auto-add _styles entries guessed from filename keywords (anime/animal/cartoon/live-action/meme). Dry-run by default, `--fix` writes to tags.json. Tested with dummy file: tags + style correctly inferred. (06-28)
+
 ### 本轮改進 (next)
-- [ ] Add `memes lint --fix` auto-fixer — auto-tag new files with basic tags, auto-add _styles entries for new files
+- [ ] Add `memes lint` to pre-commit hook alongside existing quality check
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
