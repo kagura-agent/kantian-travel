@@ -715,3 +715,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-28: [gradient] "HN Show submissions without findable GitHub repos are time sinks — skip after 1 failed search attempt instead of trying 3+ queries" → [行为改变] Move to next candidate immediately. Don't try alternate search terms.. (pattern: hn-phantom-project-skip, 第1次) (Source: study)
   - **Trigger**: HN item has no obvious repo link and first GitHub search returns nothing
+
+- 2026-06-28: [gradient] "Before implementing on a repo not PRed recently, check CONTRIBUTING.md for new contribution gates (vouch systems, CLA bots, etc). oh-my-pi introduced a vouch system on 2026-06-19 that auto-closes PRs from non-vouched users. Wasted a full implement cycle before discovering this at verify time." → [行为改变] Add a step in study/pr_gate node: read CONTRIBUTING.md, check for vouch/CLA/approval requirements, ensure compliance before starting implementation. (pattern: check-contribution-gates-before-implement, 第1次) (Source: workloop)
+  - **Trigger**: Starting work on a repo where last PR was >2 weeks ago or never
