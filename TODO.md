@@ -273,6 +273,7 @@
 - [ ] Track: lemma-work/lemma-platform - 113⭐ (06-26, NEW). Human+agent workspace with pod model (tables/files/agents/workflows/permissions as plain files). Approval-as-primitive, daemon mode (local coding agents → task queue), multi-surface. Deep read done. Revisit 07-03
 - [ ] Track: GenseeAI/gensee-crate - 47⭐ (06-25, NEW). Rust sidecar runtime safety for coding agents. Deterministic policy (allow/ask/deny), lineage graph, eslogger. macOS-first. Skim done. Revisit 07-02
 - [ ] Track: Godcoder (eli-labz/Godcoder) - 240⭐ (06-28, NEW). Pure-Rust agent core + Tauri 2 desktop, graph-aware code search (tree-sitter+Qdrant+FalkorDB+BM25), checkpoint/diff/rewind, MCP support. Day-1 star spike, 0 forks. Too early for deep-read, needs sustainability proof. Revisit 07-03
+- [ ] Track: agent-memory-engine (uudam42) - 26⭐ (06-28, NEW). Structured memory tree + multi-granularity retrieval + branch-aware scoping + candidate promotion. MCP server, Python, local-first. Solo dev, 0 community. Deep read done. Revisit 07-10
 - [ ] Track: YurunChen/repo-docs-skills - 62⭐ (06-27, NEW). Living docs skill for coding agents. Per-turn understanding sync, 3-layer knowledge separation, Python validator. Solo dev, 1 commit, burst-publish. Skim done. Revisit 07-11
 - [ ] Track: oleksiijko/pmb - 87⭐ (06-26, NEW). Local-first persistent memory for AI coding agents via MCP. SQLite+LanceDB+BM25+PPR graph. Exploration memo cache, lesson follow-through tracking. Deep read done. Revisit 07-10
 

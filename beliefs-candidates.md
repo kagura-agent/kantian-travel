@@ -712,3 +712,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-28: [gradient] "One-line bug fixes with clear root cause in issue body are ideal workloop targets — minimal implementation time, high success probability, CI passes immediately. The key is funnel efficiency: batch-filter 5+ candidates rather than checking one-by-one." → [行为改变] When P1/P2 are all competed, immediately look for well-specified one-line bugs in P3 repos with merged history. Funnel 5+ candidates at once.. (pattern: one-line-fix-efficiency, 第1次) (Source: workloop)
   - **Trigger**: find_work step when multiple P1 issues are competed
+
+- 2026-06-28: [gradient] "HN Show submissions without findable GitHub repos are time sinks — skip after 1 failed search attempt instead of trying 3+ queries" → [行为改变] Move to next candidate immediately. Don't try alternate search terms.. (pattern: hn-phantom-project-skip, 第1次) (Source: study)
+  - **Trigger**: HN item has no obvious repo link and first GitHub search returns nothing
