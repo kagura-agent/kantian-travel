@@ -709,3 +709,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-27: [gradient] "升级从发现(06-25)到完成核心adoption(06-27)花了48h，刚好卡在deadline边缘。主要延迟：06-26的run被gateway restart中断。自动生效类fix验证最快（看runs data即可），需配置类需实际触发场景，跨session类最难验证（需等真实场景）。" → [行为改变] 优先验证自动生效类和可观测类fix（数据已有），跨session类标记待观察而非阻塞流程。升级后第一天就开始验证，不等第二天。. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
   - **Trigger**: 下次升级后执行adoption时
+
+- 2026-06-28: [gradient] "One-line bug fixes with clear root cause in issue body are ideal workloop targets — minimal implementation time, high success probability, CI passes immediately. The key is funnel efficiency: batch-filter 5+ candidates rather than checking one-by-one." → [行为改变] When P1/P2 are all competed, immediately look for well-specified one-line bugs in P3 repos with merged history. Funnel 5+ candidates at once.. (pattern: one-line-fix-efficiency, 第1次) (Source: workloop)
+  - **Trigger**: find_work step when multiple P1 issues are competed
