@@ -596,178 +596,24 @@
 
 ## 🎭 Agent-Memes
 
-### Done
-- [x] Normalize meme-tracker.json — 11 entries had inconsistent format (timestamp vs time, missing action/result/method, extra fields like file/channel/caption). All 158 entries now standardized (06-07)
-- [x] Fix stale totalSent counter (was 113, actual 158) and lastUpdated (was 05-28)
-- [x] Refresh coverageAudit (was April, 75%) → 100% coverage confirmed, all 26 categories used
+### Done (06-07 → 06-27, collapsed)
+<details><summary>40 completed improvements — click to expand</summary>
 
-- [x] Add more memes to least-used categories: greeting-bye (4→6 files), greeting-hello (5→7 files), panic (6→8 files) — added bye-bye-wave, peace-out, hey-there, hello-wave, this-is-fine, panicking (06-07)
-- [x] Review meme selection logic — confirmed: `cmd_pick` uses `find` glob (not hardcoded list), new files auto-discoverable. Synced 6 new entries into tags.json (06-08)
+- Normalize tracker format, fix counters, refresh coverage (06-07)
+- Add memes to low-variety categories, review selection logic, fix aliases (06-07–08)
+- Inverse-sqrt weighted random, recency avoidance (06-09)
+- `memes stats`, `memes search`, per-file recency, auto-tracking, backfill-files (06-10–11)
+- `memes audit`, `memes trending`, add 6 memes to underused cats (06-12)
+- Tracker cleanup, greeting memes, health checks (06-13–14)
+- Style diversity: classified 243 files, added 15+ memes across categories (06-15–20)
+- Tag quality fix, auto-retry on failure, counts drift fix (06-21–22)
+- `memes wake`, `dormant-blast`, normalize, expire-legacy (06-23–25)
+- `memes quality`, `memes lint` pre-commit hook, filename dedup (06-26–27)
 
-### Done (cont.)
-- [x] Fix SKILL.md category count (187→193) and add missing aliases in memes.sh for disappointed, smug, popcorn, waiting, nailed-it, bruh — 6 categories × 2-3 aliases each (06-08)
+</details>
 
-### Done (cont. 3)
-- [x] Inverse-sqrt weighted `memes random` — categories with fewer files get boosted so cute-animals (30 files) doesn't dominate random picks. Tested: 100 picks, all 26 categories represented, cute-animals dampened from ~4% to ~2% (06-09)
-
-### Done (cont. 4)
-- [x] Add recency avoidance to `memes random` — reads last 3 tracker entries, skips those categories. Verified: 50 picks, 0 hits on recently-used categories (happy, nailed-it). Configurable via MEMES_RECENCY_WINDOW env var (06-09)
-
-### 本轮改進 (next)
-- [x] Add `memes stats` command — show category usage frequency, least/most used, last-used dates from tracker (06-10)
-- [x] Add `memes search <query>` — fuzzy cross-category tag search using tags.json. Scores files by tag substring matches, returns top 15 ranked results. Fixed jq scoping bug (`.` in `test()` resolves to piped input, not outer context — needed `as $w` binding). Tested: "coding bug" → debug-mood top, "cute adorable" → cute-animals top, "fire panic" → panic/fire.gif top (06-11)
-
-### Done (cont. 5)
-- [x] Add per-file recency avoidance to `cmd_pick` — reads last 5 files (per category) from tracker, excludes them from pick pool. Configurable via MEMES_FILE_RECENCY_WINDOW. Verified: smug picks excluded frieren-smug.gif + anya-forger.gif (tracker entries), 20 picks all from remaining 5 files (06-10)
-
-### Done (cont. 6)
-- [x] Add auto-tracking to `cmd_send` — `_track_send()` records category, file basename, channel, caption, result, timestamp to meme-tracker.json after every send. Handles send failures gracefully (records result="failed"). Per-file recency avoidance now has reliable data. 168/171 old entries still have missing file field but all future sends will track correctly (06-10)
-
-### Done (cont. 7)
-- [x] Add `memes backfill-files` command — 169/173 entries had missing `file` field, all backfilled. 0 single-file categories to infer → all marked "legacy". Per-file recency unaffected ("legacy" won't match real filenames) (06-11)
-
-### Done (cont. 8)
-- [x] Fix alias-tracking bug — `cmd_send` was recording raw alias (e.g. "celebrate") instead of resolved category ("happy"). Extracted `_resolve_category()` helper, `cmd_send` now resolves before tracking. Remapped 7 phantom "celebrate" entries → "happy" in tracker. Verified: `memes pick celebrate` → happy/, stats clean (06-11)
-
-### 本轮改进 (next)
-- [x] Add `memes audit` command — verify all category dirs have ≥3 files, check tag coverage, flag low-variety categories. Default min=3 (all 26 pass), configurable threshold. Fixed tags.json flat-key lookup bug during implementation (06-12)
-
-### Done (cont. 9)
-- [x] Add `memes trending [days]` command — compares recent N days vs previous N days per category. Shows delta with 📈/📉 arrows, highlights top riser and faller. Default 7d, configurable. Tested: 7d and 14d windows, correct counts (06-12)
-
-### Done (cont. 10)
-- [x] Add memes to underused categories — bruh (4→6), popcorn (4→6), love (5→7). Added: confused-dog-bruh, monkey-bruh, dis-gonna-be-good, spongebob-popcorn, cat-heart-eyes, sending-love. All from GIPHY, valid GIF89a, tags.json updated (200 entries). Audit passes (06-12)
-
-### Done (cont. 11)
-- [x] Update SKILL.md total meme count (193→199) and tags.json totalFiles. Category count confirmed 26. (06-13)
-
-### Done (cont. 12)
-- [x] Clean up meme-tracker.json data — unified timestamp field (6 entries `timestamp`→`time`), removed 4 stale top-level category keys + stale coverageAudit, removed outlier fields (trigger/context/date/channelName), fixed 1 missing `file`, simplified jq fallback patterns in memes.sh (06-13)
-
-### Done (cont. 13)
-- [x] Add greeting-morning/greeting-night memes — morning 4→7 (lucky-star-yawn, anime-wave-morning, kitten-waking-up), night 5→7 (frieren-sleep, blanket-goodnight). All Tenor, GIF89a valid. tags.json 199→204, audit passes (06-13)
-
-### Done (cont. 14)
-- [x] Review meme-tracker.json health — tracker healthy (188 entries, totalSent matches). Fixed: 2 non-ISO timestamps ("13:10"→"2026-06-10T13:10:00+08:00", "2026-06-13 17:06"→"2026-06-13T17:06:00+08:00"), synced tags.json totalFiles (199→204). All 204 files tagged, 0 orphans (06-14)
-
-### Done (cont. 15)
-- [x] Add memes to lowest-variety categories — sad (5→7: sad-puppy, sad-pikachu), thanks (5→7: anime-thanks, grateful-heart), thinking (5→7: anime-thinking, math-lady), tired (5→7: exhausted-cat, face-desk). All GIPHY, GIF89a valid. tags.json 204→212, audit passes (06-14)
-
-### Done (cont. 16)
-- [x] Add 1 more meme to 8 categories still at 6 files (bruh, confused, disappointed, greeting-bye, popcorn, shrug, waiting, working) — all at 7+. tags.json updated (220 entries), SKILL.md count 212→220, audit passes (06-14)
-
-### Done (cont. 17)
-- [x] Review meme variety per category — found 3 categories >50% same-style: disappointed (100% anime), smug (86% anime), love (57% animal). Added: disappointed-suit.gif (live-action), smug-glasses-man.gif (live-action), anime-love-blush.gif (anime chibi). tags.json updated (220→223), SKILL.md count synced, audit passes (06-15)
-
-### Done (cont. 18)
-- [x] Optimize large meme GIFs — compressed 9 files >2MB with gifsicle (lossy + color reduction + resize). Total savings ~18MB. All 223 memes now under 2MB for reliable Discord delivery (06-15)
-
-### Done (cont. 19)
-- [x] Add `memes health` command — runs audit (category counts ≥3) + tag coverage + tracker integrity (totalSent vs history, required fields, legacy count) + oversized file check (>2MB) + LFS pointer detection. All green: 26 cats, 223 files, 194 tracker entries (06-15)
-
-### Done (cont. 20)
-- [x] Add style diversity tracking to `memes stats` — classified all 224 files into 5 styles (anime/animal/cartoon/live-action/meme) stored in tags.json `_styles`. Stats now shows per-category style breakdown table with counts + dominant style %. Flags categories >70% single-style (13 flagged: cute-animals 100% animal, disappointed 100% anime, smug 85% anime, plus 10 heavily-meme categories). jq-based, no external deps (06-16)
-
-### Done (cont. 21)
-- [x] Style diversity improvement — added 5 memes across 3 categories: disappointed (picard-facepalm, live-action), happy (carlton-dance live-action, snoopy-dance cartoon), working (anime-typing anime, office-hustle live-action). Fixed missing disappointed-suit.gif _styles entry. Results: disappointed 100%→78% anime, happy 83%→71% meme, working 86%→67% meme. 228 files total, audit+health green (06-16)
-
-### Done (cont. 22)
-- [x] Style diversity improvement (batch 2) — added 3 memes: panic (kermit-panic cartoon), greeting-bye (farewell-wave live-action), shrug (shrug-liveaction live-action). Cleaned stale totalFiles key in tags.json. Results: panic 88%→77%, greeting-bye 86%→75%, shrug 86%→75%. 231 files total, health green (06-16)
-
-### Done (cont. 23)
-- [x] Style diversity improvement (batch 3) — added 3 memes: smug (smug-cat-live live-action cat → counted as animal), tired (tired-sloth animal + tired-anime-yawn anime). Compressed anime-yawn (2.0MB→1.1MB). Updated tags.json (entries + _styles + categoryCounts), synced _meta.totalFiles 220→234 (also caught stale counts from earlier batches). Results: smug 85%→75% anime, tired 85%→66% meme. cute-animals 100% animal is by definition (category IS animals) — exempt. 234 files, health green (06-17)
-
-### Done (cont. 24)
-- [x] Style diversity improvement (batch 4) — added disappointed-tina.gif (live-action woman sighing, Tenor). Compressed 4.1MB→1.5MB with gifsicle. Updated tags.json (entry + _styles + categoryCounts disappointed 9→10 + _meta.totalFiles 234→235), SKILL.md count synced. Result: disappointed 78%→70% anime (no longer flagged). 235 files, health green (06-17)
-
-### Done (cont. 25)
-- [x] Style diversity: debug-mood — added angry-typing.gif (live-action, Tenor). debug-mood 78%→70% meme. 236 files total, health green (06-18)
-
-### Done (cont. 26)
-- [x] Style diversity: encourage — added hang-in-there-corgi.gif (animal, Tenor). encourage 75%→67% meme (no longer flagged). Fixed tracker: totalSent 208→209, entry[208] date→time. 237 files, health green (06-18)
-
-### Done (cont. 27)
-- [x] Style diversity: panic — added anime-panic.gif (anime, Tenor, Talentless Nana shocked face). panic 78%→70% meme (no longer flagged). 238 files, health green (06-18)
-
-### Done (cont. 28)
-- [x] Tracker data cleanup — fixed 2 non-standard entries (missing action/result/method fields: entry 199 old date format, entry 208 extra fields). 0 non-standard entries remain (06-19)
-- [x] Added diversity nudge to `cmd_pick` — when a category is used ≥4x in 7d, prints stderr hint with 3 dormant alternatives. Configurable via MEMES_NUDGE_THRESHOLD. Addresses 13/26 categories dormant >7d (06-19)
-
-### Done (cont. 29)
-- [x] Style diversity: greeting-bye — added anime-bye-wave.gif (anime, Reze from Chainsaw Man waving, Tenor 682KB). greeting-bye 75%→67% meme (no longer flagged). 239 files, tags.json updated (06-19)
-
-### Done (cont. 30)
-- [x] Style diversity: shrug — added garfield-idk.gif (cartoon, Tenor 773KB). shrug 75%→67% meme (no longer flagged). 240 files, health green (06-19)
-
-### Done (cont. 31)
-- [x] Style diversity: greeting-hello — added anime-hello-wave.gif (anime, Sailor Moon wave, Tenor 428KB). greeting-hello 71%→62% meme (no longer flagged). 241 files, health green (06-20)
-
-### Done (cont. 32)
-- [x] Style diversity: happy — added anime-yay.gif (anime, Chika Fujiwara "YAY!!!" from Kaguya-sama, Tenor 1.1MB). happy 71%→67% meme (no longer flagged). 242 files, health green (06-20)
-
-### Done (cont. 23)
-- [x] Style diversity: smug _styles fix (smug-glasses-man.gif was missing → live-action, now 67% anime). wow: added anime-shock-wow.gif (Tenor, 804KB, GIF89a). wow 75%→67% meme. 243 files, health green (06-20)
-
-### Done (cont. 33)
-- [x] Tag quality fix — 27 recently-added files were missing from tags.json (format: plain array, not {tags:[...]} dict). Fixed 31 entries total (27 missing + 4 pre-existing wrong format). Search now finds kermit-panic, sad-pikachu, anime-yay etc. Health green (06-21)
-
-### 本轮改進 (next)
-- [x] Auto-retry on send failure — when a meme send fails, `cmd_send` now automatically picks a different file from the same category and retries once. Added `MEMES_EXCLUDE_FILE` env support to `cmd_pick`. Also fixed `stats` counting bug (was counting failed sends in total). (06-21)
-- [x] Tracker data quality — fixed: totalSent counted all entries (222) instead of successes only (220), counts object included failed sends, `_styles` had stale `categoryCounts` key polluting diversity check (2→1 flagged), `love/anime-love-blush.gif` missing from `_styles`. Fixed `_track_send` to maintain totalSent/totalFailed correctly on future sends. Health green (06-21)
-
-### 本轮改進 (next)
-- [x] Fix `.counts` drift — `_track_send` now rebuilds `.counts` from history on every send (same O(n) pattern as totalSent/totalFailed). Added `memes sync` command for manual re-sync. Fixed existing mismatch (220→221). Health report green. (06-22)
-
-### 本轮改進 (next)
-- [x] Exempt cute-animals from style diversity warning — updated stats jq filter to skip categories whose name implies the style (cute-animals, animal*). Also fixed tracker entry #224 (stale timestamp format). Health green (06-22)
-
-### 本轮改進 (next)
-- [x] Add style diversity check to `cmd_health` — health should warn if any non-exempt category >70% single-style (currently only in stats). One-liner jq check, add as section 6. Also fixed tracker drift (totalSent 224→226 via sync) (06-22)
-
-### Done (cont. 34)
-- [x] Add dormant category warning to `cmd_health` — warn if any category has 0 sends in last 30 days (from tracker history). Section 7. Detected 9 dormant: cute-animals, greeting-bye, greeting-hello, greeting-morning, greeting-night, sad, shrug, thanks, waiting (06-23)
-
-### 本轮改進 (next)
-- [x] Add `memes wake` command — pick a random file from the most dormant category (longest since last send). Finds greeting-bye (last sent 04-20) as most dormant. Also fixed tracker: 2 entries with `timestamp`→`time`, synced totalSent (226→228). Health green (06-23)
-
-### 本轮改進 (next)
-- [x] Wire `memes wake` into chat flow — added to SKILL.md (Quick Start + new "Wake" section), NUDGE.md (dormant preference hint in Meme Check), AGENTS.md (multi-category tiebreaker). `memes wake` now documented and integrated into decision flow (06-23)
-
-### 本轮改進 (next)
-- [x] Reduce dormant categories — added `--send` flag to `memes wake` (accepts --to, --caption, --channel). Cron review now auto-sends 1 dormant meme when dormant >5. Also added `memes normalize` command (fixes malformed tracker entries: old date format, missing fields, unknown files). Tested both: normalize fixed 4 entries, wake --send delivered greeting-bye to #agent-memes (06-24)
-
-### 本轮改進 (next)
-- [x] Add `memes dormant-blast [n]` — send up to N dormant memes in one call (1 per dormant category, ordered by staleness). Default n=1. Supports --to, --channel, --caption. Skips on failure and continues. 1s delay between sends for rate limiting. Verified: dormancy sort correct (greeting-hello → cute-animals → greeting-night as top 3 dormant). (06-24)
-
-### Done (cont. 35)
-- [x] Add `dormant-blast` to SKILL.md Quick Start and command reference — documented alongside `wake` in new "Wake & Dormant Blast" section. Also fixed 3 tracker entries with `timestamp`→`time` + missing fields. Health: 1 issue (8 dormant categories — expected, `dormant-blast` exists to address this) (06-24)
-
-### Done (cont. 36)
-- [x] Run `dormant-blast 3` — found & fixed 2 bugs: (1) `_send_openclaw` hardcoded dead path `~/repo/openclaw` → `openclaw message send`, (2) `((sent++))` with set -e exits when sent=0 → `sent=$((sent+1))`. After fix: 3/3 woken (thanks, sad, waiting) + manual sends (cute-animals, greeting-night, greeting-morning, greeting-hello). Committed+pushed to skills repo (06-25)
-
-### Done (cont. 37)
-- [x] Fix `memes normalize` jq null-match error — null .time crashed test(); now checks null before test(), also handles null .category (→"unknown"). Fixed tracker entry #313 (stale timestamp→time). Sent popcorn to wake dormant category. Health all-green (06-25)
-
-### Done (cont. 38)
-- [x] Add `memes expire-legacy` — 4 entries resolved via filename matching in notes/captions, 169 marked "unresolvable" (original RANDOM pick was ephemeral). Supports --dry-run. Zero legacy entries remain, health all-green (06-25)
-
-### Done (cont. 39)
-- [x] Update `cmd_health` to report unresolvable count instead of legacy count — now shows "169 unresolvable (expired)" in health output. Distinguishes cleanly from "legacy" (which is 0 post-expire). Committed+pushed (06-26)
-
-### 本轮改進 (next)
-- [x] Add `memes quality` command — 5-section check: cross-category duplicate filenames (with identical vs different content detection via md5sum), generic/uninformative filenames (giphy/tenor/download/etc), near-duplicate filenames in same category (prefix matching), untagged files, unstyled files. Results: 7 cross-category dupes (all different content), 8 near-dupes, 0 generic, 0 untagged/unstyled. 15 issues total (06-26)
-
-### Done (cont. 40)
-- [x] Fix near-duplicate filenames — renamed 8 files (anime→anime-happy, penguin2→penguin-wave, penguin→penguin-hello, panic→freaking-out, tired→tired-done, thumbs-up→thumbs-up-classic, peace→peace-sign-bye, wave→wave-casual). Updated tags.json, _styles, tracker history. Quality: 0 near-dupes, 7 cross-category dupes (different content, by design). Health all-green (06-26)
-
-### 本轮改進 (next)
-- [x] Disambiguate cross-category duplicate filenames — renamed 6 pairs (cat-typing→cat-keyboard-cute, coffee→morning-coffee, penguin→penguin-sleepy, puppy-eyes→puppy-pleading, salute→farewell-salute, this-is-fine→everything-fine-fire). Updated tags.json + tracker. Quality: 0 dupes, health all-green (06-27)
-
-### 本轮改進 (next)
-- [x] Fix remaining near-duplicate warning: greeting-morning `morning.gif` → `good-morning-sun.gif` (different content from `morning-coffee.gif` and `sunrise.gif`, all distinct md5). quality+health all-green (06-27)
-
-### 本轮改進 (next)
-- [x] Add `memes lint` pre-commit hook — integrated into global git hooks (`~/.config/git/hooks/pre-commit`). Detects memes repo via `git rev-parse --show-toplevel`, runs `memes quality` on staged meme files (gif/png/jpg/webp) + tags.json changes. Blocks commit on issues (dupes, generic names, untagged, unstyled). Fixed `cmd_quality` to return exit code 1 on issues. Tested: untagged file correctly blocked, clean repo passes. Skip with `--no-verify` (06-27)
+### 本轮改進 (done)
+- [x] Optimize `_track_send` O(n)→O(1) — replaced 4× full-history scan with incremental counter updates. Added bounded history (MEMES_HISTORY_MAX=500, trims oldest entries). Lifetime counters (totalSent/totalFailed/counts) preserved through trimming. Benchmarked: 33% faster at 322 entries, scales better as history grows. `cmd_stats` shows trim notice when applicable. `cmd_sync` still available for full recalibration. (06-28)
 
 ### 本轮改進 (next)
 - [ ] Add `memes lint --fix` auto-fixer — auto-tag new files with basic tags, auto-add _styles entries for new files
