@@ -102,13 +102,39 @@ declare -A CONTEXT_KEYWORDS=(
 # Source: SofAgent progressive thinning (reduce overhead for proven-ineffective reminders)
 # If a pattern has been surfaced 3+ unique days without resolution, demote it.
 # Rationale: showing the same warning 5 days in a row hasn't worked → it's noise.
+#
+# === Protected Pattern Types (exempt from thinning) ===
+# Source: agent-memory-engine "Protected Memory Types" pattern (2026-06-28)
+# Certain patterns represent safety, correctness, or data integrity concerns.
+# These should NEVER be suppressed regardless of age — they remain visible until
+# structurally resolved. Thinning them is how critical issues get normalized.
+#
+# Protected categories (matched against pattern tag keywords):
+#   - verify, validation, test, assert → correctness/verification discipline
+#   - privacy, leak, secret, exfil → data safety
+#   - silent-failure, sdk-silent → invisible breakage
+#   - destructive, rm, delete, clobber → data loss risk
+#   - auth, permission, credential → security
+PROTECTED_KEYWORDS="verify|validation|test|assert|privacy|leak|secret|exfil|silent-failure|sdk-silent|destructive|clobber|auth|permission|credential"
+
+is_protected_pattern() {
+  local tag="$1"
+  echo "$tag" | grep -qiE "$PROTECTED_KEYWORDS"
+}
+
 declare -A CHRONIC_RECIDIVIST=()
+PROTECTED_CHRONIC_COUNT=0
 if [[ -f "${WORKSPACE}/.preflight-log" ]]; then
   while IFS= read -r r; do
     days_count=$(echo "$r" | awk '{print $1}')
     pat=$(echo "$r" | awk '{print $2}')
     if [[ $days_count -ge 3 ]]; then
-      CHRONIC_RECIDIVIST["$pat"]="$days_count"
+      if is_protected_pattern "$pat"; then
+        # Protected patterns are NOT thinned — they stay at full weight
+        PROTECTED_CHRONIC_COUNT=$((PROTECTED_CHRONIC_COUNT + 1))
+      else
+        CHRONIC_RECIDIVIST["$pat"]="$days_count"
+      fi
     fi
   done < <(awk -F'|' '{
     date = substr($1, 1, 10)
@@ -126,6 +152,7 @@ for tag in "${UNIQUE_PATTERNS[@]}"; do
   score=1
   
   # Progressive thinning penalty: chronic recidivists get demoted
+  # Protected patterns are EXEMPT — never thinned regardless of age
   if [[ -n "${CHRONIC_RECIDIVIST[$tag]:-}" ]]; then
     score=$((score - 5))  # Heavy penalty — push below fresh violations
   fi
@@ -191,6 +218,9 @@ else
 fi
 if [[ $CHRONIC_COUNT -gt 0 ]]; then
   echo "  📉 ${CHRONIC_COUNT} chronic patterns thinned (3+ days unresolved — fix structurally, not behaviorally)"
+fi
+if [[ $PROTECTED_CHRONIC_COUNT -gt 0 ]]; then
+  echo "  🛡️ ${PROTECTED_CHRONIC_COUNT} protected patterns kept (safety/correctness — never thinned)"
 fi
 echo ""
 
