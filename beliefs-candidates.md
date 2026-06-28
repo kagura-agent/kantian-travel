@@ -718,3 +718,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-28: [gradient] "Before implementing on a repo not PRed recently, check CONTRIBUTING.md for new contribution gates (vouch systems, CLA bots, etc). oh-my-pi introduced a vouch system on 2026-06-19 that auto-closes PRs from non-vouched users. Wasted a full implement cycle before discovering this at verify time." → [行为改变] Add a step in study/pr_gate node: read CONTRIBUTING.md, check for vouch/CLA/approval requirements, ensure compliance before starting implementation. (pattern: check-contribution-gates-before-implement, 第1次) (Source: workloop)
   - **Trigger**: Starting work on a repo where last PR was >2 weeks ago or never
+
+- 2026-06-28: [gradient] "Claude Code --print mode can hang silently for 3+ minutes on complex prompts. For small surgical fixes (< 20 LOC production code), manual implementation is faster and more reliable than waiting for Claude Code." → [行为改变] Kill and implement manually when the change is well-understood and < 20 lines. Already documented in AGENTS.md as efficiency tip.. (pattern: claude-code-print-timeout-fallback, 第1次) (Source: workloop)
+  - **Trigger**: Claude Code --print takes >2 minutes with no output
