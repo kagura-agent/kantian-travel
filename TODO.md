@@ -161,6 +161,12 @@
 - ⚠️ Stars: 233 → 134 (-42%). GitHub likely purged fake stars after star-farming accusations (#175/#176)
 - Only 1 open issue (#151 Codex question). Issues #168/#169 closed by maintainer during 06-19 revival
 - Status: dogfood-only. PRs approaching 14-day lifecycle limit (rule #50). Will close #173/#174 at day 14 if still no review (07-03/07-04)
+- Wiki health (06-28): 996 files, 187 orphans (19%), 0 broken links, 0 collisions ✔ (+3 files vs yesterday)
+- 12 wiki files edited today (active dogfood usage confirmed)
+- PRs #173 (mcp-config tests, 9d) + #174 (diagnoseGitError tests, 8d) open, 0 reviews
+- External PR #171 (wooksong) 15 days without review — all 3 open PRs blocked
+- Upstream dormant since 06-20 (8 days). Stars: 134 (stable post-purge)
+- Status: dogfood-only continues. Close #173 on 07-03, #174 on 07-04 per rule #50
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -536,6 +542,12 @@
 ## Qwen Code (QwenLM/qwen-code)
 
 ### Open PRs
+- PR #5957 - fix(core): subtract reserved output tokens from context window for compression thresholds
+  - v2 pushed 06-28. CHANGES_REQUESTED from wenshao (3 items, 15:07 UTC):
+    1. [Suggestion] Observability gap: add debugLogger.debug in NOOP branch showing rawContextLimit, reservedOutputTokens, contextLimit, auto threshold
+    2. [Critical] ACP session path (Session.ts → client.ts) doesn't thread reservedOutputTokens — tryCompressChat() in client.ts lacks the param, full context window used for thresholds
+    3. [Critical] No test covers hard-tier rescue path's new subtraction logic (geminiChat.ts:1778) — need geminiChat.test.ts coverage
+  - [ ] Address all 3 items (workloop task — code-level changes required)
 - PR #4456 - fix(cli): implement --list-extensions flag handler (#4450) — MERGED ✅ (confirmed 06-06, 12 rounds of review + dual APPROVED)
 - PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — CLOSED (100+ conflicts, unrebaseable despite APPROVED)
 - PR #4461 - fix(cli): surface startup warnings on stderr before TUI render (#4448) — MERGED ✅ (05-27)
@@ -620,8 +632,11 @@
 ### 本轮改進 (done)
 - [x] Add `memes lint --fix` auto-fixer — auto-tag new files with category-based tags + filename-derived tag, auto-add _styles entries guessed from filename keywords (anime/animal/cartoon/live-action/meme). Dry-run by default, `--fix` writes to tags.json. Tested with dummy file: tags + style correctly inferred. (06-28)
 
+### 本轮改進 (done)
+- [x] Add `memes lint` to pre-commit hook — hooks/pre-commit runs lint + quality on staged image/tags.json changes. Auto-installed via setup.sh. Tested: blocks commits with untagged files, passes clean commits. (06-28)
+
 ### 本轮改進 (next)
-- [ ] Add `memes lint` to pre-commit hook alongside existing quality check
+- [ ] Add `memes coverage` command — show tag/style coverage % per category, identify weakest categories
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

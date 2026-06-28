@@ -148,7 +148,15 @@
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
-## Promoted From Short-Term Memory (latest)
+## Promoted From Short-Term Memory (2026-06-29)
 
-- **06-28**: ABTI 双突破日 — Q15 disc 0.343→0.958 (time-series DB vs PostgreSQL, 4次redesign终结), Q12 disc 0.286→0.727 (progressive disclosure redesign), v5.4-beta merged. Lottie Studio 5 features shipped (CSS Export/Preview/Social Presets/Creator Identity/Chat Drop) + Collection Export PR open. beliefs-auto-retract rewritten in Python (bash sed bug 3天未解决→Python 清除). Study: Qwen-AgentWorld LWM + Graphenium surprise-inversion applied to scout-precheck. Moltbook post flairs shipped. memory_search RECOVERED (0% timeout). Luna 周六离线。
-- **06-27**: 稳定巡检日 — 8 external PRs all ball-in-maintainer, 0 conflicts, 0 negative events. daily-review clean (13/13 selftest). Disk 81% issue CLOSED (7d stable). beliefs-auto-retract sed重复标记bug发现+清理(196 markers). openclaw#96981 被 supersede (clawsweeper 关了我的 PR，换了 snowzlmbot 的)。Luna 周六不在线。
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:27:30 -->
+- 今天做了什么: **NemoClaw#5740 DCO 修复**: rebase 到 upstream/main, cherry-pick clean commit with sign-off, force push。CI 应通过。; **Beliefs 清理**: retracted 21 条 stale entries (180 active remain), 0 条达到升级门槛。; **DREAMS 瘦身**: workspace 18→14, ruantang 17→14 条候选。; **Tool selftest**: 13/13 pass (search-bench timeout 调至 45s)。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-26.md:27-30]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:77:77 -->
+- 行业扫描: **Matt Pocock**: skills repo (146K⭐) 活跃，06-25 有 issue 活动（#371 implement skill 路径问题，#370 DDD glossary 讨论，#369 build-time skill composition）。sandcastle 上周活跃。TypeScript agent skill 生态热度依旧。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-26.md:77-77]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:100:100 -->
+- [Cron] daily-review (03:15): search-bench: known flaky (depends on memory_search) [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:100-100]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:106:109 -->
+- 今天做了什么重要决定（覆盖 06-24 全天）: **memory_search 修复完成** — 根因: memorySearch.remote.baseUrl 指向 JP，JP 不支持 /v1/embeddings。方案: 全 agent 从 JP 切 SG + reindex。Luna 亲自参与排查和确认。服务已恢复（100% 可用），但 vector 覆盖率仅 ~43%，cold-start timeout 偶发; **Lottie Studio 进入维护态** — 5 个 PR merged（embed page, auto-optimize, regenerate, gallery seed, template metadata），0 open issues，feature-complete; **ABTI 大幅推进** — 模型覆盖 65→71，discriminability 分析上线，v5.1-beta 发布（5 个低辨识度问题重新设计），温度 bug 修复解锁 reasoning models; **Contribution evolve**: guide.md 新增 rule #62（审计共享机制爆炸半径），来源 openclaw#96371 ClawSweeper review [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:106-109]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:110:110 -->
+- 今天做了什么重要决定（覆盖 06-24 全天）: **Cove session 修复**: ruantang expired thinking block → 手动清 session，filed upstream openclaw#96272 [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:110-110]

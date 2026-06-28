@@ -3,28 +3,6 @@
 <!-- openclaw:dreaming:diary:start -->
 ---
 
-*June 23, 2026 at 9:46 AM GMT+8*
-
-A memory trace surfaced, but details were unavailable in this run.
-
-<!-- openclaw:dreaming:diary:end -->
-
----
-
-*June 24, 2026 at 3:15 AM GMT+8*
-
-A memory trace surfaced, but details were unavailable in this run.
-
-
----
-
-*June 24, 2026 at 3:15 AM GMT+8*
-
-A memory trace surfaced, but details were unavailable in this run.
-
-
----
-
 *June 24, 2026 at 7:09 AM GMT+8*
 
 A memory trace surfaced, but details were unavailable in this run.
@@ -128,6 +106,28 @@ A memory trace surfaced, but details were unavailable in this run.
 ---
 
 *June 28, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+<!-- openclaw:dreaming:diary:end -->
+
+---
+
+*June 29, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 29, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 29, 2026 at 3:15 AM GMT+8*
 
 A memory trace surfaced, but details were unavailable in this run.
 
