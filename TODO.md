@@ -234,6 +234,7 @@
 - [x] **guide.md: 新增「in competitive repos, narrow proof beats broad scope」** - openclaw#96981 教训（4h cycle 太慢，narrower fix + real proof 被 merge，broad scope 被 supersede）→ 已加入 guide.md 第 63 条 (2026-06-26)
 - [x] **guide.md: 新增「narrow error handling beats catch-all」** - NemoClaw#5740 教训（broad try/catch 吞掉 disk-full/SSH-timeout 等真实失败，被 narrower regex-matched catch supersede）→ 已加入 guide.md 第 64 条 (2026-06-26)
 - [x] **guide.md: 新增「address review feedback within 24h — stale rework invites competitors」** - openclaw#96371/#96981 + memex#173 教训（review 3天未 rework 被 supersede，红 CI 多天未修被忽略）→ 已加入 guide.md 第 65 条 (2026-06-27)
+- [x] **guide.md: 新增「repos introduce new gates mid-stream — re-check policy before returning」** - oh-my-pi#3703 教训（vouch system 06-19 引入，PR 被自动关闭）→ 已加入 guide.md 第 66 条 (2026-06-28)
 
 ## 📚 学习
 
