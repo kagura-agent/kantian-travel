@@ -240,7 +240,7 @@
 - [x] Track: Claw Patrol (denoland/clawpatrol) - 772⭐ (06-12). Wire-level agent security firewall from Deno. MITM proxy + HCL/CEL rules + HITL approval. Draft toolgate feature (LLM tool-call gating). Deep read done. Revisit 06-26
 - [x] Track: thu-nmrc/openloop - 55→11⭐ (collapsed). No commits since 06-10. **Dropped** 06-27 — dead project
 - [x] Track: DietrichGebert/ponytail - 40,129⭐ (06-13→06-20: 966→40.1k, viral). YAGNI 6-rung ladder fully applied to DNA. Now in mass-adoption polish phase (Copilot/OpenClaw integrations, cross-platform bugs). No new architectural insights above >5k threshold. **Downgraded to monthly.** Revisit 07-20
-- [x] Track: Ghostwork (hvardhan878/ghostwork) - 122⭐ (06-14, NEW). No-prompt screen-watching agent with 4-layer memory + sleep cycle consolidation. Solo dev, macOS-only. Deep read done. Revisit 06-28
+- [x] Track: Ghostwork (hvardhan878/ghostwork) - 122→148⭐ (+21% but no commits 15d). All 12 issues self-filed on 06-13 same day, 0 PRs, 0 external contributors. Architecture patterns fully documented. **Dropped** 06-28
 - [x] Track: DanMcInerney/architect-loop - 520⭐ (06-13→06-20: 213→520, +144% passive). Dev silent since 06-13 (Fable 5 suspension killed momentum). No commits 7d. Core design rules already in DNA (Phase 0, disagreement mandatory). **Downgraded to cool.** Revisit 07-20
 - [x] Track: Elephant Agent (agentic-in/elephant-agent) - 565⭐ (06-13→06-20: flat). **Dropped** 06-20 — no commits 19d, flat stars, open WIP PRs abandoned. Mode abstraction pattern noted in wiki
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
@@ -263,7 +263,7 @@
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
 - [ ] Track: rebel0789/codexpro - 944⭐ (06-27, +106%). Tool cards opt-in, loop fingerprints fix. MCP bridge maturing. HOT. Revisit 07-02
-- [ ] Track: agiwhitelist/tokdiet - 69⭐ (06-21, NEW, 5d). Context virtual memory proxy for AI agents. Loopback proxy that dedup+elision+midSummarize compacts context with shadow-eval quality proof. 71% token savings on benchmark. TypeScript, minimal deps. Deep read done. Revisit 06-28
+- [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
 - [ ] Track: Plaer1/junction - 648⭐ (06-27, +26%). Modular bridge prep. Pace slow. Revisit 07-04
 - [ ] Track: shreyashankar/error-discovery-skill - 73⭐ (06-27, NEW). Systematic error analysis methodology for LLM traces. Agent builds custom review UI, clusters for diverse sampling, breadth↔depth review with subagent scanning. Pure methodology (SKILL.md), no code. Credible author (Berkeley PhD). Revisit 07-07
 - [ ] Track: Forsy-AI/agent-apprenticeship - 974⭐ (06-27, +236% viral). README-only updates, 0 code since 06-20. Revisit 07-04
