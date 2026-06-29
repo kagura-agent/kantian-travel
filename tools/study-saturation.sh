@@ -148,6 +148,19 @@ echo "  Scout (all):   $SCOUT_COUNT/3  $( $SCOUT_LOCKED && echo '🔒 LOCKED' ||
 echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $APPLY_BACKLOG_EMPTY && echo ' (backlog empty)' || true )"
 echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $FOLLOWUP_EMPTY && echo ' (0 items due)' || true )"
+# Show 7d success_rate if data exists
+OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
+if [[ -f "$OUTCOME_LOG" ]] && command -v jq &>/dev/null; then
+    WEEK_CUT=$(date -d "7 days ago" +%Y-%m-%d 2>/dev/null || date -v-7d +%Y-%m-%d 2>/dev/null || echo "")
+    if [[ -n "$WEEK_CUT" ]]; then
+        WEEK_TOTAL=$(jq -r "select(.date >= \"$WEEK_CUT\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || echo 0)
+        WEEK_SIGNAL=$(jq -r "select(.date >= \"$WEEK_CUT\" and .outcome == \"signal\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"signal"' || echo 0)
+        if (( WEEK_TOTAL >= 3 )); then
+            WEEK_RATE=$(echo "scale=0; $WEEK_SIGNAL * 100 / $WEEK_TOTAL" | bc)
+            echo "  Signal rate:   ${WEEK_RATE}% (${WEEK_SIGNAL}/${WEEK_TOTAL} last 7d)"
+        fi
+    fi
+fi
 $QUICK_DEGRADED && echo "  ⚠️  2-day quick scan saturation — max 1/day"
 $SCOUT_RECENT && echo "  ⚠️  Last deep scout ${SCOUT_DAYS_AGO}d ago (guide: ≥3d between scouts)"
 if [[ -n "$CONSEC_WARN" ]]; then
