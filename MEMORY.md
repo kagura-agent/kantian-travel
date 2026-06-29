@@ -140,8 +140,7 @@
 - **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
 - **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
 
-- **06-10~14 (archived)**: NemoClaw #4706/#4054 MERGED; Lottie Studio template library complete; Cove Claude Code Bridge MERGED 🎉 + PR#348 display name; FlowForge 6 issues; regression gate tool; auto-retract beliefs first run; assigned-issue-neglect graduated (81 hits)
-- **06-15**: Cove PR #356 merged; finance PR #887 (validate_portfolio_history) merged; code-review Gemini 3.1→2.5 Pro 切换清理 (SKILL.md/stats.md/workflow.yaml 一致化); spec-review workflow first run; 周末降级生效 (study 10 session 全饱和正确跳过)
+
 - **06-16**: Cove PR #367/#369 (multi-account support) merged by Luna; beliefs sed-bug 碎片化修复+graduated (合并 3 条同 pattern); FlowForge 僵尸清理机制升级; superlog deep_read (826⭐ agentic telemetry); code-review tracking.json 66 entries 全 merged ground_truth complete
 - **06-17**: PR #190 七轮 review 教训写入 AGENTS.md (grade-scaling + YAGNI 六阶梯); cot-leak-in-shared-channel gradient (NO_REPLY 不应含 CoT body); spec-review-discover-dont-prescribe gradient (Luna 指出 review 工具不能反客为主); workflow-bypass tool guard 落地 (workflow-guard.sh structural fix); finance #938 paper-trading guard 设计 (basename matching 替代 relative-path); travel pet/pace 双 gradient (Luna directive); ponytail-yagni-skill 学习
 - **06-18**: SOUL.md 重写 (soul-grader rubric 41→73/100 +32pts); 5 beliefs 批量毕业 (workflow-bypass, assigned-issue-neglect, skip-reflection, dogfood-adoption, hn-algolia-direct); compass-skills fact-vs-decision constraint split 写入 AGENTS.md; FlowForge cleanup CLI 实现 (db.ts+engine.ts+index.ts); critical-cron-watchdog cron 创建; compress-daily-memory.sh 升级 (15+ no-action 指标); Luna carry meeting (VS Code extension 讨论)
@@ -150,13 +149,9 @@
 
 ## Promoted From Short-Term Memory (2026-06-29)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:27:30 -->
-- 今天做了什么: **NemoClaw#5740 DCO 修复**: rebase 到 upstream/main, cherry-pick clean commit with sign-off, force push。CI 应通过。; **Beliefs 清理**: retracted 21 条 stale entries (180 active remain), 0 条达到升级门槛。; **DREAMS 瘦身**: workspace 18→14, ruantang 17→14 条候选。; **Tool selftest**: 13/13 pass (search-bench timeout 调至 45s)。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-26.md:27-30]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-26.md:77:77 -->
-- 行业扫描: **Matt Pocock**: skills repo (146K⭐) 活跃，06-25 有 issue 活动（#371 implement skill 路径问题，#370 DDD glossary 讨论，#369 build-time skill composition）。sandcastle 上周活跃。TypeScript agent skill 生态热度依旧。 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-26.md:77-77]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:100:100 -->
-- [Cron] daily-review (03:15): search-bench: known flaky (depends on memory_search) [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:100-100]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:106:109 -->
-- 今天做了什么重要决定（覆盖 06-24 全天）: **memory_search 修复完成** — 根因: memorySearch.remote.baseUrl 指向 JP，JP 不支持 /v1/embeddings。方案: 全 agent 从 JP 切 SG + reindex。Luna 亲自参与排查和确认。服务已恢复（100% 可用），但 vector 覆盖率仅 ~43%，cold-start timeout 偶发; **Lottie Studio 进入维护态** — 5 个 PR merged（embed page, auto-optimize, regenerate, gallery seed, template metadata），0 open issues，feature-complete; **ABTI 大幅推进** — 模型覆盖 65→71，discriminability 分析上线，v5.1-beta 发布（5 个低辨识度问题重新设计），温度 bug 修复解锁 reasoning models; **Contribution evolve**: guide.md 新增 rule #62（审计共享机制爆炸半径），来源 openclaw#96371 ClawSweeper review [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:106-109]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:110:110 -->
-- 今天做了什么重要决定（覆盖 06-24 全天）: **Cove session 修复**: ruantang expired thinking block → 手动清 session，filed upstream openclaw#96272 [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:110-110]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:18:19 -->
+- 01:02 workloop-night — 晚间 PR 跟进: **Assigned issues**: NemoClaw #5734 (有对应 PR #5740), #3836 (排除列表) **Open PRs**: 20 total (含自有 repo) [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:18-19]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:21:21 -->
+- 01:02 workloop-night — 晚间 PR 跟进: 外部 repo PR 状态： [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:21-21]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:22:25 -->
+- 01:02 workloop-night — 晚间 PR 跟进: NemoClaw #5740 — 等 review，wscurran 有正面 comment; oh-my-pi #2764 — 已 push fixes 后 review，等 roboomp re-review; openclaw #92665 — CI 全绿，等 review; openclaw #96371 — MERGEABLE，等 review [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:22-25]
