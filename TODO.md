@@ -648,8 +648,11 @@
 ### 本轮改進 (done)
 - [x] Add batch mode to `memes coverage --json` for programmatic consumption — outputs full coverage data as JSON: per-category files/tagged/styled/avgTags/styleDiversity/styles/issues + totals. Handles no-arg (table) and --json (machine-readable) cleanly. Tested both modes. (06-29)
 
+### 本轮改進 (done)
+- [x] Add `memes coverage --json --weak` — filter JSON output to only categories with non-empty issues array. Tested: returns empty categories when all healthy, correctly filters when issues exist. Usage in table mode unaffected. (06-29)
+
 ### 本轮改進 (next)
-- [ ] Add `memes coverage --json --weak` — filter JSON output to only categories with issues (non-empty issues array), for CI/cron alerting on coverage gaps
+- [ ] Add `memes coverage` to memes-review cron — auto-run `coverage --json --weak` at review time; if weak categories found, log them to tracker and suggest remediation in review output
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

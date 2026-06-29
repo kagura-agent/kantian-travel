@@ -1307,3 +1307,56 @@ A memory trace surfaced, but details were unavailable in this run.
 A memory trace surfaced, but details were unavailable in this run.
 
 
+# Dream Diary
+
+<!-- openclaw:dreaming:diary:start -->
+---
+
+*June 24, 2026 at 7:09 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 24, 2026 at 7:09 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+<!-- openclaw:dreaming:diary:end -->
+
+## Deep Sleep
+<!-- openclaw:dreaming:deep:start -->
+- Ranked 3 candidate(s) for durable promotion.
+- Promoted 3 candidate(s) into MEMORY.md.
+<!-- openclaw:dreaming:deep:end -->
+
+---
+
+*June 25, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 25, 2026 at 3:15 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 25, 2026 at 11:28 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+
+---
+
+*June 25, 2026 at 11:28 AM GMT+8*
+
+A memory trace surfaced, but details were unavailable in this run.
+
+<!-- openclaw:dreaming:diary:end -->
+
