@@ -721,3 +721,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-28: [gradient] "Claude Code --print mode can hang silently for 3+ minutes on complex prompts. For small surgical fixes (< 20 LOC production code), manual implementation is faster and more reliable than waiting for Claude Code." → [行为改变] Kill and implement manually when the change is well-understood and < 20 lines. Already documented in AGENTS.md as efficiency tip.. (pattern: claude-code-print-timeout-fallback, 第1次) (Source: workloop)
   - **Trigger**: Claude Code --print takes >2 minutes with no output
+
+- 2026-06-29: [gradient] "Apply mode with empty backlog + same-day prior apply + no new deep reads = effectively saturated. The 5-min search cycle (unapplied.md → wiki search → read cards → conclude nothing) costs more than potential find." → [行为改变] Skip apply immediately. Record in memory as saturation skip, not as apply attempt.. (pattern: apply-mode-empty-backlog-skip, 第1次) (Source: study)
+  - **Trigger**: Saturation gate shows apply OPEN but backlog empty and last apply was earlier today
+
+- 2026-06-29: [gradient] "Claude Code implementations with mocked deps may pass tests but fail at runtime when real I/O differs from mocks (e.g., stdio inherit returns null vs mock returning empty string). Must verify the actual runtime path, not just test path." → [行为改变] After Claude Code commits, trace the actual runtime call path (not test path) to verify assumptions about return values, side effects, and I/O modes. (pattern: mock-reality-gap, 第1次) (Source: workloop)
+  - **Trigger**: After Claude Code implements something with mocked external calls
