@@ -543,11 +543,15 @@
 
 ### Open PRs
 - PR #5957 - fix(core): subtract reserved output tokens from context window for compression thresholds
-  - v2 pushed 06-28. CHANGES_REQUESTED from wenshao (3 items, 15:07 UTC):
+  - v2 pushed 06-28. CHANGES_REQUESTED from wenshao — 5 issues total across 2 review rounds:
+    Round 1 (15:07 UTC):
     1. [Suggestion] Observability gap: add debugLogger.debug in NOOP branch showing rawContextLimit, reservedOutputTokens, contextLimit, auto threshold
     2. [Critical] ACP session path (Session.ts → client.ts) doesn't thread reservedOutputTokens — tryCompressChat() in client.ts lacks the param, full context window used for thresholds
     3. [Critical] No test covers hard-tier rescue path's new subtraction logic (geminiChat.ts:1778) — need geminiChat.test.ts coverage
-  - [ ] Address all 3 items (workloop task — code-level changes required)
+    Round 2 (21:10 UTC):
+    4. [Critical] client.test.ts 两个现有测试 broken — tryCompressChat 5th arg now gets {reservedOutputTokens: 64000} but tests assert undefined
+    5. [Critical] QWEN_CODE_MAX_OUTPUT_TOKENS env var value never read — env var consumed at provider level via parsePositiveIntegerEnvValue but never written to samplingParams.max_tokens, so reservation silently becomes 0
+  - [ ] Address all 5 items (workloop task — code-level changes required, needs fundamental rework of how reservedOutputTokens is sourced)
 - PR #4456 - fix(cli): implement --list-extensions flag handler (#4450) — MERGED ✅ (confirmed 06-06, 12 rounds of review + dual APPROVED)
 - PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — CLOSED (100+ conflicts, unrebaseable despite APPROVED)
 - PR #4461 - fix(cli): surface startup warnings on stderr before TUI render (#4448) — MERGED ✅ (05-27)
@@ -642,8 +646,8 @@
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
 - CI fix was completed but PR closed before merge
 - **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
-- [ ] Track: agentic-sop-to-work (s0912758806p) - 178⭐ (06-15, NEW). SOP→deterministic gated workflow, Claude Code plugin. trace_gate anti-fabrication. Solo dev, zero issues. Revisit 06-29
-- [ ] Track: Paca (Paca-AI/paca) - 838⭐ (06-15). AI-native project management, human+agent same board. Go, self-hosted. Revisit 06-29
+- [x] Track: agentic-sop-to-work (s0912758806p) - 193⭐ (06-15→06-29: +8%). v1.9.0, six-rung-ladder skill. Solo dev, NASCENT community (0 ext PRs, 0 issues). All patterns extracted. **Downgraded to monthly.** Revisit 07-29
+- [ ] Track: Paca (Paca-AI/paca) - 1,394⭐ (06-15→06-29: +66%). v0.6.0-0.6.2: Caddy migration, DB backup, webhook plugin (Valkey Stream events), task reordering. Healthy community (17 issue authors, 12 ext PRs). HOT. Revisit 07-04
 - [x] Track: Superlog (superloglabs/superlog) - 826⭐ (06-16, NEW). Agentic telemetry: OTLP ingest → incident fingerprinting → AI investigation → fix PRs. YC P26, Apache-2.0. "Talk to investigation" (resumable runs). Deep read done. Revisit 06-23
 - Wiki health (06-23): 974 files, 53 orphans (5%), 0 broken links, 0 collisions ✔
 - 13 wiki files edited today (active dogfood usage confirmed)
