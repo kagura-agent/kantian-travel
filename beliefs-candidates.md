@@ -730,3 +730,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-30: [gradient] "When workloop picks up an issue that already has an approved PR, use stale-pr-check fast-path immediately. If CI fails due to branch being behind main, rebase first and check if the failure is in unrelated new CI steps before investigating code." → [行为改变] git fetch upstream main && git rebase upstream/main — then verify the new CI step passes locally before wasting time investigating code changes. (pattern: stale-pr-rebase-first, 第1次) (Source: workloop)
   - **Trigger**: PR exists, CI red, failure in a step that did not exist when branch was created
+
+- 2026-06-30: [gradient] "When fixing startsWith-based path checks, always check ALL callers of the relevant function — the same overly-broad pattern often appears in multiple layers. In hermes-web-ui, both resolveHermesPath AND isPathWithin had the same startsWith("..") false-positive bug." → [行为改变] grep for the same pattern in all related utility functions before declaring fix complete. (pattern: layered-bug-duplication, 第1次) (Source: workloop)
+  - **Trigger**: Fixing a string-matching path/security check in one function
