@@ -147,11 +147,11 @@
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
-## Promoted From Short-Term Memory (2026-06-29)
+## Promoted From Short-Term Memory (2026-07-01)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:18:19 -->
-- 01:02 workloop-night — 晚间 PR 跟进: **Assigned issues**: NemoClaw #5734 (有对应 PR #5740), #3836 (排除列表) **Open PRs**: 20 total (含自有 repo) [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:18-19]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:21:21 -->
-- 01:02 workloop-night — 晚间 PR 跟进: 外部 repo PR 状态： [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:21-21]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-25.md:22:25 -->
-- 01:02 workloop-night — 晚间 PR 跟进: NemoClaw #5740 — 等 review，wscurran 有正面 comment; oh-my-pi #2764 — 已 push fixes 后 review，等 roboomp re-review; openclaw #92665 — CI 全绿，等 review; openclaw #96371 — MERGEABLE，等 review [score=0.744 recalls=0 avg=0.620 source=memory/2026-06-25.md:22-25]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:11:14 -->
+- Workloop Night (01:02): ClawX#1130: MERGEABLE, waiting review (6d); inspector#1506: MERGEABLE, pinged 06-27; OpenCLI#1974: pinged 06-26; oh-my-pi#2764: MERGEABLE, all feedback addressed, pinged roboomp 06-24 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:11-14]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:30:33 -->
+- Workloop Night (02:02): memex#173: MERGEABLE, no review, ball in maintainer; memex#174: MERGEABLE, no review, ball in maintainer; **Cross-validation**: memex PRs were missing from gogetajob tracking — ran `gogetajob scan iamtouchskyer/memex` to add; **需要行动的 PR**: 无 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:30-33]
+<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:7:10 -->
+- Workloop Night (01:02): **assigned issues**: 1 (NemoClaw#3836, excluded per 排除列表); **PR sync**: 8 external PRs, all in maintainer's court; openclaw#96651: CI passing, waiting review; openclaw#96371: CI passing, waiting review [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:7-10]

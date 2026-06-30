@@ -170,6 +170,13 @@
 - External PR #171 (wooksong) 15 days without review — all 3 open PRs blocked
 - Upstream dormant since 06-20 (8 days). Stars: 134 (stable post-purge)
 - Status: dogfood-only continues. Close #173 on 07-03, #174 on 07-04 per rule #50
+- Wiki health (06-30): 1000 files, 188 orphans (19%), 0 broken links (fixed 10: agent-research-roundup `[[projects/slug]]` → bare `[[slug]]`), 0 collisions ✔
+- 11 wiki files edited today (active dogfood usage confirmed)
+- PRs #173 (mcp-config tests, 11d) + #174 (diagnoseGitError tests, 10d) open, 0 reviews
+- External PR #171 (wooksong) 17 days without review — all 3 open PRs blocked
+- Upstream still dormant since 06-20 (10 days). No new commits
+- ⚠️ Bug found: memex doctor broken-link check can't resolve `[[path/slug]]` format despite nestedSlugs=true. extraLinkDirs only helps bare `[[slug]]` resolution. Potential future contribution
+- Status: dogfood-only. Close #173 on 07-03, #174 on 07-04 per rule #50
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -652,8 +659,11 @@
 ### 本轮改進 (done)
 - [x] Fix `memes review` today-count crash — 2 history entries used `timestamp` instead of `time`, causing jq `startswith()` to fail on null (reported "0 memes" instead of actual 3). Fixed: normalized tracker data (timestamp→time) + added `.time? // ""` null guard in script. (06-30)
 
+### 本轮改進 (done)
+- [x] Add `memes freshness` command — per-category last-used time + staleness ranking table (sorted stalest-first), flags >7d as STALE, 3-7d as aging, <3d as fresh. Includes --json mode for programmatic use. Shows actionable hint (memes wake/dormant-blast). Tested both table + JSON output. (06-30)
+
 ### 本轮改進 (next)
-- [ ] Add `memes freshness` command — show per-category last-used time + staleness ranking, flag categories unused >7 days as candidates for `memes wake`
+- [ ] Add `memes freshness` integration with `memes review` — include freshness summary (stale count + top-3 stalest) in review output for cron visibility
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
