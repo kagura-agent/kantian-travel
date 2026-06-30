@@ -727,3 +727,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-29: [gradient] "Claude Code implementations with mocked deps may pass tests but fail at runtime when real I/O differs from mocks (e.g., stdio inherit returns null vs mock returning empty string). Must verify the actual runtime path, not just test path." → [行为改变] After Claude Code commits, trace the actual runtime call path (not test path) to verify assumptions about return values, side effects, and I/O modes. (pattern: mock-reality-gap, 第1次) (Source: workloop)
   - **Trigger**: After Claude Code implements something with mocked external calls
+
+- 2026-06-30: [gradient] "When workloop picks up an issue that already has an approved PR, use stale-pr-check fast-path immediately. If CI fails due to branch being behind main, rebase first and check if the failure is in unrelated new CI steps before investigating code." → [行为改变] git fetch upstream main && git rebase upstream/main — then verify the new CI step passes locally before wasting time investigating code changes. (pattern: stale-pr-rebase-first, 第1次) (Source: workloop)
+  - **Trigger**: PR exists, CI red, failure in a step that did not exist when branch was created
