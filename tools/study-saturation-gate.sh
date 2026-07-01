@@ -55,6 +55,21 @@ SCOUT_COUNT=$((DEEP_SCOUT + QUICK_COUNT))
 SCOUT_LOCKED=false; (( SCOUT_COUNT >= 3 )) && SCOUT_LOCKED=true
 QUICK_LOCKED=false; (( SCOUT_COUNT >= 3 || QUICK_COUNT >= 3 )) && QUICK_LOCKED=true
 APPLY_LOCKED=false; (( APPLY_COUNT >= 3 )) && APPLY_LOCKED=true
+# Auto-lock apply when backlog empty + prior empty outcome today
+if ! $APPLY_LOCKED; then
+  UNAPPLIED_FILE="$HOME/.openclaw/workspace/study/unapplied.md"
+  APPLY_BACKLOG=0
+  if [[ -f "$UNAPPLIED_FILE" ]]; then
+    APPLY_BACKLOG=$(grep -c '^- \[ \]' "$UNAPPLIED_FILE" 2>/dev/null) || APPLY_BACKLOG=0
+  fi
+  if (( APPLY_BACKLOG == 0 )) && command -v jq &>/dev/null; then
+    OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
+    if [[ -f "$OUTCOME_LOG" ]]; then
+      EMPTY_APPLY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || echo 0)
+      (( EMPTY_APPLY >= 1 )) && APPLY_LOCKED=true
+    fi
+  fi
+fi
 FOLLOWUP_LOCKED=false; (( FOLLOWUP_COUNT >= 4 )) && FOLLOWUP_LOCKED=true
 
 # If followup is the only unlocked mode, check if there are actually due items

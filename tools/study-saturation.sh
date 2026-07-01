@@ -67,6 +67,17 @@ if ! $APPLY_LOCKED; then
     fi
     if (( APPLY_BACKLOG == 0 )); then
         APPLY_BACKLOG_EMPTY=true
+        # Auto-lock apply when backlog is empty AND today already has an empty apply outcome
+        # Prevents repeated empty apply rounds (Godcoder outcome stats: 4/7 empty when backlog depleted)
+        EMPTY_APPLY_TODAY=$(grep -c '"mode":"apply".*"outcome":"empty"\|"outcome":"empty".*"mode":"apply"' "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | xargs -I{} bash -c 'echo {}' || echo 0)
+        # More reliable: use jq with today's date
+        if command -v jq &>/dev/null && [[ -f "$HOME/.openclaw/workspace/study/outcome-log.jsonl" ]]; then
+            EMPTY_APPLY_TODAY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | grep -c '"mode"' || echo 0)
+        fi
+        if (( EMPTY_APPLY_TODAY >= 1 )); then
+            APPLY_LOCKED=true
+            APPLY_BACKLOG_EMPTY=true  # keep the flag for display
+        fi
     fi
 fi
 
@@ -146,7 +157,7 @@ $IS_WEEKEND && echo "📅 Weekend mode active"
 echo ""
 echo "  Scout (all):   $SCOUT_COUNT/3  $( $SCOUT_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
 echo "  Quick scan:    $QUICK_COUNT/3  $( $QUICK_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )"
-echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $APPLY_BACKLOG_EMPTY && echo ' (backlog empty)' || true )"
+echo "  Apply:         $APPLY_COUNT/3  $( $APPLY_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $APPLY_BACKLOG_EMPTY && ! $APPLY_LOCKED && echo ' (backlog empty)' || true )$( $APPLY_BACKLOG_EMPTY && $APPLY_LOCKED && (( APPLY_COUNT < 3 )) && echo ' (auto-locked: backlog empty + prior empty outcome)' || true )"
 echo "  Followup:      $FOLLOWUP_COUNT/4 $( $FOLLOWUP_LOCKED && echo '🔒 LOCKED' || echo '✅ open' )$( $FOLLOWUP_EMPTY && echo ' (0 items due)' || true )"
 # Show 7d success_rate if data exists
 OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
