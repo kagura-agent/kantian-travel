@@ -278,6 +278,7 @@
 - [ ] Track: Godcoder (eli-labz) - 245⭐ (06-29, NEW). Self-optimizing agent harness — route-log-recall-optimize loop, quantitative success_rate per approach. Rust + Tauri. Solo dev. Revisit 07-13
 - [ ] Track: dirac (dirac-run) - 1,342⭐ (06-27). Active maintenance (test fixes, telemetry cleanup). 15 open issues. Steady +2%. Revisit 07-04
 - [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
+- [ ] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01, NEW). Self-scaffolding RL for agentic coding. 9B/35B-MoE/397B-MoE on Gemma4+Qwen3.5. MIT. Jointly optimizes scaffold + solution via RL. HOT. Revisit 07-08
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [x] Track: vercel/eve - 2,598⭐ (06-26 followup, +89% from 1,371). v0.14.0: AI SDK 7, provider-agnostic reasoning, standardized approvals with session context, self-hosted workflow support, stream tool calls. HOT. Revisit 07-03
