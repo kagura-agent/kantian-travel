@@ -177,13 +177,13 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-05-29: [gradient] "channel patrol 报 quiet hour 但实际在跟 Luna 聊天" → [行为改变] 任何形式的人类互动都算活动，不能只看 cron 产出来判断是否 quiet。已修复 patrol prompt。(pattern: 狭隘活动定义, 第1次) → **retracted 2026-06-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
 
-- 2026-06-02: [gradient] "When debugging a pipeline (A→B→C), check receiver-end instructions before diving into middleware internals. The fix is often at the endpoint, not the plumbing." → [行为改变] First verify: does the receiving workflow/node have explicit instructions to perform the expected action? Missing instructions > broken plumbing.. (pattern: debug-receiver-first, 第1次) (Source: study)
+- 2026-06-02: [gradient] "When debugging a pipeline (A→B→C), check receiver-end instructions before diving into middleware internals. The fix is often at the endpoint, not the plumbing." → [行为改变] First verify: does the receiving workflow/node have explicit instructions to perform the expected action? Missing instructions > broken plumbing.. (pattern: debug-receiver-first, 第1次) (Source: study) → **retracted 2026-07-02** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Spending time reading plugin/middleware source code to understand why a pipeline produces no output
 
-- 2026-06-02: [gradient] "When followup shows repos pushed today but last followup was yesterday, check wiki notes FIRST before API calls. Active today != new signal since last check." → [行为改变] Scan wiki/projects/ last followup date first. If within 24h, do minimal API check or skip.. (pattern: followup-recency-check, 第1次) (Source: study)
+- 2026-06-02: [gradient] "When followup shows repos pushed today but last followup was yesterday, check wiki notes FIRST before API calls. Active today != new signal since last check." → [行为改变] Scan wiki/projects/ last followup date first. If within 24h, do minimal API check or skip.. (pattern: followup-recency-check, 第1次) (Source: study) → **retracted 2026-07-02** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Followup mode, repo shows recent push, but my last followup was within 24h
 
-- 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge)
+- 2026-06-02: [gradient] "Code review 三轮手动 spawn reviewer 跳过 FlowForge，导致没有 reflection/tracking/prompt evolution" → [行为改变] 有 workflow 的任务必须走 workflow 入口命令，不能手动替代。SKILL.md 不应暴露内部实现细节让 agent 有绕过选项。. (pattern: workflow-bypass, 第1次) (Source: nudge) → **retracted 2026-07-02** (rationale: stale — single occurrence, no recurrence in 30+ days)
   **Status: graduated 2026-06-13** → DNA (AGENTS.md "自己的工具必须用" section + Workflow Guard structural enforcement via workflow-guard.sh). Already encoded in DNA before formal graduation — marking retroactively. Retires: none (novel rule at time of encoding).
   - **Trigger**: 有 workflow 的任务觉得手动也能做，跳过 workflow 入口
 

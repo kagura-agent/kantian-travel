@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.10 | Memory search ⚠️ 不稳定（06-24 修复 JP→SG 后仍间歇性 timeout, 06-25 13:40 再次全部超时。Vector 覆盖率降至 14%→timeout。FTS 100%。memory_get 100% 可靠。疑似 embedding endpoint 连接池/keep-alive 问题）
+- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ⚠️ 不稳定（06-24 修复 JP→SG 后仍间歇性 timeout, 06-25 13:40 再次全部超时。Vector 覆盖率降至 14%→timeout。FTS 100%。memory_get 100% 可靠。疑似 embedding endpoint 连接池/keep-alive 问题）
 - 根盘 82% (107G/139G) [已验证 06-24] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
