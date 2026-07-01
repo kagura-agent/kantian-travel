@@ -739,3 +739,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-01: [gradient] "When a workloop instance stalls at a review gate (plan_review), the code may already be implemented but uncommitted in the working tree. Before re-implementing, always check git diff/status first to avoid duplicating work." → [行为改变] At implement node entry: git diff --stat first. If changes exist matching the plan, skip to verification instead of re-implementing.. (pattern: stale-workloop-uncommitted-check, 第1次) (Source: workloop)
   - **Trigger**: Resuming a workloop instance that was at a review/verify node for hours
+
+- 2026-07-01: [gradient] "NemoClaw enforces single-path oclif architecture: commands = argv parsing glue only, orchestration belongs in src/lib/actions/. When adding CLI commands, always extract the actual logic into an action file first, then wire it in the command." → [行为改变] Create src/lib/actions/sandbox/<action>.ts first, then wire command to call it. (pattern: nemoclaw-oclif-action-extraction, 第1次) (Source: workloop)
+  - **Trigger**: Adding a new CLI command to NemoClaw
