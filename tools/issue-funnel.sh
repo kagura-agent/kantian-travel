@@ -184,6 +184,24 @@ check_candidate() {
     score=$((score + 10))
   fi
 
+  # === Wiki failure pattern check (repeat-failure-blindness structural fix) ===
+  # Check pr-superseded-lessons.md for documented failure patterns for this repo.
+  # Score penalty + warning output when prior failures exist.
+  local lessons_file="$HOME/.openclaw/workspace/wiki/cards/pr-superseded-lessons.md"
+  if [[ -f "$lessons_file" ]]; then
+    local repo_short
+    repo_short=$(echo "$repo" | sed 's|.*/||' | tr '[:upper:]' '[:lower:]')
+    local lesson_hits
+    lesson_hits=$(grep -ciE "$repo_short" "$lessons_file" 2>/dev/null || echo "0")
+    if [[ "$lesson_hits" -gt 5 ]]; then
+      score=$((score - 20))  # heavy penalty: many documented failures
+      echo -e "    ${YELLOW}⚠️  Wiki: ${lesson_hits} failure-pattern mentions for ${repo_short}${NC}"
+    elif [[ "$lesson_hits" -gt 0 ]]; then
+      score=$((score - 10))  # moderate penalty: some history
+      echo -e "    ${YELLOW}⚠️  Wiki: ${lesson_hits} failure-pattern mention(s) for ${repo_short}${NC}"
+    fi
+  fi
+
   # Low open-PR count bonus (less competition for attention)
   [[ "$open_prs" -eq 0 ]] && score=$((score + 5))
 
