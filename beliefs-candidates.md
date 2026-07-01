@@ -733,3 +733,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-06-30: [gradient] "When fixing startsWith-based path checks, always check ALL callers of the relevant function — the same overly-broad pattern often appears in multiple layers. In hermes-web-ui, both resolveHermesPath AND isPathWithin had the same startsWith("..") false-positive bug." → [行为改变] grep for the same pattern in all related utility functions before declaring fix complete. (pattern: layered-bug-duplication, 第1次) (Source: workloop)
   - **Trigger**: Fixing a string-matching path/security check in one function
+
+- 2026-07-01: [gradient] "per-agent usage-cost 是新功能中最直接有用的——我们有 12 个 agent 和 66 个 cron job，之前完全无法分辨成本来源。upgrade_gate 节点在已升级场景下其实是空操作，可以考虑自动跳过" → [行为改变] 1. upgrade_gate 改为检测到 current=target 时自动跳过而非手动确认 2. 一轮 3 个条目上限在条目多时要 2-3 轮才能完成，考虑提高到 5 个. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+  - **Trigger**: 下次 post-upgrade workflow 执行时
+
+- 2026-07-01: [gradient] "When a workloop instance stalls at a review gate (plan_review), the code may already be implemented but uncommitted in the working tree. Before re-implementing, always check git diff/status first to avoid duplicating work." → [行为改变] At implement node entry: git diff --stat first. If changes exist matching the plan, skip to verification instead of re-implementing.. (pattern: stale-workloop-uncommitted-check, 第1次) (Source: workloop)
+  - **Trigger**: Resuming a workloop instance that was at a review/verify node for hours
