@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ⚠️ 不稳定（06-24 修复 JP→SG 后仍间歇性 timeout, 06-25 13:40 再次全部超时。Vector 覆盖率降至 14%→timeout。FTS 100%。memory_get 100% 可靠。疑似 embedding endpoint 连接池/keep-alive 问题）
+- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ✅ 稳定（07-02 验证: 100% vector 覆盖率, 0% timeout, index live。06-24 JP→SG 修复后稳定运行）
 - 根盘 82% (107G/139G) [已验证 06-24] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
@@ -141,17 +141,8 @@
 - **06-19**: Lottie Studio 8 features 单日纪录 (#187/#189/#191/#194/#196/#203/#204/#205); OpenCLI#1974 PR submitted (backward compat fix); Memex upstream 复活 v0.3.3 (25天后), PR#173 submitted; Study 高产 3 scouts (vercel/eve, scholar-loop, foreman) + 3 applies (CalibrationLog, Population Funnel, followup-precheck-aggregation); Cove PR#409 regression fix confirmed by Luna; 首次全绿审计 (daily-audit 无 🔴 critical); Story "Oh, There It Is" EP078; harness-sdk#2706 self-closed (9d no review); ⚠️ Upwork channel request 未处理 19h+
 
 
-- **06-16**: Cove PR #367/#369 (multi-account support) merged by Luna; beliefs sed-bug 碎片化修复+graduated (合并 3 条同 pattern); FlowForge 僵尸清理机制升级; superlog deep_read (826⭐ agentic telemetry); code-review tracking.json 66 entries 全 merged ground_truth complete
-- **06-17**: PR #190 七轮 review 教训写入 AGENTS.md (grade-scaling + YAGNI 六阶梯); cot-leak-in-shared-channel gradient (NO_REPLY 不应含 CoT body); spec-review-discover-dont-prescribe gradient (Luna 指出 review 工具不能反客为主); workflow-bypass tool guard 落地 (workflow-guard.sh structural fix); finance #938 paper-trading guard 设计 (basename matching 替代 relative-path); travel pet/pace 双 gradient (Luna directive); ponytail-yagni-skill 学习
-- **06-18**: SOUL.md 重写 (soul-grader rubric 41→73/100 +32pts); 5 beliefs 批量毕业 (workflow-bypass, assigned-issue-neglect, skip-reflection, dogfood-adoption, hn-algolia-direct); compass-skills fact-vs-decision constraint split 写入 AGENTS.md; FlowForge cleanup CLI 实现 (db.ts+engine.ts+index.ts); critical-cron-watchdog cron 创建; compress-daily-memory.sh 升级 (15+ no-action 指标); Luna carry meeting (VS Code extension 讨论)
+
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
-## Promoted From Short-Term Memory (2026-07-01)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:11:14 -->
-- Workloop Night (01:02): ClawX#1130: MERGEABLE, waiting review (6d); inspector#1506: MERGEABLE, pinged 06-27; OpenCLI#1974: pinged 06-26; oh-my-pi#2764: MERGEABLE, all feedback addressed, pinged roboomp 06-24 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:11-14]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:30:33 -->
-- Workloop Night (02:02): memex#173: MERGEABLE, no review, ball in maintainer; memex#174: MERGEABLE, no review, ball in maintainer; **Cross-validation**: memex PRs were missing from gogetajob tracking — ran `gogetajob scan iamtouchskyer/memex` to add; **需要行动的 PR**: 无 [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:30-33]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-28.md:7:10 -->
-- Workloop Night (01:02): **assigned issues**: 1 (NemoClaw#3836, excluded per 排除列表); **PR sync**: 8 external PRs, all in maintainer's court; openclaw#96651: CI passing, waiting review; openclaw#96371: CI passing, waiting review [score=0.788 recalls=0 avg=0.620 source=memory/2026-06-28.md:7-10]

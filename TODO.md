@@ -290,6 +290,7 @@
 - [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
 - [ ] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01, NEW). Self-scaffolding RL for agentic coding. 9B/35B-MoE/397B-MoE on Gemma4+Qwen3.5. MIT. Jointly optimizes scaffold + solution via RL. HOT. Revisit 07-08
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 12⭐ (07-02, NEW). Memory-induced sycophancy benchmark. 5-task taxonomy (use/update/defer/constrain/ignore). 1550 samples, 9 baselines. Deep read done. Revisit 07-16
+- [ ] Track: Synapse (ardhaecosystem/synapse) - 67⭐ (07-02, NEW). Bio-inspired temporal KG memory: 9 hippocampus algorithms (salience, forgetting, consolidation, prediction error, schema extraction). Graphiti+FalkorDB, Hermes plugin. Solo dev, burst-publish. Deep read done. Revisit 07-16
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [x] Track: vercel/eve - 2,598⭐ (06-26 followup, +89% from 1,371). v0.14.0: AI SDK 7, provider-agnostic reasoning, standardized approvals with session context, self-hosted workflow support, stream tool calls. HOT. Revisit 07-03
@@ -697,8 +698,11 @@
 ### 本轮改進 (done)
 - [x] Add `--threshold N` flag to `cron-check` to override default 14d staleness threshold — parses `--threshold N` (positive int, days), validates input, passes to freshness filter. Tested: `--threshold 999` skips wake, `--threshold 5` correctly wakes stalest category (bruh, 17.3d). Error handling for invalid/missing/zero values. Updated usage text + case dispatch to forward args. (07-02)
 
+### 本轮改進 (done)
+- [x] Add `--dry-run` flag to `cron-check` — shows what auto-wake would do without sending. Parses `--dry-run` in any position alongside `--threshold N`. Outputs `🧪 [DRY-RUN] Would auto-wake: <cat> (<days>d stale)` instead of actually sending. Updated usage text. Tested: dry-run only, dry-run+threshold combo, threshold+dry-run order. (07-02)
+
 ### 本轮改進 (next)
-- [ ] Add `--dry-run` flag to `cron-check` — show what auto-wake would do without actually sending. Useful for testing threshold values
+- [ ] Add `memes retire <category>` command — merge a low-value category into another (move files, update tags.json, update tracker history). For when two categories overlap too much
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

@@ -190,10 +190,10 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-02: [gradient] "Always pass -w flag to flowforge next commands" → [行为改变] Always use flowforge next -w <name> to avoid advancing wrong instance. (pattern: flowforge-workflow-targeting, 第3次 — merged from flowforge-workflow-targeting/multi-instance-disambiguation/flowforge-multi-instance-targeting: 06-02 study + 06-03 study + 06-04 study, all self-generated 0.5x = 1.5 weighted) (Source: study) → **graduated 2026-06-08** (target: Tool code — flowforge engine.ts requireActiveInstance() now errors when multiple instances active and no -w flag. Structural fix eliminates the failure mode entirely. Retires: no prior rule — this is a new structural guard)
   - **Trigger**: Running flowforge next with multiple active workflows
 
-- 2026-06-03: [gradient] "UI对齐: 数值对齐不等于视觉对齐, minHeight因内容不同导致实际高度不同" → [行为改变] 用固定height而非minHeight; 统一所有区域left padding到同一值; 请Luna开Layout Inspector截图验证. (pattern: ui-visual-alignment, 第1次) (Source: nudge)
+- 2026-06-03: [gradient] "UI对齐: 数值对齐不等于视觉对齐, minHeight因内容不同导致实际高度不同" → [行为改变] 用固定height而非minHeight; 统一所有区域left padding到同一值; 请Luna开Layout Inspector截图验证. (pattern: ui-visual-alignment, 第1次) (Source: nudge) → **retracted 2026-07-03** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 做UI header/panel对齐时用minHeight
 
-- 2026-06-03: [gradient] "preflight 500MB repo size limit blocks all openclaw/openclaw issues despite having a local clone. The limit was designed to prevent slow clones during workloop, but is a false positive when the repo is already cloned locally. Should add a check: if local clone exists AND is fresh (fetched recently), skip the size check." → [行为改变] update preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/<repo>. (pattern: preflight-false-positive, 第1次) (Source: workloop)
+- 2026-06-03: [gradient] "preflight 500MB repo size limit blocks all openclaw/openclaw issues despite having a local clone. The limit was designed to prevent slow clones during workloop, but is a false positive when the repo is already cloned locally. Should add a check: if local clone exists AND is fresh (fetched recently), skip the size check." → [行为改变] update preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/<repo>. (pattern: preflight-false-positive, 第1次) (Source: workloop) → **retracted 2026-07-03** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: selecting openclaw/openclaw issues (1466MB repo)
 
 - 2026-06-03: [gradient] "flowforge next targets wrong instance when multiple workflows are active" → [行为改变] → **merged into flowforge-workflow-targeting (06-02 entry)** (pattern: multi-instance-disambiguation → merged) (Source: study)
@@ -203,17 +203,17 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   **Status: graduated 2026-06-13** → (see first entry)
   - **Trigger**: Task matches a known workflow but steps feel familiar
 
-- 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna)
+- 2026-06-03: [gradient] "UI开发：数值对齐不等于视觉对齐，布局骨架用固定height不用minHeight，用Layout Inspector验证" → [行为改变] 布局骨架用固定height token，内容间距用spacing scale，改完用Layout Inspector画辅助线截图验证. (pattern: ui-alignment-practice, 第1次) (Source: luna) → **retracted 2026-07-03** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 做UI header/panel/footer对齐时
 
 - 2026-06-03: [gradient] "followup 节点发现 assigned-but-no-PR 的 issue 后，用分析/计划合理化跳过，去找新活而不是当轮解决。#3836 PR 被关了都没跟进。" → [行为改变] followup 发现未兑现 assigned issue → 本轮不允许进 find_work，必须先处理完所有 assigned（提 PR / unassign / 评论放弃）. (pattern: assigned-issue-neglect, 第1次 — graduated 2026-06-19 (target: guide.md rule #50/#53, already implemented))
   **Status: graduated 2026-06-14** → Workflow (workloop.yaml resolve_assigned gate — followup node Step 0 enforces assigned-issue check before find_work). Express path: 81 hits across 10+ days + structural enforcement (workloop followup gate). V2 PASS: predicts excuses to skip stale assignments in favor of new work. V3 PASS: fresh agent would naturally gravitate toward new issues over cleaning up old commitments. Retires: none (novel pattern — structural gate was built in response to this gradient).
   - **Trigger**: followup 检查 assigned issues 时发现未兑现的
 
-- 2026-06-03: [gradient] "Discord Markdown 功能连续说错两次：先说不渲染heading后说渲染，被Luna纠正" → [行为改变] 不确定就说不确定，不要凭印象断言。被纠正后不要矫枉过正又往反方向猜. (pattern: verify-before-claim, 第1次) (Source: luna)
+- 2026-06-03: [gradient] "Discord Markdown 功能连续说错两次：先说不渲染heading后说渲染，被Luna纠正" → [行为改变] 不确定就说不确定，不要凭印象断言。被纠正后不要矫枉过正又往反方向猜. (pattern: verify-before-claim, 第1次) (Source: luna) → **retracted 2026-07-03** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 陈述第三方产品功能时
 
-- 2026-06-03: [gradient] "subagent 在 implement 阶段自行 push+提 PR，跳过了主 agent 的验证和 submit 流程。根因：task 约束没有明确禁止 push/PR" → [行为改变] implement task 末尾加 BOUNDARY 约束：只 commit 不 push 不提 PR，push/PR 统一在 submit 节点. (pattern: subagent-boundary-leak, 第1次) (Source: nudge)
+- 2026-06-03: [gradient] "subagent 在 implement 阶段自行 push+提 PR，跳过了主 agent 的验证和 submit 流程。根因：task 约束没有明确禁止 push/PR" → [行为改变] implement task 末尾加 BOUNDARY 约束：只 commit 不 push 不提 PR，push/PR 统一在 submit 节点. (pattern: subagent-boundary-leak, 第1次) (Source: nudge) → **retracted 2026-07-03** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: implement 节点 spawn subagent 做代码时
 
 - 2026-06-03: [gradient] "自己手写了 ChatMarkdown 解析器，结果写出空行无限循环 OOM bug，Luna 两次提醒要用 Claude Code 写代码" → [行为改变] 代码实现必须用 Claude Code，自己不写。AGENTS.md 已有此规则但未执行. (pattern: code-authorship-discipline, 第1次) (Source: luna) → **graduated 2026-06-10** (merged into code-discipline graduation)
@@ -754,3 +754,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-02: [gradient] "When setting preflight size limits, ensure the limit is NOT stricter than the fallback error detection threshold. Setting loadWebMedia maxBytes to 10MB makes the 413 fallback unreachable because loadWebMedia rejects before the request reaches Discord. The preflight should be >= the target platform limit so the graceful fallback can fire for edge cases." → [行为改变] Ensure preflight limit >= platform limit. Preflight catches the obviously-too-large case; fallback catches edge cases where the limit varies by server/context.. (pattern: preflight-vs-fallback-alignment, 第1次) (Source: workloop)
   - **Trigger**: Setting size limits where both a preflight check and an error-based fallback exist
+
+- 2026-07-02: [gradient] "Run scout-precheck on ALL deep-read candidates including blog-sourced topics before committing to deep-read. Wasted time starting on OneWill before discovering existing note." → [行为改变] Check wiki for existing coverage of any topic before deep-read commitment. (pattern: scout-precheck-all-candidates, 第1次) (Source: study)
+  - **Trigger**: Selecting a deep-read target from any source (HN, blog, not just GitHub)
