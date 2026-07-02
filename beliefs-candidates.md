@@ -742,3 +742,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-01: [gradient] "NemoClaw enforces single-path oclif architecture: commands = argv parsing glue only, orchestration belongs in src/lib/actions/. When adding CLI commands, always extract the actual logic into an action file first, then wire it in the command." → [行为改变] Create src/lib/actions/sandbox/<action>.ts first, then wire command to call it. (pattern: nemoclaw-oclif-action-extraction, 第1次) (Source: workloop)
   - **Trigger**: Adding a new CLI command to NemoClaw
+
+- 2026-07-02: [gradient] "Consistently overestimate star growth for hot projects. 3/3 calibration predictions wrong in same direction." → [行为改变] Use S-curve model, halve the optimistic prediction. Projects typically plateau at 2-3x initial burst, not exponential.. (pattern: star-growth-overoptimism, 第1次) (Source: study)
+  - **Trigger**: Making star growth predictions for tracked projects
