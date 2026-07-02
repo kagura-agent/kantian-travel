@@ -745,3 +745,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-02: [gradient] "Consistently overestimate star growth for hot projects. 3/3 calibration predictions wrong in same direction." → [行为改变] Use S-curve model, halve the optimistic prediction. Projects typically plateau at 2-3x initial burst, not exponential.. (pattern: star-growth-overoptimism, 第1次) (Source: study)
   - **Trigger**: Making star growth predictions for tracked projects
+
+- 2026-07-02: [gradient] "hn-scan.sh should extract and display the story URL field from Algolia response — saves a web_fetch step when finding linked repos" → [行为改变] Add url field extraction to hn-scan.sh output. (pattern: hn-scan-url-field, 第1次) (Source: study)
+  - **Trigger**: quick scan needs to check actual repo from HN item
+
+- 2026-07-02: [gradient] "gogetajob submit runs git add -A which stages ALL untracked files in diverged forks. Always verify git show --stat after gogetajob submit before declaring success. For forks with upstream drift, prefer manual git push + gh pr create over gogetajob submit." → [行为改变] After gogetajob submit: git show --stat HEAD to verify only intended files are in the commit. If dirty, git reset --hard HEAD~1 and push manually.. (pattern: gogetajob-submit-dirty-commit, 第1次) (Source: workloop)
+  - **Trigger**: Using gogetajob submit on a fork repo with untracked upstream files
+
+- 2026-07-02: [gradient] "When setting preflight size limits, ensure the limit is NOT stricter than the fallback error detection threshold. Setting loadWebMedia maxBytes to 10MB makes the 413 fallback unreachable because loadWebMedia rejects before the request reaches Discord. The preflight should be >= the target platform limit so the graceful fallback can fire for edge cases." → [行为改变] Ensure preflight limit >= platform limit. Preflight catches the obviously-too-large case; fallback catches edge cases where the limit varies by server/context.. (pattern: preflight-vs-fallback-alignment, 第1次) (Source: workloop)
+  - **Trigger**: Setting size limits where both a preflight check and an error-based fallback exist
