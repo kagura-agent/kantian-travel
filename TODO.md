@@ -289,6 +289,7 @@
 - [ ] Track: dirac (dirac-run) - 1,342⭐ (06-27). Active maintenance (test fixes, telemetry cleanup). 15 open issues. Steady +2%. Revisit 07-04
 - [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
 - [ ] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01, NEW). Self-scaffolding RL for agentic coding. 9B/35B-MoE/397B-MoE on Gemma4+Qwen3.5. MIT. Jointly optimizes scaffold + solution via RL. HOT. Revisit 07-08
+- [ ] Track: ctx (ctxrs/ctx) - 219⭐ (07-03, NEW). Local agent history search CLI. Indexes 14+ provider session histories into SQLite, FTS search, MCP server. Rust, Apache-2.0. OpenClaw supported. Deep read done. Revisit 07-10
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 12⭐ (07-02, NEW). Memory-induced sycophancy benchmark. 5-task taxonomy (use/update/defer/constrain/ignore). 1550 samples, 9 baselines. Deep read done. Revisit 07-16
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 67⭐ (07-02, NEW). Bio-inspired temporal KG memory: 9 hippocampus algorithms (salience, forgetting, consolidation, prediction error, schema extraction). Graphiti+FalkorDB, Hermes plugin. Solo dev, burst-publish. Deep read done. Revisit 07-16
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
