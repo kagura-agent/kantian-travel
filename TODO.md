@@ -187,6 +187,12 @@
 - External PR #171 (wooksong) 18 days without review — still open (not ours)
 - Upstream still dormant since 06-20 (11 days). Only open issue: #151
 - Status: dogfood-only. No contribution surface until upstream revives
+- Wiki health (07-03): 426 files, 53 orphans (12%), 0 broken links, 0 collisions ✔
+- 10 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant since 06-20 (13 days). No new commits
+- External PR #171 (wooksong) 20 days without review — all external PRs blocked
+- Contribution score: 10 merged, 0 open, 7 closed
+- Status: dogfood-only continues
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -713,8 +719,11 @@
 ### 本轮改進 (done)
 - [x] Add `memes retire <source> <target>` command — merges a category into another: moves files (with collision prefix), re-keys tags.json + _styles via rename map, rewrites tracker history/counts, removes empty source dir. Supports `--dry-run`. Tested: normal merge, name collision, alias resolution, error cases (nonexistent/same category). Fixed `((moved++))` with set -e, fixed `startswith('_')` filter excluding valid category keys. (07-03)
 
+### 本轮改進 (done)
+- [x] Add `memes dedup` command — finds exact-duplicate files (md5) across/within categories. Dry-run by default, `--fix` removes same-category dupes (merges tags into survivor, rewrites tracker history, updates categoryCounts). Cross-category dupes reported but preserved (different semantic contexts). Tested: found 9 groups (5 same-cat, 4 cross-cat), removed 6 same-cat dupes, saved ~5MB, 243→237 files. Coverage still 100%. (07-03)
+
 ### 本轮改進 (next)
-- [ ] Add `memes dedup` command — find and merge near-duplicate files across categories (by perceptual hash or file size+name similarity)
+- [ ] Add perceptual hash (pHash) near-duplicate detection to `memes dedup` — find visually similar but not byte-identical files
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
