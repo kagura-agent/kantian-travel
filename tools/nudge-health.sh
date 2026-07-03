@@ -90,7 +90,8 @@ if [[ -f "$AUDIT_LOG" ]]; then
     fi
   done
 
-  AUDIT_SUCCESS=$(grep -c "enqueued successfully\|spawned successfully" "$AUDIT_LOG" 2>/dev/null || echo 0)
+  AUDIT_SUCCESS=$(grep -c "enqueued successfully\|spawned successfully" "$AUDIT_LOG" 2>/dev/null || true)
+  AUDIT_SUCCESS=${AUDIT_SUCCESS:-0}
   # Filter to recent days for success count
   AUDIT_SUCCESS_RECENT=0
   for i in $(seq 0 $((DAYS - 1))); do
@@ -174,7 +175,8 @@ for i in $(seq 0 $((DAYS - 1))); do
   MEMFILE="$WORKSPACE/memory/$DAY.md"
   [[ -f "$MEMFILE" ]] || continue
   # Each ## section roughly represents an agent turn/session
-  DAY_TURNS=$(grep -c "^## " "$MEMFILE" 2>/dev/null || echo 0)
+  DAY_TURNS=$(grep -c "^## " "$MEMFILE" 2>/dev/null || true)
+  DAY_TURNS=${DAY_TURNS:-0}
   TURN_PROXY=$((TURN_PROXY + DAY_TURNS))
 done
 
