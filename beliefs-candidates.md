@@ -763,3 +763,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-03: [gradient] "Workloop can re-find issues that already have submitted PRs when a new instance starts after the previous one completed the work. The stale-pr-check fast-path correctly handles this, but the wasted find_work→study→plan→plan_review cycle costs ~20 min of tokens. find_work should check own open PRs against candidate issues before selecting." → [行为改变] Add open PR check to find_work issue filtering - cross-reference gh pr list before selecting. (pattern: workloop-duplicate-issue-selection, 第1次) (Source: workloop)
   - **Trigger**: When find_work selects an issue that I already have an open PR for
+
+- 2026-07-03: [gradient] "Stale flowforge instances need cleanup before starting new ones. When a workloop crashes mid-session, the next cron trigger creates a new instance but the stale one persists, blocking flowforge advance commands." → [行为改变] Run flowforge cleanup --stale-hours 1 before starting new workflows, or advance stale instances to completion. (pattern: stale-flowforge-cleanup, 第1次) (Source: workloop)
+  - **Trigger**: Starting a new flowforge workflow when a previous instance crashed
