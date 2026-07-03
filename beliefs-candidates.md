@@ -760,3 +760,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-03: [gradient] "Stale workloop instances lose context across cron runs — previous runs did the work (plan_review approved, PR submitted) but flowforge was never advanced. The fast-path recovery (stale-pr-check.sh) correctly handles this, but the root issue is cron runs erroring before completing flowforge advancement." → [行为改变] After spawning subagent or completing work, prioritize flowforge next before any other investigation. The advancement call is the critical atomic step.. (pattern: stale-workloop-context-loss, 第1次) (Source: workloop)
   - **Trigger**: Workloop instance at same node for multiple cron runs while the actual work is already done
+
+- 2026-07-03: [gradient] "Workloop can re-find issues that already have submitted PRs when a new instance starts after the previous one completed the work. The stale-pr-check fast-path correctly handles this, but the wasted find_work→study→plan→plan_review cycle costs ~20 min of tokens. find_work should check own open PRs against candidate issues before selecting." → [行为改变] Add open PR check to find_work issue filtering - cross-reference gh pr list before selecting. (pattern: workloop-duplicate-issue-selection, 第1次) (Source: workloop)
+  - **Trigger**: When find_work selects an issue that I already have an open PR for
