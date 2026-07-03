@@ -160,7 +160,7 @@ if [[ -x tools/flowforge-analytics.sh ]]; then
     fail "flowforge-analytics.sh" "bottleneck mode failed"
   fi
   FA_BR=$(bash tools/flowforge-analytics.sh --branches 2>/dev/null) || true
-  if echo "$FA_BR" | grep -q "Branch\|study\|workloop"; then
+  if echo "$FA_BR" | grep -q "Branch Distribution"; then
     pass "branch mode"
   else
     fail "flowforge-analytics.sh" "branch mode failed"
