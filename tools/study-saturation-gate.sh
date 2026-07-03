@@ -65,7 +65,8 @@ if ! $APPLY_LOCKED; then
   if (( APPLY_BACKLOG == 0 )) && command -v jq &>/dev/null; then
     OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
     if [[ -f "$OUTCOME_LOG" ]]; then
-      EMPTY_APPLY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || echo 0)
+      EMPTY_APPLY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || true)
+      EMPTY_APPLY=${EMPTY_APPLY:-0}
       (( EMPTY_APPLY >= 1 )) && APPLY_LOCKED=true
     fi
   fi

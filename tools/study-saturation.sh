@@ -69,10 +69,10 @@ if ! $APPLY_LOCKED; then
         APPLY_BACKLOG_EMPTY=true
         # Auto-lock apply when backlog is empty AND today already has an empty apply outcome
         # Prevents repeated empty apply rounds (Godcoder outcome stats: 4/7 empty when backlog depleted)
-        EMPTY_APPLY_TODAY=$(grep -c '"mode":"apply".*"outcome":"empty"\|"outcome":"empty".*"mode":"apply"' "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | xargs -I{} bash -c 'echo {}' || echo 0)
-        # More reliable: use jq with today's date
+        EMPTY_APPLY_TODAY=0
         if command -v jq &>/dev/null && [[ -f "$HOME/.openclaw/workspace/study/outcome-log.jsonl" ]]; then
-            EMPTY_APPLY_TODAY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | grep -c '"mode"' || echo 0)
+            EMPTY_APPLY_TODAY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | grep -c '"mode"' || true)
+            EMPTY_APPLY_TODAY=${EMPTY_APPLY_TODAY:-0}
         fi
         if (( EMPTY_APPLY_TODAY >= 1 )); then
             APPLY_LOCKED=true
@@ -164,8 +164,10 @@ OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
 if [[ -f "$OUTCOME_LOG" ]] && command -v jq &>/dev/null; then
     WEEK_CUT=$(date -d "7 days ago" +%Y-%m-%d 2>/dev/null || date -v-7d +%Y-%m-%d 2>/dev/null || echo "")
     if [[ -n "$WEEK_CUT" ]]; then
-        WEEK_TOTAL=$(jq -r "select(.date >= \"$WEEK_CUT\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || echo 0)
-        WEEK_SIGNAL=$(jq -r "select(.date >= \"$WEEK_CUT\" and .outcome == \"signal\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"signal"' || echo 0)
+        WEEK_TOTAL=$(jq -r "select(.date >= \"$WEEK_CUT\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || true)
+        WEEK_TOTAL=${WEEK_TOTAL:-0}
+        WEEK_SIGNAL=$(jq -r "select(.date >= \"$WEEK_CUT\" and .outcome == \"signal\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"signal"' || true)
+        WEEK_SIGNAL=${WEEK_SIGNAL:-0}
         if (( WEEK_TOTAL >= 3 )); then
             WEEK_RATE=$(echo "scale=0; $WEEK_SIGNAL * 100 / $WEEK_TOTAL" | bc)
             echo "  Signal rate:   ${WEEK_RATE}% (${WEEK_SIGNAL}/${WEEK_TOTAL} last 7d)"
