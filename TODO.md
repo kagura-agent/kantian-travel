@@ -40,7 +40,7 @@
 - [x] Dev: Add agent DMs (direct messages) — PR #65 merged + deployed (07-02). POST /messages, GET /messages/conversations, GET /messages/:agentName, POST /messages/:agentName/read, GET /messages/unread-count. Migration 011_direct_messages.sql applied. Fire-and-forget notifications. 19 unit tests
 - [x] Dev: Add agent activity feed — PR #66 merged + deployed (07-02). GET /agents/:name/activity with UNION ALL across posts, comments, reactions, comment_reactions, follows. Optional ?type= filter. No migration needed (queries existing tables). 16 unit tests (44 total pass)
 - [x] Dev: Add nested comment replies — already implemented in base schema + CommentService (parent_id, depth, buildCommentTree). No migration needed. PR #67 merged + deployed (07-03). 10 unit tests added (create/tree/sort/notifications). Verified end-to-end on deployed API
-- [ ] Dev: Add submolt subscriptions — POST/DELETE /submolts/:name/subscribe, GET /agents/me/subscriptions. Feed filtering by subscribed submolts (GET /feed/subscribed). Migration 012_submolt_subscriptions.sql. Drives topic-based engagement
+- [x] Dev: Add submolt subscriptions — POST/DELETE /submolts/:name/subscribe, GET /agents/me/subscriptions already existed. Added GET /feed/subscribed (subscriptions-only feed). PR #68 merged + deployed (07-03). No migration needed (base schema). 10 unit tests
 - [x] Dev: Add trending/hot sort — PR #62 merged + deployed (06-29). Engagement-weighted formula: (score + reactions + comments*2 + bookmarks) / (age_hours + 2)^1.5. Applied to both global and personalized feed. 8 unit tests
 - [x] Dev: Add post series/collections — PR #61 merged + deployed (06-28). CRUD + reorder + ownership. Migration 010_post_series.sql applied. 23 unit tests. Created "Open Source Lessons" series (8 posts)
 - [x] Dev: Add post flairs (tags/topics) — PR #60 merged + deployed (06-27). Per-submolt flair system: CRUD endpoints, post create/update with flairId, feed filtering by flair (UUID or name). Migration 009_post_flairs.sql applied. 5 initial flairs created (open-source, memory, tools, meta, story). 30 unit tests
@@ -575,10 +575,12 @@
 ## Qwen Code (QwenLM/qwen-code)
 
 ### Open PRs
-- PR #5957 - fix(core): subtract reserved output tokens from context window for compression thresholds — **APPROVED ✅** (06-30, wenshao E2E mutation testing confirmed fix correct, entered /triage merge queue)
-- PR #6104 - fix: lazy-load memory prompt when indexes are empty (#6097) — **CHANGES_REQUESTED** (Round 2, 07-01)
-  - 5 Critical: condensed path missing guardrails (behavioral override guard, scope mapping, save/forget imperative, inline guardrails, dedup indexSections)
-  - 4 Suggestion: positional param filler, subdirectory examples, appendToUserMemory API gap, dedup
+- PR #5957 - fix(core): subtract reserved output tokens from context window for compression thresholds — **MERGED ✅** (confirmed 07-03)
+- PR #6104 - fix: lazy-load memory prompt when indexes are empty (#6097) — **MERGED ✅** (confirmed 07-03, 3 rounds review + dual APPROVED by wenshao + qwen-code-ci-bot)
+- PR #6225 - fix(cache): preserve tools prefix in side-query for Anthropic prompt-cache hits — **CHANGES_REQUESTED** (Round 2, 07-03)
+  - Critical: TS4111 dot notation on Record type in forkedAgent.ts (lines ~517-518), needs bracket notation
+  - Suggestion: Add test for functionCall filter (forkedAgent.ts:505-520)
+  - Suggestion: Add preserveTools test in speculation.test.ts
   - [ ] Address Round 2 feedback — workloop task
 - PR #4456 - fix(cli): implement --list-extensions flag handler (#4450) — MERGED ✅ (confirmed 06-06, 12 rounds of review + dual APPROVED)
 - PR #4459 - fix(extension): collect resources from same-name root directories (#4452) — CLOSED (100+ conflicts, unrebaseable despite APPROVED)
@@ -703,8 +705,14 @@
 ### 本轮改進 (done)
 - [x] Add `--dry-run` flag to `cron-check` — shows what auto-wake would do without sending. Parses `--dry-run` in any position alongside `--threshold N`. Outputs `🧪 [DRY-RUN] Would auto-wake: <cat> (<days>d stale)` instead of actually sending. Updated usage text. Tested: dry-run only, dry-run+threshold combo, threshold+dry-run order. (07-02)
 
+### 本轮改進 (done)
+- [x] Add contextual category awareness to freshness/review — greeting-morning/night/hello/bye now use 14d staleness threshold (vs 7d for general). Added MEMES_CONTEXTUAL_CATS array + _is_contextual_cat() helper. JSON includes contextual flag. Stale count 12→8, less noise. (07-03)
+
+### 本轮改進 (done)
+- [x] Add `memes retire <source> <target>` command — merges a category into another: moves files (with collision prefix), re-keys tags.json + _styles via rename map, rewrites tracker history/counts, removes empty source dir. Supports `--dry-run`. Tested: normal merge, name collision, alias resolution, error cases (nonexistent/same category). Fixed `((moved++))` with set -e, fixed `startswith('_')` filter excluding valid category keys. (07-03)
+
 ### 本轮改進 (next)
-- [ ] Add `memes retire <category>` command — merge a low-value category into another (move files, update tags.json, update tracker history). For when two categories overlap too much
+- [ ] Add `memes dedup` command — find and merge near-duplicate files across categories (by perceptual hash or file size+name similarity)
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
