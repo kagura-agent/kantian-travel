@@ -38,7 +38,7 @@ echo "📅 Staleness threshold: ${DAYS_THRESHOLD} days"
 echo ""
 
 # 1. Count promoted memory sections and entries
-promoted_sections=$(grep -c "^## Promoted" "$MEMORY_FILE" 2>/dev/null || echo 0)
+promoted_sections=$(grep -c "^## Promoted" "$MEMORY_FILE" 2>/dev/null || true); promoted_sections=${promoted_sections:-0}
 promoted_entries=0
 stale_promoted=0
 stale_details=""

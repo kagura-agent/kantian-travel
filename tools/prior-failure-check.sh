@@ -52,7 +52,7 @@ if [[ "$1" == "--all" ]]; then
   # Extract repo names from headers like "### repo_name #1234" or "## owner/repo #1234"
   grep -oE '[A-Za-z0-9_-]+(/[A-Za-z0-9_-]+)? #[0-9]+' "$LESSONS_FILE" \
     | sed 's/ #[0-9]*//' | sort -u | while read -r repo; do
-    count=$(grep -c "$repo" "$LESSONS_FILE" 2>/dev/null || echo 0)
+    count=$(grep -c "$repo" "$LESSONS_FILE" 2>/dev/null || true); count=${count:-0}
     echo -e "  ${YELLOW}${repo}${NC} — ${count} mentions"
   done
   exit 0
