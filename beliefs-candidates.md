@@ -757,3 +757,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-02: [gradient] "Run scout-precheck on ALL deep-read candidates including blog-sourced topics before committing to deep-read. Wasted time starting on OneWill before discovering existing note." → [行为改变] Check wiki for existing coverage of any topic before deep-read commitment. (pattern: scout-precheck-all-candidates, 第1次) (Source: study)
   - **Trigger**: Selecting a deep-read target from any source (HN, blog, not just GitHub)
+
+- 2026-07-03: [gradient] "Stale workloop instances lose context across cron runs — previous runs did the work (plan_review approved, PR submitted) but flowforge was never advanced. The fast-path recovery (stale-pr-check.sh) correctly handles this, but the root issue is cron runs erroring before completing flowforge advancement." → [行为改变] After spawning subagent or completing work, prioritize flowforge next before any other investigation. The advancement call is the critical atomic step.. (pattern: stale-workloop-context-loss, 第1次) (Source: workloop)
+  - **Trigger**: Workloop instance at same node for multiple cron runs while the actual work is already done
