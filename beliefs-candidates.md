@@ -766,3 +766,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-03: [gradient] "Stale flowforge instances need cleanup before starting new ones. When a workloop crashes mid-session, the next cron trigger creates a new instance but the stale one persists, blocking flowforge advance commands." → [行为改变] Run flowforge cleanup --stale-hours 1 before starting new workflows, or advance stale instances to completion. (pattern: stale-flowforge-cleanup, 第1次) (Source: workloop)
   - **Trigger**: Starting a new flowforge workflow when a previous instance crashed
+
+- 2026-07-04: [gradient] "Saturation gate reports apply as 'open (backlog empty)' which wastes a full mode cycle discovering the backlog is empty" → [行为改变] Treat 'open but backlog empty' as effectively saturated — skip apply mode or enhance gate to check backlog non-emptiness. (pattern: study-saturation-apply-empty-misleading, 第1次) (Source: study)
+  - **Trigger**: Saturation gate shows apply open but unapplied.md has all items checked
