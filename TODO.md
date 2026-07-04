@@ -273,6 +273,7 @@
 - [x] **guide.md: 新增「after 2+ review rounds, re-review the full diff holistically」** - qwen-code#6104 教训（3 轮 Critical feedback，每轮 fix 只改被点名的行，不退后一步重看整体，导致每次 fix 引入新缺陷或暴露新区域问题）→ 已加入 guide.md 第 69 条 (2026-07-01)
 - [x] **guide.md: 新增「identify bot reviewers vs human reviewers — triage rework priority」** - qwen-code#6155/#6104 教训（review bot 以人类用户名提交 review，doudouOUC/wenshao 实为 qwen3.7-max 自动 review，不识别导致 rework 优先级错配）→ 已加入 guide.md 第 70 条 (2026-07-02)
 - [x] **guide.md: 新增「verify target code exists before implementing」** - NemoClaw#6236 教训（issue 描述对 `tools/independent-approval/github.mts` 的安全修复，但文件不存在——是 draft implementation 的 spec 不是现有代码 bug，study 阶段才发现白费）→ 已加入 guide.md 第 71 条 (2026-07-03)
+- [x] **guide.md: 新增「upstream architectural refactoring invalidates PR rebase — close or re-implement」** - NemoClaw#6211 教训（rebuild.ts 被拆成 ~50 子模块，rebase 产生 total conflict lines 4-1405，逐行 resolve 不可能）→ 已加入 guide.md 第 72 条 (2026-07-04)
 
 ## 📚 学习
 
