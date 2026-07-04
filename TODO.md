@@ -724,8 +724,11 @@
 ### 本轮改進 (done)
 - [x] Add `memes dedup` command — finds exact-duplicate files (md5) across/within categories. Dry-run by default, `--fix` removes same-category dupes (merges tags into survivor, rewrites tracker history, updates categoryCounts). Cross-category dupes reported but preserved (different semantic contexts). Tested: found 9 groups (5 same-cat, 4 cross-cat), removed 6 same-cat dupes, saved ~5MB, 243→237 files. Coverage still 100%. (07-03)
 
+### 本轮改進 (done)
+- [x] Add perceptual hash (pHash) near-duplicate detection to `memes dedup` — `--phash` flag uses Python imagehash library to compute perceptual hashes for all 237 meme files, groups visually similar images by hamming distance (default threshold ≤10, configurable via `--threshold N`). Same-category near-dupes → auto-removable with `--fix` (reuses exact-dedup's tags.json + tracker merge logic). Cross-category near-dupes reported but preserved. Handles GIF first-frame extraction, broken file graceful fallback. Display script uses heredoc to avoid Python 3.12 f-string `\"` quoting issue in bash single-quoted strings. Found: 22 groups (12 same-cat removable, ~6.8MB savings). (07-04)
+
 ### 本轮改進 (next)
-- [ ] Add perceptual hash (pHash) near-duplicate detection to `memes dedup` — find visually similar but not byte-identical files
+- [ ] Audit cross-category pHash duplicates — 10 groups of visually identical files across different categories need semantic review; consolidate where the same GIF is used with a different name but same meaning
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
