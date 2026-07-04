@@ -250,40 +250,40 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-04: [gradient] "PR #190 六轮 review: 每轮修复引入新 bug, 初始实现没想清楚所有失败模式, 非阻塞建议拖 6 轮" → [行为改变] 先列出所有失败模式(stale side-effects/state cleanup/concurrency/shutdown)再写代码; 非阻塞建议当轮做不拖; 推之前用 reviewer 视角自审. (pattern: shallow-initial-implementation, 第1次) (Source: luna) → **retracted 2026-07-04** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 做 resilience/safety 改动时
 
-- 2026-06-05: [gradient] "Most 'hybrid AI' tools are really 'well-engineered prompt pipelines' — rules/checklists are the moat, not the model" → [行为改变] Decompose into: what's deterministic (usually prompt construction) vs what's LLM (usually execution). Value curated domain rules over commodity LLM features. (pattern: hybrid-decomposition, 第1次) (Source: study)
+- 2026-06-05: [gradient] "Most 'hybrid AI' tools are really 'well-engineered prompt pipelines' — rules/checklists are the moat, not the model" → [行为改变] Decompose into: what's deterministic (usually prompt construction) vs what's LLM (usually execution). Value curated domain rules over commodity LLM features. (pattern: hybrid-decomposition, 第1次) (Source: study) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Evaluating any tool claiming 'hybrid deterministic + LLM' architecture
 
-- 2026-06-05: [gradient] "When unapplied.md is fully checked off, apply rounds should source from recent scout findings and self-evolving-observations.md rather than expecting a pre-built queue. Scout rounds should actively tag new insights as apply candidates in wiki notes." → [行为改变] Source from today's memory scout entries and self-evolving-observations.md for apply candidates. (pattern: unapplied-backlog-exhaustion, 第1次) (Source: study)
+- 2026-06-05: [gradient] "When unapplied.md is fully checked off, apply rounds should source from recent scout findings and self-evolving-observations.md rather than expecting a pre-built queue. Scout rounds should actively tag new insights as apply candidates in wiki notes." → [行为改变] Source from today's memory scout entries and self-evolving-observations.md for apply candidates. (pattern: unapplied-backlog-exhaustion, 第1次) (Source: study) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: unapplied.md all items checked, apply mode has no obvious target
 
 - 2026-06-05: [gradient] "Dogfood upgrade pipeline has a 2-day gap between checklist creation and actual upgrade. The blocker is 'waiting for Luna to approve upgrade' but she's been prompted twice. Need to either self-upgrade (npm update) or create a specific actionable ping with the exact command." → [行为改变] After creating adoption checklist, immediately attempt upgrade if safe (npm update openclaw in gateway dir), don't wait for explicit approval for minor versions. (pattern: dogfood-adoption, 第2次 — graduated 2026-06-19 (target: DNA — AGENTS.md "自己的工具必须用" section + tools/workflow-guard.sh))
   - **Trigger**: When adoption checklist is complete but upgrade hasn't happened
 
-- 2026-06-05: [gradient] "Multi-subagent yield lost last completion event, stayed stuck until user asked" → [行为改变] After yielding for multiple subagents, schedule a cron wake-back (5min) as fallback to check subagent status in case completion events are lost. (pattern: yield-fallback-timer, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "Multi-subagent yield lost last completion event, stayed stuck until user asked" → [行为改变] After yielding for multiple subagents, schedule a cron wake-back (5min) as fallback to check subagent status in case completion events are lost. (pattern: yield-fallback-timer, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Spawning 3+ subagents and yielding for all completions
 
-- 2026-06-05: [gradient] "Repos with 3+ consecutive star declines should be auto-flagged as drop candidates by tracking-health.sh" → [行为改变] Add consecutive-decline detection to tracking-health.sh auto-drop candidates. (pattern: consecutive-star-decline-auto-drop, 第1次) (Source: study)
+- 2026-06-05: [gradient] "Repos with 3+ consecutive star declines should be auto-flagged as drop candidates by tracking-health.sh" → [行为改变] Add consecutive-decline detection to tracking-health.sh auto-drop candidates. (pattern: consecutive-star-decline-auto-drop, 第1次) (Source: study) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: followup shows stars declining for 3rd time
 
-- 2026-06-05: [gradient] "手动SSH部署覆盖CI版本" → [行为改变] 用CI自动部署,不手动SSH操作. (pattern: use-ci-cd, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "手动SSH部署覆盖CI版本" → [行为改变] 用CI自动部署,不手动SSH操作. (pattern: use-ci-cd, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 项目有CI/CD pipeline时
 
-- 2026-06-05: [gradient] "项目文档放私人wiki而非项目repo" → [行为改变] 放项目repo的README/CONTRIBUTING/docs,wiki只放跨项目知识. (pattern: docs-in-repo, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "项目文档放私人wiki而非项目repo" → [行为改变] 放项目repo的README/CONTRIBUTING/docs,wiki只放跨项目知识. (pattern: docs-in-repo, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 写项目专属文档时
 
-- 2026-06-05: [gradient] "When all tracked repos have saturated competition and large repos fail the 500MB gate, the round becomes unproductive. Need to either: (1) maintain a pipeline of pre-vetted small repos (<500MB) with merge history, or (2) override the 500MB gate when a local clone already exists." → [行为改变] Pre-build a repo pipeline during low-activity hours (heartbeat). When stuck on find_work 3rd time, skip to reflect instead of burning more time searching.. (pattern: issue-finding-saturation, 第1次) (Source: workloop)
+- 2026-06-05: [gradient] "When all tracked repos have saturated competition and large repos fail the 500MB gate, the round becomes unproductive. Need to either: (1) maintain a pipeline of pre-vetted small repos (<500MB) with merge history, or (2) override the 500MB gate when a local clone already exists." → [行为改变] Pre-build a repo pipeline during low-activity hours (heartbeat). When stuck on find_work 3rd time, skip to reflect instead of burning more time searching.. (pattern: issue-finding-saturation, 第1次) (Source: workloop) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: When find_work loops 3+ times without selecting an issue
 
 - 2026-06-05: [gradient] "HN scouting: use Algolia API directly instead of web_search — structured, reliable, no auth needed" → [行为改变] Use hn.algolia.com/api/v1/search with query params instead of web_search tool. (pattern: hn-algolia-direct, 第1次 — graduated 2026-06-19 (target: KB — wiki/cards/hn-algolia-api.md))
   - **Trigger**: need to search HN for recent stories
 
-- 2026-06-05: [gradient] "本地验证只跑build+test+tsc，没覆盖CI的esbuild bundle步骤，导致deploy挂了才发现import缺失" → [行为改变] 本地验证必须覆盖CI所有步骤，包括esbuild bundle check. (pattern: verify-all-ci-steps, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "本地验证只跑build+test+tsc，没覆盖CI的esbuild bundle步骤，导致deploy挂了才发现import缺失" → [行为改变] 本地验证必须覆盖CI所有步骤，包括esbuild bundle check. (pattern: verify-all-ci-steps, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 提交代码前
 
-- 2026-06-05: [gradient] "staging脏数据不要自动清理掩盖，直接删DB重来" → [行为改变] staging是开发环境，数据不重要，直接删DB重建而不是引入自动清理逻辑掩盖问题. (pattern: staging-clean-slate, 第1次) (Source: luna)
+- 2026-06-05: [gradient] "staging脏数据不要自动清理掩盖，直接删DB重来" → [行为改变] staging是开发环境，数据不重要，直接删DB重建而不是引入自动清理逻辑掩盖问题. (pattern: staging-clean-slate, 第1次) (Source: luna) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: staging数据库有问题时
 
-- 2026-06-05: [gradient] "guild ID硬编码问题先加了resolveId('cove')临时workaround而不是正确修客户端" → [行为改变] 直接做正确的方案,不加临时alias/workaround进代码. (pattern: no-workaround-in-code, 第1次) (Source: luna)
+- 2026-06-05: [gradient] "guild ID硬编码问题先加了resolveId('cove')临时workaround而不是正确修客户端" → [行为改变] 直接做正确的方案,不加临时alias/workaround进代码. (pattern: no-workaround-in-code, 第1次) (Source: luna) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 遇到需要快速修的兼容性问题时
 
 ### prioritize-by-reference-alignment
@@ -292,7 +292,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **Source**: nudge 2026-06-05
 - **Count**: 1
 
-- 2026-06-05: [gradient] "UI对齐问题先用手动像素计算临时修复,想说开issue以后再做对" → [行为改变] 直接用正确方案(如CSS Grid),不做临时修复再说以后重构. (pattern: do-it-right-first-time, 第1次) (Source: luna)
+- 2026-06-05: [gradient] "UI对齐问题先用手动像素计算临时修复,想说开issue以后再做对" → [行为改变] 直接用正确方案(如CSS Grid),不做临时修复再说以后重构. (pattern: do-it-right-first-time, 第1次) (Source: luna) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 遇到需要正确做法但想先凑合的时候
 
 ### review-alignment-check
@@ -301,10 +301,10 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **Source**: nudge 2026-06-05
 - **Count**: 1
 
-- 2026-06-05: [gradient] "PR#222移除opcode4后没验证typing indicator是否还能用,Luna发现时才知道坏了" → [行为改变] 重构后列出所有受影响的功能路径,逐一手动验证,不只跑测试. (pattern: verify-side-effects, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "PR#222移除opcode4后没验证typing indicator是否还能用,Luna发现时才知道坏了" → [行为改变] 重构后列出所有受影响的功能路径,逐一手动验证,不只跑测试. (pattern: verify-side-effects, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 重构/移除功能时
 
-- 2026-06-05: [gradient] "PR#222改了服务端协议(移除opcode4)但没重新编译plugin编译产物,plugin运行的是旧代码继续用op:4发typing,导致typing静默失败" → [行为改变] 同步重新编译所有依赖方(plugin/client)的编译产物,确认extensions/dist/目录是最新的. (pattern: recompile-all-artifacts, 第1次) (Source: nudge)
+- 2026-06-05: [gradient] "PR#222改了服务端协议(移除opcode4)但没重新编译plugin编译产物,plugin运行的是旧代码继续用op:4发typing,导致typing静默失败" → [行为改变] 同步重新编译所有依赖方(plugin/client)的编译产物,确认extensions/dist/目录是最新的. (pattern: recompile-all-artifacts, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 改了服务端协议/API时
 
 - 2026-06-06: [gradient] "手动scp部署Cove staging绕过了CI/CD" → [行为改变] 一律走git push+PR让CI/CD自动部署. (pattern: bypass-cicd, 第1次) (Source: nudge)
