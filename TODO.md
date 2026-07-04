@@ -292,10 +292,10 @@
 - [x] Track: nanobot (HKUDS) - 44,642⭐ (06-18→06-24: +0.5%). v0.2.2 released. Maintenance: docs/news, minor webui fixes. No architectural changes. Mature. Revisit 07-01
 - [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
-- [ ] Track: Qwen-AgentWorld (QwenLM) - 568⭐ (06-27, NEW). Language World Model — environment simulator for agent training. 7 domains, MoE 35B/3B, beats GPT-5.4 on AgentWorldBench. Deep read done. Revisit 07-04
-- [ ] Track: AgentSpace (HKUDS) - 453⭐ (06-27, NEW). Agent-native team workspace — "digital employees" with roles, permissions, audit. From nanobot team. Revisit 07-04
+- [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
+- [ ] Track: AgentSpace (HKUDS) - 606⭐ (07-04 followup, +34%). Feishu integration merged, Slack planned, persona-card export issue. Growing multi-platform workspace. Revisit 07-11
 - [ ] Track: Godcoder (eli-labz) - 245⭐ (06-29, NEW). Self-optimizing agent harness — route-log-recall-optimize loop, quantitative success_rate per approach. Rust + Tauri. Solo dev. Revisit 07-13
-- [ ] Track: dirac (dirac-run) - 1,342⭐ (06-27). Active maintenance (test fixes, telemetry cleanup). 15 open issues. Steady +2%. Revisit 07-04
+- [ ] Track: dirac (dirac-run) - 1,360⭐ (07-04 followup, +1.3%). Maintenance: v0.4.12-13, Sonnet 5 support. Stable, no architectural change. Revisit 07-18
 - [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
 - [ ] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01, NEW). Self-scaffolding RL for agentic coding. 9B/35B-MoE/397B-MoE on Gemma4+Qwen3.5. MIT. Jointly optimizes scaffold + solution via RL. HOT. Revisit 07-08
 - [ ] Track: ctx (ctxrs/ctx) - 219⭐ (07-03, NEW). Local agent history search CLI. Indexes 14+ provider session histories into SQLite, FTS search, MCP server. Rust, Apache-2.0. OpenClaw supported. Deep read done. Revisit 07-10
@@ -310,9 +310,9 @@
 - [ ] Track: agenticow (ruvnet) - 36⭐ (07-02, NEW). CoW vector branching for agent memory. O(1) branch creation, Git-like diff/promote. Novel primitive. Solo dev (MetaHarness author). Revisit 07-12
 - [ ] Track: synapse (ardhaecosystem) - 67⭐ (07-02, NEW). Temporal knowledge graph memory. FalkorDB + Graphiti, hippocampus-layer management. Revisit 07-09
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
-- [ ] Track: Plaer1/junction - 648⭐ (06-27, +26%). Modular bridge prep. Pace slow. Revisit 07-04
+- [x] Track: Plaer1/junction - 642⭐ (07-04 followup, +25%). 20 locales, context bleed fix, queue display. Healthy growth. Revisit 07-18
 - [ ] Track: shreyashankar/error-discovery-skill - 73⭐ (06-27, NEW). Systematic error analysis methodology for LLM traces. Agent builds custom review UI, clusters for diverse sampling, breadth↔depth review with subagent scanning. Pure methodology (SKILL.md), no code. Credible author (Berkeley PhD). Revisit 07-07
-- [ ] Track: Forsy-AI/agent-apprenticeship - 974⭐ (06-27, +236% viral). README-only updates, 0 code since 06-20. Revisit 07-04
+- [ ] Track: Forsy-AI/agent-apprenticeship - 1,189⭐ (07-04 followup, +22%). v0.2 released! Experience Compiler, multi-harness support (OpenClaw!), RL training pipelines. **Worth deep read.** Revisit 07-11
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
 - [ ] Track: NotASithLord/peerd - 274⭐ (07-02, +94%). Runtime refactor (web actor direct), remote Ollama, AgentOS feasibility (85% runtime/20% fleet). 4 PR authors, 53 ext PRs/30d. THRIVING 6/6. HOT. Revisit 07-05
 - [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10
@@ -730,7 +730,7 @@
 - CI fix was completed but PR closed before merge
 - **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
 - [x] Track: agentic-sop-to-work (s0912758806p) - 193⭐ (06-15→06-29: +8%). v1.9.0, six-rung-ladder skill. Solo dev, NASCENT community (0 ext PRs, 0 issues). All patterns extracted. **Downgraded to monthly.** Revisit 07-29
-- [ ] Track: Paca (Paca-AI/paca) - 1,394⭐ (06-15→06-29: +66%). v0.6.0-0.6.2: Caddy migration, DB backup, webhook plugin (Valkey Stream events), task reordering. Healthy community (17 issue authors, 12 ext PRs). HOT. Revisit 07-04
+- [ ] Track: Paca (Paca-AI/paca) - 1,516⭐ (07-04 followup, +9%). v0.8.0: agent executor refactor, secret env vars per agent. Maturing fast. Revisit 07-11
 - [x] Track: Superlog (superloglabs/superlog) - 826⭐ (06-16, NEW). Agentic telemetry: OTLP ingest → incident fingerprinting → AI investigation → fix PRs. YC P26, Apache-2.0. "Talk to investigation" (resumable runs). Deep read done. Revisit 06-23
 - Wiki health (06-23): 974 files, 53 orphans (5%), 0 broken links, 0 collisions ✔
 - 13 wiki files edited today (active dogfood usage confirmed)
