@@ -769,3 +769,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-04: [gradient] "Saturation gate reports apply as 'open (backlog empty)' which wastes a full mode cycle discovering the backlog is empty" → [行为改变] Treat 'open but backlog empty' as effectively saturated — skip apply mode or enhance gate to check backlog non-emptiness. (pattern: study-saturation-apply-empty-misleading, 第1次) (Source: study)
   - **Trigger**: Saturation gate shows apply open but unapplied.md has all items checked
+
+- 2026-07-04: [gradient] "Claude Code --print mode reliability varies by task complexity. Simple 3-file surgical fixes work well (~2 min). Previous failures were on larger/more complex tasks. Correlate task scope with CC reliability expectations." → [行为改变] Use CC --print for surgical fixes (< 5 files, clear instructions). Fall back to manual for complex multi-file refactors or tasks needing iteration.. (pattern: claude-code-print-reliability, 第1次) (Source: workloop)
+  - **Trigger**: deciding whether to use CC --print vs manual implementation
