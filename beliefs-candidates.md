@@ -772,3 +772,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-04: [gradient] "Claude Code --print mode reliability varies by task complexity. Simple 3-file surgical fixes work well (~2 min). Previous failures were on larger/more complex tasks. Correlate task scope with CC reliability expectations." → [行为改变] Use CC --print for surgical fixes (< 5 files, clear instructions). Fall back to manual for complex multi-file refactors or tasks needing iteration.. (pattern: claude-code-print-reliability, 第1次) (Source: workloop)
   - **Trigger**: deciding whether to use CC --print vs manual implementation
+
+- 2026-07-04: [gradient] "Meta/Facebook repos require CLA signing before any PR can merge. Check CLA requirements during study phase for new repos, not after PR submission." → [行为改变] Add CLA check to study node for repos owned by facebook/ or meta/ orgs. (pattern: cla-prereq-check, 第1次) (Source: workloop)
+  - **Trigger**: First PR to any Meta/Facebook open source repo
