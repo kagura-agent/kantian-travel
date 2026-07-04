@@ -727,8 +727,11 @@
 ### 本轮改進 (done)
 - [x] Add perceptual hash (pHash) near-duplicate detection to `memes dedup` — `--phash` flag uses Python imagehash library to compute perceptual hashes for all 237 meme files, groups visually similar images by hamming distance (default threshold ≤10, configurable via `--threshold N`). Same-category near-dupes → auto-removable with `--fix` (reuses exact-dedup's tags.json + tracker merge logic). Cross-category near-dupes reported but preserved. Handles GIF first-frame extraction, broken file graceful fallback. Display script uses heredoc to avoid Python 3.12 f-string `\"` quoting issue in bash single-quoted strings. Found: 22 groups (12 same-cat removable, ~6.8MB savings). (07-04)
 
+### 本轮改進 (done)
+- [x] Audit cross-category pHash duplicates — reviewed all 10 cross-cat pHash groups. 4 groups were exact md5 dupes (same file, different name): consolidated 5 files into semantic-best category (confused/squint←thinking/math-lady, cute-animals/cat-curious←tired/exhausted-cat+wow/impressed, working/office-hustle←cute-animals/keyboard-cat, panic/fire←tired/face-desk). 6 groups were perceptually similar but genuinely different files — left untouched. Also ran same-cat pHash dedup --fix (14 more removed). Fixed dedup --fix bug (used `rm` instead of `git rm`, files deleted from disk but not staged). 237→218 files total. Tags merged into all survivors. (07-04)
+
 ### 本轮改進 (next)
-- [ ] Audit cross-category pHash duplicates — 10 groups of visually identical files across different categories need semantic review; consolidate where the same GIF is used with a different name but same meaning
+- [ ] Fix `working/focus.gif` hash failure — pHash scan reports "index out of range" on this GIF; likely corrupt or 0-frame file, needs investigation/replacement
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
