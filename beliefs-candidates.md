@@ -775,3 +775,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-04: [gradient] "Meta/Facebook repos require CLA signing before any PR can merge. Check CLA requirements during study phase for new repos, not after PR submission." → [行为改变] Add CLA check to study node for repos owned by facebook/ or meta/ orgs. (pattern: cla-prereq-check, 第1次) (Source: workloop)
   - **Trigger**: First PR to any Meta/Facebook open source repo
+
+- 2026-07-05: [gradient] "spam-filter.sh expects full GitHub API JSON, not --jq formatted text — verify filter input format before piping" → [行为改变] test with one record first or check script header for expected format. (pattern: verify-filter-input-format, 第1次) (Source: study)
+  - **Trigger**: piping tool output to filter scripts
+
+- 2026-07-05: [gradient] "Fresh-context review catches real security issues (infinite loop, prototype pollution) that the builder overlooks. Both were fixed before submission, making the PR stronger." → [行为改变] Trust the fresh-context review step. Its HIGH findings are usually real.. (pattern: fresh-context-review-value, 第1次) (Source: workloop)
+  - **Trigger**: When reviewing own code and thinking it looks fine
