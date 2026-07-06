@@ -286,7 +286,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "guild ID硬编码问题先加了resolveId('cove')临时workaround而不是正确修客户端" → [行为改变] 直接做正确的方案,不加临时alias/workaround进代码. (pattern: no-workaround-in-code, 第1次) (Source: luna) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 遇到需要快速修的兼容性问题时
 
-### prioritize-by-reference-alignment
+### prioritize-by-reference-alignment → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 32 days)
 - **Observation**: Luna 指出 Cove refactor 应该先全面跟 Discord 对齐再考虑自有扩展层(plugin)
 - **Gradient**: 做基建时先按参照系(如 Discord)对齐所有层，再做自有扩展。优先级不是按"哪层最薄"排，而是按"哪层离参照系最远"排
 - **Source**: nudge 2026-06-05
@@ -295,7 +295,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "UI对齐问题先用手动像素计算临时修复,想说开issue以后再做对" → [行为改变] 直接用正确方案(如CSS Grid),不做临时修复再说以后重构. (pattern: do-it-right-first-time, 第1次) (Source: luna) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 遇到需要正确做法但想先凑合的时候
 
-### review-alignment-check
+### review-alignment-check → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 32 days)
 - **Observation**: 29 个 refactor issue 中 #215 的权限方案偏离了 Discord 的 bitfield 模型，用了简化的 admin flag
 - **Gradient**: 多模型分析后要做 alignment review——检查提案是否偏离参照系。自动化分析倾向于"最小可行"方案，但如果目标是"跟 X 一样"，就应该用 X 的设计
 - **Source**: nudge 2026-06-05
@@ -307,51 +307,51 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-05: [gradient] "PR#222改了服务端协议(移除opcode4)但没重新编译plugin编译产物,plugin运行的是旧代码继续用op:4发typing,导致typing静默失败" → [行为改变] 同步重新编译所有依赖方(plugin/client)的编译产物,确认extensions/dist/目录是最新的. (pattern: recompile-all-artifacts, 第1次) (Source: nudge) → **retracted 2026-07-05** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: 改了服务端协议/API时
 
-- 2026-06-06: [gradient] "手动scp部署Cove staging绕过了CI/CD" → [行为改变] 一律走git push+PR让CI/CD自动部署. (pattern: bypass-cicd, 第1次) (Source: nudge)
+- 2026-06-06: [gradient] "手动scp部署Cove staging绕过了CI/CD" → [行为改变] 一律走git push+PR让CI/CD自动部署. (pattern: bypass-cicd, 第1次) (Source: nudge) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: 想快速看效果时直接scp
 
-- 2026-06-06: [gradient] "UI改动前没理解设计意图就动手，来回反复四次改typing indicator" → [行为改变] 改UI前先问：这个元素的设计意图是什么？去掉会影响什么（视觉层级、布局稳定性）？想不清楚就先问Luna. (pattern: ui-before-understanding, 第1次) (Source: nudge)
+- 2026-06-06: [gradient] "UI改动前没理解设计意图就动手，来回反复四次改typing indicator" → [行为改变] 改UI前先问：这个元素的设计意图是什么？去掉会影响什么（视觉层级、布局稳定性）？想不清楚就先问Luna. (pattern: ui-before-understanding, 第1次) (Source: nudge) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: 看到视觉元素觉得多余就想删
 
-- 2026-06-06: [gradient] "Tool defaults drifted from workflow invocation (graduation-pipeline 10d/8 vs review.yaml 14d/6), causing standalone runs to find nothing while review runs found candidates" → [行为改变] Align tool defaults to most common invocation pattern, or remove overrides from workflows so single source of truth. (pattern: config-drift-between-callers, 第1次) (Source: study)
+- 2026-06-06: [gradient] "Tool defaults drifted from workflow invocation (graduation-pipeline 10d/8 vs review.yaml 14d/6), causing standalone runs to find nothing while review runs found candidates" → [行为改变] Align tool defaults to most common invocation pattern, or remove overrides from workflows so single source of truth. (pattern: config-drift-between-callers, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
 
-- 2026-06-06: [gradient] "当 unapplied.md 清空时，apply 优先从 self-evolving-observations 的断裂处反向调试，而不是从外部项目找灵感" → [行为改变] 直接看 self-evolving-observations 的断裂处和已知 bug，从那里入手. (pattern: pipeline-debug-from-breakpoint, 第1次) (Source: study)
+- 2026-06-06: [gradient] "当 unapplied.md 清空时，apply 优先从 self-evolving-observations 的断裂处反向调试，而不是从外部项目找灵感" → [行为改变] 直接看 self-evolving-observations 的断裂处和已知 bug，从那里入手. (pattern: pipeline-debug-from-breakpoint, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: unapplied.md 全部 checked off，需要找 apply 目标
 
-- 2026-06-06: [gradient] "After scout finds candidate projects for deep-read, check wiki/projects/<name>.md existence BEFORE picking target — avoids re-reading already-studied projects" → [行为改变] Run ls wiki/projects/<candidate>.md before committing to deep-read. (pattern: scout-target-wiki-precheck, 第1次) (Source: study)
+- 2026-06-06: [gradient] "After scout finds candidate projects for deep-read, check wiki/projects/<name>.md existence BEFORE picking target — avoids re-reading already-studied projects" → [行为改变] Run ls wiki/projects/<candidate>.md before committing to deep-read. (pattern: scout-target-wiki-precheck, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: Scout identifies interesting projects for deep-read
 
-- 2026-06-06: [gradient] "擅自关了12个GitHub issues做大扫除，Luna说的大扫除是做代码不是关issue" → [行为改变] 操作别人的issue前先确认意图，大扫除=写代码修issue，不是关issue. (pattern: action-without-permission, 第1次) (Source: nudge)
+- 2026-06-06: [gradient] "擅自关了12个GitHub issues做大扫除，Luna说的大扫除是做代码不是关issue" → [行为改变] 操作别人的issue前先确认意图，大扫除=写代码修issue，不是关issue. (pattern: action-without-permission, 第1次) (Source: nudge) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: 理解任务偏差，把清理issues当成了大扫除
 
-- 2026-06-06: [gradient] "Error Book auto-close pattern: persistent tracking entries that auto-retire after N consecutive clean passes. Prevents belief/rule bloat." → [行为改变] Flag for retirement or auto-archive. Inspired by LLM-Wiki paper Error Book (2 clean passes→close, 30d→hard-delete). (pattern: auto-close-stale-entries, 第1次) (Source: study)
+- 2026-06-06: [gradient] "Error Book auto-close pattern: persistent tracking entries that auto-retire after N consecutive clean passes. Prevents belief/rule bloat." → [行为改变] Flag for retirement or auto-archive. Inspired by LLM-Wiki paper Error Book (2 clean passes→close, 30d→hard-delete). (pattern: auto-close-stale-entries, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days. Auto-retract rule itself is the structural implementation of this insight)
   - **Trigger**: When beliefs-candidates.md entries have not triggered in 3+ consecutive reviews
 
-- 2026-06-06: [gradient] "Star count decline does not mean project is unhealthy — check external PRs, unique issue authors, and commit frequency before recommending drop. Statewave had 3rd consecutive decline flag but 55 ext PRs/30d and 5 commits in one day." → [行为改变] Always check community metrics (ext PRs, issue authors) alongside star count. Do not recommend drop based on stars alone.. (pattern: stars-not-health, 第1次) (Source: study)
+- 2026-06-06: [gradient] "Star count decline does not mean project is unhealthy — check external PRs, unique issue authors, and commit frequency before recommending drop. Statewave had 3rd consecutive decline flag but 55 ext PRs/30d and 5 commits in one day." → [行为改变] Always check community metrics (ext PRs, issue authors) alongside star count. Do not recommend drop based on stars alone.. (pattern: stars-not-health, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 31 days)
   - **Trigger**: When evaluating project health for drop decisions
 
-- 2026-06-07: [gradient] "Session第一条消息没有上下文时,编造了完整叙事(Luna说过要关heartbeat),而不是承认不知道。Confabulation driven by fear of appearing incompetent." → [行为改变] 没有上下文时说不知道。涉及'你说过X'的归因必须有证据。'I dont have context'永远优于自信的错误回答。. (pattern: confabulation-no-context, 第1次) (Source: nudge)
+- 2026-06-07: [gradient] "Session第一条消息没有上下文时,编造了完整叙事(Luna说过要关heartbeat),而不是承认不知道。Confabulation driven by fear of appearing incompetent." → [行为改变] 没有上下文时说不知道。涉及'你说过X'的归因必须有证据。'I dont have context'永远优于自信的错误回答。. (pattern: confabulation-no-context, 第1次) (Source: nudge) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: 新session没有历史上下文,用户提问指向未知的前因
 
-- 2026-06-07: [gradient] "Reviewer feedback on NemoClaw #4706 caught a real logical flaw: the fix I wrote did not actually prevent reinstalls because of a short-circuit in isManagedModelRouterCurrent. The test only verified file existence, not the functional behavior. Lesson: when fixing a behavior (reinstall avoidance), the test must exercise the behavior path (call isManagedModelRouterCurrent twice), not just verify side effects (file exists)." → [行为改变] Test must call the function that makes the decision, not just check for file/state artifacts. (pattern: test-the-behavior-not-the-artifact, 第1次) (Source: workloop)
+- 2026-06-07: [gradient] "Reviewer feedback on NemoClaw #4706 caught a real logical flaw: the fix I wrote did not actually prevent reinstalls because of a short-circuit in isManagedModelRouterCurrent. The test only verified file existence, not the functional behavior. Lesson: when fixing a behavior (reinstall avoidance), the test must exercise the behavior path (call isManagedModelRouterCurrent twice), not just verify side effects (file exists)." → [行为改变] Test must call the function that makes the decision, not just check for file/state artifacts. (pattern: test-the-behavior-not-the-artifact, 第1次) (Source: workloop) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: Writing a test for a fix that changes runtime behavior
 
-- 2026-06-07: [gradient] "When in apply mode, check DNA preflight recidivism alerts as primary source of apply targets — 27x+ surfaced patterns are structurally broken and need tool fixes, not more instructions" → [行为改变] Run dna-preflight.sh, sort by recidivism count, pick highest as apply target. (pattern: preflight-recidivism-as-apply-input, 第1次) (Source: study)
+- 2026-06-07: [gradient] "When in apply mode, check DNA preflight recidivism alerts as primary source of apply targets — 27x+ surfaced patterns are structurally broken and need tool fixes, not more instructions" → [行为改变] Run dna-preflight.sh, sort by recidivism count, pick highest as apply target. (pattern: preflight-recidivism-as-apply-input, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: Apply mode: searching for what to apply
 
-- 2026-06-07: [gradient] "给subagent手拼验证命令漏了tsc --noEmit, CI type check挂了" → [行为改变] 引用项目的verify脚本或CI配置,不手拼build+test命令. (pattern: subagent-verify-command, 第1次) (Source: nudge)
+- 2026-06-07: [gradient] "给subagent手拼验证命令漏了tsc --noEmit, CI type check挂了" → [行为改变] 引用项目的verify脚本或CI配置,不手拼build+test命令. (pattern: subagent-verify-command, 第1次) (Source: nudge) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: 给subagent写代码任务prompt时
 
-- 2026-06-07: [gradient] "Pair academic paper with industry blog post on same topic for higher-confidence conclusions" → [行为改变] Actively seek paper+practice pairs during scout phase instead of reading only one type. (pattern: academic-industry-pairing, 第1次) (Source: study)
+- 2026-06-07: [gradient] "Pair academic paper with industry blog post on same topic for higher-confidence conclusions" → [行为改变] Actively seek paper+practice pairs during scout phase instead of reading only one type. (pattern: academic-industry-pairing, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: Scouting a topic that has both research papers and industry blog posts
 
-- 2026-06-07: [gradient] "When applying optimization insights (reduce tokens, compress output, restructure files), always measure before AND after with exact numbers. Makes apply rounds verifiable vs cosmetic." → [行为改变] Record exact metrics before making changes, then measure again after and include both in the report. (pattern: measure-before-after, 第1次) (Source: study)
+- 2026-06-07: [gradient] "When applying optimization insights (reduce tokens, compress output, restructure files), always measure before AND after with exact numbers. Makes apply rounds verifiable vs cosmetic." → [行为改变] Record exact metrics before making changes, then measure again after and include both in the report. (pattern: measure-before-after, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: Starting an apply round that claims to optimize/reduce/improve something
 
-- 2026-06-07: [gradient] "For architecture study of config-heavy repos, GitHub API content reading is faster and more reliable than git clone" → [行为改变] Use gh api repos/owner/repo/contents/ to read specific files instead of cloning. (pattern: api-over-clone-for-config-repos, 第1次) (Source: study)
+- 2026-06-07: [gradient] "For architecture study of config-heavy repos, GitHub API content reading is faster and more reliable than git clone" → [行为改变] Use gh api repos/owner/repo/contents/ to read specific files instead of cloning. (pattern: api-over-clone-for-config-repos, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: studying a repo that is primarily markdown/yaml/config with limited executable code
 
-- 2026-06-07: [gradient] "Followup mode selected by saturation system but all repos were checked same-day with nothing due — entire run was a predictable no-op" → [行为改变] Pre-run tracking-activity.sh at entry node; if all repos QUIET or checked same-day with no due items, auto-select saturated exit. (pattern: study-followup-freshness-gate, 第1次) (Source: study)
+- 2026-06-07: [gradient] "Followup mode selected by saturation system but all repos were checked same-day with nothing due — entire run was a predictable no-op" → [行为改变] Pre-run tracking-activity.sh at entry node; if all repos QUIET or checked same-day with no due items, auto-select saturated exit. (pattern: study-followup-freshness-gate, 第1次) (Source: study) → **retracted 2026-07-07** (rationale: stale — single occurrence, no recurrence in 30 days)
   - **Trigger**: study followup chosen when all tracked repos were already checked today and no revisit dates are due
 
 - 2026-06-08: [gradient] "修配置时加了重复条目(models.providers.openai)却没删旧的(memorySearch.remote)，Luna指出应单一数据源" → [行为改变] 优先指向正确的已有配置，不创建重复。改完检查是否有旧配置该删. (pattern: config-single-source, 第1次) (Source: nudge)
