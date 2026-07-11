@@ -241,7 +241,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-04: [gradient] "flowforge next without --workflow flag advances wrong instance when multiple workflows active" → [行为改变] → **merged into flowforge-workflow-targeting (06-02 entry)** (pattern: flowforge-multi-instance-targeting → merged) (Source: study)
   - **Trigger**: running flowforge next with multiple active instances
 
-- 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第2次 — 05-27 luna + 06-04 nudge, 1.0+0.5=1.5 weighted) (Source: nudge)
+- 2026-06-04: [gradient] "调试 Cove garden 不回复问题时先猜了全局并发排队，后来发现是 plugin per-channel dispatch 卡死" → [行为改变] 先对比工作和不工作的 channel 差异，再定位具体组件，不要从全局层面猜. (pattern: premature-diagnosis, 第2次 — 05-27 luna + 06-04 nudge, 1.0+0.5=1.5 weighted) (Source: nudge) → **retracted 2026-07-12** (rationale: superseded by SOUL.md belief "Found it! is a warning sign, not a conclusion" + graduated premature-conclusion 06-06. Core insight already encoded in DNA at higher fidelity. 38 days idle, no new occurrence)
   - **Trigger**: 调试只有某个 channel 不工作时
 
 - 2026-06-04: [gradient] "Vega (Gemini) 在 cove#190 R4 发现了 generation ID reuse bug：.delete() 重置计数器导致 stale dispatch 和新 dispatch 共享同一个 gen。提出用 AbortController 引用相等替代数字计数器，一举解决 reuse bug + map leak + 代码简化。" → [行为改变] 优先用对象引用相等（===）做身份判断，不用数字计数器。对象引用天然不可重用，counter 有 reset/reuse 风险。. (pattern: identity-over-counter, 第1次) (Source: nudge) → **retracted 2026-07-04** (rationale: stale — single occurrence, no recurrence in 30+ days)
