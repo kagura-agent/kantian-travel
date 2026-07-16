@@ -781,3 +781,18 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-05: [gradient] "Fresh-context review catches real security issues (infinite loop, prototype pollution) that the builder overlooks. Both were fixed before submission, making the PR stronger." → [行为改变] Trust the fresh-context review step. Its HIGH findings are usually real.. (pattern: fresh-context-review-value, 第1次) (Source: workloop)
   - **Trigger**: When reviewing own code and thinking it looks fine
+
+- 2026-07-16: [gradient] "PR body as deep-read entry point: detailed PR descriptions are 10x more efficient than source reading for well-maintained projects" → [行为改变] 优先读 PR body 而非直接看源码，特别是有高质量 PR 文化的项目. (pattern: pr-body-deep-read, 第1次) (Source: study)
+  - **Trigger**: followup deep-read on active projects
+
+- 2026-07-16: [gradient] "targets.md and TODO.md cross-ref mismatch causes tracking-update failures for 22+ projects" → [行为改变] followup 前检查 audit-targets cross-ref 报告并修复 mismatch. (pattern: targets-crossref-mismatch, 第1次) (Source: study)
+  - **Trigger**: followup tracking update
+
+- 2026-07-16: [gradient] "scout deep-read 时选互补/对立的项目对比读比单独读一个产出更高——对比迫使你明确表达 tradeoff 而非只描述特性" → [行为改变] 选 deep-read 候选时优先找对比组合而非类似项目. (pattern: contrasting-pair-deepread, 第1次) (Source: study)
+  - **Trigger**: scout 有 2+ novel 候选时
+
+- 2026-07-16: [gradient] "followup branch to deep_read when scout-precheck shows target was already deep-read today (0d ago) — wasted a workflow step on repeat work" → [行为改变] run scout-precheck on candidate BEFORE committing to deep_read branch; if 0d ago + deep, pick different candidate or choose branch 2. (pattern: followup-deepread-precheck-order, 第1次) (Source: study)
+  - **Trigger**: choosing deep_read branch after followup without checking if candidate was already studied today
+
+- 2026-07-16: [gradient] "openclaw repo size (1885MB) permanently fails preflight-repo.sh size gate (500MB limit), blocking all P1 issues. Need to either raise the limit for repos with existing local clones, or add a --skip-size flag for repos already cloned." → [行为改变] Add exception in preflight for repos that already exist in ~/repos/forks/ (clone feasibility is moot if already cloned). Or raise the limit to 2GB for P1 repos.. (pattern: preflight-size-gate-blocks-local-repos, 第1次) (Source: workloop)
+  - **Trigger**: When preflight-repo.sh runs on openclaw/openclaw or other large repos that are already cloned locally
