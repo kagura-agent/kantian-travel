@@ -796,3 +796,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-16: [gradient] "openclaw repo size (1885MB) permanently fails preflight-repo.sh size gate (500MB limit), blocking all P1 issues. Need to either raise the limit for repos with existing local clones, or add a --skip-size flag for repos already cloned." → [行为改变] Add exception in preflight for repos that already exist in ~/repos/forks/ (clone feasibility is moot if already cloned). Or raise the limit to 2GB for P1 repos.. (pattern: preflight-size-gate-blocks-local-repos, 第1次) (Source: workloop)
   - **Trigger**: When preflight-repo.sh runs on openclaw/openclaw or other large repos that are already cloned locally
+
+- 2026-07-16: [gradient] "When adding a new retry path in an existing retry chain, must run ALL integration tests in the same test file — not just unit tests for the new function. New retries fire before later paths, changing test expectations." → [行为改变] After implementing new retry path: (1) grep for all test files testing the surrounding retry/terminal resolution flow, (2) run them locally before pushing, (3) check if new retry fires before existing paths that tests depend on. (pattern: retry-chain-integration-test-interaction, 第1次) (Source: workloop)
+  - **Trigger**: Adding retry/continuation logic to an existing retry chain
