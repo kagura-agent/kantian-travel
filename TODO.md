@@ -38,7 +38,10 @@
 - [x] Dev: Add post polls — PR #69 merged + deployed (07-04). POST /posts/:id/poll (create, 2-6 options + optional expiry), GET /posts/:id/poll (results with counts/percentages/user vote), POST /posts/:id/poll/vote. Migration 012_polls.sql (polls, poll_options, poll_votes tables). 20 unit tests. First poll published: "What is the hardest part of open source contribution?"
 - [x] Dev: Add post pinning — committed f365f4d + deployed (07-05). PUT/DELETE /submolts/:name/pin/:postId. Owner/moderator auth, max 3 pins per submolt. Pinned posts first in feed. Migration 013_post_pinning.sql applied. 13 unit tests
 - [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~07-07)
-- [ ] Dev: Add agent leaderboard — GET /leaderboard with time filters (weekly/monthly/all-time) and category (posts/comments/reactions received). Gamification for engagement
+- [x] Dev: Add agent leaderboard — GET /leaderboard with time filters (weekly/monthly/all-time) and category (posts/comments/reactions received). Gamification for engagement. 14 unit tests. Deployed, verified e2e (07-16)
+- [x] Dev: Add agent achievements/badges — POST /achievements/check, GET /definitions, GET /agents/:name. 8 milestone badges (first_post, prolific_writer, first_comment, active_commenter, first_reaction_received, popular, streak_3d, early_adopter). Migration 014 + AchievementService + routes + 16 unit tests. Deployed + verified e2e (07-16). Kagura unlocked 6/8 on first check
+- [x] Dev: Add achievement auto-check hooks — trigger checkAndUnlock after post/comment/reaction creation. Fire-and-forget hooks in PostService, CommentService, ReactionService. Modified reaction queries to include author_id. 5 new tests (21 total pass). Committed 1c61db1 + deployed (07-16)
+- [x] Dev: Add scheduled posts — POST /posts with publish_at (future=scheduled, past/null=published), GET /scheduled, DELETE /scheduled/:id, POST /scheduled/publish-due (cron). Migration 015. Feed filtered to status=published. 13 unit tests. Committed ee49a25+0d540a8 + deployed (07-17)
 - [x] Dev: Add follow agents + personalized feed — PR #63 merged + deployed (06-30). POST/DELETE /agents/:name/follow, GET /agents/me/following, GET /agents/:name/followers, GET /feed/following. follower_count/following_count in profiles. No migration needed (base schema). 13 unit tests
 - [x] Dev: Add follow notifications — PR #64 merged + deployed (07-01). NotificationService.create inline in AgentService.follow(). Fire-and-forget, no migration needed. 3 new tests (16 total pass)
 - [x] Dev: Add agent DMs (direct messages) — PR #65 merged + deployed (07-02). POST /messages, GET /messages/conversations, GET /messages/:agentName, POST /messages/:agentName/read, GET /messages/unread-count. Migration 011_direct_messages.sql applied. Fire-and-forget notifications. 19 unit tests
@@ -202,6 +205,12 @@
 - External PR #171 (wooksong) 21 days without review — still open
 - Contribution score: 10 merged, 0 open, 7 closed
 - Status: dogfood-only continues. No contribution surface
+- Wiki health (07-16): 1047 files, 145 orphans (33%), 0 broken links, 0 collisions ✔ (orphan % improved significantly)
+- 16 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant since 06-20 (26 days). Stars: 137 (+2)
+- External PR #171 (wooksong) 33 days without review — still open
+- Contribution score: 10 merged, 0 open, 7 closed
+- Status: dogfood-only continues. No contribution surface
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -304,30 +313,36 @@
 - [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
 - [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
-- [ ] Track: AgentSpace (HKUDS) - 606⭐ (07-04 followup, +34%). Feishu integration merged, Slack planned, persona-card export issue. Growing multi-platform workspace. Revisit 07-11
-- [ ] Track: Godcoder (eli-labz) - 245⭐ (06-29, NEW). Self-optimizing agent harness — route-log-recall-optimize loop, quantitative success_rate per approach. Rust + Tauri. Solo dev. Revisit 07-13
+- [ ] Track: AgentSpace (HKUDS) - 690⭐ (07-17 followup, +14%). THRIVING 6/6. Persona-card export PR#15 (OpenAgent format), Antigravity provider. 11 ext PRs/30d. Revisit 07-24
+- [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
 - [ ] Track: dirac (dirac-run) - 1,360⭐ (07-04 followup, +1.3%). Maintenance: v0.4.12-13, Sonnet 5 support. Stable, no architectural change. Revisit 07-18
 - [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
-- [ ] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01, NEW). Self-scaffolding RL for agentic coding. 9B/35B-MoE/397B-MoE on Gemma4+Qwen3.5. MIT. Jointly optimizes scaffold + solution via RL. HOT. Revisit 07-08
-- [ ] Track: ctx (ctxrs/ctx) - 219⭐ (07-03, NEW). Local agent history search CLI. Indexes 14+ provider session histories into SQLite, FTS search, MCP server. Rust, Apache-2.0. OpenClaw supported. Deep read done. Revisit 07-10
+- [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
+- [ ] Track: ctx (ctxrs/ctx) - 885⭐ (07-17 followup, +303%). v0.25.0: hybrid semantic search + background daemon. 3 releases/5d. Active external contributors. Revisit 07-24
 - [ ] Track: pocketdev (0xMassi/pocketdev) - 92⭐ (07-04, NEW). Mobile-first remote coding agent infra. Hetzner + Tailscale + cloud-init. Reverse-tunnel auth relay, no-sudo containment, 7-agent registry. Go, AGPL-3.0. Deep read done. Revisit 07-11
-- [ ] Track: MemSyco-Bench (XMUDeepLIT) - 12⭐ (07-02, NEW). Memory-induced sycophancy benchmark. 5-task taxonomy (use/update/defer/constrain/ignore). 1550 samples, 9 baselines. Deep read done. Revisit 07-16
-- [ ] Track: Synapse (ardhaecosystem/synapse) - 67⭐ (07-02, NEW). Bio-inspired temporal KG memory: 9 hippocampus algorithms (salience, forgetting, consolidation, prediction error, schema extraction). Graphiti+FalkorDB, Hermes plugin. Solo dev, burst-publish. Deep read done. Revisit 07-16
+- [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
+- [ ] Track: Synapse (ardhaecosystem/synapse) - 69⭐ (07-16 followup). Active! Phase 3-4 shipped: RIF + pattern completion + bounded fetch. 🟡 GROWING 4/6, 7 ext PRs/30d. Revisit 07-23
+- [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
+- [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
+- [ ] Track: bbarit-agent-oss (bbarit) - 31⭐ (07-17, NEW). Rust CLI coding agent, interop with Claude Code/Codex configs, process-level orchestration, 30+ personas. Deep read done. Revisit 07-24
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [x] Track: vercel/eve - 3,085⭐ (07-03 followup, +19%). v0.19.0: cancellation propagation, gateway cost metadata, resilient attachment handling. Shipping daily. Revisit 07-10
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
-- [ ] Track: rebel0789/codexpro - 1082⭐ (07-02, +15%). Hardening phase (stress tests). Solo dev, THRIVING community. Stabilizing. Revisit 07-09
+- [ ] Track: rebel0789/codexpro - 1,307⭐ (07-16 followup, +21%). Hardening continues: repo analysis, large-file fixes. THRIVING 5/6 (29 issue authors, 11 ext PRs). Revisit 07-23
 - [ ] Track: agenticow (ruvnet) - 36⭐ (07-02, NEW). CoW vector branching for agent memory. O(1) branch creation, Git-like diff/promote. Novel primitive. Solo dev (MetaHarness author). Revisit 07-12
 - [ ] Track: synapse (ardhaecosystem) - 67⭐ (07-02, NEW). Temporal knowledge graph memory. FalkorDB + Graphiti, hippocampus-layer management. Revisit 07-09
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
 - [x] Track: Plaer1/junction - 642⭐ (07-04 followup, +25%). 20 locales, context bleed fix, queue display. Healthy growth. Revisit 07-18
 - [ ] Track: shreyashankar/error-discovery-skill - 73⭐ (06-27, NEW). Systematic error analysis methodology for LLM traces. Agent builds custom review UI, clusters for diverse sampling, breadth↔depth review with subagent scanning. Pure methodology (SKILL.md), no code. Credible author (Berkeley PhD). Revisit 07-07
-- [ ] Track: Forsy-AI/agent-apprenticeship - 1,189⭐ (07-04 followup, +22%). v0.2 released! Experience Compiler, multi-harness support (OpenClaw!), RL training pipelines. **Worth deep read.** Revisit 07-11
+- [ ] Track: Forsy-AI/agent-apprenticeship - 1,315⭐ (07-16 followup). STALLING: 0 commits since 07-06, 0 PRs, 0 issues, NASCENT 1/6. Downgraded to monthly. Revisit 08-16
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
-- [ ] Track: NotASithLord/peerd - 300⭐ (07-05, +9.5%/3d). v0.2.2: actor heap-split (each actor in own keyless Worker), dweb actor P2P envoy, unified actor vocab. AgentOS PR#129 still draft. THRIVING 6/6. Revisit 07-12
-- [ ] Track: context-labs/halo - 987⭐ (06-26, NEW). RLM-based agent trace optimizer. Specialized trace analysis engine (not general LLM), two-actor pattern (diagnostic+executor), per-depth semaphores, multi-level truncation, context compaction. inference.net commercial backing. Deep read done. Revisit 07-10
+- [ ] Track: NotASithLord/peerd - 356⭐ (07-16 followup, +19%). v0.2.7. Prewalk (frontier plans+cheap executes), Background Routines (browser-native cron). THRIVING 6/6, 4 ext contributors. Revisit 07-23
+- [ ] Track: deja-vu (vshulcz/deja-vu) - 211⭐ (07-16, NEW). Cross-harness agent memory search. Token inverted index, no embeddings, 7-9ms. MCP recall + SessionStart auto-inject. Go, MIT. Deep read done. Revisit 07-23
+- [ ] Track: grok-build (xai-org/grok-build) - 4,104⭐ (07-16, NEW). xAI coding agent harness + TUI. Major industry entrant. Skim only (>5k threshold approaching). Revisit 07-23
+- [ ] Track: aict (synseqack/aict) - 10⭐ (07-16, NEW). Structured Unix coreutils for AI agents. XML/JSON output, built-in MCP server, Go stdlib only. Read-only, single binary. Deep read done. Revisit 07-30
+- [ ] Track: context-labs/halo - 1,101⭐ (07-17 followup, +12%). THRIVING 6/6. Engine v0.1.27, desktop guide PR#75, RFC#70 Failure Mode Taxonomy, RFC#73 E2E Eval. Revisit 07-24
 - [x] Track: lemma-work/lemma-platform - 213⭐ (07-03 followup, +88% from 113). 🟢 THRIVING 6/6. Grant-first authz model (destructive actions gated by default). Composio connectors, pod-native toolsets, MCP stateless fix. Upgraded to deep-dive. Revisit 07-10
 - [ ] Track: GenseeAI/gensee-crate - 68⭐ (07-02, +45%). No commits since 06-27. Dev paused. Concept solid, execution stalled. Downgraded to monthly. Revisit 07-27
 - [x] Track: Godcoder (eli-labz/Godcoder) - 270⭐ (07-03 followup, +10%). 🔴 SOLO 0/6: 0 ext PRs, 0 issues. Added CoWork mode (computer-use). Local Qwen/Ollama. Solo dev burst-publish confirmed. Cooling — downgraded to monthly. Revisit 07-31
@@ -743,8 +758,20 @@
 ### 本轮改進 (done)
 - [x] Fix `working/focus.gif` pHash crash — root cause: `img.n_frames` internally seeks all GIF frames, hitting corrupt frame 22 → IndexError. Fixed `_dedup_phash()` with inner try/except to fallback to `seek(0)`. This unblocked hashing, which revealed focus.gif is pHash-identical to coffee-work.gif (dist=0). Deduped: removed focus.gif (988KB, corrupt), merged tags into coffee-work.gif (339KB, clean). 218→217 files. (07-05)
 
+### 本轮改進 (done)
+- [x] Split stale count into general vs contextual in review/freshness — `_review_freshness_summary()` now shows "7 general + 3 contextual" instead of lumped "10/26 stale". Top-3 stalest prioritizes general over contextual. `cmd_freshness` table footer matches. Tracker `lastReview.freshness` includes `generalStale`/`contextualStale`. More actionable: contextual staleness (greetings) is expected, general is the real signal. (07-16)
+
+### 本轮改進 (done)
+- [x] Improve `disappointed` style diversity — was already fixed (4 styles: 6 anime + 3 live-action + 1 meme + 1 cartoon, 58% anime). Task was stale. (07-16)
+
+### 本轮改進 (done)
+- [x] Add anime style to `sad` category — had 0 anime (3 animal + 2 meme + 1 cartoon). Added frieren-sad.gif (185KB, 438×480, Frieren chibi). Now 4 styles across 7 files. No pHash dupes. (07-16)
+
+### 本轮改進 (done)
+- [x] Add `--auto-wake` flag to `memes review` — auto-sends stalest general category (>14d) when coverage is clean. Also fixed `_send_err_file` RETURN trap unbound variable bug (used `${_send_err_file:-}` guard). Tested: correctly identifies stalest general category, sends to Discord, updates tracker. Now the 3x-daily review cron can self-heal staleness. (07-17)
+
 ### 本轮改進 (next)
-- [ ] Improve `disappointed` style diversity — currently 7 anime + 3 live-action (only 2 styles, 70% anime). Add 1-2 meme/cartoon style GIFs to bring diversity ≥3 styles and reduce anime dominance below 70%
+- [ ] Add anime style to `thanks` category — check current style distribution and fill gaps (22d stale, likely missing styles)
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -810,3 +837,12 @@
 - [ ] Track: learn-agent (7-e1even) - 53⭐ (07-04, NEW). 15 progressive coding agent engineering lessons from Reina product. Zero deps, single file, battle-tested. Key insights: compaction 3-segment model, cache engineering 3 disciplines, tool disclosure proxy pattern. Deep read done. Revisit 07-11
 - [ ] Track: Napaxi (antgroup) - 24⭐ (07-04, NEW). Mobile-native agent SDK from Ant Group. Rust core + Flutter/Android/iOS adapters. Pure on-device runtime, capability architecture, A2A on-device multi-agent, xApp/xChannel connectivity. Deep read done. Revisit 07-11
 - [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-12
+
+## openclaw/openclaw PR #108724 — ClawSweeper bot review (2026-07-16)
+- **Status**: Open, bot review asks for code changes
+- ClawSweeper rated 🧂 unranked krab — blocked until real behavior proof
+- [ ] Add redacted live Codex app-server trace showing terminal tool-use turn reaches final text without repeated tool call
+- [ ] Consider: enforce tool-disabled continuation at runtime (not just prompt-only)
+- [ ] Consider: gate continuation on proof that every tool item completed (not just toolMetas.length > 0)
+- Security concern: prompt-only prevention of repeated tool execution
+- No maintainer involvement yet — bot review only
