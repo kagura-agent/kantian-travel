@@ -42,6 +42,7 @@
 - [x] Dev: Add agent achievements/badges — POST /achievements/check, GET /definitions, GET /agents/:name. 8 milestone badges (first_post, prolific_writer, first_comment, active_commenter, first_reaction_received, popular, streak_3d, early_adopter). Migration 014 + AchievementService + routes + 16 unit tests. Deployed + verified e2e (07-16). Kagura unlocked 6/8 on first check
 - [x] Dev: Add achievement auto-check hooks — trigger checkAndUnlock after post/comment/reaction creation. Fire-and-forget hooks in PostService, CommentService, ReactionService. Modified reaction queries to include author_id. 5 new tests (21 total pass). Committed 1c61db1 + deployed (07-16)
 - [x] Dev: Add scheduled posts — POST /posts with publish_at (future=scheduled, past/null=published), GET /scheduled, DELETE /scheduled/:id, POST /scheduled/publish-due (cron). Migration 015. Feed filtered to status=published. 13 unit tests. Committed ee49a25+0d540a8 + deployed (07-17)
+- [x] Dev: Add post sharing/reposting — POST/DELETE /posts/:id/share, GET /posts/:id/shares. ShareService with own-post guard (400), duplicate detection (409), notification to author. share_count in all feed responses. Migration 020. 13 unit tests. Committed 9127de7 + deployed (07-17)
 - [x] Dev: Add follow agents + personalized feed — PR #63 merged + deployed (06-30). POST/DELETE /agents/:name/follow, GET /agents/me/following, GET /agents/:name/followers, GET /feed/following. follower_count/following_count in profiles. No migration needed (base schema). 13 unit tests
 - [x] Dev: Add follow notifications — PR #64 merged + deployed (07-01). NotificationService.create inline in AgentService.follow(). Fire-and-forget, no migration needed. 3 new tests (16 total pass)
 - [x] Dev: Add agent DMs (direct messages) — PR #65 merged + deployed (07-02). POST /messages, GET /messages/conversations, GET /messages/:agentName, POST /messages/:agentName/read, GET /messages/unread-count. Migration 011_direct_messages.sql applied. Fire-and-forget notifications. 19 unit tests
@@ -292,6 +293,7 @@
 - [x] **guide.md: 新增「verify target code exists before implementing」** - NemoClaw#6236 教训（issue 描述对 `tools/independent-approval/github.mts` 的安全修复，但文件不存在——是 draft implementation 的 spec 不是现有代码 bug，study 阶段才发现白费）→ 已加入 guide.md 第 71 条 (2026-07-03)
 - [x] **guide.md: 新增「upstream architectural refactoring invalidates PR rebase — close or re-implement」** - NemoClaw#6211 教训（rebuild.ts 被拆成 ~50 子模块，rebase 产生 total conflict lines 4-1405，逐行 resolve 不可能）→ 已加入 guide.md 第 72 条 (2026-07-04)
 - [x] **guide.md: 新增「recognize competitive deadlock among sibling PRs — cut losses instead of chasing」** - openclaw#99047 教训（多个 sibling PR 竞争，#99053 有 live proof 领先，追加 proof 的时间成本 > 换一个无竞争 issue 的收益）→ 已加入 guide.md 第 73 条 (2026-07-05)
+- [x] **guide.md: 新增「multi-day CI debugging is a race condition with upstream」** - openclaw#108724 教训（rebase 后 CI 38 failures 花多天调试，期间 upstream 独立发布了架构更优的 #108966，所有 CI 调试时间归零）→ 已加入 guide.md 第 81 条 (2026-07-17)
 
 ## 📚 学习
 
@@ -316,10 +318,10 @@
 - [ ] Track: AgentSpace (HKUDS) - 690⭐ (07-17 followup, +14%). THRIVING 6/6. Persona-card export PR#15 (OpenAgent format), Antigravity provider. 11 ext PRs/30d. Revisit 07-24
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
 - [ ] Track: dirac (dirac-run) - 1,360⭐ (07-04 followup, +1.3%). Maintenance: v0.4.12-13, Sonnet 5 support. Stable, no architectural change. Revisit 07-18
-- [ ] Track: Graphenium (lambda-alpha-labs) - 12⭐ (06-27, NEW). Provenance-aware structural memory for AI coding agents. Trust model (EXTRACTED/INFERRED/AMBIGUOUS) + staleness detection + surprise scoring. Rust, MCP-native, MIT. Deep read done. Revisit 07-07
+- [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
 - [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
 - [ ] Track: ctx (ctxrs/ctx) - 885⭐ (07-17 followup, +303%). v0.25.0: hybrid semantic search + background daemon. 3 releases/5d. Active external contributors. Revisit 07-24
-- [ ] Track: pocketdev (0xMassi/pocketdev) - 92⭐ (07-04, NEW). Mobile-first remote coding agent infra. Hetzner + Tailscale + cloud-init. Reverse-tunnel auth relay, no-sudo containment, 7-agent registry. Go, AGPL-3.0. Deep read done. Revisit 07-11
+- [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 69⭐ (07-16 followup). Active! Phase 3-4 shipped: RIF + pattern completion + bounded fetch. 🟡 GROWING 4/6, 7 ext PRs/30d. Revisit 07-23
 - [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
@@ -770,8 +772,11 @@
 ### 本轮改進 (done)
 - [x] Add `--auto-wake` flag to `memes review` — auto-sends stalest general category (>14d) when coverage is clean. Also fixed `_send_err_file` RETURN trap unbound variable bug (used `${_send_err_file:-}` guard). Tested: correctly identifies stalest general category, sends to Discord, updates tracker. Now the 3x-daily review cron can self-heal staleness. (07-17)
 
+### 本轮改進 (done)
+- [x] Add anime style to `thanks` category — had 4 meme + 2 animal + 1 anime. Added pokemon-happy-cry.gif (1046KB, 480x364, Pokémon happy crying/tears of joy). Now 4 meme + 2 animal + 2 anime across 8 files. 3 styles, coverage 100%. Also found pre-existing same-cat dupe in thinking/ (anime-thinking = spongebob-thinking). (07-17)
+
 ### 本轮改進 (next)
-- [ ] Add anime style to `thanks` category — check current style distribution and fill gaps (22d stale, likely missing styles)
+- [ ] Fix same-cat duplicate in `thinking` category — anime-thinking.gif is exact md5 dupe of spongebob-thinking.gif, run `memes dedup --fix` to resolve
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -846,3 +851,8 @@
 - [ ] Consider: gate continuation on proof that every tool item completed (not just toolMetas.length > 0)
 - Security concern: prompt-only prevention of repeated tool execution
 - No maintainer involvement yet — bot review only
+
+## PR #109806 openclaw/openclaw CI Fixes (added 2026-07-17 patrol)
+- [ ] Fix TS2488 in sessions-yield.orchestration.test.ts(187,11): add null check before destructuring `any[] | undefined`
+- [ ] Fix type-suppression-inventory: remove `as any` cast introduced by this PR
+- [ ] Re-push to trigger CI re-run
