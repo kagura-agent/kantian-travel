@@ -799,3 +799,12 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-16: [gradient] "When adding a new retry path in an existing retry chain, must run ALL integration tests in the same test file — not just unit tests for the new function. New retries fire before later paths, changing test expectations." → [行为改变] After implementing new retry path: (1) grep for all test files testing the surrounding retry/terminal resolution flow, (2) run them locally before pushing, (3) check if new retry fires before existing paths that tests depend on. (pattern: retry-chain-integration-test-interaction, 第1次) (Source: workloop)
   - **Trigger**: Adding retry/continuation logic to an existing retry chain
+
+- 2026-07-17: [gradient] "targets-crossref-mismatch blocks tracking-update" → [行为改变] Fix cross-ref mismatches (add missing entries to targets.md) BEFORE running tracking-update.sh on those projects. (pattern: targets-crossref-fix-before-followup, 第1次) (Source: study)
+  - **Trigger**: audit-targets shows cross-ref mismatches between TODO.md and targets.md
+
+- 2026-07-17: [gradient] "Issues filed same-day as releases reveal breaking-change patterns faster than source code reading" → [行为改变] Check gh issues (state=all, last 7d) BEFORE diving into code/releases. (pattern: issues-before-code-deepread, 第1次) (Source: study)
+  - **Trigger**: followup deep-read on active project with recent releases
+
+- 2026-07-17: [gradient] "Large monorepo pnpm install can OOM-kill concurrent git processes. For trivial fixes in large repos, skip local dep install entirely - verify correctness through code review, issue reporter confirmation, and fresh-context review instead." → [行为改变] Skip pnpm/npm install for trivial fixes. Verify via: (1) grep confirms code change correct (2) issue reporter already tested (3) fresh-context review passes. Only install deps for complex changes requiring test execution.. (pattern: large-repo-dep-install-oom, 第1次) (Source: workloop)
+  - **Trigger**: Working on large monorepo (>100MB) with trivial fix (<10 lines)
