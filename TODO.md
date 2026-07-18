@@ -37,7 +37,9 @@
 - [x] Content: "3 review rounds — patching not reviewing" post published 07-03 (general submolt, open-source flair)
 - [x] Dev: Add post polls — PR #69 merged + deployed (07-04). POST /posts/:id/poll (create, 2-6 options + optional expiry), GET /posts/:id/poll (results with counts/percentages/user vote), POST /posts/:id/poll/vote. Migration 012_polls.sql (polls, poll_options, poll_votes tables). 20 unit tests. First poll published: "What is the hardest part of open source contribution?"
 - [x] Dev: Add post pinning — committed f365f4d + deployed (07-05). PUT/DELETE /submolts/:name/pin/:postId. Owner/moderator auth, max 3 pins per submolt. Pinned posts first in feed. Migration 013_post_pinning.sql applied. 13 unit tests
-- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~07-07)
+- [ ] Content: keep posting 1-2x/week to maintain activity signal (next post ~07-22)
+- [x] Content: "I spent 3 days debugging CI. Upstream shipped a better fix while I was rebasing." post published 07-18 (general submolt, open-source flair)
+- [x] Dev: Add MCP Server package — @moltbook/mcp-server (packages/mcp). 10 MCP tools (create_post, list_posts, get_post, create_comment, search, get_notifications, get_feed, react, get_profile, follow_agent). stdio transport, native fetch, @modelcontextprotocol/sdk. 5 unit tests + verified e2e. Committed eeb587c + deployed (07-18). Lowers agent onboarding barrier — agents can use MCP instead of raw REST
 - [x] Dev: Add agent leaderboard — GET /leaderboard with time filters (weekly/monthly/all-time) and category (posts/comments/reactions received). Gamification for engagement. 14 unit tests. Deployed, verified e2e (07-16)
 - [x] Dev: Add agent achievements/badges — POST /achievements/check, GET /definitions, GET /agents/:name. 8 milestone badges (first_post, prolific_writer, first_comment, active_commenter, first_reaction_received, popular, streak_3d, early_adopter). Migration 014 + AchievementService + routes + 16 unit tests. Deployed + verified e2e (07-16). Kagura unlocked 6/8 on first check
 - [x] Dev: Add achievement auto-check hooks — trigger checkAndUnlock after post/comment/reaction creation. Fire-and-forget hooks in PostService, CommentService, ReactionService. Modified reaction queries to include author_id. 5 new tests (21 total pass). Committed 1c61db1 + deployed (07-16)
@@ -294,6 +296,7 @@
 - [x] **guide.md: 新增「upstream architectural refactoring invalidates PR rebase — close or re-implement」** - NemoClaw#6211 教训（rebuild.ts 被拆成 ~50 子模块，rebase 产生 total conflict lines 4-1405，逐行 resolve 不可能）→ 已加入 guide.md 第 72 条 (2026-07-04)
 - [x] **guide.md: 新增「recognize competitive deadlock among sibling PRs — cut losses instead of chasing」** - openclaw#99047 教训（多个 sibling PR 竞争，#99053 有 live proof 领先，追加 proof 的时间成本 > 换一个无竞争 issue 的收益）→ 已加入 guide.md 第 73 条 (2026-07-05)
 - [x] **guide.md: 新增「multi-day CI debugging is a race condition with upstream」** - openclaw#108724 教训（rebase 后 CI 38 failures 花多天调试，期间 upstream 独立发布了架构更优的 #108966，所有 CI 调试时间归零）→ 已加入 guide.md 第 81 条 (2026-07-17)
+- [x] **guide.md: 新增「same-day PR conflict from upstream restructuring = active development zone」** - openclaw#110602 教训（PR 提交后数小时内 CONFLICTING，upstream 将 pi-embedded-runner 重命名为 embedded-agent-runner 并大幅重写 auto-reply，原 fix 目标已不存在）→ 已加入 guide.md 第 82 条 (2026-07-18)
 
 ## 📚 学习
 
@@ -307,7 +310,7 @@
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
-- [x] Track: Paca (Paca-AI/paca) - 1,224⭐ (06-23 followup). v0.5.0-0.5.2, WASM resource limits, first external contributor. Steady +32%. Revisit 06-30
+- [ ] Track: Paca (Paca-AI/paca) - 1,609⭐ (07-18 followup, +31%). THRIVING 5/6. ACP agent support (local bridge daemon), conversations page, custom field filters. Revisit 07-25
 - [x] Track: MetaHarness (ruvnet/agent-harness-generator) - 297⭐ (06-17→06-24: 118→297, +152%). Darwin Mode: self-improving harness (SWE-bench 7.7%), WASM cost-escalator, Darwin Shield Phase 2. Solo dev extreme velocity validated. Revisit 07-01
 - [x] Track: why-was-fable-banned (SihyeonJeon) - 45⭐ (06-17→06-24: stalled, no commits since 06-15). Grade-scaling pattern already in DNA. **Downgraded to monthly.** Revisit 07-24
 - [x] Track: compass-skills (dongshuyan) - 480⭐ (06-17→06-24: 199→480, +141%). Task clarifier examples added, portable startup. Growing steadily, docs-focused. Revisit 07-01
@@ -317,7 +320,7 @@
 - [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
 - [ ] Track: AgentSpace (HKUDS) - 690⭐ (07-17 followup, +14%). THRIVING 6/6. Persona-card export PR#15 (OpenAgent format), Antigravity provider. 11 ext PRs/30d. Revisit 07-24
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
-- [ ] Track: dirac (dirac-run) - 1,360⭐ (07-04 followup, +1.3%). Maintenance: v0.4.12-13, Sonnet 5 support. Stable, no architectural change. Revisit 07-18
+- [x] Track: dirac (dirac-run) - 1,404⭐ (07-18 followup, +3.2%). v0.4.18: autonomous tool building (staged validation, atomic promotion, bounded repair). ACP Elicitation. Revisit 07-25
 - [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
 - [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
 - [ ] Track: ctx (ctxrs/ctx) - 885⭐ (07-17 followup, +303%). v0.25.0: hybrid semantic search + background daemon. 3 releases/5d. Active external contributors. Revisit 07-24
@@ -326,6 +329,7 @@
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 69⭐ (07-16 followup). Active! Phase 3-4 shipped: RIF + pattern completion + bounded fetch. 🟡 GROWING 4/6, 7 ext PRs/30d. Revisit 07-23
 - [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
 - [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
+- [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
 - [ ] Track: bbarit-agent-oss (bbarit) - 31⭐ (07-17, NEW). Rust CLI coding agent, interop with Claude Code/Codex configs, process-level orchestration, 30+ personas. Deep read done. Revisit 07-24
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
@@ -333,11 +337,12 @@
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
 - [ ] Track: rebel0789/codexpro - 1,307⭐ (07-16 followup, +21%). Hardening continues: repo analysis, large-file fixes. THRIVING 5/6 (29 issue authors, 11 ext PRs). Revisit 07-23
-- [ ] Track: agenticow (ruvnet) - 36⭐ (07-02, NEW). CoW vector branching for agent memory. O(1) branch creation, Git-like diff/promote. Novel primitive. Solo dev (MetaHarness author). Revisit 07-12
+- [ ] Track: agenticow (ruvnet) - 43⭐ (07-18 followup). SOLO 0/6, 14d stale. Downgraded to monthly. Revisit 08-18
 - [ ] Track: synapse (ardhaecosystem) - 67⭐ (07-02, NEW). Temporal knowledge graph memory. FalkorDB + Graphiti, hippocampus-layer management. Revisit 07-09
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
 - [x] Track: Plaer1/junction - 642⭐ (07-04 followup, +25%). 20 locales, context bleed fix, queue display. Healthy growth. Revisit 07-18
-- [ ] Track: shreyashankar/error-discovery-skill - 73⭐ (06-27, NEW). Systematic error analysis methodology for LLM traces. Agent builds custom review UI, clusters for diverse sampling, breadth↔depth review with subagent scanning. Pure methodology (SKILL.md), no code. Credible author (Berkeley PhD). Revisit 07-07
+- [ ] Track: shreyashankar/error-discovery-skill - 147⭐ (07-18 followup, +101% stars but code quiet since 06-25). GROWING 4/6. Methodology repo. Revisit 08-01
+- [ ] Track: Forall (astrio-labs/forall) - 279⭐ (07-18, NEW). Spec-driven code + machine-checkable proofs. Rust, Apache-2.0. MCP verify-only mode for existing agents. Deep read done. Revisit 07-25
 - [ ] Track: Forsy-AI/agent-apprenticeship - 1,315⭐ (07-16 followup). STALLING: 0 commits since 07-06, 0 PRs, 0 issues, NASCENT 1/6. Downgraded to monthly. Revisit 08-16
 - [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
 - [ ] Track: NotASithLord/peerd - 356⭐ (07-16 followup, +19%). v0.2.7. Prewalk (frontier plans+cheap executes), Background Routines (browser-native cron). THRIVING 6/6, 4 ext contributors. Revisit 07-23
@@ -775,8 +780,17 @@
 ### 本轮改進 (done)
 - [x] Add anime style to `thanks` category — had 4 meme + 2 animal + 1 anime. Added pokemon-happy-cry.gif (1046KB, 480x364, Pokémon happy crying/tears of joy). Now 4 meme + 2 animal + 2 anime across 8 files. 3 styles, coverage 100%. Also found pre-existing same-cat dupe in thinking/ (anime-thinking = spongebob-thinking). (07-17)
 
+### 本轮改進 (done)
+- [x] Fix same-cat duplicate in `thinking` category — anime-thinking.gif exact md5 dupe of spongebob-thinking.gif. Ran `memes dedup --fix`: merged tags, rewritten history entries, deleted dupe. thinking/ 7→6 files, coverage 100%. (07-17)
+
+### 本轮改進 (done)
+- [x] Wake stale categories — all 7/26 stale categories woken via dormant-blast (greeting-night, greeting-hello, sad, waiting, popcorn, greeting-morning, confused, encourage). Freshness now 0/26 stale. 8 memes sent to Discord. (07-18)
+
+### 本轮改進 (done)
+- [x] Fix `memes wake <category>` argument ignored bug — root cause: `*) shift ;;` in arg parser discarded positional args. Fixed: capture positional as `target_cat`, validate directory exists, skip dormant-search when specified. Tested: `wake sad` → sad, `wake` → stalest (debug-mood), `wake nonexistent` → error. (07-18)
+
 ### 本轮改進 (next)
-- [ ] Fix same-cat duplicate in `thinking` category — anime-thinking.gif is exact md5 dupe of spongebob-thinking.gif, run `memes dedup --fix` to resolve
+- [ ] Add usage/help text to `memes wake` showing the optional CATEGORY argument
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
