@@ -823,3 +823,18 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-18: [gradient] "preflight-repo.sh 500MB size gate is the #1 structural blocker for workloop. It blocks P1 (openclaw 1.9GB) and multiple P3 repos (AionUi 666MB). We have local clones for all of these. The fix has been identified twice now (skip size check when local clone exists at ~/repos/forks/) but never implemented. This is the third consecutive round blocked by this." → [行为改变] Actually fix preflight-repo.sh NOW instead of carrying forward as action item. Add: if [ -d ~/repos/forks/<repo> ]; then skip size check. (pattern: tool-blockers-unresolved, 第1次) (Source: workloop)
   - **Trigger**: preflight-repo.sh FAIL on size for repo with existing local clone
+
+- 2026-07-18: [gradient] "When following up on a known project with existing deep notes, target specific new commits/files via gh api rather than re-reading the whole codebase. Faster and more focused." → [行为改变] Use gh api commits/<sha> to get file list, then read only new/modified files directly. (pattern: commit-level-deep-read, 第1次) (Source: study)
+  - **Trigger**: incremental followup on project with 100+ line wiki notes
+
+- 2026-07-18: [gradient] "scout-precheck gives false 'already studied' on repos with new commits since last_verified — it only checks wiki card age, not repo push date" → [行为改变] Check repo pushed_at vs wiki last_verified before accepting precheck skip recommendation. (pattern: scout-precheck-false-positive, 第1次) (Source: study)
+  - **Trigger**: scout-precheck says EXISTING+deep but repo has pushed since last_verified
+
+- 2026-07-18: [gradient] "Community health metrics (tracking-community.sh) can be inflated by dependabot -- high external PR count with zero real human engagement" → [行为改变] Check PR author list for bot accounts (dependabot, renovate) before trusting health score. (pattern: dependabot-inflates-community-health, 第1次) (Source: study)
+  - **Trigger**: When tracking-community.sh shows GROWING/THRIVING but stars are flat
+
+- 2026-07-18: [gradient] "When saturation check says apply is the only mode but backlog is empty, treat it as full saturation and skip. open-but-empty = effectively locked" → [行为改变] Take branch 5 (全模式饱和) at entry node instead of branch 4 (apply). (pattern: study-saturation-apply-empty-misleading, 第1次) (Source: study)
+  - **Trigger**: apply is only available mode but unapplied.md is fully checked off
+
+- 2026-07-18: [gradient] "When a cron workloop session dies mid-node (plan node stuck 9h), the flowforge cleanup --stale-hours 2 doesnt catch it because default threshold is 24h. Manual resume works but loses context from previous session. Need to either pass --stale-hours to cleanup or just resume directly." → [行为改变] The cron instructions say 2h threshold but cleanup defaults to 24h. Either fix the cron instructions to match, or fix the cleanup threshold. For now, just resume directly when log shows stuck.. (pattern: stale-workloop-recovery-threshold-mismatch, 第1次) (Source: workloop)
+  - **Trigger**: resuming a workloop that was stuck for hours but cleanup says not stale
