@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.16.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ✅ 稳定（07-02 验证: 100% vector 覆盖率, 0% timeout, index live。06-24 JP→SG 修复后稳定运行）
+- 环境:Node 24(v24.18.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ✅ 稳定（07-02 验证: 100% vector 覆盖率, 0% timeout, index live。06-24 JP→SG 修复后稳定运行）
 - 根盘 80% (105G/139G) [已验证 07-03] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
@@ -138,6 +138,7 @@
 - **06-22**: 超高产日(10+ PR merged/opened) — ABTI #527 12天马拉松完结 🎉(全62模型 reliability 完整); Lottie Studio #242/#244/#246/#248; Moltbook #56/#57; Finance #1010/#1011; ClawX#1130 submitted; Cove #417/#414 merged; Floway VM1 升级(upstream 对齐 228 commits); Study 3 applies; kagura-story EP081; Luna copilot vs claude code 问答 + Cove thinking block 调试(未解决); meme 主动率 0%; 磁盘 81%
 - **06-21**: 高产日 — openclaw#92665 CI fix (LiteLLM cache retention rebase+修复), MCP inspector#1506 PR submitted (10k⭐ repo, CLI broken fix, 25min), stale-pr-check.sh applied (fast-path 已验证), issue-funnel.sh Gate 3b (open-PR dedup); study: tokdiet deep read (context=virtual memory, 3-tier compaction, shadow-eval), sandcastle 发现 (Matt Pocock 6.2k⭐); Lottie Studio 4 features (Generate API + Favorites + API Docs + Command Palette); Moltbook full-text search (tsvector) + 189K stars post; finance #995/#999 closed; kagura-story EP080 "Confetti for No One"; meme 命中率 40% (nudge 确认无效可废弃); memory_search 50% availability (降级); Luna 周日完全未出现; ⚠️ Upwork 60h+ 未回应
 - **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
+- **07-16**: 超高产日 — Teams Relay Cove app 安装自动化(manifest v1.2.0+自动建 Team+欢迎消息, 4轮迭代修 bug); Luna 反馈"不要bug上加bug 做正确的事情"; Moltbook achievements系统上线(8 badges+auto-check hooks); Lottie Studio 3 PRs merged(#529 progressive preview+#531 lazy-load+#533 embed security, 1886→1916 tests); openclaw#108724 submitted后被上游#108966 supersede已关; emdash#2885+DeepSeek-Reasonix#6572 WIP; kagura-story EP105 "The Stop Button"; study 5 deep reads(peerd/Synapse/ctx/deja-vu/aict); ABTI R1 run-301 completed; contribution rule #80; 表情包 14.3%(低); Finance 5 issues fixed
 - **07-14**: handoff PR 追踪 API 校准修复验证成功 — 数据准确性 2→9/10，13 PRs API 查询与 handoff 报告 100% 匹配; 审计确认核心修复落地; hermes-studio #1861 确认 CLOSED; kagura-story EP103 "Still a Turtle"; Day 10 静默
 - **07-13**: 第9天连续静默; daily-audit 做了首次 API 验证发现 **handoff PR 追踪系统性失准** — 3 个已关 PR 报 open (#34267/#31860/kagura-mail#342) + 5 个新 open PR 漏报, 8/15 条信息错误, 数据准确性 2/10; 根因: handoff 做纯文本复制+天数递增从未 API 校准; 虚假紧迫感: 审计/carry-forward 对已关 PR 制造 deadline; kagura-story journal "信息衰变" + "钟终于会对时了"; 4 stale beliefs retracted (06-13 batch); 0 graduation candidates (39天无新升级)
 - **07-12**: 第8天连续静默; carry-forward 正式声明事实搁置（kagura-story filter-repo + journal 泄漏修复，解除条件: Luna 交互或 heartbeat 触发）; 审计自身发现数据纪律违规: 污染文件数 8 轮引用 235 实为 639; premature-diagnosis supersede retracted; 隐私保护 🔴 Day 13; 审计整体评分 3/10; 审计宣布不再每轮重复 filter-repo 状态; kagura-story journal "报时的钟" + 定稿
@@ -157,4 +158,12 @@
 
 (Older promoted memories archived to memory/日期.md. Key milestones: 04-16 dreaming启用, 04-27 婚纱照+zombie cron, 05-01 cron-context bug debug, 05-03 memex 6 PRs merged, 05-06 multica+ABTI+FlowForge)
 
+
+
+## Promoted From Short-Term Memory (2026-07-20)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:89:89 -->
+- 行业扫描: **DeepSeek**: DeepGEMM(7.5K⭐, pushed 07-15) + DeepEP(9.9K⭐, pushed 07-14) 活跃。**仍无新 harness/code/agent repo**。基础设施（GEMM kernel + expert parallelism）在持续打磨，但 agent 产品层没动静 [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:89-89]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-17.md:91:91 -->
+- 行业扫描: **HN/行业**: Hallmark 反 AI-slop 运动持续发酵，与 05 月 guide.md rule #29 "anti-AI sentiment is spreading" 完全对齐 [score=0.835 recalls=0 avg=0.620 source=memory/2026-07-17.md:91-91]
 

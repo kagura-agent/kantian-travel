@@ -214,12 +214,19 @@
 - External PR #171 (wooksong) 33 days without review — still open
 - Contribution score: 10 merged, 0 open, 7 closed
 - Status: dogfood-only continues. No contribution surface
-- Wiki health (07-18): 1052 files, 146 orphans (14%), 0 broken links, 0 collisions ✔ (+5 files vs 07-16)
-- 11 wiki files edited today (active dogfood usage confirmed)
-- Upstream still dormant since 06-20 (28 days). Stars: 137 (stable)
-- External PR #171 (wooksong) 35 days without review — still open
+- **🎉 Upstream revived!** v0.4.0 released 07-18 (after 28 days dormant since 06-20)
+  - 5 commits: `memex link <from> <to>` outbound-link primitive, write-time `suggestLinks`, layered orphan report
+  - `link` command: single-file write (from→to only), requires relationship context, idempotent, nested slug alias dedup
+  - `suggestLinks`: pure lexical (zero network), caps at 3 candidates, MIN_SCORE 0.08, new cards only
+  - Both features well-tested upstream (link.test.ts 10 tests, suggest-links.test.ts 7 tests)
+- **MCP gap**: `memex_link` not exposed via MCP (5 tools: search/read/write/links/archive). CLI-only. Contribution opportunity
+- Local memex synced to v0.4.0 (rebuilt + npm link)
+- Wiki health (07-19): 1055 files, 145 orphans (33%), 0 broken links, 0 collisions ✔ (orphan % improved: v0.4.0 layered orphan report)
+- 6 wiki files edited today (active dogfood usage confirmed)
+- Stars: 137 (stable)
+- External PR #171 (wooksong) 36 days without review — still open
 - Contribution score: 10 merged, 0 open, 7 closed
-- Status: dogfood-only continues. No contribution surface
+- Status: upstream active — contribution window open. Next: submit PR for `memex_link` MCP tool
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
