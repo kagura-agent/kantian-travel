@@ -214,6 +214,12 @@
 - External PR #171 (wooksong) 33 days without review — still open
 - Contribution score: 10 merged, 0 open, 7 closed
 - Status: dogfood-only continues. No contribution surface
+- Wiki health (07-18): 1052 files, 146 orphans (14%), 0 broken links, 0 collisions ✔ (+5 files vs 07-16)
+- 11 wiki files edited today (active dogfood usage confirmed)
+- Upstream still dormant since 06-20 (28 days). Stars: 137 (stable)
+- External PR #171 (wooksong) 35 days without review — still open
+- Contribution score: 10 merged, 0 open, 7 closed
+- Status: dogfood-only continues. No contribution surface
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -297,6 +303,7 @@
 - [x] **guide.md: 新增「recognize competitive deadlock among sibling PRs — cut losses instead of chasing」** - openclaw#99047 教训（多个 sibling PR 竞争，#99053 有 live proof 领先，追加 proof 的时间成本 > 换一个无竞争 issue 的收益）→ 已加入 guide.md 第 73 条 (2026-07-05)
 - [x] **guide.md: 新增「multi-day CI debugging is a race condition with upstream」** - openclaw#108724 教训（rebase 后 CI 38 failures 花多天调试，期间 upstream 独立发布了架构更优的 #108966，所有 CI 调试时间归零）→ 已加入 guide.md 第 81 条 (2026-07-17)
 - [x] **guide.md: 新增「same-day PR conflict from upstream restructuring = active development zone」** - openclaw#110602 教训（PR 提交后数小时内 CONFLICTING，upstream 将 pi-embedded-runner 重命名为 embedded-agent-runner 并大幅重写 auto-reply，原 fix 目标已不存在）→ 已加入 guide.md 第 82 条 (2026-07-18)
+- [x] **guide.md: 新增「repos that block force-push make commit-level compliance unrecoverable」** - NemoClaw#7195 教训（DCO sign-off 缺失，repo 禁止 fork force-push 导致 rebase --signoff 无法推送，PR 被 #7196 supersede）→ 已加入 guide.md 第 83 条 (2026-07-19)
 
 ## 📚 学习
 
@@ -310,7 +317,7 @@
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
-- [ ] Track: Paca (Paca-AI/paca) - 1,609⭐ (07-18 followup, +31%). THRIVING 5/6. ACP agent support (local bridge daemon), conversations page, custom field filters. Revisit 07-25
+- [ ] Track: Paca (Paca-AI/paca) - 1,616⭐ (07-19 deep-read). v0.10.0 ACP agent support: bridge daemon, arun() deadlock fix, outbox reliability. THRIVING 5/6. Revisit 07-26
 - [x] Track: MetaHarness (ruvnet/agent-harness-generator) - 297⭐ (06-17→06-24: 118→297, +152%). Darwin Mode: self-improving harness (SWE-bench 7.7%), WASM cost-escalator, Darwin Shield Phase 2. Solo dev extreme velocity validated. Revisit 07-01
 - [x] Track: why-was-fable-banned (SihyeonJeon) - 45⭐ (06-17→06-24: stalled, no commits since 06-15). Grade-scaling pattern already in DNA. **Downgraded to monthly.** Revisit 07-24
 - [x] Track: compass-skills (dongshuyan) - 480⭐ (06-17→06-24: 199→480, +141%). Task clarifier examples added, portable startup. Growing steadily, docs-focused. Revisit 07-01
@@ -326,7 +333,7 @@
 - [ ] Track: ctx (ctxrs/ctx) - 885⭐ (07-17 followup, +303%). v0.25.0: hybrid semantic search + background daemon. 3 releases/5d. Active external contributors. Revisit 07-24
 - [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
-- [ ] Track: Synapse (ardhaecosystem/synapse) - 69⭐ (07-16 followup). Active! Phase 3-4 shipped: RIF + pattern completion + bounded fetch. 🟡 GROWING 4/6, 7 ext PRs/30d. Revisit 07-23
+- [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
 - [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
 - [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
 - [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
@@ -354,7 +361,7 @@
 - [ ] Track: GenseeAI/gensee-crate - 68⭐ (07-02, +45%). No commits since 06-27. Dev paused. Concept solid, execution stalled. Downgraded to monthly. Revisit 07-27
 - [x] Track: Godcoder (eli-labz/Godcoder) - 270⭐ (07-03 followup, +10%). 🔴 SOLO 0/6: 0 ext PRs, 0 issues. Added CoWork mode (computer-use). Local Qwen/Ollama. Solo dev burst-publish confirmed. Cooling — downgraded to monthly. Revisit 07-31
 - [ ] Track: agent-memory-engine (uudam42) - 26⭐ (06-28, NEW). Structured memory tree + multi-granularity retrieval + branch-aware scoping + candidate promotion. MCP server, Python, local-first. Solo dev, 0 community. Deep read done. Revisit 07-10
-- [ ] Track: OpenTag (linxidnju/OpenTag) - 65⭐ (07-01, NEW). Channel-native agent gateway for Slack. Multi-runtime (Claude Code/Codex/OpenCode/Docker/CLI), TaskRouter with capability matching + cost ordering, PolicyEngine with turn+tool-call approvals, channel memory, workspace search. Deep read done. Revisit 07-08
+- [ ] Track: OpenTag (linxidnju/OpenTag) - 468⭐ (07-19 followup, +620% from 65). Team Knowledge feature burst 07-10: versioned knowledge records, scoped partitions (workspace/channel), typed kinds (fact/decision/convention/preference/procedure), audit trails. Solo dev, 0 forks, 0 external PRs. Interesting but no community. Revisit 07-26
 - [ ] Track: self-learning-skills (Kulaxyz) - 132⭐ (07-01, NEW). Meta-skill for golden path harvesting — proactive recognition, triage (skill/memory/skip), fork-based extraction, failure capture. Pure prompt skill, no code. Revisit 07-15
 - [ ] Track: ardhaecosystem/synapse - 62⭐ (06-30, NEW). Temporal knowledge graph memory for AI agents. Self-hosted FalkorDB + Graphiti, hippocampal consolidation model. 4 days old, 1 day of commits. Too early for deep read. Revisit 07-10
 - [ ] Track: YurunChen/repo-docs-skills - 62⭐ (06-27, NEW). Living docs skill for coding agents. Per-turn understanding sync, 3-layer knowledge separation, Python validator. Solo dev, 1 commit, burst-publish. Skim done. Revisit 07-11
@@ -789,8 +796,14 @@
 ### 本轮改進 (done)
 - [x] Fix `memes wake <category>` argument ignored bug — root cause: `*) shift ;;` in arg parser discarded positional args. Fixed: capture positional as `target_cat`, validate directory exists, skip dormant-search when specified. Tested: `wake sad` → sad, `wake` → stalest (debug-mood), `wake nonexistent` → error. (07-18)
 
-### 本轮改進 (next)
-- [ ] Add usage/help text to `memes wake` showing the optional CATEGORY argument
+### 本轮改進 (done)
+- [x] Add usage/help text to `memes wake` — added `--help` handler with full usage, options, examples. Also added `wake` + `dormant-blast` to main `memes` usage text (were missing). Tested: `--help`, auto-stalest, specific category, error on nonexistent all work. (07-18)
+
+### 本轮改進 (done)
+- [x] Fix `memes wake` misleading pick-only output — without `--send`, showed "💤 Waking dormant category" implying action was taken, but only picked a file. Changed to "🎲 Picked from ... — use --send to deliver" for pick-only mode. Send mode retains original message. Fixed in both /usr/local/bin/memes and skill source. Woke debug-mood (8d stale). (07-19)
+
+### 本轮改進 (done)
+- [x] Normalize tracker result inconsistencies — fixed 6 entries: 1 "pending" (send callback missed, resolved to success), 2 "sent" (legacy unresolvable → failed), 3 missing result field (backfilled to success). Distribution now clean: 379 success / 72 failed, zero anomalous states. (07-19)
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -855,7 +868,7 @@
 - Review body: https://github.com/QwenLM/qwen-code/pull/6104
 - [ ] Track: learn-agent (7-e1even) - 53⭐ (07-04, NEW). 15 progressive coding agent engineering lessons from Reina product. Zero deps, single file, battle-tested. Key insights: compaction 3-segment model, cache engineering 3 disciplines, tool disclosure proxy pattern. Deep read done. Revisit 07-11
 - [ ] Track: Napaxi (antgroup) - 24⭐ (07-04, NEW). Mobile-native agent SDK from Ant Group. Rust core + Flutter/Android/iOS adapters. Pure on-device runtime, capability architecture, A2A on-device multi-agent, xApp/xChannel connectivity. Deep read done. Revisit 07-11
-- [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-12
+- [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-30
 
 ## openclaw/openclaw PR #108724 — ClawSweeper bot review (2026-07-16)
 - **Status**: Open, bot review asks for code changes
@@ -870,3 +883,11 @@
 - [ ] Fix TS2488 in sessions-yield.orchestration.test.ts(187,11): add null check before destructuring `any[] | undefined`
 - [ ] Fix type-suppression-inventory: remove `as any` cast introduced by this PR
 - [ ] Re-push to trigger CI re-run
+- [ ] Track: loope (ngthluu/loope) - 7⭐ (07-19 deep-read). Stateless Go daemon: issue→PR via headless Claude Code, label-driven state machine, session persistence, confidence gate. Solo dev, 0 community. Revisit 08-02
+
+## NVIDIA/NemoClaw PR #7195 — PRA-1 Blocker Fix
+
+- [ ] Fix PRA-1: force fallback 在 `rebuild-mcp-phase.ts:32` catch 所有 live preparation error 后调用 `prepareMcpBridgesForAbsentSandboxRebuild`，但后者跳过了 `assertGeneratedPolicyMutationSafe`。需要限制 fallback 仅在 relay-unavailable 时触发，或在 fallback 前保留等效 policy 检查。
+  - 文件: `src/lib/actions/sandbox/rebuild-mcp-phase.ts:32-35`
+  - 参考: `src/lib/actions/sandbox/mcp-bridge-rebuild.ts` (live vs absent preparation 的差异)
+  - 测试: 需新增测试 — generated policy unreachable/drifted 时 --force 不应触发 sandbox delete
