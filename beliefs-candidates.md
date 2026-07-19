@@ -838,3 +838,23 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-18: [gradient] "When a cron workloop session dies mid-node (plan node stuck 9h), the flowforge cleanup --stale-hours 2 doesnt catch it because default threshold is 24h. Manual resume works but loses context from previous session. Need to either pass --stale-hours to cleanup or just resume directly." → [行为改变] The cron instructions say 2h threshold but cleanup defaults to 24h. Either fix the cron instructions to match, or fix the cleanup threshold. For now, just resume directly when log shows stuck.. (pattern: stale-workloop-recovery-threshold-mismatch, 第1次) (Source: workloop)
   - **Trigger**: resuming a workloop that was stuck for hours but cleanup says not stale
+
+- 2026-07-19: [gradient] "PR description + test files are fastest path to understanding architectural changes in known projects" → [行为改变] Read PR description body first (rationale + design decisions), then test files (API patterns + edge cases), then implementation. Skip README for known projects.. (pattern: pr-tests-before-source, 第1次) (Source: study)
+  - **Trigger**: Deep-reading a tracked project's new major feature
+
+- 2026-07-19: [gradient] "tracking-update.sh fails for projects only in TODO.md not in targets.md — dual tracking creates sync debt" → [行为改变] When adding new tracked projects, add to both TODO.md AND targets.md, or consolidate to single source. (pattern: targets-todo-crossref-mismatch, 第1次) (Source: study)
+  - **Trigger**: tracking-update.sh called for project not in targets.md
+
+- 2026-07-19: [gradient] "followup-status.sh shows items as 'due' even when they were followed up yesterday because targets.md revisit dates aren't consistently updated. This causes repeated empty followup rounds." → [行为改变] tracking-update.sh should auto-set next revisit date when updating, or followup-status.sh should cross-check last_verified dates in wiki. (pattern: followup-due-items-stale-revisit-dates, 第1次) (Source: study)
+  - **Trigger**: followup mode selected based on due count, but all due items were already checked recently
+
+- 2026-07-19: [gradient] "For small repos with good test coverage, read test files before implementation — tests document the full API surface, state machine transitions, and edge cases more reliably than source code" → [行为改变] pending analysis. (pattern: test-first-architecture-discovery, 第1次) (Source: study)
+
+- 2026-07-19: [gradient] "followup-status.sh shows all due items as actionable even when they were already checked in earlier sessions today, causing false-positive mode recommendation and wasted workflow cycles" → [行为改变] followup-status.sh should cross-reference due items against today's memory entries; study-saturation.sh should account for already-checked items in recommendations. (pattern: followup-status-false-positive-after-checked, 第1次) (Source: study)
+  - **Trigger**: Multiple study cron sessions per day, followup-status reports N items due but all were already followed up
+
+- 2026-07-19: [gradient] "Run scout-precheck on ALL scan candidates in one batch before ranking/selecting a deep read target. Check novelty first, then rank among genuinely new ones." → [行为改变] Batch precheck all candidates first, filter to NEW, then rank by stars/relevance. (pattern: quick-scan-batch-precheck, 第1次) (Source: study)
+  - **Trigger**: Picking deep read target from quick scan results
+
+- 2026-07-19: [gradient] "NemoClaw --force recovery path follows a layered skip pattern: each pipeline phase (backup, MCP prep, etc.) independently checks force flag and decides its own fallback. When adding force support to a new phase, follow the same threading pattern (pipeline → phase input → function param) rather than trying to combine phases." → [行为改变] Check how existing phases (rebuild-backup-phase.ts) thread the force flag and follow the same pattern. (pattern: nemoclaw-force-layered-fallback, 第1次) (Source: workloop)
+  - **Trigger**: Adding --force support to NemoClaw rebuild phases
