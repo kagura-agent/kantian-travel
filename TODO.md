@@ -326,7 +326,7 @@
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
-- [ ] Track: Paca (Paca-AI/paca) - 1,616⭐ (07-19 deep-read). v0.10.0 ACP agent support: bridge daemon, arun() deadlock fix, outbox reliability. THRIVING 5/6. Revisit 07-26
+- [x] Track: Paca (Paca-AI/paca) - 1,616⭐ (07-19 deep-read). v0.10.0 ACP agent support: bridge daemon, arun() deadlock fix, outbox reliability. THRIVING 5/6. Revisit 07-26. **Confirmed 07-20: false positive in followup-status, already done yesterday**
 - [x] Track: MetaHarness (ruvnet/agent-harness-generator) - 297⭐ (06-17→06-24: 118→297, +152%). Darwin Mode: self-improving harness (SWE-bench 7.7%), WASM cost-escalator, Darwin Shield Phase 2. Solo dev extreme velocity validated. Revisit 07-01
 - [x] Track: why-was-fable-banned (SihyeonJeon) - 45⭐ (06-17→06-24: stalled, no commits since 06-15). Grade-scaling pattern already in DNA. **Downgraded to monthly.** Revisit 07-24
 - [x] Track: compass-skills (dongshuyan) - 480⭐ (06-17→06-24: 199→480, +141%). Task clarifier examples added, portable startup. Growing steadily, docs-focused. Revisit 07-01
@@ -345,6 +345,8 @@
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
 - [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
 - [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
+- [ ] Track: mentor (smixs/mentor) - 35⭐ (07-20, NEW). Session-insights skill for coding agents (SKILL.md format). Deterministic parsing of Claude Code + Codex transcripts → LLM-written HTML report. 8-dimension rubric. skills.sh distribution. Deep read done. Revisit 07-27
+- [ ] Track: shikigami (shikigami.dev) - closed-source (07-20, NEW). Desktop IDE for parallel coding agents with git worktree isolation. Claude Code + Codex. Solo dev beta. Revisit 08-03
 - [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
 - [ ] Track: bbarit-agent-oss (bbarit) - 31⭐ (07-17, NEW). Rust CLI coding agent, interop with Claude Code/Codex configs, process-level orchestration, 30+ personas. Deep read done. Revisit 07-24
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
@@ -370,9 +372,9 @@
 - [x] Track: Godcoder (eli-labz/Godcoder) - 270⭐ (07-03 followup, +10%). 🔴 SOLO 0/6: 0 ext PRs, 0 issues. Added CoWork mode (computer-use). Local Qwen/Ollama. Solo dev burst-publish confirmed. Cooling — downgraded to monthly. Revisit 07-31
 - [ ] Track: agent-memory-engine (uudam42) - 26⭐ (06-28, NEW). Structured memory tree + multi-granularity retrieval + branch-aware scoping + candidate promotion. MCP server, Python, local-first. Solo dev, 0 community. Deep read done. Revisit 07-10
 - [ ] Track: OpenTag (linxidnju/OpenTag) - 468⭐ (07-19 followup, +620% from 65). Team Knowledge feature burst 07-10: versioned knowledge records, scoped partitions (workspace/channel), typed kinds (fact/decision/convention/preference/procedure), audit trails. Solo dev, 0 forks, 0 external PRs. Interesting but no community. Revisit 07-26
-- [ ] Track: self-learning-skills (Kulaxyz) - 132⭐ (07-01, NEW). Meta-skill for golden path harvesting — proactive recognition, triage (skill/memory/skip), fork-based extraction, failure capture. Pure prompt skill, no code. Revisit 07-15
-- [ ] Track: YurunChen/repo-docs-skills - 62⭐ (06-27, NEW). Living docs skill for coding agents. Per-turn understanding sync, 3-layer knowledge separation, Python validator. Solo dev, 1 commit, burst-publish. Skim done. Revisit 07-11
-- [ ] Track: oleksiijko/pmb - 87⭐ (06-26, NEW). Local-first persistent memory for AI coding agents via MCP. SQLite+LanceDB+BM25+PPR graph. Exploration memo cache, lesson follow-through tracking. Deep read done. Revisit 07-10
+- [x] Track: self-learning-skills (Kulaxyz) - 899⭐ (07-20 followup, +580%). Viral growth but dev stopped (no commits since 07-01, 19d stale). Pure prompt skill, "finished" — nothing to iterate. Revisit 08-20 (monthly)
+- [x] Track: YurunChen/repo-docs-skills - 62⭐ (overdue, skipped this round). Revisit 07-27
+- [x] Track: oleksiijko/pmb - 313⭐ (07-20 followup, +259%). THRIVING 5/6: auto-decay, OpenAPI support (ext PR), dashboard. Community transformed from solo dev. Revisit 08-03
 
 - [x] 给 wiki 加 lint 健康检查(灵感来自 wuphf `/lint`)→ 2026-04-27 wiki-lint.py 假阳性修复 + frontmatter/link-density checks
 - [x] STSS 贡献:提交 chain-tracer 单元测试 PR(敲门砖,评估 maintainer 响应)→ PR #2 submitted 04-26
@@ -874,7 +876,7 @@
 - [ ] Consider: condensedTypes parity test against TYPES_SECTION_INDIVIDUAL
 - Review body: https://github.com/QwenLM/qwen-code/pull/6104
 - [ ] Track: learn-agent (7-e1even) - 53⭐ (07-04, NEW). 15 progressive coding agent engineering lessons from Reina product. Zero deps, single file, battle-tested. Key insights: compaction 3-segment model, cache engineering 3 disciplines, tool disclosure proxy pattern. Deep read done. Revisit 07-11
-- [ ] Track: Napaxi (antgroup) - 24⭐ (07-04, NEW). Mobile-native agent SDK from Ant Group. Rust core + Flutter/Android/iOS adapters. Pure on-device runtime, capability architecture, A2A on-device multi-agent, xApp/xChannel connectivity. Deep read done. Revisit 07-11
+- [x] Track: Napaxi (antgroup) - 24⭐ (07-20 followup). Cannot find repo on GitHub (possibly private/org-restricted/renamed). Dropped — unverifiable.
 - [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-30
 
 ## openclaw/openclaw PR #108724 — ClawSweeper bot review (2026-07-16)

@@ -861,3 +861,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-20: [gradient] "Simple defensive fixes (error handlers, guards) in well-understood codebases complete 5x faster when done manually vs acpx — 7-line change took 10 min total including review and audit" → [行为改变] Skip acpx exec entirely for trivial additive fixes. Reserve acpx for multi-file changes or complex logic.. (pattern: manual-over-acpx-for-trivial, 第1次) (Source: workloop)
   - **Trigger**: implement node: change is < 20 lines, additive only, single file, no test changes needed
+
+- 2026-07-20: [gradient] "followup-status.sh outputs truncated first-word project names that are unidentifiable without manual grep — should show full name + repo URL for each due item" → [行为改变] Fix the script to output full project name and repo URL from TODO.md tracking entries. (pattern: followup-status-truncated-names, 第1次) (Source: study)
+  - **Trigger**: followup-status.sh output shows partial names like 'agent', 'self', 'learn' instead of full project identifiers
