@@ -61,19 +61,25 @@ SCOUT_COUNT=$((DEEP_SCOUT + QUICK_COUNT))
 SCOUT_LOCKED=false; (( SCOUT_COUNT >= 3 )) && SCOUT_LOCKED=true
 QUICK_LOCKED=false; (( SCOUT_COUNT >= 3 || QUICK_COUNT >= 3 )) && QUICK_LOCKED=true
 APPLY_LOCKED=false; (( APPLY_COUNT >= 3 )) && APPLY_LOCKED=true
-# Auto-lock apply when backlog empty + prior empty outcome today
+# Auto-lock apply when backlog empty + ANY prior apply outcome today
+# Fix (2026-07-20): previously only checked outcome=="empty", but rounds logged as
+# "partial" (when they identified a direction but made no code change) also indicate
+# the backlog is depleted. Any apply round with empty backlog = lock for the day.
 if ! $APPLY_LOCKED; then
   UNAPPLIED_FILE="$HOME/.openclaw/workspace/study/unapplied.md"
   APPLY_BACKLOG=0
   if [[ -f "$UNAPPLIED_FILE" ]]; then
     APPLY_BACKLOG=$(grep -c '^- \[ \]' "$UNAPPLIED_FILE" 2>/dev/null) || APPLY_BACKLOG=0
   fi
-  if (( APPLY_BACKLOG == 0 )) && command -v jq &>/dev/null; then
-    OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
-    if [[ -f "$OUTCOME_LOG" ]]; then
-      EMPTY_APPLY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || true)
-      EMPTY_APPLY=${EMPTY_APPLY:-0}
-      (( EMPTY_APPLY >= 1 )) && APPLY_LOCKED=true
+  if (( APPLY_BACKLOG == 0 )); then
+    # Backlog empty: lock if any apply outcome exists today (regardless of label)
+    if command -v jq &>/dev/null; then
+      OUTCOME_LOG="$HOME/.openclaw/workspace/study/outcome-log.jsonl"
+      if [[ -f "$OUTCOME_LOG" ]]; then
+        ANY_APPLY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\")" "$OUTCOME_LOG" 2>/dev/null | grep -c '"mode"' || true)
+        ANY_APPLY=${ANY_APPLY:-0}
+        (( ANY_APPLY >= 1 )) && APPLY_LOCKED=true
+      fi
     fi
   fi
 fi

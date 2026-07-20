@@ -67,14 +67,15 @@ if ! $APPLY_LOCKED; then
     fi
     if (( APPLY_BACKLOG == 0 )); then
         APPLY_BACKLOG_EMPTY=true
-        # Auto-lock apply when backlog is empty AND today already has an empty apply outcome
-        # Prevents repeated empty apply rounds (Godcoder outcome stats: 4/7 empty when backlog depleted)
-        EMPTY_APPLY_TODAY=0
+        # Auto-lock apply when backlog is empty AND ANY prior apply outcome exists today
+        # Fix (2026-07-20): previously only checked outcome=="empty", but rounds logged as
+        # "partial" also indicate backlog is depleted. Any apply with empty backlog = lock.
+        ANY_APPLY_TODAY=0
         if command -v jq &>/dev/null && [[ -f "$HOME/.openclaw/workspace/study/outcome-log.jsonl" ]]; then
-            EMPTY_APPLY_TODAY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\" and .outcome == \"empty\")" "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | grep -c '"mode"' || true)
-            EMPTY_APPLY_TODAY=${EMPTY_APPLY_TODAY:-0}
+            ANY_APPLY_TODAY=$(jq -r "select(.date == \"$DATE\" and .mode == \"apply\")" "$HOME/.openclaw/workspace/study/outcome-log.jsonl" 2>/dev/null | grep -c '"mode"' || true)
+            ANY_APPLY_TODAY=${ANY_APPLY_TODAY:-0}
         fi
-        if (( EMPTY_APPLY_TODAY >= 1 )); then
+        if (( ANY_APPLY_TODAY >= 1 )); then
             APPLY_LOCKED=true
             APPLY_BACKLOG_EMPTY=true  # keep the flag for display
         fi
