@@ -864,3 +864,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-20: [gradient] "followup-status.sh outputs truncated first-word project names that are unidentifiable without manual grep — should show full name + repo URL for each due item" → [行为改变] Fix the script to output full project name and repo URL from TODO.md tracking entries. (pattern: followup-status-truncated-names, 第1次) (Source: study)
   - **Trigger**: followup-status.sh output shows partial names like 'agent', 'self', 'learn' instead of full project identifiers
+
+- 2026-07-20: [gradient] "spam-filter.sh 只接受 JSON 输入但调用时反复 pipe formatted text" → [行为改变] gh api 输出用 --jq 保持 JSON object 格式再 pipe 给 spam-filter; 长期应修 spam-filter 检测 input 格式并给提示. (pattern: spam-filter-input-format-recurrent, 第1次) (Source: study)
+
+- 2026-07-20: [gradient] "study-saturation.sh should distinguish count-open (0/3) from content-available (backlog has items). Empty backlog + count open = functionally saturated — should flag prominently or treat as locked to avoid wasting rounds entering apply mode with nothing to apply" → [行为改变] saturation gate should check unapplied.md emptiness and report apply as functionally saturated when backlog is empty. (pattern: study-saturation-apply-content-vs-count, 第1次) (Source: study)
+  - **Trigger**: apply mode shows 0/3 open but unapplied.md is fully cleared
