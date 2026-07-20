@@ -869,3 +869,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-20: [gradient] "study-saturation.sh should distinguish count-open (0/3) from content-available (backlog has items). Empty backlog + count open = functionally saturated — should flag prominently or treat as locked to avoid wasting rounds entering apply mode with nothing to apply" → [行为改变] saturation gate should check unapplied.md emptiness and report apply as functionally saturated when backlog is empty. (pattern: study-saturation-apply-content-vs-count, 第1次) (Source: study)
   - **Trigger**: apply mode shows 0/3 open but unapplied.md is fully cleared
+
+- 2026-07-20: [gradient] "Gate scripts should filter on category membership (mode == X) not specific outcome labels (outcome == 'empty') — labels are subjective and leak through edge cases" → [行为改变] Match on {date, mode} not {date, mode, outcome==specific_value} unless the specific value is truly meaningful. (pattern: gate-lock-category-not-label, 第1次) (Source: study)
+  - **Trigger**: Writing gate logic that checks outcome-log entries
+
+- 2026-07-20: [gradient] "NemoClaw CI has codebase-growth-guardrails check that bans if-statements in test files. Must use array.shift()/createGitHubFetchRouter patterns for conditional test logic." → [行为改变] Use responses array with .shift() for sequential behavior, createGitHubFetchRouter for URL-based routing. Never if/else in test bodies.. (pattern: nemoclaw-test-no-if, 第1次) (Source: workloop)
+  - **Trigger**: writing tests in NemoClaw (NVIDIA/NemoClaw)
