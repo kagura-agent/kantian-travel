@@ -11,22 +11,28 @@
 # Before: gate only checked skip count, workflow ran full cycle just to discover all modes locked
 # After: gate checks both skip count AND mode availability for early exit
 
-set -euo pipefail
+set -uo pipefail
 
 SCRIPT_DIR="$(dirname "$0")"
 DATE=$(date +%Y-%m-%d)
 MEMORY_FILE="$HOME/.openclaw/workspace/memory/${DATE}.md"
 THRESHOLD=2
+DEBUG_LOG="${SCRIPT_DIR}/.saturation-gate-debug.log"
+
+# Debug: log every invocation so we can trace false-positives
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] gate invoked, DATE=$DATE, MEMORY_FILE=$MEMORY_FILE" >> "$DEBUG_LOG"
 
 # --- Layer 0: Circuit breaker check ---
 if ! bash "$SCRIPT_DIR/circuit-breaker.sh" check study >/dev/null 2>&1; then
   echo "🔴 CIRCUIT OPEN — study workflow halted (consecutive failures exceeded threshold)"
   echo "   Reset with: bash tools/circuit-breaker.sh reset study"
+  echo "[$(date '+%H:%M:%S')] EXIT: circuit open" >> "$DEBUG_LOG"
   exit 1
 fi
 
 if [[ ! -f "$MEMORY_FILE" ]]; then
   echo "✅ OPEN — no memory file yet today"
+  echo "[$(date '+%H:%M:%S')] EXIT: no memory file" >> "$DEBUG_LOG"
   exit 0
 fi
 

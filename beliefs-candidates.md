@@ -858,3 +858,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-19: [gradient] "NemoClaw --force recovery path follows a layered skip pattern: each pipeline phase (backup, MCP prep, etc.) independently checks force flag and decides its own fallback. When adding force support to a new phase, follow the same threading pattern (pipeline → phase input → function param) rather than trying to combine phases." → [行为改变] Check how existing phases (rebuild-backup-phase.ts) thread the force flag and follow the same pattern. (pattern: nemoclaw-force-layered-fallback, 第1次) (Source: workloop)
   - **Trigger**: Adding --force support to NemoClaw rebuild phases
+
+- 2026-07-20: [gradient] "Simple defensive fixes (error handlers, guards) in well-understood codebases complete 5x faster when done manually vs acpx — 7-line change took 10 min total including review and audit" → [行为改变] Skip acpx exec entirely for trivial additive fixes. Reserve acpx for multi-file changes or complex logic.. (pattern: manual-over-acpx-for-trivial, 第1次) (Source: workloop)
+  - **Trigger**: implement node: change is < 20 lines, additive only, single file, no test changes needed
