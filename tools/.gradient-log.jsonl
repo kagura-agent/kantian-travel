@@ -220,3 +220,4 @@
 {"date":"2026-07-20","pattern":"nemoclaw-test-no-if","source":"workloop","gradient":"NemoClaw CI has codebase-growth-guardrails check that bans if-statements in test files. Must use array.shift()/createGitHubFetchRouter patterns for conditional test logic."}
 {"date":"2026-07-21","pattern":"tracking-update-no-add-flag","source":"study","gradient":"tracking-update.sh 不支持 --add 新项目，只能 update 已有项目。新项目需手动 echo 追加 targets.md，容易格式不一致"}
 {"date":"2026-07-21","pattern":"openclaw-pr-body-format","source":"workloop","gradient":"openclaw "Real behavior proof" CI check requires explicit "What Problem This Solves" and "Evidence" sections in PR body for external PRs. Add these upfront — dont use generic "Summary/Changes" headers."}
+{"date":"2026-07-21","pattern":"study-apply-structural-empty-no-fastpath","source":"study","gradient":"当 study-saturation.sh 已报告 'backlog empty' 时，entry 节点仍强制进入 apply 全流程。应在 entry 提供 backlog-empty fast-path 跳出（直接到 reflect），避免浪费 6+ 工具调用验证已知空状态"}

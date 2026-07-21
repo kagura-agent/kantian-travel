@@ -880,3 +880,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-21: [gradient] "openclaw "Real behavior proof" CI check requires explicit "What Problem This Solves" and "Evidence" sections in PR body for external PRs. Add these upfront — dont use generic "Summary/Changes" headers." → [行为改变] Always include ## What Problem This Solves and ## Evidence headers in openclaw PR descriptions. (pattern: openclaw-pr-body-format, 第1次) (Source: workloop)
   - **Trigger**: submitting PR to openclaw/openclaw
+
+- 2026-07-21: [gradient] "当 study-saturation.sh 已报告 'backlog empty' 时，entry 节点仍强制进入 apply 全流程。应在 entry 提供 backlog-empty fast-path 跳出（直接到 reflect），避免浪费 6+ 工具调用验证已知空状态" → [行为改变] entry 节点增加分支判断：如果 saturation 输出含 'backlog empty' 且 unapplied.md 无 unchecked 项，走 branch 5 快速结束. (pattern: study-apply-structural-empty-no-fastpath, 第1次) (Source: study)
+  - **Trigger**: saturation.sh 输出 apply open 但标注 backlog empty
