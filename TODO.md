@@ -319,6 +319,7 @@
 - [x] **guide.md: 新增「multi-day CI debugging is a race condition with upstream」** - openclaw#108724 教训（rebase 后 CI 38 failures 花多天调试，期间 upstream 独立发布了架构更优的 #108966，所有 CI 调试时间归零）→ 已加入 guide.md 第 81 条 (2026-07-17)
 - [x] **guide.md: 新增「same-day PR conflict from upstream restructuring = active development zone」** - openclaw#110602 教训（PR 提交后数小时内 CONFLICTING，upstream 将 pi-embedded-runner 重命名为 embedded-agent-runner 并大幅重写 auto-reply，原 fix 目标已不存在）→ 已加入 guide.md 第 82 条 (2026-07-18)
 - [x] **guide.md: 新增「repos that block force-push make commit-level compliance unrecoverable」** - NemoClaw#7195 教训（DCO sign-off 缺失，repo 禁止 fork force-push 导致 rebase --signoff 无法推送，PR 被 #7196 supersede）→ 已加入 guide.md 第 83 条 (2026-07-19)
+- [x] **guide.md: 新增「check if target component is scheduled for deprecation/replacement」** - Archon#1599 教训（fix 代码正确但组件正在 UI cutover 被废弃，maintainer 直接关闭）→ 已加入 guide.md 第 84 条 (2026-07-21)
 
 ## 📚 学习
 
