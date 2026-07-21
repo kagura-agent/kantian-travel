@@ -883,3 +883,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-21: [gradient] "当 study-saturation.sh 已报告 'backlog empty' 时，entry 节点仍强制进入 apply 全流程。应在 entry 提供 backlog-empty fast-path 跳出（直接到 reflect），避免浪费 6+ 工具调用验证已知空状态" → [行为改变] entry 节点增加分支判断：如果 saturation 输出含 'backlog empty' 且 unapplied.md 无 unchecked 项，走 branch 5 快速结束. (pattern: study-apply-structural-empty-no-fastpath, 第1次) (Source: study)
   - **Trigger**: saturation.sh 输出 apply open 但标注 backlog empty
+
+- 2026-07-21: [gradient] "When an issue reports a bug on a specific older version, check if the fix already exists on HEAD before planning implementation. Comparing the code at the reported version vs HEAD caught that openclaw#112135 was already fixed in commit 513200125d (PR#108597), saving a full implementation cycle." → [行为改变] Early in study: check git log for the relevant file between reported version and HEAD. If logic changed substantially, compare old vs new behavior before implementing.. (pattern: check-fix-on-head-before-implementing, 第1次) (Source: workloop)
+  - **Trigger**: Issue reports a specific version number AND the codebase has had significant recent commits to the relevant file
