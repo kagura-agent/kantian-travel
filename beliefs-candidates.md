@@ -875,3 +875,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-20: [gradient] "NemoClaw CI has codebase-growth-guardrails check that bans if-statements in test files. Must use array.shift()/createGitHubFetchRouter patterns for conditional test logic." → [行为改变] Use responses array with .shift() for sequential behavior, createGitHubFetchRouter for URL-based routing. Never if/else in test bodies.. (pattern: nemoclaw-test-no-if, 第1次) (Source: workloop)
   - **Trigger**: writing tests in NemoClaw (NVIDIA/NemoClaw)
+
+- 2026-07-21: [gradient] "tracking-update.sh 不支持 --add 新项目，只能 update 已有项目。新项目需手动 echo 追加 targets.md，容易格式不一致" → [行为改变] 给 tracking-update.sh 加 --add --repo --depth 参数. (pattern: tracking-update-no-add-flag, 第1次) (Source: study)
+
+- 2026-07-21: [gradient] "openclaw "Real behavior proof" CI check requires explicit "What Problem This Solves" and "Evidence" sections in PR body for external PRs. Add these upfront — dont use generic "Summary/Changes" headers." → [行为改变] Always include ## What Problem This Solves and ## Evidence headers in openclaw PR descriptions. (pattern: openclaw-pr-body-format, 第1次) (Source: workloop)
+  - **Trigger**: submitting PR to openclaw/openclaw
