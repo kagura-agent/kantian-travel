@@ -228,7 +228,13 @@
 - Stars: 137 (stable)
 - External PR #171 (wooksong) 36 days without review — still open
 - Contribution score: 10 merged, 0 open, 7 closed
-- Status: upstream active — contribution window open. Next: submit PR for `memex_link` MCP tool
+- **PR #177 submitted**: feat(mcp) add `memex_link` tool — exposes v0.4.0 `link` command via MCP (from/to/context params, autoSync, 3 tests, 18 total pass)
+- Wiki health (07-20): 145 orphans (33%), 0 broken links, 0 collisions ✔ (stable vs 07-19)
+- 19 wiki files edited today (active dogfood usage confirmed)
+- Stars: 137 (stable)
+- External PR #171 (wooksong) still open (37+ days without review)
+- Contribution score: 10 merged, 1 open (#177 mcp-link), 7 closed
+- Status: upstream active — PR #177 pending review
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -326,7 +332,7 @@
 - [x] Track: renwei-writing (orange2ai) - 563⭐ (06-15, NEW). 人味儿写作 — AI editing skill preserving human voice. Pure prose, no code. Deep read done. Revisit 06-29
 - [x] Track: fable-mode (mrtooher) - 339⭐ (06-15, NEW). Claude execution discipline skill (staged plan, failable verify, self-critique). Deep read done — heavy overlap with FlowForge+DNA, main novel insight is "failable check" framing. Not adopting. Revisit 06-29
 - [x] Track: TreeTrace (Tree-Trace/treetrace) - 31⭐ (06-15). **Dropped** 06-15 — solo dev, 31⭐, no community growth. Concept noted in wiki
-- [x] Track: Paca (Paca-AI/paca) - 1,616⭐ (07-19 deep-read). v0.10.0 ACP agent support: bridge daemon, arun() deadlock fix, outbox reliability. THRIVING 5/6. Revisit 07-26. **Confirmed 07-20: false positive in followup-status, already done yesterday**
+- [x] Track: Paca (Paca-AI/paca) - 1,627⭐ (07-21 followup). PR#296 plugin SQL security + PR#295 sprint real-time. THRIVING 5/6. Revisit 07-28
 - [x] Track: MetaHarness (ruvnet/agent-harness-generator) - 297⭐ (06-17→06-24: 118→297, +152%). Darwin Mode: self-improving harness (SWE-bench 7.7%), WASM cost-escalator, Darwin Shield Phase 2. Solo dev extreme velocity validated. Revisit 07-01
 - [x] Track: why-was-fable-banned (SihyeonJeon) - 45⭐ (06-17→06-24: stalled, no commits since 06-15). Grade-scaling pattern already in DNA. **Downgraded to monthly.** Revisit 07-24
 - [x] Track: compass-skills (dongshuyan) - 480⭐ (06-17→06-24: 199→480, +141%). Task clarifier examples added, portable startup. Growing steadily, docs-focused. Revisit 07-01
@@ -343,8 +349,9 @@
 - [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
-- [ ] Track: waku-agent (ShenSeanChen) - 142⭐ (07-16, NEW). Teaching repo: readable agent blueprint with ~95-line loop, 3-pillar memory (semantic/episodic/procedural), retrieval gate, dual eval (deterministic + LLM-judge). MIT. Deep read done. Revisit 07-23
+- [x] Track: waku-agent (ShenSeanChen) - 355⭐ (07-21 followup, +150%). THRIVING 6/6. Compare Arena + delegate_task through full loop. Revisit 07-28
 - [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
+- [ ] Track: Waggle (modiqo/waggle) - 909⭐ (07-21, NEW). Attributed artifact references for agent handoffs. MCP-native ~30-byte tokens, sealed variant matcher, consumption contracts, payload-free telemetry. Rust, Apache-2.0/MIT. Deep read done. Revisit 07-28
 - [ ] Track: mentor (smixs/mentor) - 35⭐ (07-20, NEW). Session-insights skill for coding agents (SKILL.md format). Deterministic parsing of Claude Code + Codex transcripts → LLM-written HTML report. 8-dimension rubric. skills.sh distribution. Deep read done. Revisit 07-27
 - [ ] Track: shikigami (shikigami.dev) - closed-source (07-20, NEW). Desktop IDE for parallel coding agents with git worktree isolation. Claude Code + Codex. Solo dev beta. Revisit 08-03
 - [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
@@ -370,7 +377,7 @@
 - [x] Track: lemma-work/lemma-platform - 213⭐ (07-03 followup, +88% from 113). 🟢 THRIVING 6/6. Grant-first authz model (destructive actions gated by default). Composio connectors, pod-native toolsets, MCP stateless fix. Upgraded to deep-dive. Revisit 07-10
 - [ ] Track: GenseeAI/gensee-crate - 68⭐ (07-02, +45%). No commits since 06-27. Dev paused. Concept solid, execution stalled. Downgraded to monthly. Revisit 07-27
 - [x] Track: Godcoder (eli-labz/Godcoder) - 270⭐ (07-03 followup, +10%). 🔴 SOLO 0/6: 0 ext PRs, 0 issues. Added CoWork mode (computer-use). Local Qwen/Ollama. Solo dev burst-publish confirmed. Cooling — downgraded to monthly. Revisit 07-31
-- [ ] Track: agent-memory-engine (uudam42) - 26⭐ (06-28, NEW). Structured memory tree + multi-granularity retrieval + branch-aware scoping + candidate promotion. MCP server, Python, local-first. Solo dev, 0 community. Deep read done. Revisit 07-10
+- [ ] Track: agent-memory-engine (uudam42) - 122⭐ (06-28). Stars grew but 22d stale. Solo dev, 0 community. Downgraded to monthly. Revisit 08-10
 - [ ] Track: OpenTag (linxidnju/OpenTag) - 468⭐ (07-19 followup, +620% from 65). Team Knowledge feature burst 07-10: versioned knowledge records, scoped partitions (workspace/channel), typed kinds (fact/decision/convention/preference/procedure), audit trails. Solo dev, 0 forks, 0 external PRs. Interesting but no community. Revisit 07-26
 - [x] Track: self-learning-skills (Kulaxyz) - 899⭐ (07-20 followup, +580%). Viral growth but dev stopped (no commits since 07-01, 19d stale). Pure prompt skill, "finished" — nothing to iterate. Revisit 08-20 (monthly)
 - [x] Track: YurunChen/repo-docs-skills - 62⭐ (overdue, skipped this round). Revisit 07-27
@@ -819,7 +826,7 @@
 - CI fix was completed but PR closed before merge
 - **Gradient**: duplicate-pr-prevention — must check `gh pr list --search "<issue>"` before implementing
 - [x] Track: agentic-sop-to-work (s0912758806p) - 193⭐ (06-15→06-29: +8%). v1.9.0, six-rung-ladder skill. Solo dev, NASCENT community (0 ext PRs, 0 issues). All patterns extracted. **Downgraded to monthly.** Revisit 07-29
-- [ ] Track: Paca (Paca-AI/paca) - 1,516⭐ (07-04 followup, +9%). v0.8.0: agent executor refactor, secret env vars per agent. Maturing fast. Revisit 07-11
+- [x] Track: Paca (Paca-AI/paca) - 1,516⭐ (07-04 followup, +9%). v0.8.0: agent executor refactor, secret env vars per agent. Maturing fast. Superseded by 07-21 entry
 - [x] Track: Superlog (superloglabs/superlog) - 826⭐ (06-16, NEW). Agentic telemetry: OTLP ingest → incident fingerprinting → AI investigation → fix PRs. YC P26, Apache-2.0. "Talk to investigation" (resumable runs). Deep read done. Revisit 06-23
 - Wiki health (06-23): 974 files, 53 orphans (5%), 0 broken links, 0 collisions ✔
 - 13 wiki files edited today (active dogfood usage confirmed)
@@ -875,7 +882,7 @@
 - [ ] Add stale-memory MEMORY_DRIFT_CAVEAT remediation step to condensed bullet
 - [ ] Consider: condensedTypes parity test against TYPES_SECTION_INDIVIDUAL
 - Review body: https://github.com/QwenLM/qwen-code/pull/6104
-- [ ] Track: learn-agent (7-e1even) - 53⭐ (07-04, NEW). 15 progressive coding agent engineering lessons from Reina product. Zero deps, single file, battle-tested. Key insights: compaction 3-segment model, cache engineering 3 disciplines, tool disclosure proxy pattern. Deep read done. Revisit 07-11
+- [ ] Track: learn-agent (7-e1even) - 154⭐ (07-21 followup). SOLO 0/6, quiet since s20 (07-17). No new episode. Revisit 07-28
 - [x] Track: Napaxi (antgroup) - 24⭐ (07-20 followup). Cannot find repo on GitHub (possibly private/org-restricted/renamed). Dropped — unverifiable.
 - [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-30
 
@@ -900,3 +907,9 @@
   - 文件: `src/lib/actions/sandbox/rebuild-mcp-phase.ts:32-35`
   - 参考: `src/lib/actions/sandbox/mcp-bridge-rebuild.ts` (live vs absent preparation 的差异)
   - 测试: 需新增测试 — generated policy unreachable/drifted 时 --force 不应触发 sandbox delete
+
+### 本轮改進 (done)
+- [x] Add `--since DAYS` filter to `memes failures` — filters failures to last N days, making error capture rate meaningful (all-time: 5% misleading due to pre-capture history; `--since 14`: 100% capture). Backward-compatible (no flag = all time). Also shows period in hotspots/capture summary. Tested: `--since 7` (0 failures, clean), `--since 14` (2/2 captured, 100%), `--since 30` (68 total), no flag (72 total). Updated usage text. (07-20)
+
+### 本轮改進 (done)
+- [x] Clean tags.json data quality — `bruh/anime-bruh.gif` had test artifact tag `['collision-test']` from dedup testing, replaced with proper bruh tags. Removed stale `categoryCounts` metadata entry that leaked into tag namespace (redundant with tracker data). Lint + review pass clean. (07-21)
