@@ -886,3 +886,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-21: [gradient] "When an issue reports a bug on a specific older version, check if the fix already exists on HEAD before planning implementation. Comparing the code at the reported version vs HEAD caught that openclaw#112135 was already fixed in commit 513200125d (PR#108597), saving a full implementation cycle." → [行为改变] Early in study: check git log for the relevant file between reported version and HEAD. If logic changed substantially, compare old vs new behavior before implementing.. (pattern: check-fix-on-head-before-implementing, 第1次) (Source: workloop)
   - **Trigger**: Issue reports a specific version number AND the codebase has had significant recent commits to the relevant file
+
+- 2026-07-21: [gradient] "When all P1 issues are complex/require deep system understanding, spending too much time analyzing each before picking one wastes the entire workloop. Set a 10-minute investigation cap per issue, then commit to the best available option." → [行为改变] Spend max 10 min per candidate issue. After 3 candidates analyzed, pick the best one and go. Imperfect selection > paralysis.. (pattern: issue-selection-time-cap, 第1次) (Source: workloop)
+  - **Trigger**: find_work returns multiple complex P1 issues and I spend >30 min analyzing before selecting
