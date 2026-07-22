@@ -915,3 +915,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "Large repos with sparse checkout cannot git push — must use GitHub API (create blob/tree/commit/ref) for the entire push flow. Detecting this early saves wasted time on failed push attempts." → [行为改变] Check if repo uses sparse/partial clone before attempting git push. If sparse: use GitHub API push flow from the start, dont try git push first.. (pattern: sparse-clone-api-push, 第1次) (Source: workloop)
   - **Trigger**: When working with a sparse-cloned large repo and need to push changes
+
+- 2026-07-22: [gradient] "Market saturation: when all tracked repos are at PR limits, have competing PRs for every unassigned bug, or ban agent contributions, the workloop should fail fast (1-2 searches) instead of burning 7+ find_work iterations discovering each dead end independently." → [行为改变] Add early-exit heuristic to find_work: if 3 consecutive issues fail study/preflight, check aggregate state (all repos at PR limit? known saturation?) and exit to reflect immediately. (pattern: fail-fast-saturation-detection, 第1次) (Source: workloop)
+  - **Trigger**: When find_work script returns empty or first 3 issues all have blockers
+
+- 2026-07-22: [gradient] "Observal (Haz3-jolt/observal) explicitly bans autonomous coding agents in their AI_POLICY.md. Add to repo blacklist. Same for oh-my-pi (can1357/oh-my-pi) which requires vouch system before PRs." → [行为改变] Check CONTRIBUTING.md and AI_POLICY.md for agent bans or vouch requirements during discover, not study. Add known-blocked repos to gogetajob blocklist immediately. (pattern: repo-access-barriers, 第1次) (Source: workloop)
+  - **Trigger**: During study phase on new repos
