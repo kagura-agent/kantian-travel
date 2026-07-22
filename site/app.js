@@ -1,6 +1,6 @@
 // === State ===
 let savedIds = new Set();
-let currentFilter = 'weekend';
+let currentFilter = 'tomorrow';
 
 // === Route Map Overlay SVG (semi-transparent on photos) ===
 function routeOverlaySVG(route, totalH) {
