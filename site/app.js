@@ -577,28 +577,20 @@ function openDetail(plan) {
     // Split itinerary into steps (by → or +)
     const steps = itinText.split(/[\u2192\+]/).map(s => s.trim()).filter(Boolean);
 
-    // Build step-by-step itinerary with nav buttons
+    // Build step-by-step itinerary with nav to each place
     function buildStepsHTML() {
       let html = '<div class="day-steps">';
       steps.forEach((step, i) => {
-        // Try to find matching route point for navigation
-        let navHTML = '';
-        if (i < steps.length - 1) {
-          // Try to find a destination point to navigate to
-          const destIdx = Math.min(i + 1, dayRoutePoints.length - 1);
-          if (dayRoutePoints.length >= 2 && destIdx > 0) {
-            const to = dayRoutePoints[destIdx];
-            const navUrl = `https://uri.amap.com/navigation?to=${to.lng},${to.lat},${to.name}&mode=car`;
-            navHTML = `<a class="step-nav-btn" href="${navUrl}" target="_blank">导航去${to.name}</a>`;
-          }
-        }
-        const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达/.test(step);
+        const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达|下山/.test(step);
+        // Extract the place name for navigation (strip time/action descriptions)
+        const placeName = step.replace(/[\(\)（）约\d+h\s上午下午清晨傍晚晚上中午午餐后午前6点]/g, '').replace(/…+/g, '').trim();
+        const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
         html += `
           <div class="day-step ${isTransit ? 'step-transit' : 'step-play'}">
             <div class="step-icon">${isTransit ? '🚗' : '📍'}</div>
             <div class="step-content">
               <span class="step-text">${step}</span>
-              ${navHTML}
+              <a class="step-nav-btn" href="${navUrl}" target="_blank">导航</a>
             </div>
           </div>
           ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
@@ -608,25 +600,23 @@ function openDetail(plan) {
       return html;
     }
 
-    // Build transit nav buttons — destination only (GPS knows where you are)
+    // Build navigation list from itinerary steps (destination only)
     function buildTransitNavHTML() {
-      if (dayRoutePoints.length < 2) return '';
+      if (steps.length < 2) return '';
       let html = '<div class="detail-section"><h4 class="detail-section-title">今日导航</h4><div class="transit-nav-list">';
-      // Show each destination point (skip the first one which is where you start)
-      for (let i = 1; i < dayRoutePoints.length; i++) {
-        const to = dayRoutePoints[i];
-        const leg = dayLegs[i - 1] || '';
-        const navUrl = `https://uri.amap.com/navigation?to=${to.lng},${to.lat},${to.name}&mode=car`;
+      steps.forEach((step, i) => {
+        const placeName = step.replace(/[\(\)（）约\d+h\s上午下午清晨傍晚晚上中午午餐后午前6点]/g, '').replace(/…+/g, '').trim();
+        if (!placeName) return;
+        const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
         html += `
           <a class="transit-nav-item" href="${navUrl}" target="_blank">
             <div class="tn-info">
-              <span class="tn-route">📍 ${to.name}</span>
-              <span class="tn-leg">${leg}</span>
+              <span class="tn-route">📍 ${step}</span>
             </div>
-            <span class="tn-action">导航去这里</span>
+            <span class="tn-action">导航</span>
           </a>
         `;
-      }
+      });
       html += '</div></div>';
       return html;
     }
