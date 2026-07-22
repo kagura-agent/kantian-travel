@@ -369,7 +369,7 @@
 - [ ] Track: shreyashankar/error-discovery-skill - 147⭐ (07-18 followup, +101% stars but code quiet since 06-25). GROWING 4/6. Methodology repo. Revisit 08-01
 - [ ] Track: Forall (astrio-labs/forall) - 279⭐ (07-18, NEW). Spec-driven code + machine-checkable proofs. Rust, Apache-2.0. MCP verify-only mode for existing agents. Deep read done. Revisit 07-25
 - [ ] Track: Forsy-AI/agent-apprenticeship - 1,315⭐ (07-16 followup). STALLING: 0 commits since 07-06, 0 PRs, 0 issues, NASCENT 1/6. Downgraded to monthly. Revisit 08-16
-- [ ] Track: KongFangXun/sofagent - 19⭐ (06-22, NEW). PM-designed agent governance layer (Markdown + bash). OpenClaw first-class. 3-layer loading chain, progressive thinning, circuit breaker. Zero community. Deep read done. Revisit 07-22
+- [x] Track: KongFangXun/sofagent - 28⭐ (07-22 followup, +47%). v1.1.6→1.1.8 in 3 days: AES-256 security + ECDH, Federation CRDT sharing, DAG workflow engine. Solo dev extreme velocity. NASCENT 2/6. Expanding from governance to full framework. Revisit 08-05
 - [ ] Track: NotASithLord/peerd - 356⭐ (07-16 followup, +19%). v0.2.7. Prewalk (frontier plans+cheap executes), Background Routines (browser-native cron). THRIVING 6/6, 4 ext contributors. Revisit 07-23
 - [ ] Track: deja-vu (vshulcz/deja-vu) - 211⭐ (07-16, NEW). Cross-harness agent memory search. Token inverted index, no embeddings, 7-9ms. MCP recall + SessionStart auto-inject. Go, MIT. Deep read done. Revisit 07-23
 - [ ] Track: grok-build (xai-org/grok-build) - 4,104⭐ (07-16, NEW). xAI coding agent harness + TUI. Major industry entrant. Skim only (>5k threshold approaching). Revisit 07-23
@@ -697,7 +697,7 @@
 - [x] Track: GenericAgent (lsdefine/GenericAgent) - 12,358⭐ (06-01). Checklist SOP (mapreduce→checklist rename). Delivery/report separation pattern. Mature. Revisit 06-08 → 06-09: 12,711⭐, doc cleanup only. Next revisit in targets.md (06-22)
 - [x] Track: sandboxes (tastyeffectco/sandboxes) - 693⭐ (06-26 followup, was 672 on 06-19, +3%). v0.2.0 released, v0.4.0 draft (console, snapshots/fork, runtime manifest, presets). Growth slowing, no new architectural patterns. Revisit 07-10
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
-- [ ] Track: mercury-agent-skills (cosmicstack-labs) - 352⭐ (06-19, plateau). No maintainer push 12d. Downgraded to cool. Revisit 07-19
+- [x] Track: mercury-agent-skills (cosmicstack-labs) - 352⭐ (06-19, plateau). **Dropped** 07-22 — main agent repo dead (44d stale), skills repo dormant. No new signal
 - [x] Track: 21-day-self-interview (Forlives) - 153⭐ (06-13, was 128, +20%). **Dropped** 06-13 — phantomstars bot flagged fake engagement (issue #1). Only 2 commits, 1 external PR (metadata fix). Star farming pattern
 
 ## openclaw/openclaw PR #92665 — cacheRetention for LiteLLM
