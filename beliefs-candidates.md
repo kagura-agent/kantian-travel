@@ -889,3 +889,23 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-21: [gradient] "When all P1 issues are complex/require deep system understanding, spending too much time analyzing each before picking one wastes the entire workloop. Set a 10-minute investigation cap per issue, then commit to the best available option." → [行为改变] Spend max 10 min per candidate issue. After 3 candidates analyzed, pick the best one and go. Imperfect selection > paralysis.. (pattern: issue-selection-time-cap, 第1次) (Source: workloop)
   - **Trigger**: find_work returns multiple complex P1 issues and I spend >30 min analyzing before selecting
+
+- 2026-07-22: [gradient] "FlowForge instances get stuck at terminal/near-terminal nodes (done, done_dedup, summary) for 3 consecutive days. Subagent completes work but cron session ends before flowforge advance executes the final step. Cleanup catches them next day but wastes instance state." → [行为改变] After any subagent completion in a cron session, flowforge advance is the FIRST action — before logging, before memory writes, before any other work. If cron session is about to end, prioritize advancing over everything else. (pattern: flowforge-terminal-node-stuck, 第3次 — 07-20: 3 instances stuck, 07-21: 1 instance stuck, 07-22: 1 instance stuck. Independent days, same root cause) (Source: audit)
+  - **Trigger**: cron session spawns subagent for FlowForge node, subagent completes, but advance doesn't happen before session ends
+
+- 2026-07-22: [audit-consolidation] "preflight size gate 碎片化修正 — 以下 4 个 gradient 描述同一问题（500MB size gate 阻塞有本地 clone 的大 repo），合并计数:"
+  - 06-03: `preflight-false-positive` (count=1)
+  - 07-16: `preflight-size-gate-blocks-local-repos` (count=1)
+  - 07-17: `preflight-size-gate-local-override` (count=1)
+  - 07-18: `tool-blockers-unresolved` (count=1)
+  **合并后**: pattern=preflight-size-gate-local-clone, **count=4** (4 independent occurrences across 4 dates). 已超过 3-count graduation gate。待下次 review 正式评估。
+
+- 2026-07-22: [audit-consolidation] "apply empty backlog 碎片化修正 — 以下 4 个 gradient 描述同一问题（apply mode 进入但 backlog 为空，浪费工具调用），合并计数:"
+  - 07-04: `study-saturation-apply-empty-misleading` (count=1)
+  - 07-18: 同名重复标为 "第1次"
+  - 07-20: `study-saturation-apply-content-vs-count` (count=1)
+  - 07-21: `study-apply-structural-empty-no-fastpath` (count=1)
+  **合并后**: pattern=apply-empty-backlog-waste, **count=4** (4 independent occurrences across 4 dates, all self-generated 0.5x = 2.0 weighted). 未达 3.0 加权阈值，但趋势明确。
+
+- 2026-07-22: [gradient] "oxlint restrict-template-expressions: when narrowing a param to non-string (typeof !== string), the template literal ${param} still has the original union type. Wrap with String(param) to satisfy the lint rule." → [行为改变] Always use String(value) in error messages when the value might not be a string type at that point in the code. (pattern: oxlint-template-expression-narrowing, 第1次) (Source: workloop)
+  - **Trigger**: Adding type guards that throw errors with template literals containing the guarded value
