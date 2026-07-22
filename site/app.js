@@ -582,8 +582,13 @@ function openDetail(plan) {
       let html = '<div class="day-steps">';
       steps.forEach((step, i) => {
         const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达|下山/.test(step);
-        // Extract the place name for navigation (strip time/action descriptions)
-        const placeName = step.replace(/[\(\)（）约\d+h\s上午下午清晨傍晚晚上中午午餐后午前6点]/g, '').replace(/…+/g, '').trim();
+        // Extract place name: strip action verbs and descriptions
+        const placeName = step
+          .replace(/[\(\)（）].*/g, '')  // remove parenthetical
+          .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山).*$/g, '')  // strip trailing verbs+rest
+          .replace(/(绝美|人超少|最美).*$/g, '')  // strip adjective tails
+          .replace(/[\d]+km/g, '')  // strip distances
+          .trim();
         const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
         html += `
           <div class="day-step ${isTransit ? 'step-transit' : 'step-play'}">
