@@ -320,6 +320,7 @@
 - [x] **guide.md: 新增「same-day PR conflict from upstream restructuring = active development zone」** - openclaw#110602 教训（PR 提交后数小时内 CONFLICTING，upstream 将 pi-embedded-runner 重命名为 embedded-agent-runner 并大幅重写 auto-reply，原 fix 目标已不存在）→ 已加入 guide.md 第 82 条 (2026-07-18)
 - [x] **guide.md: 新增「repos that block force-push make commit-level compliance unrecoverable」** - NemoClaw#7195 教训（DCO sign-off 缺失，repo 禁止 fork force-push 导致 rebase --signoff 无法推送，PR 被 #7196 supersede）→ 已加入 guide.md 第 83 条 (2026-07-19)
 - [x] **guide.md: 新增「check if target component is scheduled for deprecation/replacement」** - Archon#1599 教训（fix 代码正确但组件正在 UI cutover 被废弃，maintainer 直接关闭）→ 已加入 guide.md 第 84 条 (2026-07-21)
+- [x] **guide.md: 新增「mirror recently merged PRs to fix analogous bugs in sibling modules」** - Archon#2251 正面教训（用 #2245 merged fix pattern 找到 codebases.ts 同 bug，CI 一次通过）→ 已加入 guide.md 第 85 条 (2026-07-22)
 
 ## 📚 学习
 
@@ -917,3 +918,9 @@
 
 ### 本轮改進 (done)
 - [x] Clean tags.json data quality — `bruh/anime-bruh.gif` had test artifact tag `['collision-test']` from dedup testing, replaced with proper bruh tags. Removed stale `categoryCounts` metadata entry that leaked into tag namespace (redundant with tracker data). Lint + review pass clean. (07-21)
+
+### 本轮改進 (done)
+- [x] Add repetition check to `memes review` — new `_review_repetition_summary()` function flags categories with >5× sends/file ratio (indicating need for more variety). Integrated into both clean and weak review paths. Currently flags: nailed-it (7× = 56 sends / 8 files). Also woke stale `tired` category (7.6d → fresh). (07-22)
+
+### 本轮改進 (done)
+- [x] Adaptive recency window for small pools — `cmd_pick` now widens recency window to `files-2` for categories ≤12 files (when that exceeds the default 5). For nailed-it (8 files), window goes from 5→6, leaving only 2 eligible files at any time instead of 3, enforcing tighter round-robin rotation. Larger categories (cute-animals: 29 files) unaffected. Addresses repetition flag without needing new downloads. (07-22)
