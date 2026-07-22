@@ -909,3 +909,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "oxlint restrict-template-expressions: when narrowing a param to non-string (typeof !== string), the template literal ${param} still has the original union type. Wrap with String(param) to satisfy the lint rule." → [行为改变] Always use String(value) in error messages when the value might not be a string type at that point in the code. (pattern: oxlint-template-expression-narrowing, 第1次) (Source: workloop)
   - **Trigger**: Adding type guards that throw errors with template literals containing the guarded value
+
+- 2026-07-22: [gradient] "tracking-update.sh doesn't exist but is referenced in preflight gradient violations — phantom tool reference" → [行为改变] verify tool exists before adding to gradient patterns; create missing tools or clean phantom references. (pattern: phantom-tool-reference, 第1次) (Source: study)
+  - **Trigger**: preflight mentions a script that was never created
