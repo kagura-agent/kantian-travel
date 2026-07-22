@@ -583,11 +583,13 @@ function openDetail(plan) {
       steps.forEach((step, i) => {
         // Try to find matching route point for navigation
         let navHTML = '';
-        if (dayRoutePoints.length >= 2 && i < dayRoutePoints.length) {
-          const to = dayRoutePoints[Math.min(i + 1, dayRoutePoints.length - 1)];
-          if (to) {
+        if (i < steps.length - 1) {
+          // Try to find a destination point to navigate to
+          const destIdx = Math.min(i + 1, dayRoutePoints.length - 1);
+          if (dayRoutePoints.length >= 2 && destIdx > 0) {
+            const to = dayRoutePoints[destIdx];
             const navUrl = `https://uri.amap.com/navigation?to=${to.lng},${to.lat},${to.name}&mode=car`;
-            navHTML = `<a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航</a>`;
+            navHTML = `<a class="step-nav-btn" href="${navUrl}" target="_blank">导航去${to.name}</a>`;
           }
         }
         const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达/.test(step);
@@ -606,20 +608,22 @@ function openDetail(plan) {
       return html;
     }
 
-    // Build transit nav buttons for route legs
+    // Build transit nav buttons — destination only (GPS knows where you are)
     function buildTransitNavHTML() {
       if (dayRoutePoints.length < 2) return '';
-      let html = '<div class="detail-section"><h4 class="detail-section-title">今日交通</h4><div class="transit-nav-list">';
-      for (let i = 0; i < dayRoutePoints.length - 1; i++) {
-        const from = dayRoutePoints[i];
-        const to = dayRoutePoints[i + 1];
-        const leg = dayLegs[i] || '';
-        const navUrl = `https://uri.amap.com/navigation?from=${from.lng},${from.lat},${from.name}&to=${to.lng},${to.lat},${to.name}&mode=car`;
+      let html = '<div class="detail-section"><h4 class="detail-section-title">今日导航</h4><div class="transit-nav-list">';
+      // Show each destination point (skip the first one which is where you start)
+      for (let i = 1; i < dayRoutePoints.length; i++) {
+        const to = dayRoutePoints[i];
+        const leg = dayLegs[i - 1] || '';
+        const navUrl = `https://uri.amap.com/navigation?to=${to.lng},${to.lat},${to.name}&mode=car`;
         html += `
           <a class="transit-nav-item" href="${navUrl}" target="_blank">
-            <span class="tn-route">${from.name} → ${to.name}</span>
-            <span class="tn-leg">${leg}</span>
-            <span class="tn-action">📍 导航</span>
+            <div class="tn-info">
+              <span class="tn-route">📍 ${to.name}</span>
+              <span class="tn-leg">${leg}</span>
+            </div>
+            <span class="tn-action">导航去这里</span>
           </a>
         `;
       }
