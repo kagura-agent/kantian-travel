@@ -1,0 +1,177 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--accent:#FF6B4A;--bg:#f5f5f7;--card:#fff;--text:#1a1a1a;--sub:#666;--r:16px}
+html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Noto Sans SC',sans-serif;background:var(--bg);color:var(--text);-webkit-tap-highlight-color:transparent}
+
+/* Top Bar */
+.top-bar{position:sticky;top:0;z-index:100;background:rgba(245,245,247,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:12px 16px;border-bottom:1px solid rgba(0,0,0,0.06);max-width:430px;margin:0 auto}
+.top-bar-inner{display:flex;align-items:center;gap:12px}
+.app-name{font-size:18px;font-weight:700;white-space:nowrap}
+.time-tabs{display:flex;gap:6px;overflow-x:auto;flex:1;scrollbar-width:none;-ms-overflow-style:none}
+.time-tabs::-webkit-scrollbar{display:none}
+.tab{background:rgba(0,0,0,0.05);border:none;color:var(--sub);font-size:12px;font-weight:500;padding:6px 12px;border-radius:16px;cursor:pointer;white-space:nowrap;transition:.2s}
+.tab.active{background:var(--accent);color:#fff}
+.shortlist-btn{position:relative;background:none;border:none;cursor:pointer;padding:4px}
+.shortlist-btn svg{width:22px;height:22px;stroke:var(--text);fill:none;stroke-width:2}
+.badge{position:absolute;top:-4px;right:-6px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;min-width:16px;height:16px;border-radius:8px;display:none;align-items:center;justify-content:center;padding:0 4px}
+.badge.show{display:flex}
+
+/* Card List */
+.card-list{padding:12px 16px 80px;display:flex;flex-direction:column;gap:16px;max-width:430px;margin:0 auto}
+
+/* Card */
+.card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08);cursor:pointer;transition:transform .15s;animation:fadeUp .4s both}
+.card:active{transform:scale(0.98)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* Photo Stack */
+.card-photos{position:relative;display:flex;flex-direction:column}
+.day-strip{position:relative;overflow:hidden;height:120px}
+.day-photo{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+.day-photo.loaded{opacity:1}
+.day-overlay{position:absolute;bottom:0;left:0;right:70px;padding:6px 12px;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);display:flex;align-items:baseline;gap:8px}
+.day-label{font-size:11px;font-weight:700;color:rgba(255,255,255,0.8)}
+.day-activity{font-size:12px;color:#fff;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* Weather Overlay SVG */
+.weather-overlay{position:absolute;top:0;right:0;width:70px;height:100%;pointer-events:none}
+.route-overlay{position:absolute;top:0;left:0;width:80px;height:100%;pointer-events:none;opacity:0.85}
+
+/* Card Heart */
+.card-heart{position:absolute;top:10px;right:10px;z-index:5;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s}
+.card-heart svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:2}
+.card-heart.saved svg{fill:var(--accent);stroke:var(--accent)}
+.card-heart:active{transform:scale(0.85)}
+
+/* Duration Badge */
+.card-duration{position:absolute;top:10px;left:10px;background:rgba(0,0,0,0.5);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:12px}
+
+/* Card Info */
+.card-info{padding:14px 16px}
+.card-title{font-size:18px;font-weight:700;margin-bottom:6px}
+.card-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
+.card-transit{font-size:13px;color:var(--sub)}
+.card-price{font-size:12px;color:var(--accent);font-weight:500}
+.card-map{width:100%;height:220px;border-radius:10px;overflow:hidden;margin-top:10px;border:1px solid #eee}
+.map-label-sm{background:rgba(255,255,255,0.95)!important;border:1px solid #FF6B4A!important;border-radius:6px!important;padding:2px 8px!important;font-size:12px!important;font-weight:600!important;color:#333!important;box-shadow:0 1px 4px rgba(0,0,0,0.1)!important}
+.route-num{background:#FF6B4A;color:#fff;font-size:10px;font-weight:700;text-align:center;line-height:20px;border-radius:10px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,0.3)}
+
+/* Empty */
+.empty-state{text-align:center;padding:60px 20px;color:var(--sub)}
+.empty-sub{font-size:13px;margin-top:8px;opacity:.6}
+
+/* Detail Overlay */
+.detail-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s}
+.detail-overlay.open{opacity:1;pointer-events:auto}
+.detail-sheet{position:fixed;bottom:0;left:0;right:0;max-height:88vh;background:#fff;border-radius:20px 20px 0 0;transform:translateY(100%);transition:transform .4s cubic-bezier(.16,1,.3,1);overflow-y:auto;overscroll-behavior:contain}
+.detail-overlay.open .detail-sheet{transform:translateY(0)}
+.detail-header{position:relative;height:200px;overflow:hidden}
+.detail-photo{width:100%;height:100%;object-fit:cover}
+.detail-sheet>.detail-close{position:sticky;top:8px;float:right;margin:8px 12px 0 0;z-index:10;background:rgba(0,0,0,0.45);backdrop-filter:blur(8px);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.detail-sheet>.detail-close svg{stroke:#fff}
+.view-tabs-row{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:4px 0 12px;scrollbar-width:none}
+.view-tabs-row::-webkit-scrollbar{display:none}
+.view-tab{flex-shrink:0;padding:8px 14px;border-radius:20px;border:1.5px solid #e0e0e0;background:#fff;font-size:13px;font-weight:500;color:#666;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:all .2s}
+.view-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.view-tab .vt-day{font-weight:600}
+.view-tab .vt-weather{font-size:11px;opacity:0.85}
+.detail-duration-badge{position:absolute;bottom:12px;left:12px;background:var(--accent);color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600}
+.detail-body{padding:20px 16px 40px}
+.detail-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.detail-transit{font-size:13px;color:var(--sub);margin-bottom:20px}
+.detail-section{margin-bottom:24px}
+.detail-section-title{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--sub);margin-bottom:10px;font-weight:600}
+
+/* Detail Itinerary */
+.detail-itin-day{margin-bottom:12px;padding-left:12px;border-left:3px solid var(--accent)}
+.di-label{font-size:13px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.di-content{font-size:13px;line-height:1.6;color:#444}
+
+/* Detail Transit */
+.detail-transit-info{background:#f8f8fa;border-radius:12px;padding:14px}
+.dt-row{font-size:13px;color:#444;margin-bottom:6px}
+.dt-row:last-child{margin-bottom:0}
+
+/* Detail Stay */
+.detail-stay{font-size:13px;color:#444;line-height:1.6}
+
+/* Route Map */
+.route-map{width:100%;height:200px;border-radius:12px;overflow:hidden;border:1px solid #eee}
+.map-label{background:rgba(255,255,255,0.95)!important;border:1px solid #FF6B4A!important;border-radius:6px!important;padding:2px 8px!important;font-size:12px!important;font-weight:500!important;color:#333!important;box-shadow:0 2px 6px rgba(0,0,0,0.1)!important}
+
+/* Related Content */
+.related-content{display:flex;flex-direction:column;gap:10px}
+.related-card{background:#f8f8fa;border-radius:10px;padding:12px 14px}
+.rc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.rc-platform{font-size:12px;font-weight:600;color:#666}
+.rc-likes{font-size:11px;color:#999}
+.rc-title{font-size:14px;color:#333;line-height:1.4;font-weight:500}
+
+/* Detail CTA */
+.detail-cta{padding:16px 0;text-align:center}
+.detail-cta-btn{background:var(--accent);color:#fff;border:none;padding:14px 40px;border-radius:28px;font-size:15px;font-weight:600;cursor:pointer}
+.detail-cta-btn:active{transform:scale(0.95)}
+
+/* Shortlist Overlay */
+.shortlist-overlay{position:fixed;inset:0;z-index:300;background:#fff;transform:translateX(100%);transition:transform .3s cubic-bezier(.16,1,.3,1);overflow-y:auto}
+.shortlist-overlay.open{transform:translateX(0)}
+.shortlist-header{display:flex;align-items:center;justify-content:space-between;padding:16px;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:5}
+.shortlist-header h2{font-size:18px}
+.shortlist-body{padding:16px}
+.sl-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #f0f0f0;cursor:pointer}
+.sl-img{width:60px;height:60px;border-radius:10px;object-fit:cover}
+.sl-info h4{font-size:15px;font-weight:600;margin-bottom:2px}
+.sl-info p{font-size:12px;color:var(--sub)}
+.panel-empty{text-align:center;padding:60px 20px;color:var(--sub);font-size:14px;line-height:2}
+.leg-label{background:rgba(0,0,0,0.6);color:#fff;font-size:9px;font-weight:500;text-align:center;border-radius:7px;padding:1px 4px;white-space:nowrap;line-height:12px}
+
+/* Timeline */
+.card-timeline{margin-top:12px;margin-bottom:8px}
+.tl-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;gap:1px}
+.tl-seg{min-width:3px;transition:opacity .2s}
+.tl-legend{display:flex;gap:12px;margin-top:6px;font-size:11px;color:#666}
+.tl-legend span{display:flex;align-items:center;gap:4px}
+.tl-legend i{display:inline-block;width:8px;height:8px;border-radius:2px}
+.tl-seg{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tl-cost{font-size:8px;color:#fff;font-weight:600;white-space:nowrap;text-shadow:0 0 2px rgba(0,0,0,0.5)}
+.tl-total{font-weight:700;color:#FF6B4A}
+
+/* Detail Photo Gallery */
+.detail-gallery{display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:none;-ms-overflow-style:none}
+.detail-gallery::-webkit-scrollbar{display:none}
+.gallery-thumb{position:relative;flex-shrink:0;width:80px;height:80px;border-radius:10px;overflow:hidden;cursor:pointer;border:2px solid transparent;transition:border-color .2s,transform .2s}
+.gallery-thumb.active{border-color:var(--accent);transform:scale(1.05)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.gallery-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);color:#fff;font-size:10px;font-weight:600;padding:4px 6px 3px;text-align:center}
+
+/* Detail Weather Row */
+.detail-weather-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
+.detail-weather-row::-webkit-scrollbar{display:none}
+.weather-day{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:56px;padding:10px 8px;background:#f8f8fa;border-radius:12px;flex-shrink:0}
+.wd-label{font-size:11px;color:var(--sub);font-weight:600}
+.wd-icon{font-size:20px}
+.wd-temp{font-size:13px;font-weight:700;color:var(--text)}
+
+/* Detail Booking Pills */
+.detail-booking-pills{display:flex;flex-wrap:wrap;gap:8px}
+.booking-pill{display:inline-flex;align-items:center;gap:4px;padding:8px 14px;background:#f0f7ff;border:1px solid #d0e3f7;border-radius:20px;font-size:13px;font-weight:500;color:#2a6fc9;cursor:pointer;transition:background .2s,transform .15s}
+.booking-pill:active{background:#dfeeff;transform:scale(0.95)}
+
+/* Detail Tips */
+.detail-tips{display:flex;flex-direction:column;gap:8px}
+.tip-item{font-size:13px;color:#444;line-height:1.6;padding:10px 12px;background:#fffbf0;border-radius:10px;border:1px solid #f5e6c8}
+.leg-label.clickable{cursor:pointer;pointer-events:auto}
+.leg-label.clickable a{color:#fff;text-decoration:none;display:block;width:100%;height:100%}
+
+/* Detail Photo + Weather Integrated */
+.detail-photo-weather{margin-bottom:20px}
+.day-tabs-row{display:flex;gap:6px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+.day-tabs-row::-webkit-scrollbar{display:none}
+.day-tab{border:none;background:#f0f0f2;border-radius:20px;padding:6px 14px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:60px;transition:.2s}
+.day-tab.active{background:var(--accent);color:#fff}
+.day-tab .dt-day{font-size:11px;font-weight:600}
+.day-tab .dt-weather{font-size:12px}
+.detail-hero-photo{position:relative;width:100%;height:220px;border-radius:12px;overflow:hidden;margin-bottom:8px}
+.detail-hero-photo img{width:100%;height:100%;object-fit:cover}
+.hero-activity{position:absolute;bottom:0;left:0;right:0;padding:8px 14px;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);color:#fff;font-size:13px;font-weight:500}
+.hero-hourly{position:absolute;top:0;left:0;right:0;padding:8px;pointer-events:none}
+.hero-hourly .hourly-chart{width:100%;height:60px;display:block}

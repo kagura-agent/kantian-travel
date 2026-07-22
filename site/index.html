@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>看天出发 — 周末去哪儿</title>
+<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+<!-- Top Bar -->
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <h1 class="app-name">看天出发</h1>
+    <nav class="time-tabs" id="timeTabs">
+      <button class="tab active" data-filter="tomorrow">明天出发</button>
+      <button class="tab" data-filter="weekend">这周末</button>
+      <button class="tab" data-filter="next-weekend">下周末</button>
+      <button class="tab" data-filter="3day">请3天假</button>
+      <button class="tab" data-filter="5day">小长假5天</button>
+      <button class="tab" data-filter="week">找7天连晴</button>
+    </nav>
+    <button class="shortlist-btn" id="shortlistBtn">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="badge" id="shortlistBadge">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- Card List -->
+<main class="card-list" id="cardList"></main>
+
+<!-- Detail Overlay -->
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-sheet" id="detailSheet">
+    <button class="detail-close" id="detailClose">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+</div>
+
+<!-- Shortlist Panel -->
+<div class="shortlist-overlay" id="shortlistOverlay">
+  <div class="shortlist-panel">
+    <div class="shortlist-header">
+      <h2>我的收藏</h2>
+      <button class="detail-close" id="shortlistClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="shortlist-body" id="shortlistBody"></div>
+  </div>
+</div>
+
+<script src="data.js?v=4"></script>
+<script src="app.js?v=4"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'site/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VM1_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H moltbook.kagura-agent.com >> ~/.ssh/known_hosts
+
+      - name: Deploy to VM1
+        env:
+          SSH_OPTS: -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no
+          SSH_TARGET: azureuser@moltbook.kagura-agent.com
+        run: |
+          rsync -avz --delete \
+            -e "ssh $SSH_OPTS" \
+            site/ $SSH_TARGET:/var/www/kantian/
