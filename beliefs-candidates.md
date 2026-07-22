@@ -921,3 +921,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "Observal (Haz3-jolt/observal) explicitly bans autonomous coding agents in their AI_POLICY.md. Add to repo blacklist. Same for oh-my-pi (can1357/oh-my-pi) which requires vouch system before PRs." → [行为改变] Check CONTRIBUTING.md and AI_POLICY.md for agent bans or vouch requirements during discover, not study. Add known-blocked repos to gogetajob blocklist immediately. (pattern: repo-access-barriers, 第1次) (Source: workloop)
   - **Trigger**: During study phase on new repos
+
+- 2026-07-22: [gradient] "Always run prettier/format before push when using --no-verify on commit. CI format:check will catch it but costs an extra push + CI cycle." → [行为改变] After commit with --no-verify, always run npx prettier --write on changed files before pushing. (pattern: format-before-push, 第1次) (Source: workloop)
+  - **Trigger**: Using git commit --no-verify to skip lint-staged hooks
