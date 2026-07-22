@@ -368,6 +368,53 @@ function getHourlyData(day) {
 }
 
 // Derive smart booking pills from itinerary text
+// Get route points for a specific day
+function getDayRoutePoints(plan, dayIdx) {
+  const route = plan.route;
+  const numDays = plan.days.length;
+  if (!route || route.length < 2) return [];
+  if (numDays === 1) return route;
+  // Intermediate stops (exclude return to origin)
+  const stops = route.length - 1;
+  const stopsPerDay = Math.max(1, Math.ceil(stops / numDays));
+  const startIdx = Math.min(dayIdx * stopsPerDay, stops);
+  let endIdx = Math.min((dayIdx + 1) * stopsPerDay, stops);
+  // Last day includes return
+  if (dayIdx === numDays - 1) endIdx = route.length - 1;
+  // Ensure at least 2 points (include previous day's last point as start)
+  let points = route.slice(startIdx, endIdx + 1);
+  if (points.length < 2 && startIdx > 0) {
+    points = [route[startIdx - 1], ...points];
+  }
+  return points;
+}
+
+// Get legs (transport labels) for a specific day
+function getDayLegs(plan, dayIdx) {
+  const numDays = plan.days.length;
+  if (!plan.legs) return [];
+  const route = plan.route;
+  const stops = route.length - 1;
+  const stopsPerDay = Math.max(1, Math.ceil(stops / numDays));
+  const startIdx = Math.min(dayIdx * stopsPerDay, stops);
+  let endIdx = Math.min((dayIdx + 1) * stopsPerDay, stops);
+  if (dayIdx === numDays - 1) endIdx = route.length - 1;
+  return plan.legs.slice(startIdx, endIdx);
+}
+
+// Match related content to a specific day's activities
+function getDayRelatedContent(planId, itinText) {
+  const all = RELATED_CONTENT[planId] || [];
+  if (!all.length) return [];
+  const words = itinText.replace(/[→+·\(\)\!！]/g, ' ').split(/\s+/).filter(w => w.length >= 2);
+  const matched = all.filter(c => {
+    const tl = c.title.toLowerCase();
+    return words.some(w => tl.includes(w.toLowerCase()));
+  });
+  // If no specific match, return all (better than nothing)
+  return matched.length > 0 ? matched : all;
+}
+
 function getDayBookings(itinText, dayIdx, totalDays) {
   const pills = [];
   const t = itinText.toLowerCase();
@@ -523,6 +570,62 @@ function openDetail(plan) {
     const dayTips = getDayTips(tips, itinText);
     const dayTimeline = getTimelineForDay(plan.id, dayIdx, numDays);
     const hourly = getHourlyData(day);
+    const dayRoutePoints = getDayRoutePoints(plan, dayIdx);
+    const dayLegs = getDayLegs(plan, dayIdx);
+    const dayContent = getDayRelatedContent(plan.id, itinText);
+
+    // Split itinerary into steps (by → or +)
+    const steps = itinText.split(/[\u2192\+]/).map(s => s.trim()).filter(Boolean);
+
+    // Build step-by-step itinerary with nav buttons
+    function buildStepsHTML() {
+      let html = '<div class="day-steps">';
+      steps.forEach((step, i) => {
+        // Try to find matching route point for navigation
+        let navHTML = '';
+        if (dayRoutePoints.length >= 2 && i < dayRoutePoints.length) {
+          const to = dayRoutePoints[Math.min(i + 1, dayRoutePoints.length - 1)];
+          if (to) {
+            const navUrl = `https://uri.amap.com/navigation?to=${to.lng},${to.lat},${to.name}&mode=car`;
+            navHTML = `<a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航</a>`;
+          }
+        }
+        const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达/.test(step);
+        html += `
+          <div class="day-step ${isTransit ? 'step-transit' : 'step-play'}">
+            <div class="step-icon">${isTransit ? '🚗' : '📍'}</div>
+            <div class="step-content">
+              <span class="step-text">${step}</span>
+              ${navHTML}
+            </div>
+          </div>
+          ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
+        `;
+      });
+      html += '</div>';
+      return html;
+    }
+
+    // Build transit nav buttons for route legs
+    function buildTransitNavHTML() {
+      if (dayRoutePoints.length < 2) return '';
+      let html = '<div class="detail-section"><h4 class="detail-section-title">今日交通</h4><div class="transit-nav-list">';
+      for (let i = 0; i < dayRoutePoints.length - 1; i++) {
+        const from = dayRoutePoints[i];
+        const to = dayRoutePoints[i + 1];
+        const leg = dayLegs[i] || '';
+        const navUrl = `https://uri.amap.com/navigation?from=${from.lng},${from.lat},${from.name}&to=${to.lng},${to.lat},${to.name}&mode=car`;
+        html += `
+          <a class="transit-nav-item" href="${navUrl}" target="_blank">
+            <span class="tn-route">${from.name} → ${to.name}</span>
+            <span class="tn-leg">${leg}</span>
+            <span class="tn-action">📍 导航</span>
+          </a>
+        `;
+      }
+      html += '</div></div>';
+      return html;
+    }
 
     return `
       <div class="detail-photo-weather">
@@ -537,11 +640,12 @@ function openDetail(plan) {
 
       <div class="detail-section">
         <h4 class="detail-section-title">今日行程</h4>
-        <div class="detail-itin-day">
-          <span class="di-label">${itin ? itin.label : day.label}</span>
-          <p class="di-content">${itinText}</p>
-        </div>
+        ${buildStepsHTML()}
       </div>
+
+      ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">今日路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
+
+      ${buildTransitNavHTML()}
 
       ${dayBookings.length > 0 ? `
       <div class="detail-section">
@@ -556,6 +660,22 @@ function openDetail(plan) {
         <h4 class="detail-section-title">今日提醒</h4>
         <div class="detail-tips">
           ${dayTips.map(tip => `<div class="tip-item">💡 ${tip}</div>`).join('')}
+        </div>
+      </div>` : ''}
+
+      ${dayContent.length > 0 ? `
+      <div class="detail-section">
+        <h4 class="detail-section-title">种草内容</h4>
+        <div class="related-content">
+          ${dayContent.map(c => `
+            <div class="related-card" style="border-left:3px solid ${c.color}">
+              <div class="rc-header">
+                <span class="rc-platform">${c.icon} ${c.platform}</span>
+                <span class="rc-likes">❤️ ${c.likes}</span>
+              </div>
+              <p class="rc-title">${c.title}</p>
+            </div>
+          `).join('')}
         </div>
       </div>` : ''}
     `;
@@ -616,8 +736,37 @@ function openDetail(plan) {
       }
     });
 
-    // Render map if in overview mode
-    if (isOverview) renderDetailMap(plan);
+    // Render map
+    if (isOverview) {
+      renderDetailMap(plan);
+    } else {
+      // Render per-day map
+      const dayPts = getDayRoutePoints(plan, mode);
+      if (dayPts.length >= 2 && window.L) {
+        setTimeout(() => {
+          const mapEl = document.getElementById('dayRouteMap');
+          if (!mapEl) return;
+          const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+          const coords = dayPts.map(p => `${p.lng},${p.lat}`).join(';');
+          fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
+            .then(r => r.json())
+            .then(data => {
+              if (data.routes && data.routes[0]) {
+                const rc = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+                L.polyline(rc, { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
+              }
+            }).catch(() => {});
+          dayPts.forEach((p, i) => {
+            L.circleMarker([p.lat, p.lng], {
+              radius: 6, fillColor: i === 0 ? '#4A90D9' : '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
+            }).addTo(map).bindTooltip(p.name, { permanent: true, direction: i % 2 === 0 ? 'top' : 'bottom', offset: [0, -8], className: 'map-label-sm' });
+          });
+          const pts = dayPts.map(p => [p.lat, p.lng]);
+          map.fitBounds(pts, { padding: [40, 40], maxZoom: 13 });
+        }, 300);
+      }
+    }
   }
 
   renderDetailView('overview');
