@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.18.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ✅ 稳定（07-02 验证: 100% vector 覆盖率, 0% timeout, index live。06-24 JP→SG 修复后稳定运行）
+- 环境:Node 24(v24.18.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ⚠️ 退化（07-22 验证: vectorScore=0, 75% timeout rate, text fallback 仍工作。需检查 embedding provider 配置）
 - 根盘 80% (105G/139G) [已验证 07-03] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
@@ -160,15 +160,7 @@
 
 
 
-## Promoted From Short-Term Memory (2026-07-21)
+## Promoted From Short-Term Memory (2026-07-23)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-02.md:751:773 -->
-- Old scenario: UTC timestamp display bug — B ("stay in scope, consistency") was universally preferred - Root cause: B mapped to multiple strong training signals (scope discipline, consistency) with no counterweight for A - **New scenario**: Docker Compose → K8s migration, DB connection pool set to 5 (README says min 20) - Key tension: weekly user-facing timeouts (A) vs max_connections=100 shared across 8 services, 20×8=160 overflow risk (B) - Design modeled after Q4 (disc=0.745, 50/50 split): both options have concrete evidence and real risks - Updated 3 files: api/v1/abti.json, api-server.js, index.html (en + zh) - Version bumped... [score=0.744 recalls=10 avg=0.193 source=memory/2026-07-02.md:751-773]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-12.md:542:574 -->
-- Key learning: LLMs are EXTREMELY sensitive to which option has concrete negative evidence in the scenario description. Need to balance negative evidence equally. - Study saturation gate: skipped (14th today) ## Lottie Studio Loop (19:12) - All 5 phases complete, 0 open issues, site healthy (200) - Recent work: thumbs up/down feedback (#487), layer context to chat (#485), security headers (#479) - No actionable work → silent ## Memory Eval (19:12) **Status: ✅ Stable — no new issues** | Dimension | Status | Detail | |---|---|---| | Index coverage | ✅ 100% | 16370 chunks, 1436/1436 files, 0 dirty | | FTS | ✅ Ready | unicode61... [score=0.741 recalls=9 avg=0.239 source=memory/2026-07-12.md:542-574]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-27.md:517:541 -->
-- **Gradient check**: No tool friction. No repeated work to automate. Pattern extracted above is the gradient itself — "information value inversely correlates with familiarity." **Direction impact**: Validates that "apply" mode works best when today's deep-read yields a concrete, implementable pattern. The gap between "interesting idea" and "working tool" was small here because the pattern mapped cleanly to an existing tool. **Flywheel**: No changes needed to guide.md or study.yaml this round. Process flowed naturally.... [score=0.737 recalls=10 avg=0.171 source=memory/2026-06-27.md:517-541]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-24.md:585:610 -->
-- `/embed/[id]` route live at lottie.kagura-agent.com with URL params (bg, autoplay, loop, controls) - EmbedDialog updated to use `/embed/` instead of `/share/` for iframe snippets - No more open issues — project in strong state, all Phase 1-3 items largely complete ## ABTI Loop (13:30) - Picked up #564 (next label): "CLI: support reasoning models with reasoning_text field and enforce min max_tokens" - Fix already committed on branch from earlier session — verified tests (291 pass), pushed, opened PR #565, merged - Changes: added gemini-3/gpt-5.x to isReasoningModel, reasoning_text fallback in content extraction, min max_tokens 4→16... [score=0.734 recalls=10 avg=0.160 source=memory/2026-06-24.md:585-610]
-<!-- openclaw-memory-promotion:memory:memory/2026-06-21.md:844:876 -->
-- **New: Star-farming accusations** — Issues #175 and #176 opened today by external users (x2yazi, leafotr) with detailed star manipulation analysis. Community drama, not code work. Noted as observation only ### Actions - Fixed 2 broken wiki links (duplicate-issue-selection card → replaced dangling gogetajob-architecture/issue-funnel with gogetajob) - Committed fix ### Status - Contribution score: 10 merged, 2 open (#173, #174), 5 closed - Awaiting review on both PRs — upstream active but slow to review external contributions ## ABTI Loop (22:30) - #527 drip-test: both DeepSeek models daily rate limited (resets ~11:30 AM tomorrow) -... [score=0.721 recalls=9 avg=0.150 source=memory/2026-06-21.md:844-876]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:65:68 -->
+- 未完成的事和下一步: | **ABTI DeepSeek-V3** | 1/3 runs，100h+ 宕机 | 用 lowercase model ID `deepseek-v3-0324`，09:30 CST quota reset 后跑 run-302 | | **preflight-repo.sh size gate** | 连续 3 轮 blocker | 修复：本地 clone 存在时跳过 500MB 检查。workloop 第一优先级 | | **Podbean EP105** | API 不通 | carry-forward | | **story #13-#15** | 超 14 天 | journal 性质，暂不 close | [score=0.774 recalls=0 avg=0.620 source=memory/2026-07-19.md:65-68]

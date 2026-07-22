@@ -924,3 +924,9 @@
 
 ### 本轮改進 (done)
 - [x] Adaptive recency window for small pools — `cmd_pick` now widens recency window to `files-2` for categories ≤12 files (when that exceeds the default 5). For nailed-it (8 files), window goes from 5→6, leaving only 2 eligible files at any time instead of 3, enforcing tighter round-robin rotation. Larger categories (cute-animals: 29 files) unaffected. Addresses repetition flag without needing new downloads. (07-22)
+
+### 本轮改進 (done)
+- [x] Upgrade `_review_repetition_summary()` to use lifetime counters + 30-day window — replaced O(n) per-category history scan with `.counts[cat]` lookup (O(1), accurate after history trimming). Added 30-day recent window via single pre-computed jq pass over history. Output now distinguishes "lifetime popular" vs "actively overused": shows both rates, only suggests "add more memes" when recent rate ≥3×/file. Historical-only overuse gets "adaptive recency already limits rotation" hint. Tested: nailed-it correctly flagged as actively overused (3× in 30d), review --auto-wake regression-free. (07-22)
+
+### 本轮改進
+- [ ] Add 4+ memes to `nailed-it` category — currently 8 files with active 3×/file/month overuse. Target: 12+ files to bring ratio under threshold. Need diverse styles (live-action, meme, cartoon — already have 3 anime). Download when network available.
