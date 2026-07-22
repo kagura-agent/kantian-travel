@@ -912,3 +912,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "tracking-update.sh doesn't exist but is referenced in preflight gradient violations — phantom tool reference" → [行为改变] verify tool exists before adding to gradient patterns; create missing tools or clean phantom references. (pattern: phantom-tool-reference, 第1次) (Source: study)
   - **Trigger**: preflight mentions a script that was never created
+
+- 2026-07-22: [gradient] "Large repos with sparse checkout cannot git push — must use GitHub API (create blob/tree/commit/ref) for the entire push flow. Detecting this early saves wasted time on failed push attempts." → [行为改变] Check if repo uses sparse/partial clone before attempting git push. If sparse: use GitHub API push flow from the start, dont try git push first.. (pattern: sparse-clone-api-push, 第1次) (Source: workloop)
+  - **Trigger**: When working with a sparse-cloned large repo and need to push changes
