@@ -590,7 +590,7 @@ function openDetail(plan) {
             <div class="step-icon">${isTransit ? '🚗' : '📍'}</div>
             <div class="step-content">
               <span class="step-text">${step}</span>
-              <a class="step-nav-btn" href="${navUrl}" target="_blank">导航</a>
+              <a class="step-nav-btn" href="${navUrl}" target="_blank">导航到${placeName}</a>
             </div>
           </div>
           ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
@@ -638,8 +638,6 @@ function openDetail(plan) {
       </div>
 
       ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">今日路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
-
-      ${buildTransitNavHTML()}
 
       ${dayBookings.length > 0 ? `
       <div class="detail-section">
