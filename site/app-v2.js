@@ -646,8 +646,7 @@ function openDetail(plan) {
       ${viewTabsHTML}
       <div id="detailContent">${contentHTML}</div>
       <div class="detail-cta">
-        <button class="detail-cta-btn" data-id="${plan.id}">${savedIds.has(plan.id) ? '✓ 已收藏' : '❤️ 加入行程'}</button>
-        <button class="trip-start-btn" data-plan-id="${plan.id}">🚶 跟着走</button>
+        <button class="trip-start-btn" data-plan-id="${plan.id}">出发 🚶</button>
       </div>
     `;
     // Bind tabs
@@ -657,17 +656,6 @@ function openDetail(plan) {
         renderDetailView(m === 'overview' ? 'overview' : parseInt(m));
         detailSheet.scrollTop = 0;
       });
-    });
-    // Bind CTA
-    const ctaBtn = detailBody.querySelector('.detail-cta-btn');
-    ctaBtn.addEventListener('click', () => {
-      if (!savedIds.has(plan.id)) {
-        savedIds.add(plan.id);
-        ctaBtn.textContent = '✓ 已收藏';
-        updateBadge();
-        const h = document.querySelector(`.card-heart[data-id="${plan.id}"]`);
-        if (h) h.classList.add('saved');
-      }
     });
     // Render map
     if (isOverview) renderDetailMap(plan);
@@ -1113,6 +1101,13 @@ document.addEventListener('click', (e) => {
     const planId = tripBtn.dataset.planId;
     const plan = PLANS.find(p => p.id === planId);
     if (plan) {
+      // Auto-save if not already saved
+      if (!savedIds.has(plan.id)) {
+        savedIds.add(plan.id);
+        updateBadge();
+        const h = document.querySelector(`.card-heart[data-id="${plan.id}"]`);
+        if (h) h.classList.add('saved');
+      }
       const trip = createTrip(plan);
       closeDetail();
       setTimeout(() => openTripView(trip.id), 300);

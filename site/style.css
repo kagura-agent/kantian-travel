@@ -236,7 +236,7 @@ a.step-action-btn{background:var(--accent);color:#fff}
 .tag-toggle:has(input:checked){background:var(--accent);color:#fff;border-color:var(--accent)}
 .tag-toggle input{display:none}
 /* Trip View */
-.trip-start-btn{width:100%;padding:14px;border-radius:12px;border:2px solid var(--accent);background:#fff;color:var(--accent);font-size:15px;font-weight:600;cursor:pointer;margin-top:8px}
+.trip-start-btn{width:100%;padding:14px;border-radius:28px;border:none;background:var(--accent);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
 .trip-header{margin-bottom:16px}
 .trip-progress{margin-top:8px}
 .trip-progress-bar{height:6px;background:#eee;border-radius:3px;overflow:hidden}
