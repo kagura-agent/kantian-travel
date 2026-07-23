@@ -673,8 +673,10 @@ function openDetail(plan) {
                 <span class="tl-step-text">${step}</span>
               </div>
               ${!isHome ? `<div class="tl-step-extras">
-                <a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>
-                ${stepBookings.length ? `<div class="step-bookings">${stepBookings.map(b => `<span class="booking-pill-sm">${b}</span>`).join('')}</div>` : ''}
+                <div class="step-actions">
+                  <a class="step-action-btn" href="${navUrl}" target="_blank">📍 导航</a>
+                  ${stepBookings.map(b => `<span class="step-action-btn step-action-book">${b}</span>`).join('')}
+                </div>
                 ${stepContent.map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
                 ${stepTips.map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
               </div>` : ''}

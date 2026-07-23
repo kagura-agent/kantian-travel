@@ -190,9 +190,11 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 .tl-type{font-size:11px;font-weight:700;display:block;margin-bottom:2px}
 .tl-step-text{font-size:14px;color:#333;line-height:1.5;display:block}
 .tl-step-extras{margin-top:8px;display:flex;flex-direction:column;gap:6px}
-.step-nav-btn{display:inline-block;padding:6px 14px;border-radius:20px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;text-decoration:none;margin-bottom:8px}
-.step-bookings{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.booking-pill-sm{padding:4px 10px;border-radius:14px;background:#fff;border:1px solid #e0e0e0;font-size:11px;color:#666}
+.step-nav-btn{display:inline-block;padding:4px 10px;border-radius:14px;background:var(--accent);color:#fff;font-size:11px;font-weight:600;text-decoration:none}
+.step-actions{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.step-action-btn{padding:4px 10px;border-radius:14px;font-size:11px;font-weight:500;text-decoration:none;cursor:pointer;white-space:nowrap}
+a.step-action-btn{background:var(--accent);color:#fff}
+.step-action-book{background:#fff;border:1px solid #e0e0e0;color:#666}
 .step-rec{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border-radius:10px;margin-bottom:6px;text-decoration:none;color:inherit;font-size:12px}
 .sr-platform{font-size:14px}
 .sr-title{flex:1;color:#333;line-height:1.3}
