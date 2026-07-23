@@ -36,6 +36,38 @@ function timeDiffMin(a, b) {
   return Math.max((h2*60+m2) - (h1*60+m1), 1);
 }
 
+// Extract map route points from steps (only steps with coordinates)
+function getRoutePoints(plan) {
+  const points = [];
+  const seen = new Set();
+  plan.days.forEach(d => d.steps.forEach(s => {
+    if (s.place?.lat && s.place?.lng) {
+      const key = `${s.place.lat},${s.place.lng}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        points.push(s.place);
+      }
+    }
+  }));
+  return points;
+}
+
+// Extract map points for a specific day
+function getDayRoutePoints(plan, dayIdx) {
+  const points = [];
+  const seen = new Set();
+  plan.days[dayIdx].steps.forEach(s => {
+    if (s.place?.lat && s.place?.lng) {
+      const key = `${s.place.lat},${s.place.lng}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        points.push(s.place);
+      }
+    }
+  });
+  return points;
+}
+
 // === Route Map Overlay SVG ===
 function routeOverlaySVG(route, totalH) {
   if (!route || route.length < 2) return '';
@@ -164,7 +196,7 @@ function renderCards() {
           <span class="card-transit">${d.transitLabel}</span>
           <span class="card-price">${priceLabel}</span>
         </div>
-        ${plan.route && plan.route.length > 1 ? `<div class="card-timeline" id="timeline-${plan.id}"></div><div class="card-map" id="cardMap-${plan.id}"></div>` : ''}
+        ${getRoutePoints(plan).length >= 2 ? `<div class="card-timeline" id="timeline-${plan.id}"></div><div class="card-map" id="cardMap-${plan.id}"></div>` : ''}
       </div>
     `;
     card.addEventListener('click', (e) => { if (e.target.closest('.card-heart')) return; openDetail(plan); });
@@ -211,7 +243,7 @@ function initTimelines(plans) {
     let html = '<div class="tl-bar">';
     segs.forEach(seg => {
       const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
-      const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost ? `<span class="tl-cost">${seg.cost}</span>` : '';
+      const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost && !/免费|当天/.test(seg.cost) ? `<span class="tl-cost">${seg.cost}</span>` : '';
       html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
     });
     html += '</div>';
@@ -231,7 +263,8 @@ function _timeToHours(t) { if (!t) return 8; const [h,m] = t.split(':').map(Numb
 // === Init Card Maps ===
 function initCardMaps(plans) {
   plans.forEach(plan => {
-    if (!plan.route || plan.route.length < 2 || !window.L) return;
+    const route = getRoutePoints(plan);
+    if (route.length < 2 || !window.L) return;
     const mapEl = document.getElementById(`cardMap-${plan.id}`);
     if (!mapEl) return;
     setTimeout(() => {
@@ -241,8 +274,8 @@ function initCardMaps(plans) {
         touchZoom: false, boxZoom: false, keyboard: false, tap: false
       });
       L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-      const pts = plan.route.map(p => [p.lat, p.lng]);
-      const coords = plan.route.map(p => `${p.lng},${p.lat}`).join(';');
+      const pts = route.map(p => [p.lat, p.lng]);
+      const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
       fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
         .then(r => r.json())
         .then(data => {
@@ -251,7 +284,7 @@ function initCardMaps(plans) {
             L.polyline(rc, { color: '#FF6B4A', weight: 2.5, opacity: 0.8 }).addTo(map);
           }
         }).catch(() => {});
-      plan.route.forEach((p, i) => {
+      route.forEach((p, i) => {
         L.circleMarker([p.lat, p.lng], {
           radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
         }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
@@ -394,7 +427,7 @@ function openDetail(plan) {
       let html = '<div class="detail-section"><h4 class="detail-section-title">时间分配</h4><div class="tl-bar">';
       segs.forEach(seg => {
         const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
-        const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost ? `<span class="tl-cost">${seg.cost}</span>` : '';
+        const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost && !/免费|当天/.test(seg.cost) ? `<span class="tl-cost">${seg.cost}</span>` : '';
         html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
       });
       html += '</div>';
@@ -419,7 +452,7 @@ function openDetail(plan) {
 
       ${buildOverviewTimeline()}
 
-      ${plan.route ? '<div class="detail-section"><h4 class="detail-section-title">路线地图</h4><div id="routeMap" class="route-map"></div></div>' : ''}
+      ${getRoutePoints(plan).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线地图</h4><div id="routeMap" class="route-map"></div></div>' : ''}
 
       <div class="detail-section">
         <h4 class="detail-section-title">行程概览</h4>
@@ -537,7 +570,7 @@ function openDetail(plan) {
         </div>
       </div>
       ${stepsHTML}
-      ${plan.route?.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
+      ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
     `;
   }
 
@@ -597,24 +630,20 @@ function openDetail(plan) {
 
 // === Detail Map (Overview) ===
 function renderDetailMap(plan) {
-  if (!plan.route || plan.route.length <= 1 || !window.L) return;
+  const route = getRoutePoints(plan);
+  if (route.length < 2 || !window.L) return;
   setTimeout(() => {
     const mapEl = document.getElementById('routeMap');
     if (!mapEl) return;
     const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-    const pts = plan.route.map(p => [p.lat, p.lng]);
-    const outCoords = plan.route.slice(0, -1).map(p => `${p.lng},${p.lat}`).join(';');
-    fetch(`https://router.project-osrm.org/route/v1/driving/${outCoords}?overview=full&geometries=geojson`)
+    const pts = route.map(p => [p.lat, p.lng]);
+    const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
+    fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
       .then(r => r.json()).then(data => {
         if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
       }).catch(() => {});
-    const lastDest = plan.route[plan.route.length - 2], home = plan.route[plan.route.length - 1];
-    fetch(`https://router.project-osrm.org/route/v1/driving/${lastDest.lng},${lastDest.lat};${home.lng},${home.lat}?overview=full&geometries=geojson`)
-      .then(r => r.json()).then(data => {
-        if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#4A90D9', weight: 2.5, opacity: 0.7, dashArray: '8,6' }).addTo(map);
-      }).catch(() => {});
-    plan.route.forEach((p, i) => {
+    route.forEach((p, i) => {
       L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
         .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
     });
@@ -622,40 +651,30 @@ function renderDetailMap(plan) {
     d.legs.forEach((leg, i) => {
       if (i >= pts.length - 1) return;
       const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
-      L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label clickable', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
+      L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
     });
     map.fitBounds(pts, { padding: [35, 35], maxZoom: 11 });
   }, 300);
 }
 
-// === Detail Map (Day) ===
 function renderDayMap(plan, dayIdx) {
-  if (!plan.route || plan.route.length < 2 || !window.L) return;
-  // Get day's route segment
-  const numDays = plan.days.length;
-  const stops = plan.route.length - 1;
-  const perDay = Math.max(1, Math.ceil(stops / numDays));
-  const si = Math.min(dayIdx * perDay, stops);
-  let ei = Math.min((dayIdx + 1) * perDay, stops);
-  if (dayIdx === numDays - 1) ei = plan.route.length - 1;
-  let dayPts = plan.route.slice(si, ei + 1);
-  if (dayPts.length < 2 && si > 0) dayPts = [plan.route[si - 1], ...dayPts];
-  if (dayPts.length < 2) return;
+  const route = getDayRoutePoints(plan, dayIdx);
+  if (route.length < 2 || !window.L) return;
   setTimeout(() => {
     const mapEl = document.getElementById('dayRouteMap');
     if (!mapEl) return;
     const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-    const coords = dayPts.map(p => `${p.lng},${p.lat}`).join(';');
+    const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
     fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
       .then(r => r.json()).then(data => {
         if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
       }).catch(() => {});
-    dayPts.forEach((p, i) => {
+    route.forEach((p, i) => {
       L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
         .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
     });
-    map.fitBounds(dayPts.map(p => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 13 });
+    map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 13 });
   }, 300);
 }
 

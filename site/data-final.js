@@ -7,28 +7,6 @@ const PLANS = [
     "title": "莫干山竹海发呆",
     "origin": "苏州",
     "category": "weekend",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "德清站",
-        "lat": 30.533,
-        "lng": 119.978
-      },
-      {
-        "name": "莫干山",
-        "lat": 30.633,
-        "lng": 119.877
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [
       {
         "platform": "小红书",
@@ -58,7 +36,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -68,7 +48,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "9:17",
             "place": {
-              "name": "德清站"
+              "name": "德清站",
+              "lat": 30.533,
+              "lng": 119.978
             },
             "description": "出站右手边出租车排队区，或提前叫网约车到莫干山",
             "bookings": [
@@ -86,7 +68,9 @@ const PLANS = [
             "startTime": "9:17",
             "endTime": "9:42",
             "place": {
-              "name": "莫干山"
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "按导航路线前往"
           },
@@ -96,7 +80,9 @@ const PLANS = [
             "startTime": "9:42",
             "endTime": "11:42",
             "place": {
-              "name": "裸心谷"
+              "name": "裸心谷",
+              "lat": 30.64,
+              "lng": 119.87
             },
             "description": "从入口进竹林步道，全程遮阴不晒，走到山顶有精品咖啡馆，手冲很好喝",
             "tips": [
@@ -117,7 +103,9 @@ const PLANS = [
             "startTime": "11:42",
             "endTime": "12:42",
             "place": {
-              "name": "山顶精品"
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "竹林顶上的精品咖啡馆，手冲单品很棒，坐窗边能看到整片竹海",
             "bookings": [
@@ -134,7 +122,9 @@ const PLANS = [
             "startTime": "12:42",
             "endTime": "20:00",
             "place": {
-              "name": "莫干山民宿"
+              "name": "莫干山民宿",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "推荐提前1周订，周末涨价。裸心谷附近民宿集中，选山腰的安静",
             "bookings": [
@@ -154,7 +144,9 @@ const PLANS = [
             "startTime": "20:00",
             "endTime": "21:00",
             "place": {
-              "name": "萤火虫"
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "远离路灯的地方效果最好，6-8月晚上8点后出现，别开闪光灯",
             "tips": [
@@ -177,7 +169,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "民宿"
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "民宿含早，一般有本地土鸡蛋、自制酱菜和粥，不用外出",
             "bookings": [
@@ -201,7 +195,9 @@ const PLANS = [
               }
             ],
             "place": {
-              "name": "莫干山环山路"
+              "name": "莫干山环山路",
+              "lat": 30.633,
+              "lng": 119.877
             }
           },
           {
@@ -210,7 +206,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "12:00",
             "place": {
-              "name": "沿途茶园和竹海"
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
             },
             "description": "骑行沿途经过大片茶园和竹海，路边有凉亭可以停下来拍照休息"
           },
@@ -220,7 +218,9 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:30",
             "place": {
-              "name": "庾村文创小镇"
+              "name": "庾村文创小镇",
+              "lat": 30.583,
+              "lng": 119.873
             },
             "description": "莫干山脚下的文创聚集地，有咖啡店、手作店、独立书店",
             "bookings": [
@@ -237,7 +237,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "14:00",
             "place": {
-              "name": "德清站"
+              "name": "德清站",
+              "lat": 30.533,
+              "lng": 119.978
             },
             "description": "出站右手边出租车排队区，或提前叫网约车到莫干山",
             "bookings": [
@@ -254,7 +256,9 @@ const PLANS = [
             "startTime": "14:00",
             "endTime": "14:47",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -280,28 +284,6 @@ const PLANS = [
     "title": "西塘深夜场",
     "origin": "苏州",
     "category": "weekend",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "嘉善站",
-        "lat": 30.841,
-        "lng": 120.926
-      },
-      {
-        "name": "西塘",
-        "lat": 30.893,
-        "lng": 120.893
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -318,7 +300,9 @@ const PLANS = [
             "startTime": "15:00",
             "endTime": "15:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -328,7 +312,9 @@ const PLANS = [
             "startTime": "15:30",
             "endTime": "16:30",
             "place": {
-              "name": "嘉善南站"
+              "name": "嘉善南站",
+              "lat": 30.841,
+              "lng": 120.926
             },
             "description": "出站后打车或公交到西塘约20min",
             "bookings": [
@@ -346,7 +332,9 @@ const PLANS = [
             "startTime": "16:30",
             "endTime": "16:50",
             "place": {
-              "name": "西塘古镇"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "下午5点后入场免门票！晚上人少是精华，清晨6点前拍照最佳",
             "bookings": [
@@ -366,7 +354,9 @@ const PLANS = [
             "startTime": "16:50",
             "endTime": "17:20",
             "place": {
-              "name": "临水客栈"
+              "name": "临水客栈",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "bookings": [
               {
@@ -383,7 +373,9 @@ const PLANS = [
             "startTime": "17:20",
             "endTime": "19:00",
             "place": {
-              "name": "黄昏"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "黄昏游客散了大半，穿小巷子拍照最好，石皮弄和计家弄必逛"
           },
@@ -393,7 +385,9 @@ const PLANS = [
             "startTime": "19:00",
             "endTime": "22:30",
             "place": {
-              "name": "西塘"
+              "name": "西塘",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "下午5点后入场免门票！晚上人少是精华，清晨6点前拍照最佳",
             "bookings": [
@@ -433,7 +427,9 @@ const PLANS = [
             "startTime": "22:30",
             "endTime": "23:30",
             "place": {
-              "name": "酒吧街"
+              "name": "酒吧街",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "西塘酒吧街周末才热闹，塘东街那排最集中",
             "bookings": [
@@ -463,7 +459,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "6点起床"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "清晨6点前古镇几乎没人，拍空巷、水面倒影的最佳时间"
           },
@@ -473,7 +471,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:00",
             "place": {
-              "name": "烟雨长廊"
+              "name": "烟雨长廊",
+              "lat": 30.894,
+              "lng": 120.892
             },
             "description": "全长1km，廊下看河最有感觉，清晨没人时候拍照绝了"
           },
@@ -484,7 +484,9 @@ const PLANS = [
             "endTime": "11:00",
             "description": "古镇里的茶馆吃早茶，馄饨、豆腐花、粽子都是本地特色",
             "place": {
-              "name": "西塘古镇"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "bookings": [
               {
@@ -500,7 +502,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:20",
             "place": {
-              "name": "嘉善南站"
+              "name": "嘉善南站",
+              "lat": 30.841,
+              "lng": 120.926
             },
             "description": "出站后打车或公交到西塘约20min",
             "bookings": [
@@ -517,7 +521,9 @@ const PLANS = [
             "startTime": "11:20",
             "endTime": "12:20",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -543,23 +549,6 @@ const PLANS = [
     "title": "太湖东山杨梅季",
     "origin": "苏州",
     "category": "weekend",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "太湖东山",
-        "lat": 31.067,
-        "lng": 120.425
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -576,7 +565,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "东山"
+              "name": "东山",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "按导航路线前往"
           },
@@ -586,7 +577,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "10:30",
             "place": {
-              "name": "杨梅果园"
+              "name": "杨梅果园",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "6月中-7月初限定！进园随便吃，带走按斤称",
             "bookings": [
@@ -615,7 +608,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "11:30",
             "place": {
-              "name": "太湖三白"
+              "name": "东山",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "白虾白鱼银鱼，东山当地餐厅比景区便宜一半",
             "bookings": [
@@ -632,7 +627,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "14:00",
             "place": {
-              "name": "环太湖骑行"
+              "name": "太湖东山",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "东山环湖绿道，平坦好骑，沿途有补给站",
             "bookings": [
@@ -660,7 +657,9 @@ const PLANS = [
             "startTime": "14:00",
             "endTime": "15:30",
             "place": {
-              "name": "太湖边"
+              "name": "太湖东山",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "骑行到太湖边刚好赶上日落，湖面金光铺满，找个堤坝坐下看"
           },
@@ -670,7 +669,9 @@ const PLANS = [
             "startTime": "15:30",
             "endTime": "16:30",
             "place": {
-              "name": "东山农家乐"
+              "name": "东山农家乐",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "bookings": [
               {
@@ -700,7 +701,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "东山古街"
+              "name": "东山古街",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "明清老街不长但安静，早上散步看当地人生活，有几家手工艺店"
           },
@@ -710,7 +713,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:30",
             "place": {
-              "name": "碧螺春茶园"
+              "name": "碧螺春茶园",
+              "lat": 31.067,
+              "lng": 120.425
             },
             "description": "可以现场品茶买茶，老板会教你分辨真假碧螺春",
             "bookings": [
@@ -728,7 +733,9 @@ const PLANS = [
             "endTime": "12:00",
             "description": "东山是碧螺春原产地，路边茶农直接买散装茶叶比市区便宜很多",
             "place": {
-              "name": "东山古街"
+              "name": "东山古街",
+              "lat": 31.067,
+              "lng": 120.425
             }
           },
           {
@@ -737,7 +744,9 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:00",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -756,23 +765,6 @@ const PLANS = [
     "title": "径山问茶",
     "origin": "苏州",
     "category": "weekend",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "径山",
-        "lat": 30.397,
-        "lng": 119.847
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -789,7 +781,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "径山"
+              "name": "径山",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "按导航路线前往",
             "tips": [
@@ -802,7 +796,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "11:15",
             "place": {
-              "name": "径山古道"
+              "name": "径山古道",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "全程4km，台阶路为主，蚊子多带驱蚊水，走到顶有茶田"
           },
@@ -812,7 +808,9 @@ const PLANS = [
             "startTime": "11:15",
             "endTime": "12:45",
             "place": {
-              "name": "茶田观景"
+              "name": "径山",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "从古道顶端继续走到茶田观景台，整片梯田茶园尽收眼底，值得多停一会"
           },
@@ -822,7 +820,9 @@ const PLANS = [
             "startTime": "12:45",
             "endTime": "13:45",
             "place": {
-              "name": "径山寺"
+              "name": "径山寺",
+              "lat": 30.407,
+              "lng": 119.842
             },
             "description": "千年古刹，可以体验禅茶一味，寺内素面很好吃",
             "relatedContent": [
@@ -840,7 +840,9 @@ const PLANS = [
             "startTime": "13:45",
             "endTime": "14:45",
             "place": {
-              "name": "山中茶宿"
+              "name": "山中茶宿",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "bookings": [
               {
@@ -871,7 +873,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "炒茶体验"
+              "name": "径山",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "跟茶农学手工炒茶，要提前一天预约",
             "bookings": [
@@ -896,7 +900,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "11:00",
             "place": {
-              "name": "竹林"
+              "name": "径山",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "茶宿旁边就是竹林小径，散步半小时很舒服，空气里全是竹子清香"
           },
@@ -906,7 +912,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:00",
             "place": {
-              "name": "山下农家"
+              "name": "径山",
+              "lat": 30.397,
+              "lng": 119.847
             },
             "description": "山脚农家菜馆，笋干烧肉和土鸡汤是招牌，食材都是当天现摘现杀",
             "bookings": [
@@ -923,7 +931,9 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:30",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -942,28 +952,6 @@ const PLANS = [
     "title": "南浔静巷",
     "origin": "苏州",
     "category": "weekend",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "湖州站",
-        "lat": 30.868,
-        "lng": 120.089
-      },
-      {
-        "name": "南浔",
-        "lat": 30.878,
-        "lng": 120.418
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [
       {
         "platform": "小红书",
@@ -987,7 +975,9 @@ const PLANS = [
             "startTime": "14:00",
             "endTime": "14:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -997,7 +987,9 @@ const PLANS = [
             "startTime": "14:30",
             "endTime": "15:10",
             "place": {
-              "name": "湖州站"
+              "name": "湖州站",
+              "lat": 30.868,
+              "lng": 120.089
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -1015,7 +1007,9 @@ const PLANS = [
             "startTime": "15:10",
             "endTime": "15:40",
             "place": {
-              "name": "南浔古镇"
+              "name": "南浔古镇",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "description": "按导航路线前往"
           },
@@ -1025,7 +1019,9 @@ const PLANS = [
             "startTime": "15:40",
             "endTime": "16:40",
             "place": {
-              "name": "百间楼"
+              "name": "百间楼",
+              "lat": 30.879,
+              "lng": 120.42
             },
             "description": "南浔最美的一段，日落6点最佳，河两岸明清建筑倒映水中",
             "bookings": [
@@ -1053,7 +1049,9 @@ const PLANS = [
             "startTime": "16:40",
             "endTime": "17:25",
             "place": {
-              "name": "张石铭故居"
+              "name": "张石铭故居",
+              "lat": 30.877,
+              "lng": 120.417
             },
             "description": "南浔四象之一的宅子，中西合璧建筑，细节很多值得慢看",
             "bookings": [
@@ -1070,7 +1068,9 @@ const PLANS = [
             "startTime": "17:25",
             "endTime": "18:25",
             "place": {
-              "name": "河边"
+              "name": "南浔古镇",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "description": "百间楼附近的河边餐馆，桑果鱼和双交面是南浔特色，临河座位有氛围",
             "bookings": [
@@ -1087,7 +1087,9 @@ const PLANS = [
             "startTime": "18:25",
             "endTime": "19:25",
             "place": {
-              "name": "南浔水边民宿"
+              "name": "南浔水边民宿",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "bookings": [
               {
@@ -1114,7 +1116,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "小莲庄"
+              "name": "小莲庄",
+              "lat": 30.876,
+              "lng": 120.416
             },
             "description": "刘家的私家花园，荷花池+碑廊，晨光拍照特别美",
             "bookings": [
@@ -1131,7 +1135,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:30",
             "place": {
-              "name": "丝绸博物馆"
+              "name": "丝绸博物馆",
+              "lat": 30.877,
+              "lng": 120.418
             },
             "description": "了解南浔丝绸史，周一闭馆！",
             "tips": [
@@ -1145,7 +1151,9 @@ const PLANS = [
             "endTime": "10:30",
             "description": "古镇里的面馆吃碗双交面，浇头是酥肉+爆鱼，南浔传统早午餐",
             "place": {
-              "name": "南浔古镇"
+              "name": "南浔古镇",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "bookings": [
               {
@@ -1161,7 +1169,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "11:00",
             "place": {
-              "name": "湖州站"
+              "name": "湖州站",
+              "lat": 30.868,
+              "lng": 120.089
             },
             "description": "按导航路线前往"
           },
@@ -1171,7 +1181,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:40",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -1197,33 +1209,6 @@ const PLANS = [
     "title": "皖南写生三日",
     "origin": "苏州",
     "category": "3day",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "黄山北",
-        "lat": 30.314,
-        "lng": 118.31
-      },
-      {
-        "name": "宏村",
-        "lat": 30.055,
-        "lng": 117.977
-      },
-      {
-        "name": "塔川",
-        "lat": 30.042,
-        "lng": 117.962
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -1240,7 +1225,9 @@ const PLANS = [
             "startTime": "15:00",
             "endTime": "15:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -1250,7 +1237,9 @@ const PLANS = [
             "startTime": "15:30",
             "endTime": "18:00",
             "place": {
-              "name": "黄山北站"
+              "name": "黄山北站",
+              "lat": 30.314,
+              "lng": 118.31
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -1268,7 +1257,9 @@ const PLANS = [
             "startTime": "18:00",
             "endTime": "18:30",
             "place": {
-              "name": "宏村"
+              "name": "宏村",
+              "lat": 30.055,
+              "lng": 117.977
             },
             "description": "南湖倒映马头墙，月沼是精华。门票3日内可反复进",
             "bookings": [
@@ -1288,7 +1279,9 @@ const PLANS = [
             "startTime": "18:30",
             "endTime": "20:00",
             "place": {
-              "name": "南湖"
+              "name": "南湖",
+              "lat": 30.053,
+              "lng": 117.977
             },
             "relatedContent": [
               {
@@ -1306,7 +1299,9 @@ const PLANS = [
             "startTime": "20:00",
             "endTime": "20:30",
             "place": {
-              "name": "月沼"
+              "name": "月沼",
+              "lat": 30.056,
+              "lng": 117.978
             },
             "description": "宏村精华，半月形池塘倒映古建，傍晚和清晨最美",
             "bookings": [
@@ -1323,7 +1318,9 @@ const PLANS = [
             "startTime": "20:30",
             "endTime": "20:31",
             "place": {
-              "name": "宏村民宿"
+              "name": "宏村民宿",
+              "lat": 30.055,
+              "lng": 117.977
             },
             "description": "南湖倒映马头墙，月沼是精华。门票3日内可反复进",
             "bookings": [
@@ -1350,7 +1347,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "卢村木雕楼"
+              "name": "卢村木雕楼",
+              "lat": 30.06,
+              "lng": 117.96
             },
             "description": "比宏村游客少很多，木雕工艺极其精细，值得细看",
             "bookings": [
@@ -1375,7 +1374,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "10:00",
             "place": {
-              "name": "农家菜"
+              "name": "宏村",
+              "lat": 30.055,
+              "lng": 117.977
             },
             "description": "宏村/卢村附近农家菜馆，臭鳜鱼和毛豆腐必点，正宗徽菜味道",
             "bookings": [
@@ -1392,7 +1393,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "11:30",
             "place": {
-              "name": "塔川"
+              "name": "塔川",
+              "lat": 30.042,
+              "lng": 117.962
             },
             "description": "秋天红叶最美，夏天来看田园日落也不错",
             "bookings": [
@@ -1412,7 +1415,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "13:00",
             "place": {
-              "name": "塔川"
+              "name": "塔川",
+              "lat": 30.042,
+              "lng": 117.962
             },
             "description": "秋天红叶最美，夏天来看田园日落也不错",
             "bookings": [
@@ -1429,7 +1434,9 @@ const PLANS = [
             "startTime": "13:00",
             "endTime": "14:00",
             "place": {
-              "name": "塔川民宿"
+              "name": "塔川民宿",
+              "lat": 30.042,
+              "lng": 117.962
             },
             "description": "秋天红叶最美，夏天来看田园日落也不错",
             "bookings": [
@@ -1456,7 +1463,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "10:00",
             "place": {
-              "name": "碧山书局"
+              "name": "碧山书局",
+              "lat": 30,
+              "lng": 117.93
             },
             "description": "先锋书店开在徽州古宅里，咖啡好喝，可以泡半天",
             "bookings": [
@@ -1477,7 +1486,9 @@ const PLANS = [
             "endTime": "11:00",
             "description": "碧山村附近的农家菜馆，笋干烧肉、徽州炒面都不错",
             "place": {
-              "name": "碧山村"
+              "name": "碧山村",
+              "lat": 30,
+              "lng": 117.93
             },
             "bookings": [
               {
@@ -1493,7 +1504,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:30",
             "place": {
-              "name": "黄山北站"
+              "name": "黄山北站",
+              "lat": 30.314,
+              "lng": 118.31
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -1510,7 +1523,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "14:00",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -1536,28 +1551,6 @@ const PLANS = [
     "title": "千岛湖骑行+萤火虫",
     "origin": "苏州",
     "category": "3day",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "千岛湖站",
-        "lat": 29.604,
-        "lng": 118.93
-      },
-      {
-        "name": "芹川古村",
-        "lat": 29.56,
-        "lng": 118.87
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -1574,7 +1567,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -1584,7 +1579,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "10:30",
             "place": {
-              "name": "千岛湖站"
+              "name": "千岛湖站",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "description": "环湖绿道分南北线，北线30km较平坦适合休闲骑",
             "bookings": [
@@ -1602,7 +1599,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "11:00",
             "place": {
-              "name": "租自行车"
+              "name": "千岛湖站",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "description": "按导航路线前往"
           },
@@ -1612,7 +1611,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:30",
             "place": {
-              "name": "环湖绿道北线"
+              "name": "千岛湖",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "tips": [
               "骑行绿道有坡，电动车更轻松"
@@ -1633,7 +1634,9 @@ const PLANS = [
             "startTime": "12:30",
             "endTime": "13:30",
             "place": {
-              "name": "湖景"
+              "name": "千岛湖",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "description": "千岛湖鱼头是必吃招牌，湖边餐厅看着湖景吃，新鲜现杀",
             "bookings": [
@@ -1650,7 +1653,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "14:30",
             "place": {
-              "name": "湖景酒店"
+              "name": "千岛湖",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "bookings": [
               {
@@ -1677,7 +1682,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "10:30",
             "place": {
-              "name": "芹川古村"
+              "name": "芹川古村",
+              "lat": 29.56,
+              "lng": 118.87
             },
             "description": "不要门票！600年古村，溪水穿村而过，晚上有萤火虫",
             "tips": [
@@ -1698,7 +1705,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "11:30",
             "place": {
-              "name": "溪边"
+              "name": "芹川古村",
+              "lat": 29.56,
+              "lng": 118.87
             },
             "description": "芹川古村溪边的农家菜馆，溪鱼和土鸡煲味道好，环境也舒服",
             "bookings": [
@@ -1714,9 +1723,6 @@ const PLANS = [
             "type": "play",
             "startTime": "11:30",
             "endTime": "20:00",
-            "place": {
-              "name": "下午"
-            },
             "description": "回酒店午休或在古村溪边发呆，为晚上看萤火虫养精蓄锐"
           },
           {
@@ -1725,7 +1731,9 @@ const PLANS = [
             "startTime": "20:00",
             "endTime": "21:00",
             "place": {
-              "name": "萤火虫"
+              "name": "芹川古村",
+              "lat": 29.56,
+              "lng": 118.87
             },
             "description": "远离路灯的地方效果最好，6-8月晚上8点后出现，别开闪光灯",
             "tips": [
@@ -1739,7 +1747,9 @@ const PLANS = [
             "startTime": "21:00",
             "endTime": "21:30",
             "place": {
-              "name": "酒店"
+              "name": "千岛湖",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "description": "按导航路线前往"
           }
@@ -1759,7 +1769,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "南线"
+              "name": "千岛湖",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "description": "南线20km坡多一些但风景更野，途经几个安静的湖湾，人比北线少"
           },
@@ -1770,7 +1782,9 @@ const PLANS = [
             "endTime": "10:30",
             "description": "环湖绿道分南北线，北线30km较平坦适合休闲骑",
             "place": {
-              "name": "千岛湖镇"
+              "name": "千岛湖镇",
+              "lat": 29.604,
+              "lng": 118.93
             },
             "bookings": [
               {
@@ -1787,7 +1801,9 @@ const PLANS = [
             "endTime": "11:00",
             "description": "按导航路线前往",
             "place": {
-              "name": "千岛湖站"
+              "name": "千岛湖站",
+              "lat": 29.604,
+              "lng": 118.93
             }
           },
           {
@@ -1796,7 +1812,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "13:00",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -1822,43 +1840,6 @@ const PLANS = [
     "title": "浙闽山海七日",
     "origin": "苏州",
     "category": "week",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "丽水",
-        "lat": 28.468,
-        "lng": 119.923
-      },
-      {
-        "name": "缙云",
-        "lat": 28.661,
-        "lng": 120.091
-      },
-      {
-        "name": "霞浦",
-        "lat": 26.885,
-        "lng": 120.005
-      },
-      {
-        "name": "福鼎",
-        "lat": 27.324,
-        "lng": 120.216
-      },
-      {
-        "name": "太姥山",
-        "lat": 27.175,
-        "lng": 120.185
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -1875,7 +1856,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -1885,7 +1868,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "11:00",
             "place": {
-              "name": "丽水站"
+              "name": "丽水站",
+              "lat": 28.468,
+              "lng": 119.923
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -1903,7 +1888,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:30",
             "place": {
-              "name": "古堰画乡"
+              "name": "古堰画乡",
+              "lat": 28.449,
+              "lng": 119.863
             },
             "description": "瓯江边的画家村，油画写生+古樟树群，下午光线最美",
             "bookings": [
@@ -1920,7 +1907,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "14:00",
             "place": {
-              "name": "古堰画乡"
+              "name": "古堰画乡",
+              "lat": 28.449,
+              "lng": 119.863
             },
             "description": "瓯江边的画家村，油画写生+古樟树群，下午光线最美",
             "bookings": [
@@ -1937,7 +1926,9 @@ const PLANS = [
             "startTime": "14:00",
             "endTime": "15:00",
             "place": {
-              "name": "丽水酒店"
+              "name": "丽水酒店",
+              "lat": 28.468,
+              "lng": 119.923
             },
             "bookings": [
               {
@@ -1967,7 +1958,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "12:30",
             "place": {
-              "name": "缙云仙都"
+              "name": "缙云仙都",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "description": "鼎湖峰是精华，朱潭山倒影绝美，花1天慢慢逛",
             "bookings": [
@@ -1985,7 +1978,9 @@ const PLANS = [
             "endTime": "13:30",
             "description": "缙云烧饼是当地名片，梅干菜肉馅酥脆焦香，配一碗馄饨绝了",
             "place": {
-              "name": "缙云仙都"
+              "name": "缙云仙都",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "bookings": [
               {
@@ -2001,7 +1996,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "14:30",
             "place": {
-              "name": "缙云酒店"
+              "name": "缙云酒店",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "bookings": [
               {
@@ -2028,7 +2025,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "11:00",
             "place": {
-              "name": "霞浦"
+              "name": "霞浦",
+              "lat": 26.885,
+              "lng": 120.005
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -2055,7 +2054,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:00",
             "place": {
-              "name": "霞浦民宿"
+              "name": "霞浦民宿",
+              "lat": 26.885,
+              "lng": 120.005
             },
             "bookings": [
               {
@@ -2082,7 +2083,9 @@ const PLANS = [
             "startTime": "4:30",
             "endTime": "6:30",
             "place": {
-              "name": "霞浦滩涂"
+              "name": "霞浦滩涂",
+              "lat": 26.9,
+              "lng": 120.01
             },
             "description": "4:30日出点，小皓/北岐/花竹是三大经典机位，去晚了光线不对",
             "relatedContent": [
@@ -2099,9 +2102,6 @@ const PLANS = [
             "type": "play",
             "startTime": "6:30",
             "endTime": "8:00",
-            "place": {
-              "name": "上午"
-            },
             "description": "4点半起太早了，回民宿补个觉，养精蓄锐下午看日落"
           },
           {
@@ -2110,7 +2110,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "东壁"
+              "name": "东壁",
+              "lat": 26.82,
+              "lng": 120.02
             },
             "description": "霞浦看日落的经典点，紫菜架剪影特别出片"
           },
@@ -2120,7 +2122,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:00",
             "place": {
-              "name": "民宿"
+              "name": "霞浦",
+              "lat": 26.885,
+              "lng": 120.005
             },
             "description": "按导航路线前往"
           }
@@ -2140,7 +2144,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "福鼎"
+              "name": "福鼎",
+              "lat": 27.324,
+              "lng": 120.216
             },
             "description": "按导航路线前往"
           },
@@ -2150,7 +2156,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "13:00",
             "place": {
-              "name": "福鼎白茶山"
+              "name": "福鼎白茶山",
+              "lat": 27.324,
+              "lng": 120.216
             },
             "description": "太姥山脚的茶村，可以现场品白茶买茶饼",
             "bookings": [
@@ -2167,7 +2175,9 @@ const PLANS = [
             "startTime": "13:00",
             "endTime": "14:00",
             "place": {
-              "name": "福鼎酒店"
+              "name": "福鼎酒店",
+              "lat": 27.324,
+              "lng": 120.216
             },
             "bookings": [
               {
@@ -2194,7 +2204,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "太姥山景区"
+              "name": "太姥山景区",
+              "lat": 27.175,
+              "lng": 120.185
             },
             "description": "花岗岩峰林地貌，爬全程要5h，量力而行",
             "bookings": [
@@ -2214,7 +2226,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "13:30",
             "place": {
-              "name": "太姥山"
+              "name": "太姥山",
+              "lat": 27.175,
+              "lng": 120.185
             },
             "description": "花岗岩峰林地貌，爬全程要5h，量力而行",
             "bookings": [
@@ -2231,7 +2245,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "18:30",
             "place": {
-              "name": "太姥山附近"
+              "name": "太姥山附近",
+              "lat": 27.175,
+              "lng": 120.185
             },
             "description": "花岗岩峰林地貌，爬全程要5h，量力而行",
             "bookings": [
@@ -2258,7 +2274,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "福鼎站"
+              "name": "福鼎站",
+              "lat": 27.326,
+              "lng": 120.219
             },
             "description": "按导航路线前往"
           },
@@ -2269,7 +2287,9 @@ const PLANS = [
             "endTime": "9:00",
             "description": "按导航路线前往",
             "place": {
-              "name": "福鼎站"
+              "name": "福鼎站",
+              "lat": 27.326,
+              "lng": 120.219
             }
           },
           {
@@ -2278,7 +2298,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:30",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -2304,43 +2326,6 @@ const PLANS = [
     "title": "江南水乡慢收集",
     "origin": "苏州",
     "category": "5day",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "周庄",
-        "lat": 31.113,
-        "lng": 120.845
-      },
-      {
-        "name": "同里",
-        "lat": 31.128,
-        "lng": 120.737
-      },
-      {
-        "name": "南浔",
-        "lat": 30.878,
-        "lng": 120.418
-      },
-      {
-        "name": "乌镇",
-        "lat": 30.745,
-        "lng": 120.487
-      },
-      {
-        "name": "西塘",
-        "lat": 30.893,
-        "lng": 120.893
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [
       {
         "platform": "小红书",
@@ -2364,7 +2349,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:40",
             "place": {
-              "name": "周庄古镇"
+              "name": "周庄古镇",
+              "lat": 31.113,
+              "lng": 120.845
             },
             "description": "最经典也最商业的水乡，双桥+沈厅是必看，清晨人少",
             "bookings": [
@@ -2385,7 +2372,9 @@ const PLANS = [
             "startTime": "8:40",
             "endTime": "10:10",
             "place": {
-              "name": "双桥"
+              "name": "双桥",
+              "lat": 31.113,
+              "lng": 120.845
             },
             "description": "周庄标志性景点，世德桥和永安桥呈十字相连，陈逸飞画作原型"
           },
@@ -2395,7 +2384,9 @@ const PLANS = [
             "startTime": "10:10",
             "endTime": "11:40",
             "place": {
-              "name": "沈厅"
+              "name": "沈厅",
+              "lat": 31.113,
+              "lng": 120.845
             },
             "description": "沈万三故居，江南首富的宅子，里面展示明代商贾文化和万三蹄做法"
           },
@@ -2405,7 +2396,9 @@ const PLANS = [
             "startTime": "11:40",
             "endTime": "14:40",
             "place": {
-              "name": "周庄客栈"
+              "name": "周庄客栈",
+              "lat": 31.113,
+              "lng": 120.845
             },
             "description": "最经典也最商业的水乡，双桥+沈厅是必看，清晨人少",
             "bookings": [
@@ -2432,7 +2425,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "同里古镇"
+              "name": "同里古镇",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "按导航路线前往"
           },
@@ -2442,7 +2437,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "9:30",
             "place": {
-              "name": "退思园"
+              "name": "退思园",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "同里最精华的园林，贴水而建，早上9点前人少",
             "bookings": [
@@ -2459,7 +2456,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:00",
             "place": {
-              "name": "三桥"
+              "name": "三桥",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "太平桥、吉利桥、长庆桥连在一起，走完在河边坐坐"
           },
@@ -2469,7 +2468,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "11:00",
             "place": {
-              "name": "同里客栈"
+              "name": "同里客栈",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "bookings": [
               {
@@ -2496,7 +2497,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "南浔古镇"
+              "name": "南浔古镇",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "description": "按导航路线前往"
           },
@@ -2506,7 +2509,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "10:00",
             "place": {
-              "name": "百间楼"
+              "name": "百间楼",
+              "lat": 30.879,
+              "lng": 120.42
             },
             "description": "南浔最美的一段，日落6点最佳，河两岸明清建筑倒映水中",
             "bookings": [
@@ -2523,7 +2528,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "11:00",
             "place": {
-              "name": "小莲庄"
+              "name": "小莲庄",
+              "lat": 30.876,
+              "lng": 120.416
             },
             "description": "刘家的私家花园，荷花池+碑廊，晨光拍照特别美",
             "bookings": [
@@ -2540,7 +2547,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:00",
             "place": {
-              "name": "南浔民宿"
+              "name": "南浔民宿",
+              "lat": 30.878,
+              "lng": 120.418
             },
             "bookings": [
               {
@@ -2567,7 +2576,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:40",
             "place": {
-              "name": "乌镇西栅"
+              "name": "乌镇西栅",
+              "lat": 30.745,
+              "lng": 120.487
             },
             "description": "夜景全网公认最美，8点以后灯光全开，建议住里面",
             "bookings": [
@@ -2587,7 +2598,9 @@ const PLANS = [
             "startTime": "8:40",
             "endTime": "20:00",
             "place": {
-              "name": "西栅"
+              "name": "西栅",
+              "lat": 30.745,
+              "lng": 120.487
             },
             "description": "西栅比东栅大很多，可以慢慢逛一整天，染坊、酒坊、邮局都值得看"
           },
@@ -2597,7 +2610,9 @@ const PLANS = [
             "startTime": "20:00",
             "endTime": "21:30",
             "place": {
-              "name": "夜景"
+              "name": "乌镇西栅",
+              "lat": 30.745,
+              "lng": 120.487
             },
             "tips": [
               "8点后最美"
@@ -2618,7 +2633,9 @@ const PLANS = [
             "startTime": "21:30",
             "endTime": "22:30",
             "place": {
-              "name": "乌镇民宿"
+              "name": "乌镇民宿",
+              "lat": 30.745,
+              "lng": 120.487
             },
             "bookings": [
               {
@@ -2645,7 +2662,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:50",
             "place": {
-              "name": "西塘古镇"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "description": "下午5点后入场免门票！晚上人少是精华，清晨6点前拍照最佳",
             "bookings": [
@@ -2662,7 +2681,9 @@ const PLANS = [
             "startTime": "8:50",
             "endTime": "9:20",
             "place": {
-              "name": "烟雨长廊"
+              "name": "烟雨长廊",
+              "lat": 30.894,
+              "lng": 120.892
             },
             "description": "全长1km，廊下看河最有感觉，清晨没人时候拍照绝了"
           },
@@ -2673,7 +2694,9 @@ const PLANS = [
             "endTime": "10:20",
             "description": "西塘古镇里的面馆或小餐馆，馄饨和荷叶粉蒸肉是特色",
             "place": {
-              "name": "西塘古镇"
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
             },
             "bookings": [
               {
@@ -2689,7 +2712,9 @@ const PLANS = [
             "startTime": "10:20",
             "endTime": "11:10",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -2708,48 +2733,6 @@ const PLANS = [
     "title": "徽州深度一周",
     "origin": "苏州",
     "category": "week",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "黄山北",
-        "lat": 30.314,
-        "lng": 118.31
-      },
-      {
-        "name": "黄山",
-        "lat": 30.137,
-        "lng": 118.167
-      },
-      {
-        "name": "西递",
-        "lat": 30.058,
-        "lng": 117.934
-      },
-      {
-        "name": "宏村",
-        "lat": 30.055,
-        "lng": 117.977
-      },
-      {
-        "name": "呈坎",
-        "lat": 30.006,
-        "lng": 118.185
-      },
-      {
-        "name": "新安江",
-        "lat": 29.856,
-        "lng": 118.55
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [
       {
         "platform": "B站",
@@ -2773,7 +2756,9 @@ const PLANS = [
             "startTime": "15:00",
             "endTime": "15:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -2783,7 +2768,9 @@ const PLANS = [
             "startTime": "15:30",
             "endTime": "18:00",
             "place": {
-              "name": "黄山北站"
+              "name": "黄山北站",
+              "lat": 30.314,
+              "lng": 118.31
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -2804,7 +2791,9 @@ const PLANS = [
             "startTime": "18:00",
             "endTime": "19:00",
             "place": {
-              "name": "屯溪老街"
+              "name": "屯溪老街",
+              "lat": 29.713,
+              "lng": 118.315
             },
             "description": "徽州最热闹的老街，夜游最有氛围，各种徽州小吃",
             "bookings": [
@@ -2821,7 +2810,9 @@ const PLANS = [
             "startTime": "19:00",
             "endTime": "21:00",
             "place": {
-              "name": "屯溪老街"
+              "name": "屯溪老街",
+              "lat": 29.713,
+              "lng": 118.315
             },
             "description": "徽州最热闹的老街，夜游最有氛围，各种徽州小吃",
             "bookings": [
@@ -2838,7 +2829,9 @@ const PLANS = [
             "startTime": "21:00",
             "endTime": "22:00",
             "place": {
-              "name": "屯溪酒店"
+              "name": "屯溪酒店",
+              "lat": 29.713,
+              "lng": 118.315
             },
             "bookings": [
               {
@@ -2865,7 +2858,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "黄山南大门/北大门"
+              "name": "黄山南大门/北大门",
+              "lat": 30.08,
+              "lng": 118.17
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -2882,7 +2877,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "9:00",
             "place": {
-              "name": "索道"
+              "name": "黄山",
+              "lat": 30.137,
+              "lng": 118.167
             },
             "description": "按导航路线前往"
           },
@@ -2892,7 +2889,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "8:00",
             "place": {
-              "name": "黄山"
+              "name": "黄山",
+              "lat": 30.137,
+              "lng": 118.167
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -2920,7 +2919,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "黄山山顶"
+              "name": "黄山山顶",
+              "lat": 30.137,
+              "lng": 118.167
             },
             "bookings": [
               {
@@ -2948,7 +2949,9 @@ const PLANS = [
             "endTime": "8:30",
             "description": "按导航路线前往",
             "place": {
-              "name": "黄山"
+              "name": "黄山",
+              "lat": 30.137,
+              "lng": 118.167
             }
           },
           {
@@ -2957,7 +2960,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "9:00",
             "place": {
-              "name": "西递古村"
+              "name": "西递古村",
+              "lat": 30.058,
+              "lng": 117.934
             },
             "description": "比宏村人少很多更安静，胡文光牌坊和敬爱堂是精华",
             "bookings": [
@@ -2977,7 +2982,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "11:30",
             "place": {
-              "name": "西递"
+              "name": "西递",
+              "lat": 30.058,
+              "lng": 117.934
             },
             "description": "比宏村人少很多更安静，胡文光牌坊和敬爱堂是精华",
             "bookings": [
@@ -2994,7 +3001,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "13:30",
             "place": {
-              "name": "西递民宿"
+              "name": "西递民宿",
+              "lat": 30.058,
+              "lng": 117.934
             },
             "description": "比宏村人少很多更安静，胡文光牌坊和敬爱堂是精华",
             "bookings": [
@@ -3021,7 +3030,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:15",
             "place": {
-              "name": "宏村"
+              "name": "宏村",
+              "lat": 30.055,
+              "lng": 117.977
             },
             "description": "南湖倒映马头墙，月沼是精华。门票3日内可反复进",
             "bookings": [
@@ -3038,7 +3049,9 @@ const PLANS = [
             "startTime": "8:15",
             "endTime": "9:45",
             "place": {
-              "name": "南湖"
+              "name": "南湖",
+              "lat": 30.053,
+              "lng": 117.977
             },
             "description": "宏村南湖是最经典的写生点，马头墙倒映水中如水墨画，清晨最美"
           },
@@ -3048,7 +3061,9 @@ const PLANS = [
             "startTime": "9:45",
             "endTime": "10:15",
             "place": {
-              "name": "月沼"
+              "name": "月沼",
+              "lat": 30.056,
+              "lng": 117.978
             },
             "description": "宏村精华，半月形池塘倒映古建，傍晚和清晨最美",
             "bookings": [
@@ -3066,7 +3081,9 @@ const PLANS = [
             "endTime": "11:45",
             "description": "找个安静角落支起画架，月沼和南湖都是好位置，下午光线柔和",
             "place": {
-              "name": "宏村"
+              "name": "宏村",
+              "lat": 30.055,
+              "lng": 117.977
             }
           },
           {
@@ -3075,7 +3092,9 @@ const PLANS = [
             "startTime": "11:45",
             "endTime": "11:46",
             "place": {
-              "name": "宏村民宿"
+              "name": "宏村民宿",
+              "lat": 30.055,
+              "lng": 117.977
             },
             "description": "南湖倒映马头墙，月沼是精华。门票3日内可反复进",
             "bookings": [
@@ -3102,7 +3121,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:40",
             "place": {
-              "name": "呈坎"
+              "name": "呈坎",
+              "lat": 30.006,
+              "lng": 118.185
             },
             "description": "八卦布局古村，罗东舒祠是全国重点文保",
             "bookings": [
@@ -3119,7 +3140,9 @@ const PLANS = [
             "startTime": "8:40",
             "endTime": "10:40",
             "place": {
-              "name": "呈坎"
+              "name": "呈坎",
+              "lat": 30.006,
+              "lng": 118.185
             },
             "description": "八卦布局古村，罗东舒祠是全国重点文保",
             "bookings": [
@@ -3136,7 +3159,9 @@ const PLANS = [
             "startTime": "10:40",
             "endTime": "12:10",
             "place": {
-              "name": "唐模"
+              "name": "唐模",
+              "lat": 30.02,
+              "lng": 118.15
             },
             "description": "徽州古村，檀干园是精华，比呈坎人少很多，水口园林值得细看"
           },
@@ -3146,7 +3171,9 @@ const PLANS = [
             "startTime": "12:10",
             "endTime": "14:10",
             "place": {
-              "name": "呈坎附近"
+              "name": "呈坎附近",
+              "lat": 30.006,
+              "lng": 118.185
             },
             "description": "八卦布局古村，罗东舒祠是全国重点文保",
             "bookings": [
@@ -3173,7 +3200,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "新安江码头"
+              "name": "新安江码头",
+              "lat": 29.856,
+              "lng": 118.55
             },
             "description": "山水画廊游船约3h，两岸徽派村落+油菜花田",
             "bookings": [
@@ -3190,7 +3219,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "12:00",
             "place": {
-              "name": "新安江"
+              "name": "新安江",
+              "lat": 29.856,
+              "lng": 118.55
             },
             "description": "山水画廊游船约3h，两岸徽派村落+油菜花田",
             "bookings": [
@@ -3207,7 +3238,9 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:00",
             "place": {
-              "name": "屯溪"
+              "name": "屯溪",
+              "lat": 29.713,
+              "lng": 118.315
             },
             "bookings": [
               {
@@ -3234,7 +3267,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "屯溪"
+              "name": "屯溪",
+              "lat": 29.713,
+              "lng": 118.315
             },
             "description": "屯溪老街买黄山毛峰、徽墨、歙砚等伴手礼，认准老字号店铺"
           },
@@ -3244,7 +3279,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:00",
             "place": {
-              "name": "黄山北站"
+              "name": "黄山北站",
+              "lat": 30.314,
+              "lng": 118.31
             },
             "description": "建议云谷寺索道上，前山下。山顶住宿提前1个月订",
             "bookings": [
@@ -3261,7 +3298,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "12:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅",
             "bookings": [
@@ -3287,23 +3326,6 @@ const PLANS = [
     "title": "同里古镇半日闲",
     "origin": "苏州",
     "category": "tomorrow",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "同里",
-        "lat": 31.128,
-        "lng": 120.737
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -3320,7 +3342,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:40",
             "place": {
-              "name": "同里古镇"
+              "name": "同里古镇",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "按导航路线前往"
           },
@@ -3330,7 +3354,9 @@ const PLANS = [
             "startTime": "9:40",
             "endTime": "10:40",
             "place": {
-              "name": "退思园"
+              "name": "退思园",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "同里最精华的园林，贴水而建，早上9点前人少",
             "bookings": [
@@ -3358,7 +3384,9 @@ const PLANS = [
             "startTime": "10:40",
             "endTime": "11:10",
             "place": {
-              "name": "三桥"
+              "name": "三桥",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "太平桥、吉利桥、长庆桥连在一起，走完在河边坐坐",
             "tips": [
@@ -3371,7 +3399,9 @@ const PLANS = [
             "startTime": "11:10",
             "endTime": "12:40",
             "place": {
-              "name": "穿堂街"
+              "name": "穿堂街",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "穿堂街是古镇小吃一条街，芡实糕软糯不粘牙，袁氏最出名"
           },
@@ -3381,7 +3411,9 @@ const PLANS = [
             "startTime": "12:40",
             "endTime": "13:40",
             "place": {
-              "name": "明清街"
+              "name": "明清街",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "tips": [
               "状元蹄必吃",
@@ -3402,7 +3434,9 @@ const PLANS = [
             "startTime": "13:40",
             "endTime": "14:40",
             "place": {
-              "name": "罗星洲"
+              "name": "罗星洲",
+              "lat": 31.12,
+              "lng": 120.74
             },
             "description": "湖中小岛，坐船过去，人少安静",
             "bookings": [
@@ -3419,7 +3453,9 @@ const PLANS = [
             "startTime": "14:40",
             "endTime": "16:10",
             "place": {
-              "name": "日落"
+              "name": "同里古镇",
+              "lat": 31.128,
+              "lng": 120.737
             },
             "description": "找个三桥附近的茶座坐下来看日落，河面金光配古桥剪影特别美"
           },
@@ -3429,7 +3465,9 @@ const PLANS = [
             "startTime": "16:10",
             "endTime": "16:50",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -3448,23 +3486,6 @@ const PLANS = [
     "title": "灵岩山徒步",
     "origin": "苏州",
     "category": "tomorrow",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "灵岩山",
-        "lat": 31.237,
-        "lng": 120.517
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -3481,7 +3502,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:30",
             "place": {
-              "name": "木渎站"
+              "name": "木渎站",
+              "lat": 31.25,
+              "lng": 120.517
             },
             "description": "按导航路线前往",
             "tips": [
@@ -3494,7 +3517,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "9:45",
             "place": {
-              "name": "灵岩山"
+              "name": "灵岩山",
+              "lat": 31.237,
+              "lng": 120.517
             },
             "description": "北坡好走南坡陡，山不高45min登顶，山顶看太湖全景",
             "bookings": [
@@ -3514,7 +3539,9 @@ const PLANS = [
             "startTime": "9:45",
             "endTime": "10:30",
             "place": {
-              "name": "灵岩山"
+              "name": "灵岩山",
+              "lat": 31.237,
+              "lng": 120.517
             },
             "description": "北坡好走南坡陡，山不高45min登顶，山顶看太湖全景",
             "bookings": [
@@ -3539,7 +3566,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "11:00",
             "place": {
-              "name": "灵岩寺"
+              "name": "灵岩寺",
+              "lat": 31.237,
+              "lng": 120.517
             },
             "description": "山顶千年古刹，免费参观，香火随缘",
             "tips": [
@@ -3552,7 +3581,9 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:30",
             "place": {
-              "name": "山顶俯瞰太湖"
+              "name": "灵岩山",
+              "lat": 31.237,
+              "lng": 120.517
             },
             "description": "山顶有观景平台可以俯瞰太湖和木渎全景，天气好能看到对面的光福"
           },
@@ -3563,7 +3594,9 @@ const PLANS = [
             "endTime": "13:00",
             "description": "按导航路线前往",
             "place": {
-              "name": "灵岩山"
+              "name": "灵岩山",
+              "lat": 31.237,
+              "lng": 120.517
             }
           },
           {
@@ -3572,7 +3605,9 @@ const PLANS = [
             "startTime": "13:00",
             "endTime": "15:00",
             "place": {
-              "name": "木渎古镇"
+              "name": "木渎古镇",
+              "lat": 31.25,
+              "lng": 120.52
             },
             "description": "严家花园+虹饮山房值得看，鲃肺汤是当地一绝",
             "bookings": [
@@ -3589,7 +3624,9 @@ const PLANS = [
             "startTime": "15:00",
             "endTime": "16:30",
             "place": {
-              "name": "严家花园"
+              "name": "严家花园",
+              "lat": 31.25,
+              "lng": 120.52
             },
             "description": "苏州四大园林之一，布局精巧层次丰富，春天紫藤花开的时候最美"
           },
@@ -3599,7 +3636,9 @@ const PLANS = [
             "startTime": "16:30",
             "endTime": "17:00",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -3618,23 +3657,6 @@ const PLANS = [
     "title": "阳澄湖骑行",
     "origin": "苏州",
     "category": "tomorrow",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "阳澄湖",
-        "lat": 31.411,
-        "lng": 120.755
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -3651,7 +3673,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:30",
             "place": {
-              "name": "阳澄湖骑行驿站"
+              "name": "阳澄湖骑行驿站",
+              "lat": 31.411,
+              "lng": 120.755
             },
             "description": "租车¥50/天，非蟹季人很少骑行超舒服",
             "bookings": [
@@ -3686,7 +3710,9 @@ const PLANS = [
               }
             ],
             "place": {
-              "name": "阳澄湖骑行驿站"
+              "name": "阳澄湖骑行驿站",
+              "lat": 31.411,
+              "lng": 120.755
             }
           },
           {
@@ -3695,7 +3721,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "11:30",
             "place": {
-              "name": "环湖"
+              "name": "阳澄湖",
+              "lat": 31.411,
+              "lng": 120.755
             },
             "description": "环湖绿道平坦宽敞，非蟹季几乎没人，一路湖景开阔心情好"
           },
@@ -3705,7 +3733,9 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "12:30",
             "place": {
-              "name": "美人腿半岛"
+              "name": "美人腿半岛",
+              "lat": 31.42,
+              "lng": 120.74
             },
             "description": "阳澄湖伸出的半岛，骑到尽头看湖景"
           },
@@ -3715,7 +3745,9 @@ const PLANS = [
             "startTime": "12:30",
             "endTime": "14:30",
             "place": {
-              "name": "莲花岛"
+              "name": "莲花岛",
+              "lat": 31.43,
+              "lng": 120.75
             },
             "description": "码头坐船上岛，末班船5点别错过！傍晚蚊子多带驱蚊",
             "bookings": [
@@ -3736,7 +3768,9 @@ const PLANS = [
             "startTime": "14:30",
             "endTime": "15:30",
             "place": {
-              "name": "湖边咖啡馆"
+              "name": "阳澄湖",
+              "lat": 31.411,
+              "lng": 120.755
             },
             "description": "湖边文艺咖啡馆，坐露台看湖景喝下午茶，骑行后歇歇脚",
             "bookings": [
@@ -3754,7 +3788,9 @@ const PLANS = [
             "endTime": "17:00",
             "description": "骑到湖边开阔处找个好位置等日落，阳澄湖日落湖面金黄很出片",
             "place": {
-              "name": "阳澄湖"
+              "name": "阳澄湖",
+              "lat": 31.411,
+              "lng": 120.755
             }
           },
           {
@@ -3763,7 +3799,9 @@ const PLANS = [
             "startTime": "17:00",
             "endTime": "17:30",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往"
           },
@@ -3782,43 +3820,6 @@ const PLANS = [
     "title": "浙南山水5日",
     "origin": "苏州",
     "category": "5day",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "杭州",
-        "lat": 30.274,
-        "lng": 120.155
-      },
-      {
-        "name": "建德",
-        "lat": 29.476,
-        "lng": 119.281
-      },
-      {
-        "name": "丽水",
-        "lat": 28.468,
-        "lng": 119.923
-      },
-      {
-        "name": "缙云",
-        "lat": 28.661,
-        "lng": 120.091
-      },
-      {
-        "name": "仙居",
-        "lat": 28.847,
-        "lng": 120.728
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -3835,7 +3836,9 @@ const PLANS = [
             "startTime": "15:00",
             "endTime": "15:30",
             "place": {
-              "name": "苏州站"
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "建议提前30min到站，自助取票机在2楼大厅"
           },
@@ -3845,7 +3848,9 @@ const PLANS = [
             "startTime": "15:30",
             "endTime": "15:55",
             "place": {
-              "name": "杭州站"
+              "name": "杭州站",
+              "lat": 30.274,
+              "lng": 120.155
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -3862,7 +3867,9 @@ const PLANS = [
             "startTime": "15:55",
             "endTime": "16:35",
             "place": {
-              "name": "建德站"
+              "name": "建德站",
+              "lat": 29.476,
+              "lng": 119.281
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -3882,7 +3889,9 @@ const PLANS = [
             "startTime": "16:35",
             "endTime": "19:00",
             "place": {
-              "name": "新安江"
+              "name": "新安江",
+              "lat": 29.856,
+              "lng": 118.55
             },
             "description": "山水画廊游船约3h，两岸徽派村落+油菜花田",
             "bookings": [
@@ -3899,7 +3908,9 @@ const PLANS = [
             "startTime": "19:00",
             "endTime": "22:00",
             "place": {
-              "name": "新安江"
+              "name": "新安江",
+              "lat": 29.856,
+              "lng": 118.55
             },
             "description": "山水画廊游船约3h，两岸徽派村落+油菜花田",
             "bookings": [
@@ -3916,7 +3927,9 @@ const PLANS = [
             "startTime": "22:00",
             "endTime": "23:00",
             "place": {
-              "name": "建德酒店"
+              "name": "建德酒店",
+              "lat": 29.476,
+              "lng": 119.281
             },
             "bookings": [
               {
@@ -3943,7 +3956,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "8:30",
             "place": {
-              "name": "大慈岩景区"
+              "name": "大慈岩景区",
+              "lat": 29.43,
+              "lng": 119.24
             },
             "description": "悬崖上的寺庙，半山腰俯瞰田园，惊险但好看",
             "bookings": [
@@ -3960,7 +3975,9 @@ const PLANS = [
             "startTime": "8:30",
             "endTime": "8:00",
             "place": {
-              "name": "大慈岩"
+              "name": "大慈岩",
+              "lat": 29.43,
+              "lng": 119.24
             },
             "description": "悬崖上的寺庙，半山腰俯瞰田园，惊险但好看",
             "bookings": [
@@ -3977,7 +3994,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "下涯湿地"
+              "name": "下涯湿地",
+              "lat": 29.49,
+              "lng": 119.29
             },
             "description": "晨雾要6点前到！新安江边，渔夫撒网+晨雾=仙境",
             "tips": [
@@ -3998,7 +4017,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "10:30",
             "place": {
-              "name": "建德"
+              "name": "建德",
+              "lat": 29.476,
+              "lng": 119.281
             },
             "bookings": [
               {
@@ -4025,7 +4046,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "10:00",
             "place": {
-              "name": "丽水"
+              "name": "丽水",
+              "lat": 28.468,
+              "lng": 119.923
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -4049,7 +4072,9 @@ const PLANS = [
             "startTime": "10:00",
             "endTime": "12:30",
             "place": {
-              "name": "古堰画乡"
+              "name": "古堰画乡",
+              "lat": 28.449,
+              "lng": 119.863
             },
             "description": "瓯江边的画家村，油画写生+古樟树群，下午光线最美",
             "bookings": [
@@ -4066,7 +4091,9 @@ const PLANS = [
             "startTime": "12:30",
             "endTime": "13:30",
             "place": {
-              "name": "丽水酒店"
+              "name": "丽水酒店",
+              "lat": 28.468,
+              "lng": 119.923
             },
             "bookings": [
               {
@@ -4093,7 +4120,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:00",
             "place": {
-              "name": "缙云仙都景区"
+              "name": "缙云仙都景区",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "description": "鼎湖峰是精华，朱潭山倒影绝美，花1天慢慢逛",
             "bookings": [
@@ -4110,7 +4139,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "10:30",
             "place": {
-              "name": "鼎湖峰"
+              "name": "鼎湖峰",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "description": "170米高的石柱拔地而起，中国南方最高石柱，早上有雾时仙气十足"
           },
@@ -4120,7 +4151,9 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "12:00",
             "place": {
-              "name": "朱潭山"
+              "name": "朱潭山",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "description": "好溪穿过山谷，水面倒映鼎湖峰，清晨有牧牛人赶牛过桥的经典画面"
           },
@@ -4130,7 +4163,9 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:00",
             "place": {
-              "name": "缙云"
+              "name": "缙云",
+              "lat": 28.661,
+              "lng": 120.091
             },
             "bookings": [
               {
@@ -4157,7 +4192,9 @@ const PLANS = [
             "startTime": "8:00",
             "endTime": "9:30",
             "place": {
-              "name": "仙居神仙居景区"
+              "name": "仙居神仙居景区",
+              "lat": 28.847,
+              "lng": 120.728
             },
             "description": "索道排队长早去！如意桥网红打卡点，全程3-4h",
             "bookings": [
@@ -4177,7 +4214,9 @@ const PLANS = [
             "startTime": "9:30",
             "endTime": "13:30",
             "place": {
-              "name": "神仙居"
+              "name": "神仙居",
+              "lat": 28.847,
+              "lng": 120.728
             },
             "description": "索道排队长早去！如意桥网红打卡点，全程3-4h",
             "bookings": [
@@ -4194,7 +4233,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "14:00",
             "place": {
-              "name": "苏州"
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -4220,23 +4261,6 @@ const PLANS = [
     "title": "平江路商圈走走",
     "origin": "苏州",
     "category": "now",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "平江路",
-        "lat": 31.318,
-        "lng": 120.632
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -4253,7 +4277,9 @@ const PLANS = [
             "startTime": "14:00",
             "endTime": "14:30",
             "place": {
-              "name": "平江路站"
+              "name": "平江路站",
+              "lat": 31.318,
+              "lng": 120.632
             },
             "description": "苏州最有味道的老街，诚品书店+文创小店+苏式点心",
             "bookings": [
@@ -4270,7 +4296,9 @@ const PLANS = [
             "startTime": "14:30",
             "endTime": "16:30",
             "place": {
-              "name": "平江路"
+              "name": "平江路",
+              "lat": 31.318,
+              "lng": 120.632
             },
             "description": "苏州最有味道的老街，诚品书店+文创小店+苏式点心",
             "bookings": [
@@ -4287,7 +4315,9 @@ const PLANS = [
             "startTime": "16:30",
             "endTime": "18:00",
             "place": {
-              "name": "诚品书店"
+              "name": "诚品书店",
+              "lat": 31.31,
+              "lng": 120.7
             },
             "description": "苏州诚品书店，不只是书店还有文创市集和展览，可以泡一两个小时"
           },
@@ -4297,7 +4327,9 @@ const PLANS = [
             "startTime": "18:00",
             "endTime": "19:30",
             "place": {
-              "name": "独墓湖"
+              "name": "独墓湖",
+              "lat": 31.315,
+              "lng": 120.71
             },
             "description": "金鸡湖旁的小湖，傍晚散步人少安静，湖边有长椅可以坐着发呆"
           },
@@ -4307,7 +4339,9 @@ const PLANS = [
             "startTime": "19:30",
             "endTime": "20:30",
             "place": {
-              "name": "湖边咖啡"
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
             },
             "description": "湖边独立咖啡馆，环境安静适合坐下来休息，冰美式和手冲都不错",
             "bookings": [
@@ -4323,9 +4357,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "20:30",
             "endTime": "21:00",
-            "place": {
-              "name": "地铁回家"
-            },
             "description": "按导航路线前往"
           }
         ]
@@ -4337,23 +4368,6 @@ const PLANS = [
     "title": "金鸡湖日落骑行",
     "origin": "苏州",
     "category": "now",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "金鸡湖",
-        "lat": 31.327,
-        "lng": 120.598
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -4370,7 +4384,9 @@ const PLANS = [
             "startTime": "16:00",
             "endTime": "16:20",
             "place": {
-              "name": "金鸡湖"
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
             },
             "description": "环湖绿道骑行，音乐喷泉(周五六晚8点)，日落超美"
           },
@@ -4380,7 +4396,9 @@ const PLANS = [
             "startTime": "16:20",
             "endTime": "17:50",
             "place": {
-              "name": "环湖绿道"
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
             },
             "description": "环湖绿道约15km一圈，平坦好骑，沿途可以看到摩天轮和东方之门"
           },
@@ -4390,7 +4408,9 @@ const PLANS = [
             "startTime": "17:50",
             "endTime": "19:20",
             "place": {
-              "name": "湖边野餐"
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
             },
             "description": "李公堤或湖心岛附近草坪铺个垫子，带点水果零食，看着湖面等日落"
           },
@@ -4401,7 +4421,9 @@ const PLANS = [
             "endTime": "20:50",
             "description": "日落时分湖面金光灿烂，东方之门方向最出片，周五六还有音乐喷泉",
             "place": {
-              "name": "金鸡湖"
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
             }
           },
           {
@@ -4409,9 +4431,6 @@ const PLANS = [
             "type": "play",
             "startTime": "20:50",
             "endTime": "21:50",
-            "place": {
-              "name": "骑回家"
-            },
             "description": "沿绿道原路骑回，夜风凉快，湖边灯光亮起来也好看"
           }
         ]
@@ -4423,23 +4442,6 @@ const PLANS = [
     "title": "观前街夜市+护城河",
     "origin": "苏州",
     "category": "now",
-    "route": [
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      },
-      {
-        "name": "观前街",
-        "lat": 31.309,
-        "lng": 120.625
-      },
-      {
-        "name": "苏州",
-        "lat": 31.299,
-        "lng": 120.585
-      }
-    ],
     "relatedContent": [],
     "days": [
       {
@@ -4456,7 +4458,9 @@ const PLANS = [
             "startTime": "19:00",
             "endTime": "19:30",
             "place": {
-              "name": "观前街"
+              "name": "观前街",
+              "lat": 31.309,
+              "lng": 120.625
             },
             "description": "苏州最热闹的商圈，夜市小吃多，松鹤楼/得月楼在附近",
             "bookings": [
@@ -4473,7 +4477,9 @@ const PLANS = [
             "startTime": "19:30",
             "endTime": "20:30",
             "place": {
-              "name": "夜市扫街"
+              "name": "观前街",
+              "lat": 31.309,
+              "lng": 120.625
             },
             "description": "观前街夜市小吃多，糖粥、生煎、鲜肉月饼轮着吃，边走边逛",
             "bookings": [
@@ -4490,7 +4496,9 @@ const PLANS = [
             "startTime": "20:30",
             "endTime": "21:30",
             "place": {
-              "name": "护城河"
+              "name": "护城河",
+              "lat": 31.305,
+              "lng": 120.62
             },
             "description": "夜游护城河游船看城墙灯光，也可以河边散步",
             "bookings": [
@@ -4507,7 +4515,9 @@ const PLANS = [
             "startTime": "21:30",
             "endTime": "23:00",
             "place": {
-              "name": "河边"
+              "name": "护城河",
+              "lat": 31.305,
+              "lng": 120.62
             },
             "description": "护城河边步道灯光柔和，夜风凉快，从相门到盘门这段最有感觉"
           },
