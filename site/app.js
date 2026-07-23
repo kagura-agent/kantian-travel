@@ -590,12 +590,14 @@ function openDetail(plan) {
           .replace(/[\d]+km/g, '')  // strip distances
           .trim();
         const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
+        const isHome = /^回家$/.test(placeName);
+        const navBtn = isHome ? '' : `<a class="step-nav-btn" href="${navUrl}" target="_blank">导航到${placeName}</a>`;
         html += `
-          <div class="day-step ${isTransit ? 'step-transit' : 'step-play'}">
-            <div class="step-icon">${isTransit ? '🚗' : '📍'}</div>
+          <div class="day-step ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}">
+            <div class="step-icon">${isHome ? '🏠' : isTransit ? '🚗' : '📍'}</div>
             <div class="step-content">
               <span class="step-text">${step}</span>
-              <a class="step-nav-btn" href="${navUrl}" target="_blank">导航到${placeName}</a>
+              ${navBtn}
             </div>
           </div>
           ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
