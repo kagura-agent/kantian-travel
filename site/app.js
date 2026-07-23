@@ -578,56 +578,71 @@ function openDetail(plan) {
     // Split itinerary into steps (by → or +)
     const steps = itinText.split(/[\u2192\+]/).map(s => s.trim()).filter(Boolean);
 
-    // Build step-by-step itinerary with nav to each place
+    // Match booking pills for a single step
+    function getStepBookings(stepText) {
+      const pills = [];
+      if (/高铁|火车|动车/.test(stepText)) pills.push('🚄 查车票');
+      if (/租车|包车|自驾/.test(stepText)) pills.push('🚗 查租车');
+      if (/寺|园|楼|山|博物馆|古村|古镇|景区|故居/.test(stepText)) pills.push('🎫 查门票');
+      if (/骑行|租.*车|自行车/.test(stepText)) pills.push('🚲 租车');
+      if (/民宿|客栈|酒店|入住/.test(stepText)) pills.push('🏠 查住宿');
+      if (/船|游船|坐船/.test(stepText)) pills.push('🚢 查船票');
+      if (/午餐|晚餐|早茶|美食/.test(stepText)) pills.push('🍽️ 查餐厅');
+      return pills;
+    }
+
+    // Match tips for a single step
+    function getStepTips(stepText) {
+      const words = stepText.replace(/[\u2192+\u00b7\(\)\!！]/g, ' ').split(/\s+/).filter(w => w.length >= 2);
+      return tips.filter(tip => words.some(w => tip.toLowerCase().includes(w.toLowerCase())));
+    }
+
+    // Match related content for a single step
+    function getStepContent(stepText) {
+      const all = RELATED_CONTENT[plan.id] || [];
+      const words = stepText.replace(/[\u2192+\u00b7\(\)\!！]/g, ' ').split(/\s+/).filter(w => w.length >= 2);
+      return all.filter(c => words.some(w => c.title.toLowerCase().includes(w.toLowerCase())));
+    }
+
+    // Build step-by-step itinerary as expandable accordion
     function buildStepsHTML() {
       let html = '<div class="day-steps">';
       steps.forEach((step, i) => {
         const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达|下山/.test(step);
-        // Extract place name: strip action verbs and descriptions
         const placeName = step
-          .replace(/[\(\)（）].*/g, '')  // remove parenthetical
-          .replace(/^.*?到/g, '')  // 「自驾40min到同里古镇」→「同里古镇」
-          .replace(/^.*?去/g, '')  // 「出发去苏州站」→「苏州站」
-          .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山|游览|采购|换乘|租车|还车|休整|游览).*$/g, '')  // strip trailing verbs
+          .replace(/[\(\)（）].*/g, '')
+          .replace(/^.*?到/g, '')
+          .replace(/^.*?去/g, '')
+          .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山|游览|采购|换乘|租车|还车|休整|游览).*$/g, '')
           .replace(/(绝美|人超少|最美).*$/g, '')
-          .replace(/[\d]+km/g, '')
-          .trim();
-        const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
+          .replace(/[\d]+km/g, '').trim();
         const isHome = /^回家$/.test(placeName);
-        const navBtn = isHome ? '' : `<a class="step-nav-btn" href="${navUrl}" target="_blank">导航到${placeName}</a>`;
+        const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
+
+        // Per-step extras
+        const stepBookings = getStepBookings(step);
+        const stepTips = getStepTips(step);
+        const stepContent = getStepContent(step);
+        const hasExtras = (!isHome && placeName) || stepBookings.length || stepTips.length || stepContent.length;
+
         html += `
-          <div class="day-step ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}">
-            <div class="step-icon">${isHome ? '🏠' : isTransit ? '🚗' : '📍'}</div>
-            <div class="step-content">
+          <div class="day-step ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}" data-expandable="${hasExtras ? 'true' : 'false'}">
+            <div class="step-header">
+              <div class="step-icon">${isHome ? '🏠' : isTransit ? '🚗' : '📍'}</div>
               <span class="step-text">${step}</span>
-              ${navBtn}
+              ${hasExtras ? '<span class="step-arrow">›</span>' : ''}
             </div>
+            ${hasExtras ? `<div class="step-expand">
+              ${!isHome ? `<a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>` : ''}
+              ${stepBookings.length ? `<div class="step-bookings">${stepBookings.map(b => `<span class="booking-pill-sm">${b}</span>`).join('')}</div>` : ''}
+              ${stepContent.map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
+              ${stepTips.map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
+            </div>` : ''}
           </div>
           ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
         `;
       });
       html += '</div>';
-      return html;
-    }
-
-    // Build navigation list from itinerary steps (destination only)
-    function buildTransitNavHTML() {
-      if (steps.length < 2) return '';
-      let html = '<div class="detail-section"><h4 class="detail-section-title">导航</h4><div class="transit-nav-list">';
-      steps.forEach((step, i) => {
-        const placeName = step.replace(/[\(\)（）约\d+h\s上午下午清晨傍晚晚上中午午餐后午前6点]/g, '').replace(/…+/g, '').trim();
-        if (!placeName) return;
-        const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
-        html += `
-          <a class="transit-nav-item" href="${navUrl}" target="_blank">
-            <div class="tn-info">
-              <span class="tn-route">📍 ${step}</span>
-            </div>
-            <span class="tn-action">导航</span>
-          </a>
-        `;
-      });
-      html += '</div></div>';
       return html;
     }
 
@@ -648,38 +663,6 @@ function openDetail(plan) {
       </div>
 
       ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
-
-      ${dayBookings.length > 0 ? `
-      <div class="detail-section">
-        <h4 class="detail-section-title">预订</h4>
-        <div class="detail-booking-pills">
-          ${dayBookings.map(b => `<span class="booking-pill">${b} →</span>`).join('')}
-        </div>
-      </div>` : ''}
-
-      ${dayTips.length > 0 ? `
-      <div class="detail-section">
-        <h4 class="detail-section-title">提醒</h4>
-        <div class="detail-tips">
-          ${dayTips.map(tip => `<div class="tip-item">💡 ${tip}</div>`).join('')}
-        </div>
-      </div>` : ''}
-
-      ${dayContent.length > 0 ? `
-      <div class="detail-section">
-        <h4 class="detail-section-title">种草内容</h4>
-        <div class="related-content">
-          ${dayContent.map(c => `
-            <div class="related-card" style="border-left:3px solid ${c.color}">
-              <div class="rc-header">
-                <span class="rc-platform">${c.icon} ${c.platform}</span>
-                <span class="rc-likes">❤️ ${c.likes}</span>
-              </div>
-              <p class="rc-title">${c.title}</p>
-            </div>
-          `).join('')}
-        </div>
-      </div>` : ''}
     `;
   }
 
@@ -763,6 +746,14 @@ function openDetail(plan) {
         const h = document.querySelector(`.card-heart[data-id="${plan.id}"]`);
         if (h) h.classList.add('saved');
       }
+    });
+
+    // Bind step accordion expand/collapse
+    detailBody.querySelectorAll('.day-step[data-expandable="true"]').forEach(step => {
+      step.querySelector('.step-header').addEventListener('click', (e) => {
+        if (e.target.closest('a')) return; // don't toggle when clicking links
+        step.classList.toggle('expanded');
+      });
     });
 
     // Render map
