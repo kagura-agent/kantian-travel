@@ -321,6 +321,7 @@
 - [x] **guide.md: 新增「repos that block force-push make commit-level compliance unrecoverable」** - NemoClaw#7195 教训（DCO sign-off 缺失，repo 禁止 fork force-push 导致 rebase --signoff 无法推送，PR 被 #7196 supersede）→ 已加入 guide.md 第 83 条 (2026-07-19)
 - [x] **guide.md: 新增「check if target component is scheduled for deprecation/replacement」** - Archon#1599 教训（fix 代码正确但组件正在 UI cutover 被废弃，maintainer 直接关闭）→ 已加入 guide.md 第 84 条 (2026-07-21)
 - [x] **guide.md: 新增「mirror recently merged PRs to fix analogous bugs in sibling modules」** - Archon#2251 正面教训（用 #2245 merged fix pattern 找到 codebases.ts 同 bug，CI 一次通过）→ 已加入 guide.md 第 85 条 (2026-07-22)
+- [x] **workloop.yaml: 新增 stale_pr_check 节点（前置于 study）** - workloop #6852 NemoClaw#7226 教训（plan-review subagent 白跑一轮后才在 implement 发现 PR 已存在）→ 新增 stale_pr_check 节点在 pr_gate 之后、study 之前，Exit 10 直跳 verify，Exit 11 进 implement fix mode (2026-07-23)
 
 ## 📚 学习
 
@@ -352,7 +353,7 @@
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
 - [x] Track: waku-agent (ShenSeanChen) - 355⭐ (07-21 followup, +150%). THRIVING 6/6. Compare Arena + delegate_task through full loop. Revisit 07-28
-- [ ] Track: memraw (TetiAI) - 46⭐ (07-16, NEW). Anti-retrieval memory: whole memory in prompt, importance-scored fact lines, valley ordering for lost-in-middle. Bet on growing windows + cheap caching. Apache 2.0, TypeScript, v0.0.1. Deep read done. Revisit 07-23
+- [x] Track: memraw (TetiAI) - 46⭐ (07-23 followup, flat). 13d stale, 0 forks, 0 community. All code in init commit. Concept documented. Downgraded to monthly. Revisit 08-23
 - [ ] Track: Waggle (modiqo/waggle) - 909⭐ (07-21, NEW). Attributed artifact references for agent handoffs. MCP-native ~30-byte tokens, sealed variant matcher, consumption contracts, payload-free telemetry. Rust, Apache-2.0/MIT. Deep read done. Revisit 07-28
 - [ ] Track: Observal (Observal/Observal) - 2,218⭐ (07-22, NEW). Cross-harness AI component registry + analytics. Agent=portable context package (MCP+skills+hooks+prompts+sandboxes). Self-learning pipeline (insights→pending registry items). ClickHouse analytics, Helm, SSO/SCIM. Apache-2.0, Python. Deep read done. Revisit 07-29
 - [ ] Track: Superserve (superserve-ai/superserve) - 419⭐ (07-22, NEW). Firecracker microVM sandbox for AI agents. Secret proxy pattern (credential never enters VM). Sandtrace: hypervisor-level hash-chained audit trails. Pause/resume lifecycle. TypeScript+Python SDK. Apache-2.0. Deep read done. Revisit 07-29
@@ -366,7 +367,7 @@
 - [x] Track: vercel/eve - 3,085⭐ (07-03 followup, +19%). v0.19.0: cancellation propagation, gateway cost metadata, resilient attachment handling. Shipping daily. Revisit 07-10
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
-- [ ] Track: rebel0789/codexpro - 1,307⭐ (07-16 followup, +21%). Hardening continues: repo analysis, large-file fixes. THRIVING 5/6 (29 issue authors, 11 ext PRs). Revisit 07-23
+- [x] Track: rebel0789/codexpro - 1,355⭐ (07-23 followup, +3.7%). v0.29.0: native ChatGPT tool cards. 10d since last commit but healthy community. THRIVING 5/6. Revisit 07-30
 - [ ] Track: agenticow (ruvnet) - 43⭐ (07-18 followup). SOLO 0/6, 14d stale. Downgraded to monthly. Revisit 08-18
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
 - [x] Track: Plaer1/junction - 642⭐ (07-04 followup, +25%). 20 locales, context bleed fix, queue display. Healthy growth. Revisit 07-18
@@ -374,9 +375,9 @@
 - [ ] Track: Forall (astrio-labs/forall) - 279⭐ (07-18, NEW). Spec-driven code + machine-checkable proofs. Rust, Apache-2.0. MCP verify-only mode for existing agents. Deep read done. Revisit 07-25
 - [ ] Track: Forsy-AI/agent-apprenticeship - 1,315⭐ (07-16 followup). STALLING: 0 commits since 07-06, 0 PRs, 0 issues, NASCENT 1/6. Downgraded to monthly. Revisit 08-16
 - [x] Track: KongFangXun/sofagent - 28⭐ (07-22 followup, +47%). v1.1.6→1.1.8 in 3 days: AES-256 security + ECDH, Federation CRDT sharing, DAG workflow engine. Solo dev extreme velocity. NASCENT 2/6. Expanding from governance to full framework. Revisit 08-05
-- [ ] Track: NotASithLord/peerd - 356⭐ (07-16 followup, +19%). v0.2.7. Prewalk (frontier plans+cheap executes), Background Routines (browser-native cron). THRIVING 6/6, 4 ext contributors. Revisit 07-23
-- [ ] Track: deja-vu (vshulcz/deja-vu) - 211⭐ (07-16, NEW). Cross-harness agent memory search. Token inverted index, no embeddings, 7-9ms. MCP recall + SessionStart auto-inject. Go, MIT. Deep read done. Revisit 07-23
-- [ ] Track: grok-build (xai-org/grok-build) - 4,104⭐ (07-16, NEW). xAI coding agent harness + TUI. Major industry entrant. Skim only (>5k threshold approaching). Revisit 07-23
+- [x] Track: NotASithLord/peerd - 369⭐ (07-23 followup, +3.6%). v0.2.8: watch mode, site clients (per-origin derived API clients), anti-bot detection posture spec. THRIVING 5/6 (33 ext PRs/30d). Revisit 07-30
+- [ ] Track: deja-vu (vshulcz/deja-vu) - 454⭐ (07-23 followup, +115%). MASSIVE 07-22 burst: v0.15.0→v0.15.2. Tags+conflict surfacing for curated memory. Roo Code+Cline harnesses. TF saturation ranking. LoCoMo benchmark. THRIVING 5/6. Revisit 07-30
+- [x] Track: grok-build (xai-org/grok-build) - 21,794⭐ (07-23 followup, +431%). Viral growth (4k→21.8k in 7d). Way past >5k skim threshold. Active (pushed 07-22). Downgraded to monthly. Revisit 08-23
 - [ ] Track: aict (synseqack/aict) - 10⭐ (07-16, NEW). Structured Unix coreutils for AI agents. XML/JSON output, built-in MCP server, Go stdlib only. Read-only, single binary. Deep read done. Revisit 07-30
 - [ ] Track: context-labs/halo - 1,101⭐ (07-17 followup, +12%). THRIVING 6/6. Engine v0.1.27, desktop guide PR#75, RFC#70 Failure Mode Taxonomy, RFC#73 E2E Eval. Revisit 07-24
 - [x] Track: lemma-work/lemma-platform - 213⭐ (07-03 followup, +88% from 113). 🟢 THRIVING 6/6. Grant-first authz model (destructive actions gated by default). Composio connectors, pod-native toolsets, MCP stateless fix. Upgraded to deep-dive. Revisit 07-10
@@ -906,6 +907,21 @@
 - [ ] Re-push to trigger CI re-run
 - [ ] Track: loope (ngthluu/loope) - 7⭐ (07-19 deep-read). Stateless Go daemon: issue→PR via headless Claude Code, label-driven state machine, session persistence, confidence gate. Solo dev, 0 community. Revisit 08-02
 
+## NVIDIA/NemoClaw PR #7422 — Bot Review Fixes (Issue #7415)
+
+### Pending (added 2026-07-23 github-patrol)
+- [ ] Fix PRA-1 blocker: Classify remote provider failure before DCode sanitizes it
+  - 当前 classifier 只看 RemoteException type/str，对 generic RemoteException (text: "APIError: An internal error occurred") 分类为 unknown
+  - 需在 managed DCode/LangGraph boundary 获取 allowlisted provider failure class（如 ResourceExhausted）before remote exception sanitization
+  - 文件: `agents/langchain-deepagents-code/patch-managed-deepagents-code.py:803`
+  - 测试: 需 regression test — generic RemoteException + persisted ResourceExhausted cause → category=upstream_provider_capacity, retryable=true
+- [ ] Fix PRA-2 warning: 替换 `hex(id(exc))` 为 managed correlation identifier（不暴露内存地址）
+  - 文件: `patch-managed-deepagents-code.py:806,808`
+- [ ] Fix PRA-3 warning: 添加 logging regression tests 验证敏感内容（token/request body/checkpoint data）不泄露到日志
+- [ ] Address CodeRabbit inline (1/3): L756-760 — 更新 _NEMOCLAW_KNOWN_PROVIDER_ERRORS 要求 trusted provider exception types/modules，不分类 MCP/gateway/policy errors
+- [ ] Address CodeRabbit inline (2/3): test L4-12 — 更新 imports 加入 CLI source module under test
+- [ ] Address CodeRabbit inline (3/3): test L26-28 — 替换 source-text marker assertions 为 observable runtime assertions
+
 ## NVIDIA/NemoClaw PR #7195 — PRA-1 Blocker Fix
 
 - [ ] Fix PRA-1: force fallback 在 `rebuild-mcp-phase.ts:32` catch 所有 live preparation error 后调用 `prepareMcpBridgesForAbsentSandboxRebuild`，但后者跳过了 `assertGeneratedPolicyMutationSafe`。需要限制 fallback 仅在 relay-unavailable 时触发，或在 fallback 前保留等效 policy 检查。
@@ -928,5 +944,14 @@
 ### 本轮改進 (done)
 - [x] Upgrade `_review_repetition_summary()` to use lifetime counters + 30-day window — replaced O(n) per-category history scan with `.counts[cat]` lookup (O(1), accurate after history trimming). Added 30-day recent window via single pre-computed jq pass over history. Output now distinguishes "lifetime popular" vs "actively overused": shows both rates, only suggests "add more memes" when recent rate ≥3×/file. Historical-only overuse gets "adaptive recency already limits rotation" hint. Tested: nailed-it correctly flagged as actively overused (3× in 30d), review --auto-wake regression-free. (07-22)
 
+### 本轮改進 (done)
+- [x] Add 5 memes to `nailed-it` category — downloaded from Tenor: chappelle, chris-evans, booyah-community (live-action), high-five-lets-go (live-action), nailed-it-hammer (meme). 8→13 files, overuse ratio 7×→4.4×/file. Style distribution now: anime(3) live-action(6) meme(3) cartoon(1). All lint/quality/coverage checks pass. (07-23)
+
 ### 本轮改進
-- [ ] Add 4+ memes to `nailed-it` category — currently 8 files with active 3×/file/month overuse. Target: 12+ files to bring ratio under threshold. Need diverse styles (live-action, meme, cartoon — already have 3 anime). Download when network available.
+- [ ] Add `memes dedup --visual` command — detect visually similar images across categories using perceptual hash (dhash). Currently only filename-based dedup exists; visual dedup catches renamed duplicates and near-identical frames.
+
+## Archon (coleam00/Archon) — PR #2255 CodeRabbit Review
+
+### Pending (added 2026-07-23 github-patrol)
+- [ ] Address CodeRabbit review comment [Minor]: loader.ts:781 — Add `KNOWN_DAG_NODE_KEYS.has(key)` hint when node-only key misplaced at workflow level (symmetry with node-level hint)
+- [ ] Address CodeRabbit review comment [Major]: workflow-discovery.ts:341 — Clear lower-scope warnings when project workflow overrides bundled one (`mergeWarnings` retains stale bundled warnings → false positive)
