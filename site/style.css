@@ -250,3 +250,11 @@ a.step-action-btn{background:var(--accent);color:#fff}
 .trip-share-btn{width:100%;padding:12px;border-radius:12px;border:1.5px solid #e0e0e0;background:#fff;font-size:14px;color:#666;cursor:pointer}
 .tab-done{opacity:0.6}
 .view-tab.tab-done .vt-day{text-decoration:line-through}
+/* Shortlist trip groups */
+.sl-plan-group{margin-bottom:16px;border-bottom:1px solid #f0f0f0;padding-bottom:12px}
+.trip-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;margin:6px 0;background:#f7f8fa;border-radius:10px;cursor:pointer}
+.trip-item:active{background:#eee}
+.trip-date{font-size:13px;color:#333}
+.trip-pct{font-size:13px;font-weight:600;color:var(--accent)}
+.trip-new-btn{width:100%;padding:8px;border:1.5px dashed #ddd;border-radius:10px;background:none;font-size:13px;color:#999;cursor:pointer;margin-top:6px}
+.trip-new-btn:active{background:#f5f5f5}

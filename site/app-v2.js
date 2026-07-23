@@ -744,20 +744,88 @@ function closeDetail() {
 // === Shortlist ===
 function openShortlist() {
   const saved = PLANS.filter(p => savedIds.has(p.id));
-  shortlistBody.innerHTML = saved.length === 0
-    ? '<p class="panel-empty">还没收藏方案<br>看看有没有心动的？</p>'
-    : saved.map(p => `
-      <div class="sl-item" data-id="${p.id}">
-        <img class="sl-img" src="${imgUrl(p.days[0].photo)}" alt="${p.title}">
-        <div class="sl-info"><h4>${p.title}</h4><p>${derivePlan(p).duration} · ${derivePlan(p).transitLabel}</p></div>
-      </div>
-    `).join('');
+  const trips = getTrips();
+
+  if (saved.length === 0 && trips.length === 0) {
+    shortlistBody.innerHTML = '<p class="panel-empty">还没收藏方案<br>看看有没有心动的？</p>';
+  } else {
+    shortlistBody.innerHTML = saved.map(p => {
+      const planTrips = trips.filter(t => t.planId === p.id);
+      const tripsHTML = planTrips.map(t => {
+        const d = new Date(t.createdAt);
+        const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
+        const totalSteps = t.days.reduce((a, d) => a + d.steps.length, 0);
+        const doneSteps = t.days.reduce((a, d) => a + d.steps.filter(s => s.done).length, 0);
+        const pct = Math.round(doneSteps / totalSteps * 100);
+        return `
+          <div class="trip-item" data-trip-id="${t.id}">
+            <span class="trip-date">🚶 ${dateStr} 出发</span>
+            <span class="trip-pct">${pct}%</span>
+          </div>
+        `;
+      }).join('');
+      return `
+        <div class="sl-plan-group">
+          <div class="sl-item" data-id="${p.id}">
+            <img class="sl-img" src="${imgUrl(p.days[0].photo)}" alt="${p.title}">
+            <div class="sl-info"><h4>${p.title}</h4><p>${derivePlan(p).duration} · ${derivePlan(p).transitLabel}</p></div>
+          </div>
+          ${tripsHTML}
+          <button class="trip-new-btn" data-plan-id="${p.id}">+ 再走一次</button>
+        </div>
+      `;
+    }).join('');
+
+    // Also show orphan trips (plan not saved but trip exists)
+    const orphanTrips = trips.filter(t => !saved.find(p => p.id === t.planId));
+    if (orphanTrips.length) {
+      shortlistBody.innerHTML += orphanTrips.map(t => {
+        const plan = PLANS.find(p => p.id === t.planId);
+        if (!plan) return '';
+        const d = new Date(t.createdAt);
+        const dateStr = `${d.getMonth()+1}/${d.getDate()}`;
+        const totalSteps = t.days.reduce((a, d) => a + d.steps.length, 0);
+        const doneSteps = t.days.reduce((a, d) => a + d.steps.filter(s => s.done).length, 0);
+        const pct = Math.round(doneSteps / totalSteps * 100);
+        return `
+          <div class="sl-plan-group">
+            <div class="trip-item" data-trip-id="${t.id}">
+              <span class="trip-date">🚶 ${plan.title} ${dateStr}</span>
+              <span class="trip-pct">${pct}%</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
   shortlistOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // Bind plan click → detail
   shortlistBody.querySelectorAll('.sl-item').forEach(el => {
     el.addEventListener('click', () => {
       const plan = PLANS.find(p => String(p.id) === el.dataset.id);
       if (plan) { closeShortlist(); openDetail(plan); }
+    });
+  });
+  // Bind trip click → trip view
+  shortlistBody.querySelectorAll('.trip-item').forEach(el => {
+    el.addEventListener('click', () => {
+      closeShortlist();
+      setTimeout(() => openTripView(el.dataset.tripId), 300);
+    });
+  });
+  // Bind "再走一次" → create new trip
+  shortlistBody.querySelectorAll('.trip-new-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const plan = PLANS.find(p => p.id === btn.dataset.planId);
+      if (plan) {
+        const trip = createTrip(plan);
+        closeShortlist();
+        setTimeout(() => openTripView(trip.id), 300);
+      }
     });
   });
 }
