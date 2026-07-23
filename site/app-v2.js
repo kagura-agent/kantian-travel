@@ -950,11 +950,12 @@ function openTripView(tripId) {
         <div class="tl-step" data-day="${dayIdx}" data-step="${si}">
           <div class="tl-left">
             <span class="tl-time">${step.startTime || ""}</span>
-            <div class="tl-dot tl-dot-del" style="background:${color}" data-day="${dayIdx}" data-step="${si}" title="删除此步"></div>
+            <div class="tl-dot" style="background:${color}"></div>
             ${si < day.steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ""}
           </div>
           <div class="tl-right">
-            <div class="trip-step-main">
+            <div class="tl-step-swipe">
+              <div class="trip-step-main">
               <div class="trip-step-info">
                 <div class="tl-step-header">
                   <span class="tl-type" style="color:${color}">${TYPE_LABELS[step.type] || ""} ${durations.join("")}</span>
@@ -974,6 +975,8 @@ function openTripView(tripId) {
                 <button class="vote-btn vote-up" data-day="${dayIdx}" data-step="${si}" data-type="likes">👍<span class="vote-count">${stepData.likes || ""}</span></button>
                 <button class="vote-btn vote-down" data-day="${dayIdx}" data-step="${si}" data-type="dislikes">👎<span class="vote-count">${stepData.dislikes || ""}</span></button>
               </div>
+            </div>
+              <div class="swipe-del-btn" data-day="${dayIdx}" data-step="${si}">删除</div>
             </div>
           </div>
         </div>
@@ -1035,17 +1038,35 @@ function openTripView(tripId) {
       });
     });
 
-    // Delete step via timeline dot
-    tripContainer.querySelectorAll(".tl-dot-del").forEach(dot => {
-      dot.addEventListener("click", (e) => {
+    // Delete step via swipe
+    tripContainer.querySelectorAll(".swipe-del-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const di = parseInt(dot.dataset.day);
-        const si = parseInt(dot.dataset.step);
-        if (confirm("删除这一步？")) {
-          plan.days[di].steps.splice(si, 1);
-          deleteTripStep(trip.id, di, si);
-          renderTripDay(dayIdx);
-        }
+        const di = parseInt(btn.dataset.day);
+        const si = parseInt(btn.dataset.step);
+        plan.days[di].steps.splice(si, 1);
+        deleteTripStep(trip.id, di, si);
+        renderTripDay(dayIdx);
+      });
+    });
+
+    // Swipe gesture on steps
+    tripContainer.querySelectorAll(".tl-step-swipe").forEach(el => {
+      let startX = 0, currentX = 0, swiping = false;
+      const main = el.querySelector(".trip-step-main");
+      el.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX; swiping = true; main.style.transition = "none";
+      });
+      el.addEventListener("touchmove", (e) => {
+        if (!swiping) return;
+        currentX = e.touches[0].clientX;
+        const dx = Math.min(0, currentX - startX);
+        main.style.transform = `translateX(${dx}px)`;
+      });
+      el.addEventListener("touchend", () => {
+        swiping = false; main.style.transition = "transform .2s ease";
+        const dx = currentX - startX;
+        main.style.transform = dx < -60 ? "translateX(-72px)" : "translateX(0)";
       });
     });
 

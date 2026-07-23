@@ -186,8 +186,9 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 .tl-left{display:flex;flex-direction:column;align-items:center;width:50px;flex-shrink:0;padding-top:2px}
 .tl-time{font-size:11px;color:#999;font-weight:600;white-space:nowrap}
 .tl-dot{width:10px;height:10px;border-radius:50%;margin:6px 0 0;flex-shrink:0}
-.tl-dot-del{cursor:pointer;transition:transform .15s,box-shadow .15s}
-.tl-dot-del:active{transform:scale(1.8);box-shadow:0 0 0 4px rgba(255,107,74,0.25)}
+.tl-step-swipe{position:relative;overflow:hidden;border-radius:12px}
+.tl-step-swipe .trip-step-main{position:relative;z-index:1;background:#fff;transition:transform .2s ease}
+.swipe-del-btn{position:absolute;right:0;top:0;bottom:0;width:72px;background:#ff3b30;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
 .tl-line{width:2px;flex:1;min-height:20px;margin-top:4px;opacity:0.4}
 .tl-right{flex:1;padding:0 0 16px;min-width:0}
 .tl-step-header{margin-bottom:6px}
