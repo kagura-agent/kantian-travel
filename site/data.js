@@ -11,7 +11,7 @@ const PLANS = [
     legs: ['🚄47min', '🚗25min'],
     detail: {
       transitInfo:['杭州东→德清站 高铁47min','班次密集 每30min一班','票价¥28.5 二等座','德清站打车到莫干山约25min'],
-      fullItinerary:[{label:'Day 1',content:'上午高铁出发，中午到达莫干山。下午裸心谷竹林徒步（约2h），山顶精品咖啡馆休息。傍晚入住民宿，晚上萤火虫观赏。'},{label:'Day 2',content:'清晨民宿早餐，上午骑行环山路（可租电动车），沿途茶园和竹海。午餐后庾村文创小镇，下午返程。'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁47min到德清站(¥28.5)→打车25min到莫干山→裸心谷竹林徒步(约2h)→山顶精品咖啡馆→入住莫干山民宿→晚上萤火虫观赏'},{label:'Day 2',content:'民宿早餐→骑行环山路(可租电动车)→沿途茶园和竹海→庾村文创小镇午餐→打车到德清站→高铁47min返回苏州站'}],
       accommodation:'裸心谷/莫干山精品民宿，均价¥400-800/晚。推荐提前1周预订。'
     }
   },
@@ -26,7 +26,7 @@ const PLANS = [
     legs: ['🚄1h', '🚗20min'],
     detail: {
       transitInfo:['高铁1h 苏州→嘉善南','票价¥49 二等座','嘉善南打车20min到西塘'],
-      fullItinerary:[{label:'Day 1',content:'下午到嘉善→入住古镇客栈→黄昏逛巷子→夜游西塘(人超少!)→酒吧街小酌'},{label:'Day 2',content:'6点起床拍空巷→烟雨长廊晨光→早茶→午前返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁1h到嘉善南站(¥49)→打车20min到西塘古镇→入住临水客栈→黄昏逛巷子→夜游西塘(人超少!)→酒吧街'},{label:'Day 2',content:'6点起床拍空巷→烟雨长廊→早茶→打车20min到嘉善南站→高铁1h返回苏州站'}],
       accommodation:'临水客栈¥200-400/晚，选河边的，夜景好。'
     }
   },
@@ -41,7 +41,7 @@ const PLANS = [
     legs: ['🚗1h'],
     detail: {
       transitInfo:['自驾1h 苏州→东山','停车方便','油费约¥60'],
-      fullItinerary:[{label:'Day 1',content:'果园采杨梅(6月限定!)→午餐太湖三白→环太湖骑行15km→看日落'},{label:'Day 2',content:'东山古街闲逛→碧螺春茶园品茶→买茶手信→返程'}],
+      fullItinerary:[{label:'Day 1',content:'自驾1h到东山→杨梅果园采杨梅(6月限定!)→太湖三白午餐→环太湖骑行15km→太湖边看日落→入住东山农家乐'},{label:'Day 2',content:'东山古街→碧螺春茶园→买茶手信→自驾1h返回苏州'}],
       accommodation:'农家乐¥150-300/晚，含农家饭。'
     }
   },
@@ -56,7 +56,7 @@ const PLANS = [
     legs: ['🚗1.5h'],
     detail: {
       transitInfo:['自驾1.5h 苏州→径山','油费约¥100'],
-      fullItinerary:[{label:'Day 1',content:'径山古道徒步4km→茶田观景→径山寺禅茶→山中民宿入住'},{label:'Day 2',content:'径山村手工炒茶体验→竹林散步→山下农家午餐→返程'}],
+      fullItinerary:[{label:'Day 1',content:'自驾1.5h到径山→径山古道入口→徒步4km到茶田观景→径山寺禅茶→入住山中茶宿'},{label:'Day 2',content:'径山村手工炒茶体验→竹林→山下农家午餐→自驾1.5h返回苏州'}],
       accommodation:'茶宿¥300-500/晚，山里安静。'
     }
   },
@@ -71,7 +71,7 @@ const PLANS = [
     legs: ['🚄40min', '🚗30min'],
     detail: {
       transitInfo:['高铁40min 苏州→湖州','票价¥24 二等座','湖州站打车到南浔30min'],
-      fullItinerary:[{label:'Day 1',content:'下午到南浔→百间楼看日落(绝美)→张石铭故居→河边晚餐'},{label:'Day 2',content:'小莲庄晨光拍照→丝绸博物馆→午餐→返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁40min到湖州站(¥24)→打车30min到南浔古镇→百间楼看日落→张石铭故居→河边晚餐→入住南浔水边民宿'},{label:'Day 2',content:'小莲庄晨光拍照→丝绸博物馆(周一闭馆)→午餐→打车30min到湖州站→高铁40min返回苏州站'}],
       accommodation:'水边民宿¥250-450/晚，选百间楼附近。'
     }
   },
@@ -87,7 +87,7 @@ const PLANS = [
     legs: ['🚄2.5h', '🚗40min', '🚗10min'],
     detail: {
       transitInfo:['高铁2.5h 苏州→黄山北','票价¥86 二等座','黄山北站公交/包车到宏村'],
-      fullItinerary:[{label:'Day 1',content:'黄山北站→宏村入住→南湖写生/拍照→月沼夜景'},{label:'Day 2',content:'卢村木雕楼→午餐农家菜→塔川骑行→塔川日落'},{label:'Day 3',content:'碧山书局泡半天→午餐→返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁2.5h到黄山北站(¥86)→公交/包车到宏村→南湖写生→月沼夜景→入住宏村民宿'},{label:'Day 2',content:'卢村木雕楼→农家菜午餐→塔川骑行→塔川看日落→入住塔川民宿'},{label:'Day 3',content:'碧山书局→午餐→包车到黄山北站→高铁2.5h返回苏州站'}],
       accommodation:'宏村民宿¥200-400/晚，选南湖边的。'
     }
   },
@@ -103,7 +103,7 @@ const PLANS = [
     legs: ['🚄2h', '🚗30min'],
     detail: {
       transitInfo:['高铁2h 苏州→千岛湖','票价¥65 二等座','景区内租自行车'],
-      fullItinerary:[{label:'Day 1',content:'到达→环湖绿道北线30km→湖景晚餐'},{label:'Day 2',content:'芹川古村探访→溪边午餐→休整→晚上看萤火虫!(6-8月限定!)'},{label:'Day 3',content:'南线骑行20km→午餐鱼头→返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁2h到千岛湖站(¥65)→租自行车→环湖绿道北线骑行30km→湖景晚餐→入住湖景酒店'},{label:'Day 2',content:'芹川古村→溪边午餐→下午休整→晚上看萤火虫(6-8月限定!)→回酒店'},{label:'Day 3',content:'南线骑行20km→午餐千岛湖鱼头→还车→千岛湖站高铁2h返回苏州站'}],
       accommodation:'湖景酒店¥400-600/晚。'
     }
   },
@@ -123,7 +123,7 @@ const PLANS = [
     legs: ['🚄2.5h', '🚗1.5h', '🚗3h', '🚗1h', '🚗30min'],
     detail: {
       transitInfo:['苏州→丽水 高铁2.5h','丽水→霞浦 建议租车','总行程约1200km'],
-      fullItinerary:[{label:'Day 1',content:'杭州→丽水(高铁)→古堰画乡'},{label:'Day 2',content:'缙云仙都(鼎湖峰+朱潭山)'},{label:'Day 3',content:'丽水→霞浦(自驾)'},{label:'Day 4',content:'霞浦滩涂日出(4:30起!)+东壁日落'},{label:'Day 5',content:'福鼎白茶山'},{label:'Day 6',content:'太姥山全天'},{label:'Day 7',content:'返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁2.5h到丽水站(¥120)→打车到古堰画乡→古堰画乡游览→入住丽水酒店'},{label:'Day 2',content:'缙云仙都景区(鼎湖峰+朱潭山)→午餐→入住缙云酒店'},{label:'Day 3',content:'租车/自驾3h到霞浦→入住霞浦民宿'},{label:'Day 4',content:'霞浦滩涂日出点(4:30起!)→上午休息→东壁日落→回民宿'},{label:'Day 5',content:'自驾1h到福鼎→福鼎白茶山→入住福鼎酒店'},{label:'Day 6',content:'自驾30min到太姥山景区→太姥山全天(约5h)→入住太姥山附近'},{label:'Day 7',content:'自驾到福鼎站→还车→高铁返回苏州'}],
       accommodation:'各地民宿/酒店¥200-500/晚。'
     }
   },
@@ -141,7 +141,7 @@ const PLANS = [
     legs: ['🚗40min', '🚗30min', '🚗1h', '🚗40min', '🚗50min'],
     detail: {
       transitInfo:['苏州→周庄 公交/打车40min','古镇间打车/公交 30-60min','建议买联票'],
-      fullItinerary:[{label:'Day 1',content:'周庄—双桥+沈厅(最经典最商业)'},{label:'Day 2',content:'同里—退思园+走三桥(比周庄安静)'},{label:'Day 3',content:'南浔—百间楼+小莲庄(最有底蕴)'},{label:'Day 4',content:'乌镇西栅—夜景绝杀'},{label:'Day 5',content:'西塘—烟雨长廊+清晨(最有生活气)'}],
+      fullItinerary:[{label:'Day 1',content:'自驾/打车40min到周庄古镇→双桥→沈厅→入住周庄客栈'},{label:'Day 2',content:'打车30min到同里古镇→退思园→走三桥→入住同里客栈'},{label:'Day 3',content:'打车1h到南浔古镇→百间楼→小莲庄→入住南浔民宿'},{label:'Day 4',content:'打车40min到乌镇西栅→西栅游览→夜景(8点后最美)→入住乌镇民宿'},{label:'Day 5',content:'打车50min到西塘古镇→烟雨长廊→午餐→打车50min返回苏州'}],
       accommodation:'各镇客栈¥150-350/晚。'
     }
   },
@@ -161,7 +161,7 @@ const PLANS = [
     legs: ['🚄2.5h', '🚗30min', '🚗20min', '🚗15min', '🚗40min', '🚗1h'],
     detail: {
       transitInfo:['高铁2.5h 苏州→黄山北','当地建议租车','黄山门票¥190+索道¥80'],
-      fullItinerary:[{label:'Day 1',content:'黄山北站→屯溪老街夜游'},{label:'Day 2',content:'黄山全天(住山顶看日出!)'},{label:'Day 3',content:'下山→西递古村'},{label:'Day 4',content:'宏村(南湖+月沼+写生)'},{label:'Day 5',content:'呈坎(八卦村)+唐模'},{label:'Day 6',content:'新安江山水画廊游船'},{label:'Day 7',content:'屯溪采购伴手礼→返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁2.5h到黄山北站(¥86)→打车到屯溪老街→屯溪老街夜游→入住屯溪酒店'},{label:'Day 2',content:'打车到黄山南大门/北大门→索道上山→黄山全天(排云亭+光明顶)→住山顶看日出!'},{label:'Day 3',content:'下山→打车到西递古村→西递游览→入住西递民宿'},{label:'Day 4',content:'打车15min到宏村→南湖→月沼→写生→入住宏村民宿'},{label:'Day 5',content:'打车40min到呈坎→呈坎八卦村→唐模→入住呈坎附近'},{label:'Day 6',content:'打车1h到新安江码头→新安江山水画廊游船→入住屯溪'},{label:'Day 7',content:'屯溪采购伴手礼→打车到黄山北站→高铁2.5h返回苏州站'}],
       accommodation:'徽州民宿¥200-500/晚。'
     }
   },
@@ -175,7 +175,7 @@ const PLANS = [
     legs: ['🚗40min'],
     detail: {
       transitInfo:['自驾40min 苏州→同里','门票¥100(含所有景点)'],
-      fullItinerary:[{label:'上午',content:'退思园慢逛→走三桥祈福→穿堂街买芡实糕'},{label:'下午',content:'明清街午餐(状元蹄必吃)→罗星洲坐船→傍晚返程'}],
+      fullItinerary:[{label:'上午',content:'自驾40min到同里古镇→退思园→走三桥→穿堂街买芡实糕'},{label:'下午',content:'明清街午餐(状元蹄必吃)→罗星洲坐船→日落→自驾40min返回苏州'}],
       accommodation:'当天往返，无需住宿。'
     }
   },
@@ -189,7 +189,7 @@ const PLANS = [
     legs: ['🚇+🚌1h'],
     detail: {
       transitInfo:['地铁1号线→木渎站→公交15min','或自驾30min','免门票'],
-      fullItinerary:[{label:'上午',content:'灵岩山步道登山(约45min)→灵岩寺→山顶俯瞰太湖'},{label:'下午',content:'下山→木渎古镇午餐(鲃肺汤)→严家花园→返程'}],
+      fullItinerary:[{label:'上午',content:'地铁1号线到木渎站→公交15min到灵岩山→灵岩山步道登山(约45min)→灵岩寺→山顶俯瞰太湖'},{label:'下午',content:'下山→木渎古镇午餐(鲃肺汤)→严家花园→地铁返回苏州'}],
       accommodation:'当天往返。'
     }
   },
@@ -203,7 +203,7 @@ const PLANS = [
     legs: ['🚗30min'],
     detail: {
       transitInfo:['自驾30min到阳澄湖骑行驿站','租车¥50/天'],
-      fullItinerary:[{label:'上午',content:'环湖骑行绿道20km→美人腿半岛'},{label:'下午',content:'莲花岛坐船上岛→湖边咖啡馆→看日落→返程'}],
+      fullItinerary:[{label:'上午',content:'自驾30min到阳澄湖骑行驿站→租车→环湖骑行绿道20km→美人腿半岛'},{label:'下午',content:'莲花岛码头坐船上岛→湖边咖啡馆→看日落→自驾30min返回苏州'}],
       accommodation:'当天往返。'
     }
   },
@@ -221,7 +221,7 @@ const PLANS = [
     legs: ['🚄25min', '🚄40min', '🚗2h', '🚗1h', '🚗1.5h'],
     detail: {
       transitInfo:['苏州→杭州 高铁25min','杭州→建德 高铁40min','建德以后建议租车'],
-      fullItinerary:[{label:'Day 1',content:'苏州→杭州→建德 新安江夜游'},{label:'Day 2',content:'大慈岩→下涯湿地(晨雾绝美)'},{label:'Day 3',content:'建德→丽水 古堰画乡写生'},{label:'Day 4',content:'缙云仙都 鼎湖峰+朱潭山'},{label:'Day 5',content:'仙居神仙居→返程'}],
+      fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁25min到杭州站→换乘高铁40min到建德站→打车到新安江→新安江夜游→入住建德酒店'},{label:'Day 2',content:'打车到大慈岩景区→大慈岩→下涯湿地(晨雾绝美)→入住建德'},{label:'Day 3',content:'租车/自驾2h到丽水→古堰画乡→入住丽水酒店'},{label:'Day 4',content:'自驾1h到缙云仙都景区→鼎湖峰→朱潭山→入住缙云'},{label:'Day 5',content:'自驾1.5h到仙居神仙居景区→神仙居全天→自驾/高铁返回苏州'}],
       accommodation:'各地民宿¥200-400/晚。'
     }
   }
