@@ -893,7 +893,7 @@ function createTrip(plan) {
     planTitle: plan.title,
     createdAt: new Date().toISOString(),
     days: plan.days.map(d => ({
-      steps: d.steps.map(() => ({ done: false }))
+      steps: d.steps.map(() => ({ likes: 0, dislikes: 0 }))
     }))
   };
   const trips = JSON.parse(localStorage.getItem('trips') || '[]');
@@ -907,12 +907,12 @@ function getTrips() {
 }
 
 
-function updateTripStep(tripId, dayIdx, stepIdx, status) {
+function updateTripStep(tripId, dayIdx, stepIdx, field) {
   const trips = getTrips();
   const trip = trips.find(t => t.id === tripId);
   if (trip) {
-    trip.days[dayIdx].steps[stepIdx] = { status };
-    localStorage.setItem('trips', JSON.stringify(trips));
+    trip.days[dayIdx].steps[stepIdx][field] = (trip.days[dayIdx].steps[stepIdx][field] || 0) + 1;
+    localStorage.setItem("trips", JSON.stringify(trips));
   }
   return trip;
 }
@@ -943,21 +943,21 @@ function openTripView(tripId) {
   const numDays = plan.days.length;
   let currentDayIdx = 0;
   for (let i = 0; i < numDays; i++) {
-    if (trip.days[i].steps.some(s => s.status !== 'good' && s.status !== 'bad')) { currentDayIdx = i; break; }
+    if (trip.days[i].steps.some(s => (s.likes || 0) + (s.dislikes || 0) === 0)) { currentDayIdx = i; break; }
   }
 
   function renderTripDay(dayIdx) {
     const day = plan.days[dayIdx];
     const tripDay = trip.days[dayIdx];
     const totalSteps = tripDay.steps.length;
-    const ratedSteps = tripDay.steps.filter(s => s.status === 'good' || s.status === 'bad').length;
+    const ratedSteps = tripDay.steps.filter(s => (s.likes || 0) + (s.dislikes || 0) > 0).length;
     const progress = Math.round(ratedSteps / totalSteps * 100);
 
     const weekday = ['周日','周一','周二','周三','周四','周五','周六'];
     const startDate = new Date(trip.createdAt);
     const dayTabs = plan.days.map((_, i) => {
       const dt = new Date(startDate); dt.setDate(startDate.getDate() + i);
-      const dayDone = trip.days[i].steps.every(s => s.status === 'good' || s.status === 'bad');
+      const dayDone = trip.days[i].steps.every(s => (s.likes || 0) + (s.dislikes || 0) > 0);
       return `<button class="view-tab ${i === dayIdx ? 'active' : ''} ${dayDone ? 'tab-done' : ''}" data-day="${i}">
         <span class="vt-day">${dt.getMonth()+1}/${dt.getDate()} ${weekday[dt.getDay()]}</span>
         <span class="vt-weather">${plan.days[i].weather?.icon || ''}${plan.days[i].weather?.temp || ''}</span>
@@ -966,47 +966,46 @@ function openTripView(tripId) {
 
     // Steps with swipe
     const stepsHTML = day.steps.map((step, si) => {
-      const stepStatus = tripDay.steps[si].status || 'pending';
-      const isRated = stepStatus === 'good' || stepStatus === 'bad';
-      const color = isRated ? '#ccc' : (TYPE_COLORS[step.type] || '#999');
-      const statusIcon = stepStatus === 'good' ? '👍' : stepStatus === 'bad' ? '👎' : '';
+      const stepData = tripDay.steps[si] || { likes: 0, dislikes: 0 };
+      const color = TYPE_COLORS[step.type] || "#999";
       const durations = [];
       if (step.startTime && step.endTime) {
         const mins = timeDiffMin(step.startTime, step.endTime);
-        durations.push(mins >= 60 ? `${(mins/60).toFixed(1).replace(/\.0$/,'')}h` : `${mins}min`);
+        durations.push(mins >= 60 ? `${(mins/60).toFixed(1).replace(/\.0$/,"")}h` : `${mins}min`);
       }
-
       return `
-        <div class="tl-step trip-swipe-step ${isRated ? 'step-rated' : ''}" data-day="${dayIdx}" data-step="${si}" data-status="${stepStatus}">
+        <div class="tl-step" data-day="${dayIdx}" data-step="${si}">
           <div class="tl-left">
-            <span class="tl-time">${step.startTime || ''}</span>
+            <span class="tl-time">${step.startTime || ""}</span>
             <div class="tl-dot" style="background:${color}"></div>
-            ${si < day.steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ''}
+            ${si < day.steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ""}
           </div>
           <div class="tl-right">
-            <div class="trip-swipe-wrapper">
-              <div class="swipe-bg-good">👍</div>
-              <div class="swipe-bg-bad">👎</div>
-              <div class="swipe-content">
+            <div class="trip-step-main">
+              <div class="trip-step-info">
                 <div class="tl-step-header">
-                  <span class="tl-type" style="color:${color}">${TYPE_LABELS[step.type] || ''} ${durations.join('')}</span>
-                  <span class="tl-step-text">${step.text} ${statusIcon}</span>
+                  <span class="tl-type" style="color:${color}">${TYPE_LABELS[step.type] || ""} ${durations.join("")}</span>
+                  <span class="tl-step-text">${step.text}</span>
                 </div>
-                ${!isRated && step.type !== 'home' ? `<div class="tl-step-extras">
-                  ${step.description ? `<p class="step-desc">${step.description}</p>` : ''}
+                ${step.type !== "home" ? `<div class="tl-step-extras">
+                  ${step.description ? `<p class="step-desc">${step.description}</p>` : ""}
                   <div class="step-actions">
-                    ${step.place?.name ? `<a class="step-action-btn" href="https://uri.amap.com/navigation?to=${encodeURIComponent(step.place.name)}&mode=car" target="_blank">📍 导航到${step.place.name}</a>` : ''}
-                    ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? ' '+b.cost : ''}</span>`).join('')}
+                    ${step.place?.name ? `<a class="step-action-btn" href="https://uri.amap.com/navigation?to=${encodeURIComponent(step.place.name)}&mode=car" target="_blank">📍 导航到${step.place.name}</a>` : ""}
+                    ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? " "+b.cost : ""}</span>`).join("")}
                   </div>
-                  ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
-                  ${(step.tips || []).map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
-                </div>` : ''}
+                  ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join("")}
+                  ${(step.tips || []).map(t => `<div class="step-tip">💡 ${t}</div>`).join("")}
+                </div>` : ""}
+              </div>
+              <div class="trip-votes">
+                <button class="vote-btn vote-up" data-day="${dayIdx}" data-step="${si}" data-type="likes">👍<span class="vote-count">${stepData.likes || ""}</span></button>
+                <button class="vote-btn vote-down" data-day="${dayIdx}" data-step="${si}" data-type="dislikes">👎<span class="vote-count">${stepData.dislikes || ""}</span></button>
               </div>
             </div>
           </div>
         </div>
       `;
-    }).join('');
+    }).join("");
 
     tripContainer.innerHTML = `
       <div class="trip-topbar">
@@ -1016,7 +1015,7 @@ function openTripView(tripId) {
       </div>
       <div class="trip-progress">
         <div class="trip-progress-bar"><div class="trip-progress-fill" style="width:${progress}%"></div></div>
-        <span class="trip-progress-text">${ratedSteps}/${totalSteps} 已评价</span>
+        <span class="trip-progress-text">${ratedSteps}/${totalSteps}</span>
       </div>
       <div class="detail-photo-weather">
         <div class="detail-hero-photo">
@@ -1026,7 +1025,6 @@ function openTripView(tripId) {
         </div>
       </div>
       <div class="view-tabs-row">${dayTabs}</div>
-      <div class="trip-swipe-hint">← 左滑👍好 · 右滑👎不行 →</div>
       <div class="day-steps-timeline">${stepsHTML}</div>
       ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="tripRouteMap" class="route-map"></div></div>' : ''}
     `;
@@ -1034,7 +1032,39 @@ function openTripView(tripId) {
     // Back button
     document.getElementById('tripBack').addEventListener('click', closeTripView);
 
-    // Render trip day map
+    // Share button
+    document.getElementById('tripShareBtn2').addEventListener('click', () => {
+      const url = `${location.origin}${location.pathname}?trip=${trip.id}`;
+      if (navigator.share) { navigator.share({ title: plan.title, url }); }
+      else { navigator.clipboard.writeText(url).then(() => alert('链接已复制')); }
+    });
+
+    // Day tabs
+    tripContainer.querySelectorAll('.view-tab').forEach(tab => {
+      tab.addEventListener('click', () => renderTripDay(parseInt(tab.dataset.day)));
+    });
+
+    // Vote buttons (like/dislike, can tap multiple times)
+    tripContainer.querySelectorAll('.vote-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const di = parseInt(btn.dataset.day);
+        const si = parseInt(btn.dataset.step);
+        const field = btn.dataset.type;
+        updateTripStep(trip.id, di, si, field);
+        // Update count display
+        const countEl = btn.querySelector('.vote-count');
+        const trips2 = getTrips();
+        const t = trips2.find(t2 => t2.id === trip.id);
+        const val = t.days[di].steps[si][field];
+        countEl.textContent = val || '';
+        // Animate
+        btn.classList.add('vote-pop');
+        setTimeout(() => btn.classList.remove('vote-pop'), 200);
+      });
+    });
+
+    // Render map
     const tripRoute = getDayRoutePoints(plan, dayIdx);
     if (tripRoute.length >= 2 && window.L) {
       setTimeout(() => {
@@ -1053,69 +1083,9 @@ function openTripView(tripId) {
               .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
           });
           map.fitBounds(tripRoute.map(p => [p.lat, p.lng]), { padding: [40, 40] });
-        } catch(e) { console.error('Trip map error:', e); }
+        } catch(e) {}
       }, 300);
     }
-
-    // Share button
-    document.getElementById('tripShareBtn2').addEventListener('click', () => {
-      const url = `${location.origin}${location.pathname}?trip=${trip.id}`;
-      if (navigator.share) {
-        navigator.share({ title: `跟着走：${plan.title}`, url });
-      } else {
-        navigator.clipboard.writeText(url).then(() => alert('链接已复制'));
-      }
-    });
-
-    // Day tabs
-    tripContainer.querySelectorAll('.view-tab').forEach(tab => {
-      tab.addEventListener('click', () => renderTripDay(parseInt(tab.dataset.day)));
-    });
-
-    // Swipe handling
-    tripContainer.querySelectorAll('.trip-swipe-step:not(.step-rated)').forEach(stepEl => {
-      let startX = 0, currentX = 0, swiping = false;
-      const wrapper = stepEl.querySelector('.swipe-content');
-      
-      stepEl.addEventListener('touchstart', (e) => {
-        if (e.target.closest('a')) return;
-        startX = e.touches[0].clientX;
-        swiping = true;
-      });
-      stepEl.addEventListener('touchmove', (e) => {
-        if (!swiping) return;
-        currentX = e.touches[0].clientX - startX;
-        wrapper.style.transform = `translateX(${currentX}px)`;
-        wrapper.style.transition = 'none';
-      });
-      stepEl.addEventListener('touchend', () => {
-        if (!swiping) return;
-        swiping = false;
-        const di = parseInt(stepEl.dataset.day);
-        const si = parseInt(stepEl.dataset.step);
-        if (currentX < -60) {
-          // Swipe left → good 👍
-          wrapper.style.transition = 'transform 0.3s';
-          wrapper.style.transform = 'translateX(-100%)';
-          setTimeout(() => {
-            updateTripStep(trip.id, di, si, 'good');
-            renderTripDay(dayIdx);
-          }, 300);
-        } else if (currentX > 60) {
-          // Swipe right → bad 👎
-          wrapper.style.transition = 'transform 0.3s';
-          wrapper.style.transform = 'translateX(100%)';
-          setTimeout(() => {
-            updateTripStep(trip.id, di, si, 'bad');
-            renderTripDay(dayIdx);
-          }, 300);
-        } else {
-          wrapper.style.transition = 'transform 0.2s';
-          wrapper.style.transform = 'translateX(0)';
-        }
-        currentX = 0;
-      });
-    });
   }
 
   renderTripDay(currentDayIdx);
@@ -1155,7 +1125,7 @@ function updateTripFab() {
   const trips = getTrips();
   // Find latest trip with pending steps
   const activeTrip = [...trips].reverse().find(t => 
-    t.days.some(d => d.steps.some(s => s.status !== 'good' && s.status !== 'bad'))
+    t.days.some(d => d.steps.some(s => (s.likes || 0) + (s.dislikes || 0) === 0))
   );
   
   if (!activeTrip) {
@@ -1172,7 +1142,7 @@ function updateTripFab() {
   
   const plan = PLANS.find(p => p.id === activeTrip.planId);
   const totalSteps = activeTrip.days.reduce((a, d) => a + d.steps.length, 0);
-  const doneSteps = activeTrip.days.reduce((a, d) => a + d.steps.filter(s => s.status === 'good' || s.status === 'bad').length, 0);
+  const doneSteps = activeTrip.days.reduce((a, d) => a + d.steps.filter(s => (s.likes || 0) + (s.dislikes || 0) > 0).length, 0);
   const pct = Math.round(doneSteps / totalSteps * 100);
   
   fab.innerHTML = '<span class="fab-icon">👣</span>';
