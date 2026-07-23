@@ -252,9 +252,9 @@ function initTimelines(plans) {
     const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
     const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
     html += '<div class="tl-legend">';
-    html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h</span>`;
-    html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h</span>`;
-    if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h</span>`;
+    html += `<span><i style="background:#34C759"></i>73a9 ${playH.toFixed(1)}h (${(playH/totalH*100).toFixed(0)}%)</span>`;
+    html += `<span><i style="background:#BBBBC0"></i>8def4e0a ${travelH.toFixed(1)}h (${(travelH/totalH*100).toFixed(0)}%)</span>`;
+    if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>4f4f ${sleepH.toFixed(0)}h (${(sleepH/totalH*100).toFixed(0)}%)</span>`;
     html += '</div>';
     el.innerHTML = html;
   });
@@ -436,9 +436,9 @@ function openDetail(plan) {
       const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
       const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
       html += '<div class="tl-legend">';
-      html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h</span>`;
-      html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h</span>`;
-      if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h</span>`;
+      html += `<span><i style="background:#34C759"></i>73a9 ${playH.toFixed(1)}h (${(playH/totalH*100).toFixed(0)}%)</span>`;
+      html += `<span><i style="background:#BBBBC0"></i>8def4e0a ${travelH.toFixed(1)}h (${(travelH/totalH*100).toFixed(0)}%)</span>`;
+      if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>4f4f ${sleepH.toFixed(0)}h (${(sleepH/totalH*100).toFixed(0)}%)</span>`;
       html += '</div></div>';
       return html;
     }
