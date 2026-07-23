@@ -275,6 +275,5 @@ a.step-action-btn{background:var(--accent);color:#fff}
 .step-rated .swipe-content{opacity:0.5}
 .step-rated .tl-step-text{text-decoration:line-through}
 /* Trip FAB */
-.trip-fab{position:fixed;bottom:24px;left:16px;z-index:150;display:none;align-items:center;gap:6px;padding:10px 14px;border-radius:24px;background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(255,107,74,0.4);cursor:pointer;font-size:13px;font-weight:600;max-width:430px}
-.fab-icon{font-size:18px}
-.fab-text{font-size:12px}
+.trip-fab{position:fixed;bottom:24px;left:16px;z-index:150;display:none;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;box-shadow:0 4px 12px rgba(255,107,74,0.4);cursor:pointer}
+.fab-icon{font-size:22px}
