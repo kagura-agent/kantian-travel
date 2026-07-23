@@ -586,9 +586,11 @@ function openDetail(plan) {
         // Extract place name: strip action verbs and descriptions
         const placeName = step
           .replace(/[\(\)（）].*/g, '')  // remove parenthetical
-          .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山).*$/g, '')  // strip trailing verbs+rest
-          .replace(/(绝美|人超少|最美).*$/g, '')  // strip adjective tails
-          .replace(/[\d]+km/g, '')  // strip distances
+          .replace(/^.*?到/g, '')  // 「自驾40min到同里古镇」→「同里古镇」
+          .replace(/^.*?去/g, '')  // 「出发去苏州站」→「苏州站」
+          .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山|游览|采购|换乘|租车|还车|休整|游览).*$/g, '')  // strip trailing verbs
+          .replace(/(绝美|人超少|最美).*$/g, '')
+          .replace(/[\d]+km/g, '')
           .trim();
         const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
         const isHome = /^回家$/.test(placeName);
