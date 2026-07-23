@@ -924,3 +924,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "Always run prettier/format before push when using --no-verify on commit. CI format:check will catch it but costs an extra push + CI cycle." → [行为改变] After commit with --no-verify, always run npx prettier --write on changed files before pushing. (pattern: format-before-push, 第1次) (Source: workloop)
   - **Trigger**: Using git commit --no-verify to skip lint-staged hooks
+
+- 2026-07-23: [gradient] "followup-status.sh labeled grok-build (21.8k stars, active repo) as DROPPED — tool drop detection is unreliable" → [行为改变] verify drop claims by checking repo API before acting on them. (pattern: followup-status-dropped-false-positive, 第1次) (Source: study)
+  - **Trigger**: followup-status.sh says DROPPED
+
+- 2026-07-23: [gradient] "ESLint @typescript-eslint/no-unnecessary-type-assertion catches as-string casts when the type is already narrowed. Run lint locally before pushing to avoid CI failures on first attempt." → [行为改变] Run npx eslint packages/*/src/*.ts --quiet on changed files before pushing. (pattern: lint-before-push, 第1次) (Source: workloop)
+  - **Trigger**: After committing code with type assertions
