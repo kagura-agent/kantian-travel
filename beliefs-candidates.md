@@ -936,3 +936,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-23: [gradient] "Stale PR fast-path saves entire implement+submit cycle. PR #7226 was already submitted 3 days ago — workloop correctly detected and skipped reimplementation. The plan node still ran fresh though (previous session died mid-plan), costing one cron cycle for a no-op plan-review." → [行为改变] Fast-path is working correctly. Consider: could stale-pr-check be hoisted to run before plan (not just implement) to skip plan-review subagent cost too?. (pattern: stale-pr-fast-path-value, 第1次) (Source: workloop)
   - **Trigger**: Workloop resumes at plan/implement node for an already-submitted PR
+
+- 2026-07-23: [gradient] "Fresh-context review caught a real test gap (classifier not exercised with sample data). Adding exercise tests that actually run the classified code catches regex bugs that string-contains assertions miss." → [行为改变] Always add tests that exercise the matching logic with real inputs, not just check code exists in output. (pattern: test-exercise-over-assertion, 第1次) (Source: workloop)
+  - **Trigger**: Writing tests for regex/pattern-matching code
