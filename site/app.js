@@ -815,17 +815,7 @@ function openDetail(plan) {
               radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
             }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
           });
-          // Add transport leg labels
-          const dayLg = getDayLegs(plan, mode);
-          if (dayLg.length) {
-            for (let li = 0; li < dayPts.length - 1 && li < dayLg.length; li++) {
-              const midLat = (dayPts[li].lat + dayPts[li+1].lat) / 2;
-              const midLng = (dayPts[li].lng + dayPts[li+1].lng) / 2;
-              L.marker([midLat, midLng], {
-                icon: L.divIcon({ className: 'leg-label', html: dayLg[li], iconSize: [50, 14], iconAnchor: [25, 7] })
-              }).addTo(map);
-            }
-          }
+
           const pts = dayPts.map(p => [p.lat, p.lng]);
           map.fitBounds(pts, { padding: [40, 40], maxZoom: 13 });
         }, 300);
@@ -872,17 +862,7 @@ function renderDetailMap(plan) {
       }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
     });
     if (plan.legs) {
-      plan.legs.forEach((leg, i) => {
-        if (i >= pts.length - 1) return;
-        const midLat = (pts[i][0] + pts[i+1][0]) / 2;
-        const midLng = (pts[i][1] + pts[i+1][1]) / 2;
-        const from = plan.route[i];
-        const to = plan.route[i+1];
-        const navUrl = `https://uri.amap.com/navigation?from=${from.lng},${from.lat},${from.name}&to=${to.lng},${to.lat},${to.name}&mode=car`;
-        L.marker([midLat, midLng], {
-          icon: L.divIcon({ className: 'leg-label clickable', html: `<a href="${navUrl}" target="_blank">${leg}</a>`, iconSize: [60, 16], iconAnchor: [30, 8] })
-        }).addTo(map);
-      });
+
     }
     map.fitBounds(pts, { padding: [35, 35], maxZoom: 11 });
   }, 300);
