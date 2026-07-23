@@ -219,7 +219,11 @@ function lazyLoadImages() {
     entries.forEach(e => {
       if (e.isIntersecting) {
         const img = e.target;
-        if (img.dataset.src) { img.src = img.dataset.src; delete img.dataset.src; }
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          delete img.dataset.src;
+          img.onload = () => img.classList.add('loaded');
+        }
         observer.unobserve(img);
       }
     });
