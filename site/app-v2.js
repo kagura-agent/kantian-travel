@@ -65,21 +65,23 @@ function weatherOverlaySVG(days) {
   const temps = days.map(d => parseInt(d.weather.temp));
   const minT = Math.min(...temps) - 2, maxT = Math.max(...temps) + 2;
   const range = maxT - minT || 1;
-  const W = 100, H = 28, padX = 8, padY = 6;
-  const chartH = H - padY * 2;
+  const stripH = 120; // must match CSS .day-strip height
+  const W = 70, H = n * stripH;
+  const padX = 8, padY = 20;
+  const chartW = W - padX * 2;
   const points = days.map((d, i) => ({
-    x: padX + (n > 1 ? i / (n - 1) : 0.5) * (W - padX * 2),
-    y: padY + (1 - (parseInt(d.weather.temp) - minT) / range) * chartH,
+    x: padX + (chartW * 0.5),
+    y: padY + (i / Math.max(n - 1, 1)) * (H - padY * 2),
     icon: d.weather.icon, temp: d.weather.temp
   }));
   let svg = `<svg class="weather-overlay" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
   if (n > 1) {
     const line = points.map(p => `${p.x},${p.y}`).join(' ');
-    svg += `<polyline points="${line}" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.2" stroke-linecap="round"/>`;
+    svg += `<polyline points="${line}" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"/>`;
   }
   points.forEach(p => {
-    svg += `<circle cx="${p.x}" cy="${p.y}" r="2" fill="#fff"/>`;
-    svg += `<text x="${p.x}" y="${p.y - 4}" text-anchor="middle" font-size="7" fill="#fff" font-weight="600" style="text-shadow:0 1px 2px rgba(0,0,0,.7)">${p.icon}${p.temp}</text>`;
+    svg += `<circle cx="${p.x}" cy="${p.y}" r="3" fill="#fff"/>`;
+    svg += `<text x="${p.x}" y="${p.y - 8}" text-anchor="middle" font-size="11" fill="#fff" font-weight="600" style="text-shadow:0 1px 2px rgba(0,0,0,.7)">${p.icon}${p.temp}</text>`;
   });
   svg += '</svg>';
   return svg;
