@@ -360,7 +360,7 @@ function buildHourlyChart(day) {
 }
 
 // === Step type colors ===
-const TYPE_COLORS = { depart:'#4A90D9', transit:'#BBBBC0', play:'#34C759', eat:'#FF9500', stay:'#5856D6', home:'#FF9800' };
+const TYPE_COLORS = { depart:'#4A90D9', transit:'#BBBBC0', play:'#34C759', eat:'#34C759', stay:'#5856D6', home:'#FF9800' };
 const TYPE_LABELS = { depart:'出发', transit:'路上', play:'玩', eat:'吃', stay:'住', home:'到家' };
 const TYPE_ICONS = { depart:'🚶', transit:'🚗', play:'📍', eat:'🍽️', stay:'🏠', home:'🏠' };
 
