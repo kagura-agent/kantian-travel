@@ -714,10 +714,11 @@ function openDetail(plan) {
     // mode: 'overview' or day index (0, 1, 2...)
     const isOverview = mode === 'overview';
 
-    // Build view tabs
+    // Build view tabs (skip overview for single-day plans)
+    const showOverview = plan.days.length > 1;
     const viewTabsHTML = `
       <div class="view-tabs-row">
-        <button class="view-tab ${isOverview ? 'active' : ''}" data-mode="overview">📋 全览</button>
+        ${showOverview ? `<button class="view-tab ${isOverview ? 'active' : ''}" data-mode="overview">全览</button>` : ''}
         ${plan.days.map((day, i) => `
           <button class="view-tab ${mode === i ? 'active' : ''}" data-mode="${i}">
             <span class="vt-day">${dayDates[i]}</span>
@@ -797,7 +798,7 @@ function openDetail(plan) {
     }
   }
 
-  renderDetailView('overview');
+  renderDetailView(plan.days.length > 1 ? 'overview' : 0);
   detailOverlay.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
