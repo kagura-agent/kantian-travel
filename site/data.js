@@ -170,7 +170,7 @@ const PLANS = [
     stayType: '当天往返', price: '人均¥200',
     route: [{name:'苏州',lat:31.299,lng:120.585},{name:'同里',lat:31.128,lng:120.737},{name:'苏州',lat:31.299,lng:120.585}],
     days: [
-      {label:'今天',activity:'退思园+走三桥+状元蹄',photo:'photo-1528164344705-47542687000d',weather:{icon:'☀️',temp:'32°'}}
+      {label:'半日',activity:'退思园+走三桥+状元蹄',photo:'photo-1528164344705-47542687000d',weather:{icon:'☀️',temp:'32°'}}
     ],
     legs: ['🚗40min'],
     detail: {
@@ -184,7 +184,7 @@ const PLANS = [
     stayType: '当天往返', price: '人均¥80',
     route: [{name:'苏州',lat:31.299,lng:120.585},{name:'灵岩山',lat:31.237,lng:120.517},{name:'苏州',lat:31.299,lng:120.585}],
     days: [
-      {label:'今天',activity:'灵岩山步道+山顶寺+木渎午餐',photo:'photo-1464822759023-fed622ff2c3b',weather:{icon:'⛅',temp:'30°'}}
+      {label:'半日',activity:'灵岩山步道+山顶寺+木渎午餐',photo:'photo-1464822759023-fed622ff2c3b',weather:{icon:'⛅',temp:'30°'}}
     ],
     legs: ['🚇+🚌1h'],
     detail: {
@@ -198,7 +198,7 @@ const PLANS = [
     stayType: '当天往返', price: '人均¥150',
     route: [{name:'苏州',lat:31.299,lng:120.585},{name:'阳澄湖',lat:31.411,lng:120.755},{name:'苏州',lat:31.299,lng:120.585}],
     days: [
-      {label:'今天',activity:'环湖骑行20km+莲花岛+日落',photo:'photo-1501785888041-af3ef285b470',weather:{icon:'☀️',temp:'33°'}}
+      {label:'半日',activity:'环湖骑行20km+莲花岛+日落',photo:'photo-1501785888041-af3ef285b470',weather:{icon:'☀️',temp:'33°'}}
     ],
     legs: ['🚗30min'],
     detail: {
@@ -230,7 +230,7 @@ const PLANS = [
     stayType: '当天往返', price: '人均¥100',
     route: [{name:'苏州',lat:31.299,lng:120.585},{name:'平江路',lat:31.318,lng:120.632},{name:'苏州',lat:31.299,lng:120.585}],
     days: [
-      {label:'今天',activity:'平江路赶集+独墓湖散步',photo:'photo-1528164344705-47542687000d',weather:{icon:'☀️',temp:'33°'}}
+      {label:'下午',activity:'平江路赶集+独墓湖散步',photo:'photo-1528164344705-47542687000d',weather:{icon:'☀️',temp:'33°'}}
     ],
     legs: ['🚇 30min'],
     detail: {
@@ -244,7 +244,7 @@ const PLANS = [
     stayType: '当天往返', price: '人均¥50',
     route: [{name:'苏州',lat:31.299,lng:120.585},{name:'金鸡湖',lat:31.327,lng:120.598},{name:'苏州',lat:31.299,lng:120.585}],
     days: [
-      {label:'今天',activity:'环湖骑行+看日落',photo:'photo-1501785888041-af3ef285b470',weather:{icon:'☀️',temp:'33°'}}
+      {label:'傍晚',activity:'环湖骑行+看日落',photo:'photo-1501785888041-af3ef285b470',weather:{icon:'☀️',temp:'33°'}}
     ],
     legs: ['🚲 20min'],
     detail: {
