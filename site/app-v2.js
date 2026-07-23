@@ -998,6 +998,7 @@ function openTripView(tripId) {
               <div class="trip-votes">
                 <button class="vote-btn vote-up" data-day="${dayIdx}" data-step="${si}" data-type="likes">👍<span class="vote-count">${stepData.likes || ""}</span></button>
                 <button class="vote-btn vote-down" data-day="${dayIdx}" data-step="${si}" data-type="dislikes">👎<span class="vote-count">${stepData.dislikes || ""}</span></button>
+                <button class="vote-btn vote-del" data-day="${dayIdx}" data-step="${si}">✕</button>
               </div>
             </div>
           </div>
@@ -1021,6 +1022,7 @@ function openTripView(tripId) {
       </div>
       <div class="view-tabs-row">${dayTabs}</div>
       <div class="day-steps-timeline">${stepsHTML}</div>
+      <button class="add-step-btn" data-day="${dayIdx}" data-after="${day.steps.length - 1}">+ 添加行程</button>
       ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="tripRouteMap" class="route-map"></div></div>' : ''}
     `;
 
@@ -1056,6 +1058,29 @@ function openTripView(tripId) {
         // Animate
         btn.classList.add('vote-pop');
         setTimeout(() => btn.classList.remove('vote-pop'), 200);
+      });
+    });
+
+    // Delete step
+    tripContainer.querySelectorAll(".vote-del").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const di = parseInt(btn.dataset.day);
+        const si = parseInt(btn.dataset.step);
+        if (confirm("删除这一步？")) {
+          plan.days[di].steps.splice(si, 1);
+          deleteTripStep(trip.id, di, si);
+          renderTripDay(dayIdx);
+        }
+      });
+    });
+
+    // Add step button
+    tripContainer.querySelectorAll(".add-step-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const di = parseInt(btn.dataset.day);
+        const after = parseInt(btn.dataset.after);
+        showAddStepForm(trip.id, plan, di, after, renderTripDay);
       });
     });
 
@@ -1147,3 +1172,80 @@ function updateTripFab() {
 
 // Update FAB on page load and after trip changes
 updateTripFab();
+
+// === Trip step edit (add/delete) ===
+function deleteTripStep(tripId, dayIdx, stepIdx) {
+  const trips = getTrips();
+  const trip = trips.find(t => t.id === tripId);
+  if (trip && trip.days[dayIdx]) {
+    trip.days[dayIdx].steps.splice(stepIdx, 1);
+    localStorage.setItem('trips', JSON.stringify(trips));
+  }
+}
+
+function addTripStep(tripId, dayIdx, afterStepIdx, stepData) {
+  const trips = getTrips();
+  const trip = trips.find(t => t.id === tripId);
+  if (trip && trip.days[dayIdx]) {
+    const newStep = { likes: 0, dislikes: 0, custom: true, ...stepData };
+    trip.days[dayIdx].steps.splice(afterStepIdx + 1, 0, newStep);
+    localStorage.setItem('trips', JSON.stringify(trips));
+  }
+}
+
+function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
+  const overlay = document.createElement('div');
+  overlay.className = 'add-step-overlay';
+  overlay.innerHTML = `
+    <div class="add-step-form">
+      <h3>添加行程</h3>
+      <input type="text" id="addStepText" placeholder="做什么？如：午餐吃火锅" class="add-step-input">
+      <input type="text" id="addStepPlace" placeholder="在哪？如：海底捞(平江路店)" class="add-step-input">
+      <div class="add-step-types">
+        <button class="type-btn active" data-type="play">📍 玩</button>
+        <button class="type-btn" data-type="eat">🍽️ 吃</button>
+        <button class="type-btn" data-type="transit">🚗 路上</button>
+        <button class="type-btn" data-type="stay">🏠 住</button>
+      </div>
+      <div class="add-step-actions">
+        <button class="add-step-cancel">取消</button>
+        <button class="add-step-confirm">确定添加</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  let selectedType = 'play';
+  overlay.querySelectorAll('.type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      overlay.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedType = btn.dataset.type;
+    });
+  });
+
+  overlay.querySelector('.add-step-cancel').addEventListener('click', () => overlay.remove());
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+
+  overlay.querySelector('.add-step-confirm').addEventListener('click', () => {
+    const text = document.getElementById('addStepText').value.trim();
+    const place = document.getElementById('addStepPlace').value.trim();
+    if (!text) return;
+    
+    // Also add to plan data for this trip (so rendering works)
+    const planDay = plan.days[dayIdx];
+    const newPlanStep = {
+      text: text,
+      type: selectedType,
+      startTime: '',
+      endTime: '',
+      description: '',
+    };
+    if (place) newPlanStep.place = { name: place };
+    planDay.steps.splice(afterStepIdx + 1, 0, newPlanStep);
+
+    addTripStep(tripId, dayIdx, afterStepIdx, {});
+    overlay.remove();
+    renderFn(dayIdx);
+  });
+}
