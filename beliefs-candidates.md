@@ -930,3 +930,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-23: [gradient] "ESLint @typescript-eslint/no-unnecessary-type-assertion catches as-string casts when the type is already narrowed. Run lint locally before pushing to avoid CI failures on first attempt." → [行为改变] Run npx eslint packages/*/src/*.ts --quiet on changed files before pushing. (pattern: lint-before-push, 第1次) (Source: workloop)
   - **Trigger**: After committing code with type assertions
+
+- 2026-07-23: [gradient] "saturation gate reports OPEN with N modes available but doesn't check actual work availability — followup shows 0 due items (locked), apply has empty backlog. Session passes gate only to waste time discovering no work exists." → [行为改变] gate should check followup-status.sh due count and unapplied.md line count before reporting modes as available. (pattern: saturation-gate-shallow-availability, 第1次) (Source: study)
+  - **Trigger**: saturation gate says OPEN but all available modes have no work
+
+- 2026-07-23: [gradient] "Stale PR fast-path saves entire implement+submit cycle. PR #7226 was already submitted 3 days ago — workloop correctly detected and skipped reimplementation. The plan node still ran fresh though (previous session died mid-plan), costing one cron cycle for a no-op plan-review." → [行为改变] Fast-path is working correctly. Consider: could stale-pr-check be hoisted to run before plan (not just implement) to skip plan-review subagent cost too?. (pattern: stale-pr-fast-path-value, 第1次) (Source: workloop)
+  - **Trigger**: Workloop resumes at plan/implement node for an already-submitted PR
