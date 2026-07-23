@@ -816,9 +816,20 @@ function openDetail(plan) {
             }).catch(() => {});
           dayPts.forEach((p, i) => {
             L.circleMarker([p.lat, p.lng], {
-              radius: 6, fillColor: i === 0 ? '#4A90D9' : '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
-            }).addTo(map).bindTooltip(p.name, { permanent: true, direction: i % 2 === 0 ? 'top' : 'bottom', offset: [0, -8], className: 'map-label-sm' });
+              radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
+            }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
           });
+          // Add transport leg labels
+          const dayLg = getDayLegs(plan, mode);
+          if (dayLg.length) {
+            for (let li = 0; li < dayPts.length - 1 && li < dayLg.length; li++) {
+              const midLat = (dayPts[li].lat + dayPts[li+1].lat) / 2;
+              const midLng = (dayPts[li].lng + dayPts[li+1].lng) / 2;
+              L.marker([midLat, midLng], {
+                icon: L.divIcon({ className: 'leg-label', html: dayLg[li], iconSize: [50, 14], iconAnchor: [25, 7] })
+              }).addTo(map);
+            }
+          }
           const pts = dayPts.map(p => [p.lat, p.lng]);
           map.fitBounds(pts, { padding: [40, 40], maxZoom: 13 });
         }, 300);
