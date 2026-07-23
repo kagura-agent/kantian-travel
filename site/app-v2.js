@@ -297,7 +297,7 @@ function initCardMaps(plans) {
           icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
         }).addTo(map);
       });
-      map.fitBounds(pts, { padding: [20, 20], maxZoom: 14 });
+      map.fitBounds(pts, { padding: [20, 20], maxZoom: 15 });
     }, 200);
   });
 }
@@ -653,7 +653,7 @@ function renderDetailMap(plan) {
       const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
       L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
     });
-    map.fitBounds(pts, { padding: [35, 35], maxZoom: 14 });
+    map.fitBounds(pts, { padding: [35, 35], maxZoom: 15 });
   }, 300);
 }
 
