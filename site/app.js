@@ -681,6 +681,32 @@ function openDetail(plan) {
     `;
   }
 
+  // Compute actual dates based on current filter
+  function getDayDates() {
+    const now = new Date();
+    let start = new Date(now);
+    const weekday = ['周日','周一','周二','周三','周四','周五','周六'];
+    if (currentFilter === 'now') {
+      start = now;
+    } else if (currentFilter === 'tomorrow') {
+      start.setDate(now.getDate() + 1);
+    } else if (currentFilter === 'weekend') {
+      const d = now.getDay();
+      start.setDate(now.getDate() + (d === 0 ? 0 : 6 - d));
+    } else if (currentFilter === 'next-weekend') {
+      const d = now.getDay();
+      start.setDate(now.getDate() + (d === 0 ? 7 : 13 - d));
+    } else {
+      start.setDate(now.getDate() + 1);
+    }
+    return plan.days.map((_, i) => {
+      const d = new Date(start);
+      d.setDate(start.getDate() + i);
+      return `${d.getMonth()+1}/${d.getDate()} ${weekday[d.getDay()]}`;
+    });
+  }
+  const dayDates = getDayDates();
+
   // === Render the detail view ===
   function renderDetailView(mode) {
     // mode: 'overview' or day index (0, 1, 2...)
@@ -692,7 +718,7 @@ function openDetail(plan) {
         <button class="view-tab ${isOverview ? 'active' : ''}" data-mode="overview">📋 全览</button>
         ${plan.days.map((day, i) => `
           <button class="view-tab ${mode === i ? 'active' : ''}" data-mode="${i}">
-            <span class="vt-day">${day.label}</span>
+            <span class="vt-day">${dayDates[i]}</span>
             <span class="vt-weather">${day.weather.icon}${day.weather.temp}</span>
           </button>
         `).join('')}
