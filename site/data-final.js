@@ -98,6 +98,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "步行到莫干山",
+            "type": "transit",
+            "startTime": "11:42",
+            "endTime": "11:52",
+            "place": {
+              "name": "莫干山",
+              "lat": 30.633,
+              "lng": 119.877
+            },
+            "description": "步行约10分钟"
+          },
+          {
             "text": "山顶精品咖啡馆",
             "type": "eat",
             "startTime": "11:42",
@@ -211,6 +223,18 @@ const PLANS = [
               "lng": 119.877
             },
             "description": "骑行沿途经过大片茶园和竹海，路边有凉亭可以停下来拍照休息"
+          },
+          {
+            "text": "打车到庾村文创小镇",
+            "type": "transit",
+            "startTime": "12:00",
+            "endTime": "12:08",
+            "place": {
+              "name": "庾村文创小镇",
+              "lat": 30.583,
+              "lng": 119.873
+            },
+            "description": "打车约8分钟"
           },
           {
             "text": "庾村文创小镇午餐",
@@ -815,6 +839,18 @@ const PLANS = [
             "description": "从古道顶端继续走到茶田观景台，整片梯田茶园尽收眼底，值得多停一会"
           },
           {
+            "text": "步行到径山寺",
+            "type": "transit",
+            "startTime": "12:45",
+            "endTime": "12:55",
+            "place": {
+              "name": "径山寺",
+              "lat": 30.407,
+              "lng": 119.842
+            },
+            "description": "步行约10分钟"
+          },
+          {
             "text": "径山寺禅茶",
             "type": "play",
             "startTime": "12:45",
@@ -833,6 +869,18 @@ const PLANS = [
                 "likes": "4.5w"
               }
             ]
+          },
+          {
+            "text": "步行到山中茶宿",
+            "type": "transit",
+            "startTime": "13:45",
+            "endTime": "13:55",
+            "place": {
+              "name": "山中茶宿",
+              "lat": 30.397,
+              "lng": 119.847
+            },
+            "description": "步行约10分钟"
           },
           {
             "text": "入住山中茶宿",
@@ -1369,6 +1417,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "步行到宏村",
+            "type": "transit",
+            "startTime": "9:00",
+            "endTime": "9:10",
+            "place": {
+              "name": "宏村",
+              "lat": 30.055,
+              "lng": 117.977
+            },
+            "description": "步行约10分钟"
+          },
+          {
             "text": "农家菜午餐",
             "type": "eat",
             "startTime": "9:00",
@@ -1386,6 +1446,18 @@ const PLANS = [
                 "cost": "人均¥40-60"
               }
             ]
+          },
+          {
+            "text": "打车到塔川",
+            "type": "transit",
+            "startTime": "10:00",
+            "endTime": "10:05",
+            "place": {
+              "name": "塔川",
+              "lat": 30.042,
+              "lng": 117.962
+            },
+            "description": "打车约5分钟"
           },
           {
             "text": "塔川骑行",
@@ -1919,6 +1991,18 @@ const PLANS = [
                 "cost": "门票¥50"
               }
             ]
+          },
+          {
+            "text": "打车到丽水酒店",
+            "type": "transit",
+            "startTime": "14:00",
+            "endTime": "14:09",
+            "place": {
+              "name": "丽水酒店",
+              "lat": 28.468,
+              "lng": 119.923
+            },
+            "description": "打车约9分钟"
           },
           {
             "text": "入住丽水酒店",
@@ -2521,6 +2605,18 @@ const PLANS = [
                 "cost": "含在门票内"
               }
             ]
+          },
+          {
+            "text": "步行到小莲庄",
+            "type": "transit",
+            "startTime": "10:00",
+            "endTime": "10:05",
+            "place": {
+              "name": "小莲庄",
+              "lat": 30.876,
+              "lng": 120.416
+            },
+            "description": "步行约5分钟"
           },
           {
             "text": "小莲庄",
@@ -3154,6 +3250,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "打车到唐模",
+            "type": "transit",
+            "startTime": "10:40",
+            "endTime": "10:46",
+            "place": {
+              "name": "唐模",
+              "lat": 30.02,
+              "lng": 118.15
+            },
+            "description": "打车约6分钟"
+          },
+          {
             "text": "唐模",
             "type": "play",
             "startTime": "10:40",
@@ -3164,6 +3272,18 @@ const PLANS = [
               "lng": 118.15
             },
             "description": "徽州古村，檀干园是精华，比呈坎人少很多，水口园林值得细看"
+          },
+          {
+            "text": "打车到呈坎附近",
+            "type": "transit",
+            "startTime": "12:10",
+            "endTime": "12:16",
+            "place": {
+              "name": "呈坎附近",
+              "lat": 30.006,
+              "lng": 118.185
+            },
+            "description": "打车约6分钟"
           },
           {
             "text": "入住呈坎附近",
@@ -3231,6 +3351,18 @@ const PLANS = [
                 "cost": "游船¥128"
               }
             ]
+          },
+          {
+            "text": "打车到屯溪",
+            "type": "transit",
+            "startTime": "12:00",
+            "endTime": "12:10",
+            "place": {
+              "name": "屯溪",
+              "lat": 29.713,
+              "lng": 118.315
+            },
+            "description": "车程约10分钟"
           },
           {
             "text": "入住屯溪",
@@ -3429,6 +3561,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "步行到罗星洲",
+            "type": "transit",
+            "startTime": "13:40",
+            "endTime": "13:49",
+            "place": {
+              "name": "罗星洲",
+              "lat": 31.12,
+              "lng": 120.74
+            },
+            "description": "步行约9分钟"
+          },
+          {
             "text": "罗星洲坐船",
             "type": "play",
             "startTime": "13:40",
@@ -3446,6 +3590,18 @@ const PLANS = [
                 "cost": "船票¥5"
               }
             ]
+          },
+          {
+            "text": "步行到同里古镇",
+            "type": "transit",
+            "startTime": "14:40",
+            "endTime": "14:49",
+            "place": {
+              "name": "同里古镇",
+              "lat": 31.128,
+              "lng": 120.737
+            },
+            "description": "步行约9分钟"
           },
           {
             "text": "日落",
@@ -3728,6 +3884,18 @@ const PLANS = [
             "description": "环湖绿道平坦宽敞，非蟹季几乎没人，一路湖景开阔心情好"
           },
           {
+            "text": "步行到美人腿半岛",
+            "type": "transit",
+            "startTime": "11:30",
+            "endTime": "11:40",
+            "place": {
+              "name": "美人腿半岛",
+              "lat": 31.42,
+              "lng": 120.74
+            },
+            "description": "步行约10分钟"
+          },
+          {
             "text": "美人腿半岛",
             "type": "play",
             "startTime": "11:30",
@@ -3738,6 +3906,18 @@ const PLANS = [
               "lng": 120.74
             },
             "description": "阳澄湖伸出的半岛，骑到尽头看湖景"
+          },
+          {
+            "text": "步行到莲花岛",
+            "type": "transit",
+            "startTime": "12:30",
+            "endTime": "12:40",
+            "place": {
+              "name": "莲花岛",
+              "lat": 31.43,
+              "lng": 120.75
+            },
+            "description": "步行约10分钟"
           },
           {
             "text": "莲花岛码头坐船上岛",
@@ -3761,6 +3941,18 @@ const PLANS = [
               "莲花岛末班船5点，别错过",
               "傍晚6点湖边蚊子多，带驱蚊"
             ]
+          },
+          {
+            "text": "打车到阳澄湖",
+            "type": "transit",
+            "startTime": "14:30",
+            "endTime": "14:35",
+            "place": {
+              "name": "阳澄湖",
+              "lat": 31.411,
+              "lng": 120.755
+            },
+            "description": "打车约5分钟"
           },
           {
             "text": "湖边咖啡馆",
@@ -3922,6 +4114,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "打车到建德酒店",
+            "type": "transit",
+            "startTime": "22:00",
+            "endTime": "22:10",
+            "place": {
+              "name": "建德酒店",
+              "lat": 29.476,
+              "lng": 119.281
+            },
+            "description": "车程约10分钟"
+          },
+          {
             "text": "入住建德酒店",
             "type": "stay",
             "startTime": "22:00",
@@ -3989,6 +4193,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "打车到下涯湿地",
+            "type": "transit",
+            "startTime": "8:00",
+            "endTime": "8:10",
+            "place": {
+              "name": "下涯湿地",
+              "lat": 29.49,
+              "lng": 119.29
+            },
+            "description": "打车约10分钟"
+          },
+          {
             "text": "下涯湿地",
             "type": "play",
             "startTime": "8:00",
@@ -4010,6 +4226,18 @@ const PLANS = [
                 "likes": "5.2w"
               }
             ]
+          },
+          {
+            "text": "步行到建德",
+            "type": "transit",
+            "startTime": "9:30",
+            "endTime": "9:40",
+            "place": {
+              "name": "建德",
+              "lat": 29.476,
+              "lng": 119.281
+            },
+            "description": "步行约10分钟"
           },
           {
             "text": "入住建德",
@@ -4084,6 +4312,18 @@ const PLANS = [
                 "cost": "门票¥50"
               }
             ]
+          },
+          {
+            "text": "打车到丽水酒店",
+            "type": "transit",
+            "startTime": "12:30",
+            "endTime": "12:39",
+            "place": {
+              "name": "丽水酒店",
+              "lat": 28.468,
+              "lng": 119.923
+            },
+            "description": "打车约9分钟"
           },
           {
             "text": "入住丽水酒店",
@@ -4310,6 +4550,18 @@ const PLANS = [
             ]
           },
           {
+            "text": "打车到诚品书店",
+            "type": "transit",
+            "startTime": "16:30",
+            "endTime": "16:40",
+            "place": {
+              "name": "诚品书店",
+              "lat": 31.31,
+              "lng": 120.7
+            },
+            "description": "打车约10分钟"
+          },
+          {
             "text": "诚品书店",
             "type": "play",
             "startTime": "16:30",
@@ -4322,6 +4574,18 @@ const PLANS = [
             "description": "苏州诚品书店，不只是书店还有文创市集和展览，可以泡一两个小时"
           },
           {
+            "text": "步行到独墓湖",
+            "type": "transit",
+            "startTime": "18:00",
+            "endTime": "18:10",
+            "place": {
+              "name": "独墓湖",
+              "lat": 31.315,
+              "lng": 120.71
+            },
+            "description": "步行约10分钟"
+          },
+          {
             "text": "独墓湖散步",
             "type": "play",
             "startTime": "18:00",
@@ -4332,6 +4596,18 @@ const PLANS = [
               "lng": 120.71
             },
             "description": "金鸡湖旁的小湖，傍晚散步人少安静，湖边有长椅可以坐着发呆"
+          },
+          {
+            "text": "步行到金鸡湖",
+            "type": "transit",
+            "startTime": "19:30",
+            "endTime": "19:40",
+            "place": {
+              "name": "金鸡湖",
+              "lat": 31.307,
+              "lng": 120.698
+            },
+            "description": "步行约10分钟"
           },
           {
             "text": "湖边咖啡",
@@ -4489,6 +4765,18 @@ const PLANS = [
                 "cost": "人均¥30-60"
               }
             ]
+          },
+          {
+            "text": "步行到护城河",
+            "type": "transit",
+            "startTime": "20:30",
+            "endTime": "20:37",
+            "place": {
+              "name": "护城河",
+              "lat": 31.305,
+              "lng": 120.62
+            },
+            "description": "步行约7分钟"
           },
           {
             "text": "护城河游船",
