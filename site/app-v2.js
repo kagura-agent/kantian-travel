@@ -1239,19 +1239,35 @@ function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
     const endTime = document.getElementById("addStepEnd").value || "";
     if (!text) return;
     
-    // Also add to plan data for this trip (so rendering works)
     const planDay = plan.days[dayIdx];
     const newPlanStep = {
       text: text,
       type: selectedType,
       startTime: startTime,
       endTime: endTime,
-      description: '',
+      description: "",
     };
     if (place) newPlanStep.place = { name: place };
-    planDay.steps.splice(afterStepIdx + 1, 0, newPlanStep);
-
-    addTripStep(tripId, dayIdx, afterStepIdx, {});
+    
+    // Insert at correct time position
+    let insertIdx = planDay.steps.length;
+    if (startTime) {
+      for (let i = 0; i < planDay.steps.length; i++) {
+        if (planDay.steps[i].startTime && planDay.steps[i].startTime > startTime) {
+          insertIdx = i;
+          break;
+        }
+      }
+    }
+    planDay.steps.splice(insertIdx, 0, newPlanStep);
+    
+    // Also insert in trip data at same position
+    const trips = getTrips();
+    const t = trips.find(t2 => t2.id === tripId);
+    if (t && t.days[dayIdx]) {
+      t.days[dayIdx].steps.splice(insertIdx, 0, { likes: 0, dislikes: 0, custom: true });
+      localStorage.setItem("trips", JSON.stringify(trips));
+    }
     overlay.remove();
     renderFn(dayIdx);
   });
