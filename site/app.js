@@ -130,7 +130,7 @@ function renderCards() {
       <div class="day-strip">
         <img class="day-photo" data-src="${imgUrl(day.photo)}" alt="${day.activity}" loading="lazy">
         <div class="day-overlay">
-          <span class="day-label">${day.label}</span>
+          ${plan.days.length > 1 ? `<span class="day-label">${day.label}</span>` : ''}
           <span class="day-activity">${day.activity}</span>
         </div>
       </div>
