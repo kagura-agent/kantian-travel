@@ -654,6 +654,7 @@ function openDetail(plan) {
       <div id="detailContent">${contentHTML}</div>
       <div class="detail-cta">
         <button class="detail-cta-btn" data-id="${plan.id}">${savedIds.has(plan.id) ? '✓ 已收藏' : '❤️ 加入行程'}</button>
+        <button class="trip-start-btn" data-plan-id="${plan.id}">🚶 跟着走</button>
       </div>
     `;
     // Bind tabs
@@ -814,4 +815,164 @@ document.getElementById('tagOptions').addEventListener('change', () => {
   document.querySelectorAll('#timeTabs .tab').forEach(tab => {
     tab.style.display = checked.includes(tab.dataset.filter) ? '' : 'none';
   });
+});
+
+// === 跟着走 (Trip Instance) ===
+function createTrip(plan) {
+  const trip = {
+    id: Date.now().toString(36),
+    planId: plan.id,
+    planTitle: plan.title,
+    createdAt: new Date().toISOString(),
+    days: plan.days.map(d => ({
+      steps: d.steps.map(() => ({ done: false }))
+    }))
+  };
+  const trips = JSON.parse(localStorage.getItem('trips') || '[]');
+  trips.push(trip);
+  localStorage.setItem('trips', JSON.stringify(trips));
+  return trip;
+}
+
+function getTrips() {
+  return JSON.parse(localStorage.getItem('trips') || '[]');
+}
+
+function updateTrip(tripId, dayIdx, stepIdx, done) {
+  const trips = getTrips();
+  const trip = trips.find(t => t.id === tripId);
+  if (trip) {
+    trip.days[dayIdx].steps[stepIdx].done = done;
+    localStorage.setItem('trips', JSON.stringify(trips));
+  }
+  return trip;
+}
+
+function openTripView(tripId) {
+  const trips = getTrips();
+  const trip = trips.find(t => t.id === tripId);
+  if (!trip) return;
+  const plan = PLANS.find(p => p.id === trip.planId);
+  if (!plan) return;
+
+  const numDays = plan.days.length;
+  let currentDayIdx = 0;
+  // Find first incomplete day
+  for (let i = 0; i < numDays; i++) {
+    if (trip.days[i].steps.some(s => !s.done)) { currentDayIdx = i; break; }
+  }
+
+  function renderTripDay(dayIdx) {
+    const day = plan.days[dayIdx];
+    const tripDay = trip.days[dayIdx];
+    const totalSteps = tripDay.steps.length;
+    const doneSteps = tripDay.steps.filter(s => s.done).length;
+    const progress = Math.round(doneSteps / totalSteps * 100);
+
+    // Day tabs
+    const weekday = ['周日','周一','周二','周三','周四','周五','周六'];
+    const startDate = new Date(trip.createdAt);
+    const dayTabs = plan.days.map((_, i) => {
+      const dt = new Date(startDate); dt.setDate(startDate.getDate() + i);
+      const dayDone = trip.days[i].steps.every(s => s.done);
+      return `<button class="view-tab ${i === dayIdx ? 'active' : ''} ${dayDone ? 'tab-done' : ''}" data-day="${i}">
+        <span class="vt-day">${dt.getMonth()+1}/${dt.getDate()} ${weekday[dt.getDay()]}</span>
+        <span class="vt-weather">${dayDone ? '✅' : day.weather?.icon || ''}${plan.days[i].weather?.temp || ''}</span>
+      </button>`;
+    }).join('');
+
+    // Steps with checkboxes
+    const stepsHTML = day.steps.map((step, si) => {
+      const done = tripDay.steps[si].done;
+      const color = done ? '#ccc' : (TYPE_COLORS[step.type] || '#999');
+      return `
+        <div class="tl-step ${done ? 'step-done' : ''}" data-step="${si}">
+          <div class="tl-left">
+            <span class="tl-time" style="${done ? 'color:#ccc' : ''}">${step.startTime || ''}</span>
+            <div class="tl-dot" style="background:${color}"></div>
+            ${si < day.steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ''}
+          </div>
+          <div class="tl-right">
+            <div class="trip-step-row">
+              <input type="checkbox" class="trip-check" ${done ? 'checked' : ''} data-day="${dayIdx}" data-step="${si}">
+              <div class="trip-step-content ${done ? 'done-text' : ''}">
+                <span class="tl-step-text">${step.text}</span>
+                ${step.description ? `<p class="step-desc">${step.description}</p>` : ''}
+                ${step.place?.name && !done ? `<a class="step-action-btn" href="https://uri.amap.com/navigation?to=${encodeURIComponent(step.place.name)}&mode=car" target="_blank">📍 导航到${step.place.name}</a>` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    detailBody.innerHTML = `
+      <div class="trip-header">
+        <h2 class="detail-title">🚶 ${plan.title}</h2>
+        <div class="trip-progress">
+          <div class="trip-progress-bar"><div class="trip-progress-fill" style="width:${progress}%"></div></div>
+          <span class="trip-progress-text">${doneSteps}/${totalSteps} 完成</span>
+        </div>
+      </div>
+      <div class="view-tabs-row">${dayTabs}</div>
+      <div class="day-steps-timeline">${stepsHTML}</div>
+      <div class="trip-actions">
+        <button class="trip-share-btn" id="tripShareBtn">📤 分享给同行朋友</button>
+      </div>
+    `;
+
+    // Bind checkbox changes
+    detailBody.querySelectorAll('.trip-check').forEach(cb => {
+      cb.addEventListener('change', () => {
+        const di = parseInt(cb.dataset.day);
+        const si = parseInt(cb.dataset.step);
+        updateTrip(trip.id, di, si, cb.checked);
+        renderTripDay(dayIdx); // re-render to update progress
+      });
+    });
+
+    // Bind day tabs
+    detailBody.querySelectorAll('.view-tab').forEach(tab => {
+      tab.addEventListener('click', () => renderTripDay(parseInt(tab.dataset.day)));
+    });
+
+    // Share button
+    const shareBtn = document.getElementById('tripShareBtn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', () => {
+        const url = `${location.origin}${location.pathname}?trip=${trip.id}`;
+        if (navigator.share) {
+          navigator.share({ title: `跟着走：${plan.title}`, url });
+        } else {
+          navigator.clipboard.writeText(url);
+          shareBtn.textContent = '✅ 链接已复制';
+          setTimeout(() => { shareBtn.textContent = '📤 分享给同行朋友'; }, 2000);
+        }
+      });
+    }
+  }
+
+  detailOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderTripDay(currentDayIdx);
+}
+
+// Add "跟着走" to detail CTA area
+const _origRenderDetailView = null; // hook into existing renderDetailView via event delegation
+document.addEventListener('click', (e) => {
+  const tripBtn = e.target.closest('.trip-start-btn');
+  if (tripBtn) {
+    const planId = tripBtn.dataset.planId;
+    const plan = PLANS.find(p => p.id === planId);
+    if (plan) {
+      const trip = createTrip(plan);
+      closeDetail();
+      setTimeout(() => openTripView(trip.id), 300);
+    }
+  }
+  // Open existing trip from shortlist
+  const tripItem = e.target.closest('.trip-item');
+  if (tripItem) {
+    openTripView(tripItem.dataset.tripId);
+  }
 });
