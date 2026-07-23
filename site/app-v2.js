@@ -230,13 +230,10 @@ function _timeToHours(t) { if (!t) return 8; const [h,m] = t.split(':').map(Numb
 
 // === Init Card Maps ===
 function initCardMaps(plans) {
-  document.querySelectorAll('.card').forEach((card, idx) => {
-    if (idx >= plans.length) return;
-    const plan = plans[idx];
+  plans.forEach(plan => {
     if (!plan.route || plan.route.length < 2 || !window.L) return;
-    const mapEl = document.createElement('div');
-    mapEl.className = 'card-map';
-    card.querySelector('.card-photos').appendChild(mapEl);
+    const mapEl = document.getElementById(`cardMap-${plan.id}`);
+    if (!mapEl) return;
     setTimeout(() => {
       const map = L.map(mapEl, {
         zoomControl: false, attributionControl: false,
@@ -259,18 +256,14 @@ function initCardMaps(plans) {
           radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
         }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
       });
-      // Compute legs from transit steps
       const d = derivePlan(plan);
-      if (d.legs.length) {
-        d.legs.forEach((leg, i) => {
-          if (i >= pts.length - 1) return;
-          const midLat = (pts[i][0] + pts[i+1][0]) / 2;
-          const midLng = (pts[i][1] + pts[i+1][1]) / 2;
-          L.marker([midLat, midLng], {
-            icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
-          }).addTo(map);
-        });
-      }
+      d.legs.forEach((leg, i) => {
+        if (i >= pts.length - 1) return;
+        const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
+        L.marker([midLat, midLng], {
+          icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
+        }).addTo(map);
+      });
       map.fitBounds(pts, { padding: [20, 20], maxZoom: 10 });
     }, 200);
   });
