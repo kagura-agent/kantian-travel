@@ -247,6 +247,11 @@ function initCardMaps(plans) {
           }
         }).catch(() => {});
 
+      plan.route.forEach((p) => {
+        L.circleMarker([p.lat, p.lng], {
+          radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
+        }).addTo(map);
+      });
 
       map.fitBounds(pts, { padding: [35, 35], maxZoom: 11 });
     });
