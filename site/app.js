@@ -656,6 +656,9 @@ function openDetail(plan) {
         const stepBookings = getStepBookings(step);
         const stepTips = getStepTips(step);
         const stepContent = getStepContent(step);
+        // Lookup step details from STEP_DETAILS
+        const detail = Object.entries(typeof STEP_DETAILS !== 'undefined' ? STEP_DETAILS : {}).find(([k]) => step.includes(k) || placeName.includes(k));
+        const info = detail ? detail[1] : null;
         const color = getStepColor(isTransit, isHome);
         const time = stepTimes[i] || '';
         const typeLabel = isHome ? '到家' : isTransit ? '路上' : '玩';
@@ -673,6 +676,8 @@ function openDetail(plan) {
                 <span class="tl-step-text">${step}</span>
               </div>
               ${!isHome ? `<div class="tl-step-extras">
+                ${info ? `<p class="step-desc">${info.desc}</p>` : ''}
+                ${info && (info.duration || info.cost) ? `<div class="step-meta">${info.duration ? `<span class="sm-duration">⏱ ${info.duration}</span>` : ''}${info.cost ? `<span class="sm-cost">¥ ${info.cost}</span>` : ''}</div>` : ''}
                 <div class="step-actions">
                   <a class="step-action-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>
                   ${stepBookings.map(b => `<span class="step-action-btn step-action-book">${b}</span>`).join('')}
