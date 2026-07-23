@@ -939,3 +939,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-23: [gradient] "Fresh-context review caught a real test gap (classifier not exercised with sample data). Adding exercise tests that actually run the classified code catches regex bugs that string-contains assertions miss." → [行为改变] Always add tests that exercise the matching logic with real inputs, not just check code exists in output. (pattern: test-exercise-over-assertion, 第1次) (Source: workloop)
   - **Trigger**: Writing tests for regex/pattern-matching code
+
+- 2026-07-23: [gradient] "Fresh-context reviewer may flag pre-existing patterns as issues (e.g. startsWith("-") heuristic, test assertion position). Before fixing, check if the same pattern exists in adjacent code — if it does, it is the established convention and the finding is a false positive." → [行为改变] For each finding: grep the same file or related files for the same pattern. If found in existing code, mark as false positive with explicit reasoning.. (pattern: fresh-review-false-positive-check, 第1次) (Source: workloop)
+  - **Trigger**: Fresh-context review returns NEEDS_WORK with findings about code patterns
