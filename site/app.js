@@ -469,7 +469,7 @@ function buildDayTimelineHTML(segs) {
   if (totalH <= 0) return '';
   const offset = segs[0].start;
   const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6' };
-  let html = '<div class="detail-section"><h4 class="detail-section-title">今日时间分配</h4>';
+  let html = '<div class="detail-section"><h4 class="detail-section-title">时间分配</h4>';
   html += '<div class="tl-bar">';
   segs.forEach(seg => {
     const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
@@ -611,7 +611,7 @@ function openDetail(plan) {
     // Build navigation list from itinerary steps (destination only)
     function buildTransitNavHTML() {
       if (steps.length < 2) return '';
-      let html = '<div class="detail-section"><h4 class="detail-section-title">今日导航</h4><div class="transit-nav-list">';
+      let html = '<div class="detail-section"><h4 class="detail-section-title">导航</h4><div class="transit-nav-list">';
       steps.forEach((step, i) => {
         const placeName = step.replace(/[\(\)（）约\d+h\s上午下午清晨傍晚晚上中午午餐后午前6点]/g, '').replace(/…+/g, '').trim();
         if (!placeName) return;
@@ -641,15 +641,15 @@ function openDetail(plan) {
       ${dayTimeline ? buildDayTimelineHTML(dayTimeline) : ''}
 
       <div class="detail-section">
-        <h4 class="detail-section-title">今日行程</h4>
+        <h4 class="detail-section-title">行程</h4>
         ${buildStepsHTML()}
       </div>
 
-      ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">今日路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
+      ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
 
       ${dayBookings.length > 0 ? `
       <div class="detail-section">
-        <h4 class="detail-section-title">今日预订</h4>
+        <h4 class="detail-section-title">预订</h4>
         <div class="detail-booking-pills">
           ${dayBookings.map(b => `<span class="booking-pill">${b} →</span>`).join('')}
         </div>
@@ -657,7 +657,7 @@ function openDetail(plan) {
 
       ${dayTips.length > 0 ? `
       <div class="detail-section">
-        <h4 class="detail-section-title">今日提醒</h4>
+        <h4 class="detail-section-title">提醒</h4>
         <div class="detail-tips">
           ${dayTips.map(tip => `<div class="tip-item">💡 ${tip}</div>`).join('')}
         </div>
