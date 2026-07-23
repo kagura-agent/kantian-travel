@@ -1,6 +1,3 @@
-// data-final.js — Clean schema, zero redundancy
-// Card-level display fields are computed from steps at render time
-
 const PLANS = [
   {
     "id": "moganshan-weekend",
@@ -4707,12 +4704,7 @@ const PLANS = [
             "type": "transit",
             "startTime": "20:50",
             "endTime": "21:50",
-            "description": "沿星港街骑行返回市区",
-            "place": {
-              "name": "苏州市区",
-              "lat": 31.299,
-              "lng": 120.585
-            }
+            "description": "沿星港街骑行返回市区"
           }
         ]
       }
@@ -4818,12 +4810,7 @@ const PLANS = [
             "text": "回家",
             "type": "home",
             "startTime": "23:00",
-            "endTime": "23:00",
-            "place": {
-              "name": "苏州市区",
-              "lat": 31.299,
-              "lng": 120.585
-            }
+            "endTime": "23:00"
           }
         ]
       }
