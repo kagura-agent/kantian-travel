@@ -213,3 +213,7 @@ a.step-action-btn{background:var(--accent);color:#fff}
 .tn-route{font-size:14px;font-weight:600;color:#333}
 .tn-leg{font-size:12px;color:var(--sub)}
 .tn-action{padding:4px 12px;border-radius:16px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;white-space:nowrap}
+.prep-card{background:#FFF8E1;border-radius:12px;padding:14px 16px;margin-top:8px}
+.prep-card .detail-section-title{margin-bottom:8px}
+.prep-items{display:flex;flex-direction:column;gap:4px}
+.prep-item{font-size:13px;color:#666;line-height:1.5}

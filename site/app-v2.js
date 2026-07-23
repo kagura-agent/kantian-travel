@@ -562,6 +562,61 @@ function openDetail(plan) {
     });
     stepsHTML += '</div>';
 
+    // Build preparation card for next day
+    function buildPrepCard() {
+      const isFirstDay = dayIdx === 0;
+      const isLastDay = dayIdx === numDays - 1;
+      const items = [];
+
+      if (isFirstDay) {
+        // "出发准备" — from today's steps
+        const todaySteps = day.steps;
+        if (todaySteps.some(s => s.type === 'transit' && /高铁|火车/.test(s.text))) items.push('带好身份证，提前购票');
+        if (todaySteps.some(s => s.type === 'stay')) {
+          const stay = todaySteps.find(s => s.type === 'stay');
+          items.push('确认' + (stay?.place?.name || '住宿') + '预订');
+        }
+        todaySteps.forEach(s => (s.tips || []).forEach(t => items.push(t)));
+        if (todaySteps.some(s => /徒步|爬山|登山|骑行/.test(s.text))) items.push('穿运动鞋，带水和防晒');
+        if (todaySteps.some(s => /萤火虫|蚊/.test(s.text + (s.description || '')))) items.push('带驱蚊水');
+      }
+
+      if (!isLastDay) {
+        // "明日准备" — from next day's steps
+        const nextDay = plan.days[dayIdx + 1];
+        const nextSteps = nextDay.steps;
+        if (nextSteps.some(s => s.type === 'transit' && /高铁|火车/.test(s.text))) items.push('提前买好明天的车票');
+        if (nextSteps.some(s => s.type === 'stay')) {
+          const stay = nextSteps.find(s => s.type === 'stay');
+          items.push('确认明天' + (stay?.place?.name || '住宿') + '预订');
+        }
+        if (nextSteps.some(s => /骑行|租车/.test(s.text))) items.push('明天有骑行，确认租车');
+        if (nextSteps.some(s => s.bookings?.some(b => b.type === 'ticket'))) items.push('提前网上买好明天的门票');
+        const nextStart = nextSteps[0]?.startTime;
+        if (nextStart) {
+          const [h] = nextStart.split(':').map(Number);
+          if (h < 7) items.push('明天 ' + nextStart + ' 出发，早点睡！');
+        }
+        nextSteps.forEach(s => (s.tips || []).forEach(t => { if (!items.includes(t)) items.push(t); }));
+        if (nextSteps.some(s => /徒步|爬山|登山/.test(s.text))) items.push('明天有徒步，穿运动鞋');
+      }
+
+      // Dedupe
+      const unique = [...new Set(items)];
+      if (!unique.length) return '';
+
+      const title = isFirstDay && !isLastDay ? '出发准备' : isLastDay ? '' : '明日准备';
+      if (!title) return '';
+      return `
+        <div class="detail-section prep-card">
+          <h4 class="detail-section-title">📋 ${title}</h4>
+          <div class="prep-items">
+            ${unique.map(item => `<div class="prep-item">· ${item}</div>`).join('')}
+          </div>
+        </div>
+      `;
+    }
+
     return `
       <div class="detail-photo-weather">
         <div class="detail-hero-photo">
@@ -572,6 +627,7 @@ function openDetail(plan) {
       </div>
       ${stepsHTML}
       ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
+      ${buildPrepCard()}
     `;
   }
 
