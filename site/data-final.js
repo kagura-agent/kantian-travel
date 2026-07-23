@@ -764,11 +764,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "12:00",
             "endTime": "13:00",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -975,11 +970,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "12:00",
             "endTime": "13:30",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -2379,9 +2369,9 @@ const PLANS = [
             "startTime": "9:00",
             "endTime": "9:30",
             "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "按导航路线前往",
             "bookings": [
@@ -2804,11 +2794,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "10:20",
             "endTime": "11:10",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -3617,11 +3602,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "16:10",
             "endTime": "16:50",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -3788,11 +3768,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "16:30",
             "endTime": "17:00",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -3987,11 +3962,6 @@ const PLANS = [
             "type": "transit",
             "startTime": "17:00",
             "endTime": "17:30",
-            "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
-            },
             "description": "按导航路线前往"
           },
           {
@@ -4470,9 +4440,9 @@ const PLANS = [
             "startTime": "13:30",
             "endTime": "14:00",
             "place": {
-              "name": "苏州",
-              "lat": 31.299,
-              "lng": 120.585
+              "name": "苏州站",
+              "lat": 31.352,
+              "lng": 120.617
             },
             "description": "按导航路线前往",
             "bookings": [
