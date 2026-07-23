@@ -33,7 +33,7 @@ interface TravelPlan {
   title: string;                 // "莫干山竹海发呆"
   origin: string;                // "苏州"
   category: PlanCategory;        // 时间分类
-  route: RoutePoint[];           // 地图路线点
+  // route 不单独存，从 steps[].place 推导
   relatedContent?: ContentItem[];// 方案级种草（兜底）
   days: TravelDay[];             // 按天的行程
 }
@@ -47,11 +47,6 @@ interface TravelPlan {
 
 type PlanCategory = 'now' | 'tomorrow' | 'weekend' | 'next-weekend' | '3day' | '5day' | 'week';
 
-interface RoutePoint {
-  name: string;
-  lat: number;
-  lng: number;
-}
 
 interface TravelDay {
   photo: string;                 // 封面图
