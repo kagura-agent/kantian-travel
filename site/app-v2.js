@@ -950,8 +950,6 @@ function openTripView(tripId) {
     const day = plan.days[dayIdx];
     const tripDay = trip.days[dayIdx];
     const totalSteps = tripDay.steps.length;
-    const ratedSteps = tripDay.steps.filter(s => (s.likes || 0) + (s.dislikes || 0) > 0).length;
-    const progress = Math.round(ratedSteps / totalSteps * 100);
 
     const weekday = ['周日','周一','周二','周三','周四','周五','周六'];
     const startDate = new Date(trip.createdAt);
@@ -1013,9 +1011,6 @@ function openTripView(tripId) {
         <h2 class="trip-title">${plan.title}</h2>
         <button class="trip-share-sm" id="tripShareBtn2">📤</button>
       </div>
-      <div class="trip-progress">
-        <div class="trip-progress-bar"><div class="trip-progress-fill" style="width:${progress}%"></div></div>
-        <span class="trip-progress-text">${ratedSteps}/${totalSteps}</span>
       </div>
       <div class="detail-photo-weather">
         <div class="detail-hero-photo">
