@@ -288,7 +288,7 @@ function initCardMaps(plans) {
       route.forEach((p, i) => {
         L.circleMarker([p.lat, p.lng], {
           radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
-        }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
+        }).addTo(map);
       });
       const d = derivePlan(plan);
       d.legs.forEach((leg, i) => {
