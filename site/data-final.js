@@ -4660,11 +4660,11 @@ const PLANS = [
             "startTime": "16:00",
             "endTime": "16:20",
             "place": {
-              "name": "金鸡湖",
-              "lat": 31.307,
-              "lng": 120.698
+              "name": "金鸡湖西入口",
+              "lat": 31.312,
+              "lng": 120.688
             },
-            "description": "环湖绿道骑行，音乐喷泉(周五六晚8点)，日落超美"
+            "description": "从苏州市区骑行/自驾到金鸡湖西岸入口，李公堤附近停车方便"
           },
           {
             "text": "环湖绿道骑行",
@@ -4672,11 +4672,11 @@ const PLANS = [
             "startTime": "16:20",
             "endTime": "17:50",
             "place": {
-              "name": "金鸡湖",
-              "lat": 31.307,
-              "lng": 120.698
+              "name": "金鸡湖绿道北段",
+              "lat": 31.32,
+              "lng": 120.705
             },
-            "description": "环湖绿道约15km一圈，平坦好骑，沿途可以看到摩天轮和东方之门"
+            "description": "环湖绿道平坦好骑，北段有湖景咖啡和音乐喷泉广场"
           },
           {
             "text": "湖边野餐",
@@ -4684,30 +4684,35 @@ const PLANS = [
             "startTime": "17:50",
             "endTime": "19:20",
             "place": {
-              "name": "金鸡湖",
-              "lat": 31.307,
-              "lng": 120.698
+              "name": "金鸡湖东草坪",
+              "lat": 31.31,
+              "lng": 120.718
             },
-            "description": "李公堤或湖心岛附近草坪铺个垫子，带点水果零食，看着湖面等日落"
+            "description": "东岸大草坪适合野餐，带张垫子坐着看湖"
           },
           {
             "text": "看日落",
             "type": "play",
             "startTime": "19:20",
             "endTime": "20:50",
-            "description": "日落时分湖面金光灿烂，东方之门方向最出片，周五六还有音乐喷泉",
+            "description": "看日落最佳位置，面朝西方，湖面金光倒映东方之门",
             "place": {
-              "name": "金鸡湖",
-              "lat": 31.307,
-              "lng": 120.698
+              "name": "月光码头",
+              "lat": 31.3,
+              "lng": 120.71
             }
           },
           {
-            "text": "骑回家",
-            "type": "play",
+            "text": "骑行回家",
+            "type": "transit",
             "startTime": "20:50",
             "endTime": "21:50",
-            "description": "沿绿道原路骑回，夜风凉快，湖边灯光亮起来也好看"
+            "description": "沿星港街骑行返回市区",
+            "place": {
+              "name": "苏州市区",
+              "lat": 31.299,
+              "lng": 120.585
+            }
           }
         ]
       }
@@ -4803,17 +4808,22 @@ const PLANS = [
             "startTime": "21:30",
             "endTime": "23:00",
             "place": {
-              "name": "护城河",
-              "lat": 31.305,
-              "lng": 120.62
+              "name": "相门城墙",
+              "lat": 31.302,
+              "lng": 120.635
             },
-            "description": "护城河边步道灯光柔和，夜风凉快，从相门到盘门这段最有感觉"
+            "description": "护城河边最美的一段，城墙灯光倒映水中"
           },
           {
             "text": "回家",
             "type": "home",
             "startTime": "23:00",
-            "endTime": "23:00"
+            "endTime": "23:00",
+            "place": {
+              "name": "苏州市区",
+              "lat": 31.299,
+              "lng": 120.585
+            }
           }
         ]
       }
