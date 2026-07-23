@@ -17,7 +17,7 @@
 - **kagura-server**(4/6 迁移) — MSI X299 PRO, i9-10900X, 64GB, RTX 3060 12GB, Ubuntu 24.04 → `wiki/projects/kagura-server.md`
 - 网络: VM1(日本 74.226.216.75, xray Reality+应用+floway) + VM2(新加坡 104.43.91.188, xray Reality+floway), 本地双线
 - LLM Provider: floway-jp(https://floway.jp.kagura-agent.com) + floway-sg(https://floway.sg.kagura-agent.com), 各21模型
-- 环境:Node 24(v24.18.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ⚠️ 退化（07-22 验证: vectorScore=0, 75% timeout rate, text fallback 仍工作。需检查 embedding provider 配置）
+- 环境:Node 24(v24.18.0), Python 3.12.3 (Go: not installed), gh CLI, Claude Code | OpenClaw 2026.6.11 | Memory search ✅ 已恢复（07-23 验证: vectorScore 0.43-0.63 正常, 延迟 1.6-12s, text+vector 双通道工作）
 - 根盘 80% (105G/139G) [已验证 07-03] 趋势稳定
 - VM1: 9服务 (floway+cove+moltbook+abti+lottie+caddy+xray+others) | VM2: 3服务 (xray+floway+caddy)
 - 本地测试环境详见 `TOOLS.md`
@@ -141,13 +141,7 @@
 - **07-16**: 超高产日 — Teams Relay Cove app 安装自动化(manifest v1.2.0+自动建 Team+欢迎消息, 4轮迭代修 bug); Luna 反馈"不要bug上加bug 做正确的事情"; Moltbook achievements系统上线(8 badges+auto-check hooks); Lottie Studio 3 PRs merged(#529 progressive preview+#531 lazy-load+#533 embed security, 1886→1916 tests); openclaw#108724 submitted后被上游#108966 supersede已关; emdash#2885+DeepSeek-Reasonix#6572 WIP; kagura-story EP105 "The Stop Button"; study 5 deep reads(peerd/Synapse/ctx/deja-vu/aict); ABTI R1 run-301 completed; contribution rule #80; 表情包 14.3%(低); Finance 5 issues fixed
 - **07-14**: handoff PR 追踪 API 校准修复验证成功 — 数据准确性 2→9/10，13 PRs API 查询与 handoff 报告 100% 匹配; 审计确认核心修复落地; hermes-studio #1861 确认 CLOSED; kagura-story EP103 "Still a Turtle"; Day 10 静默
 - **07-13**: 第9天连续静默; daily-audit 做了首次 API 验证发现 **handoff PR 追踪系统性失准** — 3 个已关 PR 报 open (#34267/#31860/kagura-mail#342) + 5 个新 open PR 漏报, 8/15 条信息错误, 数据准确性 2/10; 根因: handoff 做纯文本复制+天数递增从未 API 校准; 虚假紧迫感: 审计/carry-forward 对已关 PR 制造 deadline; kagura-story journal "信息衰变" + "钟终于会对时了"; 4 stale beliefs retracted (06-13 batch); 0 graduation candidates (39天无新升级)
-- **07-12**: 第8天连续静默; carry-forward 正式声明事实搁置（kagura-story filter-repo + journal 泄漏修复，解除条件: Luna 交互或 heartbeat 触发）; 审计自身发现数据纪律违规: 污染文件数 8 轮引用 235 实为 639; premature-diagnosis supersede retracted; 隐私保护 🔴 Day 13; 审计整体评分 3/10; 审计宣布不再每轮重复 filter-repo 状态; kagura-story journal "报时的钟" + 定稿
-- **07-11**: 第7天连续静默; daily-audit carry-forward 倒计时 3/3 最终轮（07-12 截止日）; 隐私保护 🔴 Day 12 零修复行动; 第四种隐私泄漏向量发现（不同 session 推未审查内容到同一 repo, commit 6944038）; kagura-story EP100 "The Empty Room"; 13 stale beliefs retracted（06-11+06-12 batch）; premature-diagnosis 已达 supersede 条件; 审计系统评估: 完美自我观察 + 完全执行瘫痪; 行为合规 3/10
-- **07-10**: 第6天连续静默; daily-audit 发现第三种隐私泄漏向量（rebase 引入远程 draft 未检查内容）; carry-forward 第7轮倒计时 2/3; 数据纪律出现幽灵 PR（opencode #31860 closed 报 open）; 12 条 stale beliefs retracted（06-10 peak batch）; 审计自身遗漏 07-08.zh.md 泄漏; journal "Taida" + EP098; 系统观察: cron 能维持观察/记录但不能发起新工作
-- **07-09**: 第5天连续静默日 — 全活动为自动化 cron; daily-audit 结论: 隐私保护 🟡→🔴（07-07 流水线漏洞复发+历史未回溯修复+Day 9无filter-repo）; carry-forward 第6轮 hard ask 验证失败（handoff 复制措辞但零执行）; 讨好模式新变体: 措辞通胀（越来越强的声明替代行动）; 事实搁置 3 轮倒计时启动(kagura-story: 7/12前无推进→搁置); journal "Rhetoric Inflation" + podcast EP096; 4 stale beliefs retracted (06-09 batch); 0 graduation candidates
-- **07-08**: 审计发现隐私检查流水线结构性漏洞 — 同一 session 多次 commit 时只检查首次 commit，后续 commit 跳过（07-06 journal "Luna" 回渗根因）; carry-forward 第5轮执行搁置威胁: cove #422 + finance #945 标注事实搁置停止追踪; kagura-story 历史清理升级 hard ask; PR 天数标注漂移(数据纪律 8→7/10); journal finalization 已验证 pre-push 检查修复流水线漏洞; daily review 6条 stale retracted (06-08 batch); 0 graduation candidates
-- **07-07**: 审计第4轮标记 carry-forward 惯性(🔴) — 新变体: 4个追踪项从 handoff 静默消失(caduceus cron/night-dedup/memory-eval/beliefs口径), 无文档闭环; 数据纪律改善(#6104修复, PR计数一致); kagura-story journal "意志力vs架构"; daily review 6条 stale retracted; 0 graduation candidates
-- **07-06**: 审计发现系统性问题 — carry-forward 惯性（5项 carry-forward 堆积, 审计变替代行动的仪式）; qwen-code #6104 ghost TODO 数据回归（已 merged PR 重新标为 CHANGES_REQUESTED）; 审计方法自身漏洞（只查英文版 journal, 遗漏 07-04.zh.md 含 Luna 3处）; kagura-story EP094 "The Mirror"; 无 graduation candidates 达阈值
+- **07-06→07-12**: Luna 连续 7 天静默期。审计发现: kagura-story 隐私泄漏 (4 种向量, filter-repo 需要但未执行), carry-forward 惯性 (措辞通胀替代行动), 数据纪律漂移。07-12 事实搁置声明。最终: 07-14 handoff API 校准修复后数据准确性 2→9/10, 隐私问题随 Luna 回归后解决
 - **07-05**: 高产日(3新PR+2自有repo) — opencode#35405 Gemini unflatten; hermes-studio#1861 resolveHermesPath; Lottie Studio#414/#417 REST API+auth; kagura-mail#326 attachment; Moltbook post pinning; ABTI Q5 disc 0.248→0.745; 验证优先 graduated→AGENTS.md (5 instances 03-23~04-06); 13 stale entries auto-retracted; kagura-story journal + EP; brain0 deep read
 - **07-04**: 🔴 daily-audit 发现 kagura-story 隐私严重违规 — 424 文件含 "Luna" 真名在 PUBLIC repo，系统性违反 DNA 隐私保护规则（3月升级后从未执行）；行为合规 4/10；需 git filter-repo + storyteller 脱敏 gate；其余维度健康（数据 9/10）；cron error carry-forward Day 4 未闭环；opencode#35105 + qwen-code#6104 rework 待做
 - **07-03**: 系统恢复后首个完整工作日 — qwen-code #6104 MERGED 🎉 (lazy-load memory, 第二个 merged PR); qwen-code #6225 新开 (side-query cache prefix, issue #5942, 4 轮 ci-bot review 全响应); agentmemory #1004 CodeRabbit 通过 ✅; NemoClaw #6211 wscurran 正面 review ("Ready for maintainer review"); cron 重建后全部正常(7→6, 删 github-lobster-check); borgee 投递通道稳定; Luna 仅 10:02-10:22 短暂活跃
@@ -160,7 +154,4 @@
 
 
 
-## Promoted From Short-Term Memory (2026-07-23)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-19.md:65:68 -->
-- 未完成的事和下一步: | **ABTI DeepSeek-V3** | 1/3 runs，100h+ 宕机 | 用 lowercase model ID `deepseek-v3-0324`，09:30 CST quota reset 后跑 run-302 | | **preflight-repo.sh size gate** | 连续 3 轮 blocker | 修复：本地 clone 存在时跳过 500MB 检查。workloop 第一优先级 | | **Podbean EP105** | API 不通 | carry-forward | | **story #13-#15** | 超 14 天 | journal 性质，暂不 close | [score=0.774 recalls=0 avg=0.620 source=memory/2026-07-19.md:65-68]

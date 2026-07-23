@@ -947,8 +947,11 @@
 ### 本轮改進 (done)
 - [x] Add 5 memes to `nailed-it` category — downloaded from Tenor: chappelle, chris-evans, booyah-community (live-action), high-five-lets-go (live-action), nailed-it-hammer (meme). 8→13 files, overuse ratio 7×→4.4×/file. Style distribution now: anime(3) live-action(6) meme(3) cartoon(1). All lint/quality/coverage checks pass. (07-23)
 
+### 本轮改進 (done)
+- [x] Add `memes dedup --visual` command — added `--visual` as user-friendly alias for `--phash`. Upgraded GIF hashing to multi-frame sampling (4 evenly-spaced frames averaged via numpy) instead of first-frame-only. Reduces false positives: 7→6 duplicate groups at threshold 10 (carlton-dance/whoa no longer falsely matched). Both `--visual` and `--phash` flags work. Help text updated. (07-23)
+
 ### 本轮改進
-- [ ] Add `memes dedup --visual` command — detect visually similar images across categories using perceptual hash (dhash). Currently only filename-based dedup exists; visual dedup catches renamed duplicates and near-identical frames.
+- [ ] Investigate cross-category near-duplicates flagged by visual dedup — 6 groups of cross-category matches exist (e.g. confused/squint = thinking/math-lady, debug-mood/angry-typing = working/keyboard-smash). Assess whether any should be consolidated via `memes retire` or if all are valid semantic duplicates.
 
 ## Archon (coleam00/Archon) — PR #2255 CodeRabbit Review
 
