@@ -1148,3 +1148,37 @@ document.addEventListener('click', (e) => {
     setTimeout(() => openTripView(tripItem.dataset.tripId), 300);
   }
 });
+
+// === Trip FAB (quick access to latest active trip) ===
+function updateTripFab() {
+  let fab = document.getElementById('tripFab');
+  const trips = getTrips();
+  // Find latest trip with pending steps
+  const activeTrip = [...trips].reverse().find(t => 
+    t.days.some(d => d.steps.some(s => s.status !== 'good' && s.status !== 'bad'))
+  );
+  
+  if (!activeTrip) {
+    if (fab) fab.style.display = 'none';
+    return;
+  }
+  
+  if (!fab) {
+    fab = document.createElement('div');
+    fab.id = 'tripFab';
+    fab.className = 'trip-fab';
+    document.body.appendChild(fab);
+  }
+  
+  const plan = PLANS.find(p => p.id === activeTrip.planId);
+  const totalSteps = activeTrip.days.reduce((a, d) => a + d.steps.length, 0);
+  const doneSteps = activeTrip.days.reduce((a, d) => a + d.steps.filter(s => s.status === 'good' || s.status === 'bad').length, 0);
+  const pct = Math.round(doneSteps / totalSteps * 100);
+  
+  fab.innerHTML = `<span class="fab-icon">🚶</span><span class="fab-text">${pct}%</span>`;
+  fab.style.display = 'flex';
+  fab.onclick = () => openTripView(activeTrip.id);
+}
+
+// Update FAB on page load and after trip changes
+updateTripFab();
