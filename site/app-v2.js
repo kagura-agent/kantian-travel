@@ -269,7 +269,7 @@ function initCardMaps(plans) {
     const mapEl = document.getElementById(`cardMap-${plan.id}`);
     if (!mapEl) return;
     setTimeout(() => {
-      const map = L.map(mapEl, {
+      try { const map = L.map(mapEl, {
         zoomControl: false, attributionControl: false,
         dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
         touchZoom: false, boxZoom: false, keyboard: false, tap: false
@@ -298,7 +298,7 @@ function initCardMaps(plans) {
           icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
         }).addTo(map);
       });
-      map.fitBounds(pts, { padding: [20, 20] });
+      map.fitBounds(pts, { padding: [20, 20] }); } catch(e) { console.error("Card map error:", e); }
     }, 200);
   });
 }
@@ -692,7 +692,7 @@ function renderDetailMap(plan) {
   setTimeout(() => {
     const mapEl = document.getElementById('routeMap');
     if (!mapEl) return;
-    const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+    try { const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
     const pts = route.map(p => [p.lat, p.lng]);
     const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
@@ -710,7 +710,7 @@ function renderDetailMap(plan) {
       const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
       L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
     });
-    map.fitBounds(pts, { padding: [35, 35] });
+    map.fitBounds(pts, { padding: [35, 35] }); } catch(e) { console.error("Detail map error:", e); }
   }, 300);
 }
 
@@ -720,7 +720,7 @@ function renderDayMap(plan, dayIdx) {
   setTimeout(() => {
     const mapEl = document.getElementById('dayRouteMap');
     if (!mapEl) return;
-    const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+    try { const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
     const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
     fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
@@ -731,7 +731,7 @@ function renderDayMap(plan, dayIdx) {
       L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
         .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
     });
-    map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] });
+    map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] }); } catch(e) { console.error("Day map error:", e); }
   }, 300);
 }
 
