@@ -224,6 +224,48 @@ const PLANS = [
       fullItinerary:[{label:'Day 1',content:'出发去苏州站→高铁25min到杭州站→换乘高铁40min到建德站→打车到新安江→新安江夜游→入住建德酒店'},{label:'Day 2',content:'打车到大慈岩景区→大慈岩→下涯湿地(晨雾绝美)→入住建德'},{label:'Day 3',content:'租车/自驾2h到丽水→古堰画乡→入住丽水酒店'},{label:'Day 4',content:'自驾1h到缙云仙都景区→鼎湖峰→朱潭山→入住缙云'},{label:'Day 5',content:'自驾1.5h到仙居神仙居景区→神仙居全天→自驾/高铁返回苏州→回家'}],
       accommodation:'各地民宿¥200-400/晚。'
     }
+  },
+  {
+    id: 15, title: '平江路商圈走走', transit: '地铁30min', duration: '半天', category: 'now',
+    stayType: '当天往返', price: '人均¥100',
+    route: [{name:'苏州',lat:31.299,lng:120.585},{name:'平江路',lat:31.318,lng:120.632},{name:'苏州',lat:31.299,lng:120.585}],
+    days: [
+      {label:'今天',activity:'平江路赶集+独墓湖散步',photo:'photo-1528164344705-47542687000d',weather:{icon:'☀️',temp:'33°'}}
+    ],
+    legs: ['🚇 30min'],
+    detail: {
+      transitInfo:['地铁30min 到平江路站'],
+      fullItinerary:[{label:'下午',content:'地铁到平江路站→平江路赶集→诚品书店→独墓湖散步→湖边咖啡→地铁回家'}],
+      accommodation:'当天往返。'
+    }
+  },
+  {
+    id: 16, title: '金鸡湖日落骑行', transit: '骑行/自驾20min', duration: '半天', category: 'now',
+    stayType: '当天往返', price: '人均¥50',
+    route: [{name:'苏州',lat:31.299,lng:120.585},{name:'金鸡湖',lat:31.327,lng:120.598},{name:'苏州',lat:31.299,lng:120.585}],
+    days: [
+      {label:'今天',activity:'环湖骑行+看日落',photo:'photo-1501785888041-af3ef285b470',weather:{icon:'☀️',temp:'33°'}}
+    ],
+    legs: ['🚲 20min'],
+    detail: {
+      transitInfo:['骑行/自驾20min到金鸡湖'],
+      fullItinerary:[{label:'傍晚',content:'骑行/自驾20min到金鸡湖→环湖绿道骑行→湖边野餐→看日落→骑回家'}],
+      accommodation:'当天往返。'
+    }
+  },
+  {
+    id: 17, title: '观前街夜市+护城河', transit: '步行/地铁15min', duration: '晚上', category: 'now',
+    stayType: '当天往返', price: '人均¥80',
+    route: [{name:'苏州',lat:31.299,lng:120.585},{name:'观前街',lat:31.309,lng:120.625},{name:'苏州',lat:31.299,lng:120.585}],
+    days: [
+      {label:'今晚',activity:'夜市扫街+护城河夜景',photo:'photo-1470004914212-05527e49370b',weather:{icon:'🌙',temp:'28°'}}
+    ],
+    legs: ['🚶 15min'],
+    detail: {
+      transitInfo:['步行/地铁15min 到观前街'],
+      fullItinerary:[{label:'晚上',content:'步行/地铁到观前街→夜市扫街→护城河游船→河边散步→回家'}],
+      accommodation:'当天往返。'
+    }
   }
 ];
 

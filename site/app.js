@@ -95,6 +95,7 @@ const timeTabs = document.getElementById('timeTabs');
 
 // === Filter ===
 const filterMap = {
+  'now': ['now'],
   'tomorrow': ['tomorrow'],
   'weekend': ['weekend'],
   'next-weekend': ['weekend'],
