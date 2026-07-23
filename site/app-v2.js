@@ -63,25 +63,25 @@ function routeOverlaySVG(route, totalH) {
 function weatherOverlaySVG(days) {
   const n = days.length;
   const temps = days.map(d => parseInt(d.weather.temp));
-  const minT = Math.min(...temps) - 2, maxT = Math.max(...temps) + 2;
+  const minT = Math.min(...temps) - 2;
+  const maxT = Math.max(...temps) + 2;
   const range = maxT - minT || 1;
-  const stripH = 120; // must match CSS .day-strip height
-  const W = 70, H = n * stripH;
-  const padX = 8, padY = 20;
-  const chartW = W - padX * 2;
-  const points = days.map((d, i) => ({
-    x: padX + (chartW * 0.5),
-    y: padY + (i / Math.max(n - 1, 1)) * (H - padY * 2),
-    icon: d.weather.icon, temp: d.weather.temp
-  }));
+  const stripH = 120;
+  const W = 70;
+  const H = n * stripH;
   let svg = `<svg class="weather-overlay" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
+  const points = days.map((d, i) => {
+    const y = (i * stripH) + (stripH / 2);
+    const x = 10 + ((parseInt(d.weather.temp) - minT) / range) * 30;
+    return { x, y, ...d.weather };
+  });
   if (n > 1) {
-    const line = points.map(p => `${p.x},${p.y}`).join(' ');
-    svg += `<polyline points="${line}" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" stroke-linecap="round"/>`;
+    const linePts = points.map(p => `${p.x},${p.y}`).join(' ');
+    svg += `<polyline points="${linePts}" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
   points.forEach(p => {
-    svg += `<circle cx="${p.x}" cy="${p.y}" r="3" fill="#fff"/>`;
-    svg += `<text x="${p.x}" y="${p.y - 8}" text-anchor="middle" font-size="11" fill="#fff" font-weight="600" style="text-shadow:0 1px 2px rgba(0,0,0,.7)">${p.icon}${p.temp}</text>`;
+    svg += `<circle cx="${p.x}" cy="${p.y}" r="3.5" fill="#fff" stroke="#FF6B4A" stroke-width="1.5"/>`;
+    svg += `<text x="${p.x + 7}" y="${p.y + 4}" font-size="10" fill="#fff" font-weight="600" style="text-shadow:0 1px 3px rgba(0,0,0,.9)">${p.icon}${p.temp}</text>`;
   });
   svg += '</svg>';
   return svg;
@@ -121,10 +121,19 @@ function imgUrl(id) {
 function renderCards() {
   const categories = filterMap[currentFilter];
   const filtered = PLANS.filter(p => categories.includes(p.category));
-  const stripH = 120;
-  cardList.innerHTML = filtered.map(plan => {
+  cardList.innerHTML = '';
+  if (filtered.length === 0) {
+    cardList.innerHTML = '<div class="empty-state"><p>这个时间段暂无推荐</p><p class="empty-sub">换个时间看看？</p></div>';
+    return;
+  }
+  filtered.forEach((plan, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.animationDelay = `${idx * 0.08}s`;
     const d = derivePlan(plan);
     const isSaved = savedIds.has(plan.id);
+    const stripH = 120;
+    const totalPhotoH = plan.days.length * stripH;
     const photoStack = plan.days.map((day, i) => `
       <div class="day-strip">
         <img class="day-photo" data-src="${imgUrl(day.photo)}" alt="${day.activity}" loading="lazy">
@@ -134,38 +143,90 @@ function renderCards() {
         </div>
       </div>
     `).join('');
-    const totalPhotoH = plan.days.length * stripH;
-    return `
-      <div class="card" data-id="${plan.id}">
-        <div class="card-photos" data-days="${plan.days.length}">
-          ${photoStack}
-          ${weatherOverlaySVG(plan.days)}
-          ${routeOverlaySVG(plan.route, totalPhotoH)}
+    // Compute total cost from bookings
+    const allBookings = plan.days.flatMap(dy => dy.steps.flatMap(s => s.bookings || []));
+    const totalCost = allBookings.reduce((a, b) => {
+      const m = (b.cost || '').match(/(\d+)/); return a + (m ? parseInt(m[1]) : 0);
+    }, 0);
+    const priceLabel = totalCost > 0 ? `约¥${totalCost}/人` : `${d.stayType} ${d.stayPrice}`;
+    card.innerHTML = `
+      <div class="card-photos" data-days="${plan.days.length}">
+        ${photoStack}
+        ${weatherOverlaySVG(plan.days)}
+        <button class="card-heart ${isSaved ? 'saved' : ''}" data-id="${plan.id}">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <span class="card-duration">${d.duration}</span>
+      </div>
+      <div class="card-info">
+        <h3 class="card-title">${plan.title}</h3>
+        <div class="card-meta">
+          <span class="card-transit">${d.transitLabel}</span>
+          <span class="card-price">${priceLabel}</span>
         </div>
-        <div class="card-info">
-          <div class="card-top-row">
-            <h3 class="card-title">${plan.title}</h3>
-            <span class="card-duration">${d.duration}</span>
-          </div>
-          <p class="card-transit">🚄 ${d.transitLabel}</p>
-          <div class="card-bottom-row">
-            <span class="card-price">${d.stayType} ${d.stayPrice}</span>
-            <button class="card-heart ${isSaved ? 'saved' : ''}" data-id="${plan.id}" onclick="event.stopPropagation();toggleSave('${plan.id}',this)">❤️</button>
-          </div>
-        </div>
+        ${plan.route && plan.route.length > 1 ? `<div class="card-timeline" id="timeline-${plan.id}"></div><div class="card-map" id="cardMap-${plan.id}"></div>` : ''}
       </div>
     `;
-  }).join('');
-  initCardMaps(filtered);
+    card.addEventListener('click', (e) => { if (e.target.closest('.card-heart')) return; openDetail(plan); });
+    const heartBtn = card.querySelector('.card-heart');
+    heartBtn.addEventListener('click', (e) => { e.stopPropagation(); toggleSave(plan.id, heartBtn); });
+    cardList.appendChild(card);
+  });
   lazyLoadImages();
+  initCardMaps(filtered);
+  initTimelines(filtered);
+}
 
-  cardList.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-      const plan = PLANS.find(p => String(p.id) === card.dataset.id);
-      if (plan) openDetail(plan);
+// === Timeline Gantt Bar (from steps) ===
+function initTimelines(plans) {
+  const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6' };
+  plans.forEach(plan => {
+    const el = document.getElementById(`timeline-${plan.id}`);
+    if (!el) return;
+    // Build timeline segments from steps
+    const segs = [];
+    let hourOffset = 0;
+    plan.days.forEach((day, dayIdx) => {
+      day.steps.forEach(step => {
+        const start = hourOffset + _timeToHours(step.startTime);
+        const end = hourOffset + _timeToHours(step.endTime || step.startTime);
+        let type = 'play';
+        if (step.type === 'transit' || step.type === 'depart') type = 'travel';
+        else if (step.type === 'stay') type = 'sleep';
+        const cost = step.bookings?.find(b => b.cost)?.cost || '';
+        segs.push({ type, label: step.text.substring(0, 20), start, end, cost });
+      });
+      if (dayIdx < plan.days.length - 1) {
+        const lastStep = day.steps[day.steps.length - 1];
+        const lastEnd = hourOffset + _timeToHours(lastStep?.endTime || '22:00');
+        segs.push({ type: 'sleep', label: '住宿', start: lastEnd, end: hourOffset + 24, cost: '' });
+        hourOffset += 24;
+      }
     });
+    if (!segs.length) return;
+    const base = segs[0].start;
+    segs.forEach(s => { s.start -= base; s.end -= base; });
+    const totalH = segs[segs.length - 1].end;
+    if (totalH <= 0) return;
+    let html = '<div class="tl-bar">';
+    segs.forEach(seg => {
+      const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+      const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost ? `<span class="tl-cost">${seg.cost}</span>` : '';
+      html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
+    });
+    html += '</div>';
+    const travelH = segs.filter(s=>s.type==='travel').reduce((a,s)=>a+(s.end-s.start),0);
+    const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
+    const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
+    html += '<div class="tl-legend">';
+    html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h</span>`;
+    html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h</span>`;
+    if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h</span>`;
+    html += '</div>';
+    el.innerHTML = html;
   });
 }
+function _timeToHours(t) { if (!t) return 8; const [h,m] = t.split(':').map(Number); return h + m/60; }
 
 // === Init Card Maps ===
 function initCardMaps(plans) {
