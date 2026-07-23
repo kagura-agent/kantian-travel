@@ -950,7 +950,7 @@ function openTripView(tripId) {
         <div class="tl-step" data-day="${dayIdx}" data-step="${si}">
           <div class="tl-left">
             <span class="tl-time">${step.startTime || ""}</span>
-            <div class="tl-dot" style="background:${color}"></div>
+            <div class="tl-dot tl-dot-del" style="background:${color}" data-day="${dayIdx}" data-step="${si}" title="删除此步"></div>
             ${si < day.steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ""}
           </div>
           <div class="tl-right">
@@ -973,7 +973,6 @@ function openTripView(tripId) {
               <div class="trip-votes">
                 <button class="vote-btn vote-up" data-day="${dayIdx}" data-step="${si}" data-type="likes">👍<span class="vote-count">${stepData.likes || ""}</span></button>
                 <button class="vote-btn vote-down" data-day="${dayIdx}" data-step="${si}" data-type="dislikes">👎<span class="vote-count">${stepData.dislikes || ""}</span></button>
-                <button class="vote-btn vote-del" data-day="${dayIdx}" data-step="${si}">✕</button>
               </div>
             </div>
           </div>
@@ -1036,12 +1035,12 @@ function openTripView(tripId) {
       });
     });
 
-    // Delete step
-    tripContainer.querySelectorAll(".vote-del").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+    // Delete step via timeline dot
+    tripContainer.querySelectorAll(".tl-dot-del").forEach(dot => {
+      dot.addEventListener("click", (e) => {
         e.stopPropagation();
-        const di = parseInt(btn.dataset.day);
-        const si = parseInt(btn.dataset.step);
+        const di = parseInt(dot.dataset.day);
+        const si = parseInt(dot.dataset.step);
         if (confirm("删除这一步？")) {
           plan.days[di].steps.splice(si, 1);
           deleteTripStep(trip.id, di, si);
