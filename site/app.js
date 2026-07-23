@@ -604,42 +604,72 @@ function openDetail(plan) {
       return all.filter(c => words.some(w => c.title.toLowerCase().includes(w.toLowerCase())));
     }
 
-    // Build step-by-step itinerary as expandable accordion
+    // Compute step times from timeline data
+    function getStepTimes() {
+      const segs = dayTimeline;
+      const startH = currentFilter === 'now' ? new Date().getHours() : 8;
+      if (!segs || !segs.length) {
+        return steps.map((_, i) => {
+          const h = startH + Math.round(i * (10 / Math.max(steps.length, 1)));
+          return `${h}:00`;
+        });
+      }
+      const dayStart = segs[0].start;
+      const totalH = segs[segs.length - 1].end - dayStart;
+      return steps.map((_, i) => {
+        const frac = i / Math.max(steps.length - 1, 1);
+        const h = startH + frac * totalH;
+        const hour = Math.floor(h);
+        const min = Math.round((h - hour) * 60);
+        return `${hour}:${min < 10 ? '0' + min : min}`;
+      });
+    }
+    const stepTimes = getStepTimes();
+
+    function getStepColor(isTransit, isHome) {
+      if (isHome) return '#FF9800';
+      return isTransit ? '#BBBBC0' : '#34C759';
+    }
+
+    // Build step-by-step itinerary with vertical timeline
     function buildStepsHTML() {
-      let html = '<div class="day-steps">';
+      let html = '<div class="day-steps-timeline">';
       steps.forEach((step, i) => {
         const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达|下山/.test(step);
         const placeName = step
           .replace(/[\(\)（）].*/g, '')
-          .replace(/^.*?到/g, '')
-          .replace(/^.*?去/g, '')
+          .replace(/^.*?到/g, '').replace(/^.*?去/g, '')
           .replace(/(慢逛|闲逛|夜游|拍照|写生|徒步|骑行|品茶|观赏|休息|入住|散步|坐船|上岛|小酌|午餐|晚餐|早茶|早餐|吃|买|看|逛|游|玩|拍|走|祖福|神福|赏花|登山|打卡|泡半天|全天|返程|出发|到达|下山|上山|游览|采购|换乘|租车|还车|休整|游览).*$/g, '')
-          .replace(/(绝美|人超少|最美).*$/g, '')
-          .replace(/[\d]+km/g, '').trim();
+          .replace(/(绝美|人超少|最美).*$/g, '').replace(/[\d]+km/g, '').trim();
         const isHome = /^回家$/.test(placeName);
         const navUrl = `https://uri.amap.com/navigation?to=${encodeURIComponent(placeName)}&mode=car`;
-
-        // Per-step extras
         const stepBookings = getStepBookings(step);
         const stepTips = getStepTips(step);
         const stepContent = getStepContent(step);
-        const hasExtras = (!isHome && placeName) || stepBookings.length || stepTips.length || stepContent.length;
+        const color = getStepColor(isTransit, isHome);
+        const time = stepTimes[i] || '';
+        const typeLabel = isHome ? '到家' : isTransit ? '路上' : '玩';
 
         html += `
-          <div class="day-step expanded ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}">
-            <div class="step-header">
-              <div class="step-icon">${isHome ? '🏠' : isTransit ? '🚗' : '📍'}</div>
-              <span class="step-text">${step}</span>
-              ${hasExtras ? '<span class="step-arrow"></span>' : ''}
+          <div class="tl-step">
+            <div class="tl-left">
+              <span class="tl-time">${time}</span>
+              <div class="tl-dot" style="background:${color}"></div>
+              ${i < steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ''}
             </div>
-            ${!isHome ? `<div class="step-expand">
-              <a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>
-              ${stepBookings.length ? `<div class="step-bookings">${stepBookings.map(b => `<span class="booking-pill-sm">${b}</span>`).join('')}</div>` : ''}
-              ${stepContent.map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
-              ${stepTips.map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
-            </div>` : ''}
+            <div class="tl-right">
+              <div class="tl-step-header">
+                <span class="tl-type" style="color:${color}">${typeLabel}</span>
+                <span class="tl-step-text">${step}</span>
+              </div>
+              ${!isHome ? `<div class="tl-step-extras">
+                <a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>
+                ${stepBookings.length ? `<div class="step-bookings">${stepBookings.map(b => `<span class="booking-pill-sm">${b}</span>`).join('')}</div>` : ''}
+                ${stepContent.map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
+                ${stepTips.map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
+              </div>` : ''}
+            </div>
           </div>
-          ${i < steps.length - 1 ? '<div class="step-connector"></div>' : ''}
         `;
       });
       html += '</div>';
@@ -655,12 +685,7 @@ function openDetail(plan) {
         </div>
       </div>
 
-      ${dayTimeline ? buildDayTimelineHTML(dayTimeline) : ''}
-
-      <div class="detail-section">
-        <h4 class="detail-section-title">行程</h4>
-        ${buildStepsHTML()}
-      </div>
+      ${buildStepsHTML()}
 
       ${dayRoutePoints.length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
     `;

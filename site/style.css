@@ -178,19 +178,18 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 .hero-activity{position:absolute;bottom:0;left:0;right:0;padding:8px 14px;background:linear-gradient(to top,rgba(0,0,0,0.7),transparent);color:#fff;font-size:13px;font-weight:500}
 .hero-hourly{position:absolute;top:0;left:0;right:0;padding:8px;pointer-events:none}
 .hero-hourly .hourly-chart{width:100%;height:60px;display:block}
-/* Day step accordion */
-.day-steps{display:flex;flex-direction:column;gap:0}
-.day-step{border-radius:12px;overflow:hidden;background:#f9f9fb;margin-bottom:2px}
-.day-step[data-expandable="true"]{cursor:pointer}
-.step-header{display:flex;align-items:center;gap:10px;padding:12px 14px}
-.step-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.step-play .step-icon{background:#E8F5E9}
-.step-transit .step-icon{background:#E3F2FD}
-.step-home .step-icon{background:#FFF3E0}
-.step-text{flex:1;font-size:14px;color:#333;line-height:1.4}
-.step-arrow{font-size:18px;color:#bbb;transition:transform .2s;font-weight:700}
-.day-step.expanded .step-arrow{transform:rotate(90deg);color:var(--accent)}
-.step-expand{padding:0 14px 14px;overflow:hidden}
+/* Vertical timeline steps */
+.day-steps-timeline{display:flex;flex-direction:column}
+.tl-step{display:flex;gap:0}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:50px;flex-shrink:0;padding-top:2px}
+.tl-time{font-size:11px;color:#999;font-weight:600;white-space:nowrap}
+.tl-dot{width:10px;height:10px;border-radius:50%;margin:6px 0 0;flex-shrink:0}
+.tl-line{width:2px;flex:1;min-height:20px;margin-top:4px;opacity:0.4}
+.tl-right{flex:1;padding:0 0 16px;min-width:0}
+.tl-step-header{margin-bottom:6px}
+.tl-type{font-size:11px;font-weight:700;display:block;margin-bottom:2px}
+.tl-step-text{font-size:14px;color:#333;line-height:1.5;display:block}
+.tl-step-extras{margin-top:8px;display:flex;flex-direction:column;gap:6px}
 .step-nav-btn{display:inline-block;padding:6px 14px;border-radius:20px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;text-decoration:none;margin-bottom:8px}
 .step-bookings{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .booking-pill-sm{padding:4px 10px;border-radius:14px;background:#fff;border:1px solid #e0e0e0;font-size:11px;color:#666}
