@@ -1253,7 +1253,7 @@ function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
     let insertIdx = planDay.steps.length;
     if (startTime) {
       for (let i = 0; i < planDay.steps.length; i++) {
-        if (planDay.steps[i].startTime && planDay.steps[i].startTime > startTime) {
+        if (planDay.steps[i].startTime && _timeToMin(planDay.steps[i].startTime) > _timeToMin(startTime)) {
           insertIdx = i;
           break;
         }
