@@ -353,8 +353,62 @@ function openDetail(plan) {
   function buildOverviewHTML() {
     const allSteps = plan.days.flatMap(d => d.steps);
     const allTips = allSteps.flatMap(s => s.tips || []);
+    const transitSteps = allSteps.filter(s => s.type === 'transit');
+    const staySteps = allSteps.filter(s => s.type === 'stay');
+    const allContent = [
+      ...(plan.relatedContent || []),
+      ...allSteps.flatMap(s => s.relatedContent || [])
+    ];
+    const seenTitles = new Set();
+    const uniqueContent = allContent.filter(c => { if (seenTitles.has(c.title)) return false; seenTitles.add(c.title); return true; });
     const allBookings = allSteps.flatMap(s => s.bookings || []);
     const uniqueBookings = [...new Map(allBookings.map(b => [b.label, b])).values()];
+
+    // Build timeline bar from steps
+    function buildOverviewTimeline() {
+      const segs = [];
+      let hourOffset = 0;
+      plan.days.forEach((day, dayIdx) => {
+        day.steps.forEach(step => {
+          const start = hourOffset + _timeToHours(step.startTime);
+          const end = hourOffset + _timeToHours(step.endTime || step.startTime);
+          let type = 'play';
+          if (step.type === 'transit' || step.type === 'depart') type = 'travel';
+          else if (step.type === 'stay') type = 'sleep';
+          const cost = step.bookings?.find(b => b.cost)?.cost || '';
+          segs.push({ type, label: step.text.substring(0, 20), start, end, cost });
+        });
+        if (dayIdx < plan.days.length - 1) {
+          const lastStep = day.steps[day.steps.length - 1];
+          const lastEnd = hourOffset + _timeToHours(lastStep?.endTime || '22:00');
+          segs.push({ type: 'sleep', label: '住宿', start: lastEnd, end: hourOffset + 24, cost: '' });
+          hourOffset += 24;
+        }
+      });
+      if (!segs.length) return '';
+      const base = segs[0].start;
+      segs.forEach(s => { s.start -= base; s.end -= base; });
+      const totalH = segs[segs.length - 1].end;
+      if (totalH <= 0) return '';
+      const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6' };
+      let html = '<div class="detail-section"><h4 class="detail-section-title">时间分配</h4><div class="tl-bar">';
+      segs.forEach(seg => {
+        const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+        const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost ? `<span class="tl-cost">${seg.cost}</span>` : '';
+        html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
+      });
+      html += '</div>';
+      const travelH = segs.filter(s=>s.type==='travel').reduce((a,s)=>a+(s.end-s.start),0);
+      const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
+      const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
+      html += '<div class="tl-legend">';
+      html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h</span>`;
+      html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h</span>`;
+      if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h</span>`;
+      html += '</div></div>';
+      return html;
+    }
+
     return `
       <div class="detail-photo-weather">
         <div class="detail-hero-photo">
@@ -363,10 +417,12 @@ function openDetail(plan) {
         </div>
       </div>
 
+      ${buildOverviewTimeline()}
+
       ${plan.route ? '<div class="detail-section"><h4 class="detail-section-title">路线地图</h4><div id="routeMap" class="route-map"></div></div>' : ''}
 
       <div class="detail-section">
-        <h4 class="detail-section-title">行程概要</h4>
+        <h4 class="detail-section-title">行程概览</h4>
         ${plan.days.map((day, i) => `
           <div class="detail-itin-day">
             <span class="di-label">${dayDates[i]}</span>
@@ -375,12 +431,36 @@ function openDetail(plan) {
         `).join('')}
       </div>
 
-      ${allTips.length ? `<div class="detail-section"><h4 class="detail-section-title">小贴士</h4><div class="detail-tips">${allTips.map(t => `<div class="tip-item">💡 ${t}</div>`).join('')}</div></div>` : ''}
+      <div class="detail-section">
+        <h4 class="detail-section-title">交通信息</h4>
+        <div class="detail-transit-info">
+          ${transitSteps.map(s => {
+            const cost = s.bookings?.find(b => b.cost)?.cost || '';
+            return `<p class="dt-row">${s.text}${cost ? ' ' + cost : ''}</p>`;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4 class="detail-section-title">住宿</h4>
+        <p class="detail-stay">${staySteps.map(s => {
+          const cost = s.bookings?.find(b => b.cost)?.cost || '';
+          return `${s.description || s.text}${cost ? '，' + cost : ''}`;
+        }).join('。') || '当天往返。'}</p>
+      </div>
+
+      ${allTips.length ? `
+      <div class="detail-section">
+        <h4 class="detail-section-title">小贴士</h4>
+        <div class="detail-tips">
+          ${allTips.map(t => `<div class="tip-item">💡 ${t}</div>`).join('')}
+        </div>
+      </div>` : ''}
 
       <div class="detail-section">
         <h4 class="detail-section-title">种草内容</h4>
         <div class="related-content">
-          ${(plan.relatedContent || []).map(c => `
+          ${uniqueContent.map(c => `
             <div class="related-card" style="border-left:3px solid ${c.color || '#FF6B4A'}">
               <div class="rc-header">
                 <span class="rc-platform">${c.icon} ${c.platform}</span>
@@ -392,7 +472,12 @@ function openDetail(plan) {
         </div>
       </div>
 
-      ${uniqueBookings.length ? `<div class="detail-section"><h4 class="detail-section-title">预订</h4><div class="detail-booking-pills">${uniqueBookings.map(b => `<span class="booking-pill">${b.label} ${b.cost || ''} →</span>`).join('')}</div></div>` : ''}
+      <div class="detail-section">
+        <h4 class="detail-section-title">预订</h4>
+        <div class="detail-booking-pills">
+          ${uniqueBookings.map(b => `<span class="booking-pill">${b.label} ${b.cost || ''} →</span>`).join('')}
+        </div>
+      </div>
     `;
   }
 
