@@ -290,14 +290,7 @@ function initCardMaps(plans) {
           radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
         }).addTo(map);
       });
-      const d = derivePlan(plan);
-      d.legs.forEach((leg, i) => {
-        if (i >= pts.length - 1) return;
-        const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
-        L.marker([midLat, midLng], {
-          icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
-        }).addTo(map);
-      });
+
       map.fitBounds(pts, { padding: [20, 20] }); } catch(e) { console.error("Card map error:", e); }
     }, 200);
   });
@@ -704,12 +697,6 @@ function renderDetailMap(plan) {
     route.forEach((p, i) => {
       L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
         .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
-    });
-    const d = derivePlan(plan);
-    d.legs.forEach((leg, i) => {
-      if (i >= pts.length - 1) return;
-      const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
-      L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
     });
     map.fitBounds(pts, { padding: [35, 35] }); } catch(e) { console.error("Detail map error:", e); }
   }, 300);
