@@ -626,14 +626,14 @@ function openDetail(plan) {
         const hasExtras = (!isHome && placeName) || stepBookings.length || stepTips.length || stepContent.length;
 
         html += `
-          <div class="day-step ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}" data-expandable="${hasExtras ? 'true' : 'false'}">
+          <div class="day-step expanded ${isTransit ? 'step-transit' : isHome ? 'step-home' : 'step-play'}">
             <div class="step-header">
               <div class="step-icon">${isHome ? '🏠' : isTransit ? '🚗' : '📍'}</div>
               <span class="step-text">${step}</span>
-              ${hasExtras ? '<span class="step-arrow">›</span>' : ''}
+              ${hasExtras ? '<span class="step-arrow"></span>' : ''}
             </div>
-            ${hasExtras ? `<div class="step-expand">
-              ${!isHome ? `<a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>` : ''}
+            ${!isHome ? `<div class="step-expand">
+              <a class="step-nav-btn" href="${navUrl}" target="_blank">📍 导航到${placeName}</a>
               ${stepBookings.length ? `<div class="step-bookings">${stepBookings.map(b => `<span class="booking-pill-sm">${b}</span>`).join('')}</div>` : ''}
               ${stepContent.map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
               ${stepTips.map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}

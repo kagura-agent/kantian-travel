@@ -190,8 +190,7 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 .step-text{flex:1;font-size:14px;color:#333;line-height:1.4}
 .step-arrow{font-size:18px;color:#bbb;transition:transform .2s;font-weight:700}
 .day-step.expanded .step-arrow{transform:rotate(90deg);color:var(--accent)}
-.step-expand{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 14px}
-.day-step.expanded .step-expand{max-height:500px;padding:0 14px 14px}
+.step-expand{padding:0 14px 14px;overflow:hidden}
 .step-nav-btn{display:inline-block;padding:6px 14px;border-radius:20px;background:var(--accent);color:#fff;font-size:12px;font-weight:600;text-decoration:none;margin-bottom:8px}
 .step-bookings{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .booking-pill-sm{padding:4px 10px;border-radius:14px;background:#fff;border:1px solid #e0e0e0;font-size:11px;color:#666}
