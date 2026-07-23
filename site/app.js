@@ -246,22 +246,8 @@ function initCardMaps(plans) {
             L.polyline(rc, { color: '#4A90D9', weight: 2.5, opacity: 0.7, dashArray: '8,6' }).addTo(map);
           }
         }).catch(() => {});
-      plan.route.forEach((p, i) => {
-        L.circleMarker([p.lat, p.lng], {
-          radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
-        }).addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
-      });
-      // Transport labels between points
-      if (plan.legs) {
-        plan.legs.forEach((leg, i) => {
-          if (i >= pts.length - 1) return;
-          const midLat = (pts[i][0] + pts[i+1][0]) / 2;
-          const midLng = (pts[i][1] + pts[i+1][1]) / 2;
-          L.marker([midLat, midLng], {
-            icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
-          }).addTo(map);
-        });
-      }
+
+
       map.fitBounds(pts, { padding: [35, 35], maxZoom: 11 });
     });
   }, 500);
