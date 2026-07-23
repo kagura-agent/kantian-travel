@@ -1201,6 +1201,11 @@ function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
       <h3>添加行程</h3>
       <input type="text" id="addStepText" placeholder="做什么？如：午餐吃火锅" class="add-step-input">
       <input type="text" id="addStepPlace" placeholder="在哪？如：海底捞(平江路店)" class="add-step-input">
+      <div class="add-step-time-row">
+        <input type="time" id="addStepStart" class="add-step-time" value="12:00">
+        <span class="time-sep">→</span>
+        <input type="time" id="addStepEnd" class="add-step-time" value="13:00">
+      </div>
       <div class="add-step-types">
         <button class="type-btn active" data-type="play">📍 玩</button>
         <button class="type-btn" data-type="eat">🍽️ 吃</button>
@@ -1230,6 +1235,8 @@ function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
   overlay.querySelector('.add-step-confirm').addEventListener('click', () => {
     const text = document.getElementById('addStepText').value.trim();
     const place = document.getElementById('addStepPlace').value.trim();
+    const startTime = document.getElementById("addStepStart").value || "";
+    const endTime = document.getElementById("addStepEnd").value || "";
     if (!text) return;
     
     // Also add to plan data for this trip (so rendering works)
@@ -1237,8 +1244,8 @@ function showAddStepForm(tripId, plan, dayIdx, afterStepIdx, renderFn) {
     const newPlanStep = {
       text: text,
       type: selectedType,
-      startTime: '',
-      endTime: '',
+      startTime: startTime,
+      endTime: endTime,
       description: '',
     };
     if (place) newPlanStep.place = { name: place };
