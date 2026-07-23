@@ -1028,10 +1028,34 @@ function openTripView(tripId) {
       <div class="view-tabs-row">${dayTabs}</div>
       <div class="trip-swipe-hint">← 左滑👍好 · 右滑👎不行 →</div>
       <div class="day-steps-timeline">${stepsHTML}</div>
+      ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="tripRouteMap" class="route-map"></div></div>' : ''}
     `;
 
     // Back button
     document.getElementById('tripBack').addEventListener('click', closeTripView);
+
+    // Render trip day map
+    const tripRoute = getDayRoutePoints(plan, dayIdx);
+    if (tripRoute.length >= 2 && window.L) {
+      setTimeout(() => {
+        const mapEl = document.getElementById('tripRouteMap');
+        if (!mapEl) return;
+        try {
+          const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+          const coords = tripRoute.map(p => `${p.lng},${p.lat}`).join(';');
+          fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
+            .then(r => r.json()).then(data => {
+              if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
+            }).catch(() => {});
+          tripRoute.forEach((p, i) => {
+            L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
+              .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
+          });
+          map.fitBounds(tripRoute.map(p => [p.lat, p.lng]), { padding: [40, 40] });
+        } catch(e) { console.error('Trip map error:', e); }
+      }, 300);
+    }
 
     // Share button
     document.getElementById('tripShareBtn2').addEventListener('click', () => {
