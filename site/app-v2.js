@@ -1183,6 +1183,8 @@ function deleteTripStep(tripId, dayIdx, stepIdx) {
   }
 }
 
+function _timeToMin(t) { if (!t) return 0; const [h,m] = t.split(":").map(Number); return h * 60 + m; }
+
 function addTripStep(tripId, dayIdx, afterStepIdx, stepData) {
   const trips = getTrips();
   const trip = trips.find(t => t.id === tripId);
