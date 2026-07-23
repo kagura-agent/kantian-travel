@@ -998,6 +998,7 @@ function openTripView(tripId) {
                     ${step.place?.name ? `<a class="step-action-btn" href="https://uri.amap.com/navigation?to=${encodeURIComponent(step.place.name)}&mode=car" target="_blank">📍 导航到${step.place.name}</a>` : ''}
                     ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? ' '+b.cost : ''}</span>`).join('')}
                   </div>
+                  ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
                   ${(step.tips || []).map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
                 </div>` : ''}
               </div>
