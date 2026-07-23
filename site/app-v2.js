@@ -1175,7 +1175,7 @@ function updateTripFab() {
   const doneSteps = activeTrip.days.reduce((a, d) => a + d.steps.filter(s => s.status === 'good' || s.status === 'bad').length, 0);
   const pct = Math.round(doneSteps / totalSteps * 100);
   
-  fab.innerHTML = '<span class="fab-icon">🐾</span>';
+  fab.innerHTML = '<span class="fab-icon">🦶</span>';
   fab.style.display = 'flex';
   fab.onclick = () => openTripView(activeTrip.id);
 }
