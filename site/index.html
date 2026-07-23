@@ -61,6 +61,44 @@
   </div>
 </div>
 
+<!-- Settings Panel -->
+<div class="settings-overlay" id="settingsOverlay">
+  <div class="settings-panel">
+    <div class="settings-header">
+      <h2>设置</h2>
+      <button class="detail-close" id="settingsClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="settings-body">
+      <div class="settings-section">
+        <h3 class="settings-label">📍 当前位置</h3>
+        <div class="city-options" id="cityOptions">
+          <button class="city-btn active" data-city="苏州">苏州</button>
+          <button class="city-btn" data-city="上海">上海</button>
+          <button class="city-btn" data-city="杭州">杭州</button>
+          <button class="city-btn" data-city="南京">南京</button>
+          <button class="city-btn" data-city="无锡">无锡</button>
+        </div>
+        <p class="settings-hint">通常自动定位，也可以手动切换</p>
+      </div>
+      <div class="settings-section">
+        <h3 class="settings-label">🗓️ 显示时间标签</h3>
+        <div class="tag-options" id="tagOptions">
+          <label class="tag-toggle"><input type="checkbox" data-tag="now" checked><span>现在</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="tomorrow" checked><span>明天</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="weekend" checked><span>这周末</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="next-weekend" checked><span>下周末</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="3day" checked><span>请3天假</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="5day" checked><span>小长假5天</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="week" checked><span>找7天连晴</span></label>
+        </div>
+        <p class="settings-hint">关掉不需要的标签，只看你关心的时间段</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="data-final.js?v=2"></script>
 <script src="app-v2.js?v=4"></script>
 </body>

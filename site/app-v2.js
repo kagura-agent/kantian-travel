@@ -781,3 +781,37 @@ shortlistClose.addEventListener('click', closeShortlist);
 
 // === Init ===
 renderCards();
+
+// === Settings Panel ===
+const settingsOverlay = document.getElementById('settingsOverlay');
+const settingsClose = document.getElementById('settingsClose');
+const locationBtn = document.getElementById('locationBtn');
+
+locationBtn.addEventListener('click', () => {
+  settingsOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+settingsClose.addEventListener('click', () => {
+  settingsOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+});
+settingsOverlay.addEventListener('click', (e) => {
+  if (e.target === settingsOverlay) { settingsOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+});
+
+// City switch
+document.getElementById('cityOptions').addEventListener('click', (e) => {
+  const btn = e.target.closest('.city-btn');
+  if (!btn) return;
+  document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelector('.loc-name').textContent = btn.dataset.city;
+});
+
+// Tag toggle
+document.getElementById('tagOptions').addEventListener('change', () => {
+  const checked = [...document.querySelectorAll('#tagOptions input:checked')].map(i => i.dataset.tag);
+  document.querySelectorAll('#timeTabs .tab').forEach(tab => {
+    tab.style.display = checked.includes(tab.dataset.filter) ? '' : 'none';
+  });
+});
