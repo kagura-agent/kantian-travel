@@ -633,6 +633,16 @@ function openDetail(plan) {
 
     // Build step-by-step itinerary with vertical timeline
     function buildStepsHTML() {
+      // Compute durations between steps for proportional line heights
+      const durations = stepTimes.map((t, i) => {
+        if (i >= stepTimes.length - 1) return 0;
+        const [h1, m1] = t.split(':').map(Number);
+        const [h2, m2] = stepTimes[i+1].split(':').map(Number);
+        return Math.max((h2 * 60 + m2) - (h1 * 60 + m1), 10); // minutes, min 10
+      });
+      const maxDur = Math.max(...durations, 1);
+      const minLineH = 16, maxLineH = 80; // px range
+
       let html = '<div class="day-steps-timeline">';
       steps.forEach((step, i) => {
         const isTransit = /高铁|火车|自驾|打车|坐车|转车|公交|地铁|返程|出发|到达|下山/.test(step);
@@ -655,7 +665,7 @@ function openDetail(plan) {
             <div class="tl-left">
               <span class="tl-time">${time}</span>
               <div class="tl-dot" style="background:${color}"></div>
-              ${i < steps.length - 1 ? `<div class="tl-line" style="background:${color}"></div>` : ''}
+              ${i < steps.length - 1 ? `<div class="tl-line" style="background:${color};min-height:${Math.round(minLineH + (durations[i] / maxDur) * (maxLineH - minLineH))}px"></div>` : ''}
             </div>
             <div class="tl-right">
               <div class="tl-step-header">
