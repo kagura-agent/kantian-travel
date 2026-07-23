@@ -29,6 +29,23 @@ function derivePlan(plan) {
   return { duration, transitLabel, stayType, stayPrice, legs };
 }
 
+// Add directional arrows along route
+function addRouteArrows(map, routePoints) {
+  for (let i = 0; i < routePoints.length - 1; i++) {
+    const p1 = routePoints[i], p2 = routePoints[i + 1];
+    const midLat = (p1.lat + p2.lat) / 2;
+    const midLng = (p1.lng + p2.lng) / 2;
+    const angle = Math.atan2(p2.lng - p1.lng, p2.lat - p1.lat) * 180 / Math.PI;
+    L.marker([midLat, midLng], {
+      icon: L.divIcon({
+        className: 'route-arrow',
+        html: `<div style="transform:rotate(${90 - angle}deg)">▶</div>`,
+        iconSize: [16, 16], iconAnchor: [8, 8]
+      })
+    }).addTo(map);
+  }
+}
+
 function timeDiffMin(a, b) {
   if (!a || !b) return 30;
   const [h1,m1] = a.split(':').map(Number);
@@ -297,6 +314,7 @@ function initCardMaps(plans) {
           icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [50, 14], iconAnchor: [25, 7] })
         }).addTo(map);
       });
+      addRouteArrows(map, route);
       map.fitBounds(pts, { padding: [20, 20] });
     }, 200);
   });
@@ -653,6 +671,7 @@ function renderDetailMap(plan) {
       const midLat = (pts[i][0] + pts[i+1][0]) / 2, midLng = (pts[i][1] + pts[i+1][1]) / 2;
       L.marker([midLat, midLng], { icon: L.divIcon({ className: 'leg-label', html: leg, iconSize: [60, 16], iconAnchor: [30, 8] }) }).addTo(map);
     });
+    addRouteArrows(map, route);
     map.fitBounds(pts, { padding: [35, 35] });
   }, 300);
 }
@@ -674,6 +693,7 @@ function renderDayMap(plan, dayIdx) {
       L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
         .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
     });
+    addRouteArrows(map, route);
     map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] });
   }, 300);
 }
