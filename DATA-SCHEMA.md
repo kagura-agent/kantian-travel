@@ -100,7 +100,9 @@ interface TravelStep {
   // 基本信息
   text: string;                  // 显示文本 "高铁47min到德清站"
   type: StepType;                // 步骤类型
-  time: string;                  // 预计时间 "8:47"
+  startTime: string;             // 开始时间 "8:30"
+  endTime: string;               // 结束时间 "9:17"
+  // duration 从 endTime - startTime 推导，不单独存
   
   // 目的地（导航用）
   place?: {
@@ -111,11 +113,9 @@ interface TravelStep {
 
   // 详细信息（展开显示）
   description?: string;          // "出站右手边出租车排队区，或提前叫网约车"
-  duration?: string;             // "47min" | "2-3h"
-  cost?: string;                 // "¥28.5" | "免费"
   
-  // 关联操作
-  bookings?: BookingItem[];      // 订票入口
+  // 关联操作（cost 挂在具体 item 上）
+  bookings?: BookingItem[];      // 订票入口，每个有自己的 cost
   tips?: string[];               // 提醒/贴士
   relatedContent?: ContentItem[];// 种草推荐（跟这一步相关的）
 }
@@ -132,9 +132,10 @@ type StepType =
 
 // === 预订入口 ===
 interface BookingItem {
-  type: BookingType;
+  type: BookingType;             // 'train' | 'ticket' | 'hotel' ...
   label: string;                 // "查高铁票"
-  url?: string;                  // 跳转链接（12306/携程/美团等）
+  cost?: string;                 // "¥28.5"（费用挂在这里）
+  url?: string;                  // 跳转链接
 }
 
 type BookingType = 
@@ -191,42 +192,42 @@ interface ContentItem {
         {
           "text": "出发去苏州站",
           "type": "depart",
-          "time": "8:00",
+          "startTime": "8:00",
+          "endTime": "8:30",
           "place": {"name": "苏州站"},
-          "description": "建议提前30min到站，自助取票机在2楼大厅",
-          "duration": "30min"
+          "description": "建议提前30min到站，自助取票机在2楼大厅"
         },
         {
           "text": "高铁到德清站",
           "type": "transit",
-          "time": "8:30",
+          "startTime": "8:30",
+          "endTime": "9:17",
           "place": {"name": "德清站"},
-          "description": "二等座¥28.5，班次密集每30min一班",
-          "duration": "47min",
-          "cost": "¥28.5",
+          "description": "二等座，班次密集每30min一班",
           "bookings": [
-            {"type": "train", "label": "查高铁票", "url": "https://www.12306.cn"}
+            {"type": "train", "label": "查高铁票", "cost": "¥28.5", "url": "https://www.12306.cn"}
           ]
         },
         {
           "text": "打车到莫干山",
           "type": "transit",
-          "time": "9:17",
+          "startTime": "9:17",
+          "endTime": "9:42",
           "place": {"name": "莫干山"},
           "description": "出站右手边出租车排队区，或提前叫网约车",
-          "duration": "25min",
-          "cost": "¥40"
+          "bookings": [
+            {"type": "car", "label": "打车", "cost": "¥40"}
+          ]
         },
         {
           "text": "裸心谷竹林徒步",
           "type": "play",
-          "time": "9:45",
+          "startTime": "9:45",
+          "endTime": "12:00",
           "place": {"name": "裸心谷"},
           "description": "从入口进竹林步道，全程遮阴不晒，走到山顶有精品咖啡馆，手冲很好喝",
-          "duration": "2-3h",
-          "cost": "免费",
           "bookings": [
-            {"type": "ticket", "label": "查门票"}
+            {"type": "ticket", "label": "查门票", "cost": "免费"}
           ],
           "tips": ["建议穿运动鞋，竹林步道有些滑"],
           "relatedContent": [
@@ -241,32 +242,33 @@ interface ContentItem {
         {
           "text": "山顶精品咖啡馆",
           "type": "eat",
-          "time": "12:00",
+          "startTime": "12:00",
+          "endTime": "13:00",
           "place": {"name": "莫干山山顶咖啡馆"},
           "description": "手冲咖啡很好喝，可以歇脚看风景",
-          "duration": "1h",
-          "cost": "人均¥50"
+          "bookings": [
+            {"type": "food", "label": "查餐厅", "cost": "人均¥50"}
+          ]
         },
         {
           "text": "入住莫干山民宿",
           "type": "stay",
-          "time": "14:00",
+          "startTime": "14:00",
+          "endTime": "20:00",
           "place": {"name": "莫干山民宿"},
           "description": "推荐提前1周订，周末涨价。裸心谷附近民宿集中，选山腰的安静",
-          "cost": "¥400-800/晚",
           "bookings": [
-            {"type": "hotel", "label": "查住宿"}
+            {"type": "hotel", "label": "查住宿", "cost": "¥400-800/晚"}
           ],
           "tips": ["周末民宿要提前1周订"]
         },
         {
           "text": "萤火虫观赏",
           "type": "play",
-          "time": "20:00",
+          "startTime": "20:00",
+          "endTime": "21:00",
           "place": {"name": "莫干山萤火虫观赏点"},
           "description": "远离路灯的地方效果最好，6-8月晚上8点后出现，别开闪光灯",
-          "duration": "1h",
-          "cost": "免费",
           "tips": ["6-8月晚上能看萤火虫"]
         }
       ]
