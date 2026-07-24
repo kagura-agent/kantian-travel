@@ -322,6 +322,7 @@
 - [x] **guide.md: 新增「check if target component is scheduled for deprecation/replacement」** - Archon#1599 教训（fix 代码正确但组件正在 UI cutover 被废弃，maintainer 直接关闭）→ 已加入 guide.md 第 84 条 (2026-07-21)
 - [x] **guide.md: 新增「mirror recently merged PRs to fix analogous bugs in sibling modules」** - Archon#2251 正面教训（用 #2245 merged fix pattern 找到 codebases.ts 同 bug，CI 一次通过）→ 已加入 guide.md 第 85 条 (2026-07-22)
 - [x] **workloop.yaml: 新增 stale_pr_check 节点（前置于 study）** - workloop #6852 NemoClaw#7226 教训（plan-review subagent 白跑一轮后才在 implement 发现 PR 已存在）→ 新增 stale_pr_check 节点在 pr_gate 之后、study 之前，Exit 10 直跳 verify，Exit 11 进 implement fix mode (2026-07-23)
+- [x] **guide.md: 新增「check recent merged PRs in same area before narrow fix」** - openclaw#112449 教训（2行 typeof guard 被 06-14 已 merge 的 21 文件 store-read seam 重构覆盖，issue 实质已 side-effect 修复）→ 已加入 guide.md 第 86 条 (2026-07-24)
 
 ## 📚 学习
 
@@ -952,8 +953,11 @@
 ### 本轮改進 (done)
 - [x] Add `memes dedup --visual` command — added `--visual` as user-friendly alias for `--phash`. Upgraded GIF hashing to multi-frame sampling (4 evenly-spaced frames averaged via numpy) instead of first-frame-only. Reduces false positives: 7→6 duplicate groups at threshold 10 (carlton-dance/whoa no longer falsely matched). Both `--visual` and `--phash` flags work. Help text updated. (07-23)
 
-### 本轮改進
-- [ ] Investigate cross-category near-duplicates flagged by visual dedup — 6 groups of cross-category matches exist (e.g. confused/squint = thinking/math-lady, debug-mood/angry-typing = working/keyboard-smash). Assess whether any should be consolidated via `memes retire` or if all are valid semantic duplicates.
+### 本轮改進 (done)
+- [x] Investigate cross-category near-duplicates + fix dedup tool bug — Removed 1 exact same-cat dupe (confused/confused-cat.gif = confused/squint.gif, wrong name). Fixed dedup tool: both md5 and pHash paths now detect same-category dupes hidden within cross-category groups. Assessed all 6 pHash groups: remaining are valid semantic duplicates (anime-bruh≠monkey-bruh, different cats, different typing styles). thinking/math-lady.gif kept as valid cross-category usage of the math lady meme. 232→231 files. (07-24)
+
+### 本轮改進 (done)
+- [x] Lower auto-wake default threshold 14d→10d — freshness reports stale at 7d but auto-wake only acted at 14d, creating a 7-day gap where cron reviews reported staleness without remediation. New 10d threshold gives categories 3 days of grace after stale report, then auto-wakes if still unused. Updated in cmd_review, _review_auto_wake, cmd_cron_check, and all help text. Tested: 7.3d stale categories correctly skipped (below new 10d threshold), will trigger at 10d. (07-24)
 
 ## Archon (coleam00/Archon) — PR #2255 CodeRabbit Review
 
