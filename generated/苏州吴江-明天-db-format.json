@@ -1,0 +1,189 @@
+[
+  {
+    "title": "西塘古镇一日闲逛",
+    "city": "苏州",
+    "district": "吴江区",
+    "tag": "明天",
+    "valid_date": "2026-07-26",
+    "reason": "周六+晴天，西塘仅25分钟车程，适合轻松一日游；晚上还能逛夜场酒吧街",
+    "weather": {
+      "summary": "晴",
+      "temp": 33,
+      "rain_pct": 3
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "古镇夜场漫步",
+        "weather": {
+          "summary": "晴",
+          "temp": 33,
+          "rain_pct": 3
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "从吴江出发",
+            "start_time": "09:00",
+            "end_time": "09:25",
+            "description": "驱车25分钟到达西塘古镇",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "烟雨长廊漫步",
+            "start_time": "09:30",
+            "end_time": "10:30",
+            "description": "沿千米廊棚走走停停，感受水乡建筑",
+            "poi_id": "poi_008"
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "石皮弄探幽",
+            "start_time": "10:30",
+            "end_time": "11:00",
+            "description": "穿过最窄处仅0.8米的百年小巷打卡拍照",
+            "poi_id": "poi_009"
+          },
+          {
+            "step_index": 3,
+            "type": "play",
+            "text": "送子来凤桥",
+            "start_time": "11:00",
+            "end_time": "11:30",
+            "description": "古镇地标，桥上观河景",
+            "poi_id": "poi_010"
+          },
+          {
+            "step_index": 4,
+            "type": "eat",
+            "text": "明清食代午餐",
+            "start_time": "11:30",
+            "end_time": "12:30",
+            "description": "临河位置吃本地菜，荷叶粉蒸肉、馄饨等",
+            "poi_id": "poi_011"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "午后自由闲逛+咖啡",
+            "start_time": "12:30",
+            "end_time": "15:00",
+            "description": "找一家临水茶馆坐坐，避开正午暑气",
+            "poi_id": "poi_008"
+          },
+          {
+            "step_index": 6,
+            "type": "play",
+            "text": "酒吧街傍晚氛围",
+            "start_time": "17:00",
+            "end_time": "19:00",
+            "description": "夕阳西下后古镇亮灯，感受夜生活氛围",
+            "poi_id": "poi_013"
+          },
+          {
+            "step_index": 7,
+            "type": "home",
+            "text": "返回吴江",
+            "start_time": "19:00",
+            "end_time": "19:25",
+            "description": "25分钟车程回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "莫干山竹海避暑一日",
+    "city": "苏州",
+    "district": "吴江区",
+    "tag": "明天",
+    "valid_date": "2026-07-26",
+    "reason": "7月晴天31°C触发避暑活动，山上凉爽宜人；周六不赶时间，1h40min车程可接受",
+    "weather": {
+      "summary": "晴",
+      "temp": 31,
+      "rain_pct": 2
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "竹海徒步+山间发呆",
+        "weather": {
+          "summary": "晴",
+          "temp": 31,
+          "rain_pct": 2
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "从吴江出发",
+            "start_time": "07:30",
+            "end_time": "09:10",
+            "description": "驱车1小时40分钟前往莫干山",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "竹海栈道徒步",
+            "start_time": "09:20",
+            "end_time": "11:00",
+            "description": "穿行竹林栈道，清凉洗肺，拍照打卡",
+            "poi_id": "poi_001"
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "山顶观景台",
+            "start_time": "11:00",
+            "end_time": "11:40",
+            "description": "登顶远眺，晴日视野开阔",
+            "poi_id": "poi_002"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "山里人家土菜馆午餐",
+            "start_time": "12:00",
+            "end_time": "13:00",
+            "description": "吃地道土鸡煲、时令笋，补充体力",
+            "poi_id": "poi_007"
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "庾村文化市集",
+            "start_time": "13:30",
+            "end_time": "15:00",
+            "description": "逛文创小店、喝杯咖啡，悠闲消磨午后",
+            "poi_id": "poi_005"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "Discovery探索基地体验",
+            "start_time": "15:10",
+            "end_time": "16:30",
+            "description": "攀岩或溜索，户外活动释放精力",
+            "poi_id": "poi_006"
+          },
+          {
+            "step_index": 6,
+            "type": "home",
+            "text": "返回吴江",
+            "start_time": "16:40",
+            "end_time": "18:20",
+            "description": "1小时40分钟车程回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  }
+]
