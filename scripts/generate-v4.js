@@ -245,14 +245,14 @@ async function main() {
     console.log(`   命中缓存: ${discoveredPois.length} 个景点`);
   }
 
-  // === Step 2: 计算路线（带缓存，远近各取）===
+  // === Step 2: 计算路线（带缓存，远近均衡）===
   console.log('\n🚗 Step 2: 计算路线...');
   const poisWithRoutes = [];
-  // 按距离分组，每组取几个
+  // 按距离分组，限制近处数量，确保远处占比
   const sorted = [...discoveredPois].sort((a, b) => a.distance - b.distance);
-  const near = sorted.filter(p => p.distance <= 30000).slice(0, 8);
+  const near = sorted.filter(p => p.distance <= 30000).slice(0, 5);  // 近处最多5个
   const mid = sorted.filter(p => p.distance > 30000 && p.distance <= 80000).slice(0, 8);
-  const far = sorted.filter(p => p.distance > 80000).slice(0, 8);
+  const far = sorted.filter(p => p.distance > 80000).slice(0, 10);  // 远处多取
   const toCalc = [...near, ...mid, ...far];
   
   for (const poi of toCalc) {
@@ -326,7 +326,7 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
   prompt += `
 === 生成要求 ===
 生成 3-5 个方案。要求：
-1. 从上面的可达景点中选择，只选当前天气条件适合的
+1. 方案必须覆盖不同距离——不能全在同一片区域，要有近郊的也有远途的
 2. 每个方案的 reason 说清为什么此刻适合（基于天气、距离、时间）
 3. 高温天户外放早晚，午后室内/阴凉
 4. 使用真实路程时间

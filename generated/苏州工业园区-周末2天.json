@@ -1,13 +1,13 @@
 [
   {
-    "title": "金鸡湖水上周末",
+    "title": "南浔古镇水乡周末",
     "location": "苏州工业园区",
     "tag": "周末2天",
     "valid_date": [
       "2026-07-25",
       "2026-07-26"
     ],
-    "reason": "周末高温37°，选择近距离水上项目消暑，早晚户外活动避开午后暴晒，车程均在30分钟内轻松往返",
+    "reason": "南浔古镇1小时16分可达，古镇多廊棚遮阳适合高温天漫步，周六多云周日阴天避免暴晒，早出晚归避开午间酷热",
     "weather": {
       "desc": "多云转阴",
       "high": 37,
@@ -16,7 +16,7 @@
     "days": [
       {
         "day_index": 0,
-        "activity": "水上运动+金鸡湖桃花岛",
+        "activity": "南浔古镇深度游",
         "weather": {
           "desc": "多云",
           "high": 37,
@@ -26,71 +26,62 @@
           {
             "step_index": 0,
             "type": "depart",
-            "text": "出发",
-            "start_time": "07:30",
-            "end_time": "07:34",
-            "description": "前往驭浪水上运动",
+            "text": "从苏州工业园区出发",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "description": "早起避开高温",
             "poi_id": null
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "驭浪水上运动",
-            "start_time": "07:40",
-            "end_time": "10:00",
-            "description": "趁早晨凉爽体验桨板/皮划艇，水上项目天然消暑",
-            "poi_id": "B0LASZ1GI3"
+            "type": "transit",
+            "text": "驱车前往南浔古镇",
+            "start_time": "07:00",
+            "end_time": "08:16",
+            "description": "全程约71km，1小时16分钟",
+            "poi_id": null
           },
           {
             "step_index": 2,
-            "type": "eat",
-            "text": "午餐：鲨滩小海鲜",
-            "start_time": "11:00",
-            "end_time": "12:00",
-            "description": "就近享用海鲜午餐，室内空调避暑",
-            "poi_id": "B0JATZNU7N"
+            "type": "play",
+            "text": "南浔古镇上午游览",
+            "start_time": "08:30",
+            "end_time": "11:30",
+            "description": "趁早晨凉爽游览小莲庄、嘉业堂藏书楼、百间楼",
+            "poi_id": "B023C0OMFN"
           },
           {
             "step_index": 3,
-            "type": "transit",
-            "text": "前往金鸡湖桃花岛",
-            "start_time": "12:00",
+            "type": "eat",
+            "text": "古镇午餐",
+            "start_time": "11:30",
             "end_time": "12:30",
-            "description": "车程约28分钟",
+            "description": "在古镇内餐厅用餐，午后室内休息避暑",
             "poi_id": null
           },
           {
             "step_index": 4,
             "type": "play",
-            "text": "金鸡湖景区-桃花岛",
-            "start_time": "16:30",
-            "end_time": "18:30",
-            "description": "午后室内茶馆休憩，待傍晚凉爽后湖边散步赏景",
-            "poi_id": "B0FFF327SC"
+            "text": "南浔古镇度假区下午",
+            "start_time": "15:30",
+            "end_time": "18:00",
+            "description": "午后热度下降后继续游览度假区水景",
+            "poi_id": "B0L25UCF9X"
           },
           {
             "step_index": 5,
-            "type": "eat",
-            "text": "晚餐：LÉON莱昂餐厅",
+            "type": "stay",
+            "text": "南浔住宿",
             "start_time": "18:30",
-            "end_time": "19:30",
-            "description": "金鸡湖摩天轮旁法式餐厅",
-            "poi_id": "B0I2GCKFGH"
-          },
-          {
-            "step_index": 6,
-            "type": "home",
-            "text": "返回",
-            "start_time": "19:30",
-            "end_time": "20:00",
-            "description": "回家休息",
+            "end_time": "22:00",
+            "description": "古镇民宿住一晚，享受夜景",
             "poi_id": null
           }
         ]
       },
       {
         "day_index": 1,
-        "activity": "凯宾斯基水上基地+独墅湖",
+        "activity": "南浔周边返程",
         "weather": {
           "desc": "阴",
           "high": 37,
@@ -99,56 +90,56 @@
         "steps": [
           {
             "step_index": 0,
-            "type": "depart",
-            "text": "出发",
-            "start_time": "07:30",
-            "end_time": "07:38",
-            "description": "前往凯宾斯基棕榈湾水上基地",
-            "poi_id": null
+            "type": "play",
+            "text": "清晨古镇散步",
+            "start_time": "06:30",
+            "end_time": "08:30",
+            "description": "趁凉爽在古镇河畔晨走",
+            "poi_id": "B023C0OMFN"
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "凯宾斯基棕榈湾水上基地",
-            "start_time": "07:45",
-            "end_time": "10:30",
-            "description": "阴天适合水上活动，体验帆船/摩托艇",
-            "poi_id": "B0L09RDLKV"
+            "type": "eat",
+            "text": "古镇早餐",
+            "start_time": "08:30",
+            "end_time": "09:15",
+            "description": "品尝当地早点",
+            "poi_id": null
           },
           {
             "step_index": 2,
-            "type": "eat",
-            "text": "午餐：慕尼黑啤酒餐厅",
-            "start_time": "11:00",
-            "end_time": "12:00",
-            "description": "凯宾斯基酒店内德式餐厅",
-            "poi_id": "B0FFMFYP0O"
+            "type": "transit",
+            "text": "返回苏州",
+            "start_time": "09:30",
+            "end_time": "10:46",
+            "description": "阴天不晒，适合上午返程",
+            "poi_id": null
           },
           {
             "step_index": 3,
             "type": "play",
-            "text": "独墅湖",
+            "text": "广恩林公园散步",
             "start_time": "17:00",
             "end_time": "18:30",
-            "description": "午后室内休息，傍晚独墅湖畔散步纳凉",
-            "poi_id": "B02001CC89"
+            "description": "傍晚回到园区附近公园纳凉",
+            "poi_id": "B0FFGFB89K"
           },
           {
             "step_index": 4,
             "type": "eat",
-            "text": "晚餐：金鸡湖大酒店苏州味道",
+            "text": "星湖苑餐厅晚餐",
             "start_time": "18:30",
             "end_time": "19:30",
-            "description": "苏帮菜中餐厅",
-            "poi_id": "B0L2H7AUM6"
+            "description": "在公园附近享用晚餐",
+            "poi_id": "B0KK59UTQM"
           },
           {
             "step_index": 5,
             "type": "home",
-            "text": "返回",
-            "start_time": "19:30",
-            "end_time": "19:45",
-            "description": "回家",
+            "text": "回家",
+            "start_time": "19:45",
+            "end_time": "20:00",
+            "description": "返回住处",
             "poi_id": null
           }
         ]
@@ -156,14 +147,161 @@
     ]
   },
   {
-    "title": "尚湖避暑+虞山森林探幽",
+    "title": "天目湖避暑度假",
     "location": "苏州工业园区",
     "tag": "周末2天",
     "valid_date": [
       "2026-07-25",
       "2026-07-26"
     ],
-    "reason": "尚湖国家级景区湖面开阔有风，虞山森林公园林荫遮蔽，两者均适合高温天游览；周日阴天更利于户外活动，车程约1小时可接受",
+    "reason": "天目湖距离166km约2小时20分，湖区水域降温效果好，适合高温周末避暑；周日阴天适合湖边活动，两天行程不赶",
+    "weather": {
+      "desc": "多云转阴",
+      "high": 37,
+      "low": 27
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "天目湖度假区",
+        "weather": {
+          "desc": "多云",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "从苏州工业园区出发",
+            "start_time": "06:30",
+            "end_time": "06:30",
+            "description": "早起出发避开高温和拥堵",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "transit",
+            "text": "驱车前往天目湖",
+            "start_time": "06:30",
+            "end_time": "08:50",
+            "description": "全程约166km，约2小时20分钟",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "天目湖旅游度假区",
+            "start_time": "09:00",
+            "end_time": "11:30",
+            "description": "上午游览湖区，乘船赏景，湖风凉爽",
+            "poi_id": "B0207005CA"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "午餐·天目湖鱼头",
+            "start_time": "11:30",
+            "end_time": "12:30",
+            "description": "品尝当地招牌天目湖砂锅鱼头",
+            "poi_id": null
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "午后湖边休憩",
+            "start_time": "14:30",
+            "end_time": "17:00",
+            "description": "树荫下休息或室内茶室品茶避暑",
+            "poi_id": "B0FFFDRV45"
+          },
+          {
+            "step_index": 5,
+            "type": "stay",
+            "text": "天目湖度假酒店",
+            "start_time": "17:30",
+            "end_time": "22:00",
+            "description": "入住湖畔酒店，晚间湖边散步",
+            "poi_id": null
+          }
+        ]
+      },
+      {
+        "day_index": 1,
+        "activity": "天目湖深度游+返程",
+        "weather": {
+          "desc": "阴",
+          "high": 37,
+          "low": 28
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "play",
+            "text": "清晨湖边晨跑",
+            "start_time": "06:30",
+            "end_time": "07:30",
+            "description": "阴天凉爽适合湖畔运动",
+            "poi_id": "B0FFFQ7F6L"
+          },
+          {
+            "step_index": 1,
+            "type": "eat",
+            "text": "酒店早餐",
+            "start_time": "07:30",
+            "end_time": "08:15",
+            "description": "度假区内用早餐",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "天目湖继续游览",
+            "start_time": "08:30",
+            "end_time": "10:30",
+            "description": "阴天户外不晒，补充昨日未走的景点",
+            "poi_id": "B0207005CA"
+          },
+          {
+            "step_index": 3,
+            "type": "transit",
+            "text": "返程回苏州",
+            "start_time": "11:00",
+            "end_time": "13:20",
+            "description": "午前启程避免午后疲劳驾驶",
+            "poi_id": null
+          },
+          {
+            "step_index": 4,
+            "type": "eat",
+            "text": "满腹达人茶餐厅晚餐",
+            "start_time": "18:00",
+            "end_time": "19:00",
+            "description": "回到园区后吃个轻松晚餐",
+            "poi_id": "B0LR5UANCA"
+          },
+          {
+            "step_index": 5,
+            "type": "home",
+            "text": "回家",
+            "start_time": "19:15",
+            "end_time": "19:30",
+            "description": "返回住处休息",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "尚湖虞山清凉之旅",
+    "location": "苏州工业园区",
+    "tag": "周末2天",
+    "valid_date": [
+      "2026-07-25",
+      "2026-07-26"
+    ],
+    "reason": "尚湖+虞山组合在常熟片区，车程约1.5小时，森林公园林荫遮蔽适合高温天，尚湖傍水清凉；周日阴天登山更舒适",
     "weather": {
       "desc": "多云转阴",
       "high": 37,
@@ -182,53 +320,71 @@
           {
             "step_index": 0,
             "type": "depart",
-            "text": "出发前往尚湖",
+            "text": "从苏州工业园区出发",
             "start_time": "07:00",
-            "end_time": "08:10",
-            "description": "车程约1小时9分钟",
+            "end_time": "07:00",
+            "description": "早出发利用清晨凉爽时段",
             "poi_id": null
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "尚湖风景区",
-            "start_time": "08:10",
-            "end_time": "11:30",
-            "description": "早晨游览尚湖，湖面清风凉爽，赏荷花",
-            "poi_id": "B020001LP9"
-          },
-          {
-            "step_index": 2,
-            "type": "eat",
-            "text": "午餐（景区内餐饮）",
-            "start_time": "11:30",
-            "end_time": "12:30",
-            "description": "景区内用餐避暑",
+            "type": "transit",
+            "text": "前往尚湖风景区",
+            "start_time": "07:00",
+            "end_time": "08:29",
+            "description": "全程约51.8km，1小时29分钟",
             "poi_id": null
           },
           {
-            "step_index": 3,
+            "step_index": 2,
             "type": "play",
-            "text": "尚湖风景区（下午）",
-            "start_time": "16:00",
-            "end_time": "18:00",
-            "description": "午后休息，傍晚继续湖边游览",
+            "text": "尚湖风景区游览",
+            "start_time": "08:30",
+            "end_time": "11:30",
+            "description": "湖边栈道、荷塘赏荷，湖风消暑",
             "poi_id": "B020001LP9"
           },
           {
+            "step_index": 3,
+            "type": "eat",
+            "text": "望虞台茶文化餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "12:30",
+            "description": "品茶用餐，室内避暑",
+            "poi_id": "B02000JW0W"
+          },
+          {
             "step_index": 4,
+            "type": "play",
+            "text": "云崖飞瀑漂流",
+            "start_time": "15:00",
+            "end_time": "17:00",
+            "description": "下午热度最高时玩水漂流降温",
+            "poi_id": "B0FFK882YY"
+          },
+          {
+            "step_index": 5,
+            "type": "eat",
+            "text": "遇尚茶餐厅晚餐",
+            "start_time": "17:30",
+            "end_time": "18:30",
+            "description": "漂流后补充能量",
+            "poi_id": "B0K6Y75P4H"
+          },
+          {
+            "step_index": 6,
             "type": "stay",
             "text": "常熟住宿",
-            "start_time": "18:30",
-            "end_time": "07:00",
-            "description": "就近住宿休息，为次日虞山行程做准备",
+            "start_time": "19:00",
+            "end_time": "22:00",
+            "description": "在常熟市区住一晚",
             "poi_id": null
           }
         ]
       },
       {
         "day_index": 1,
-        "activity": "虞山国家森林公园",
+        "activity": "虞山森林公园",
         "weather": {
           "desc": "阴",
           "high": 37,
@@ -237,47 +393,47 @@
         "steps": [
           {
             "step_index": 0,
-            "type": "depart",
-            "text": "前往虞山",
-            "start_time": "07:00",
-            "end_time": "07:20",
-            "description": "从常熟市区到虞山",
-            "poi_id": null
-          },
-          {
-            "step_index": 1,
             "type": "play",
-            "text": "虞山国家森林公园-联珠洞",
-            "start_time": "07:30",
-            "end_time": "10:30",
-            "description": "阴天适宜登山，森林覆盖遮阳，联珠洞内凉爽",
+            "text": "虞山国家森林公园",
+            "start_time": "06:30",
+            "end_time": "09:30",
+            "description": "阴天早晨登山探联珠洞，林荫茂密凉爽",
             "poi_id": "B0FFIOTKV1"
           },
           {
-            "step_index": 2,
+            "step_index": 1,
             "type": "play",
-            "text": "虞山风景区-天书壁",
-            "start_time": "10:30",
-            "end_time": "11:30",
-            "description": "顺路游览天书壁摩崖石刻",
+            "text": "虞山天书壁",
+            "start_time": "09:45",
+            "end_time": "11:00",
+            "description": "观赏天书壁摩崖石刻",
             "poi_id": "B0G0B1453K"
           },
           {
-            "step_index": 3,
+            "step_index": 2,
             "type": "eat",
-            "text": "午餐（常熟本地菜）",
-            "start_time": "12:00",
-            "end_time": "13:00",
-            "description": "下山午餐",
+            "text": "望虞台茶文化餐厅午餐",
+            "start_time": "11:15",
+            "end_time": "12:15",
+            "description": "下山后用午餐",
+            "poi_id": "B02000JW0W"
+          },
+          {
+            "step_index": 3,
+            "type": "transit",
+            "text": "返回苏州工业园区",
+            "start_time": "12:30",
+            "end_time": "14:00",
+            "description": "午后返程约1.5小时",
             "poi_id": null
           },
           {
             "step_index": 4,
             "type": "home",
-            "text": "返回苏州",
-            "start_time": "13:30",
-            "end_time": "14:40",
-            "description": "车程约1小时8分钟返回",
+            "text": "回家",
+            "start_time": "14:00",
+            "end_time": "14:00",
+            "description": "到家休息避暑",
             "poi_id": null
           }
         ]
@@ -285,14 +441,14 @@
     ]
   },
   {
-    "title": "天目湖山水度假",
+    "title": "桃花园漂流+霍比特庄园",
     "location": "苏州工业园区",
     "tag": "周末2天",
     "valid_date": [
       "2026-07-25",
       "2026-07-26"
     ],
-    "reason": "天目湖为国家级度假区，湖光山色适合夏季消暑；南山竹海竹林遮荫凉爽；车程2小时出头适合周末两日游，周日阴天更利于竹海徒步",
+    "reason": "37度高温最适合玩水！桃花园漂流仅1小时8分车程，搭配霍比特庄园生态营地，有水有荫适合夏日；两地相距不远可串联",
     "weather": {
       "desc": "多云转阴",
       "high": 37,
@@ -301,7 +457,7 @@
     "days": [
       {
         "day_index": 0,
-        "activity": "天目湖旅游度假区",
+        "activity": "桃花园漂流玩水日",
         "weather": {
           "desc": "多云",
           "high": 37,
@@ -311,53 +467,71 @@
           {
             "step_index": 0,
             "type": "depart",
-            "text": "出发前往天目湖",
-            "start_time": "07:00",
-            "end_time": "09:20",
-            "description": "车程约2小时20分钟",
+            "text": "从苏州工业园区出发",
+            "start_time": "07:30",
+            "end_time": "07:30",
+            "description": "出发前往漂流地点",
             "poi_id": null
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "天目湖旅游度假区",
-            "start_time": "09:30",
-            "end_time": "12:00",
-            "description": "游船览湖，湖面凉风习习避暑",
-            "poi_id": "B0207005CA"
+            "type": "transit",
+            "text": "前往桃花园漂流",
+            "start_time": "07:30",
+            "end_time": "08:38",
+            "description": "全程约57.6km，1小时8分钟",
+            "poi_id": null
           },
           {
             "step_index": 2,
-            "type": "eat",
-            "text": "午餐：天目湖砂锅鱼头",
-            "start_time": "12:00",
-            "end_time": "13:00",
-            "description": "品尝当地招牌砂锅鱼头",
-            "poi_id": null
+            "type": "play",
+            "text": "桃花园漂流",
+            "start_time": "09:00",
+            "end_time": "12:00",
+            "description": "上午水温舒适，尽情漂流戏水消暑",
+            "poi_id": "B0LDVA0FU6"
           },
           {
             "step_index": 3,
-            "type": "play",
-            "text": "天目湖度假区休闲",
-            "start_time": "16:00",
-            "end_time": "18:00",
-            "description": "午后酒店休息，傍晚湖边漫步",
-            "poi_id": "B0207005CA"
+            "type": "eat",
+            "text": "午餐休整",
+            "start_time": "12:00",
+            "end_time": "13:00",
+            "description": "景区附近午餐补充体力",
+            "poi_id": null
           },
           {
             "step_index": 4,
-            "type": "stay",
-            "text": "天目湖住宿",
-            "start_time": "18:30",
-            "end_time": "07:00",
-            "description": "湖边度假酒店住宿",
+            "type": "transit",
+            "text": "前往霍比特庄园",
+            "start_time": "13:30",
+            "end_time": "14:00",
+            "description": "短途驱车前往营地",
             "poi_id": null
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "霍比特庄园生态营地",
+            "start_time": "14:00",
+            "end_time": "18:00",
+            "description": "林下帐篷休息，傍晚草坪活动",
+            "poi_id": "B0LGR1FNE6"
+          },
+          {
+            "step_index": 6,
+            "type": "stay",
+            "text": "营地住宿",
+            "start_time": "18:00",
+            "end_time": "22:00",
+            "description": "在庄园营地住一晚，夜间观星",
+            "poi_id": "B0LGR1FNE6"
           }
         ]
       },
       {
         "day_index": 1,
-        "activity": "南山竹海",
+        "activity": "昆山树洞+返程",
         "weather": {
           "desc": "阴",
           "high": 37,
@@ -366,38 +540,56 @@
         "steps": [
           {
             "step_index": 0,
-            "type": "depart",
-            "text": "前往南山竹海",
-            "start_time": "07:30",
+            "type": "play",
+            "text": "营地早晨",
+            "start_time": "06:30",
             "end_time": "08:00",
-            "description": "从天目湖到南山竹海约30分钟",
-            "poi_id": null
+            "description": "清晨在营地散步享受自然",
+            "poi_id": "B0LGR1FNE6"
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "天目湖南山竹海景区",
-            "start_time": "08:00",
-            "end_time": "11:30",
-            "description": "阴天适合竹海徒步，万亩竹林遮荫凉爽，乘坐小火车深入竹海",
-            "poi_id": "B020702FLO"
-          },
-          {
-            "step_index": 2,
-            "type": "eat",
-            "text": "午餐",
-            "start_time": "11:30",
-            "end_time": "12:30",
-            "description": "景区附近午餐",
+            "type": "transit",
+            "text": "前往昆山市树洞",
+            "start_time": "08:30",
+            "end_time": "09:30",
+            "description": "驱车前往昆山景点",
             "poi_id": null
           },
           {
+            "step_index": 2,
+            "type": "play",
+            "text": "昆山市树洞",
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "description": "阴天适合户外探索，打卡特色景点",
+            "poi_id": "B0K3UX4ALK"
+          },
+          {
             "step_index": 3,
+            "type": "eat",
+            "text": "星河时光餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "12:30",
+            "description": "在附近餐厅用餐",
+            "poi_id": "B0MAZCDGP0"
+          },
+          {
+            "step_index": 4,
+            "type": "transit",
+            "text": "返回苏州工业园区",
+            "start_time": "12:45",
+            "end_time": "13:57",
+            "description": "约1小时12分钟回程",
+            "poi_id": null
+          },
+          {
+            "step_index": 5,
             "type": "home",
-            "text": "返回苏州",
-            "start_time": "12:30",
-            "end_time": "15:00",
-            "description": "车程约2小时32分钟返回",
+            "text": "回家",
+            "start_time": "14:00",
+            "end_time": "14:00",
+            "description": "到家休息",
             "poi_id": null
           }
         ]
@@ -405,14 +597,14 @@
     ]
   },
   {
-    "title": "近郊亲水轻松游",
+    "title": "近郊轻松周末·公园漫步",
     "location": "苏州工业园区",
     "tag": "周末2天",
     "valid_date": [
       "2026-07-25",
       "2026-07-26"
     ],
-    "reason": "全部景点在10分钟车程内，37°高温天减少奔波，水上项目+室内童梦水乐园组合消暑，适合不想远行的周末",
+    "reason": "不想远行也能过好周末，广恩林公园仅12分钟车程，早晚凉爽时段散步；搭配昆山树洞半日游，全程轻松无压力",
     "weather": {
       "desc": "多云转阴",
       "high": 37,
@@ -421,7 +613,7 @@
     "days": [
       {
         "day_index": 0,
-        "activity": "驭浪水上运动+广恩林公园",
+        "activity": "近郊公园+美食",
         "weather": {
           "desc": "多云",
           "high": 37,
@@ -431,62 +623,71 @@
           {
             "step_index": 0,
             "type": "depart",
-            "text": "出发",
-            "start_time": "07:30",
-            "end_time": "07:38",
-            "description": "前往驭浪水上运动俱乐部斜塘老街店",
+            "text": "从家出发",
+            "start_time": "06:30",
+            "end_time": "06:30",
+            "description": "趁早晨凉爽出门",
             "poi_id": null
           },
           {
             "step_index": 1,
             "type": "play",
-            "text": "驭浪水上运动俱乐部(斜塘老街店)",
-            "start_time": "07:45",
-            "end_time": "10:00",
-            "description": "早晨水上运动消暑",
-            "poi_id": "B0FFGCAMZI"
+            "text": "广恩林公园晨间散步",
+            "start_time": "06:42",
+            "end_time": "09:00",
+            "description": "3.7km仅12分钟，清晨公园绿荫宜人",
+            "poi_id": "B0FFGFB89K"
           },
           {
             "step_index": 2,
             "type": "eat",
-            "text": "午餐：满腹达人茶餐厅",
-            "start_time": "11:00",
-            "end_time": "12:00",
-            "description": "广恩林公园附近茶餐厅",
+            "text": "满腹达人茶餐厅早午餐",
+            "start_time": "09:15",
+            "end_time": "10:15",
+            "description": "公园附近茶餐厅悠闲用餐",
             "poi_id": "B0LR5UANCA"
           },
           {
             "step_index": 3,
             "type": "play",
-            "text": "广恩林公园",
+            "text": "室内活动（商场/博物馆）",
+            "start_time": "10:30",
+            "end_time": "16:00",
+            "description": "午间高温躲进室内空调环境",
+            "poi_id": null
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "傍晚广恩林公园",
             "start_time": "17:30",
             "end_time": "19:00",
-            "description": "午后室内休息，傍晚公园林荫散步纳凉",
+            "description": "日落前再次公园散步纳凉",
             "poi_id": "B0FFGFB89K"
           },
           {
-            "step_index": 4,
+            "step_index": 5,
             "type": "eat",
-            "text": "晚餐：星湖苑餐厅",
+            "text": "星湖苑餐厅晚餐",
             "start_time": "19:00",
             "end_time": "20:00",
-            "description": "公园旁晚餐",
+            "description": "附近好评餐厅晚餐",
             "poi_id": "B0KK59UTQM"
           },
           {
-            "step_index": 5,
+            "step_index": 6,
             "type": "home",
-            "text": "返回",
-            "start_time": "20:00",
-            "end_time": "20:15",
-            "description": "回家",
+            "text": "回家",
+            "start_time": "20:15",
+            "end_time": "20:30",
+            "description": "步行回家",
             "poi_id": null
           }
         ]
       },
       {
         "day_index": 1,
-        "activity": "童梦水乐园+漂流故事",
+        "activity": "昆山树洞半日游",
         "weather": {
           "desc": "阴",
           "high": 37,
@@ -496,166 +697,55 @@
           {
             "step_index": 0,
             "type": "depart",
-            "text": "出发",
-            "start_time": "09:00",
-            "end_time": "09:20",
-            "description": "前往童梦水乐园，车程20分钟",
+            "text": "从家出发",
+            "start_time": "08:00",
+            "end_time": "08:00",
+            "description": "阴天不用太早",
             "poi_id": null
           },
           {
             "step_index": 1,
-            "type": "play",
-            "text": "童梦水乐园(印象城店)",
-            "start_time": "09:30",
-            "end_time": "12:00",
-            "description": "室内水乐园不惧高温，尽情玩水",
-            "poi_id": "B0L16DSIOJ"
+            "type": "transit",
+            "text": "前往昆山市树洞",
+            "start_time": "08:00",
+            "end_time": "09:12",
+            "description": "约50.7km，1小时12分钟",
+            "poi_id": null
           },
           {
             "step_index": 2,
-            "type": "eat",
-            "text": "午餐：东仓荣锦轩",
-            "start_time": "12:30",
-            "end_time": "13:30",
-            "description": "返回园区附近用餐",
-            "poi_id": "B02001D66T"
+            "type": "play",
+            "text": "昆山市树洞游览",
+            "start_time": "09:15",
+            "end_time": "11:30",
+            "description": "阴天户外舒适，探索特色风景",
+            "poi_id": "B0K3UX4ALK"
           },
           {
             "step_index": 3,
-            "type": "play",
-            "text": "漂流的故事培训中心",
-            "start_time": "15:00",
-            "end_time": "17:00",
-            "description": "室内漂流体验培训，阴天凉爽",
-            "poi_id": "B0FFL1E7OQ"
+            "type": "eat",
+            "text": "有缘人融合餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "12:30",
+            "description": "附近湘菜馆用午餐",
+            "poi_id": "B0FFIDNYEZ"
           },
           {
             "step_index": 4,
-            "type": "eat",
-            "text": "晚餐：苏城老友小海鲜",
-            "start_time": "17:30",
-            "end_time": "18:30",
-            "description": "本地小海鲜晚餐",
-            "poi_id": "B0I1MA93LI"
+            "type": "transit",
+            "text": "返回苏州工业园区",
+            "start_time": "12:45",
+            "end_time": "13:57",
+            "description": "1小时12分钟回程",
+            "poi_id": null
           },
           {
             "step_index": 5,
             "type": "home",
-            "text": "返回",
-            "start_time": "18:30",
-            "end_time": "18:35",
-            "description": "回家",
-            "poi_id": null
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "title": "云崖漂流+霍比特庄园",
-    "location": "苏州工业园区",
-    "tag": "周末2天",
-    "valid_date": [
-      "2026-07-25",
-      "2026-07-26"
-    ],
-    "reason": "37°高温正是漂流旺季，云崖飞瀑漂流天然峡谷水凉消暑；霍比特庄园生态营地有树荫遮蔽，阴天户外体验舒适；车程1小时左右适合周末",
-    "weather": {
-      "desc": "多云转阴",
-      "high": 37,
-      "low": 27
-    },
-    "days": [
-      {
-        "day_index": 0,
-        "activity": "云崖飞瀑漂流",
-        "weather": {
-          "desc": "多云",
-          "high": 37,
-          "low": 27
-        },
-        "steps": [
-          {
-            "step_index": 0,
-            "type": "depart",
-            "text": "出发前往云崖飞瀑漂流",
-            "start_time": "07:00",
-            "end_time": "08:05",
-            "description": "车程约1小时4分钟",
-            "poi_id": null
-          },
-          {
-            "step_index": 1,
-            "type": "play",
-            "text": "云崖飞瀑漂流",
-            "start_time": "08:15",
-            "end_time": "11:00",
-            "description": "峡谷漂流全程水中，高温天最佳消暑方式",
-            "poi_id": "B0FFK882YY"
-          },
-          {
-            "step_index": 2,
-            "type": "eat",
-            "text": "午餐（景区周边农家菜）",
-            "start_time": "11:30",
-            "end_time": "12:30",
-            "description": "漂流结束后就近午餐",
-            "poi_id": null
-          },
-          {
-            "step_index": 3,
-            "type": "home",
-            "text": "返回苏州",
-            "start_time": "13:00",
-            "end_time": "14:05",
-            "description": "车程约1小时返回，午后在家休息避暑",
-            "poi_id": null
-          }
-        ]
-      },
-      {
-        "day_index": 1,
-        "activity": "霍比特庄园生态营地",
-        "weather": {
-          "desc": "阴",
-          "high": 37,
-          "low": 28
-        },
-        "steps": [
-          {
-            "step_index": 0,
-            "type": "depart",
-            "text": "出发前往霍比特庄园",
-            "start_time": "07:30",
-            "end_time": "08:40",
-            "description": "车程约1小时10分钟",
-            "poi_id": null
-          },
-          {
-            "step_index": 1,
-            "type": "play",
-            "text": "霍比特庄园(生态营地)",
-            "start_time": "08:45",
-            "end_time": "11:30",
-            "description": "阴天适合户外营地活动，生态环境树荫茂密凉爽",
-            "poi_id": "B0LGR1FNE6"
-          },
-          {
-            "step_index": 2,
-            "type": "eat",
-            "text": "午餐（庄园内）",
-            "start_time": "11:30",
-            "end_time": "12:30",
-            "description": "庄园内用餐",
-            "poi_id": null
-          },
-          {
-            "step_index": 3,
-            "type": "home",
-            "text": "返回苏州",
-            "start_time": "13:00",
-            "end_time": "14:10",
-            "description": "车程约1小时10分钟返回",
+            "text": "回家",
+            "start_time": "14:00",
+            "end_time": "14:00",
+            "description": "下午在家休息",
             "poi_id": null
           }
         ]
