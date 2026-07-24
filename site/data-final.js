@@ -78,7 +78,11 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:20",
             "description": "使用周边真实餐饮点，靠近虹·美术馆、明·美术馆和南石玉雕艺术馆，适合中午就近用餐避暑。",
-            "place": null
+            "place": {
+              "name": "VONE·璞悦荟",
+              "lat": 31.299951,
+              "lng": 120.698496
+            }
           },
           {
             "type": "stay",
@@ -86,7 +90,11 @@ const PLANS = [
             "startTime": "13:20",
             "endTime": "14:30",
             "description": "13:00-15:00是36°C高温时段，建议在餐厅或附近室内空间休息，不安排户外步行。",
-            "place": null
+            "place": {
+              "name": "午后向晚饰品苏州店",
+              "lat": 31.320331,
+              "lng": 120.63229
+            }
           },
           {
             "type": "transit",
@@ -211,7 +219,11 @@ const PLANS = [
             "startTime": "12:40",
             "endTime": "16:10",
             "description": "今天最高36°C，12:40-16:10不安排户外湖边活动，建议在餐厅或附近室内空间休息。",
-            "place": null
+            "place": {
+              "name": "莲池避暑",
+              "lat": 31.411016,
+              "lng": 120.786155
+            }
           },
           {
             "type": "transit",
@@ -304,7 +316,11 @@ const PLANS = [
             "startTime": "10:15",
             "endTime": "10:44",
             "description": "参考阳澄湖半岛至出发区域同向实时路程，约12.2km、29分钟，赶在正午前返城。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -312,7 +328,11 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "12:20",
             "description": "使用苏州卓美民俗博物馆附近真实餐饮点，午餐安排在室内避暑。",
-            "place": null
+            "place": {
+              "name": "广鉴阁·潮州菜餐厅",
+              "lat": 31.303437,
+              "lng": 120.73818
+            }
           },
           {
             "type": "stay",
@@ -320,7 +340,11 @@ const PLANS = [
             "startTime": "12:20",
             "endTime": "14:40",
             "description": "今天最高36°C，午后不继续湖边户外活动，留在室内休息补水。",
-            "place": null
+            "place": {
+              "name": "W·法式蛋糕(悠方店)",
+              "lat": 31.273156,
+              "lng": 120.530596
+            }
           },
           {
             "type": "transit",
@@ -425,7 +449,11 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:49",
             "description": "参考周庄古镇至出发区域同向实时路程，约33.4km、49分钟。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -433,7 +461,11 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:20",
             "description": "使用苏州卓美民俗博物馆附近真实餐饮点，返城后在室内用餐避开36°C高温。",
-            "place": null
+            "place": {
+              "name": "慕容轩(斜塘总店)",
+              "lat": 31.303347,
+              "lng": 120.738223
+            }
           },
           {
             "type": "stay",
@@ -441,7 +473,11 @@ const PLANS = [
             "startTime": "13:20",
             "endTime": "15:10",
             "description": "午后不再安排古镇户外行走，留在室内休整，降低中暑风险。",
-            "place": null
+            "place": {
+              "name": "午后向晚饰品苏州店",
+              "lat": 31.320331,
+              "lng": 120.63229
+            }
           },
           {
             "type": "transit",
@@ -558,7 +594,11 @@ const PLANS = [
             "startTime": "11:50",
             "endTime": "13:10",
             "description": "使用明·美术馆周边真实餐厅，午餐后可适当休息避开高温时段。",
-            "place": null
+            "place": {
+              "name": "VONE·璞悦荟",
+              "lat": 31.299951,
+              "lng": 120.698496
+            }
           },
           {
             "type": "home",
@@ -606,7 +646,11 @@ const PLANS = [
             "startTime": "18:40",
             "endTime": "20:00",
             "description": "使用右岸码头周边真实餐厅，晚餐安排在室内更舒适。",
-            "place": null
+            "place": {
+              "name": "苏州柏悦酒店",
+              "lat": 31.313716,
+              "lng": 120.718873
+            }
           },
           {
             "type": "home",
@@ -688,7 +732,11 @@ const PLANS = [
             "startTime": "12:10",
             "endTime": "13:30",
             "description": "使用苏州卓美民俗博物馆周边真实餐厅。",
-            "place": null
+            "place": {
+              "name": "广鉴阁·潮州菜餐厅",
+              "lat": 31.303437,
+              "lng": 120.73818
+            }
           },
           {
             "type": "home",
@@ -757,7 +805,11 @@ const PLANS = [
             "startTime": "10:50",
             "endTime": "11:27",
             "description": "同里至园区参考返程约37分钟，避开午后高温继续户外。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -765,7 +817,11 @@ const PLANS = [
             "startTime": "11:40",
             "endTime": "13:00",
             "description": "使用苏州卓美民俗博物馆周边真实餐厅，午餐后回家避暑。",
-            "place": null
+            "place": {
+              "name": "慕容轩(斜塘总店)",
+              "lat": 31.303347,
+              "lng": 120.738223
+            }
           },
           {
             "type": "home",
@@ -871,7 +927,11 @@ const PLANS = [
             "startTime": "11:00",
             "endTime": "11:48",
             "description": "周庄至园区参考车程约48分钟。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -879,7 +939,11 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:20",
             "description": "使用金鸡湖、虹·美术馆周边真实餐厅，午后不再安排古镇暴走。",
-            "place": null
+            "place": {
+              "name": "爱莲说艺术餐厅",
+              "lat": 31.299859,
+              "lng": 120.698776
+            }
           },
           {
             "type": "home",
@@ -972,7 +1036,11 @@ const PLANS = [
             "startTime": "11:20",
             "endTime": "12:43",
             "description": "赵园·曾园至园区参考约49.3km，车程1小时23分钟。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -980,7 +1048,11 @@ const PLANS = [
             "startTime": "13:00",
             "endTime": "14:20",
             "description": "使用园区周边真实餐厅，下午高温时段在室内用餐休整。",
-            "place": null
+            "place": {
+              "name": "广鉴阁·潮州菜餐厅",
+              "lat": 31.303437,
+              "lng": 120.73818
+            }
           },
           {
             "type": "home",
@@ -1062,7 +1134,11 @@ const PLANS = [
             "startTime": "12:20",
             "endTime": "13:40",
             "description": "尚湖至园区参考车程1小时20分钟。",
-            "place": null
+            "place": {
+              "name": "太阳路入口(苏州工业园区方向)",
+              "lat": 31.408225,
+              "lng": 120.65028
+            }
           },
           {
             "type": "eat",
@@ -1070,7 +1146,11 @@ const PLANS = [
             "startTime": "13:50",
             "endTime": "15:10",
             "description": "回到园区室内用餐，避开一天中最热时段。",
-            "place": null
+            "place": {
+              "name": "VONE·璞悦荟",
+              "lat": 31.299951,
+              "lng": 120.698496
+            }
           },
           {
             "type": "home",
@@ -1233,7 +1313,11 @@ const PLANS = [
             "startTime": "09:00",
             "endTime": "10:29",
             "description": "西山岛至园区约61.9km，车程1小时29分钟。",
-            "place": null
+            "place": {
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
+            }
           },
           {
             "type": "play",
@@ -1253,7 +1337,11 @@ const PLANS = [
             "startTime": "12:00",
             "endTime": "13:20",
             "description": "使用虹·美术馆周边真实餐厅，适合高温日室内收尾。",
-            "place": null
+            "place": {
+              "name": "爱莲说艺术餐厅",
+              "lat": 31.299859,
+              "lng": 120.698776
+            }
           },
           {
             "type": "home",
@@ -1322,7 +1410,11 @@ const PLANS = [
             "startTime": "10:35",
             "endTime": "11:40",
             "description": "餐厅靠近驭浪水上运动，适合作为玩水后的就近午餐与休整点。",
-            "place": null
+            "place": {
+              "name": "爱莲说艺术餐厅",
+              "lat": 31.299859,
+              "lng": 120.698776
+            }
           },
           {
             "type": "transit",
@@ -1451,7 +1543,11 @@ const PLANS = [
             "startTime": "10:40",
             "endTime": "11:31",
             "description": "按甪直古镇约51分钟车程返回园区，避开午后最热时段的户外活动。",
-            "place": null
+            "place": {
+              "name": "苏州工业园区",
+              "lat": 31.324036,
+              "lng": 120.723343
+            }
           },
           {
             "type": "eat",
@@ -1459,7 +1555,11 @@ const PLANS = [
             "startTime": "11:35",
             "endTime": "12:45",
             "description": "餐厅靠近顺达商业广场，适合返程后就近用餐、补充水分和体力。",
-            "place": null
+            "place": {
+              "name": "港粤茶点·港式茶餐厅",
+              "lat": 31.441746,
+              "lng": 121.110539
+            }
           },
           {
             "type": "play",
@@ -1548,7 +1648,11 @@ const PLANS = [
             "startTime": "11:35",
             "endTime": "12:45",
             "description": "餐厅靠近顺达商业广场和甬旺商业广场，适合返程后就近用餐。",
-            "place": null
+            "place": {
+              "name": "海之味海肠捞饭",
+              "lat": 31.336675,
+              "lng": 120.615275
+            }
           },
           {
             "type": "play",
@@ -1617,7 +1721,11 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "12:40",
             "description": "餐厅靠近建屋乐活城，适合作为出发前的正餐补给。",
-            "place": null
+            "place": {
+              "name": "苏城老友小海鲜(星湖尚街店)",
+              "lat": 31.28706,
+              "lng": 120.72548
+            }
           },
           {
             "type": "play",
@@ -1661,7 +1769,11 @@ const PLANS = [
             "startTime": "19:30",
             "endTime": "20:18",
             "description": "按周庄古镇约48分钟真实车程返程。",
-            "place": null
+            "place": {
+              "name": "周庄古镇",
+              "lat": 31.114744,
+              "lng": 120.85091
+            }
           },
           {
             "type": "home",
@@ -1754,7 +1866,11 @@ const PLANS = [
             "startTime": "11:30",
             "endTime": "12:59",
             "description": "参考西山岛至用户位置真实车程约1小时29分钟，赶在午后最热时段回到城区。",
-            "place": null
+            "place": {
+              "name": "旺西工业园北区",
+              "lat": 31.8258,
+              "lng": 120.537601
+            }
           },
           {
             "type": "eat",
@@ -1762,7 +1878,11 @@ const PLANS = [
             "startTime": "13:05",
             "endTime": "14:15",
             "description": "餐厅靠近建屋乐活城，适合远途返程后就近用餐、补水和休息。",
-            "place": null
+            "place": {
+              "name": "东仓荣锦轩(建屋乐活城店)",
+              "lat": 31.287343,
+              "lng": 120.724153
+            }
           },
           {
             "type": "play",
