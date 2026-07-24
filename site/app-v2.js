@@ -233,7 +233,6 @@ function initTimelines(plans) {
         segs.push({ type, label: step.text.substring(0, 20), start, end, cost: '' });
         lastEnd = end;
       });
-      });
       if (dayIdx < plan.days.length - 1) {
         const lastStep = day.steps[day.steps.length - 1];
         const lastEnd = hourOffset + _timeToHours(lastStep?.endTime || '22:00');
