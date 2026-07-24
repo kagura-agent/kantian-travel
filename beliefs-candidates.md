@@ -892,6 +892,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-22: [gradient] "FlowForge instances get stuck at terminal/near-terminal nodes (done, done_dedup, summary) for 3 consecutive days. Subagent completes work but cron session ends before flowforge advance executes the final step. Cleanup catches them next day but wastes instance state." → [行为改变] After any subagent completion in a cron session, flowforge advance is the FIRST action — before logging, before memory writes, before any other work. If cron session is about to end, prioritize advancing over everything else. (pattern: flowforge-terminal-node-stuck, 第3次 — 07-20: 3 instances stuck, 07-21: 1 instance stuck, 07-22: 1 instance stuck. Independent days, same root cause) (Source: audit)
   - **Trigger**: cron session spawns subagent for FlowForge node, subagent completes, but advance doesn't happen before session ends
+  - **2026-07-24 RECLASSIFIED**: tool bug, not behavioral pattern. 行为修正连续 5 天无效(07-20~07-24 每天复发)。根因是 FlowForge engine 架构：到达 terminal node 后不 auto-close，需要额外 `next` 调用。已提交代码修正(engine.ts auto-close on terminal arrival)。此条目不再作为行为 gradient 计数。
 
 - 2026-07-22: [audit-consolidation] "preflight size gate 碎片化修正 — 以下 4 个 gradient 描述同一问题（500MB size gate 阻塞有本地 clone 的大 repo），合并计数:"
   - 06-03: `preflight-false-positive` (count=1)
@@ -945,3 +946,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-24: [gradient] "Systematic optimism bias in growth predictions — 1/4 accuracy on calibration batch (overestimated FableCut stars, Kastor community, underestimated brain.md ceiling)" → [行为改变] Halve viral trajectory estimates, double time-to-community-milestone. Apply pessimism correction before logging predictions.. (pattern: calibration-overestimate-growth, 第1次) (Source: study)
   - **Trigger**: Making star count or community formation predictions
+
+- 2026-07-24: [gradient] "Precheck 'already studied' warning is false positive during followup deep-read when new PRs/issues exist since last_verified date" → [行为改变] Check followup context: if last_verified < today AND new merged PRs since then, proceed. Followup + new content = valid, not duplication.. (pattern: scout-precheck-followup-false-positive, 第1次) (Source: study)
+  - **Trigger**: followup mode enters deep_read, precheck warns EXISTING
+
+- 2026-07-24: [gradient] "When openclaw issue references bundled JS file line numbers, verify if the fix already exists on upstream/main HEAD before investing study time — release versions lag main by days/weeks" → [行为改变] First step of study: grep upstream/main for the exact code pattern the issue describes. If already fixed, skip immediately.. (pattern: verify-fix-on-head-before-study, 第1次) (Source: workloop)
+  - **Trigger**: Issue filed against released version referencing specific code locations
