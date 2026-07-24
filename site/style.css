@@ -140,6 +140,7 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 .tl-legend{display:flex;gap:12px;margin-top:6px;font-size:11px;color:#666}
 .tl-legend span{display:flex;align-items:center;gap:4px}
 .tl-legend i{display:inline-block;width:8px;height:8px;border-radius:2px}
+.tl-times{display:flex;justify-content:space-between;font-size:11px;color:#999;margin-top:2px}
 .tl-seg{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .tl-cost{font-size:8px;color:#fff;font-weight:600;white-space:nowrap;text-shadow:0 0 2px rgba(0,0,0,0.5)}
 .tl-total{font-weight:700;color:#FF6B4A}

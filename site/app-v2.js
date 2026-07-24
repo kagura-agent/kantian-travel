@@ -192,9 +192,8 @@ function renderCards() {
         <div class="card-meta">
           <span class="card-transit">${d.transitLabel}</span>
           <span class="card-price">${priceLabel}</span>
-          <span class="card-time">🕔 ${plan.days[0].steps[0]?.startTime || ''}出发 → ${plan.days[plan.days.length-1].steps.slice(-1)[0]?.endTime || ''}到家</span>
         </div>
-        ${getRoutePoints(plan).length >= 2 ? `<div class="card-timeline" id="timeline-${plan.id}"></div>` : ''}
+        ${getRoutePoints(plan).length >= 2 || plan.days[0].steps.length > 0 ? `<div class="card-timeline" id="timeline-${plan.id}" data-depart="${plan.days[0].steps[0]?.startTime || ''}" data-home="${plan.days[plan.days.length-1].steps.slice(-1)[0]?.endTime || ''}"></div>` : ''}
       </div>
     `;
     card.addEventListener('click', (e) => { if (e.target.closest('.card-heart')) return; openDetail(plan); });
@@ -259,6 +258,12 @@ function initTimelines(plans) {
     if (freeH > 0) html += `<span><i style="background:#F0F0F0"></i>自由时间 ${freeH.toFixed(1)}h (${(freeH/totalH*100).toFixed(0)}%)</span>`;
     if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h (${(sleepH/totalH*100).toFixed(0)}%)</span>`;
     html += '</div>';
+    // 加上出发/到家时间
+    const depart = el.dataset.depart;
+    const home = el.dataset.home;
+    if (depart || home) {
+      html += `<div class="tl-times"><span>${depart || ''}</span><span>${home || ''}</span></div>`;
+    }
     el.innerHTML = html;
   });
 }
