@@ -21,7 +21,7 @@ const amap = require('../services/amap');
 // LLM Config
 const LLM_BASE = 'floway.sg.kagura-agent.com';
 const LLM_TOKEN = process.env.LLM_TOKEN || '';
-const LLM_MODEL = 'gpt-5.5';
+const LLM_MODEL = 'gpt-5.6-sol';
 
 function callLLM(prompt) {
   return new Promise((resolve, reject) => {
