@@ -30,7 +30,7 @@ function callLLM(prompt) {
   return new Promise((resolve, reject) => {
     const body = JSON.stringify({
       model: LLM_MODEL,
-      max_tokens: 8192,
+      max_tokens: 16384,
       messages: [{ role: 'user', content: prompt }]
     });
     const options = {
@@ -369,7 +369,7 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 
   prompt += `
 === 生成要求 ===
-生成 3 个方案。要求：
+生成 5-8 个方案。要求：
 1. 方案必须覆盖不同距离——不能全在同一片区域，要有近郊的也有远途的
 2. 每个方案的 reason 说清为什么此刻适合（基于天气、距离、时间）
 3. 高温天户外放早晚，午后室内/阴凉
