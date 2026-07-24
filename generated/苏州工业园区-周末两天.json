@@ -1,197 +1,23 @@
 {
   "plans": [
     {
-      "title": "园区轻松避暑：金鸡湖早晚散步 + 双美术馆午后躲热",
+      "title": "园区近距离清凉轻松周末",
       "location": "苏州工业园区",
       "tag": "周末两天",
       "valid_date": [
         "2026-07-25",
         "2026-07-26"
       ],
-      "reason": "周六多云37℃、周日阴36℃，体感炎热，适合选择离苏州工业园区3-6km、车程约11-32分钟的近距离行程，减少暴晒和路上消耗。户外金鸡湖桃花岛安排在早晨和傍晚，午后转入虹·美术馆、明·美术馆等室内空间避暑。",
+      "reason": "周六多云最高37℃、周日阴最高36℃，体感炎热，适合选择1-3公里内的近距离点位，减少路上消耗；户外水上活动安排在上午，午后转入商业广场和餐厅避暑。",
       "weather": {
-        "desc": "周六多云，周日阴",
+        "desc": "周六多云、周日阴",
         "high": 37,
         "low": 27
       },
       "days": [
         {
           "day_index": 0,
-          "activity": "金鸡湖早游与湖畔用餐",
-          "weather": {
-            "desc": "多云",
-            "high": 37,
-            "low": 27
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "07:40",
-              "end_time": "08:12",
-              "description": "前往金鸡湖景区-桃花岛，真实车程约5.5km、32分钟，趁上午温度相对低时出门。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "金鸡湖景区-桃花岛晨间游览",
-              "start_time": "08:12",
-              "end_time": "10:10",
-              "description": "湖边与岛上以轻松步行为主，避开正午强烈日晒，适合拍照和看湖景。",
-              "poi_id": "B0FFF327SC"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "LÉON 莱昂餐厅（金鸡湖摩天轮店）早午餐",
-              "start_time": "10:25",
-              "end_time": "11:40",
-              "description": "选择靠近金鸡湖的餐厅休息补水，避免在中午继续户外暴晒。",
-              "poi_id": "B0I2GCKFGH"
-            },
-            {
-              "step_index": 3,
-              "type": "transit",
-              "text": "前往虹·美术馆、明·美术馆片区",
-              "start_time": "11:40",
-              "end_time": "11:55",
-              "description": "短距离转场至室内艺术空间，适合高温午后安排。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "play",
-              "text": "虹·美术馆室内观展",
-              "start_time": "11:55",
-              "end_time": "13:20",
-              "description": "利用午后最热时段进入室内展馆，减少体力消耗。",
-              "poi_id": "B0FFKZUANT"
-            },
-            {
-              "step_index": 5,
-              "type": "play",
-              "text": "明·美术馆继续观展",
-              "start_time": "13:30",
-              "end_time": "15:00",
-              "description": "两座美术馆相邻，适合连续安排，避免频繁室外移动。",
-              "poi_id": "B0FFFSL2NZ"
-            },
-            {
-              "step_index": 6,
-              "type": "eat",
-              "text": "爱莲说艺术餐厅下午茶",
-              "start_time": "15:05",
-              "end_time": "16:20",
-              "description": "在美术馆附近用餐休息，等户外温度稍降后再活动。",
-              "poi_id": "B0J06UKP64"
-            },
-            {
-              "step_index": 7,
-              "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "16:20",
-              "end_time": "16:35",
-              "description": "从美术馆片区返回，参考到虹·美术馆约3.3km、11分钟的近距离通勤。",
-              "poi_id": null
-            }
-          ]
-        },
-        {
-          "day_index": 1,
-          "activity": "民俗博物馆与湖畔傍晚",
-          "weather": {
-            "desc": "阴",
-            "high": 36,
-            "low": 28
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "09:20",
-              "end_time": "09:31",
-              "description": "前往苏州卓美民俗博物馆，真实车程约3.2km、11分钟，阴天但仍高温，优先室内。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "苏州卓美民俗博物馆参观",
-              "start_time": "09:31",
-              "end_time": "11:20",
-              "description": "以室内民俗展陈为主，适合36℃高温天上午安排。",
-              "poi_id": "B0FFKHL612"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "广鉴阁·潮州菜餐厅午餐",
-              "start_time": "11:25",
-              "end_time": "12:45",
-              "description": "餐厅靠近博物馆，减少午间步行距离。",
-              "poi_id": "B0J01CUS08"
-            },
-            {
-              "step_index": 3,
-              "type": "stay",
-              "text": "午后休息避暑",
-              "start_time": "12:45",
-              "end_time": "16:30",
-              "description": "周日最高36℃，午后不安排长时间户外，建议回酒店或商场休息。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "transit",
-              "text": "傍晚前往金鸡湖景区-桃花岛",
-              "start_time": "16:30",
-              "end_time": "17:02",
-              "description": "前往金鸡湖景区-桃花岛，真实车程约5.5km、32分钟。",
-              "poi_id": null
-            },
-            {
-              "step_index": 5,
-              "type": "play",
-              "text": "金鸡湖景区-桃花岛傍晚散步",
-              "start_time": "17:02",
-              "end_time": "18:30",
-              "description": "傍晚光线柔和，湖边通风较好，比午后更适合户外活动。",
-              "poi_id": "B0FFF327SC"
-            },
-            {
-              "step_index": 6,
-              "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "18:30",
-              "end_time": "19:02",
-              "description": "从金鸡湖景区-桃花岛返回，参考真实车程约32分钟。",
-              "poi_id": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "园区文���慢游：民俗博物馆 + 广恩林公园清晨线",
-      "location": "苏州工业园区",
-      "tag": "周末两天",
-      "valid_date": [
-        "2026-07-25",
-        "2026-07-26"
-      ],
-      "reason": "两天都在36℃以上，选择3-4km范围内的民俗博物馆、美术馆和公园，路程控制在11-12分钟左右。公园安排在清晨，室内博物馆和餐厅安排在高温时段，适合不想远行的周末。",
-      "weather": {
-        "desc": "周六多云，周日阴",
-        "high": 37,
-        "low": 27
-      },
-      "days": [
-        {
-          "day_index": 0,
-          "activity": "民俗博物馆与斜塘午餐",
+          "activity": "近距离商场与水上活动",
           "weather": {
             "desc": "多云",
             "high": 37,
@@ -203,234 +29,100 @@
               "type": "depart",
               "text": "从苏州工业园区出发",
               "start_time": "09:00",
-              "end_time": "09:11",
-              "description": "前往苏州卓美民俗博物馆，真实车程约3.2km、11分钟。",
+              "end_time": "09:00",
+              "description": "高温天不宜太早暴晒，选择近距离出行。",
+              "place_name": null,
               "poi_id": null
             },
             {
               "step_index": 1,
-              "type": "play",
-              "text": "苏州卓美民俗博物馆",
-              "start_time": "09:11",
-              "end_time": "11:15",
-              "description": "上午先看室内展陈，避开多云高温下的长时间户外活动。",
-              "poi_id": "B0FFKHL612"
+              "type": "transit",
+              "text": "自驾前往建屋乐活城",
+              "start_time": "09:00",
+              "end_time": "09:04",
+              "description": "自驾1.3km，约4分钟；也可公交25分钟，约2.0元，步行0.6km。",
+              "place_name": "建屋乐活城",
+              "_coords": {
+                "lat": 31.288747,
+                "lng": 120.724249
+              }
             },
             {
               "step_index": 2,
-              "type": "eat",
-              "text": "慕容轩（斜塘总店）午餐",
-              "start_time": "11:20",
-              "end_time": "12:40",
-              "description": "餐厅靠近博物馆，步行转场压力小，适合炎热中午。",
-              "poi_id": "B0H3GC4AAA"
+              "type": "play",
+              "text": "建屋乐活城休闲逛街",
+              "start_time": "09:04",
+              "end_time": "11:00",
+              "description": "上午先安排室内和半室内休闲，避开中午前后的强烈暑热。",
+              "place_name": "建屋乐活城",
+              "_coords": {
+                "lat": 31.288747,
+                "lng": 120.724249
+              }
             },
             {
               "step_index": 3,
-              "type": "stay",
-              "text": "午后室内休息",
-              "start_time": "12:40",
-              "end_time": "15:30",
-              "description": "周六最高37℃，午后安排休息或室内茶饮，不进行暴晒活动。",
-              "poi_id": null
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "11:10",
+              "end_time": "12:20",
+              "description": "在建屋乐活城附近用餐，减少高温下移动。",
+              "place_name": "东仓荣锦��(建屋乐活城店)"
             },
             {
               "step_index": 4,
               "type": "transit",
-              "text": "前往虹·美术馆",
-              "start_time": "15:30",
-              "end_time": "15:41",
-              "description": "从园区前往虹·美术馆参考真实车程约3.3km、11分钟。",
-              "poi_id": null
+              "text": "前往驭浪水上运动",
+              "start_time": "16:30",
+              "end_time": "16:35",
+              "description": "自驾1.2km，约5分钟；也可公交24分钟，约1.0元，步行0.6km。下午最热时段先休息，傍晚再出门。",
+              "place_name": "驭浪水上运动",
+              "_coords": {
+                "lat": 31.299525,
+                "lng": 120.712375
+              }
             },
             {
               "step_index": 5,
               "type": "play",
-              "text": "虹·美术馆午后观展",
-              "start_time": "15:41",
-              "end_time": "17:10",
-              "description": "继续以室内文化活动为主，等傍晚温度下降。",
-              "poi_id": "B0FFKZUANT"
+              "text": "傍晚水上运动体验",
+              "start_time": "16:35",
+              "end_time": "18:20",
+              "description": "户外项目放在傍晚，温度相对下降，适合亲水活动。",
+              "place_name": "驭浪水上运动",
+              "_coords": {
+                "lat": 31.299525,
+                "lng": 120.712375
+              }
             },
             {
               "step_index": 6,
               "type": "eat",
-              "text": "VONE·璞悦荟晚餐",
-              "start_time": "17:15",
-              "end_time": "18:30",
-              "description": "餐厅靠近美术馆，适合结束观展后就近用餐。",
-              "poi_id": "B0G12BKH66"
+              "text": "晚餐",
+              "start_time": "18:30",
+              "end_time": "19:40",
+              "description": "就近用餐，避免再长距离奔波。",
+              "place_name": "爱莲说艺术餐厅",
+              "_coords": {
+                "lat": 31.299859,
+                "lng": 120.698776
+              }
             },
             {
               "step_index": 7,
               "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "18:30",
-              "end_time": "18:41",
-              "description": "从美术馆片区返回，参考车程约11分钟。",
+              "text": "返回家中",
+              "start_time": "19:40",
+              "end_time": "19:50",
+              "description": "近距离返程，结束第一天轻松行程。",
+              "place_name": null,
               "poi_id": null
             }
           ]
         },
         {
           "day_index": 1,
-          "activity": "广恩林公园清晨散步",
-          "weather": {
-            "desc": "阴",
-            "high": 36,
-            "low": 28
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "07:15",
-              "end_time": "07:27",
-              "description": "前往广恩林公园，真实车程约3.7km、12分钟，尽量赶在升温前抵达。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "广恩林公园晨间散步",
-              "start_time": "07:27",
-              "end_time": "09:00",
-              "description": "阴天但最高仍有36℃，公园活动放在清晨，选择树荫路线慢走。",
-              "poi_id": "B0FFGFB89K"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "星湖苑餐厅早午餐",
-              "start_time": "09:05",
-              "end_time": "10:20",
-              "description": "靠近广恩林公园，用餐和补水后减少继续户外停留。",
-              "poi_id": "B0KK59UTQM"
-            },
-            {
-              "step_index": 3,
-              "type": "transit",
-              "text": "前往明·美术馆",
-              "start_time": "10:20",
-              "end_time": "10:31",
-              "description": "转入室内美术馆，参考明·美术馆距园区约3.4km、11分钟。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "play",
-              "text": "明·美术馆观展",
-              "start_time": "10:31",
-              "end_time": "12:10",
-              "description": "中午前后转室内，适配高温阴天。",
-              "poi_id": "B0FFFSL2NZ"
-            },
-            {
-              "step_index": 5,
-              "type": "eat",
-              "text": "爱莲说艺术餐厅午��",
-              "start_time": "12:15",
-              "end_time": "13:30",
-              "description": "美术馆附近就餐，减少午间移动。",
-              "poi_id": "B0J06UKP64"
-            },
-            {
-              "step_index": 6,
-              "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "13:30",
-              "end_time": "13:41",
-              "description": "午后高温前结束户外通勤，返回休息。",
-              "poi_id": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "南浔古镇近郊周末：清晨出发避开午后热浪",
-      "location": "苏州工业园区",
-      "tag": "周末两天",
-      "valid_date": [
-        "2026-07-25",
-        "2026-07-26"
-      ],
-      "reason": "南浔古镇距离苏州工业园区约71km、车程1小时13分钟，属于轻量近郊，不需要长途奔波。周六37℃适合早出发、上午逛古镇，午后找室内或阴凉处休息；周日回到园区安排室内美术馆，降低连续高温户外负担。",
-      "weather": {
-        "desc": "周六多云，周日阴",
-        "high": 37,
-        "low": 27
-      },
-      "days": [
-        {
-          "day_index": 0,
-          "activity": "南浔古镇一日近郊",
-          "weather": {
-            "desc": "多云",
-            "high": 37,
-            "low": 27
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发前往南浔古镇",
-              "start_time": "07:00",
-              "end_time": "08:13",
-              "description": "真实车程约71km、1小时13分钟，早出发可避开午后最高温。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "南浔古镇上午游览",
-              "start_time": "08:13",
-              "end_time": "11:20",
-              "description": "上午逛水乡街巷和古桥，尽量选择沿河阴影处慢走，减少暴晒。",
-              "poi_id": "B023C0OMFN"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "古镇周边午餐",
-              "start_time": "11:20",
-              "end_time": "12:40",
-              "description": "午餐不指定POI，建议选择有空调的室内餐厅，补充水分和盐分。",
-              "poi_id": null
-            },
-            {
-              "step_index": 3,
-              "type": "stay",
-              "text": "午后室内休息或茶馆避暑",
-              "start_time": "12:40",
-              "end_time": "15:40",
-              "description": "周六最高37℃，不建议在古镇无遮阴区域长时间行走。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "play",
-              "text": "南浔古镇傍晚补游",
-              "start_time": "15:40",
-              "end_time": "17:20",
-              "description": "傍晚温度略降后再补充游览，适合拍水乡黄昏。",
-              "poi_id": "B023C0OMFN"
-            },
-            {
-              "step_index": 5,
-              "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "17:20",
-              "end_time": "18:33",
-              "description": "按真实车程约1小时13分钟返回，晚上仍可休息恢复。",
-              "poi_id": null
-            }
-          ]
-        },
-        {
-          "day_index": 1,
-          "activity": "园区室内艺术恢复日",
+          "activity": "商业广场避暑慢逛",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -442,44 +134,97 @@
               "type": "depart",
               "text": "从苏州工业园区出发",
               "start_time": "10:00",
-              "end_time": "10:11",
-              "description": "前往虹·美术馆，真实车程约3.3km、11分钟，安排轻松恢复。",
+              "end_time": "10:00",
+              "description": "周日阴天但仍有36℃高温，选择近场室内活动。",
+              "place_name": null,
               "poi_id": null
             },
             {
               "step_index": 1,
-              "type": "play",
-              "text": "虹·美术馆观展",
-              "start_time": "10:11",
-              "end_time": "11:40",
-              "description": "周日阴但36℃，以室内展览为主，避免连续两天户外消耗。",
-              "poi_id": "B0FFKZUANT"
+              "type": "transit",
+              "text": "自驾前往顺达商业广场",
+              "start_time": "10:00",
+              "end_time": "10:09",
+              "description": "自驾2.6km，约9分钟；公交30分钟，约2.0元，步行0.7km。",
+              "place_name": "顺达商业广场",
+              "_coords": {
+                "lat": 31.287131,
+                "lng": 120.727762
+              }
             },
             {
               "step_index": 2,
-              "type": "eat",
-              "text": "VONE·璞悦荟午餐",
-              "start_time": "11:45",
-              "end_time": "13:00",
-              "description": "靠近美术馆，午间就近用餐。",
-              "poi_id": "B0G12BKH66"
+              "type": "play",
+              "text": "顺达商业广场室内休闲",
+              "start_time": "10:09",
+              "end_time": "12:00",
+              "description": "以室内逛街、休闲为主，适合高温天。",
+              "place_name": "顺达商业广场",
+              "_coords": {
+                "lat": 31.287131,
+                "lng": 120.727762
+              }
             },
             {
               "step_index": 3,
-              "type": "play",
-              "text": "明·美术馆继续观展",
-              "start_time": "13:10",
-              "end_time": "14:40",
-              "description": "午后继续室内活动，适合高温天气。",
-              "poi_id": "B0FFFSL2NZ"
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "12:00",
+              "end_time": "13:10",
+              "description": "中午最热时段在商场附近用餐。",
+              "place_name": "港粤茶点·港式茶餐厅(园区店)",
+              "_coords": {
+                "lat": 31.286875,
+                "lng": 120.727875
+              }
             },
             {
               "step_index": 4,
+              "type": "transit",
+              "text": "前往甬旺商业广场",
+              "start_time": "15:30",
+              "end_time": "15:40",
+              "description": "自驾2.9km，约10分钟；公交36分钟，约2.0元，步行1.6km。",
+              "place_name": "甬旺商业广场",
+              "_coords": {
+                "lat": 31.286744,
+                "lng": 120.729014
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "甬旺商业广场轻松逛逛",
+              "start_time": "15:40",
+              "end_time": "17:20",
+              "description": "继续选择商业空间避暑，不安排长时间户外暴晒。",
+              "place_name": "甬旺商业广场",
+              "_coords": {
+                "lat": 31.286744,
+                "lng": 120.729014
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "eat",
+              "text": "晚餐后返程",
+              "start_time": "17:30",
+              "end_time": "18:30",
+              "description": "傍晚提前用餐，避开晚高峰和暑热疲劳。",
+              "place_name": "海味当家海肠捞饭",
+              "_coords": {
+                "lat": 31.286875,
+                "lng": 120.727875
+              }
+            },
+            {
+              "step_index": 7,
               "type": "home",
-              "text": "返回苏州工业园区",
-              "start_time": "14:40",
-              "end_time": "14:51",
-              "description": "从明·美术馆返回参考真实车程约3.4km、11分钟。",
+              "text": "返回家中",
+              "start_time": "18:30",
+              "end_time": "18:45",
+              "description": "短距离返程，适合周日收尾。",
+              "place_name": null,
               "poi_id": null
             }
           ]
@@ -487,23 +232,23 @@
       ]
     },
     {
-      "title": "莫干山两天一晚：山里避暑与清晨登山",
+      "title": "近郊滨水栈道早晚散步方案",
       "location": "苏州工业园区",
       "tag": "周末两天",
       "valid_date": [
         "2026-07-25",
         "2026-07-26"
       ],
-      "reason": "莫干山距苏州工业园区约153.6-154.6km，车程约2小时14分钟至2小时16分钟，适合两天一晚。周末苏州高温36-37℃，山地林荫和早晚时段更适合活动；午后安排客栈休息，避免高温时段登山。",
+      "reason": "滨水栈道距苏州工业园区自驾61.6km、约1小时5分钟，属于近郊可当天往返；周末高温明显，因此把滨水户外安排在清晨和傍晚，中午回到室内商业空间降温。",
       "weather": {
-        "desc": "周六多云，周日阴",
+        "desc": "周六多云、周日阴",
         "high": 37,
         "low": 27
       },
       "days": [
         {
           "day_index": 0,
-          "activity": "抵达莫干山与傍晚山间散步",
+          "activity": "滨水栈道清晨散步",
           "weather": {
             "desc": "多云",
             "high": 37,
@@ -513,71 +258,696 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发前往莫干山·山语客栈",
-              "start_time": "08:00",
-              "end_time": "10:05",
-              "description": "真实车程约153.7km、2小时5分钟，上午抵达后避开正午赶路。",
+              "text": "从苏州工业园区出发",
+              "start_time": "06:40",
+              "end_time": "06:40",
+              "description": "趁早出发，避开37℃高温时段。",
+              "place_name": null,
               "poi_id": null
             },
             {
               "step_index": 1,
-              "type": "stay",
-              "text": "莫干山·山语客栈入住与休整",
-              "start_time": "10:05",
-              "end_time": "12:00",
-              "description": "先在客栈休息、补水，减少高温下马上登山的消耗。",
-              "poi_id": "B0FFGZWOYQ"
+              "type": "transit",
+              "text": "自驾前往滨水栈道",
+              "start_time": "06:40",
+              "end_time": "07:45",
+              "description": "自驾61.6km，约1小时5分钟；公交约3小时16分钟，约25.9元，步行3.1km，不建议高温天公交往返。",
+              "place_name": "滨水栈道",
+              "_coords": {
+                "lat": 31.512636,
+                "lng": 121.096483
+              }
             },
             {
               "step_index": 2,
-              "type": "eat",
-              "text": "客栈或周边午餐",
-              "start_time": "12:00",
-              "end_time": "13:20",
-              "description": "午餐不指定POI，建议选择室内就餐，避开周六37℃午后高温。",
-              "poi_id": null
+              "type": "play",
+              "text": "滨水栈道晨间散步",
+              "start_time": "07:45",
+              "end_time": "09:30",
+              "description": "早晨温度相对较低，适合短时滨水步行和拍照。",
+              "place_name": "滨水栈道",
+              "_coords": {
+                "lat": 31.512636,
+                "lng": 121.096483
+              }
             },
             {
               "step_index": 3,
-              "type": "stay",
-              "text": "午后避暑休息",
-              "start_time": "13:20",
-              "end_time": "16:20",
-              "description": "午后不安排高强度爬坡，适合在客栈休息或阴凉处喝茶。",
-              "poi_id": "B0FFGZWOYQ"
+              "type": "transit",
+              "text": "返回园区方向",
+              "start_time": "09:30",
+              "end_time": "10:35",
+              "description": "按自驾约1小时5分钟返程，避开午后酷热。",
+              "place_name": "建屋乐活城",
+              "_coords": {
+                "lat": 31.288747,
+                "lng": 120.724249
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "11:00",
+              "end_time": "12:10",
+              "description": "回到建屋乐活城附近用餐，减少中午室外停留。",
+              "place_name": "苏城老友小海鲜(星湖尚街店)",
+              "_coords": {
+                "lat": 31.28706,
+                "lng": 120.72548
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "建屋乐活城室内休整",
+              "start_time": "12:10",
+              "end_time": "15:30",
+              "description": "午后高温明显，安排商场内休息和补水。",
+              "place_name": "建屋乐活城",
+              "_coords": {
+                "lat": 31.288747,
+                "lng": 120.724249
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回家中",
+              "start_time": "15:30",
+              "end_time": "15:40",
+              "description": "第一天强度适中，下午早些结束。",
+              "place_name": null,
+              "poi_id": null
+            }
+          ]
+        },
+        {
+          "day_index": 1,
+          "activity": "园区水上运动与室内避暑",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "08:30",
+              "end_time": "08:30",
+              "description": "周日阴天但仍炎热，上午安排近距离活动。",
+              "place_name": null,
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往驭浪水上运动",
+              "start_time": "08:30",
+              "end_time": "08:35",
+              "description": "自驾1.2km，约5分钟；公交24分钟，约1.0元，步行0.6km。",
+              "place_name": "驭浪水上运动",
+              "_coords": {
+                "lat": 31.299525,
+                "lng": 120.712375
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "上午水上活动",
+              "start_time": "08:35",
+              "end_time": "10:30",
+              "description": "把户外亲水体验放在上午，避开下午高温。",
+              "place_name": "驭浪水上运动",
+              "_coords": {
+                "lat": 31.299525,
+                "lng": 120.712375
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "10:45",
+              "end_time": "12:00",
+              "description": "就近吃海鲜类午餐，减少额外移动。",
+              "place_name": "鲨滩小海鲜(园区店)",
+              "_coords": {
+                "lat": 31.299645,
+                "lng": 120.725746
+              }
             },
             {
               "step_index": 4,
               "type": "transit",
-              "text": "前往莫干山风景名胜区",
-              "start_time": "16:20",
-              "end_time": "16:40",
-              "description": "傍晚转入景区，莫干山方向真实总路程参考154.6km、2小时16分钟。",
+              "text": "前往顺达商业广场",
+              "start_time": "12:10",
+              "end_time": "12:19",
+              "description": "自驾2.6km，约9分钟；公交30分钟，约2.0元，步行0.7km。",
+              "place_name": "顺达商业广场",
+              "_coords": {
+                "lat": 31.287131,
+                "lng": 120.727762
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "顺达商业广场午后避暑",
+              "start_time": "12:19",
+              "end_time": "16:00",
+              "description": "午后最高温时段留在室内，适合休闲购物。",
+              "place_name": "顺达商业广场",
+              "_coords": {
+                "lat": 31.287131,
+                "lng": 120.727762
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回家中",
+              "start_time": "16:00",
+              "end_time": "16:15",
+              "description": "周日早点回家，为下周留出休息时间。",
+              "place_name": null,
               "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "南浔古镇两日慢游",
+      "location": "苏州工业园区",
+      "tag": "周末两天",
+      "valid_date": [
+        "2026-07-25",
+        "2026-07-26"
+      ],
+      "reason": "南浔古镇自驾71km、约1小时8分钟，适合周末短途过夜；两天均为36-37℃高温，古镇步行安排在早晨和傍晚，午后在游客服务区或室内休整。",
+      "weather": {
+        "desc": "周六多云、周日阴",
+        "high": 37,
+        "low": 27
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "抵达南浔与傍晚古镇",
+          "weather": {
+            "desc": "多云",
+            "high": 37,
+            "low": 27
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "08:30",
+              "end_time": "08:30",
+              "description": "早上出发，避开中午37℃高温行车和步行。",
+              "place_name": null,
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "自驾前往南浔古镇",
+              "start_time": "08:30",
+              "end_time": "09:38",
+              "description": "自驾71km，约1小时8分钟；公交约3小时14分钟，步行1.6km，高温天更建议自驾。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "南浔古镇上午游览",
+              "start_time": "09:38",
+              "end_time": "11:20",
+              "description": "利用上午相对舒适的时段游览古镇核心区域。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "古镇午餐",
+              "start_time": "11:30",
+              "end_time": "12:40",
+              "description": "中午在古镇内用餐，避免午间继续长时间暴晒。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "南浔古镇南门游客服务中心休整",
+              "start_time": "13:00",
+              "end_time": "15:30",
+              "description": "午后高温时段减少户外步行，以补水、休息和查看游览信息为主。",
+              "place_name": "南浔古镇南门游客服务中心",
+              "_coords": {
+                "lat": 30.869889,
+                "lng": 120.43087
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "傍晚继续游览南浔古镇旅游度假区",
+              "start_time": "16:30",
+              "end_time": "18:30",
+              "description": "傍晚光线更柔和，适合古镇水巷拍照。",
+              "place_name": "南浔古镇旅游度假区",
+              "_coords": {
+                "lat": 30.869863,
+                "lng": 120.430911
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "stay",
+              "text": "夜宿南浔古镇旅游度假区",
+              "start_time": "20:00",
+              "end_time": "23:00",
+              "description": "住在景区周边，方便第二天清晨避开人流和高温继续游览。",
+              "place_name": "南浔古镇旅游度假区",
+              "_coords": {
+                "lat": 30.869863,
+                "lng": 120.430911
+              }
+            }
+          ]
+        },
+        {
+          "day_index": 1,
+          "activity": "清晨古镇与返程",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "play",
+              "text": "南浔古镇清晨散步",
+              "start_time": "07:30",
+              "end_time": "09:30",
+              "description": "周日阴天但最高仍36℃，清晨游览更舒适。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 1,
+              "type": "eat",
+              "text": "早午餐",
+              "start_time": "09:40",
+              "end_time": "10:40",
+              "description": "在古镇内慢用早午餐，避开上午后段升温。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "南浔古镇南门游客服务中心补给",
+              "start_time": "10:50",
+              "end_time": "11:30",
+              "description": "返程前补水、整理物品，减少正午户外停留。",
+              "place_name": "南浔古镇南门游客服务中心",
+              "_coords": {
+                "lat": 30.869889,
+                "lng": 120.43087
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "transit",
+              "text": "自驾返回苏州工业园区",
+              "start_time": "11:30",
+              "end_time": "12:38",
+              "description": "按南浔古镇至园区自驾约71km、1小时8分钟估算返程。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "home",
+              "text": "到家休息",
+              "start_time": "12:38",
+              "end_time": "12:38",
+              "description": "中午前后到家，避开下午高温返程疲劳。",
+              "place_name": null,
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "乌镇与南浔双古镇周末",
+      "location": "苏州工业园区",
+      "tag": "周末两天",
+      "valid_date": [
+        "2026-07-25",
+        "2026-07-26"
+      ],
+      "reason": "乌镇风景区自驾81.8km、约1小时29分钟，南浔古镇自驾71km、约1小时8分钟，两者适合组成短途双古镇；因周末高温，游览集中在上午和傍晚，午后减少户外行走。",
+      "weather": {
+        "desc": "周六多云、周日阴",
+        "high": 37,
+        "low": 27
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "乌镇风景区慢游",
+          "weather": {
+            "desc": "多云",
+            "high": 37,
+            "low": 27
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "07:30",
+              "end_time": "07:30",
+              "description": "提前出发，争取上午抵达并避开午后高温。",
+              "place_name": null,
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "自驾前往乌镇风景区",
+              "start_time": "07:30",
+              "end_time": "08:59",
+              "description": "自驾81.8km，约1小时29分钟；公交约3小时38分钟，约13.0元，步行2.3km。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "乌镇风景区上午游览",
+              "start_time": "09:00",
+              "end_time": "11:20",
+              "description": "上午游览水乡街巷，避开最热的下午时段。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "乌镇午餐",
+              "start_time": "11:30",
+              "end_time": "12:40",
+              "description": "中午在景区内用餐休息。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "午后阴凉休整",
+              "start_time": "13:00",
+              "end_time": "15:30",
+              "description": "37℃高温下减少暴走，以室内、阴凉处休息为主。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "乌镇傍晚游览",
+              "start_time": "16:30",
+              "end_time": "18:30",
+              "description": "傍晚温度相对下降，适合继续看水乡景色。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "stay",
+              "text": "夜宿乌镇风景区周边",
+              "start_time": "20:00",
+              "end_time": "23:00",
+              "description": "留宿景区周边，减少夜间返程疲劳。",
+              "place_name": "乌镇风景区",
+              "_coords": {
+                "lat": 30.748979,
+                "lng": 120.486173
+              }
+            }
+          ]
+        },
+        {
+          "day_index": 1,
+          "activity": "南浔古镇补充游览后返程",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "transit",
+              "text": "从乌镇风景区前往南浔古镇",
+              "start_time": "08:00",
+              "end_time": "09:15",
+              "description": "跨古镇短途移动，按周边道路预留约1小时15分钟，避开中午高温。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 1,
+              "type": "play",
+              "text": "南浔古镇上午游览",
+              "start_time": "09:15",
+              "end_time": "11:20",
+              "description": "周日阴天但仍36℃，上午完成主要户外游览。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "eat",
+              "text": "南浔午餐",
+              "start_time": "11:30",
+              "end_time": "12:40",
+              "description": "中午在古镇内休息用餐。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "play",
+              "text": "南浔古镇南门游客服务中心休整",
+              "start_time": "12:50",
+              "end_time": "14:00",
+              "description": "午后不继续长时间暴晒，在游客服务中心附近休整。",
+              "place_name": "南浔古镇南门游客服务中心",
+              "_coords": {
+                "lat": 30.869889,
+                "lng": 120.43087
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "transit",
+              "text": "自驾返回苏州工业园区",
+              "start_time": "14:00",
+              "end_time": "15:08",
+              "description": "南浔古镇至苏州工业园区自驾71km，约1小时8分钟。",
+              "place_name": "南浔古镇",
+              "_coords": {
+                "lat": 30.88091,
+                "lng": 120.439896
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "home",
+              "text": "到家",
+              "start_time": "15:08",
+              "end_time": "15:08",
+              "description": "下午较早到家，减少高温天周末疲劳。",
+              "place_name": null,
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "莫干山避暑两日自驾",
+      "location": "苏州工业园区",
+      "tag": "周末两天",
+      "valid_date": [
+        "2026-07-25",
+        "2026-07-26"
+      ],
+      "reason": "莫干山自驾约153.6km、2小时8分钟，距离较远但适合两天一晚；苏州周末36-37℃，山地和竹林环境更适合避暑，户外徒步安排在清晨和傍晚，午后在客栈休息。",
+      "weather": {
+        "desc": "周六多云、周日阴",
+        "high": 37,
+        "low": 27
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "前往莫干山与傍晚山间活动",
+          "weather": {
+            "desc": "多云",
+            "high": 37,
+            "low": 27
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "07:00",
+              "end_time": "07:00",
+              "description": "远途自驾需早出发，避开午后高温和拥堵。",
+              "place_name": null,
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "自驾前往莫干山",
+              "start_time": "07:00",
+              "end_time": "09:08",
+              "description": "自驾153.6km，约2小时8分钟；公交约5小时40分钟，约41.0元，高温天不建议公交长途换乘。",
+              "place_name": "莫干山",
+              "_coords": {
+                "lat": 30.609478,
+                "lng": 119.872252
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "莫干山上午轻游",
+              "start_time": "09:15",
+              "end_time": "11:20",
+              "description": "上午先进行轻量游览，控制体力消耗。",
+              "place_name": "莫干山",
+              "_coords": {
+                "lat": 30.609478,
+                "lng": 119.872252
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "山间午餐",
+              "start_time": "11:30",
+              "end_time": "12:40",
+              "description": "午餐后进入避暑休整节奏，避免正午徒步。",
+              "place_name": "莫干山",
+              "_coords": {
+                "lat": 30.609478,
+                "lng": 119.872252
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "stay",
+              "text": "莫干山·山语客栈午后休息",
+              "start_time": "13:00",
+              "end_time": "16:00",
+              "description": "莫干山·山语客栈自驾153.7km，数据约1小时60分钟；午后高温时段适合在客栈休息。",
+              "place_name": "莫干山·山语客栈",
+              "_coords": {
+                "lat": 30.635534,
+                "lng": 119.89191
+              }
             },
             {
               "step_index": 5,
               "type": "play",
               "text": "莫干山风景名胜区傍晚游览",
-              "start_time": "16:40",
+              "start_time": "16:20",
               "end_time": "18:30",
-              "description": "傍晚温度下降后在林荫路段轻徒步，适合高温周末的山地避暑。",
-              "poi_id": "B0G23SCQ3S"
+              "description": "傍晚进入景区，气温较白天低，更适合山间步行。",
+              "place_name": "莫干山风景名胜区",
+              "_coords": {
+                "lat": 30.607076,
+                "lng": 119.866469
+              }
             },
             {
               "step_index": 6,
               "type": "stay",
-              "text": "返回莫干山·山语客栈休息",
-              "start_time": "18:30",
-              "end_time": "19:00",
-              "description": "夜宿山中，第二天清晨再安排主要游览。",
-              "poi_id": "B0FFGZWOYQ"
+              "text": "夜宿莫干山·山语客栈",
+              "start_time": "20:00",
+              "end_time": "23:00",
+              "description": "住在山间，方便第二天清晨继续避暑游。",
+              "place_name": "莫干山·山语客栈",
+              "_coords": {
+                "lat": 30.635534,
+                "lng": 119.89191
+              }
             }
           ]
         },
         {
           "day_index": 1,
-          "activity": "莫干山清晨游览后返程",
+          "activity": "清晨莫干山后返程",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -587,313 +957,50 @@
             {
               "step_index": 0,
               "type": "play",
-              "text": "莫干山清晨游览",
-              "start_time": "07:00",
-              "end_time": "10:30",
-              "description": "周日阴但最高36℃，把山路游览放在清晨，选择林荫路和观景点慢行。",
-              "poi_id": "B023C02L4J"
-            },
-            {
-              "step_index": 1,
-              "type": "eat",
-              "text": "山中早午餐",
-              "start_time": "10:30",
-              "end_time": "11:40",
-              "description": "不指定POI，建议选择有空调或通风良好的室内空间补给。",
-              "poi_id": null
-            },
-            {
-              "step_index": 2,
-              "type": "stay",
-              "text": "客栈退房与午间休整",
-              "start_time": "11:40",
-              "end_time": "13:30",
-              "description": "午间高温时段休整，不继续增加户外强度。",
-              "poi_id": "B0FFGZWOYQ"
-            },
-            {
-              "step_index": 3,
-              "type": "home",
-              "text": "从莫干山返回苏州工业园区",
-              "start_time": "13:30",
-              "end_time": "15:44",
-              "description": "按莫干山至苏州工业园区真实车程约153.6km、2小时14分钟返程，避开傍晚返程拥堵。",
-              "poi_id": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "安吉竹海避暑两日：大竹海 + 竹海长廊",
-      "location": "苏州工业园区",
-      "tag": "周末两天",
-      "valid_date": [
-        "2026-07-25",
-        "2026-07-26"
-      ],
-      "reason": "安吉竹海方向车程约2小时12分钟至2小时33分钟，适合周末远郊两日。周六37℃、周日36℃，竹林有遮阴但仍需避开午后，因此安排上午和傍晚游竹海，午后以休息和转场为主。",
-      "weather": {
-        "desc": "周六多云，周日阴",
-        "high": 37,
-        "low": 27
-      },
-      "days": [
-        {
-          "day_index": 0,
-          "activity": "安吉中南百草原竹海长廊",
-          "weather": {
-            "desc": "多云",
-            "high": 37,
-            "low": 27
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发前往安吉中南百草原景区-竹海长廊",
-              "start_time": "07:00",
-              "end_time": "09:12",
-              "description": "真实车程约170km、2小时12分钟，早出发可把游览放在上午。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "安吉中南百草原景区-竹海长廊",
-              "start_time": "09:12",
-              "end_time": "11:40",
-              "description": "竹林遮阴条件较好，但周六最高37℃，仍以轻松步行为主。",
-              "poi_id": "B0FFK8BO3N"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "景区周边午餐",
-              "start_time": "11:40",
-              "end_time": "13:00",
-              "description": "不指定POI，建议选择室内餐厅，午后减少户外暴晒。",
-              "poi_id": null
-            },
-            {
-              "step_index": 3,
-              "type": "stay",
-              "text": "午后休息避暑",
-              "start_time": "13:00",
-              "end_time": "16:00",
-              "description": "高温时段不继续长时间徒步，可在住宿地或阴凉空间休息。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "play",
-              "text": "竹海长廊傍晚补游",
-              "start_time": "16:00",
-              "end_time": "18:00",
-              "description": "傍晚再进行短线游览，拍竹林光影，避开最热时段。",
-              "poi_id": "B0FFK8BO3N"
-            },
-            {
-              "step_index": 5,
-              "type": "stay",
-              "text": "安吉住宿休息",
-              "start_time": "18:00",
-              "end_time": "21:30",
-              "description": "不指定住宿POI，保证第二天清晨游中国大竹海。",
-              "poi_id": null
-            }
-          ]
-        },
-        {
-          "day_index": 1,
-          "activity": "中国大竹海清晨游览后返程",
-          "weather": {
-            "desc": "阴",
-            "high": 36,
-            "low": 28
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "transit",
-              "text": "前往中国大竹海景区售票处",
+              "text": "莫干山风景名胜区清晨游览",
               "start_time": "07:30",
-              "end_time": "08:00",
-              "description": "早晨转场至中国大竹海景区售票处，购买或核验门票后进入景区。",
-              "poi_id": "B023C0Q92H"
+              "end_time": "10:00",
+              "description": "周日阴天但仍高温，清晨最适合进行主要户外活动。",
+              "place_name": "莫干山风景名胜区",
+              "_coords": {
+                "lat": 30.607076,
+                "lng": 119.866469
+              }
             },
             {
               "step_index": 1,
-              "type": "play",
-              "text": "中国大竹海景区",
-              "start_time": "08:00",
-              "end_time": "11:20",
-              "description": "中国大竹海距苏州工业园区约188km、车程2小时33分钟，适合安排在两日行第二天清晨游览。",
-              "poi_id": "B023C02MNS"
+              "type": "eat",
+              "text": "早午餐",
+              "start_time": "10:10",
+              "end_time": "11:10",
+              "description": "返程前补充体力和水分。",
+              "place_name": "莫干山·山语客栈",
+              "_coords": {
+                "lat": 30.635534,
+                "lng": 119.89191
+              }
             },
             {
               "step_index": 2,
-              "type": "eat",
-              "text": "景区周边午餐",
-              "start_time": "11:20",
-              "end_time": "12:40",
-              "description": "不指定POI，午间选择室内就餐并补水。",
-              "poi_id": null
-            },
-            {
-              "step_index": 3,
-              "type": "stay",
-              "text": "午后短暂休整",
-              "start_time": "12:40",
-              "end_time": "14:00",
-              "description": "周日最高36℃，返程前休息，避免疲劳驾驶。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "home",
-              "text": "从中国大竹海返回苏州工业园区",
-              "start_time": "14:00",
-              "end_time": "16:33",
-              "description": "按真实车程约188km、2小时33分钟返程，傍晚前回到园区。",
-              "poi_id": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "安吉漂流降温线：深溪峡谷 + 九天极限",
-      "location": "苏州工业园区",
-      "tag": "周末两天",
-      "valid_date": [
-        "2026-07-25",
-        "2026-07-26"
-      ],
-      "reason": "连续高温周末适合选择水上项目降温，但漂流仍有排队和日晒风险，因此安排早出发、上午漂流，午后休息。安吉深溪峡谷漂流约189.8km、2小时21分钟，安吉九天极限漂流约199.5km、2小时29分钟，适合有体力的两日远郊行。",
-      "weather": {
-        "desc": "周六多云，周日阴",
-        "high": 37,
-        "low": 27
-      },
-      "days": [
-        {
-          "day_index": 0,
-          "activity": "安吉深溪峡谷漂流",
-          "weather": {
-            "desc": "多云",
-            "high": 37,
-            "low": 27
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发前往安吉深溪峡谷漂流",
-              "start_time": "06:50",
-              "end_time": "09:11",
-              "description": "真实车程约189.8km、2小时21分钟，早到可减少排队和暴晒。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "安吉深溪峡谷漂流",
-              "start_time": "09:11",
-              "end_time": "11:40",
-              "description": "把水上活动安排在上午，既有降温效果，也避开午后最强日晒。",
-              "poi_id": "B023C0PFO2"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "漂流点周边午餐",
-              "start_time": "11:40",
-              "end_time": "13:00",
-              "description": "不指定POI，漂流后及时补充能量，选择室内有空调空间。",
-              "poi_id": null
-            },
-            {
-              "step_index": 3,
-              "type": "stay",
-              "text": "午后休息与换洗",
-              "start_time": "13:00",
-              "end_time": "16:30",
-              "description": "周六最高37℃，漂流后不建议继续暴晒游玩，安排休息换洗。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
-              "type": "play",
-              "text": "傍晚轻松散步",
-              "start_time": "16:30",
-              "end_time": "18:00",
-              "description": "不指定POI，仅安排住宿周边短距离散步，避免高强度户外。",
-              "poi_id": null
-            },
-            {
-              "step_index": 5,
-              "type": "stay",
-              "text": "安吉住宿休息",
-              "start_time": "18:00",
-              "end_time": "21:30",
-              "description": "不指定住宿POI，为第二天漂流保留体力。",
-              "poi_id": null
-            }
-          ]
-        },
-        {
-          "day_index": 1,
-          "activity": "安吉九天极限漂流后返程",
-          "weather": {
-            "desc": "阴",
-            "high": 36,
-            "low": 28
-          },
-          "steps": [
-            {
-              "step_index": 0,
               "type": "transit",
-              "text": "前往安吉九天极限漂流",
-              "start_time": "08:00",
-              "end_time": "09:00",
-              "description": "早晨转场，避开午后高温和集中客流。",
-              "poi_id": null
-            },
-            {
-              "step_index": 1,
-              "type": "play",
-              "text": "安吉九天极限漂流",
-              "start_time": "09:00",
-              "end_time": "11:30",
-              "description": "该点距苏州工业园区约199.5km、车程2小时29分钟，适合两天行中安排为第二个水上项目。",
-              "poi_id": "B0KUNSL2Z9"
-            },
-            {
-              "step_index": 2,
-              "type": "eat",
-              "text": "漂流后午餐",
+              "text": "自驾返回苏州工业园区",
               "start_time": "11:30",
-              "end_time": "12:50",
-              "description": "不指定POI，补水、换洗并休息，避免漂流后直接长途驾驶。",
-              "poi_id": null
+              "end_time": "13:38",
+              "description": "按莫干山至苏州工业园区自驾153.6km、约2小时8分钟估算返程。",
+              "place_name": "莫干山",
+              "_coords": {
+                "lat": 30.609478,
+                "lng": 119.872252
+              }
             },
             {
               "step_index": 3,
-              "type": "stay",
-              "text": "午后短暂休整",
-              "start_time": "12:50",
-              "end_time": "14:00",
-              "description": "周日阴但36℃，返程前留出恢复时间。",
-              "poi_id": null
-            },
-            {
-              "step_index": 4,
               "type": "home",
-              "text": "从安吉九天极限漂流返回苏州工业园区",
-              "start_time": "14:00",
-              "end_time": "16:29",
-              "description": "按真实车程约199.5km、2小时29分钟返程，控制在傍晚前到家。",
+              "text": "到家休息",
+              "start_time": "13:38",
+              "end_time": "13:38",
+              "description": "下午到家，避免夜间长途驾驶疲劳。",
+              "place_name": null,
               "poi_id": null
             }
           ]
@@ -901,23 +1008,23 @@
       ]
     },
     {
-      "title": "安吉峡谷加强版：龙王山漂流 + 大竹海阴凉恢复",
+      "title": "安吉竹博园亲竹避暑周末",
       "location": "苏州工业园区",
       "tag": "周末两天",
       "valid_date": [
         "2026-07-25",
         "2026-07-26"
       ],
-      "reason": "该方案覆盖更远的安吉山水区域：龙王山峡谷漂流约202.3km、2小时34分钟，中国大竹海约188km、2小时33分钟，仍在180分钟车程内。高温周末适合水上和竹林项目，但必须早出发、午后休息，适合想要远途避暑和玩水的人。",
+      "reason": "中国竹子博览园自驾177km、约2小时17分钟，安吉竹博园开元名都度假村自驾174.8km、约2小时11分钟，属于远途两日自驾；高温周末选择竹林类环境，上午和傍晚游览，午后在度假村休息。",
       "weather": {
-        "desc": "周六多云，周日阴",
+        "desc": "周六多云、周日阴",
         "high": 37,
         "low": 27
       },
       "days": [
         {
           "day_index": 0,
-          "activity": "龙王山峡谷漂流",
+          "activity": "抵达安吉竹博园",
           "weather": {
             "desc": "多云",
             "high": 37,
@@ -927,62 +1034,109 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发前往龙王山峡谷漂流",
-              "start_time": "06:40",
-              "end_time": "09:14",
-              "description": "真实车程约202.3km、2小时34分钟，属于本组较远目的地，需早出发。",
+              "text": "从苏州工业园区出发",
+              "start_time": "06:50",
+              "end_time": "06:50",
+              "description": "远途自驾提前出发，减少高温时段在路上和景区入口排队。",
+              "place_name": null,
               "poi_id": null
             },
             {
               "step_index": 1,
-              "type": "play",
-              "text": "龙王山峡谷漂流",
-              "start_time": "09:14",
-              "end_time": "11:40",
-              "description": "高温天选择上午漂流，利用水上项目降温，同时避开午后强晒。",
-              "poi_id": "B0FFG2M7D0"
+              "type": "transit",
+              "text": "自驾前往中国竹子博览园",
+              "start_time": "06:50",
+              "end_time": "09:07",
+              "description": "自驾177km，约2小时17分钟；公交约6小时46分钟，约19.0元，耗时过长。",
+              "place_name": "中国竹子博览园",
+              "_coords": {
+                "lat": 30.591077,
+                "lng": 119.659799
+              }
             },
             {
               "step_index": 2,
-              "type": "eat",
-              "text": "漂流点周边午餐",
-              "start_time": "11:40",
-              "end_time": "13:00",
-              "description": "不指定POI，午餐后及时换洗休息，避免中暑。",
-              "poi_id": null
+              "type": "play",
+              "text": "中国竹子博览园上午游览",
+              "start_time": "09:10",
+              "end_time": "11:30",
+              "description": "上午在竹林环境中游览，相对比城市暴晒舒适。",
+              "place_name": "中国竹子博览园",
+              "_coords": {
+                "lat": 30.591077,
+                "lng": 119.659799
+              }
             },
             {
               "step_index": 3,
-              "type": "stay",
-              "text": "午后住宿休整",
-              "start_time": "13:00",
-              "end_time": "16:30",
-              "description": "周六37℃，漂流后不再安排长距离徒步，保存体力。",
-              "poi_id": null
+              "type": "eat",
+              "text": "园区午餐",
+              "start_time": "11:40",
+              "end_time": "12:40",
+              "description": "中午就近用餐，避免继续户外长时间步行。",
+              "place_name": "中国竹子博览园",
+              "_coords": {
+                "lat": 30.591077,
+                "lng": 119.659799
+              }
             },
             {
               "step_index": 4,
-              "type": "play",
-              "text": "傍晚山间短线活动",
-              "start_time": "16:30",
-              "end_time": "18:00",
-              "description": "不指定POI，仅建议在住宿周边选择阴凉短线活动。",
-              "poi_id": null
+              "type": "transit",
+              "text": "前往安吉竹博园开元名都度假村",
+              "start_time": "12:50",
+              "end_time": "13:05",
+              "description": "度假村位于竹博园周边，午后转入住宿休整。",
+              "place_name": "安吉竹博园开元名都度假村",
+              "_coords": {
+                "lat": 30.591956,
+                "lng": 119.665091
+              }
             },
             {
               "step_index": 5,
               "type": "stay",
-              "text": "安吉住宿休息",
-              "start_time": "18:00",
-              "end_time": "21:30",
-              "description": "远途行程需要保证睡眠，第二天安排竹林恢复。",
-              "poi_id": null
+              "text": "度假村午后避暑",
+              "start_time": "13:05",
+              "end_time": "16:20",
+              "description": "37℃高温时段安排在度假村休息、补水和纳凉。",
+              "place_name": "安吉竹博园开元名都度假村",
+              "_coords": {
+                "lat": 30.591956,
+                "lng": 119.665091
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "play",
+              "text": "中国竹子博览园傍晚补充游览",
+              "start_time": "16:30",
+              "end_time": "18:20",
+              "description": "傍晚再进行户外活动，降低中暑风险。",
+              "place_name": "中国竹子博览园",
+              "_coords": {
+                "lat": 30.591077,
+                "lng": 119.659799
+              }
+            },
+            {
+              "step_index": 7,
+              "type": "stay",
+              "text": "夜宿安吉竹博园开元名都度假村",
+              "start_time": "20:00",
+              "end_time": "23:00",
+              "description": "住在景区附近，方便第二天清晨继续游览。",
+              "place_name": "安吉竹博园开元名都度假村",
+              "_coords": {
+                "lat": 30.591956,
+                "lng": 119.665091
+              }
             }
           ]
         },
         {
           "day_index": 1,
-          "activity": "中国大竹海恢复游后返程",
+          "activity": "清晨竹博园东门与返程",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -991,47 +1145,64 @@
           "steps": [
             {
               "step_index": 0,
-              "type": "transit",
-              "text": "前往中国大竹海景区售票处",
-              "start_time": "07:40",
-              "end_time": "08:20",
-              "description": "清晨前往售票处，避开午前后集中客流。",
-              "poi_id": "B023C0Q92H"
+              "type": "play",
+              "text": "中国竹子博览园东门停车场集合与入园",
+              "start_time": "07:50",
+              "end_time": "08:10",
+              "description": "清晨从东门附近进入，避开日间高温和人流。",
+              "place_name": "中国竹子博览园东门停车场",
+              "_coords": {
+                "lat": 30.589042,
+                "lng": 119.666032
+              }
             },
             {
               "step_index": 1,
               "type": "play",
-              "text": "中国大竹海景区",
-              "start_time": "08:20",
-              "end_time": "11:20",
-              "description": "竹林遮阴适合作为漂流后的恢复型游览；该点距苏州工业园区约188km、2小时33分钟。",
-              "poi_id": "B023C02MNS"
+              "text": "中国竹子博览园清晨游览",
+              "start_time": "08:10",
+              "end_time": "10:30",
+              "description": "周日阴天但最高36℃，清晨完成主要户外游览。",
+              "place_name": "中国竹子博览园",
+              "_coords": {
+                "lat": 30.591077,
+                "lng": 119.659799
+              }
             },
             {
               "step_index": 2,
               "type": "eat",
-              "text": "大竹海周边午餐",
-              "start_time": "11:20",
-              "end_time": "12:40",
-              "description": "不指定POI，选择室内餐厅，避免36℃高温下继续暴晒。",
-              "poi_id": null
+              "text": "早午餐",
+              "start_time": "10:40",
+              "end_time": "11:40",
+              "description": "返程前在度假村补给，避免路上疲劳。",
+              "place_name": "安吉竹博园开元名都度假村",
+              "_coords": {
+                "lat": 30.591956,
+                "lng": 119.665091
+              }
             },
             {
               "step_index": 3,
-              "type": "stay",
-              "text": "返程前休整",
-              "start_time": "12:40",
-              "end_time": "14:00",
-              "description": "远途返程前短暂休息，降低疲劳驾驶风险。",
-              "poi_id": null
+              "type": "transit",
+              "text": "自驾返回苏州工业园区",
+              "start_time": "12:00",
+              "end_time": "14:11",
+              "description": "按安吉竹博园开元名都度假村至苏州工业园区自驾174.8km、约2小时11分钟估算返程。",
+              "place_name": "安吉竹博园开元名都度假村",
+              "_coords": {
+                "lat": 30.591956,
+                "lng": 119.665091
+              }
             },
             {
               "step_index": 4,
               "type": "home",
-              "text": "从中国大竹海返回苏州工业园区",
-              "start_time": "14:00",
-              "end_time": "16:33",
-              "description": "按真实车程约188km、2小时33分钟返程。",
+              "text": "到家休息",
+              "start_time": "14:11",
+              "end_time": "14:11",
+              "description": "下午到家，保留休整时间。",
+              "place_name": null,
               "poi_id": null
             }
           ]
@@ -1039,116 +1210,98 @@
       ]
     }
   ],
-  "poiLookup": {
-    "B0FFF327SC": {
-      "name": "金鸡湖景区-桃花岛",
-      "lat": 31.308241,
-      "lng": 120.70654
+  "poiByName": {
+    "建屋乐活城": {
+      "lat": 31.288747,
+      "lng": 120.724249
     },
-    "B0FFKHL612": {
-      "name": "苏州卓美民俗博物馆",
-      "lat": 31.303427,
-      "lng": 120.738199
+    "驭浪水上运动": {
+      "lat": 31.299525,
+      "lng": 120.712375
     },
-    "B0FFGFB89K": {
-      "name": "广恩林公园",
-      "lat": 31.278766,
-      "lng": 120.728887
+    "晨立电脑(顺达商业广场店)": {
+      "lat": 31.287397,
+      "lng": 120.727328
     },
-    "B0FFKZUANT": {
-      "name": "虹·美术馆",
-      "lat": 31.299819,
-      "lng": 120.698723
+    "顺达商业广场": {
+      "lat": 31.287131,
+      "lng": 120.727762
     },
-    "B0FFFSL2NZ": {
-      "name": "明·美术馆",
-      "lat": 31.299573,
-      "lng": 120.698278
+    "甬旺商业广场": {
+      "lat": 31.286744,
+      "lng": 120.729014
     },
-    "B0G23SCQ3S": {
-      "name": "莫干山风景名胜区",
+    "滨水栈道": {
+      "lat": 31.512636,
+      "lng": 121.096483
+    },
+    "莫干山风景名胜区": {
       "lat": 30.607076,
       "lng": 119.866469
     },
-    "B023C02L4J": {
-      "name": "莫干山",
+    "莫干山": {
       "lat": 30.609478,
       "lng": 119.872252
     },
-    "B0FFGZWOYQ": {
-      "name": "莫干山·山语客栈",
+    "莫干山·山语客栈": {
       "lat": 30.635534,
       "lng": 119.89191
     },
-    "B023C02MNS": {
-      "name": "中国大竹海景区",
-      "lat": 30.482534,
-      "lng": 119.65698
+    "中国竹子博览园": {
+      "lat": 30.591077,
+      "lng": 119.659799
     },
-    "B0FFK8BO3N": {
-      "name": "安吉中南百草原景区-竹海长廊",
-      "lat": 30.665425,
-      "lng": 119.662525
+    "安吉竹博园开元名都度假村": {
+      "lat": 30.591956,
+      "lng": 119.665091
     },
-    "B023C0Q92H": {
-      "name": "中国大竹海景区售票处",
-      "lat": 30.487553,
-      "lng": 119.659419
+    "中国竹子博览园东门停车场": {
+      "lat": 30.589042,
+      "lng": 119.666032
     },
-    "B023C0PFO2": {
-      "name": "安吉深溪峡谷漂流",
-      "lat": 30.496707,
-      "lng": 119.468313
-    },
-    "B0FFG2M7D0": {
-      "name": "龙王山峡谷漂流",
-      "lat": 30.432248,
-      "lng": 119.393646
-    },
-    "B0KUNSL2Z9": {
-      "name": "安吉九天极限漂流",
-      "lat": 30.608079,
-      "lng": 119.32992
-    },
-    "B023C0OMFN": {
-      "name": "南浔古镇",
+    "南浔古镇": {
       "lat": 30.88091,
       "lng": 120.439896
     },
-    "B0I2GCKFGH": {
-      "name": "LÉON 莱昂餐厅(金鸡湖摩天轮店)",
-      "lat": 31.315875,
-      "lng": 120.715225
+    "南浔古镇旅游度假区": {
+      "lat": 30.869863,
+      "lng": 120.430911
     },
-    "B0J06UKP64": {
-      "name": "爱莲说艺术餐厅",
+    "南浔古镇南门游客服务中心": {
+      "lat": 30.869889,
+      "lng": 120.43087
+    },
+    "乌镇风景区": {
+      "lat": 30.748979,
+      "lng": 120.486173
+    },
+    "东仓荣锦轩(建屋乐活城店)": {
+      "lat": 31.287343,
+      "lng": 120.724153
+    },
+    "苏城老友小海鲜(星湖尚街店)": {
+      "lat": 31.28706,
+      "lng": 120.72548
+    },
+    "鲨滩小海鲜(园区店)": {
+      "lat": 31.299645,
+      "lng": 120.725746
+    },
+    "爱莲说艺术餐厅": {
       "lat": 31.299859,
       "lng": 120.698776
     },
-    "B0J01CUS08": {
-      "name": "广鉴阁·潮州菜餐厅",
-      "lat": 31.303437,
-      "lng": 120.73818
+    "永利来餐室(顺达广场店)": {
+      "lat": 31.287725,
+      "lng": 120.72745
     },
-    "B0H3GC4AAA": {
-      "name": "慕容轩(斜塘总店)",
-      "lat": 31.303347,
-      "lng": 120.738223
+    "海味当家海肠捞饭": {
+      "lat": 31.286875,
+      "lng": 120.727875
     },
-    "B0KK59UTQM": {
-      "name": "星湖苑餐厅",
-      "lat": 31.275446,
-      "lng": 120.725127
-    },
-    "B0LR5UANCA": {
-      "name": "满腹达人·茶餐厅(丰食荟文缘店)",
-      "lat": 31.277722,
-      "lng": 120.738078
-    },
-    "B0G12BKH66": {
-      "name": "VONE·璞悦荟",
-      "lat": 31.299951,
-      "lng": 120.698496
+    "港粤茶点·港式茶餐厅(园区店)": {
+      "lat": 31.286875,
+      "lng": 120.727875
     }
   }
 }

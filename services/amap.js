@@ -87,6 +87,32 @@ async function searchNearby(center, keyword, radius = 3000) {
 }
 
 /**
+ * 公交/高铁路线规划
+ * @param {object} origin - { lat, lng }
+ * @param {object} destination - { lat, lng }
+ * @returns {object} { duration(min), durationText, cost, segments }
+ */
+async function getTransitRoute(origin, destination) {
+  const params = {
+    origin: `${origin.lng},${origin.lat}`,
+    destination: `${destination.lng},${destination.lat}`,
+    city: '苏州',
+    cityd: '苏州'
+  };
+  try {
+    const data = await request('/direction/transit/integrated', params);
+    const transit = data.route.transits[0];
+    if (!transit) return null;
+    return {
+      duration: Math.round(parseInt(transit.duration) / 60),
+      durationText: formatDuration(parseInt(transit.duration)),
+      cost: transit.cost || '0',
+      walking: Math.round(parseInt(transit.walking_distance || '0') / 1000 * 10) / 10
+    };
+  } catch(e) { return null; }
+}
+
+/**
  * 驾车路线规划
  * @param {object} origin - { lat, lng } 出发点
  * @param {object} destination - { lat, lng } 目的地
@@ -173,6 +199,7 @@ module.exports = {
   searchPOI,
   searchNearby,
   getRoute,
+  getTransitRoute,
   getWeather,
   getWeatherNow
 };

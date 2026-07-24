@@ -299,6 +299,9 @@ async function main() {
     if (!route) {
       try {
         route = await amap.getRoute(userLocation, { lat: poi.lat, lng: poi.lng });
+        // 同时查公交路线
+        const transit = await amap.getTransitRoute(userLocation, { lat: poi.lat, lng: poi.lng });
+        if (transit) route.transit = transit;
         cacheSet('routes', routeKey, route);
       } catch (e) { continue; }
       await new Promise(r => setTimeout(r, 500));
@@ -336,10 +339,10 @@ async function main() {
   // === Step 6: 组装 prompt ===
   console.log('\n✍️ Step 6: 组装 prompt...');
 
-  // 构建完整 POI 查找表（含坐标）—— 转换时直接用
-  const poiLookup = {};
-  poisWithRoutes.forEach(p => { poiLookup[p.id] = { name: p.name, lat: p.lat, lng: p.lng }; });
-  restaurants.forEach(r => { poiLookup[r.id] = { name: r.name, lat: r.lat, lng: r.lng }; });
+  // 构建 POI 查找表（含坐标）—— 后续用 place_name 查坐标
+  const poiByName = {};
+  poisWithRoutes.forEach(p => { poiByName[p.name] = { lat: p.lat, lng: p.lng }; });
+  restaurants.forEach(r => { poiByName[r.name] = { lat: r.lat, lng: r.lng }; });
 
   let prompt = `=== 数据（全部来自高德 API 实时查询）===
 
@@ -347,15 +350,20 @@ async function main() {
 Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 行程天数：${tagConfig.days}天
 
---- 可达景点（${tagConfig.maxDrive}分钟车程内，含坐标）---
+--- 可达景点（含交通成本）---
 `;
   for (const p of poisWithRoutes) {
-    prompt += `${p.id} | ${p.name} | ${p.lat},${p.lng} | ${p.route.distance}km ${p.route.durationText}\n`;
+    let line = `${p.name} | 自驾 ${p.route.distance}km ${p.route.durationText}`;
+    if (p.route.tollDistance > 0) line += ` 过路费约${Math.round(p.route.tollDistance * 0.5)}元`;
+    if (p.route.transit) {
+      line += ` | 公交 ${p.route.transit.durationText} 约${p.route.transit.cost}元 步行${p.route.transit.walking}km`;
+    }
+    prompt += line + '\n';
   }
 
-  prompt += `\n--- 周边餐饮（含坐标）---\n`;
+  prompt += `\n--- 周边餐饮 ---\n`;
   for (const r of restaurants) {
-    prompt += `${r.id} | ${r.name} | ${r.lat},${r.lng} | 靠近${r.nearPoi}\n`;
+    prompt += `${r.name} | 靠近${r.nearPoi}\n`;
   }
 
   prompt += `\n--- 天气预报 ---\n`;
@@ -374,7 +382,7 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 2. 每个方案的 reason 说清为什么此刻适合（基于天气、距离、时间）
 3. 高温天户外放早晚，午后室内/阴凉
 4. 使用真实路程时间
-5. poi_id 只能使用上面列表中存在的 ID，绝对不能编造
+5. 每个步骤用 place_name 指定地点名称（必须用上面列表中出现过的名字）
 6. 出发/到家 poi_id 为 null
 7. 只输出纯 JSON 数组，不要 markdown 包裹
 
@@ -390,7 +398,7 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
     "steps": [{
       "step_index": 0, "type": "depart/transit/play/eat/stay/home",
       "text": "...", "start_time": "HH:MM", "end_time": "HH:MM",
-      "description": "...", "poi_id": "Bxxx" 或 null
+      "description": "...", "place_name": "景点名" 或 null（出发/到家为null）
     }]
   }]
 }]`;
@@ -420,36 +428,41 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
     const plans = JSON.parse(output.slice(start, end));
     console.log(`   ✅ 生成 ${plans.length} 个方案`);
 
-    // === 校验 + 补坐标：模型编造的 poi_id 用高德搜 step.text 补坐标 ===
-    console.log('\n🔧 校验 poi_id...');
-    let verified = 0, fixed = 0, unfixable = 0;
+    // === 解析 place_name → 坐标（用高德搜索） ===
+    console.log('\n🔧 解析地点坐标...');
+    let resolved = 0, fromCache = 0, notFound = 0;
     for (const plan of plans) {
       for (const day of plan.days || []) {
         for (const step of day.steps || []) {
-          if (!step.poi_id || step.poi_id === 'null') continue;
-          if (poiLookup[step.poi_id]) { verified++; continue; }
-          // poi_id 不在 lookup 里，用 step.text 搜高德补坐标
+          const name = step.place_name;
+          if (!name || name === 'null') continue;
+          // 先从已知 POI 查
+          if (poiByName[name]) {
+            step._coords = poiByName[name];
+            fromCache++;
+            continue;
+          }
+          // 高德搜索
           try {
-            const results = await amap.searchPOI(step.text, { city: LOCATION.slice(0, 2) });
+            const results = await amap.searchPOI(name, { city: LOCATION.slice(0, 2) });
             if (results[0]) {
-              poiLookup[step.poi_id] = { name: results[0].name, lat: results[0].location.lat, lng: results[0].location.lng };
-              step.poi_id = results[0].id;
-              poiLookup[results[0].id] = poiLookup[step.poi_id];
-              fixed++;
-            } else { unfixable++; }
-          } catch(e) { unfixable++; }
+              step._coords = { name: results[0].name, lat: results[0].location.lat, lng: results[0].location.lng };
+              poiByName[name] = step._coords;
+              resolved++;
+            } else { notFound++; }
+          } catch(e) { notFound++; }
           await new Promise(r => setTimeout(r, 400));
         }
       }
     }
-    console.log(`   已知:${verified} 补救:${fixed} 无法修复:${unfixable}`);
+    console.log(`   缓存命中:${fromCache} 新查询:${resolved} 未找到:${notFound}`);
 
     // Output
     const outputName = `${LOCATION}-${TAG}.json`;
     const outputPath = path.join(GENERATED_DIR, outputName);
     ensureDir(GENERATED_DIR);
     // 保存方案 + POI 查找表（转换时直接用，不用再调 API）
-    fs.writeFileSync(outputPath, JSON.stringify({ plans, poiLookup }, null, 2));
+    fs.writeFileSync(outputPath, JSON.stringify({ plans, poiByName }, null, 2));
     console.log(`\n📦 输出: ${outputPath}`);
     console.log('\n✨ 完成！');
     for (const p of plans) {
