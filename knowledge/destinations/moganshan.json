@@ -1,0 +1,23 @@
+{
+  "id": "moganshan",
+  "name": "莫干山",
+  "region": "湖州",
+  "description": "江浙沪后花园，以竹海、云海、民宿群著称，适合周末短途",
+  "from": {
+    "苏州": { "duration": "2h", "mode": "自驾", "distance": "160km", "route": "苏州→S12→杭长高速→莫干山" },
+    "上海": { "duration": "2.5h", "mode": "自驾", "distance": "200km" },
+    "杭州": { "duration": "1h", "mode": "自驾", "distance": "60km" }
+  },
+  "pois": [
+    { "name": "莫干山风景区", "type": "play", "lat": 30.632, "lng": 119.875, "tags": ["徒步", "竹海", "避暑"], "ticketPrice": "80" },
+    { "name": "山顶观景台", "type": "play", "lat": 30.645, "lng": 119.868, "tags": ["云海", "日出", "摄影"], "bestTime": "dawn" },
+    { "name": "竹海栈道", "type": "play", "lat": 30.638, "lng": 119.880, "tags": ["徒步", "竹林", "洗肺"] },
+    { "name": "裸心谷", "type": "stay", "lat": 30.625, "lng": 119.872, "priceRange": "1200-2800", "tags": ["高端", "泳池", "下午茶"] },
+    { "name": "莫干山居图", "type": "stay", "lat": 30.630, "lng": 119.878, "priceRange": "500-900", "tags": ["性价比", "山景"] },
+    { "name": "庾村文化市集", "type": "play", "lat": 30.613, "lng": 119.862, "tags": ["文创", "咖啡", "逛"] },
+    { "name": "Discovery探索极限基地", "type": "play", "lat": 30.620, "lng": 119.870, "tags": ["户外", "攀岩", "溜索"] },
+    { "name": "山里人家土菜馆", "type": "eat", "lat": 30.628, "lng": 119.876, "tags": ["土鸡", "笋", "本地菜"] }
+  ],
+  "bestSeasons": ["3-5月（春笋+云海）", "6-8月（避暑）", "10-11月（红叶）"],
+  "avoid": ["暴雨天（山路危险）", "国庆黄金周（人满为患）"]
+}

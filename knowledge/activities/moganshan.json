@@ -1,0 +1,52 @@
+[
+  {
+    "destinationId": "moganshan",
+    "activity": "竹海徒步+山间发呆",
+    "description": "竹海栈道晨间徒步，午后民宿发呆喝茶",
+    "conditions": {
+      "weather": ["晴", "多云", "阴"],
+      "tempMax": 35,
+      "notRain": true,
+      "season": ["3-11月"]
+    },
+    "duration": "1-2天",
+    "tags": ["徒步", "避暑", "放松"]
+  },
+  {
+    "destinationId": "moganshan",
+    "activity": "云海日出",
+    "description": "凌晨5点登山顶观景台，看云海在竹林间翻涌",
+    "conditions": {
+      "weather": ["雨后初晴"],
+      "visibility": { "min": 10 },
+      "season": ["3-11月"],
+      "time": "dawn"
+    },
+    "duration": "需前一晚住山上",
+    "tags": ["摄影", "早起", "震撼"]
+  },
+  {
+    "destinationId": "moganshan",
+    "activity": "探索极限+庾村闲逛",
+    "description": "Discovery基地攀岩溜索，下山后庾村市集喝咖啡",
+    "conditions": {
+      "weather": ["晴", "多云"],
+      "notRain": true,
+      "tempMax": 38
+    },
+    "duration": "1天",
+    "tags": ["户外", "亲子", "刺激"]
+  },
+  {
+    "destinationId": "moganshan",
+    "activity": "避暑纳凉",
+    "description": "夏天山下40度山上28度，纯粹上山避暑泡民宿泳池",
+    "conditions": {
+      "weather": ["晴", "多云"],
+      "tempMin": 30,
+      "season": ["6-8月"]
+    },
+    "duration": "1-2天",
+    "tags": ["避暑", "泳池", "躺平"]
+  }
+]
