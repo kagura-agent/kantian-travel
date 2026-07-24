@@ -415,7 +415,7 @@ const PLANS = [
         ]
       },
       {
-        "photo": "photo-1518335935020-cfd6580c1ab4",
+        "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDwS7lCq_hYS0XM7l9T7pDdN0H7FeyyOO3LE4Q_Z44BHr5Dw1K-95SwFNSY_c4RHcE1FP38piZltoxMlmKuXXa98whk5dz03QpgdFU_zmjIsUcSUWcAJEBrY-hnS2Y4uO6HXHpZ4y6w6BA-OVDhsmRiHA=s4800-w800",
         "activity": "避暑纳凉+慢节奏",
         "weather": {
           "icon": "⛅",
@@ -674,7 +674,7 @@ const PLANS = [
     "relatedContent": [],
     "days": [
       {
-        "photo": "photo-placeholder",
+        "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDwS7lCq_hYS0XM7l9T7pDdN0H7FeyyOO3LE4Q_Z44BHr5Dw1K-95SwFNSY_c4RHcE1FP38piZltoxMlmKuXXa98whk5dz03QpgdFU_zmjIsUcSUWcAJEBrY-hnS2Y4uO6HXHpZ4y6w6BA-OVDhsmRiHA=s4800-w800",
         "activity": "清晨雕塑快游",
         "weather": {
           "icon": "⛅",
@@ -977,7 +977,7 @@ const PLANS = [
     "relatedContent": [],
     "days": [
       {
-        "photo": "photo-1518335935020-cfd6580c1ab4",
+        "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDwS7lCq_hYS0XM7l9T7pDdN0H7FeyyOO3LE4Q_Z44BHr5Dw1K-95SwFNSY_c4RHcE1FP38piZltoxMlmKuXXa98whk5dz03QpgdFU_zmjIsUcSUWcAJEBrY-hnS2Y4uO6HXHpZ4y6w6BA-OVDhsmRiHA=s4800-w800",
         "activity": "水上运动+金鸡湖桃花岛",
         "weather": {
           "icon": "⛅",
@@ -1059,7 +1059,7 @@ const PLANS = [
         ]
       },
       {
-        "photo": "photo-placeholder",
+        "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDwS7lCq_hYS0XM7l9T7pDdN0H7FeyyOO3LE4Q_Z44BHr5Dw1K-95SwFNSY_c4RHcE1FP38piZltoxMlmKuXXa98whk5dz03QpgdFU_zmjIsUcSUWcAJEBrY-hnS2Y4uO6HXHpZ4y6w6BA-OVDhsmRiHA=s4800-w800",
         "activity": "凯宾斯基水上基地+独墅湖",
         "weather": {
           "icon": "☁️",
@@ -1386,7 +1386,7 @@ const PLANS = [
     "relatedContent": [],
     "days": [
       {
-        "photo": "photo-placeholder",
+        "photo": "https://lh3.googleusercontent.com/place-photos/AG9NLjDwS7lCq_hYS0XM7l9T7pDdN0H7FeyyOO3LE4Q_Z44BHr5Dw1K-95SwFNSY_c4RHcE1FP38piZltoxMlmKuXXa98whk5dz03QpgdFU_zmjIsUcSUWcAJEBrY-hnS2Y4uO6HXHpZ4y6w6BA-OVDhsmRiHA=s4800-w800",
         "activity": "驭浪水上运动+广恩林公园",
         "weather": {
           "icon": "⛅",
