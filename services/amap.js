@@ -9,9 +9,9 @@
 
 const https = require('https');
 
-const BASE_URL = 'https://restapi.amap.com/v3';
+const BASE_URL = 'https://keygate.kagura-agent.com/amap/v3';
 
-// Key 从环境变量或外部注入，不硬编码
+// Key is the keygate bearer token
 let API_KEY = process.env.AMAP_KEY || '';
 
 function setKey(key) {
@@ -20,9 +20,9 @@ function setKey(key) {
 
 function request(path, params) {
   return new Promise((resolve, reject) => {
-    const query = new URLSearchParams({ key: API_KEY, output: 'json', ...params }).toString();
+    const query = new URLSearchParams({ output: 'json', ...params }).toString();
     const url = `${BASE_URL}${path}?${query}`;
-    https.get(url, (res) => {
+    https.get(url, { headers: { 'Authorization': `Bearer ${API_KEY}` } }, (res) => {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
