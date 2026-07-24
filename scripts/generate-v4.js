@@ -18,8 +18,51 @@
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+const https = require('https');
 const amap = require('../services/amap');
+
+// LLM Config (Floway API + GPT-5.5)
+const LLM_BASE = 'floway.sg.kagura-agent.com';
+const LLM_TOKEN = process.env.LLM_TOKEN || '';
+const LLM_MODEL = 'gpt-5.5';
+
+function callLLM(prompt) {
+  return new Promise((resolve, reject) => {
+    const body = JSON.stringify({
+      model: LLM_MODEL,
+      max_tokens: 8192,
+      messages: [{ role: 'user', content: prompt }]
+    });
+    const options = {
+      hostname: LLM_BASE,
+      path: '/v1/messages',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': LLM_TOKEN,
+        'anthropic-version': '2023-06-01',
+        'Content-Length': Buffer.byteLength(body)
+      }
+    };
+    const req = https.request(options, res => {
+      let data = '';
+      res.on('data', c => data += c);
+      res.on('end', () => {
+        try {
+          const json = JSON.parse(data);
+          // GPT-5.5 via Floway returns content array with possible thinking blocks
+          const textBlock = json.content?.find(b => b.type === 'text');
+          const text = textBlock?.text || json.choices?.[0]?.message?.content || '';
+          resolve(text);
+        } catch(e) { reject(new Error('LLM parse error: ' + data.slice(0, 200))); }
+      });
+    });
+    req.on('error', reject);
+    req.setTimeout(120000, () => { req.destroy(); reject(new Error('LLM timeout')); });
+    req.write(body);
+    req.end();
+  });
+}
 
 // === Config ===
 const CACHE_DIR = path.join(__dirname, '..', 'cache');
@@ -169,10 +212,7 @@ async function main() {
 {"nearby_types":["公园","湖泊"],"keyword_searches":[{"keyword":"莫干山","city":"湖州"},{"keyword":"西塘古镇","city":"嘉兴"}],"transport":"driving","time_preference":"早出晚归","exclude":["室内游乐场"]}`;
 
     try {
-      const strategyOutput = execSync(
-        `claude --print "${strategyPrompt.replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`,
-        { encoding: 'utf8', maxBuffer: 512 * 1024, timeout: 30000 }
-      );
+      const strategyOutput = await callLLM(strategyPrompt);
       const sStart = strategyOutput.indexOf('{');
       const sEnd = strategyOutput.lastIndexOf('}') + 1;
       if (sStart !== -1 && sEnd > 0) {
@@ -358,14 +398,21 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
   // === Step 7: 调模型生成 ===
   console.log('\n🤖 Step 7: 生成方案...');
   try {
-    const output = execSync(
-      `claude --print "你是一个旅行方案生成器。根据以下真实数据生成方案，只输出纯JSON数组：\n\n$(cat ${promptPath})"`,
-      { encoding: 'utf8', maxBuffer: 1024 * 1024, timeout: 120000 }
-    );
+    const llmResult = await callLLM('你是一个旅行方案生成器。根据以下真实数据生成方案，只输出纯JSON数组，不要任何其他文字或markdown包裹：\n\n' + prompt);
+    const output = llmResult;
 
-    const start = output.indexOf('[');
-    const end = output.lastIndexOf(']') + 1;
-    if (start === -1 || end === 0) { console.error('   ❌ 模型未返回有效 JSON'); process.exit(1); }
+    // 健壮的 JSON 提取（处理 markdown code block 和额外文字）
+    let jsonStr = output;
+    // 去掉 ```json ... ``` 包裹
+    const codeBlockMatch = output.match(/```(?:json)?\s*([\s\S]*?)```/);
+    if (codeBlockMatch) jsonStr = codeBlockMatch[1];
+    const start = jsonStr.indexOf('[');
+    const end = jsonStr.lastIndexOf(']') + 1;
+    if (start === -1 || end === 0) {
+      console.error('   ❌ 模型未返回有效 JSON');
+      console.error('   Raw output:', output.slice(0, 300));
+      process.exit(1);
+    }
     const plans = JSON.parse(output.slice(start, end));
     console.log(`   ✅ 生成 ${plans.length} 个方案`);
 

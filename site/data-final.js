@@ -1,16 +1,16 @@
 const PLANS = [
   {
     "id": "---0",
-    "title": "近距离消暑游泳日",
+    "title": "8分钟近场艺术馆避暑线",
     "origin": "苏州工业园区",
     "category": "now",
-    "reason": "36°C高温天，步行即达的游泳馆是最佳消暑选择，午后室内运动避开烈日，省时省力",
+    "reason": "今天多云但最高36°C，午后体感炎热；此方案以3.2-3.4km、8-12分钟车程内的室内美术馆和艺术馆为主，把少量移动压缩在短距离内，适合不想远行、需要避暑的一天。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "游泳消暑+美食",
+        "activity": "上午看展，中午艺术餐厅用餐，下午继续室内玉雕艺术馆，避开高温暴晒。",
         "weather": {
           "icon": "⛅",
           "temp": "36°"
@@ -18,58 +18,106 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "从家出发",
-            "startTime": "09:00",
-            "endTime": "09:03",
-            "description": "步行前往游泳馆",
+            "text": "从苏州工业园区出发",
+            "startTime": "09:20",
+            "endTime": "09:20",
+            "description": "今天气温较高，不安排过早赶路，直接前往近距离室内场馆。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "菲尔狮青少年游泳俱乐部畅游",
-            "startTime": "09:03",
-            "endTime": "11:00",
-            "description": "室内游泳消暑，避开午后高温",
+            "type": "transit",
+            "text": "前往虹·美术馆",
+            "startTime": "09:20",
+            "endTime": "09:28",
+            "description": "虹·美术馆距出发地3.3km，实时车程约8分钟。",
             "place": {
-              "name": "菲尔狮青少年游泳俱乐部",
-              "lat": 31.290985,
-              "lng": 120.723092
+              "name": "虹·美术馆",
+              "lat": 31.299819,
+              "lng": 120.698723
+            }
+          },
+          {
+            "type": "play",
+            "text": "参观虹·美术馆",
+            "startTime": "09:28",
+            "endTime": "10:40",
+            "description": "上午先安排室内看展，减少高温户外停留。",
+            "place": {
+              "name": "虹·美术馆",
+              "lat": 31.299819,
+              "lng": 120.698723
+            }
+          },
+          {
+            "type": "transit",
+            "text": "转场至明·美术馆",
+            "startTime": "10:40",
+            "endTime": "10:48",
+            "description": "明·美术馆距出发地3.4km，实时车程约8分钟；两个艺术馆距离近，适合连续安排。",
+            "place": {
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
+            }
+          },
+          {
+            "type": "play",
+            "text": "参观明·美术馆",
+            "startTime": "10:48",
+            "endTime": "11:50",
+            "description": "继续室内观展，避开临近中午的闷热时段。",
+            "place": {
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
             }
           },
           {
             "type": "eat",
-            "text": "东仓荣锦轩午餐",
-            "startTime": "11:15",
-            "endTime": "12:30",
-            "description": "就近品尝中式料理",
+            "text": "在VONE·璞悦荟午餐",
+            "startTime": "12:00",
+            "endTime": "13:20",
+            "description": "使用周边真实餐饮点，靠近虹·美术馆、明·美术馆和南石玉雕艺术馆，适合中午就近用餐避暑。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "建屋乐活城逛街纳凉",
-            "startTime": "13:00",
-            "endTime": "15:00",
-            "description": "商场室内吹空调，逛家居生活好物",
+            "type": "stay",
+            "text": "午后室内休息",
+            "startTime": "13:20",
+            "endTime": "14:30",
+            "description": "13:00-15:00是36°C高温时段，建议在餐厅或附近室内空间休息，不安排户外步行。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往南石玉雕艺术馆",
+            "startTime": "14:30",
+            "endTime": "14:39",
+            "description": "南石玉雕艺术馆距出发地3.4km，实时车程约9分钟。",
             "place": {
-              "name": "建屋乐活城",
-              "lat": 31.288747,
-              "lng": 120.724249
+              "name": "南石玉雕艺术馆",
+              "lat": 31.300549,
+              "lng": 120.698368
             }
           },
           {
-            "type": "eat",
-            "text": "苏城老友小海鲜晚餐",
-            "startTime": "17:30",
-            "endTime": "18:30",
-            "description": "夏日小海鲜配冰啤",
-            "place": null
+            "type": "play",
+            "text": "参观南石玉雕艺术馆",
+            "startTime": "14:39",
+            "endTime": "16:00",
+            "description": "下午继续选择室内文化场馆，适合高温多云天气。",
+            "place": {
+              "name": "南石玉雕艺术馆",
+              "lat": 31.300549,
+              "lng": 120.698368
+            }
           },
           {
             "type": "home",
-            "text": "步行回家",
-            "startTime": "18:30",
-            "endTime": "18:40",
-            "description": "饭后散步回家",
+            "text": "返回苏州工业园区",
+            "startTime": "16:00",
+            "endTime": "16:09",
+            "description": "参考南石玉雕艺术馆至出发区域同向实时路程，约3.4km、9分钟。",
             "place": null
           }
         ]
@@ -78,16 +126,16 @@ const PLANS = [
   },
   {
     "id": "---1",
-    "title": "西塘古镇水乡一日游",
+    "title": "金鸡湖早晚湖景线",
     "origin": "苏州工业园区",
     "category": "now",
-    "reason": "西塘古镇水乡有大量遮阳廊棚，早出晚归避开正午烈日，58km约1小时18分钟车程适合当天往返",
+    "reason": "金鸡湖距离适中，最近的自然公园距出发地4.6km、约13分钟；今天最高36°C，因此把湖边户外安排在清晨和傍晚，中午到餐厅及室内空间休息，适合想看湖景但不想暴晒的人。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "西塘古镇漫步",
+        "activity": "清晨金鸡湖自然公园散步，中午湖边餐厅避暑，傍晚去桃花岛看湖景。",
         "weather": {
           "icon": "⛅",
           "temp": "36°"
@@ -95,78 +143,106 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "早起出发避暑",
-            "startTime": "07:00",
-            "endTime": "07:00",
-            "description": "趁早凉快出门",
+            "text": "从苏州工业园区出发",
+            "startTime": "07:20",
+            "endTime": "07:20",
+            "description": "趁早出门，避开午后36°C高温。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "驱车前往西塘古镇",
-            "startTime": "07:00",
-            "endTime": "08:18",
-            "description": "约58km，1小时18分钟车程",
+            "text": "前往金鸡湖景区-自然公园",
+            "startTime": "07:20",
+            "endTime": "07:33",
+            "description": "金鸡湖景区-自然公园距出发地4.6km，实时车程约13分钟。",
             "place": {
-              "name": "西塘古镇景区第1停车场",
-              "lat": 30.938975,
-              "lng": 120.888685
+              "name": "金鸡湖景区-自然公园",
+              "lat": 31.297992,
+              "lng": 120.689972
             }
           },
           {
             "type": "play",
-            "text": "西塘古镇晨游",
-            "startTime": "08:30",
-            "endTime": "11:30",
-            "description": "趁上午凉爽漫步烟雨长廊、石皮弄，感受水乡风情",
+            "text": "金鸡湖自然公园晨间散步",
+            "startTime": "07:33",
+            "endTime": "09:15",
+            "description": "早晨温度相对低，适合湖边慢走、拍照，避免中午暴晒。",
             "place": {
-              "name": "西塘古镇",
-              "lat": 30.942938,
-              "lng": 120.893704
-            }
-          },
-          {
-            "type": "eat",
-            "text": "古镇内午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "品尝西塘本地特色小吃",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "午后廊棚下纳凉闲逛",
-            "startTime": "13:00",
-            "endTime": "15:30",
-            "description": "廊棚遮阳，逛小店、喝茶歇脚",
-            "place": {
-              "name": "西塘古镇",
-              "lat": 30.942938,
-              "lng": 120.893704
+              "name": "金鸡湖景区-自然公园",
+              "lat": 31.297992,
+              "lng": 120.689972
             }
           },
           {
             "type": "transit",
-            "text": "返程回苏州",
-            "startTime": "15:30",
-            "endTime": "16:48",
-            "description": "避开晚高峰提前返回",
-            "place": null
+            "text": "前往金鸡湖景区游客中心",
+            "startTime": "09:15",
+            "endTime": "09:41",
+            "description": "金鸡湖景区游客中心距出发地6.6km，实时车程约26分钟，可作为补水、休整点。",
+            "place": {
+              "name": "金鸡湖景区游客中心",
+              "lat": 31.322848,
+              "lng": 120.703939
+            }
+          },
+          {
+            "type": "stay",
+            "text": "游客中心及周边阴凉休整",
+            "startTime": "09:41",
+            "endTime": "11:10",
+            "description": "上午后段气温上升，减少湖边暴晒，转入服务中心及阴凉区域。",
+            "place": {
+              "name": "金鸡湖景区游客中心",
+              "lat": 31.322848,
+              "lng": 120.703939
+            }
           },
           {
             "type": "eat",
-            "text": "鲨滩小海鲜晚餐",
-            "startTime": "17:30",
-            "endTime": "18:30",
-            "description": "回到园区享用海鲜晚餐",
+            "text": "LÉON 莱昂餐厅午餐",
+            "startTime": "11:20",
+            "endTime": "12:40",
+            "description": "使用金鸡湖桃花岛附近真实餐厅，午餐时间转入室内，避开高温。",
             "place": null
+          },
+          {
+            "type": "stay",
+            "text": "午后室内避暑",
+            "startTime": "12:40",
+            "endTime": "16:10",
+            "description": "今天最高36°C，12:40-16:10不安排户外湖边活动，建议在餐厅或附近室内空间休息。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往金鸡湖景区-桃花岛",
+            "startTime": "16:10",
+            "endTime": "16:44",
+            "description": "金鸡湖景区-桃花岛距出发地5.5km，实时车程约34分钟；傍晚再去湖边更舒适。",
+            "place": {
+              "name": "金鸡湖景区-桃花岛",
+              "lat": 31.308241,
+              "lng": 120.70654
+            }
+          },
+          {
+            "type": "play",
+            "text": "桃花岛傍晚湖景",
+            "startTime": "16:44",
+            "endTime": "18:20",
+            "description": "傍晚光线柔和，适合湖边拍照和短时间散步。",
+            "place": {
+              "name": "金鸡湖景区-桃花岛",
+              "lat": 31.308241,
+              "lng": 120.70654
+            }
           },
           {
             "type": "home",
-            "text": "到家休息",
-            "startTime": "18:45",
-            "endTime": "18:45",
-            "description": "结束充实一天",
+            "text": "返回苏州工业园区",
+            "startTime": "18:20",
+            "endTime": "18:54",
+            "description": "参考桃花岛至出发区域同向实时路程，约5.5km、34分钟。",
             "place": null
           }
         ]
@@ -175,16 +251,16 @@ const PLANS = [
   },
   {
     "id": "---2",
-    "title": "南浔古镇深度游",
+    "title": "阳澄湖半岛近郊清凉半日线",
     "origin": "苏州工业园区",
     "category": "now",
-    "reason": "南浔是国家级景点，比西塘更安静，71km约1小时16分钟可达，多云天气适合早出游览江南园林",
+    "reason": "阳澄湖半岛距苏州工业园区12.2km、约29分钟，属于轻近郊距离；今天多云但最高36°C，适合早上去湖边，午前返回市区用餐并转入室内文化点，避免午后在开阔湖区暴晒。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "南浔古镇文化之旅",
+        "activity": "上午阳澄湖半岛看湖景，午后回园区附近吃饭和参观民俗博物馆。",
         "weather": {
           "icon": "⛅",
           "temp": "36°"
@@ -192,78 +268,90 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "清晨出发",
-            "startTime": "06:30",
-            "endTime": "06:30",
-            "description": "早起趁凉出发",
+            "text": "从苏州工业园区出发",
+            "startTime": "07:10",
+            "endTime": "07:10",
+            "description": "近郊湖区以早出发为宜，避开午后高温。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "驱车前往南浔古镇",
-            "startTime": "06:30",
-            "endTime": "07:46",
-            "description": "约71km，1小时16分钟车程",
+            "text": "前往阳澄湖半岛旅游度假区",
+            "startTime": "07:10",
+            "endTime": "07:39",
+            "description": "阳澄湖半岛旅游度假区距出发地12.2km，实时车程约29分钟。",
             "place": {
-              "name": "南浔古镇",
-              "lat": 30.88091,
-              "lng": 120.439896
+              "name": "阳澄湖半岛旅游度假",
+              "lat": 31.351117,
+              "lng": 120.659469
             }
           },
           {
             "type": "play",
-            "text": "南浔古镇上午游览",
-            "startTime": "08:00",
-            "endTime": "11:30",
-            "description": "参观小莲庄、嘉业藏书楼，漫步百间楼",
+            "text": "阳澄湖半岛晨间游览",
+            "startTime": "07:39",
+            "endTime": "10:15",
+            "description": "早晨在湖边活动相对舒适，适合短途骑行、散步和看湖景；10点后逐步减少户外停留。",
             "place": {
-              "name": "南浔古镇",
-              "lat": 30.88091,
-              "lng": 120.439896
-            }
-          },
-          {
-            "type": "eat",
-            "text": "古镇内午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "尝南浔双交面、桔红糕等特色美食",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "午后室内展馆参观",
-            "startTime": "13:00",
-            "endTime": "15:00",
-            "description": "游览张石铭旧宅等室内景点，避开午后高温",
-            "place": {
-              "name": "南浔古镇旅游度假区",
-              "lat": 30.869863,
-              "lng": 120.430911
+              "name": "阳澄湖半岛旅游度假",
+              "lat": 31.351117,
+              "lng": 120.659469
             }
           },
           {
             "type": "transit",
-            "text": "返程",
-            "startTime": "15:00",
-            "endTime": "16:16",
-            "description": "约1小时16分钟返回苏州",
+            "text": "返回苏州工业园区方向",
+            "startTime": "10:15",
+            "endTime": "10:44",
+            "description": "参考阳澄湖半岛至出发区域同向实时路程，约12.2km、29分钟，赶在正午前返城。",
             "place": null
           },
           {
             "type": "eat",
-            "text": "苏州柏悦酒店·西洲轩晚餐",
-            "startTime": "17:00",
-            "endTime": "18:30",
-            "description": "回到园区享用精致晚餐犒劳自己",
+            "text": "广鉴阁·潮州菜餐厅午餐",
+            "startTime": "11:00",
+            "endTime": "12:20",
+            "description": "使用苏州卓美民俗博物馆附近真实餐饮点，午餐安排在室内避暑。",
             "place": null
+          },
+          {
+            "type": "stay",
+            "text": "午后室内休整",
+            "startTime": "12:20",
+            "endTime": "14:40",
+            "description": "今天最高36°C，午后不继续湖边户外活动，留在室内休息补水。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往苏州卓美民俗博物馆",
+            "startTime": "14:40",
+            "endTime": "14:52",
+            "description": "苏州卓美民俗博物馆距出发地3.2km，实时车程约12分钟。",
+            "place": {
+              "name": "苏州卓美民俗博物馆",
+              "lat": 31.303427,
+              "lng": 120.738199
+            }
+          },
+          {
+            "type": "play",
+            "text": "参观苏州卓美民俗博物馆",
+            "startTime": "14:52",
+            "endTime": "16:20",
+            "description": "下午安排室内民俗文化参观，避开高温时段的户外暴晒。",
+            "place": {
+              "name": "苏州卓美民俗博物馆",
+              "lat": 31.303427,
+              "lng": 120.738199
+            }
           },
           {
             "type": "home",
-            "text": "到家",
-            "startTime": "18:45",
-            "endTime": "18:45",
-            "description": "结束古镇文化一日游",
+            "text": "返回苏州工业园区",
+            "startTime": "16:20",
+            "endTime": "16:32",
+            "description": "参考苏州卓美民俗博物馆至出发区域同向实时路程，约3.2km、12分钟。",
             "place": null
           }
         ]
@@ -272,16 +360,16 @@ const PLANS = [
   },
   {
     "id": "---3",
-    "title": "金水湾亲子戏水日",
+    "title": "周庄古镇早出远途线",
     "origin": "苏州工业园区",
     "category": "now",
-    "reason": "36°C酷暑天最适合泡在水里，金水湾多家泳馆步行6分钟即达，省去长途奔波，全天室内活动不怕晒",
+    "reason": "周庄古镇距苏州工业园区33.4km、约49分钟，是本组方案中较远的选择；今天最高36°C，因此必须早出早游，上午完成古镇核心游览，中午前后返城吃饭并转入室内，降低高温风险。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "全天游泳健身",
+        "activity": "清晨去周庄古镇，午后回园区附近用餐休息，再看室内美术馆。",
         "weather": {
           "icon": "⛅",
           "temp": "36°"
@@ -289,58 +377,102 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "出门",
-            "startTime": "09:30",
-            "endTime": "09:36",
-            "description": "步行前往金水湾",
+            "text": "从苏州工业园区出发",
+            "startTime": "06:50",
+            "endTime": "06:50",
+            "description": "远途古镇线建议早出发，避开上午后段和午后的高温。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "金水湾游泳馆游泳",
-            "startTime": "09:36",
-            "endTime": "11:30",
-            "description": "上午畅游，青少年培训专用泳池水质好",
+            "type": "transit",
+            "text": "前往周庄古镇",
+            "startTime": "06:50",
+            "endTime": "07:39",
+            "description": "周庄古镇距出发地33.4km，实时车程约49分钟。",
             "place": {
-              "name": "金水湾游泳馆·青少年培训专用",
-              "lat": 31.301728,
-              "lng": 120.717209
+              "name": "周庄古镇",
+              "lat": 31.114744,
+              "lng": 120.85091
             }
           },
           {
-            "type": "eat",
-            "text": "鲨滩小海鲜午餐",
-            "startTime": "11:45",
-            "endTime": "13:00",
-            "description": "海鲜大餐补充体力",
-            "place": null
-          },
-          {
             "type": "play",
-            "text": "白海豚健身俱乐部",
-            "startTime": "14:00",
-            "endTime": "16:00",
-            "description": "午后室内健身，游泳+器械组合训练",
+            "text": "周庄古镇晨间游览",
+            "startTime": "07:39",
+            "endTime": "10:20",
+            "description": "利用早晨相对凉爽的时段走古镇水巷、桥边和阴影街巷，减少正午暴晒。",
             "place": {
-              "name": "白海豚游泳健身俱乐部(金水湾店)",
-              "lat": 31.301575,
-              "lng": 120.717425
+              "name": "周庄古镇",
+              "lat": 31.114744,
+              "lng": 120.85091
             }
           },
           {
-            "type": "eat",
-            "text": "苏州柏悦酒店·西洲轩下午茶/晚餐",
-            "startTime": "17:00",
-            "endTime": "18:30",
-            "description": "运动后享受精致美食",
+            "type": "stay",
+            "text": "古镇阴凉处短休",
+            "startTime": "10:20",
+            "endTime": "11:00",
+            "description": "10点后气温升高，减少继续暴走，找阴凉处补水休息后返程。",
+            "place": {
+              "name": "周庄古镇",
+              "lat": 31.114744,
+              "lng": 120.85091
+            }
+          },
+          {
+            "type": "transit",
+            "text": "返回苏州工业园区方向",
+            "startTime": "11:00",
+            "endTime": "11:49",
+            "description": "参考周庄古镇至出发区域同向实时路程，约33.4km、49分钟。",
             "place": null
+          },
+          {
+            "type": "eat",
+            "text": "慕容轩午餐",
+            "startTime": "12:00",
+            "endTime": "13:20",
+            "description": "使用苏州卓美民俗博物馆附近真实餐饮点，返城后在室内用餐避开36°C高温。",
+            "place": null
+          },
+          {
+            "type": "stay",
+            "text": "午后室内休息",
+            "startTime": "13:20",
+            "endTime": "15:10",
+            "description": "午后不再安排古镇户外行走，留在室内休整，降低中暑风险。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往明·美术馆",
+            "startTime": "15:10",
+            "endTime": "15:18",
+            "description": "明·美术馆距出发地3.4km，实时车程约8分钟，适合作为返城后的室内补充行程。",
+            "place": {
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
+            }
+          },
+          {
+            "type": "play",
+            "text": "参观明·美术馆",
+            "startTime": "15:18",
+            "endTime": "16:40",
+            "description": "下午继续选择室内看展，避免高温户外活动。",
+            "place": {
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
+            }
           },
           {
             "type": "home",
-            "text": "回家休息",
-            "startTime": "18:45",
-            "endTime": "18:55",
-            "description": "步行回家",
+            "text": "返回苏州工业园区",
+            "startTime": "16:40",
+            "endTime": "16:48",
+            "description": "参考明·美术馆至出发区域同向实时路程，约3.4km、8分钟。",
             "place": null
           }
         ]
@@ -348,108 +480,222 @@ const PLANS = [
     ]
   },
   {
-    "id": "---4",
-    "title": "林荫步道晨跑+虹桥购物",
+    "id": "--2--4",
+    "title": "金鸡湖近距离避暑艺术周末",
     "origin": "苏州工业园区",
-    "category": "now",
-    "reason": "林荫步道60km处有天然遮阳，清晨驱车前往徒步呼吸新鲜空气，午后转战虹桥商圈室内购物纳凉，一动一静搭配",
+    "category": "weekend",
+    "reason": "周末两天最高温都在37℃，近距离方案把户外金鸡湖、桃花岛和码头安排在早晚，午后转入美术馆、民俗博物馆等室内空间；从苏州工业园区出发车程多在8-34分钟内，适合高温天气下减少路途消耗。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "户外徒步+商圈购物",
+        "activity": "金鸡湖早游与湖畔晚餐",
         "weather": {
           "icon": "⛅",
-          "temp": "36°"
+          "temp": "37°"
         },
         "steps": [
           {
             "type": "depart",
-            "text": "清晨出发",
-            "startTime": "06:00",
-            "endTime": "06:00",
-            "description": "趁早凉出门",
+            "text": "从苏州工业园区出发",
+            "startTime": "08:00",
+            "endTime": "08:00",
+            "description": "趁早出门，避开午后37℃高温。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "驱车前往林荫步道",
-            "startTime": "06:00",
-            "endTime": "07:13",
-            "description": "约60km，1小时13分钟",
+            "text": "前往金鸡湖景区-桃花岛",
+            "startTime": "08:00",
+            "endTime": "08:34",
+            "description": "自驾约5.5km，车程34分钟。",
             "place": {
-              "name": "林荫步道",
-              "lat": 31.512459,
-              "lng": 121.094299
+              "name": "金鸡湖景区-桃花岛",
+              "lat": 31.308241,
+              "lng": 120.70654
             }
           },
           {
             "type": "play",
-            "text": "林荫步道晨间徒步",
-            "startTime": "07:15",
-            "endTime": "09:30",
-            "description": "林荫遮阳，清晨气温舒适，适合户外活动",
-            "place": {
-              "name": "林荫步道",
-              "lat": 31.512459,
-              "lng": 121.094299
-            }
-          },
-          {
-            "type": "transit",
-            "text": "前往虹桥新天地",
-            "startTime": "09:30",
+            "text": "桃花岛清晨湖景散步",
+            "startTime": "08:34",
             "endTime": "10:00",
-            "description": "附近驱车前往商圈",
+            "description": "早间体感相对友好，适合在湖边慢走、拍照，避免长时间暴晒。",
             "place": {
-              "name": "虹桥新天地购物中心",
-              "lat": 31.193801,
-              "lng": 121.315438
+              "name": "金鸡湖景区-桃花岛",
+              "lat": 31.308241,
+              "lng": 120.70654
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往明·美术馆",
+            "startTime": "10:00",
+            "endTime": "10:08",
+            "description": "从园区到明·美术馆参考车程约8分钟，转入室内避暑。",
+            "place": {
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
             }
           },
           {
             "type": "play",
-            "text": "虹桥新天地购物中心",
-            "startTime": "10:00",
-            "endTime": "13:00",
-            "description": "室内商场逛街购物，空调清凉避暑",
+            "text": "明·美术馆观展",
+            "startTime": "10:08",
+            "endTime": "11:40",
+            "description": "午前进入室内空间，减少高温下户外停留。",
             "place": {
-              "name": "虹桥新天地购物中心",
-              "lat": 31.193801,
-              "lng": 121.315438
+              "name": "明·美术馆",
+              "lat": 31.299573,
+              "lng": 120.698278
             }
           },
           {
             "type": "eat",
-            "text": "商场内午餐",
-            "startTime": "12:00",
-            "endTime": "13:00",
-            "description": "商场内丰富餐饮选择",
-            "place": null
-          },
-          {
-            "type": "transit",
-            "text": "返回苏州",
-            "startTime": "13:30",
-            "endTime": "14:40",
-            "description": "约1小时10分钟返程",
-            "place": null
-          },
-          {
-            "type": "eat",
-            "text": "东仓荣锦轩晚餐",
-            "startTime": "17:30",
-            "endTime": "18:30",
-            "description": "回到园区享用晚餐",
+            "text": "VONE·璞悦荟午餐",
+            "startTime": "11:50",
+            "endTime": "13:10",
+            "description": "使用明·美术馆周边真实餐厅，午餐后可适当休息避开高温时段。",
             "place": null
           },
           {
             "type": "home",
-            "text": "到家",
+            "text": "返回苏州工业园区休息",
+            "startTime": "13:10",
+            "endTime": "13:30",
+            "description": "午后气温升至高位，建议回家休息或午睡。",
+            "place": null
+          },
+          {
+            "type": "depart",
+            "text": "傍晚再次出发",
+            "startTime": "17:10",
+            "endTime": "17:10",
+            "description": "等日照减弱后再安排湖边活动。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往金鸡湖景区-右岸码头",
+            "startTime": "17:10",
+            "endTime": "17:26",
+            "description": "自驾约3.7km，车程16分钟。",
+            "place": {
+              "name": "金鸡湖景区-右岸码头",
+              "lat": 31.31359,
+              "lng": 120.716297
+            }
+          },
+          {
+            "type": "play",
+            "text": "右岸码头傍晚看湖景",
+            "startTime": "17:26",
+            "endTime": "18:30",
+            "description": "傍晚温度相对下降，适合短时湖边散步和看日落。",
+            "place": {
+              "name": "金鸡湖景区-右岸码头",
+              "lat": 31.31359,
+              "lng": 120.716297
+            }
+          },
+          {
+            "type": "eat",
+            "text": "苏州柏悦酒店·西洲轩晚餐",
             "startTime": "18:40",
-            "endTime": "18:40",
-            "description": "充实一天结束",
+            "endTime": "20:00",
+            "description": "使用右岸码头周边真实餐厅，晚餐安排在室内更舒适。",
+            "place": null
+          },
+          {
+            "type": "home",
+            "text": "返回苏州工业园区",
+            "startTime": "20:00",
+            "endTime": "20:20",
+            "description": "晚间返程距离短，适合轻松结束第一天。",
+            "place": null
+          }
+        ]
+      },
+      {
+        "photo": "photo-1501785888041-af3ef285b470",
+        "activity": "室内博物馆与美术馆慢游",
+        "weather": {
+          "icon": "☁️",
+          "temp": "37°"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "从苏州工业园区出发",
+            "startTime": "09:00",
+            "endTime": "09:00",
+            "description": "周日阴天但仍有37℃高温，继续选择近距离室内点位。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往虹·美术馆",
+            "startTime": "09:00",
+            "endTime": "09:08",
+            "description": "自驾约3.3km，车程8分钟。",
+            "place": {
+              "name": "虹·美术馆",
+              "lat": 31.299819,
+              "lng": 120.698723
+            }
+          },
+          {
+            "type": "play",
+            "text": "虹·美术馆观展",
+            "startTime": "09:08",
+            "endTime": "10:30",
+            "description": "上午安排室内观展，节奏轻松。",
+            "place": {
+              "name": "虹·美术馆",
+              "lat": 31.299819,
+              "lng": 120.698723
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往苏州卓美民俗博物馆",
+            "startTime": "10:30",
+            "endTime": "10:42",
+            "description": "从园区到该馆参考车程约12分钟，继续控制路途时间。",
+            "place": {
+              "name": "苏州卓美民俗博物馆",
+              "lat": 31.303427,
+              "lng": 120.738199
+            }
+          },
+          {
+            "type": "play",
+            "text": "苏州卓美民俗博物馆参观",
+            "startTime": "10:42",
+            "endTime": "12:00",
+            "description": "民俗主题适合高温天午前室内慢逛。",
+            "place": {
+              "name": "苏州卓美民俗博物馆",
+              "lat": 31.303427,
+              "lng": 120.738199
+            }
+          },
+          {
+            "type": "eat",
+            "text": "广鉴阁·潮州菜餐厅午餐",
+            "startTime": "12:10",
+            "endTime": "13:30",
+            "description": "使用苏州卓美民俗博物馆周边真实餐厅。",
+            "place": null
+          },
+          {
+            "type": "home",
+            "text": "返回苏州工业园区",
+            "startTime": "13:30",
+            "endTime": "13:50",
+            "description": "午后不再安排暴晒户外，留出休息时间。",
             "place": null
           }
         ]
@@ -458,16 +704,16 @@ const PLANS = [
   },
   {
     "id": "--2--5",
-    "title": "南浔古镇水乡周末",
+    "title": "同里周庄水乡双古镇周末",
     "origin": "苏州工业园区",
     "category": "weekend",
-    "reason": "南浔古镇1小时16分可达，古镇多廊棚遮阳适合高温天漫步，周六多云周日阴天避免暴晒，早出晚归避开午间酷热",
+    "reason": "同里和周庄距离园区分别约37分钟、48分钟车程，属于周末可轻松到达的近郊水乡；高温天气下把古镇步行安排在清晨和傍晚，午后返回园区或在室内餐厅休整，避免长时间暴晒。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "南浔古镇深度游",
+        "activity": "同里古镇清晨慢游",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -476,123 +722,171 @@ const PLANS = [
           {
             "type": "depart",
             "text": "从苏州工业园区出发",
-            "startTime": "07:00",
-            "endTime": "07:00",
-            "description": "早起避开高温",
+            "startTime": "07:30",
+            "endTime": "07:30",
+            "description": "提前出发，利用早晨相对凉爽的时段游古镇。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "驱车前往南浔古镇",
-            "startTime": "07:00",
-            "endTime": "08:16",
-            "description": "全程约71km，1小时16分钟",
-            "place": null
+            "text": "前往苏州同里古镇旅游区镇北停车场",
+            "startTime": "07:30",
+            "endTime": "08:07",
+            "description": "自驾约24.5km，车程37分钟。",
+            "place": {
+              "name": "苏州同里古镇旅游区镇北停车场",
+              "lat": 31.160391,
+              "lng": 120.722243
+            }
           },
           {
             "type": "play",
-            "text": "南浔古镇上午游览",
-            "startTime": "08:30",
-            "endTime": "11:30",
-            "description": "趁早晨凉爽游览小莲庄、嘉业堂藏书楼、百间楼",
+            "text": "同里古镇上午水巷漫步",
+            "startTime": "08:07",
+            "endTime": "10:50",
+            "description": "上午在水巷、桥边慢逛，注意补水，尽量选择阴凉巷道。",
             "place": {
-              "name": "南浔古镇",
-              "lat": 30.88091,
-              "lng": 120.439896
+              "name": "苏州同里古镇旅游区镇北停车场(出入口)",
+              "lat": 31.161658,
+              "lng": 120.722831
+            }
+          },
+          {
+            "type": "transit",
+            "text": "返回苏州工业园区方向",
+            "startTime": "10:50",
+            "endTime": "11:27",
+            "description": "同里至园区参考返程约37分钟，避开午后高温继续户外。",
+            "place": null
+          },
+          {
+            "type": "eat",
+            "text": "慕容轩(斜塘总店)午餐",
+            "startTime": "11:40",
+            "endTime": "13:00",
+            "description": "使用苏州卓美民俗博物馆周边真实餐厅，午餐后回家避暑。",
+            "place": null
+          },
+          {
+            "type": "home",
+            "text": "返回苏州工业园区休息",
+            "startTime": "13:00",
+            "endTime": "13:20",
+            "description": "下午37℃，建议室内休息，不安排长距离户外步行。",
+            "place": null
+          },
+          {
+            "type": "depart",
+            "text": "傍晚短途出门",
+            "startTime": "17:30",
+            "endTime": "17:30",
+            "description": "日照减弱后安排轻量活动。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往金鸡湖景区-右岸码头",
+            "startTime": "17:30",
+            "endTime": "17:46",
+            "description": "自驾约3.7km，车程16分钟。",
+            "place": {
+              "name": "金鸡湖景区-右岸码头",
+              "lat": 31.31359,
+              "lng": 120.716297
+            }
+          },
+          {
+            "type": "play",
+            "text": "右岸码头傍晚散步",
+            "startTime": "17:46",
+            "endTime": "18:40",
+            "description": "作为同里返程后的轻量补充，选择湖边傍晚短停。",
+            "place": {
+              "name": "金鸡湖景区-右岸码头",
+              "lat": 31.31359,
+              "lng": 120.716297
             }
           },
           {
             "type": "eat",
-            "text": "古镇午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "在古镇内餐厅用餐，午后室内休息避暑",
+            "text": "LÉON 莱昂餐厅(金鸡湖摩天轮店)晚餐",
+            "startTime": "18:50",
+            "endTime": "20:00",
+            "description": "使用金鸡湖周边真实餐厅，室内用餐更适合高温天。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "南浔古镇度假区下午",
-            "startTime": "15:30",
-            "endTime": "18:00",
-            "description": "午后热度下降后继续游览度假区水景",
-            "place": {
-              "name": "南浔古镇旅游度假区",
-              "lat": 30.869863,
-              "lng": 120.430911
-            }
-          },
-          {
-            "type": "stay",
-            "text": "南浔住宿",
-            "startTime": "18:30",
-            "endTime": "22:00",
-            "description": "古镇民宿住一晚，享受夜景",
+            "type": "home",
+            "text": "返回苏州工业园区",
+            "startTime": "20:00",
+            "endTime": "20:20",
+            "description": "晚间短途返程。",
             "place": null
           }
         ]
       },
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "南浔周边返程",
+        "activity": "周庄古镇早去早回",
         "weather": {
           "icon": "☁️",
           "temp": "37°"
         },
         "steps": [
           {
-            "type": "play",
-            "text": "清晨古镇散步",
-            "startTime": "06:30",
-            "endTime": "08:30",
-            "description": "趁凉爽在古镇河畔晨走",
-            "place": {
-              "name": "南浔古镇",
-              "lat": 30.88091,
-              "lng": 120.439896
-            }
-          },
-          {
-            "type": "eat",
-            "text": "古镇早餐",
-            "startTime": "08:30",
-            "endTime": "09:15",
-            "description": "品尝当地早点",
+            "type": "depart",
+            "text": "从苏州工业园区出发",
+            "startTime": "07:20",
+            "endTime": "07:20",
+            "description": "周日阴天但仍然炎热，继续采用早出发策略。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "返回苏州",
-            "startTime": "09:30",
-            "endTime": "10:46",
-            "description": "阴天不晒，适合上午返程",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "广恩林公园散步",
-            "startTime": "17:00",
-            "endTime": "18:30",
-            "description": "傍晚回到园区附近公园纳凉",
+            "text": "前往周庄古镇古牌楼售票处",
+            "startTime": "07:20",
+            "endTime": "08:08",
+            "description": "自驾约32.8km，车程48分钟。",
             "place": {
-              "name": "广恩林公园",
-              "lat": 31.278766,
-              "lng": 120.728887
+              "name": "周庄古镇古牌楼售票处",
+              "lat": 31.113981,
+              "lng": 120.848142
             }
           },
           {
+            "type": "play",
+            "text": "周庄古镇上午游览",
+            "startTime": "08:08",
+            "endTime": "11:00",
+            "description": "选择早间游览双桥、水巷等区域，午前结束主要户外步行。",
+            "place": {
+              "name": "周庄古镇古牌楼检票口",
+              "lat": 31.113858,
+              "lng": 120.848038
+            }
+          },
+          {
+            "type": "transit",
+            "text": "返回苏州工业园区方向",
+            "startTime": "11:00",
+            "endTime": "11:48",
+            "description": "周庄至园区参考车程约48分钟。",
+            "place": null
+          },
+          {
             "type": "eat",
-            "text": "星湖苑餐厅晚餐",
-            "startTime": "18:30",
-            "endTime": "19:30",
-            "description": "在公园附近享用晚餐",
+            "text": "爱莲说艺术餐厅午餐",
+            "startTime": "12:00",
+            "endTime": "13:20",
+            "description": "使用金鸡湖、虹·美术馆周边真实餐厅，午后不再安排古镇暴走。",
             "place": null
           },
           {
             "type": "home",
-            "text": "回家",
-            "startTime": "19:45",
-            "endTime": "20:00",
-            "description": "返回住处",
+            "text": "返回苏州工业园区",
+            "startTime": "13:20",
+            "endTime": "13:40",
+            "description": "结束近郊水乡周末，留出下午恢复时间。",
             "place": null
           }
         ]
@@ -601,159 +895,16 @@ const PLANS = [
   },
   {
     "id": "--2--6",
-    "title": "天目湖避暑度假",
+    "title": "常熟园林与尚湖远郊清凉线",
     "origin": "苏州工业园区",
     "category": "weekend",
-    "reason": "天目湖距离166km约2小时20分，湖区水域降温效果好，适合高温周末避暑；周日阴天适合湖边活动，两天行程不赶",
+    "reason": "常熟方向车程约1小时8分钟到1小时23分钟，距离比园区周边更远但仍在周末可控范围内；周六安排燕园、赵园·曾园等园林清晨游，周日把碑刻博物馆放在午前室内时段，尚湖只安排早晚短时段，适合37℃高温下兼顾远郊与避暑。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "天目湖度假区",
-        "weather": {
-          "icon": "⛅",
-          "temp": "37°"
-        },
-        "steps": [
-          {
-            "type": "depart",
-            "text": "从苏州工业园区出发",
-            "startTime": "06:30",
-            "endTime": "06:30",
-            "description": "早起出发避开高温和拥堵",
-            "place": null
-          },
-          {
-            "type": "transit",
-            "text": "驱车前往天目湖",
-            "startTime": "06:30",
-            "endTime": "08:50",
-            "description": "全程约166km，约2小时20分钟",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "天目湖旅游度假区",
-            "startTime": "09:00",
-            "endTime": "11:30",
-            "description": "上午游览湖区，乘船赏景，湖风凉爽",
-            "place": {
-              "name": "天目湖旅游度假区",
-              "lat": 31.315215,
-              "lng": 119.434564
-            }
-          },
-          {
-            "type": "eat",
-            "text": "午餐·天目湖鱼头",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "品尝当地招牌天目湖砂锅鱼头",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "午后湖边休憩",
-            "startTime": "14:30",
-            "endTime": "17:00",
-            "description": "树荫下休息或室内茶室品茶避暑",
-            "place": {
-              "name": "天目湖",
-              "lat": 31.318562,
-              "lng": 119.441978
-            }
-          },
-          {
-            "type": "stay",
-            "text": "天目湖度假酒店",
-            "startTime": "17:30",
-            "endTime": "22:00",
-            "description": "入住湖畔酒店，晚间湖边散步",
-            "place": null
-          }
-        ]
-      },
-      {
-        "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "天目湖深度游+返程",
-        "weather": {
-          "icon": "☁️",
-          "temp": "37°"
-        },
-        "steps": [
-          {
-            "type": "play",
-            "text": "清晨湖边晨跑",
-            "startTime": "06:30",
-            "endTime": "07:30",
-            "description": "阴天凉爽适合湖畔运动",
-            "place": {
-              "name": "天目湖",
-              "lat": 31.242734,
-              "lng": 119.424006
-            }
-          },
-          {
-            "type": "eat",
-            "text": "酒店早餐",
-            "startTime": "07:30",
-            "endTime": "08:15",
-            "description": "度假区内用早餐",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "天目湖继续游览",
-            "startTime": "08:30",
-            "endTime": "10:30",
-            "description": "阴天户外不晒，补充昨日未走的景点",
-            "place": {
-              "name": "天目湖旅游度假区",
-              "lat": 31.315215,
-              "lng": 119.434564
-            }
-          },
-          {
-            "type": "transit",
-            "text": "返程回苏州",
-            "startTime": "11:00",
-            "endTime": "13:20",
-            "description": "午前启程避免午后疲劳驾驶",
-            "place": null
-          },
-          {
-            "type": "eat",
-            "text": "满腹达人茶餐厅晚餐",
-            "startTime": "18:00",
-            "endTime": "19:00",
-            "description": "回到园区后吃个轻松晚餐",
-            "place": null
-          },
-          {
-            "type": "home",
-            "text": "回家",
-            "startTime": "19:15",
-            "endTime": "19:30",
-            "description": "返回住处休息",
-            "place": null
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "--2--7",
-    "title": "尚湖虞山清凉之旅",
-    "origin": "苏州工业园区",
-    "category": "weekend",
-    "reason": "尚湖+虞山组合在常熟片区，车程约1.5小时，森林公园林荫遮蔽适合高温天，尚湖傍水清凉；周日阴天登山更舒适",
-    "tags": [],
-    "relatedContent": [],
-    "days": [
-      {
-        "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "尚湖风景区",
+        "activity": "常熟古典园林早游",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -764,23 +915,129 @@ const PLANS = [
             "text": "从苏州工业园区出发",
             "startTime": "07:00",
             "endTime": "07:00",
-            "description": "早出发利用清晨凉爽时段",
+            "description": "远郊日提前出发，减少高温时段在路上和户外的压力。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "前往尚湖风景区",
+            "text": "前往燕园",
             "startTime": "07:00",
-            "endTime": "08:29",
-            "description": "全程约51.8km，1小时29分钟",
-            "place": null
+            "endTime": "08:23",
+            "description": "自驾约49.4km，车程1小时23分钟。",
+            "place": {
+              "name": "燕园",
+              "lat": 31.648659,
+              "lng": 120.743128
+            }
           },
           {
             "type": "play",
-            "text": "尚湖风景区游览",
-            "startTime": "08:30",
-            "endTime": "11:30",
-            "description": "湖边栈道、荷塘赏荷，湖风消暑",
+            "text": "燕园清晨游园",
+            "startTime": "08:23",
+            "endTime": "09:40",
+            "description": "园林有树荫和小尺度空间，适合上午慢游。",
+            "place": {
+              "name": "燕园",
+              "lat": 31.648659,
+              "lng": 120.743128
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往赵园·曾园",
+            "startTime": "09:40",
+            "endTime": "10:00",
+            "description": "同城短驳，保留充足参观时间。",
+            "place": {
+              "name": "赵园·曾园",
+              "lat": 31.641833,
+              "lng": 120.73606
+            }
+          },
+          {
+            "type": "play",
+            "text": "赵园·曾园参观",
+            "startTime": "10:00",
+            "endTime": "11:20",
+            "description": "在午前完成主要户外园林参观，避免正午后长时间暴晒。",
+            "place": {
+              "name": "赵园·曾园",
+              "lat": 31.641833,
+              "lng": 120.73606
+            }
+          },
+          {
+            "type": "transit",
+            "text": "返回苏州工业园区方向",
+            "startTime": "11:20",
+            "endTime": "12:43",
+            "description": "赵园·曾园至园区参考约49.3km，车程1小时23分钟。",
+            "place": null
+          },
+          {
+            "type": "eat",
+            "text": "广鉴阁·潮州菜餐厅午餐",
+            "startTime": "13:00",
+            "endTime": "14:20",
+            "description": "使用园区周边真实餐厅，下午高温时段在室内用餐休整。",
+            "place": null
+          },
+          {
+            "type": "home",
+            "text": "返回苏州工业园区休息",
+            "startTime": "14:20",
+            "endTime": "14:40",
+            "description": "远郊早游后下午不再安排户外。",
+            "place": null
+          }
+        ]
+      },
+      {
+        "photo": "photo-1501785888041-af3ef285b470",
+        "activity": "碑刻博物馆与尚湖傍晚线",
+        "weather": {
+          "icon": "☁️",
+          "temp": "37°"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "从苏州工业园区出发",
+            "startTime": "08:00",
+            "endTime": "08:00",
+            "description": "周日阴天但气温仍高，优先安排室内博物馆。",
+            "place": null
+          },
+          {
+            "type": "transit",
+            "text": "前往碑刻博物馆",
+            "startTime": "08:00",
+            "endTime": "09:08",
+            "description": "自驾约55.6km，车程1小时8分钟。",
+            "place": {
+              "name": "碑刻博物馆",
+              "lat": 31.645967,
+              "lng": 120.748806
+            }
+          },
+          {
+            "type": "play",
+            "text": "碑刻博物馆参观",
+            "startTime": "09:08",
+            "endTime": "11:00",
+            "description": "室内文化参观适合高温天上午，减少体力消耗。",
+            "place": {
+              "name": "碑刻博物馆",
+              "lat": 31.645967,
+              "lng": 120.748806
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往尚湖风景区",
+            "startTime": "11:00",
+            "endTime": "11:35",
+            "description": "常熟市内转场，尚湖距离园区参考51.8km、车程1小时20分钟。",
             "place": {
               "name": "尚湖风景区",
               "lat": 31.644384,
@@ -788,97 +1045,39 @@ const PLANS = [
             }
           },
           {
-            "type": "eat",
-            "text": "望虞台茶文化餐厅午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "品茶用餐，室内避暑",
-            "place": null
-          },
-          {
             "type": "play",
-            "text": "云崖飞瀑漂流",
-            "startTime": "15:00",
-            "endTime": "17:00",
-            "description": "下午热度最高时玩水漂流降温",
+            "text": "尚湖阴凉处短停",
+            "startTime": "11:35",
+            "endTime": "12:20",
+            "description": "只安排短时间湖区停留，选择树荫和室内服务点，避免正午暴走。",
             "place": {
-              "name": "云崖飞瀑漂流",
-              "lat": 31.639483,
-              "lng": 120.691201
+              "name": "尚湖风景区",
+              "lat": 31.644384,
+              "lng": 120.688717
             }
-          },
-          {
-            "type": "eat",
-            "text": "遇尚茶餐厅晚餐",
-            "startTime": "17:30",
-            "endTime": "18:30",
-            "description": "漂流后补充能量",
-            "place": null
-          },
-          {
-            "type": "stay",
-            "text": "常熟住宿",
-            "startTime": "19:00",
-            "endTime": "22:00",
-            "description": "在常熟市区住一晚",
-            "place": null
-          }
-        ]
-      },
-      {
-        "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "虞山森林公园",
-        "weather": {
-          "icon": "☁️",
-          "temp": "37°"
-        },
-        "steps": [
-          {
-            "type": "play",
-            "text": "虞山国家森林公园",
-            "startTime": "06:30",
-            "endTime": "09:30",
-            "description": "阴天早晨登山探联珠洞，林荫茂密凉爽",
-            "place": {
-              "name": "虞山国家森林公园-联珠洞",
-              "lat": 31.667417,
-              "lng": 120.713082
-            }
-          },
-          {
-            "type": "play",
-            "text": "虞山天书壁",
-            "startTime": "09:45",
-            "endTime": "11:00",
-            "description": "观赏天书壁摩崖石刻",
-            "place": {
-              "name": "虞山风景区-天书壁",
-              "lat": 31.66715,
-              "lng": 120.699245
-            }
-          },
-          {
-            "type": "eat",
-            "text": "望虞台茶文化餐厅午餐",
-            "startTime": "11:15",
-            "endTime": "12:15",
-            "description": "下山后用午餐",
-            "place": null
           },
           {
             "type": "transit",
-            "text": "返回苏州工业园区",
-            "startTime": "12:30",
-            "endTime": "14:00",
-            "description": "午后返程约1.5小时",
+            "text": "返回苏州工业园区方向",
+            "startTime": "12:20",
+            "endTime": "13:40",
+            "description": "尚湖至园区参考车程1小时20分钟。",
+            "place": null
+          },
+          {
+            "type": "eat",
+            "text": "VONE·璞悦荟午餐",
+            "startTime": "13:50",
+            "endTime": "15:10",
+            "description": "回到园区室内用餐，避开一天中最热时段。",
             "place": null
           },
           {
             "type": "home",
-            "text": "回家",
-            "startTime": "14:00",
-            "endTime": "14:00",
-            "description": "到家休息避暑",
+            "text": "返回苏州工业园区",
+            "startTime": "15:10",
+            "endTime": "15:30",
+            "description": "结束常熟远郊周末，下午留作休息。",
             "place": null
           }
         ]
@@ -886,17 +1085,17 @@ const PLANS = [
     ]
   },
   {
-    "id": "--2--8",
-    "title": "桃花园漂流+霍比特庄园",
+    "id": "--2--7",
+    "title": "太湖西山岛度假过夜周末",
     "origin": "苏州工业园区",
     "category": "weekend",
-    "reason": "37度高温最适合玩水！桃花园漂流仅1小时8分车程，搭配霍比特庄园生态营地，有水有荫适合夏日；两地相距不远可串联",
+    "reason": "西山岛距园区约1小时29分钟，开心农场约1小时16分钟，属于180分钟内的远途度假型选择；天气连续37℃，因此把农场和岛上户外安排在上午、傍晚，并设置西山岛住宿，减少往返奔波。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "桃花园漂流玩水日",
+        "activity": "西山岛上午出发与傍晚湖岛",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -905,76 +1104,100 @@ const PLANS = [
           {
             "type": "depart",
             "text": "从苏州工业园区出发",
-            "startTime": "07:30",
-            "endTime": "07:30",
-            "description": "出发前往漂流地点",
+            "startTime": "08:00",
+            "endTime": "08:00",
+            "description": "远途度假日，上午出发，避开下午最热时段赶路。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "前往桃花园漂流",
-            "startTime": "07:30",
-            "endTime": "08:38",
-            "description": "全程约57.6km，1小时8分钟",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "桃花园漂流",
-            "startTime": "09:00",
-            "endTime": "12:00",
-            "description": "上午水温舒适，尽情漂流戏水消暑",
+            "text": "前往苏州太湖·西山岛开心农场",
+            "startTime": "08:00",
+            "endTime": "09:16",
+            "description": "自驾约52km，车程1小时16分钟。",
             "place": {
-              "name": "桃花园漂流",
-              "lat": 30.948486,
-              "lng": 120.529792
+              "name": "苏州太湖·西山岛开心农场",
+              "lat": 31.141884,
+              "lng": 120.32375
             }
           },
           {
-            "type": "eat",
-            "text": "午餐休整",
-            "startTime": "12:00",
-            "endTime": "13:00",
-            "description": "景区附近午餐补充体力",
-            "place": null
+            "type": "play",
+            "text": "开心农场上午轻体验",
+            "startTime": "09:16",
+            "endTime": "10:50",
+            "description": "农场活动只安排上午短时段，注意遮阳补水。",
+            "place": {
+              "name": "苏州太湖·西山岛开心农场",
+              "lat": 31.141884,
+              "lng": 120.32375
+            }
           },
           {
             "type": "transit",
-            "text": "前往霍比特庄园",
-            "startTime": "13:30",
-            "endTime": "14:00",
-            "description": "短途驱车前往营地",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "霍比特庄园生态营地",
-            "startTime": "14:00",
-            "endTime": "18:00",
-            "description": "林下帐篷休息，傍晚草坪活动",
+            "text": "前往太湖西山岛·严宿度假别墅",
+            "startTime": "10:50",
+            "endTime": "11:20",
+            "description": "岛内转场入住休整，减少午后户外活动。",
             "place": {
-              "name": "霍比特庄园(生态营地)",
-              "lat": 31.502825,
-              "lng": 121.064855
+              "name": "太湖西山岛·严宿度假别墅",
+              "lat": 31.092157,
+              "lng": 120.248441
             }
           },
           {
             "type": "stay",
-            "text": "营地住宿",
-            "startTime": "18:00",
-            "endTime": "22:00",
-            "description": "在庄园营地住一晚，夜间观星",
+            "text": "严宿度假别墅午间休息",
+            "startTime": "11:20",
+            "endTime": "16:30",
+            "description": "午后高温明显，安排住宿休息、洗漱和避暑。",
             "place": {
-              "name": "霍比特庄园(生态营地)",
-              "lat": 31.502825,
-              "lng": 121.064855
+              "name": "太湖西山岛·严宿度假别墅",
+              "lat": 31.092157,
+              "lng": 120.248441
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往西山岛湖边区域",
+            "startTime": "16:30",
+            "endTime": "16:50",
+            "description": "西山岛距离园区参考61.9km、车程1小时29分钟，此处为岛内傍晚短驳。",
+            "place": {
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
+            }
+          },
+          {
+            "type": "play",
+            "text": "西山岛傍晚看太湖",
+            "startTime": "16:50",
+            "endTime": "18:20",
+            "description": "等日照减弱后再到湖边活动，适合拍照和短步行。",
+            "place": {
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
+            }
+          },
+          {
+            "type": "stay",
+            "text": "返回严宿度假别墅休息",
+            "startTime": "18:20",
+            "endTime": "18:50",
+            "description": "夜宿岛上，避免当天往返的疲劳。",
+            "place": {
+              "name": "太湖西山岛·严宿度假别墅",
+              "lat": 31.092157,
+              "lng": 120.248441
             }
           }
         ]
       },
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "昆山树洞+返程",
+        "activity": "西山岛清晨返程与园区午餐",
         "weather": {
           "icon": "☁️",
           "temp": "37°"
@@ -982,58 +1205,62 @@ const PLANS = [
         "steps": [
           {
             "type": "play",
-            "text": "营地早晨",
-            "startTime": "06:30",
+            "text": "西山岛清晨散步",
+            "startTime": "07:00",
             "endTime": "08:00",
-            "description": "清晨在营地散步享受自然",
+            "description": "周日阴天但最低温也有28℃，只安排清晨短时间户外。",
             "place": {
-              "name": "霍比特庄园(生态营地)",
-              "lat": 31.502825,
-              "lng": 121.064855
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
+            }
+          },
+          {
+            "type": "stay",
+            "text": "返回别墅整理退房",
+            "startTime": "08:00",
+            "endTime": "09:00",
+            "description": "趁上午热度还未完全升高前完成退房。",
+            "place": {
+              "name": "太湖西山岛·严宿度假别墅",
+              "lat": 31.092157,
+              "lng": 120.248441
             }
           },
           {
             "type": "transit",
-            "text": "前往昆山市树洞",
-            "startTime": "08:30",
-            "endTime": "09:30",
-            "description": "驱车前往昆山景点",
+            "text": "从西山岛返回苏州工业园区",
+            "startTime": "09:00",
+            "endTime": "10:29",
+            "description": "西山岛至园区约61.9km，车程1小时29分钟。",
             "place": null
           },
           {
             "type": "play",
-            "text": "昆山市树洞",
-            "startTime": "09:30",
-            "endTime": "11:30",
-            "description": "阴天适合户外探索，打卡特色景点",
+            "text": "虹·美术馆室内观展",
+            "startTime": "10:40",
+            "endTime": "11:50",
+            "description": "返程后用近距离室内美术馆承接午前时段，避免继续户外暴晒。",
             "place": {
-              "name": "昆山市树洞",
-              "lat": 31.386045,
-              "lng": 121.08671
+              "name": "虹·美术馆",
+              "lat": 31.299819,
+              "lng": 120.698723
             }
           },
           {
             "type": "eat",
-            "text": "星河时光餐厅午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "在附近餐厅用餐",
-            "place": null
-          },
-          {
-            "type": "transit",
-            "text": "返回苏州工业园区",
-            "startTime": "12:45",
-            "endTime": "13:57",
-            "description": "约1小时12分钟回程",
+            "text": "爱莲说艺术餐厅午餐",
+            "startTime": "12:00",
+            "endTime": "13:20",
+            "description": "使用虹·美术馆周边真实餐厅，适合高温日室内收尾。",
             "place": null
           },
           {
             "type": "home",
-            "text": "回家",
-            "startTime": "14:00",
-            "endTime": "14:00",
-            "description": "到家休息",
+            "text": "返回苏州工业园区",
+            "startTime": "13:20",
+            "endTime": "13:40",
+            "description": "午后不再安排户外，结束太湖过夜周末。",
             "place": null
           }
         ]
@@ -1041,17 +1268,17 @@ const PLANS = [
     ]
   },
   {
-    "id": "--2--9",
-    "title": "近郊轻松周末·公园漫步",
+    "id": "---8",
+    "title": "近场清凉水上运动 + 商场避暑半日游",
     "origin": "苏州工业园区",
-    "category": "weekend",
-    "reason": "不想远行也能过好周末，广恩林公园仅12分钟车程，早晚凉爽时段散步；搭配昆山树洞半日游，全程轻松无压力",
+    "category": "tomorrow",
+    "reason": "明天多云但最高37℃，适合选择离用户位置很近的项目，减少路上暴晒和体力消耗。驭浪水上运动距离约1.2km、车程4分钟，安排在上午相对凉快时段；午后转入顺达商业广场、建屋乐活城等室内或半室内空间避暑，符合高温天户外放早晚、午后室内的节奏。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "近郊公园+美食",
+        "activity": "上午玩水，午后商场避暑，轻松不远行",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -1059,128 +1286,199 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "从家出发",
-            "startTime": "06:30",
-            "endTime": "06:30",
-            "description": "趁早晨凉爽出门",
+            "text": "从苏州工业园区出发",
+            "startTime": "08:20",
+            "endTime": "08:20",
+            "description": "高温日不宜太晚出门，上午先去近距离水上运动点。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "广恩林公园晨间散步",
-            "startTime": "06:42",
-            "endTime": "09:00",
-            "description": "3.7km仅12分钟，清晨公园绿荫宜人",
+            "type": "transit",
+            "text": "前往驭浪水上运动",
+            "startTime": "08:20",
+            "endTime": "08:24",
+            "description": "距离约1.2km，真实车程约4分钟。",
             "place": {
-              "name": "广恩林公园",
-              "lat": 31.278766,
-              "lng": 120.728887
+              "name": "驭浪水上运动",
+              "lat": 31.299525,
+              "lng": 120.712375
+            }
+          },
+          {
+            "type": "play",
+            "text": "驭浪水上运动",
+            "startTime": "08:24",
+            "endTime": "10:20",
+            "description": "趁上午气温尚未达到峰值进行水上活动，注意防晒、补水，避免长时间暴晒。",
+            "place": {
+              "name": "驭浪水上运动",
+              "lat": 31.299525,
+              "lng": 120.712375
             }
           },
           {
             "type": "eat",
-            "text": "满腹达人茶餐厅早午餐",
-            "startTime": "09:15",
-            "endTime": "10:15",
-            "description": "公园附近茶餐厅悠闲用餐",
+            "text": "爱莲说艺术餐厅午餐",
+            "startTime": "10:35",
+            "endTime": "11:40",
+            "description": "餐厅靠近驭浪水上运动，适合作为玩水后的就近午餐与休整点。",
             "place": null
           },
           {
+            "type": "transit",
+            "text": "前往顺达商业广场",
+            "startTime": "11:40",
+            "endTime": "11:50",
+            "description": "顺达商业广场距离用户位置约2.6km，真实车程约10分钟，午后转入室内避暑。",
+            "place": {
+              "name": "顺达商业广场",
+              "lat": 31.287131,
+              "lng": 120.727762
+            }
+          },
+          {
             "type": "play",
-            "text": "室内活动（商场/博物馆）",
-            "startTime": "10:30",
+            "text": "顺达商业广场室内休闲",
+            "startTime": "11:50",
+            "endTime": "14:20",
+            "description": "午后为一天中最热时段，安排商场内购物、饮品、休息，减少户外停留。",
+            "place": {
+              "name": "顺达商业广场",
+              "lat": 31.287131,
+              "lng": 120.727762
+            }
+          },
+          {
+            "type": "transit",
+            "text": "前往建屋乐活城",
+            "startTime": "14:20",
+            "endTime": "14:25",
+            "description": "建屋乐活城距离用户位置约1.3km，真实车程约5分钟，可继续近距离室内活动。",
+            "place": {
+              "name": "建屋乐活城",
+              "lat": 31.288747,
+              "lng": 120.724249
+            }
+          },
+          {
+            "type": "play",
+            "text": "建屋乐活城轻松逛逛",
+            "startTime": "14:25",
             "endTime": "16:00",
-            "description": "午间高温躲进室内空调环境",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "傍晚广恩林公园",
-            "startTime": "17:30",
-            "endTime": "19:00",
-            "description": "日落前再次公园散步纳凉",
+            "description": "以室内休闲为主，适合高温天下午补充水分、吹空调、慢节奏收尾。",
             "place": {
-              "name": "广恩林公园",
-              "lat": 31.278766,
-              "lng": 120.728887
+              "name": "建屋乐活城",
+              "lat": 31.288747,
+              "lng": 120.724249
             }
-          },
-          {
-            "type": "eat",
-            "text": "星湖苑餐厅晚餐",
-            "startTime": "19:00",
-            "endTime": "20:00",
-            "description": "附近好评餐厅晚餐",
-            "place": null
           },
           {
             "type": "home",
-            "text": "回家",
-            "startTime": "20:15",
-            "endTime": "20:30",
-            "description": "步行回家",
+            "text": "返回苏州工业园区",
+            "startTime": "16:00",
+            "endTime": "16:05",
+            "description": "从建屋乐活城返回，路程约1.3km，真实车程约5分钟。",
             "place": null
           }
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "---9",
+    "title": "甪直古镇早游 + 午后园区避暑",
+    "origin": "苏州工业园区",
+    "category": "tomorrow",
+    "reason": "甪直古镇距离约17.8km，车程约51分钟，属于近郊古镇路线。明天最高37℃，古镇石板路和水巷适合清晨游览，避开正午暴晒；中午前后返回园区用餐并转入室内商场，时间和体力压力都较小。",
+    "tags": [],
+    "relatedContent": [],
+    "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "昆山树洞半日游",
+        "activity": "清晨逛甪直古镇，午后回园区用餐避暑",
         "weather": {
-          "icon": "☁️",
+          "icon": "⛅",
           "temp": "37°"
         },
         "steps": [
           {
             "type": "depart",
-            "text": "从家出发",
-            "startTime": "08:00",
-            "endTime": "08:00",
-            "description": "阴天不用太早",
+            "text": "从苏州工业园区出发",
+            "startTime": "07:00",
+            "endTime": "07:00",
+            "description": "为避开37℃高温，选择清晨出发。",
             "place": null
           },
           {
             "type": "transit",
-            "text": "前往昆山市树洞",
-            "startTime": "08:00",
-            "endTime": "09:12",
-            "description": "约50.7km，1小时12分钟",
+            "text": "前往甪直古镇",
+            "startTime": "07:00",
+            "endTime": "07:51",
+            "description": "甪直古镇距离约17.8km，真实车程约51分钟。",
+            "place": {
+              "name": "甪直古镇",
+              "lat": 31.269523,
+              "lng": 120.873077
+            }
+          },
+          {
+            "type": "play",
+            "text": "甪直古镇晨间游览",
+            "startTime": "07:51",
+            "endTime": "10:20",
+            "description": "清晨游览古镇水巷、牌坊周边，气温相对较低；10点后逐渐转热，建议减少长时间户外停留。",
+            "place": {
+              "name": "甪直古镇",
+              "lat": 31.269523,
+              "lng": 120.873077
+            }
+          },
+          {
+            "type": "play",
+            "text": "甪直古镇牌坊短暂停留",
+            "startTime": "10:20",
+            "endTime": "10:40",
+            "description": "在古镇入口牌坊区域简单拍照后准备返程，不在正午继续暴晒。",
+            "place": {
+              "name": "甪直古镇-牌坊",
+              "lat": 31.268525,
+              "lng": 120.869038
+            }
+          },
+          {
+            "type": "transit",
+            "text": "返回苏州工业园区周边",
+            "startTime": "10:40",
+            "endTime": "11:31",
+            "description": "按甪直古镇约51分钟车程返回园区，避开午后最热时段的户外活动。",
+            "place": null
+          },
+          {
+            "type": "eat",
+            "text": "港粤茶点·港式茶餐厅午餐",
+            "startTime": "11:35",
+            "endTime": "12:45",
+            "description": "餐厅靠近顺达商业广场，适合返程后就近用餐、补充水分和体力。",
             "place": null
           },
           {
             "type": "play",
-            "text": "昆山市树洞游览",
-            "startTime": "09:15",
-            "endTime": "11:30",
-            "description": "阴天户外舒适，探索特色风景",
+            "text": "顺达商业广场午后避暑",
+            "startTime": "12:45",
+            "endTime": "15:30",
+            "description": "顺达商业广场距离用户位置约2.6km、车程约10分钟，午后安排室内休闲，避开37℃高温。",
             "place": {
-              "name": "昆山市树洞",
-              "lat": 31.386045,
-              "lng": 121.08671
+              "name": "顺达商业广场",
+              "lat": 31.287131,
+              "lng": 120.727762
             }
           },
           {
-            "type": "eat",
-            "text": "有缘人融合餐厅午餐",
-            "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "附近湘菜馆用午餐",
-            "place": null
-          },
-          {
-            "type": "transit",
-            "text": "返回苏州工业园区",
-            "startTime": "12:45",
-            "endTime": "13:57",
-            "description": "1小时12分钟回程",
-            "place": null
-          },
-          {
             "type": "home",
-            "text": "回家",
-            "startTime": "14:00",
-            "endTime": "14:00",
-            "description": "下午在家休息",
+            "text": "返回苏州工业园区",
+            "startTime": "15:30",
+            "endTime": "15:40",
+            "description": "从顺达商业广场返回，参考真实车程约10分钟。",
             "place": null
           }
         ]
@@ -1189,16 +1487,16 @@ const PLANS = [
   },
   {
     "id": "---10",
-    "title": "金水湾游泳消暑半日游",
+    "title": "同里古镇早进早回避暑游",
     "origin": "苏州工业园区",
     "category": "tomorrow",
-    "reason": "周六37°高温，步行即达金水湾游泳馆，室内戏水避暑最省力",
+    "reason": "同里古镇距离约25.9km，车程约37分钟，比甪直更远但仍适合一日往返。明天多云且最高37℃，适合早上进入古镇，利用水乡巷道和清晨时段游览；午后回到园区餐厅和室内空间休整，避免在古镇内长时间顶着高温步行。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "近距离室内游泳消暑",
+        "activity": "早游同里水乡，下午回园区休闲",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -1206,50 +1504,82 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "出发",
-            "startTime": "09:00",
-            "endTime": "09:06",
-            "description": "驱车6分钟前往金水湾游泳馆",
+            "text": "从苏州工业园区出发",
+            "startTime": "07:20",
+            "endTime": "07:20",
+            "description": "早出发可避开古镇中午高温和人流高峰。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "金水湾游泳馆游泳",
-            "startTime": "09:10",
-            "endTime": "11:30",
-            "description": "室内泳池畅游，躲避户外高温",
+            "type": "transit",
+            "text": "前往苏州同里古镇旅游区",
+            "startTime": "07:20",
+            "endTime": "07:57",
+            "description": "同里古镇距离约25.9km，真实车程约37分钟。",
             "place": {
-              "name": "金水湾游泳馆",
-              "lat": 31.288575,
-              "lng": 120.724125
+              "name": "苏州同里古镇旅游区",
+              "lat": 31.154999,
+              "lng": 120.723765
             }
           },
           {
+            "type": "play",
+            "text": "苏州同里古镇旅游区游览",
+            "startTime": "07:57",
+            "endTime": "10:50",
+            "description": "安排在上午游览水乡街巷、桥边景观，尽量选择阴凉处步行，随身带水和防晒用品。",
+            "place": {
+              "name": "苏州同里古镇旅游区",
+              "lat": 31.154999,
+              "lng": 120.723765
+            }
+          },
+          {
+            "type": "transit",
+            "text": "从同里古镇返回园区",
+            "startTime": "10:50",
+            "endTime": "11:27",
+            "description": "按真实车程约37分钟返程，避开正午后继续在古镇户外暴晒。",
+            "place": null
+          },
+          {
             "type": "eat",
-            "text": "午餐：东仓荣锦轩",
-            "startTime": "11:45",
+            "text": "海味当家海肠捞饭午餐",
+            "startTime": "11:35",
             "endTime": "12:45",
-            "description": "游泳馆附近中餐厅，补充体力",
+            "description": "餐厅靠近顺达商业广场和甬旺商业广场，适合返程后就近用餐。",
             "place": null
           },
           {
             "type": "play",
-            "text": "白海豚健身休闲",
-            "startTime": "14:00",
-            "endTime": "16:00",
-            "description": "午后最热时段在室内健身中心活动",
+            "text": "甬旺商业广场午后休整",
+            "startTime": "12:45",
+            "endTime": "14:30",
+            "description": "甬旺商业广场距离用户位置约2.9km，真实车程约10分钟，午后以室内休息为主。",
             "place": {
-              "name": "白海豚游泳健身俱乐部(金水湾店)",
-              "lat": 31.301575,
-              "lng": 120.717425
+              "name": "甬旺商业广场",
+              "lat": 31.286744,
+              "lng": 120.729014
+            }
+          },
+          {
+            "type": "play",
+            "text": "建屋乐活城傍晚轻逛",
+            "startTime": "15:00",
+            "endTime": "16:30",
+            "description": "建屋乐活城距离用户位置约1.3km、车程约5分钟，傍晚再短时间活动，整体强度较低。",
+            "place": {
+              "name": "建屋乐活城",
+              "lat": 31.288747,
+              "lng": 120.724249
             }
           },
           {
             "type": "home",
-            "text": "返回",
-            "startTime": "16:10",
-            "endTime": "16:16",
-            "description": "6分钟回家",
+            "text": "返回苏州工业园区",
+            "startTime": "16:30",
+            "endTime": "16:35",
+            "description": "从建屋乐活城返回，参考真实车程约5分钟。",
             "place": null
           }
         ]
@@ -1258,16 +1588,16 @@ const PLANS = [
   },
   {
     "id": "---11",
-    "title": "渔洋山紫竹林清幽一日",
+    "title": "周庄古镇傍晚夜游路线",
     "origin": "苏州工业园区",
     "category": "tomorrow",
-    "reason": "紫竹林竹荫密布，比裸露景区体感低3-5°，早出避开午后高温，车程约1小时可达",
+    "reason": "周庄古镇距离约32.8km，车程约48分钟，属于稍远的古镇半日路线。明天最高37℃，不适合中午在古镇长时间步行，因此把园区午餐和室内休息放在白天最热时段，下午晚些时候再出发，主打傍晚到夜间游览。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "太湖渔洋山竹林徒步",
+        "activity": "白天避暑，傍晚前往周庄古镇",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -1275,70 +1605,70 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "早起出发",
-            "startTime": "06:30",
-            "endTime": "07:41",
-            "description": "驱车1小时11分钟前往太湖渔洋山",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "紫竹林晨间徒步",
-            "startTime": "07:45",
-            "endTime": "10:30",
-            "description": "趁清晨凉爽在竹林小径漫步，竹荫遮阳",
-            "place": {
-              "name": "太湖渔洋山风景区-紫竹林",
-              "lat": 31.215381,
-              "lng": 120.374361
-            }
-          },
-          {
-            "type": "play",
-            "text": "竹林小径探幽",
-            "startTime": "10:30",
-            "endTime": "11:30",
-            "description": "深入竹林感受清凉",
-            "place": {
-              "name": "竹林小径",
-              "lat": 31.136499,
-              "lng": 120.448217
-            }
-          },
-          {
-            "type": "transit",
-            "text": "返程至园区",
-            "startTime": "11:30",
-            "endTime": "12:45",
-            "description": "驱车回园区用午餐",
+            "text": "从苏州工业园区出发去午餐",
+            "startTime": "11:20",
+            "endTime": "11:20",
+            "description": "上午不急着远行，先在园区周边用餐，避开正午出游消耗。",
             "place": null
           },
           {
             "type": "eat",
-            "text": "午餐：苏城老友小海鲜",
-            "startTime": "12:50",
-            "endTime": "13:50",
-            "description": "小海鲜配冰啤消暑",
+            "text": "苏城老友小海鲜午餐",
+            "startTime": "11:30",
+            "endTime": "12:40",
+            "description": "餐厅靠近建屋乐活城，适合作为出发前的正餐补给。",
             "place": null
           },
           {
             "type": "play",
-            "text": "菲尔狮游泳降温",
-            "startTime": "14:30",
-            "endTime": "16:30",
-            "description": "午后最热时段室内游泳",
+            "text": "建屋乐活城午后避暑",
+            "startTime": "12:40",
+            "endTime": "15:20",
+            "description": "建屋乐活城距离用户位置约1.3km、车程约5分钟，午后高温时段安排室内或阴凉休息。",
             "place": {
-              "name": "菲尔狮青少年游泳俱乐部",
-              "lat": 31.290985,
-              "lng": 120.723092
+              "name": "建屋乐活城",
+              "lat": 31.288747,
+              "lng": 120.724249
             }
           },
           {
+            "type": "transit",
+            "text": "前往周庄古镇古牌楼检票口",
+            "startTime": "15:30",
+            "endTime": "16:18",
+            "description": "周庄古镇古牌楼检票口距离约32.8km，真实车程约48分钟。",
+            "place": {
+              "name": "周庄古镇古牌楼检票口",
+              "lat": 31.113858,
+              "lng": 120.848038
+            }
+          },
+          {
+            "type": "play",
+            "text": "周庄古镇傍晚游览",
+            "startTime": "16:18",
+            "endTime": "19:30",
+            "description": "傍晚光线更柔和、体感比正午友好，适合沿古镇水巷慢行；仍需注意补水和防蚊。",
+            "place": {
+              "name": "周庄古镇古牌楼检票口",
+              "lat": 31.113858,
+              "lng": 120.848038
+            }
+          },
+          {
+            "type": "transit",
+            "text": "从周庄古镇返回苏州工业园区",
+            "startTime": "19:30",
+            "endTime": "20:18",
+            "description": "按周庄古镇约48分钟真实车程返程。",
+            "place": null
+          },
+          {
             "type": "home",
-            "text": "回家",
-            "startTime": "16:30",
-            "endTime": "16:33",
-            "description": "3分钟到家",
+            "text": "回到苏州工业园区",
+            "startTime": "20:18",
+            "endTime": "20:18",
+            "description": "结束傍晚夜游路线。",
             "place": null
           }
         ]
@@ -1347,16 +1677,16 @@ const PLANS = [
   },
   {
     "id": "---12",
-    "title": "南浔古镇水乡纳凉",
+    "title": "太湖西山岛清晨远途看湖路线",
     "origin": "苏州工业园区",
     "category": "tomorrow",
-    "reason": "南浔古镇河道纵横，水边体感温度较低，周六适合远途出游，车程1小时16分钟",
+    "reason": "西山岛距离约61.9km，车程约1小时29分钟，是本次方案中最远的远途路线。明天多云但最高37℃，远途户外必须早出早回：清晨出发，上午看湖和短暂停留，中午前后减少户外活动，下午返回园区用餐休整，避免高温时段在岛上长时间步行。",
     "tags": [],
     "relatedContent": [],
     "days": [
       {
         "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "南浔古镇水乡一日游",
+        "activity": "早出发去太湖西山岛，午后回园区休整",
         "weather": {
           "icon": "⛅",
           "temp": "37°"
@@ -1364,272 +1694,94 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "早起出发去南浔",
-            "startTime": "06:30",
-            "endTime": "07:46",
-            "description": "驱车1小时16分钟前往南浔古镇",
+            "text": "从苏州工业园区出发",
+            "startTime": "06:20",
+            "endTime": "06:20",
+            "description": "远途路线且天气炎热，选择清晨出发，尽量把户外时间放在上午。",
             "place": null
           },
           {
-            "type": "play",
-            "text": "南浔古镇晨游",
-            "startTime": "08:00",
-            "endTime": "11:00",
-            "description": "趁早晨凉爽逛古镇水巷，参观小莲庄、百间楼",
+            "type": "transit",
+            "text": "前往西山岛",
+            "startTime": "06:20",
+            "endTime": "07:49",
+            "description": "西山岛距离约61.9km，真实车程约1小时29分钟。",
             "place": {
-              "name": "南浔古镇",
-              "lat": 30.88091,
-              "lng": 120.439896
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
             }
           },
           {
-            "type": "eat",
-            "text": "古镇午餐",
-            "startTime": "11:00",
-            "endTime": "12:00",
-            "description": "古镇内品尝当地双交面、桔红糕",
-            "place": null
-          },
-          {
             "type": "play",
-            "text": "南浔度假区休憩",
-            "startTime": "12:30",
-            "endTime": "14:30",
-            "description": "午后在度假区室内茶馆歇脚避暑",
+            "text": "西山岛上午看湖休闲",
+            "startTime": "07:49",
+            "endTime": "10:20",
+            "description": "上午在湖边短线游览、拍照、吹风，避免高强度徒步；多云天气仍需防晒。",
             "place": {
-              "name": "南浔古镇旅游度假区",
-              "lat": 30.869863,
-              "lng": 120.430911
+              "name": "西山岛",
+              "lat": 31.07993,
+              "lng": 120.292627
             }
           },
           {
             "type": "transit",
-            "text": "返程",
-            "startTime": "15:00",
-            "endTime": "16:23",
-            "description": "驱车1小时23分钟返回园区",
-            "place": null
-          },
-          {
-            "type": "eat",
-            "text": "晚餐：鲨滩小海鲜",
-            "startTime": "17:00",
-            "endTime": "18:00",
-            "description": "回到园区吃海鲜犒劳自己",
-            "place": null
-          },
-          {
-            "type": "home",
-            "text": "到家",
-            "startTime": "18:10",
-            "endTime": "18:16",
-            "description": "回家休息",
-            "place": null
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "---13",
-    "title": "虞山森林公园探洞避暑",
-    "origin": "苏州工业园区",
-    "category": "tomorrow",
-    "reason": "虞山森林覆盖率高且有天然洞穴，洞内常年16-18°是天然空调，适合高温天深度避暑",
-    "tags": [],
-    "relatedContent": [],
-    "days": [
-      {
-        "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "虞山森林公园探洞纳凉",
-        "weather": {
-          "icon": "⛅",
-          "temp": "37°"
-        },
-        "steps": [
-          {
-            "type": "depart",
-            "text": "出发前往虞山",
-            "startTime": "06:00",
-            "endTime": "07:40",
-            "description": "驱车约1小时40分钟到达虞山国家森林公园",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "虞山森林晨间登山",
-            "startTime": "07:45",
-            "endTime": "09:30",
-            "description": "清晨林间徒步，空气清新凉爽",
+            "text": "前往苏州太湖·西山岛开心农场",
+            "startTime": "10:20",
+            "endTime": "10:40",
+            "description": "开心农场位于西山岛方向，数据中距用户位置约52km、车程约1小时16分钟；岛内移动建议控制时间，避免接近正午长时间户外。",
             "place": {
-              "name": "虞山国家森林公园",
-              "lat": 31.665592,
-              "lng": 120.709847
+              "name": "苏州太湖·西山岛开心农场",
+              "lat": 31.141884,
+              "lng": 120.32375
             }
           },
           {
             "type": "play",
-            "text": "联珠洞探秘",
-            "startTime": "09:30",
-            "endTime": "11:00",
-            "description": "进入天然洞穴，洞内凉爽宜人",
+            "text": "苏州太湖·西山岛开心农场短暂停留",
+            "startTime": "10:40",
+            "endTime": "11:30",
+            "description": "只做短暂停留和休息，不安排正午长时间暴晒活动。",
             "place": {
-              "name": "虞山国家森林公园-联珠洞",
-              "lat": 31.667417,
-              "lng": 120.713082
+              "name": "苏州太湖·西山岛开心农场",
+              "lat": 31.141884,
+              "lng": 120.32375
             }
           },
           {
-            "type": "eat",
-            "text": "常熟午餐",
+            "type": "transit",
+            "text": "返回苏州工业园区",
             "startTime": "11:30",
-            "endTime": "12:30",
-            "description": "常熟市区品尝蕈油面等本地美食",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "天书壁赏摩崖石刻",
-            "startTime": "15:00",
-            "endTime": "16:30",
-            "description": "午后热度稍退，前往天书壁观石刻",
-            "place": {
-              "name": "虞山风景区-天书壁",
-              "lat": 31.66715,
-              "lng": 120.699245
-            }
-          },
-          {
-            "type": "transit",
-            "text": "返程回苏州",
-            "startTime": "16:30",
-            "endTime": "18:12",
-            "description": "驱车约1小时42分钟返回园区",
+            "endTime": "12:59",
+            "description": "参考西山岛至用户位置真实车程约1小时29分钟，赶在午后最热时段回到城区。",
             "place": null
           },
           {
             "type": "eat",
-            "text": "晚餐：苏州柏悦西洲轩",
-            "startTime": "18:30",
-            "endTime": "19:30",
-            "description": "柏悦酒店中餐厅犒劳一日辛苦",
+            "text": "东仓荣锦轩午餐",
+            "startTime": "13:05",
+            "endTime": "14:15",
+            "description": "餐厅靠近建屋乐活城，适合远途返程后就近用餐、补水和休息。",
             "place": null
+          },
+          {
+            "type": "play",
+            "text": "建屋乐活城午后休整",
+            "startTime": "14:15",
+            "endTime": "15:30",
+            "description": "建屋乐活城距离用户位置约1.3km、车程约5分钟，午后以室内休息收尾。",
+            "place": {
+              "name": "建屋乐活城",
+              "lat": 31.288747,
+              "lng": 120.724249
+            }
           },
           {
             "type": "home",
-            "text": "到家",
-            "startTime": "19:35",
-            "endTime": "19:41",
-            "description": "回家休息",
-            "place": null
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "---14",
-    "title": "西山洞天福地消暑游",
-    "origin": "苏州工业园区",
-    "category": "tomorrow",
-    "reason": "林屋洞与石洞冷泉都是天然避暑胜地，洞内和泉水清凉，1.5小时车程中等距离，适合高温周末",
-    "tags": [],
-    "relatedContent": [],
-    "days": [
-      {
-        "photo": "photo-1501785888041-af3ef285b470",
-        "activity": "太湖西山洞穴冷泉避暑",
-        "weather": {
-          "icon": "⛅",
-          "temp": "37°"
-        },
-        "steps": [
-          {
-            "type": "depart",
-            "text": "出发前往西山",
-            "startTime": "06:30",
-            "endTime": "07:55",
-            "description": "驱车约1小时25分钟前往太湖西山",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "林屋洞太岁堂",
-            "startTime": "08:00",
-            "endTime": "09:30",
-            "description": "早晨入洞探秘，洞内恒温凉爽",
-            "place": {
-              "name": "林屋洞-太岁堂",
-              "lat": 31.106184,
-              "lng": 120.307387
-            }
-          },
-          {
-            "type": "play",
-            "text": "碧螺亭品茶观湖",
-            "startTime": "09:45",
-            "endTime": "10:45",
-            "description": "在碧螺亭小憩，湖风习习",
-            "place": {
-              "name": "碧螺亭",
-              "lat": 31.106498,
-              "lng": 120.30789
-            }
-          },
-          {
-            "type": "play",
-            "text": "石洞冷泉戏水",
-            "startTime": "11:00",
-            "endTime": "12:00",
-            "description": "冷泉水温极低，是天然消暑之地",
-            "place": {
-              "name": "石洞冷泉",
-              "lat": 31.680363,
-              "lng": 120.688979
-            }
-          },
-          {
-            "type": "eat",
-            "text": "西山农家菜午餐",
-            "startTime": "12:15",
-            "endTime": "13:15",
-            "description": "品尝太湖三白等湖鲜",
-            "place": null
-          },
-          {
-            "type": "transit",
-            "text": "返程",
-            "startTime": "14:00",
-            "endTime": "15:39",
-            "description": "驱车约1小时39分钟返回园区",
-            "place": null
-          },
-          {
-            "type": "play",
-            "text": "自游行游泳俱乐部",
-            "startTime": "16:00",
-            "endTime": "17:30",
-            "description": "回到园区室内泳池放松",
-            "place": {
-              "name": "自游行游泳俱乐部",
-              "lat": 31.288625,
-              "lng": 120.724225
-            }
-          },
-          {
-            "type": "eat",
-            "text": "晚餐：东仓荣锦轩",
-            "startTime": "17:45",
-            "endTime": "18:45",
-            "description": "精致中餐结束充实一天",
-            "place": null
-          },
-          {
-            "type": "home",
-            "text": "到家",
-            "startTime": "18:50",
-            "endTime": "18:56",
-            "description": "回家休息",
+            "text": "返回苏州工业园区",
+            "startTime": "15:30",
+            "endTime": "15:35",
+            "description": "从建屋乐活城返回，参考真实车程约5分钟。",
             "place": null
           }
         ]
