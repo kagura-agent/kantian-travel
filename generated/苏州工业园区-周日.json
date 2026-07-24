@@ -1,0 +1,606 @@
+{
+  "plans": [
+    {
+      "title": "近距离避暑：双美术馆 + 金鸡湖傍晚散步",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "周日阴天但最高36℃，体感仍偏闷热；本方案以3.3-5.5km近距离为主，上午和午后安排室内美术馆与餐厅，避开最热时段，傍晚再去金鸡湖，单程最远约32分钟，适合不想远行的高温周日。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "近郊室内艺术与湖边傍晚",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "09:00",
+              "end_time": "09:00",
+              "description": "高温天不宜太晚开始户外活动，先前往距离较近的室内美术馆区域。",
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往虹·美术馆",
+              "start_time": "09:00",
+              "end_time": "09:09",
+              "description": "苏州工业园区至虹·美术馆约3.3km，车程约9分钟。",
+              "poi_id": "B0FFKZUANT"
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "参观虹·美术馆",
+              "start_time": "09:10",
+              "end_time": "10:20",
+              "description": "上午先安排室内观展，避开升温后的户外暴晒，节奏轻松。",
+              "poi_id": "B0FFKZUANT"
+            },
+            {
+              "step_index": 3,
+              "type": "play",
+              "text": "步行至明·美术馆继续观展",
+              "start_time": "10:25",
+              "end_time": "11:30",
+              "description": "明·美术馆与虹·美术馆位置相近，适合连续安排，减少高温下长距离移动。",
+              "poi_id": "B0FFFSL2NZ"
+            },
+            {
+              "step_index": 4,
+              "type": "eat",
+              "text": "VONE·璞悦荟午餐",
+              "start_time": "11:35",
+              "end_time": "12:45",
+              "description": "午餐安排在美术馆附近，减少中午高温时段的转场。",
+              "poi_id": "B0G12BKH66"
+            },
+            {
+              "step_index": 5,
+              "type": "stay",
+              "text": "午后室内休整",
+              "start_time": "12:45",
+              "end_time": "16:10",
+              "description": "13:00-16:00是36℃高温下最不适合户外活动的时段，建议在室内休息、喝咖啡或简短午休。",
+              "poi_id": "B0G12BKH66"
+            },
+            {
+              "step_index": 6,
+              "type": "transit",
+              "text": "前往金鸡湖景区-桃花岛",
+              "start_time": "16:10",
+              "end_time": "16:42",
+              "description": "苏州工业园区至金鸡湖景区-桃花岛约5.5km，车程约32分钟，安排在傍晚前后更舒适。",
+              "poi_id": "B0FFF327SC"
+            },
+            {
+              "step_index": 7,
+              "type": "play",
+              "text": "金鸡湖景区-桃花岛傍晚散步",
+              "start_time": "16:45",
+              "end_time": "18:15",
+              "description": "阴天傍晚光照较弱，适合在湖边慢走、看水景，避免正午暴晒。",
+              "poi_id": "B0FFF327SC"
+            },
+            {
+              "step_index": 8,
+              "type": "eat",
+              "text": "LÉON 莱昂餐厅晚餐",
+              "start_time": "18:20",
+              "end_time": "19:30",
+              "description": "晚餐安排在金鸡湖摩天轮附近，顺路结束当天行程。",
+              "poi_id": "B0I2GCKFGH"
+            },
+            {
+              "step_index": 9,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "19:30",
+              "end_time": "20:02",
+              "description": "参考苏州工业园区与金鸡湖景区-桃花岛之间车程约32分钟。",
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "短途古镇：同里早游 + 午后避暑",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "同里距离苏州工业园区约24-26km，车程约33-34分钟，属于轻松短途。周日阴天、最高36℃，适合早上逛古镇水巷，中午和午后在古镇内室内空间休息，避免高温暴晒，下午稍晚再补充游览后返程。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "同里古镇一日慢游",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "07:50",
+              "end_time": "07:50",
+              "description": "趁上午气温相对较低出发，减少古镇户外步行的闷热感。",
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往同里古镇镇北停车场",
+              "start_time": "07:50",
+              "end_time": "08:23",
+              "description": "苏州工业园区至苏州同里古镇旅游区镇北停车场出入口约24.3km，车程约33分钟。",
+              "poi_id": "B0FFHBBRW0"
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "进入苏州同里古镇旅游区",
+              "start_time": "08:30",
+              "end_time": "11:10",
+              "description": "上午先逛古镇水巷、桥边街区和园林建筑，阴天光照较弱但气温高，建议放慢节奏并及时补水。",
+              "poi_id": "B020001H7G"
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "古镇内午餐",
+              "start_time": "11:10",
+              "end_time": "12:20",
+              "description": "中午留在���镇内用餐，避免在最热时段往返转场。",
+              "poi_id": "B020001H7G"
+            },
+            {
+              "step_index": 4,
+              "type": "stay",
+              "text": "午后室内茶歇或临水休息",
+              "start_time": "12:20",
+              "end_time": "14:40",
+              "description": "12:00-15:00气温高、湿度大，建议选择古镇内室内茶馆、展馆或有空调空间休整。",
+              "poi_id": "B020001H7G"
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "下午补游同里古镇",
+              "start_time": "14:40",
+              "end_time": "16:20",
+              "description": "下午稍晚再进行户外游览，选择树荫、廊下和临水街巷，避免长时间暴露在开阔地带。",
+              "poi_id": "B020001H7G"
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "16:20",
+              "end_time": "16:54",
+              "description": "参考苏州工业园区至苏州同里古镇旅游区约25.9km，车程约34分钟。",
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "中距离水乡：周庄早进晚回",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "周庄古镇古牌楼检票口距离苏州工业园区约32.8km，车程约46分钟，比同里稍远但仍适合一日往返。周日最高36℃，方案将主要户外游览放在早晨和傍晚，中午安排古镇内用餐与室内休息，更适合高温阴天。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "周庄古镇水乡一日游",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "07:30",
+              "end_time": "07:30",
+              "description": "尽量早出发，利用上午相对凉爽的时段完成主要古镇步行。",
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往周庄古镇古牌楼检票口",
+              "start_time": "07:30",
+              "end_time": "08:16",
+              "description": "苏州工业园区至周庄古镇古牌楼检票口约32.8km，车程约46分钟。",
+              "poi_id": "B0FFFSSQ4K"
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "经古牌楼检票口进入周庄古镇游览",
+              "start_time": "08:20",
+              "end_time": "11:20",
+              "description": "上午适合逛水巷、古桥和临河街区；阴天拍照光线柔和，但36℃高温下仍需减少暴走。",
+              "poi_id": "B0FFFSSQ4K"
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "古镇内午餐",
+              "start_time": "11:20",
+              "end_time": "12:30",
+              "description": "在古镇内就近午餐，避免中午重新转场造成体力消耗。",
+              "poi_id": "B0FFFSSQ4K"
+            },
+            {
+              "step_index": 4,
+              "type": "stay",
+              "text": "午后室内休息",
+              "start_time": "12:30",
+              "end_time": "15:30",
+              "description": "午后是高温时段，建议选择室内茶歇、评弹、临河有空调空间或阴凉处休息。",
+              "poi_id": "B0FFFSSQ4K"
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "傍晚前补游周庄",
+              "start_time": "15:30",
+              "end_time": "17:40",
+              "description": "下午后段光照减弱，适合继续慢逛水乡街巷或等待灯光初上，减少正午暴晒风险。",
+              "poi_id": "B0FFFSSQ4K"
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "17:40",
+              "end_time": "18:26",
+              "description": "参考苏州工业园区至周庄古镇古牌楼检票口车程约46分钟。",
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "远途湖岛：太湖西山岛清晨出发",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "西山岛距离苏州工业园区约61.9km，车程约1小时26分钟，属于远途一日游；周日阴天但最高36℃，需清晨出发，把农场和湖岛户外活动放在上午与傍晚，中午在农场或度假空间休整，降低高温消耗。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "太湖西山岛与开心农场",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "06:50",
+              "end_time": "06:50",
+              "description": "远途湖岛游建议早出发，避开上午后段升温与可能的周日出行车流。",
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往苏州太湖·西山岛开心农场",
+              "start_time": "06:50",
+              "end_time": "08:04",
+              "description": "苏州工业园区至苏州太湖·西山岛开心农场约52km，车程约1小时14分钟。",
+              "poi_id": "B0200186FW"
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "开心农场上午游玩",
+              "start_time": "08:10",
+              "end_time": "10:40",
+              "description": "上午先安排农场活动，阴天比晴天更适合户外，但高温仍需选择阴凉区域并减少长时间暴晒。",
+              "poi_id": "B0200186FW"
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "开心农场午餐",
+              "start_time": "10:40",
+              "end_time": "11:50",
+              "description": "提前午餐，避开12点后最热时段排队与户外移动。",
+              "poi_id": "B0200186FW"
+            },
+            {
+              "step_index": 4,
+              "type": "stay",
+              "text": "太湖西山岛·严宿度假别墅午后休整",
+              "start_time": "12:10",
+              "end_time": "14:50",
+              "description": "午后安排室内或半室内休息，适合高温天补充体力；苏州工业园区至该点约64km，车程约1小时29分钟，说明其属于本次远途湖岛范围。",
+              "poi_id": "B0G07KXDDE"
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "西山岛傍晚看太湖",
+              "start_time": "15:20",
+              "end_time": "17:20",
+              "description": "下午后段再去西山岛湖边活动，避开正午高温；苏州工业园区至西山岛约61.9km，车程约1小时26分钟。",
+              "poi_id": "B0FFF0EM79"
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "17:20",
+              "end_time": "18:46",
+              "description": "参考苏州工业园区至西山岛车程约1小时26分钟，傍晚返程更适合一日游节奏。",
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "远途山水：东山景区古建与太湖风景",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "东山景区距离苏州工业园区约63.3km，车程约1小时30分钟，是本组方案中较远的一日游。周日阴天、最高36℃，适合清晨出发，上午游古建与景区，午后选择阴凉处休息，傍晚前返程，避免在高温时段长时间户外徒步。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "东山景区一日游",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发",
+              "start_time": "06:40",
+              "end_time": "06:40",
+              "description": "东山方向车程较长，建议清晨出发，把主要户外游览放在上午完成。",
+              "poi_id": null
+            },
+            {
+              "step_index": 1,
+              "type": "transit",
+              "text": "前往东山景区-双桂楼",
+              "start_time": "06:40",
+              "end_time": "08:02",
+              "description": "苏州工业园区至东山景区-双桂楼约58.1km，车程约1小时22分钟。",
+              "poi_id": "B020001ADE"
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "游览东山景区-双桂楼",
+              "start_time": "08:05",
+              "end_time": "09:40",
+              "description": "上午先看古建类景点，活动强度较低，适合高温阴天的早段安排。",
+              "poi_id": "B020001ADE"
+            },
+            {
+              "step_index": 3,
+              "type": "transit",
+              "text": "前往东山景区",
+              "start_time": "09:40",
+              "end_time": "10:10",
+              "description": "继续在东山景区范围内游览；苏州工业园区至东山景区约63.3km，车程约1小时30分钟，属于远途路线。",
+              "poi_id": "B02001AI4K"
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "东山景区上午游览",
+              "start_time": "10:10",
+              "end_time": "11:40",
+              "description": "选择相对阴凉的游线和观景点，避免在开阔湖边长时间停留。",
+              "poi_id": "B02001AI4K"
+            },
+            {
+              "step_index": 5,
+              "type": "eat",
+              "text": "东山景区内午餐",
+              "start_time": "11:40",
+              "end_time": "12:50",
+              "description": "中午在景区内就近用餐，减少高温时段车辆与步行转场。",
+              "poi_id": "B02001AI4K"
+            },
+            {
+              "step_index": 6,
+              "type": "stay",
+              "text": "午后阴凉休整",
+              "start_time": "12:50",
+              "end_time": "15:10",
+              "description": "36℃高温下不建议午后连续户外游览，可在景区阴凉处或室内空间休息。",
+              "poi_id": "B02001AI4K"
+            },
+            {
+              "step_index": 7,
+              "type": "play",
+              "text": "东山景区傍晚前轻松补游",
+              "start_time": "15:10",
+              "end_time": "16:20",
+              "description": "下午后段气温略缓，可短时间补充游览，控制步行量，为返程保留体力。",
+              "poi_id": "B02001AI4K"
+            },
+            {
+              "step_index": 8,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "16:20",
+              "end_time": "17:50",
+              "description": "参考苏州工业园区至东山景区车程约1小时30分钟，傍晚前返程避免过晚到家。",
+              "poi_id": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "poiLookup": {
+    "B0FFF327SC": {
+      "name": "金鸡湖景区-桃花岛",
+      "lat": 31.308241,
+      "lng": 120.70654
+    },
+    "B0FFKHL612": {
+      "name": "苏州卓美民俗博物馆",
+      "lat": 31.303427,
+      "lng": 120.738199
+    },
+    "B0FFGFB89K": {
+      "name": "广恩林公园",
+      "lat": 31.278766,
+      "lng": 120.728887
+    },
+    "B0FFKZUANT": {
+      "name": "虹·美术馆",
+      "lat": 31.299819,
+      "lng": 120.698723
+    },
+    "B0FFFSL2NZ": {
+      "name": "明·美术馆",
+      "lat": 31.299573,
+      "lng": 120.698278
+    },
+    "B0FFL2C1II": {
+      "name": "滨水栈道",
+      "lat": 31.512636,
+      "lng": 121.096483
+    },
+    "B0FFF0EM79": {
+      "name": "西山岛",
+      "lat": 31.07993,
+      "lng": 120.292627
+    },
+    "B0200186FW": {
+      "name": "苏州太湖·西山岛开心农场",
+      "lat": 31.141884,
+      "lng": 120.32375
+    },
+    "B0G07KXDDE": {
+      "name": "太湖西山岛·严宿度假别墅",
+      "lat": 31.092157,
+      "lng": 120.248441
+    },
+    "B02001AI4K": {
+      "name": "东山景区",
+      "lat": 31.079059,
+      "lng": 120.385713
+    },
+    "B0FFF0F121": {
+      "name": "东山景区停车场",
+      "lat": 31.050535,
+      "lng": 120.334824
+    },
+    "B020001ADE": {
+      "name": "东山景区-双桂楼",
+      "lat": 31.066193,
+      "lng": 120.364005
+    },
+    "B020001H7G": {
+      "name": "苏州同里古镇旅游区",
+      "lat": 31.154999,
+      "lng": 120.723765
+    },
+    "B0FFHBBRW0": {
+      "name": "苏州同里古镇旅游区镇北停车场(出入口)",
+      "lat": 31.161658,
+      "lng": 120.722831
+    },
+    "B0FFINDGSV": {
+      "name": "苏州同里古镇旅游区镇北停车场",
+      "lat": 31.160391,
+      "lng": 120.722243
+    },
+    "B0FFFSSQ4K": {
+      "name": "周庄古镇古牌楼检票口",
+      "lat": 31.113858,
+      "lng": 120.848038
+    },
+    "B0I2GCKFGH": {
+      "name": "LÉON 莱昂餐厅(金鸡湖摩天轮店)",
+      "lat": 31.315875,
+      "lng": 120.715225
+    },
+    "B0J06UKP64": {
+      "name": "爱莲说艺术餐厅",
+      "lat": 31.299859,
+      "lng": 120.698776
+    },
+    "B0J01CUS08": {
+      "name": "广鉴阁·潮州菜餐厅",
+      "lat": 31.303437,
+      "lng": 120.73818
+    },
+    "B0H3GC4AAA": {
+      "name": "慕容轩(斜塘总店)",
+      "lat": 31.303347,
+      "lng": 120.738223
+    },
+    "B0KK59UTQM": {
+      "name": "星湖苑餐厅",
+      "lat": 31.275446,
+      "lng": 120.725127
+    },
+    "B0LR5UANCA": {
+      "name": "满腹达人·茶餐厅(丰食荟文缘店)",
+      "lat": 31.277722,
+      "lng": 120.738078
+    },
+    "B0G12BKH66": {
+      "name": "VONE·璞悦荟",
+      "lat": 31.299951,
+      "lng": 120.698496
+    }
+  }
+}
