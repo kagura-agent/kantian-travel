@@ -215,7 +215,44 @@ generated/
 - `id` 按城市+日期+序号 — 目的地是输出不是输入
 - 多天方案可以串多个目的地
 
-## 设计原则
+## 技术选型
+
+### 数据库：PostgreSQL + PostGIS
+
+**为什么：**
+- 关系型核心 → plans/days/steps/pois 之间有明确关系
+- JSONB → 存 conditions 这种不固定结构，可建 GIN 索引
+- PostGIS → 算距离、“找半径100km内的目的地”
+- 数组类型 → `tags text[]`，原生支持 `WHERE 'pet-friendly' = ANY(tags)`
+- 读多写少，成熟稳定，免费
+
+### 表结构
+
+```sql
+-- 目的地基础信息
+destinations (id, name, region, lat, lng, description)
+
+-- 兴趣点（多行对1个目的地）
+pois (id, destination_id FK, name, type, lat, lng, price_range, tags text[])
+
+-- 玩法模板（多行对1个目的地）
+activities (id, destination_id FK, name, description, duration, conditions JSONB, tags text[])
+
+-- 生成结果
+plans (id, city, district, tag, valid_date, valid_end_date, generated_at, title, reason, weather JSONB)
+
+-- 方案天数（多行对1个 plan）
+plan_days (id, plan_id FK, day_index, photo, activity, weather JSONB)
+
+-- 方案步骤（多行对1个 day）
+plan_steps (id, day_id FK, step_index, type, text, start_time, end_time, description, poi_id FK)
+```
+
+关键设计：
+- `plan_steps.poi_id` 引用 pois 表 → 不重复存坐标，POI 修改全局生效
+- `conditions` 用 JSONB → 灵活且可索引
+- `valid_date` + `valid_end_date` → 单日方案 end 为 null，多日方案填区间
+
 
 1. **懒人优先** — 选择越少越好，打开就是答案
 2. **实时即信任** — 用户知道方案是基于当前条件生成的
