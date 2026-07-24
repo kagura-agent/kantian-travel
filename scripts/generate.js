@@ -1,93 +1,217 @@
-const amap = require('../services/amap');
+/**
+ * 看天出发 — 方案生成引擎
+ * 
+ * 流程：
+ *   1. 读取 knowledge/ 静态目的地知识
+ *   2. 调高德 API 拉实时数据（天气、路线、周边餐饮）
+ *   3. 组装 prompt，调大模型生成方案
+ *   4. 输出到 generated/
+ * 
+ * 用法：
+ *   AMAP_KEY=xxx node scripts/generate.js --city 苏州 --district 吴江区 --tag 这周末
+ */
+
 const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+const amap = require('../services/amap');
 
-amap.setKey(process.env.AMAP_KEY);
+// === Config ===
+const KNOWLEDGE_DIR = path.join(__dirname, '..', 'knowledge');
+const GENERATED_DIR = path.join(__dirname, '..', 'generated');
 
-(async () => {
-  const userLocation = { lat: 31.160, lng: 120.645, district: '吴江区', city: '苏州' };
-  const dates = ['2026-07-26（周六）', '2026-07-27（周日）'];
+// === CLI Args ===
+const args = {};
+process.argv.slice(2).forEach((arg, i, arr) => {
+  if (arg.startsWith('--')) args[arg.slice(2)] = arr[i + 1];
+});
 
-  // === Step 1: POI 搜索 ===
-  const poiQueries = [
-    { q: '莫干山风景区南门售票处', city: '湖州' },
-    { q: '莫干山大竹海', city: '湖州' },
-    { q: '庾村市集 莫干山', city: '湖州' },
-    { q: '裸心谷度假村 莫干山', city: '湖州' },
-    { q: '西塘古镇景区', city: '嘉兴' },
-    { q: '烟雨长廊 西塘', city: '嘉兴' },
-    { q: '石皮弄 西塘', city: '嘉兴' },
-    { q: '西塘酒吧街', city: '嘉兴' },
-  ];
+const CITY = args.city || '苏州';
+const DISTRICT = args.district || '吴江区';
+const TAG = args.tag || '明天';
 
-  const pois = [];
-  for (const pq of poiQueries) {
-    const results = await amap.searchPOI(pq.q, { city: pq.city, citylimit: true });
-    if (results[0]) pois.push({ id: results[0].id, name: results[0].name, type: results[0].type?.split(';')[0] || '', lat: results[0].location.lat, lng: results[0].location.lng });
+// District center coordinates (expand as needed)
+const DISTRICT_CENTERS = {
+  '苏州-吴江区': { lat: 31.160, lng: 120.645 },
+  '苏州-姑苏区': { lat: 31.310, lng: 120.620 },
+  '苏州-工业园区': { lat: 31.295, lng: 120.720 },
+  '上海-浦东新区': { lat: 31.220, lng: 121.540 },
+  '杭州-西湖区': { lat: 30.260, lng: 120.130 },
+};
+
+// Tag → date range
+function getDateRange(tag) {
+  const today = new Date();
+  const fmt = d => d.toISOString().split('T')[0];
+  const weekday = d => ['日', '一', '二', '三', '四', '五', '六'][d.getDay()];
+
+  switch (tag) {
+    case '现在':
+    case '明天': {
+      const d = new Date(today);
+      if (tag === '明天') d.setDate(d.getDate() + 1);
+      return [{ date: fmt(d), weekday: `周${weekday(d)}` }];
+    }
+    case '这周末': {
+      const sat = new Date(today);
+      sat.setDate(sat.getDate() + (6 - sat.getDay()));
+      const sun = new Date(sat);
+      sun.setDate(sun.getDate() + 1);
+      return [
+        { date: fmt(sat), weekday: `周${weekday(sat)}` },
+        { date: fmt(sun), weekday: `周${weekday(sun)}` }
+      ];
+    }
+    default:
+      return [{ date: fmt(new Date(today.getTime() + 86400000)), weekday: '周六' }];
+  }
+}
+
+// === Main ===
+async function main() {
+  amap.setKey(process.env.AMAP_KEY);
+  if (!process.env.AMAP_KEY) { console.error('Missing AMAP_KEY'); process.exit(1); }
+
+  const userLocation = DISTRICT_CENTERS[`${CITY}-${DISTRICT}`];
+  if (!userLocation) { console.error(`Unknown district: ${CITY}-${DISTRICT}`); process.exit(1); }
+
+  const dateRange = getDateRange(TAG);
+  console.log(`\n🌤️  看天出发 — 方案生成`);
+  console.log(`   用户: ${CITY}${DISTRICT}`);
+  console.log(`   Tag: ${TAG} (${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')})`);
+  console.log('');
+
+  // === Step 1: 读取静态知识 ===
+  console.log('📚 Step 1: 读取静态目的地知识...');
+  const destDir = path.join(KNOWLEDGE_DIR, 'destinations');
+  const actDir = path.join(KNOWLEDGE_DIR, 'activities');
+  const destinations = fs.readdirSync(destDir).map(f => JSON.parse(fs.readFileSync(path.join(destDir, f), 'utf8')));
+  const activities = fs.readdirSync(actDir).map(f => JSON.parse(fs.readFileSync(path.join(actDir, f), 'utf8')));
+  console.log(`   ${destinations.length} 个目的地, ${activities.flat().length} 个玩法模板`);
+
+  // === Step 2: 调高德拉实时数据 ===
+  console.log('\n🗺️  Step 2: 拉取实时数据...');
+
+  // 2a: 验证/补充 POI 坐标（用高德搜索确认）
+  console.log('   搜索 POI...');
+  const allPois = [];
+  for (const dest of destinations) {
+    for (const poi of dest.pois) {
+      const results = await amap.searchPOI(poi.name, { city: dest.region, citylimit: true });
+      if (results[0]) {
+        allPois.push({
+          id: results[0].id,
+          name: results[0].name,
+          type: poi.type || results[0].type?.split(';')[0] || '',
+          lat: results[0].location.lat,
+          lng: results[0].location.lng,
+          destination: dest.name
+        });
+      }
+      await new Promise(r => setTimeout(r, 500));
+    }
+  }
+  console.log(`   找到 ${allPois.length} 个 POI`);
+
+  // 2b: 搜索附近餐饮
+  console.log('   搜索周边餐饮...');
+  for (const dest of destinations) {
+    const center = allPois.find(p => p.destination === dest.name);
+    if (!center) continue;
+    const food = await amap.searchNearby({ lat: center.lat, lng: center.lng }, '餐厅', 3000);
+    for (const f of food.slice(0, 3)) {
+      allPois.push({ id: f.id, name: f.name, type: '餐饮', lat: f.location.lat, lng: f.location.lng, destination: dest.name });
+    }
+    await new Promise(r => setTimeout(r, 200));
+  }
+  console.log(`   总计 ${allPois.length} 个 POI（含餐饮）`);
+
+  // 2c: 路线规划
+  console.log('   计算路线...');
+  const routes = [];
+  const destCenters = {};
+  for (const dest of destinations) {
+    const poi = allPois.find(p => p.destination === dest.name);
+    if (poi) destCenters[dest.name] = { lat: poi.lat, lng: poi.lng };
+  }
+
+  // 用户 → 各目的地
+  for (const [name, loc] of Object.entries(destCenters)) {
+    const r = await amap.getRoute(userLocation, loc);
+    routes.push({ from: DISTRICT, to: name, distance: r.distance + 'km', duration: r.durationText });
+    await new Promise(r => setTimeout(r, 200));
+  }
+  // 目的地之间（两两）
+  const destNames = Object.keys(destCenters);
+  for (let i = 0; i < destNames.length; i++) {
+    for (let j = i + 1; j < destNames.length; j++) {
+      const r = await amap.getRoute(destCenters[destNames[i]], destCenters[destNames[j]]);
+      routes.push({ from: destNames[i], to: destNames[j], distance: r.distance + 'km', duration: r.durationText });
+      await new Promise(r => setTimeout(r, 200));
+    }
+  }
+  console.log(`   ${routes.length} 条路线`);
+
+  // 2d: 天气
+  console.log('   查询天气...');
+  const weatherByDest = {};
+  const adcodes = { '莫干山': '330521', '西塘古镇': '330421' }; // extend as needed
+  for (const dest of destinations) {
+    const code = adcodes[dest.name] || dest.region;
+    try {
+      const w = await amap.getWeather(code);
+      weatherByDest[dest.name] = w.forecasts;
+    } catch (e) {
+      console.log(`   ⚠️ 天气查询失败: ${dest.name}`);
+    }
     await new Promise(r => setTimeout(r, 200));
   }
 
-  // 餐饮 POI
-  const foodNearMoganshan = await amap.searchNearby({ lat: 30.599, lng: 119.897 }, '餐厅', 3000);
-  for (const f of foodNearMoganshan.slice(0, 3)) {
-    pois.push({ id: f.id, name: f.name, type: '餐饮', lat: f.location.lat, lng: f.location.lng });
-  }
-  await new Promise(r => setTimeout(r, 200));
-  const foodNearXitang = await amap.searchNearby({ lat: 30.943, lng: 120.894 }, '餐厅', 1000);
-  for (const f of foodNearXitang.slice(0, 3)) {
-    pois.push({ id: f.id, name: f.name, type: '餐饮', lat: f.location.lat, lng: f.location.lng });
-  }
-
-  // === Step 2: 路线规划 ===
-  const routes = [];
-  const moganshan = { lat: 30.599, lng: 119.862 };
-  const xitang = { lat: 30.943, lng: 120.894 };
-
-  const r1 = await amap.getRoute(userLocation, moganshan);
-  routes.push({ from: '吴江区', to: '莫干山南门', distance: r1.distance + 'km', duration: r1.durationText });
-  await new Promise(r => setTimeout(r, 200));
-  const r2 = await amap.getRoute(userLocation, xitang);
-  routes.push({ from: '吴江区', to: '西塘古镇', distance: r2.distance + 'km', duration: r2.durationText });
-  await new Promise(r => setTimeout(r, 200));
-  const r3 = await amap.getRoute(xitang, moganshan);
-  routes.push({ from: '西塘古镇', to: '莫干山南门', distance: r3.distance + 'km', duration: r3.durationText });
-
-  // === Step 3: 天气 ===
-  const w1 = await amap.getWeather('330521');
-  const w2 = await amap.getWeather('330421');
-
-  // === 组装 prompt ===
+  // === Step 3: 组装 prompt ===
+  console.log('\n✍️  Step 3: 组装生成 prompt...');
   let prompt = `=== 真实数据（高德 API 实时查询）===
 
-用户：苏州市吴江区
-Tag：这周末（${dates.join(' + ')}）
+用户：${CITY}${DISTRICT}
+Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 
 --- POI 列表（景点+餐饮+住宿）---
 `;
-  for (const p of pois) prompt += `${p.id} | ${p.name} | ${p.type} | ${p.lat}, ${p.lng}\n`;
+  for (const p of allPois) prompt += `${p.id} | ${p.name} | ${p.type} | ${p.destination} | ${p.lat}, ${p.lng}\n`;
 
   prompt += `\n--- 路线（真实车程）---\n`;
   for (const r of routes) prompt += `${r.from} → ${r.to}: ${r.distance}, ${r.duration}\n`;
 
-  prompt += `\n--- 天气预报 ---\n德清(莫干山):\n`;
-  for (const f of w1.forecasts) prompt += `  ${f.date} 周${f.week}: ${f.dayWeather} ${f.dayTemp}°/${f.nightTemp}°\n`;
-  prompt += '嘉善(西塘):\n';
-  for (const f of w2.forecasts) prompt += `  ${f.date} 周${f.week}: ${f.dayWeather} ${f.dayTemp}°/${f.nightTemp}°\n`;
+  prompt += `\n--- 天气预报 ---\n`;
+  for (const [name, forecasts] of Object.entries(weatherByDest)) {
+    prompt += `${name}:\n`;
+    for (const f of forecasts) prompt += `  ${f.date} 周${f.week}: ${f.dayWeather} ${f.dayTemp}°/${f.nightTemp}°\n`;
+  }
+
+  prompt += `
+=== 玩法模板参考 ===
+`;
+  for (const acts of activities) {
+    for (const a of acts) {
+      prompt += `- ${a.activity}（${a.destinationId}）: ${a.description} | 条件: ${JSON.stringify(a.conditions)} | 时长: ${a.duration}\n`;
+    }
+  }
 
   prompt += `
 === 生成要求 ===
 生成 2-3 个方案数组。要求：
-1. 至少一个2天方案（可串多目的地），至少一个单天
-2. reason 基于真实天气说清为什么此刻适合
-3. 高温天户外放早晚，午后室内/阴凉
-4. 使用真实路程时间（不要自己估算）
-5. 餐饮步骤必须使用上面列表中的真实餐厅 poi_id
-6. 出发/到家 poi_id 为 null
-7. 只输出纯 JSON 数组
+1. 基于玩法模板和实时天气，只选当前条件成立的活动
+2. 至少一个多天方案（可串多目的地），至少一个单天
+3. reason 基于真实天气说清为什么此刻适合
+4. 高温天户外放早晚，午后室内/阴凉
+5. 使用真实路程时间（不要自己估算）
+6. 餐饮步骤使用上面列表中的真实餐厅 poi_id
+7. 出发/到家 poi_id 为 null
+8. 只输出纯 JSON 数组
 
 格式：
 [{
-  "title": "...", "city": "苏州", "district": "吴江区", "tag": "这周末",
-  "valid_date": ["2026-07-26", "2026-07-27"] 或 "2026-07-26",
+  "title": "...", "city": "${CITY}", "district": "${DISTRICT}", "tag": "${TAG}",
+  "valid_date": ${dateRange.length > 1 ? '["' + dateRange.map(d => d.date).join('", "') + '"]' : '"' + dateRange[0].date + '"'},
   "reason": "...",
   "weather": { "desc": "...", "high": N, "low": N },
   "days": [{
@@ -101,6 +225,44 @@ Tag：这周末（${dates.join(' + ')}）
   }]
 }]`;
 
-  fs.writeFileSync('/tmp/pipeline-v2-prompt.txt', prompt);
-  console.log(`Prompt ready (${prompt.length} chars, ${pois.length} POIs, ${routes.length} routes)`);
-})();
+  // Save prompt
+  const promptPath = '/tmp/kantian-generate-prompt.txt';
+  fs.writeFileSync(promptPath, prompt);
+  console.log(`   Prompt: ${prompt.length} chars`);
+  console.log(`   Saved to: ${promptPath}`);
+
+  // === Step 4: 调模型生成 ===
+  console.log('\n🤖 Step 4: 调用大模型生成...');
+  try {
+    const output = execSync(
+      `claude --print "你是一个旅行方案生成器。根据以下真实数据生成方案，只输出纯JSON数组：\n\n$(cat ${promptPath})"`,
+      { encoding: 'utf8', maxBuffer: 1024 * 1024, timeout: 120000 }
+    );
+
+    // Parse JSON from output
+    const start = output.indexOf('[');
+    const end = output.lastIndexOf(']') + 1;
+    if (start === -1 || end === 0) { console.error('   ❌ 模型未返回有效 JSON'); process.exit(1); }
+    const plans = JSON.parse(output.slice(start, end));
+    console.log(`   ✅ 生成 ${plans.length} 个方案`);
+
+    // === Step 5: 输出 ===
+    const outputName = `${CITY}${DISTRICT}-${TAG}.json`;
+    const outputPath = path.join(GENERATED_DIR, outputName);
+    fs.mkdirSync(GENERATED_DIR, { recursive: true });
+    fs.writeFileSync(outputPath, JSON.stringify(plans, null, 2));
+    console.log(`\n📦 输出: ${outputPath}`);
+    console.log('\n✨ 完成！');
+
+    // Summary
+    for (const p of plans) {
+      const days = p.days?.length || 1;
+      console.log(`   • ${p.title} (${days}天) — ${p.reason.slice(0, 50)}...`);
+    }
+  } catch (e) {
+    console.error(`   ❌ 生成失败: ${e.message}`);
+    process.exit(1);
+  }
+}
+
+main().catch(e => { console.error(e); process.exit(1); });

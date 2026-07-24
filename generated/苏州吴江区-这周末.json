@@ -1,0 +1,443 @@
+[
+  {
+    "title": "莫干山避暑探索+西塘夜游两日",
+    "city": "苏州",
+    "district": "吴江区",
+    "tag": "这周末",
+    "valid_date": [
+      "2026-07-25",
+      "2026-07-26"
+    ],
+    "reason": "周六莫干山晴天37°，山上凉爽适合避暑和户外探索；周日西塘多云34°，傍晚逛古镇不晒，夜景最佳",
+    "weather": {
+      "desc": "周六晴转周日多云",
+      "high": 37,
+      "low": 26
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "探索极限+庾村闲逛+避暑",
+        "weather": {
+          "desc": "晴",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "从吴江出发",
+            "start_time": "07:00",
+            "end_time": "07:00",
+            "description": "早起避开高温出发",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "transit",
+            "text": "驱车前往莫干山",
+            "start_time": "07:00",
+            "end_time": "09:20",
+            "description": "全程153.9km，约2小时19分钟",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "Discovery探索极限主题公园",
+            "start_time": "09:30",
+            "end_time": "11:30",
+            "description": "趁上午凉爽体验攀岩溜索等户外项目",
+            "poi_id": "B0H31R12PC"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "邮电餐厅午餐",
+            "start_time": "12:00",
+            "end_time": "13:00",
+            "description": "莫干山经典餐厅，位于景区内",
+            "poi_id": "B023C0QIHG"
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "庾村文化市集",
+            "start_time": "13:30",
+            "end_time": "15:00",
+            "description": "午后市集内喝咖啡闲逛，避开户外高温",
+            "poi_id": "B0FFFCO5X1"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "莫干山风景名胜区",
+            "start_time": "16:00",
+            "end_time": "18:00",
+            "description": "傍晚气温下降后进入景区竹林徒步纳凉",
+            "poi_id": "B0G23SCQ3S"
+          },
+          {
+            "step_index": 6,
+            "type": "eat",
+            "text": "垛子口生态餐厅晚餐",
+            "start_time": "18:30",
+            "end_time": "19:30",
+            "description": "山间生态餐厅，品尝当地菜",
+            "poi_id": "B0ID6KRL0Q"
+          },
+          {
+            "step_index": 7,
+            "type": "stay",
+            "text": "莫干·山居图民宿",
+            "start_time": "20:00",
+            "end_time": "20:00",
+            "description": "入住山间民宿，享受山上凉爽夜晚",
+            "poi_id": "B0FFG69MO5"
+          }
+        ]
+      },
+      {
+        "day_index": 1,
+        "activity": "古镇夜场漫步",
+        "weather": {
+          "desc": "多云",
+          "high": 34,
+          "low": 26
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "莫干山出发",
+            "start_time": "09:00",
+            "end_time": "09:00",
+            "description": "睡到自然醒，早餐后退房",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "transit",
+            "text": "驱车前往西塘古镇",
+            "start_time": "09:00",
+            "end_time": "10:55",
+            "description": "全程130.9km，约1小时55分钟",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "西塘古镇石皮弄",
+            "start_time": "11:00",
+            "end_time": "12:00",
+            "description": "窄巷阴凉，适合上午游览",
+            "poi_id": "B0L0H5QMRA"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "小塘菜·餐厅午餐",
+            "start_time": "12:00",
+            "end_time": "13:00",
+            "description": "古镇内餐厅，品尝水乡菜",
+            "poi_id": "B0KK0AE0N4"
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "西园+送子来凤桥",
+            "start_time": "13:30",
+            "end_time": "15:00",
+            "description": "多云天不暴晒，适合古镇内散步",
+            "poi_id": "B023D03T20"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "烟雨长廊",
+            "start_time": "17:00",
+            "end_time": "18:30",
+            "description": "傍晚时分长廊看日落，光影最美",
+            "poi_id": "B0FFG7I8AK"
+          },
+          {
+            "step_index": 6,
+            "type": "eat",
+            "text": "七张桌精品餐馆晚餐",
+            "start_time": "18:30",
+            "end_time": "19:30",
+            "description": "长廊旁精品小馆",
+            "poi_id": "B0FFGYXS9Y"
+          },
+          {
+            "step_index": 7,
+            "type": "play",
+            "text": "西塘酒吧街夜游",
+            "start_time": "20:00",
+            "end_time": "21:30",
+            "description": "夜晚灯笼亮起，古镇最有味道的时刻",
+            "poi_id": "B0FFG846G1"
+          },
+          {
+            "step_index": 8,
+            "type": "home",
+            "text": "返回吴江",
+            "start_time": "21:30",
+            "end_time": "22:36",
+            "description": "西塘距吴江43.8km，约1小时6分钟到家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "西塘古镇周六一日游",
+    "city": "苏州",
+    "district": "吴江区",
+    "tag": "这周末",
+    "valid_date": [
+      "2026-07-25"
+    ],
+    "reason": "周六西塘晴天34°，距吴江仅43.8km车程短，傍晚入镇避开午间高温，夜景灯笼最有江南味",
+    "weather": {
+      "desc": "晴",
+      "high": 34,
+      "low": 28
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "古镇夜场漫步",
+        "weather": {
+          "desc": "晴",
+          "high": 34,
+          "low": 28
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "下午从吴江出发",
+            "start_time": "15:00",
+            "end_time": "15:00",
+            "description": "避开白天高温，下午出发",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "transit",
+            "text": "驱车前往西塘古镇",
+            "start_time": "15:00",
+            "end_time": "16:06",
+            "description": "全程43.8km，约1小时6分钟",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "石皮弄+送子来凤桥",
+            "start_time": "16:15",
+            "end_time": "17:15",
+            "description": "傍晚气温渐降，古巷窄弄阴凉舒适",
+            "poi_id": "B0L0H5QMRA"
+          },
+          {
+            "step_index": 3,
+            "type": "play",
+            "text": "烟雨长廊看日落",
+            "start_time": "17:30",
+            "end_time": "19:00",
+            "description": "长廊下看夕阳映水面，晴天日落色彩绚丽",
+            "poi_id": "B0FFG7I8AK"
+          },
+          {
+            "step_index": 4,
+            "type": "eat",
+            "text": "醉仙楼餐厅晚餐",
+            "start_time": "19:00",
+            "end_time": "20:00",
+            "description": "古镇内人气餐厅",
+            "poi_id": "B0JAFHFTW4"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "西塘酒吧街夜游",
+            "start_time": "20:15",
+            "end_time": "21:30",
+            "description": "夜幕降临灯笼亮起，沿河漫步感受古镇夜色",
+            "poi_id": "B0FFG846G1"
+          },
+          {
+            "step_index": 6,
+            "type": "home",
+            "text": "返回吴江",
+            "start_time": "21:30",
+            "end_time": "22:36",
+            "description": "43.8km，约1小时6分钟到家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "莫干山竹海避暑周末",
+    "city": "苏州",
+    "district": "吴江区",
+    "tag": "这周末",
+    "valid_date": [
+      "2026-07-25",
+      "2026-07-26"
+    ],
+    "reason": "周六晴周日多云均无雨，7月山下37°山上约28°，两天纯享山间避暑：竹海徒步放清晨傍晚，午后民宿发呆泡泳池",
+    "weather": {
+      "desc": "周六晴周日多云",
+      "high": 37,
+      "low": 26
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "竹海徒步+山间发呆",
+        "weather": {
+          "desc": "晴",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "从吴江出发",
+            "start_time": "06:30",
+            "end_time": "06:30",
+            "description": "早起趁凉出发",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "transit",
+            "text": "驱车前往莫干山",
+            "start_time": "06:30",
+            "end_time": "08:50",
+            "description": "全程153.9km，约2小时19分钟",
+            "poi_id": null
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "莫干山风景名胜区竹海徒步",
+            "start_time": "09:00",
+            "end_time": "11:30",
+            "description": "上午山间凉爽，竹林栈道徒步吸氧",
+            "poi_id": "B0G23SCQ3S"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "金鱼妈妈山野食趣午餐",
+            "start_time": "12:00",
+            "end_time": "13:00",
+            "description": "荫山街山野创意菜",
+            "poi_id": "B0H1KD1SDH"
+          },
+          {
+            "step_index": 4,
+            "type": "stay",
+            "text": "莫干山裸心谷度假村",
+            "start_time": "13:30",
+            "end_time": "17:00",
+            "description": "午后最热时段泡在度假村泳池发呆喝茶",
+            "poi_id": "B0LKVS4N5E"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "庾村文化市集傍晚闲逛",
+            "start_time": "17:30",
+            "end_time": "19:00",
+            "description": "气温降下来后逛市集喝咖啡",
+            "poi_id": "B0FFFCO5X1"
+          },
+          {
+            "step_index": 6,
+            "type": "eat",
+            "text": "山里人家土菜馆晚餐",
+            "start_time": "19:00",
+            "end_time": "20:00",
+            "description": "地道莫干山土菜",
+            "poi_id": "B0FFF4S8NO"
+          },
+          {
+            "step_index": 7,
+            "type": "stay",
+            "text": "裸心谷度假村住宿",
+            "start_time": "20:30",
+            "end_time": "20:30",
+            "description": "回度假村休息，山间夜晚凉爽宜人",
+            "poi_id": "B0LKVS4N5E"
+          }
+        ]
+      },
+      {
+        "day_index": 1,
+        "activity": "避暑纳凉+慢节奏",
+        "weather": {
+          "desc": "多云",
+          "high": 34,
+          "low": 26
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "play",
+            "text": "静心栈道晨间散步",
+            "start_time": "07:00",
+            "end_time": "08:30",
+            "description": "多云天清晨温度舒适，栈道上看山间云雾",
+            "poi_id": "B0LA7UUOXC"
+          },
+          {
+            "step_index": 1,
+            "type": "eat",
+            "text": "邮电餐厅早午餐",
+            "start_time": "09:30",
+            "end_time": "10:30",
+            "description": "莫干山老字号",
+            "poi_id": "B023C0QIHG"
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "太湖观景台",
+            "start_time": "11:00",
+            "end_time": "12:30",
+            "description": "多云天视野好，远眺太湖全景",
+            "poi_id": "B0G1HUL171"
+          },
+          {
+            "step_index": 3,
+            "type": "eat",
+            "text": "垛子口生态餐厅午餐",
+            "start_time": "12:30",
+            "end_time": "13:30",
+            "description": "景区生态餐厅",
+            "poi_id": "B0ID6KRL0Q"
+          },
+          {
+            "step_index": 4,
+            "type": "home",
+            "text": "返回吴江",
+            "start_time": "14:00",
+            "end_time": "16:19",
+            "description": "153.9km，约2小时19分钟到家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  }
+]
