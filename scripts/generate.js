@@ -50,12 +50,28 @@ function getDateRange(tag) {
 
   switch (tag) {
     case '现在':
+    case '今天': {
+      return [{ date: fmt(today), weekday: `周${weekday(today)}` }];
+    }
     case '明天': {
       const d = new Date(today);
-      if (tag === '明天') d.setDate(d.getDate() + 1);
+      d.setDate(d.getDate() + 1);
       return [{ date: fmt(d), weekday: `周${weekday(d)}` }];
     }
-    case '这周末': {
+    case '周六': {
+      const sat = new Date(today);
+      const daysUntilSat = (6 - sat.getDay() + 7) % 7 || 7;
+      sat.setDate(sat.getDate() + daysUntilSat);
+      return [{ date: fmt(sat), weekday: '周六' }];
+    }
+    case '周日': {
+      const sun = new Date(today);
+      const daysUntilSun = (7 - sun.getDay()) % 7 || 7;
+      sun.setDate(sun.getDate() + daysUntilSun);
+      return [{ date: fmt(sun), weekday: '周日' }];
+    }
+    case '这周末':
+    case '周末2天': {
       const sat = new Date(today);
       sat.setDate(sat.getDate() + (6 - sat.getDay()));
       const sun = new Date(sat);
