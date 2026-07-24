@@ -698,9 +698,9 @@ function renderDetailMap(plan) {
     const toggleDiv = document.getElementById('mapLayerToggles');
     if (toggleDiv) {
       const btns = [
-        { key: 'stay', label: '🏨 住宿', active: true },
-        { key: 'play', label: '🎯 景点', active: true },
-        { key: 'transit', label: '🚗 交通', active: false }
+        { key: 'stay', label: '<span class="layer-dot" style="background:#5856D6"></span>住宿', active: true },
+        { key: 'play', label: '<span class="layer-dot" style="background:#34C759"></span>景点', active: true },
+        { key: 'transit', label: '<span class="layer-dot" style="background:#BBBBC0"></span>交通', active: false }
       ];
       toggleDiv.innerHTML = btns.map(b =>
         `<button class="map-layer-btn ${b.active ? 'active' : ''}" data-layer="${b.key}">${b.label}</button>`

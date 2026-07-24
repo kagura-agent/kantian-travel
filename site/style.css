@@ -101,8 +101,9 @@ html,body{min-height:100%;font-family:-apple-system,BlinkMacSystemFont,'PingFang
 /* Route Map */
 .route-map{width:100%;height:200px;border-radius:12px;overflow:hidden;border:1px solid #eee}
 .map-layer-toggles{display:flex;gap:8px;margin-top:10px}
-.map-layer-btn{padding:6px 12px;border-radius:16px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;transition:all .15s}
+.map-layer-btn{padding:6px 12px;border-radius:16px;border:1px solid #ddd;background:#fff;font-size:12px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px}
 .map-layer-btn.active{background:#f0f0ff;border-color:#5856D6;color:#5856D6}
+.layer-dot{width:8px;height:8px;border-radius:50%;display:inline-block}
 .map-label{background:rgba(255,255,255,0.95)!important;border:1px solid #FF6B4A!important;border-radius:6px!important;padding:2px 8px!important;font-size:12px!important;font-weight:500!important;color:#333!important;box-shadow:0 2px 6px rgba(0,0,0,0.1)!important}
 
 /* Related Content */
