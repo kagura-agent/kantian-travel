@@ -8,7 +8,7 @@
  *   4. 输出到 generated/
  * 
  * 用法：
- *   AMAP_KEY=xxx node scripts/generate.js --city 苏州 --district 吴江区 --tag 这周末
+ *   AMAP_KEY=xxx node scripts/generate.js --location 苏州吴江区 --tag 这周末
  */
 
 const fs = require('fs');
@@ -26,9 +26,12 @@ process.argv.slice(2).forEach((arg, i, arr) => {
   if (arg.startsWith('--')) args[arg.slice(2)] = arr[i + 1];
 });
 
-const CITY = args.city || '苏州';
-const DISTRICT = args.district || '吴江区';
+const LOCATION = args.location || '苏州吴江区';
 const TAG = args.tag || '明天';
+
+// 从 location 解析城市和区
+const CITY = LOCATION.replace(/(市|区|县)$/, '').slice(0, LOCATION.includes('市') ? LOCATION.indexOf('市') : 2);
+const DISTRICT = LOCATION.slice(CITY.length);
 
 // District center coordinates (expand as needed)
 const DISTRICT_CENTERS = {
