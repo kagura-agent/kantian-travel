@@ -1,11 +1,11 @@
 {
   "plans": [
     {
-      "title": "斜塘近郊室内艺术避暑线",
+      "title": "太湖晨风＋苏州海洋馆亲水避暑线",
       "location": "苏州工业园区",
       "tag": "周日",
       "valid_date": "2026-07-26",
-      "reason": "全程集中在苏州工业园区近郊约3公里范围，上午和午后以美术馆、民俗馆等室内空间为主，避开36℃高温；多个点位按斜塘片区顺路串联，不安排普通商场。",
+      "reason": "户外自然类方案。7月26日阴天但最高36℃，不适合中午暴晒；把湖边亲水活动放在清晨，太湖水边有风、体感通常比城区低2-4℃，11:00-16:00转入苏州海洋馆室内看展和休息，既有自然水边感，也避开午后高温。",
       "weather": {
         "desc": "阴",
         "high": 36,
@@ -14,7 +14,7 @@
       "days": [
         {
           "day_index": 0,
-          "activity": "近距离室内艺术与民俗半日深度游",
+          "activity": "清晨亲水、午后室内海洋馆",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -24,123 +24,67 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "08:50",
-              "end_time": "08:50",
-              "description": "天气闷热，建议带好遮阳伞和水，优先选择自驾或打车减少暴晒步行。",
+              "text": "从苏州工业园区出发，自驾前往苏州海洋馆",
+              "start_time": "06:40",
+              "end_time": "07:27",
+              "description": "使用给定交通：自驾41.3km，约47分钟。早出发避开高温和拥堵。",
               "place_name": null
             },
             {
               "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往明·美术馆",
-              "start_time": "08:50",
-              "end_time": "08:59",
-              "description": "使用给定交通：自驾3.4公里，约9分钟。",
-              "place_name": "明·美术馆",
+              "type": "play",
+              "text": "太湖水边清晨散步与拍照",
+              "start_time": "07:30",
+              "end_time": "08:40",
+              "description": "把户外段安排在9点前，阴天加水边风，比城区暴晒舒适；适合亲子慢走、看湖景、拍照。",
+              "place_name": "苏州海洋馆",
               "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
+                "lat": 31.217203,
+                "lng": 120.384868
               }
             },
             {
               "step_index": 2,
               "type": "play",
-              "text": "参观明·美术馆",
-              "start_time": "09:00",
-              "end_time": "10:10",
-              "description": "上午先安排室内美术馆，节奏轻松，适合高温天避暑观展。",
-              "place_name": "明·美术馆",
+              "text": "进入苏州海洋馆参观",
+              "start_time": "08:45",
+              "end_time": "11:20",
+              "description": "上午转入室内，观看海洋生物展区，避免气温快速升高后的户外活动。",
+              "place_name": "苏州海洋馆",
               "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
+                "lat": 31.217203,
+                "lng": 120.384868
               }
             },
             {
               "step_index": 3,
-              "type": "play",
-              "text": "顺路前往虹·美术馆观展",
-              "start_time": "10:20",
-              "end_time": "11:20",
-              "description": "与明·美术馆同属近距离艺术点位，按片区顺路游览，减少折返。",
-              "place_name": "虹·美术馆",
-              "_coords": {
-                "lat": 31.299819,
-                "lng": 120.698723
-              }
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "11:30",
+              "end_time": "12:30",
+              "description": "午餐控制在11:30-13:00之间，就近简餐或馆区周边用餐，避开正午户外行走。",
+              "place_name": null
             },
             {
               "step_index": 4,
-              "type": "eat",
-              "text": "午餐：爱莲说艺术餐厅",
-              "start_time": "11:30",
-              "end_time": "12:30",
-              "description": "午餐安排在11:30-13:00之间，餐厅靠近虹·美术馆，方便衔接上午行程。",
-              "place_name": "爱莲说艺术餐厅",
+              "type": "play",
+              "text": "下午继续海洋馆室内游览",
+              "start_time": "12:40",
+              "end_time": "15:30",
+              "description": "午后36℃，继续安排在空调室内，适合看表演、互动展区和亲子休息。",
+              "place_name": "苏州海洋馆",
               "_coords": {
-                "lat": 31.299859,
-                "lng": 120.698776
+                "lat": 31.217203,
+                "lng": 120.384868
               }
             },
             {
               "step_index": 5,
-              "type": "play",
-              "text": "参观南石玉雕艺术馆",
-              "start_time": "12:45",
-              "end_time": "14:00",
-              "description": "午后最热时段继续安排室内展馆，欣赏玉雕工艺，避免长时间户外活动。",
-              "place_name": "南石玉雕艺术馆",
-              "_coords": {
-                "lat": 31.300549,
-                "lng": 120.698368
-              }
-            },
-            {
-              "step_index": 6,
-              "type": "play",
-              "text": "参观苏州卓美民俗博物馆",
-              "start_time": "14:15",
-              "end_time": "15:40",
-              "description": "继续顺路转入民俗主题展馆，内容与前面的艺术展形成互补。",
-              "place_name": "苏州卓美民俗博物馆",
-              "_coords": {
-                "lat": 31.303427,
-                "lng": 120.738199
-              }
-            },
-            {
-              "step_index": 7,
-              "type": "play",
-              "text": "冰令营冷饮批发短暂停留",
-              "start_time": "16:00",
-              "end_time": "16:30",
-              "description": "作为高温天的冷饮补给点，安排在下午后段，不作为正餐。",
-              "place_name": "冰令营冷饮批发(联丰广场店)",
-              "_coords": {
-                "lat": 31.297543,
-                "lng": 120.734635
-              }
-            },
-            {
-              "step_index": 8,
-              "type": "eat",
-              "text": "晚餐：韩庭院韩国料理",
-              "start_time": "17:30",
-              "end_time": "18:30",
-              "description": "晚餐严格安排在17:30-19:00之间，靠近联丰广场店，结束后返程方便。",
-              "place_name": "韩庭院韩国料理(斜塘老街店)",
-              "_coords": {
-                "lat": 31.30321,
-                "lng": 120.736162
-              }
-            },
-            {
-              "step_index": 9,
               "type": "home",
               "text": "返回苏州工业园区",
-              "start_time": "18:30",
-              "end_time": "18:45",
-              "description": "近距离返程，避免夜间过晚。",
+              "start_time": "15:30",
+              "end_time": "16:17",
+              "description": "按来程自驾约47分钟返回，避开傍晚晚高峰前的拥堵。",
               "place_name": null
             }
           ]
@@ -148,11 +92,11 @@
       ]
     },
     {
-      "title": "苏州海洋馆亲子避暑线",
+      "title": "近郊艺术馆四连看：粉画、玉雕、明·美术馆、虹·美术馆",
       "location": "苏州工业园区",
       "tag": "周日",
       "valid_date": "2026-07-26",
-      "reason": "选择约41公里的苏州海洋馆作为中距离目的地，上午抵达室内场馆，午餐返回园区片区用餐，下午补充民俗与艺术馆，兼顾亲子体验和高温避暑。",
+      "reason": "文化室内类方案。目的地都在苏州工业园区近郊，车程约8-11分钟，适合不想远行但想看展的人。36℃阴天的午后全部安排在美术馆、艺术馆室内，路线按同片区顺序串联，不折返。",
       "weather": {
         "desc": "阴",
         "high": 36,
@@ -161,7 +105,7 @@
       "days": [
         {
           "day_index": 0,
-          "activity": "上午海洋馆，午后室内博物馆",
+          "activity": "近距离室内艺术展览一日",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -171,58 +115,166 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "08:20",
-              "end_time": "08:20",
-              "description": "高温天尽量早出发，把较远路程放在上午。",
+              "text": "从苏州工业园区出发前往粉画艺术博物馆",
+              "start_time": "09:20",
+              "end_time": "09:28",
+              "description": "使用给定交通：自驾3.2km，约8分钟；公交约29分钟。",
               "place_name": null
             },
             {
               "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往苏州海洋馆",
-              "start_time": "08:20",
-              "end_time": "09:08",
-              "description": "使用给定交通：自驾41.3公里，约48分钟。",
-              "place_name": "苏州海洋馆",
+              "type": "play",
+              "text": "参观粉画艺术博物馆",
+              "start_time": "09:30",
+              "end_time": "10:35",
+              "description": "先看粉画作品，上午人相对少，室内观展不受高温影响。",
+              "place_name": "粉画艺术博物馆",
               "_coords": {
-                "lat": 31.217203,
-                "lng": 120.384868
+                "lat": 31.299145,
+                "lng": 120.697706
               }
             },
             {
               "step_index": 2,
               "type": "play",
-              "text": "游览苏州海洋馆",
-              "start_time": "09:10",
-              "end_time": "11:10",
-              "description": "海洋馆以室内参观为主，适合36℃阴天的亲子避暑安排。",
-              "place_name": "苏州海洋馆",
+              "text": "参观南石玉雕艺术馆",
+              "start_time": "10:45",
+              "end_time": "11:25",
+              "description": "从绘画转到玉雕工艺，体验材质与手工艺的变化，动线继续向同片区推进。",
+              "place_name": "南石玉雕艺术馆",
               "_coords": {
-                "lat": 31.217203,
-                "lng": 120.384868
+                "lat": 31.300549,
+                "lng": 120.698368
               }
             },
             {
               "step_index": 3,
-              "type": "transit",
-              "text": "自驾返回斜塘片区午餐",
-              "start_time": "11:10",
-              "end_time": "11:58",
-              "description": "按去程自驾约48分钟预估返程，保证午餐落在规定时段内。",
-              "place_name": "广鉴阁·潮州菜餐厅",
+              "type": "eat",
+              "text": "午餐：黑犬面馆简餐",
+              "start_time": "11:30",
+              "end_time": "12:30",
+              "description": "午餐安排在规定的11:30-13:00，靠近南石玉雕艺术馆和粉画艺术博物馆，减少高温下步行。",
+              "place_name": "PST BLOSSOMS繁华阁(黑犬面馆)",
               "_coords": {
-                "lat": 31.303437,
-                "lng": 120.73818
+                "lat": 31.299995,
+                "lng": 120.697809
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "参观明·美术馆",
+              "start_time": "12:45",
+              "end_time": "14:05",
+              "description": "午后最热时段转入美术馆室内，适合慢看展、避暑。",
+              "place_name": "明·美术馆",
+              "_coords": {
+                "lat": 31.299573,
+                "lng": 120.698278
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "play",
+              "text": "参观虹·美术馆",
+              "start_time": "14:15",
+              "end_time": "15:35",
+              "description": "最后到虹·美术馆，继续室内文化体验，避免在13-16点进行户外活动。",
+              "place_name": "虹·美术馆",
+              "_coords": {
+                "lat": 31.299819,
+                "lng": 120.698723
+              }
+            },
+            {
+              "step_index": 6,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "15:40",
+              "end_time": "15:48",
+              "description": "虹·美术馆至苏州工业园区参考给定自驾约3.3km、8分钟。",
+              "place_name": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "斜塘水巷民俗慢游：廊棚遮阴＋苏州卓美民俗博物馆",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "水乡古镇类方案。选择近距离的苏州卓美民俗博物馆及其周边水巷氛围，清晨和傍晚走廊棚、水边，午后进入室内或餐厅休息。虽然最高36℃，但廊棚连续遮阴、水边通风，比开阔马路更适合高温天慢走。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "水乡廊棚、民俗文化、美食休闲",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区出发前往苏州卓美民俗博物馆",
+              "start_time": "06:50",
+              "end_time": "07:01",
+              "description": "使用给定交通：自驾3.2km，约11分钟；公交约32分钟。",
+              "place_name": null
+            },
+            {
+              "step_index": 1,
+              "type": "play",
+              "text": "清晨水巷与廊棚慢走",
+              "start_time": "07:05",
+              "end_time": "08:20",
+              "description": "户外段放在9点前，走水边和廊棚阴影，适合想要水乡古镇感但不想远行的人。",
+              "place_name": "苏州卓美民俗博物馆",
+              "_coords": {
+                "lat": 31.303427,
+                "lng": 120.738199
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "参观苏州卓美民俗博物馆",
+              "start_time": "08:30",
+              "end_time": "10:45",
+              "description": "进入室内看民俗展陈，避开上午后段逐渐升高的体感温度。",
+              "place_name": "苏州卓美民俗博物馆",
+              "_coords": {
+                "lat": 31.303427,
+                "lng": 120.738199
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "stay",
+              "text": "阴凉处休息",
+              "start_time": "10:45",
+              "end_time": "11:25",
+              "description": "不安排正餐，只做短暂休息补水，为11:30午餐衔接。",
+              "place_name": "苏州卓美民俗博物馆",
+              "_coords": {
+                "lat": 31.303427,
+                "lng": 120.738199
               }
             },
             {
               "step_index": 4,
               "type": "eat",
-              "text": "午餐：广鉴阁·潮州菜餐厅",
-              "start_time": "12:00",
-              "end_time": "12:55",
-              "description": "午餐安排在11:30-13:00之间，餐厅靠近苏州卓美民俗博物馆。",
+              "text": "午餐：潮州菜",
+              "start_time": "11:30",
+              "end_time": "12:45",
+              "description": "午餐安排在11:30-13:00，广鉴阁·潮州菜餐厅靠近苏州卓美民俗博物馆，减少热天移动。",
               "place_name": "广鉴阁·潮州菜餐厅",
               "_coords": {
                 "lat": 31.303437,
@@ -231,11 +283,11 @@
             },
             {
               "step_index": 5,
-              "type": "play",
-              "text": "参观苏州卓美民俗博物馆",
-              "start_time": "13:10",
-              "end_time": "14:20",
-              "description": "午后高温时段继续室内参观，减少户外暴晒。",
+              "type": "stay",
+              "text": "午后室内休息",
+              "start_time": "13:00",
+              "end_time": "16:40",
+              "description": "13-16点是高温核心时段，安排在室内休息、聊天或简单看展，不做暴晒步行。",
               "place_name": "苏州卓美民俗博物馆",
               "_coords": {
                 "lat": 31.303427,
@@ -245,14 +297,14 @@
             {
               "step_index": 6,
               "type": "play",
-              "text": "参观明·美术馆",
-              "start_time": "14:35",
-              "end_time": "15:45",
-              "description": "从民俗馆顺路转到美术馆，行程不走回头路。",
-              "place_name": "明·美术馆",
+              "text": "傍晚水巷再散步",
+              "start_time": "17:00",
+              "end_time": "17:25",
+              "description": "17点后阳光减弱，再补一段水乡氛围散步，廊棚和水边比开阔道路更凉快。",
+              "place_name": "苏州卓美民俗博物馆",
               "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
+                "lat": 31.303427,
+                "lng": 120.738199
               }
             },
             {
@@ -261,7 +313,7 @@
               "text": "晚餐：慕容轩",
               "start_time": "17:30",
               "end_time": "18:30",
-              "description": "晚餐安排在17:30-19:00之间，靠近苏州卓美民俗博物馆，适合结束后返程。",
+              "description": "晚餐安排在17:30-19:00，靠近苏州卓美民俗博物馆，饭后可直接回家。",
               "place_name": "慕容轩(斜塘总店)",
               "_coords": {
                 "lat": 31.303347,
@@ -272,9 +324,9 @@
               "step_index": 8,
               "type": "home",
               "text": "返回苏州工业园区",
-              "start_time": "18:30",
-              "end_time": "18:50",
-              "description": "结束中距离亲子避暑行程。",
+              "start_time": "18:35",
+              "end_time": "18:46",
+              "description": "按给定自驾约11分钟返回，整体轻松不赶路。",
               "place_name": null
             }
           ]
@@ -282,11 +334,11 @@
       ]
     },
     {
-      "title": "无锡融创海世界水世界清凉线",
+      "title": "美术馆＋艺术餐厅＋轻休闲：适合慢节奏周日",
       "location": "苏州工业园区",
       "tag": "周日",
       "valid_date": "2026-07-26",
-      "reason": "目的地约65公里，属于中途跨城方案；上午在园区近距离室内观展，午餐后自驾前往无锡融创海世界与水世界，午后高温时段以水族和玩水体验为主。",
+      "reason": "休闲体验类方案。行程不追求打卡数量，而是把虹·美术馆、明·美术馆和周边餐厅串成轻松半日到一日路线。36℃阴天仍然闷热，午后安排室内展览和餐厅休息，适合喜欢美食、聊天、拍照的人。",
       "weather": {
         "desc": "阴",
         "high": 36,
@@ -295,7 +347,7 @@
       "days": [
         {
           "day_index": 0,
-          "activity": "近处观展加无锡清凉玩水",
+          "activity": "美术馆慢逛与餐厅休闲",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -305,218 +357,19 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "09:00",
-              "end_time": "09:00",
-              "description": "先安排近处室内馆，避免过早跨城奔波。",
+              "text": "从苏州工业园区出发前往虹·美术馆",
+              "start_time": "10:00",
+              "end_time": "10:08",
+              "description": "使用给定交通：自驾3.3km，约8分钟；公交约31分钟。",
               "place_name": null
             },
             {
               "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往明·美术馆",
-              "start_time": "09:00",
-              "end_time": "09:09",
-              "description": "使用给定交通：自驾3.4公里，约9分钟。",
-              "place_name": "明·美术馆",
-              "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
-              }
-            },
-            {
-              "step_index": 2,
               "type": "play",
-              "text": "参观明·美术馆",
-              "start_time": "09:10",
-              "end_time": "10:30",
-              "description": "上午先用室内观展开始，轻松避暑。",
-              "place_name": "明·美术馆",
-              "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
-              }
-            },
-            {
-              "step_index": 3,
-              "type": "eat",
-              "text": "午餐：VONE·璞悦荟",
-              "start_time": "11:30",
-              "end_time": "12:25",
-              "description": "午餐严格安排在11:30-13:00之间，餐厅靠近明·美术馆。",
-              "place_name": "VONE·璞悦荟",
-              "_coords": {
-                "lat": 31.299951,
-                "lng": 120.698496
-              }
-            },
-            {
-              "step_index": 4,
-              "type": "transit",
-              "text": "自驾前往无锡融创海世界",
-              "start_time": "12:30",
-              "end_time": "13:36",
-              "description": "使用给定交通：自驾65.6公里，约1小时6分钟。",
-              "place_name": "无锡融创海世界(融创茂店)",
-              "_coords": {
-                "lat": 31.447745,
-                "lng": 120.270815
-              }
-            },
-            {
-              "step_index": 5,
-              "type": "play",
-              "text": "游览无锡融创海世界",
-              "start_time": "13:40",
-              "end_time": "15:40",
-              "description": "午后最热时段安排室内海世界，适合避开36℃高温。",
-              "place_name": "无锡融创海世界(融创茂店)",
-              "_coords": {
-                "lat": 31.447745,
-                "lng": 120.270815
-              }
-            },
-            {
-              "step_index": 6,
-              "type": "play",
-              "text": "体验无锡融创水世界",
-              "start_time": "15:50",
-              "end_time": "17:10",
-              "description": "下午后段转入水世界，清凉度更高，注意补水和防滑。",
-              "place_name": "无锡融创水世界(融创茂店)",
-              "_coords": {
-                "lat": 31.446765,
-                "lng": 120.269771
-              }
-            },
-            {
-              "step_index": 7,
-              "type": "eat",
-              "text": "晚餐：无锡融创文旅城内用餐",
-              "start_time": "17:30",
-              "end_time": "18:20",
-              "description": "晚餐安排在17:30-19:00之间，结束后直接返程。",
-              "place_name": "无锡融创文旅城",
-              "_coords": {
-                "lat": 31.449407,
-                "lng": 120.273835
-              }
-            },
-            {
-              "step_index": 8,
-              "type": "transit",
-              "text": "自驾返回苏州工业园区",
-              "start_time": "18:20",
-              "end_time": "19:25",
-              "description": "参考无锡融创文旅城给定交通：自驾64.7公里，约1小时5分钟。",
-              "place_name": "无锡融创文旅城",
-              "_coords": {
-                "lat": 31.449407,
-                "lng": 120.273835
-              }
-            },
-            {
-              "step_index": 9,
-              "type": "home",
-              "text": "到家",
-              "start_time": "19:25",
-              "end_time": "19:25",
-              "description": "完成中途跨城清凉线。",
-              "place_name": null
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "上海自然博物馆远途室内线",
-      "location": "苏州工业园区",
-      "tag": "周日",
-      "valid_date": "2026-07-26",
-      "reason": "选择约84公里的上海自然博物馆作为远途室内目的地，上午跨城直达，午前完成核心参观并返回苏州午餐，下午接续近距离美术馆，避免午后户外暴晒。",
-      "weather": {
-        "desc": "阴",
-        "high": 36,
-        "low": 28
-      },
-      "days": [
-        {
-          "day_index": 0,
-          "activity": "上海自然博物馆跨城一日游",
-          "weather": {
-            "desc": "阴",
-            "high": 36,
-            "low": 28
-          },
-          "steps": [
-            {
-              "step_index": 0,
-              "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "07:40",
-              "end_time": "07:40",
-              "description": "远途方案建议早出发，避开上午后段车流和高温。",
-              "place_name": null
-            },
-            {
-              "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往上海自然博物馆",
-              "start_time": "07:40",
-              "end_time": "08:58",
-              "description": "使用给定交通：自驾83.7公里，约1小时18分钟。",
-              "place_name": "上海自然博物馆",
-              "_coords": {
-                "lat": 31.235021,
-                "lng": 121.462672
-              }
-            },
-            {
-              "step_index": 2,
-              "type": "play",
-              "text": "参观上海自然博物馆",
-              "start_time": "09:00",
-              "end_time": "11:00",
-              "description": "上海自然博物馆评分4.8，展陈丰富且以室内为主，适合高温天远途参观。",
-              "place_name": "上海自然博物馆",
-              "_coords": {
-                "lat": 31.235021,
-                "lng": 121.462672
-              }
-            },
-            {
-              "step_index": 3,
-              "type": "transit",
-              "text": "自驾返回苏州园区午餐",
-              "start_time": "11:00",
-              "end_time": "12:18",
-              "description": "按去程约1小时18分钟安排返程，保证午餐在规定时间内开始。",
-              "place_name": "爱莲说艺术餐厅",
-              "_coords": {
-                "lat": 31.299859,
-                "lng": 120.698776
-              }
-            },
-            {
-              "step_index": 4,
-              "type": "eat",
-              "text": "午餐：爱莲说艺术餐厅",
-              "start_time": "12:20",
-              "end_time": "13:00",
-              "description": "午餐安排在11:30-13:00之间，靠近虹·美术馆。",
-              "place_name": "爱莲说艺术餐厅",
-              "_coords": {
-                "lat": 31.299859,
-                "lng": 120.698776
-              }
-            },
-            {
-              "step_index": 5,
-              "type": "play",
-              "text": "参观虹·美术馆",
-              "start_time": "13:15",
-              "end_time": "14:30",
-              "description": "午后继续室内观展，减少户外停留。",
+              "text": "虹·美术馆慢逛",
+              "start_time": "10:10",
+              "end_time": "11:20",
+              "description": "上午先看展，强度低，适合拍照和慢节奏观展。",
               "place_name": "虹·美术馆",
               "_coords": {
                 "lat": 31.299819,
@@ -524,25 +377,51 @@
               }
             },
             {
-              "step_index": 6,
-              "type": "play",
-              "text": "参观南石玉雕艺术馆",
-              "start_time": "14:45",
-              "end_time": "16:00",
-              "description": "顺路衔接玉雕艺术馆，主题从自然科普延展到工艺美术。",
-              "place_name": "南石玉雕艺术馆",
+              "step_index": 2,
+              "type": "eat",
+              "text": "午餐：艺术餐厅",
+              "start_time": "11:30",
+              "end_time": "12:45",
+              "description": "午餐严格安排在11:30-13:00，爱莲说艺术餐厅靠近虹·美术馆和明·美术馆，顺路不折返。",
+              "place_name": "爱莲说艺术餐厅",
               "_coords": {
-                "lat": 31.300549,
-                "lng": 120.698368
+                "lat": 31.299859,
+                "lng": 120.698776
               }
             },
             {
-              "step_index": 7,
+              "step_index": 3,
+              "type": "play",
+              "text": "明·美术馆观展",
+              "start_time": "13:00",
+              "end_time": "14:20",
+              "description": "13点后气温高，转入明·美术馆室内继续看展，避免午后户外暴晒。",
+              "place_name": "明·美术馆",
+              "_coords": {
+                "lat": 31.299573,
+                "lng": 120.698278
+              }
+            },
+            {
+              "step_index": 4,
+              "type": "stay",
+              "text": "VONE·璞悦荟休息聊天",
+              "start_time": "14:30",
+              "end_time": "16:30",
+              "description": "下午不安排正餐，只作为室内休息、喝水、聊天和拍照的轻休闲时间。",
+              "place_name": "VONE·璞悦荟",
+              "_coords": {
+                "lat": 31.299951,
+                "lng": 120.698496
+              }
+            },
+            {
+              "step_index": 5,
               "type": "eat",
-              "text": "晚餐：VONE·璞悦荟",
+              "text": "晚餐",
               "start_time": "17:30",
               "end_time": "18:30",
-              "description": "晚餐安排在17:30-19:00之间，靠近南石玉雕艺术馆与明·美术馆。",
+              "description": "晚餐安排在17:30-19:00，适合不想换区域的轻松收尾。",
               "place_name": "VONE·璞悦荟",
               "_coords": {
                 "lat": 31.299951,
@@ -550,12 +429,12 @@
               }
             },
             {
-              "step_index": 8,
+              "step_index": 6,
               "type": "home",
               "text": "返回苏州工业园区",
-              "start_time": "18:30",
-              "end_time": "18:50",
-              "description": "远途加近郊组合结束。",
+              "start_time": "18:35",
+              "end_time": "18:43",
+              "description": "参考虹·美术馆、明·美术馆至出发地自驾约8分钟，近距离轻松回家。",
               "place_name": null
             }
           ]
@@ -563,11 +442,11 @@
       ]
     },
     {
-      "title": "拈花湾傍晚禅意远郊线",
+      "title": "上海自然博物馆远途科普一日",
       "location": "苏州工业园区",
       "tag": "周日",
       "valid_date": "2026-07-26",
-      "reason": "拈花湾约93公里，户外体验较多，因此不安排正午前往；上午与午后先在园区室内馆避暑，下午后段出发，傍晚游览更适配36℃阴天。",
+      "reason": "中远途室内科普方案。上海自然博物馆评分高，适合亲子、科普爱好者和想离开苏州换个城市氛围的人。当天最高36℃，核心参观时间放在空调室内，早去早回，避免下午长时间户外排队。",
       "weather": {
         "desc": "阴",
         "high": 36,
@@ -576,7 +455,7 @@
       "days": [
         {
           "day_index": 0,
-          "activity": "上午室内避暑，傍晚拈花湾",
+          "activity": "上海自然历史与生命科学展览",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -586,149 +465,67 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "09:00",
-              "end_time": "09:00",
-              "description": "上午先游览近处室内展馆，避免正午赶远路。",
+              "text": "从苏州工业园区自驾前往上海自然博物馆",
+              "start_time": "06:50",
+              "end_time": "08:05",
+              "description": "使用给定交通：自驾83.7km，约1小时15分钟；公交约3小时54分钟，单日往返更建议自驾。",
               "place_name": null
             },
             {
               "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往明·美术馆",
-              "start_time": "09:00",
-              "end_time": "09:09",
-              "description": "使用给定交通：自驾3.4公里，约9分钟。",
-              "place_name": "明·美术馆",
+              "type": "stay",
+              "text": "抵达后整理、等候入馆",
+              "start_time": "08:05",
+              "end_time": "09:00",
+              "description": "预留停车、安检和入馆缓冲，避免因为远途路况影响参观节奏。",
+              "place_name": "上海自然博物馆",
               "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
+                "lat": 31.235021,
+                "lng": 121.462672
               }
             },
             {
               "step_index": 2,
               "type": "play",
-              "text": "参观明·美术馆",
-              "start_time": "09:10",
-              "end_time": "10:15",
-              "description": "室内观展，作为当天轻松开场。",
-              "place_name": "明·美术馆",
+              "text": "上午参观上海自然博物馆",
+              "start_time": "09:00",
+              "end_time": "11:25",
+              "description": "先看重点展区，上午精力好，适合系统参观自然、生命、地球相关展陈。",
+              "place_name": "上海自然博物馆",
               "_coords": {
-                "lat": 31.299573,
-                "lng": 120.698278
+                "lat": 31.235021,
+                "lng": 121.462672
               }
             },
             {
               "step_index": 3,
-              "type": "play",
-              "text": "参观南石玉雕艺术馆",
-              "start_time": "10:30",
-              "end_time": "11:20",
-              "description": "顺路前往玉雕艺术馆，继续安排在室内空间。",
-              "place_name": "南石玉雕艺术馆",
-              "_coords": {
-                "lat": 31.300549,
-                "lng": 120.698368
-              }
-            },
-            {
-              "step_index": 4,
               "type": "eat",
-              "text": "午餐：VONE·璞悦荟",
+              "text": "午餐",
               "start_time": "11:30",
               "end_time": "12:30",
-              "description": "午餐严格安排在11:30-13:00之间，餐后留出休整时间再远行。",
-              "place_name": "VONE·璞悦荟",
+              "description": "午餐安排在11:30-13:00，就近用餐，减少中午36℃下的户外移动。",
+              "place_name": null
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "下午继续室内科普参观",
+              "start_time": "12:40",
+              "end_time": "15:20",
+              "description": "午后最热时段仍在馆内，适合看临展、互动装置和补充未看展区。",
+              "place_name": "上海自然博物馆",
               "_coords": {
-                "lat": 31.299951,
-                "lng": 120.698496
+                "lat": 31.235021,
+                "lng": 121.462672
               }
             },
             {
               "step_index": 5,
-              "type": "play",
-              "text": "参观苏州卓美民俗博物馆",
-              "start_time": "13:00",
-              "end_time": "14:15",
-              "description": "午后最热时段继续室内参观，不急于进入户外景区。",
-              "place_name": "苏州卓美民俗博物馆",
-              "_coords": {
-                "lat": 31.303427,
-                "lng": 120.738199
-              }
-            },
-            {
-              "step_index": 6,
-              "type": "transit",
-              "text": "自驾前往拈花湾·禅意小镇",
-              "start_time": "15:00",
-              "end_time": "16:30",
-              "description": "使用给定交通：自驾92.6公里，约1小时30分钟。",
-              "place_name": "拈花湾·禅意小镇",
-              "_coords": {
-                "lat": 31.42004,
-                "lng": 120.076954
-              }
-            },
-            {
-              "step_index": 7,
-              "type": "play",
-              "text": "傍晚游览拈花湾·禅意小镇",
-              "start_time": "16:30",
-              "end_time": "17:30",
-              "description": "将户外小镇游览放在傍晚，避开午后强热时段。",
-              "place_name": "拈花湾·禅意小镇",
-              "_coords": {
-                "lat": 31.42004,
-                "lng": 120.076954
-              }
-            },
-            {
-              "step_index": 8,
-              "type": "eat",
-              "text": "晚餐：拈花湾·禅意小镇内用餐",
-              "start_time": "17:30",
-              "end_time": "18:20",
-              "description": "晚餐安排在17:30-19:00之间，餐后可继续欣赏傍晚氛围。",
-              "place_name": "拈花湾·禅意小镇",
-              "_coords": {
-                "lat": 31.42004,
-                "lng": 120.076954
-              }
-            },
-            {
-              "step_index": 9,
-              "type": "play",
-              "text": "拈花湾夜色漫步",
-              "start_time": "18:20",
-              "end_time": "19:40",
-              "description": "晚间温度相对下降，适合慢行拍照，但仍需注意补水。",
-              "place_name": "拈花湾·禅意小镇",
-              "_coords": {
-                "lat": 31.42004,
-                "lng": 120.076954
-              }
-            },
-            {
-              "step_index": 10,
-              "type": "transit",
-              "text": "自驾返回苏州工业园区",
-              "start_time": "19:40",
-              "end_time": "21:10",
-              "description": "按给定自驾时间约1小时30分钟返程。",
-              "place_name": "拈花湾·禅意小镇",
-              "_coords": {
-                "lat": 31.42004,
-                "lng": 120.076954
-              }
-            },
-            {
-              "step_index": 11,
               "type": "home",
-              "text": "到家",
-              "start_time": "21:10",
-              "end_time": "21:10",
-              "description": "完成远郊傍晚户外线。",
+              "text": "自驾返回苏州工业园区",
+              "start_time": "15:30",
+              "end_time": "16:45",
+              "description": "按给定自驾约1小时15分钟返回，避开太晚返程的疲劳。",
               "place_name": null
             }
           ]
@@ -736,11 +533,11 @@
       ]
     },
     {
-      "title": "上海海昌海洋公园超远途夜场线",
+      "title": "上海博物馆东馆：一日看重磅文博展",
       "location": "苏州工业园区",
       "tag": "周日",
       "valid_date": "2026-07-26",
-      "reason": "上海海昌海洋公园约160公里，属于远途代表方案；为适配36℃高温，上午不安排户外排队，先在苏州用午餐，下午抵达后优先室内馆与傍晚项目，晚餐安排在景区度假酒店。",
+      "reason": "远途文化室内类方案。上海博物馆(东馆)评分高，适合喜欢历史、器物、艺术史的人。苏州工业园区出发自驾约1小时42分钟，午后36℃时全程在室内展馆，路线单点深度游，不在上海市区来回折返。",
       "weather": {
         "desc": "阴",
         "high": 36,
@@ -749,7 +546,7 @@
       "days": [
         {
           "day_index": 0,
-          "activity": "午后出发，傍晚海昌",
+          "activity": "上海博物馆东馆深度参观",
           "weather": {
             "desc": "阴",
             "high": 36,
@@ -759,45 +556,132 @@
             {
               "step_index": 0,
               "type": "depart",
-              "text": "从苏州工业园区出发",
-              "start_time": "10:40",
-              "end_time": "10:40",
-              "description": "超远途不建议在高温上午长时间排队，先在本地完成午餐再出发。",
+              "text": "从苏州工业园区自驾前往上海博物馆(东馆)",
+              "start_time": "07:10",
+              "end_time": "08:52",
+              "description": "使用给定交通：自驾93.6km，约1小时42分钟；公交约3小时31分钟。",
               "place_name": null
             },
             {
               "step_index": 1,
-              "type": "transit",
-              "text": "自驾前往德發財·潮粥茶餐厅",
-              "start_time": "10:40",
-              "end_time": "10:50",
-              "description": "餐厅靠近冰令营冷饮批发(联丰广场店)，从园区近距离抵达。",
-              "place_name": "德發財·潮粥茶餐厅(联丰广场店)",
+              "type": "stay",
+              "text": "抵达后入馆准备",
+              "start_time": "08:52",
+              "end_time": "09:10",
+              "description": "预留停车、安检、取票或预约核验时间。",
+              "place_name": "上海博物馆(东馆)",
               "_coords": {
-                "lat": 31.297375,
-                "lng": 120.737425
+                "lat": 31.219913,
+                "lng": 121.538745
+              }
+            },
+            {
+              "step_index": 2,
+              "type": "play",
+              "text": "上午参观上海博物馆(东馆)",
+              "start_time": "09:10",
+              "end_time": "11:25",
+              "description": "优先看重点展厅，上午精力更适合深度文博内容。",
+              "place_name": "上海博物馆(东馆)",
+              "_coords": {
+                "lat": 31.219913,
+                "lng": 121.538745
+              }
+            },
+            {
+              "step_index": 3,
+              "type": "eat",
+              "text": "午餐",
+              "start_time": "11:30",
+              "end_time": "12:30",
+              "description": "午餐安排在11:30-13:00，建议馆内或周边就近解决，减少高温下换乘和步行。",
+              "place_name": null
+            },
+            {
+              "step_index": 4,
+              "type": "play",
+              "text": "下午继续看展",
+              "start_time": "12:40",
+              "end_time": "15:30",
+              "description": "13-16点是高温时段，继续在馆内看展、休息、逛文创，不安排户外城市暴走。",
+              "place_name": "上海博物馆(东馆)",
+              "_coords": {
+                "lat": 31.219913,
+                "lng": 121.538745
+              }
+            },
+            {
+              "step_index": 5,
+              "type": "home",
+              "text": "返回苏州工业园区",
+              "start_time": "15:40",
+              "end_time": "17:22",
+              "description": "按给定自驾约1小时42分钟返回，晚餐可回到园区后再安排。",
+              "place_name": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "上海海昌海洋公园远途亲子冒险：早晚户外、午后室内",
+      "location": "苏州工业园区",
+      "tag": "周日",
+      "valid_date": "2026-07-26",
+      "reason": "户外冒险与亲子体验类方案。上海海昌海洋公园距离较远，自驾约2小时11分钟，适合愿意早起的一日远途。36℃高温下不把户外项目放在正午，而是上午先玩重点项目，11:30-16:00转入室内展馆和剧场，17点后再看户外氛围或演出。",
+      "weather": {
+        "desc": "阴",
+        "high": 36,
+        "low": 28
+      },
+      "days": [
+        {
+          "day_index": 0,
+          "activity": "海洋主题乐园与亲子冒险",
+          "weather": {
+            "desc": "阴",
+            "high": 36,
+            "low": 28
+          },
+          "steps": [
+            {
+              "step_index": 0,
+              "type": "depart",
+              "text": "从苏州工业园区自驾前往上海海昌海洋公园",
+              "start_time": "06:10",
+              "end_time": "08:21",
+              "description": "使用给定交通：自驾160.3km，约2小时11分钟；公交约4小时44分钟，单日往返更建议自驾。",
+              "place_name": null
+            },
+            {
+              "step_index": 1,
+              "type": "play",
+              "text": "上午先玩户外重点项目",
+              "start_time": "08:30",
+              "end_time": "11:20",
+              "description": "把户外排队和游玩放在上午，阴天但气温会逐渐升高，越早越舒服。",
+              "place_name": "上海海昌海洋公园",
+              "_coords": {
+                "lat": 30.912653,
+                "lng": 121.905695
               }
             },
             {
               "step_index": 2,
               "type": "eat",
-              "text": "午餐：德發財·潮粥茶餐厅",
+              "text": "午餐",
               "start_time": "11:30",
-              "end_time": "12:25",
-              "description": "午餐严格安排在11:30-13:00之间，吃完再进行长距离自驾。",
-              "place_name": "德發財·潮粥茶餐厅(联丰广场店)",
-              "_coords": {
-                "lat": 31.297375,
-                "lng": 120.737425
-              }
+              "end_time": "12:30",
+              "description": "午餐安排在11:30-13:00，补水休息，避开正午继续暴走。",
+              "place_name": null
             },
             {
               "step_index": 3,
-              "type": "transit",
-              "text": "自驾前往上海海昌海洋公园",
-              "start_time": "12:30",
-              "end_time": "14:41",
-              "description": "使用给定交通：自驾160.3公里，约2小时11分钟。",
+              "type": "play",
+              "text": "午后室内展馆和剧场",
+              "start_time": "12:40",
+              "end_time": "16:10",
+              "description": "12:40-16:10以室内海洋展馆、剧场和空调区域为主，适配36℃高温天气。",
               "place_name": "上海海昌海洋公园",
               "_coords": {
                 "lat": 30.912653,
@@ -807,10 +691,10 @@
             {
               "step_index": 4,
               "type": "play",
-              "text": "游览上海海昌海洋公园",
-              "start_time": "14:45",
-              "end_time": "17:20",
-              "description": "下午先选择室内展馆、海洋动物展示等相对阴凉项目，减少暴晒。",
+              "text": "17点后补户外氛围与拍照",
+              "start_time": "17:00",
+              "end_time": "17:25",
+              "description": "17点后光照减弱，再安排短时间户外活动，比午后暴晒舒适很多。",
               "place_name": "上海海昌海洋公园",
               "_coords": {
                 "lat": 30.912653,
@@ -820,49 +704,19 @@
             {
               "step_index": 5,
               "type": "eat",
-              "text": "晚餐：上海海昌海洋公园度假酒店",
+              "text": "晚餐",
               "start_time": "17:30",
-              "end_time": "18:20",
-              "description": "晚餐安排在17:30-19:00之间，就近用餐，避免来回折返。",
-              "place_name": "上海海昌海洋公园度假酒店",
-              "_coords": {
-                "lat": 30.914167,
-                "lng": 121.907011
-              }
+              "end_time": "18:30",
+              "description": "晚餐安排在17:30-19:00，吃完再返程，避免路上过饿和疲劳驾驶。",
+              "place_name": null
             },
             {
               "step_index": 6,
-              "type": "play",
-              "text": "返回上海海昌海洋公园看傍晚项目",
-              "start_time": "18:30",
-              "end_time": "19:20",
-              "description": "傍晚气温略降，适合补充户外演艺或夜间氛围项目。",
-              "place_name": "上海海昌海洋公园",
-              "_coords": {
-                "lat": 30.912653,
-                "lng": 121.905695
-              }
-            },
-            {
-              "step_index": 7,
-              "type": "transit",
-              "text": "自驾返回苏州工业园区",
-              "start_time": "19:20",
-              "end_time": "21:31",
-              "description": "按给定自驾时间约2小时11分钟返程。",
-              "place_name": "上海海昌海洋公园",
-              "_coords": {
-                "lat": 30.912653,
-                "lng": 121.905695
-              }
-            },
-            {
-              "step_index": 8,
               "type": "home",
-              "text": "到家",
-              "start_time": "21:31",
-              "end_time": "21:31",
-              "description": "完成超远途海洋主题方案。",
+              "text": "自驾返回苏州工业园区",
+              "start_time": "18:40",
+              "end_time": "20:51",
+              "description": "按给定自驾约2小时11分钟返回，远途方案建议至少两名成人轮流照看孩子或轮流驾驶。",
               "place_name": null
             }
           ]
@@ -871,10 +725,6 @@
     }
   ],
   "poiByName": {
-    "冰令营冷饮批发(联丰广场店)": {
-      "lat": 31.297543,
-      "lng": 120.734635
-    },
     "苏州卓美民俗博物馆": {
       "lat": 31.303427,
       "lng": 120.738199
@@ -890,6 +740,10 @@
     "南石玉雕艺术馆": {
       "lat": 31.300549,
       "lng": 120.698368
+    },
+    "粉画艺术博物馆": {
+      "lat": 31.299145,
+      "lng": 120.697706
     },
     "苏州海洋馆": {
       "lat": 31.217203,
@@ -911,37 +765,33 @@
       "lat": 31.235006,
       "lng": 121.462646
     },
+    "上海博物馆(东馆)": {
+      "lat": 31.219913,
+      "lng": 121.538745
+    },
+    "上海博物馆(人民广场馆)": {
+      "lat": 31.228231,
+      "lng": 121.47548
+    },
+    "上海博物馆东馆(公交站)": {
+      "lat": 31.21946,
+      "lng": 121.539847
+    },
+    "上海天文馆(上海科技馆分馆)": {
+      "lat": 30.9128,
+      "lng": 121.926924
+    },
+    "上海天文博物馆(暂停开放)": {
+      "lat": 31.094256,
+      "lng": 121.193605
+    },
+    "中国科学院上海天文台": {
+      "lat": 31.188408,
+      "lng": 121.433971
+    },
     "上海海昌海洋公园": {
       "lat": 30.912653,
       "lng": 121.905695
-    },
-    "上海海昌海洋公园度假酒店": {
-      "lat": 30.914167,
-      "lng": 121.907011
-    },
-    "无锡融创水世界(融创茂店)": {
-      "lat": 31.446765,
-      "lng": 120.269771
-    },
-    "无锡融创海世界(融创茂店)": {
-      "lat": 31.447745,
-      "lng": 120.270815
-    },
-    "无锡融创文旅城": {
-      "lat": 31.449407,
-      "lng": 120.273835
-    },
-    "拈花湾·禅意小镇": {
-      "lat": 31.42004,
-      "lng": 120.076954
-    },
-    "德發財·潮粥茶餐厅(联丰广场店)": {
-      "lat": 31.297375,
-      "lng": 120.737425
-    },
-    "韩庭院韩国料理(斜塘老街店)": {
-      "lat": 31.30321,
-      "lng": 120.736162
     },
     "广鉴阁·潮州菜餐厅": {
       "lat": 31.303437,
