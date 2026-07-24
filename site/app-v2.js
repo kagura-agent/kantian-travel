@@ -659,33 +659,47 @@ function renderDetailMap(plan) {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
     const pts = route.map(p => [p.lat, p.lng]);
 
-    // Layer groups (no route line, labels on click only)
-    const colors = { stay: '#5856D6', play: '#34C759', transit: '#BBBBC0' };
+    // Layer groups
+    const colors = { stay: '#5856D6', play: '#34C759' };
     const layers = {};
-    Object.entries(pointsByType).forEach(([type, points]) => {
+    // Stay and play as dot layers
+    ['stay', 'play'].forEach(type => {
       const group = L.layerGroup();
-      points.forEach(p => {
+      (pointsByType[type] || []).forEach(p => {
         const marker = L.circleMarker([p.lat, p.lng], { radius: 6, fillColor: colors[type], color: '#fff', weight: 2, fillOpacity: 1 })
           .bindTooltip(p.name, { permanent: false, direction: 'top', offset: [0, -8], className: 'map-label-sm' });
-        marker.on('click', () => {
-          marker.openTooltip();
-        });
+        marker.on('click', () => marker.openTooltip());
         marker.addTo(group);
       });
       layers[type] = group;
     });
 
-    // Default: show only stay
-    if (layers.stay) layers.stay.addTo(map);
+    // Transit as route line
+    const transitGroup = L.layerGroup();
+    const allCoords = route.map(p => `${p.lng},${p.lat}`).join(';');
+    fetch(`https://router.project-osrm.org/route/v1/driving/${allCoords}?overview=full&geometries=geojson`)
+      .then(r => r.json()).then(data => {
+        if (data.routes?.[0]) {
+          L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#BBBBC0', weight: 3, opacity: 0.7, dashArray: '6,4' }).addTo(transitGroup);
+        }
+      }).catch(() => {});
+    layers.transit = transitGroup;
 
-    map.fitBounds(pts, { padding: [35, 35] });
+    // Default: show stay + play
+    if (layers.stay) layers.stay.addTo(map);
+    if (layers.play) layers.play.addTo(map);
+
+    // Fit bounds to stay + play points only
+    const visiblePts = [...(pointsByType.stay || []), ...(pointsByType.play || [])].map(p => [p.lat, p.lng]);
+    if (visiblePts.length >= 2) map.fitBounds(visiblePts, { padding: [35, 35] });
+    else map.fitBounds(pts, { padding: [35, 35] });
 
     // Render toggle buttons
     const toggleDiv = document.getElementById('mapLayerToggles');
     if (toggleDiv) {
       const btns = [
         { key: 'stay', label: '🏨 住宿', active: true },
-        { key: 'play', label: '🎯 景点', active: false },
+        { key: 'play', label: '🎯 景点', active: true },
         { key: 'transit', label: '🚗 交通', active: false }
       ];
       toggleDiv.innerHTML = btns.map(b =>
