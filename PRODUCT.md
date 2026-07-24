@@ -111,109 +111,94 @@ generated/
 
 用户打开 app → 读取位置（苏州）→ 点 tag（明天）→ 拉对应 JSON → 展示。
 
-### 三层数据结构
+### 架构：动态发现 + 两次模型
 
-**① 目的地知识（完全静态，人工维护）**
+**核心转变：没有静态知识库。** 目的地不是提前维护的列表，而是根据用户位置+需求动态搜索发现的。
 
-地理事实，不因天气变化。
-
-```json
-{
-  "id": "moganshan",
-  "name": "莫干山",
-  "region": "湖州",
-  "from": { "苏州": { "duration": "2h", "mode": "自驾", "distance": "160km" } },
-  "pois": [
-    { "name": "裸心谷", "type": "stay", "lat": 30.63, "lng": 119.87, "priceRange": "800-1500" },
-    { "name": "竹海栈道", "type": "play", "lat": 30.64, "lng": 119.88 },
-    { "name": "山顶观景台", "type": "play", "lat": 30.65, "lng": 119.86 }
-  ]
-}
-```
-
-**② 玩法模板（半静态，关联条件）**
-
-"如果条件满足，可以这样玩"——一个目的地可以有多个玩法模板。
-
-```json
-{
-  "destinationId": "moganshan",
-  "activity": "云海日出",
-  "conditions": {
-    "weather": ["雨后初晴"],
-    "visibility": { "min": 10 },
-    "season": ["3-11月"]
-  },
-  "duration": "需前一晚住山上",
-  "tags": ["摄影", "早起"]
-}
-```
-
-**③ 实时数据源（完全动态，API 拉取）**
-
-```json
-{
-  "date": "2026-07-25",
-  "weather": { "莫干山": { "desc": "晴", "temp": 30, "rain": 0.02 } },
-  "phenology": { "moganshan": ["萤火虫活跃"] },
-  "events": { "moganshan": ["音乐节 7/25-7/27"] }
-}
-```
-
-### 生成流程
+**生成流程（两次调模型）：**
 
 ```
-每晚定时运行（按 城市 × tag 组合）：
-
-  Step 1: 规则筛选（快、省 token）
-  ─────────────────────────────────
-  - 暴雨天 → 干掉所有户外
-  - 冬天 → 干掉漂流
-  - 非花期 → 干掉赏花
-  - 距离/时长不匹配 tag → 排除
-  输出：候选玩法列表
-
-  Step 2: 大模型生成（灵活、有灵魂）
-  ─────────────────────────────────
-  输入：候选玩法 + 目的地知识 + 实时数据 + 用户约束(tag)
-  输出：完整方案数组
-  - 组合最佳玩法（多天方案可串多个目的地）
-  - 写出 reason（为什么此刻适合）
-  - 根据天气调整时间安排
-  - 生成自然的 tips
-  - 写吸引人的标题
-```
-
-### 输出层：生成结果
-
-每个 JSON 文件是一个方案数组，前端直接展示：
-
-```json
-[
+第一次调用（轻量，决定搜什么）：
+  输入：用户位置 + tag + 约束 + 当天天气概况
+  输出：搜索策略 JSON
   {
-    "id": "suzhou-20260725-001",
-    "title": "莫干山竹海晨徒步",
-    "generatedAt": "2026-07-24T23:00",
-    "validFor": "2026-07-25",
-    "reason": "明天晴天30°C，早晨山上凉爽适合徒步",
-    "weather": { "icon": "☀️", "temp": "30°C", "desc": "晴" },
-    "days": [{ "steps": [...] }]
-  },
-  {
-    "id": "suzhou-20260725-002",
-    "title": "皖南三日：莫干山→安吉→南浔",
-    "validFor": ["2026-07-25", "2026-07-27"],
-    "reason": "未来三天连晴，适合多日自驾",
-    "days": [{ "steps": [...] }, { "steps": [...] }, { "steps": [...] }]
+    "poi_types": ["公园", "湖泊", "徒步路线"],
+    "transport": "driving",
+    "radius_km": 100,
+    "exclude": ["室内", "需要预约"],
+    "time_preference": "早出晚归"
   }
-]
+  → 便宜（输入短、输出小 JSON）
+  → 同样约束的策略可缓存复用
+
+  执行搜索：
+  按策略调高德 API → 发现景点 + 计算路线 + 搜餐饮
+  拉天气（实时）
+  查质量层（用户反馈、积累数据）
+
+第二次调用（重量，生成方案）：
+  输入：搜索结果 + 天气 + 路线 + 质量数据 + 用户约束
+  输出：完整方案数组（3-5 个）
 ```
 
-关键字段：
-- `reason` — 告诉用户"为什么是此刻"，核心卖点
-- `validFor` — 方案有保质期，单日或区间
-- `id` 按城市+日期+序号 — 目的地是输出不是输入
-- 多天方案可以串多个目的地
+**为什么两次：**
+- 用户需求是自然语言（"带狗周末不想太累"），硬编码规则映射不完
+- 搜索策略由模型推导，任何奇怪的 tag 都能处理
+- 第一次输出可缓存（同样约束的搜索策略不会天天变）
+- 第二次才是重计算，但输入已经被第一次精确筛过
+
+### 数据层：缓存 + 积累
+
+没有静态知识库，只有缓存和积累：
+
+| 数据 | 来源 | 保质期 | 失效风险 |
+|------|------|--------|---------|
+| POI 基础信息 | 高德搜索 → 缓存 | 30天 | 低（偶尔关闭） |
+| 距离/车程 | 高德路线 → 缓存 | 7天 | 低（新修路） |
+| 照片 | Google Places → 下载 | 90天 | 中（需匹配季节） |
+| 天气 | 天气 API | 不缓存 | — |
+| 搜索策略 | 模型输出 → 缓存 | 长期 | 极低 |
+| 用户评价 | 用户反馈 → 积累 | 永久 | 极低 |
+
+**冷启动无质量数据也能跑**——模型自身训练数据里有旅游常识。质量层随使用逐步积累，让推荐越来越准。
+
+### 数据库表
+
+```sql
+-- POI（动态发现，缓存）
+pois (id, amap_id, name, type, lat, lng, discovered_at, last_verified_at)
+
+-- 路线缓存
+route_cache (from_location, to_poi_id, distance_km, duration_min, cached_at)
+
+-- 照片
+poi_photos (id, poi_id, url, source, season_tag, weather_tag, cached_at)
+
+-- 质量积累
+poi_quality (poi_id, condition_type, value, source, created_at)
+poi_ratings (poi_id, user_id, score, weather_when_visited, comment, created_at)
+
+-- 搜索策略缓存
+search_strategies (constraint_hash, strategy_json, created_at)
+
+-- 生成结果
+plans (id, location, tag, valid_date, generated_at, title, reason, weather_json)
+plan_days (id, plan_id, day_index, activity, weather_json)
+plan_steps (id, day_id, step_index, type, text, start_time, end_time, description, poi_id)
+```
+
+### 交通方式影响搜索范围
+
+搜索策略中的 `transport` 决定搜索方式：
+- **自驾** → 高德驾车路线，半径 ~150km
+- **高铁** → 搜索车站可达城市，半径 ~500km
+- **公交** → 高德公交路线，半径 ~30km
+- **步行/骑行** → 近距离，5-15km
+
+用户约束自动限定交通方式：
+- 「带狗」→ 只搜自驾（高铁不让带宠物）
+- 「不开车」→ 只搜公交/高铁
+- 「老人」→ 排除大量步行的方案
 
 ## 技术选型
 
@@ -221,41 +206,24 @@ generated/
 
 **为什么：**
 - 关系型核心 → plans/days/steps/pois 之间有明确关系
-- JSONB → 存 conditions 这种不固定结构，可建 GIN 索引
-- PostGIS → 算距离、“找半径100km内的目的地”
+- JSONB → 存 weather、strategy 这种不固定结构，可建 GIN 索引
+- PostGIS → 算距离、"找半径100km内的目的地"
 - 数组类型 → `tags text[]`，原生支持 `WHERE 'pet-friendly' = ANY(tags)`
 - 读多写少，成熟稳定，免费
 
-### 表结构
+### API 依赖
 
-```sql
--- 目的地基础信息
-destinations (id, name, region, lat, lng, description)
+| API | 用途 | 部署位置 |
+|-----|------|---------|
+| 高德 Web 服务 | POI 搜索 + 路线规划 + 天气 | 本地/服务器直连 |
+| Google Places Photos | 真实地点照片 | VM1（日本）代理 |
+| 大模型 | 搜索策略 + 方案生成 | 按需调用 |
 
--- 兴趣点（多行对1个目的地）
-pois (id, destination_id FK, name, type, lat, lng, price_range, tags text[])
-
--- 玩法模板（多行对1个目的地）
-activities (id, destination_id FK, name, description, duration, conditions JSONB, tags text[])
-
--- 生成结果
-plans (id, city, district, tag, valid_date, valid_end_date, generated_at, title, reason, weather JSONB)
-
--- 方案天数（多行对1个 plan）
-plan_days (id, plan_id FK, day_index, photo, activity, weather JSONB)
-
--- 方案步骤（多行对1个 day）
-plan_steps (id, day_id FK, step_index, type, text, start_time, end_time, description, poi_id FK)
-```
-
-关键设计：
-- `plan_steps.poi_id` 引用 pois 表 → 不重复存坐标，POI 修改全局生效
-- `conditions` 用 JSONB → 灵活且可索引
-- `valid_date` + `valid_end_date` → 单日方案 end 为 null，多日方案填区间
-
+## 设计原则
 
 1. **懒人优先** — 选择越少越好，打开就是答案
 2. **实时即信任** — 用户知道方案是基于当前条件生成的
 3. **没有废方案** — 不满足条件的不出现
 4. **保质期** — 方案会过期，强化"此刻"感
-5. **CDN 优先** — 预设 tag 纯静态分发，自定义才动态生成
+5. **动态发现** — 不维护静态列表，搜索即发现
+6. **越用越好** — 质量层随用户反馈积累
