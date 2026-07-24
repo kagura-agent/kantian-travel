@@ -197,7 +197,7 @@ function renderCards() {
           <span class="card-transit">${d.transitLabel}</span>
           <span class="card-price">${priceLabel}</span>
         </div>
-        ${getRoutePoints(plan).length >= 2 ? `<div class="card-timeline" id="timeline-${plan.id}"></div><div class="card-map" id="cardMap-${plan.id}"></div>` : ''}
+        ${getRoutePoints(plan).length >= 2 ? `<div class="card-timeline" id="timeline-${plan.id}"></div>` : ''}
       </div>
     `;
     card.addEventListener('click', (e) => { if (e.target.closest('.card-heart')) return; openDetail(plan); });
@@ -206,7 +206,6 @@ function renderCards() {
     cardList.appendChild(card);
   });
   lazyLoadImages();
-  initCardMaps(filtered);
   initTimelines(filtered);
 }
 
@@ -262,39 +261,6 @@ function initTimelines(plans) {
 function _timeToHours(t) { if (!t) return 8; const [h,m] = t.split(':').map(Number); return h + m/60; }
 
 // === Init Card Maps ===
-function initCardMaps(plans) {
-  plans.forEach(plan => {
-    const route = getRoutePoints(plan);
-    if (route.length < 2 || !window.L) return;
-    const mapEl = document.getElementById(`cardMap-${plan.id}`);
-    if (!mapEl) return;
-    setTimeout(() => {
-      try { const map = L.map(mapEl, {
-        zoomControl: false, attributionControl: false,
-        dragging: false, scrollWheelZoom: false, doubleClickZoom: false,
-        touchZoom: false, boxZoom: false, keyboard: false, tap: false
-      });
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-      const pts = route.map(p => [p.lat, p.lng]);
-      const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
-      fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
-        .then(r => r.json())
-        .then(data => {
-          if (data.routes?.[0]) {
-            const rc = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
-            L.polyline(rc, { color: '#FF6B4A', weight: 2.5, opacity: 0.8 }).addTo(map);
-          }
-        }).catch(() => {});
-      route.forEach((p, i) => {
-        L.circleMarker([p.lat, p.lng], {
-          radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1
-        }).addTo(map);
-      });
-
-      map.fitBounds(pts, { padding: [20, 20] }); } catch(e) { console.error("Card map error:", e); }
-    }, 200);
-  });
-}
 
 // === Lazy Load ===
 function lazyLoadImages() {
