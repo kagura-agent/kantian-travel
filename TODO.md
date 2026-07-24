@@ -343,12 +343,12 @@
 - [x] Track: Beads (gastownhall/beads) - 24,736⭐ (06-18→06-25: +0.6%). v1.1.0-rc.1 release prep. Proxied-server migration continues (query+context). CLI metrics added. No new architectural insight. Revisit 07-02
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
 - [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
-- [ ] Track: AgentSpace (HKUDS) - 690⭐ (07-17 followup, +14%). THRIVING 6/6. Persona-card export PR#15 (OpenAgent format), Antigravity provider. 11 ext PRs/30d. Revisit 07-24
+- [x] Track: AgentSpace (HKUDS) - 793⭐ (07-24 followup, +15%). THRIVING 6/6. santhreal fix PRs, contributing guide. Steady. Revisit 07-31
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
 - [x] Track: dirac (dirac-run) - 1,404⭐ (07-18 followup, +3.2%). v0.4.18: autonomous tool building (staged validation, atomic promotion, bounded repair). ACP Elicitation. Revisit 07-25
 - [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
 - [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
-- [ ] Track: ctx (ctxrs/ctx) - 885⭐ (07-17 followup, +303%). v0.25.0: hybrid semantic search + background daemon. 3 releases/5d. Active external contributors. Revisit 07-24
+- [x] Track: ctx (ctxrs/ctx) - 947⭐ (07-24 followup, +7%). v0.25.0 stable, pace declining. Only symbol stripping since. Revisit 07-31
 - [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
 - [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
@@ -361,7 +361,7 @@
 - [ ] Track: mentor (smixs/mentor) - 35⭐ (07-20, NEW). Session-insights skill for coding agents (SKILL.md format). Deterministic parsing of Claude Code + Codex transcripts → LLM-written HTML report. 8-dimension rubric. skills.sh distribution. Deep read done. Revisit 07-27
 - [ ] Track: shikigami (shikigami.dev) - closed-source (07-20, NEW). Desktop IDE for parallel coding agents with git worktree isolation. Claude Code + Codex. Solo dev beta. Revisit 08-03
 - [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
-- [ ] Track: bbarit-agent-oss (bbarit) - 31⭐ (07-17, NEW). Rust CLI coding agent, interop with Claude Code/Codex configs, process-level orchestration, 30+ personas. Deep read done. Revisit 07-24
+- [x] Track: bbarit-agent-oss (bbarit) - 41⭐ (07-24 followup, +32%). Active solo dev v0.1.21. TUI fix, Grok 4.5 multi-agent, @image. Still solo, 0 community. Revisit 08-07
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
 - [x] Track: vercel/eve - 3,085⭐ (07-03 followup, +19%). v0.19.0: cancellation propagation, gateway cost metadata, resilient attachment handling. Shipping daily. Revisit 07-10
