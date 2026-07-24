@@ -1,0 +1,435 @@
+[
+  {
+    "id": "suzhou-20260726-001",
+    "title": "莫干山避暑+西塘夜游 两日联线",
+    "generatedAt": "2026-07-25T23:00",
+    "validFor": [
+      "2026-07-26",
+      "2026-07-27"
+    ],
+    "reason": "周末两天都是晴天，莫干山山上比山下凉5-8度，适合避暑；西塘晴天夜景灯笼最亮，17点后免票入镇性价比高。两地串联路线顺畅，苏州→莫干山→西塘→苏州形成环线。",
+    "weather": {
+      "icon": "☀️",
+      "temp": "30-33°C",
+      "desc": "两日连晴，适合出行"
+    },
+    "days": [
+      {
+        "photo": "photo-placeholder",
+        "activity": "竹海徒步+民宿避暑",
+        "weather": {
+          "icon": "☀️",
+          "temp": "31°C"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "苏州出发",
+            "startTime": "07:00",
+            "endTime": "07:00",
+            "description": "早出发避开高温和车流",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          },
+          {
+            "type": "transit",
+            "text": "自驾前往莫干山",
+            "startTime": "07:00",
+            "endTime": "09:00",
+            "description": "苏州→S12→杭长高速→莫干山，约2小时",
+            "place": {
+              "name": "莫干山风景区",
+              "lat": 30.632,
+              "lng": 119.875
+            }
+          },
+          {
+            "type": "play",
+            "text": "竹海栈道晨间徒步",
+            "startTime": "09:00",
+            "endTime": "11:00",
+            "description": "趁上午凉爽走竹海栈道，竹林遮荫体感舒适",
+            "place": {
+              "name": "竹海栈道",
+              "lat": 30.638,
+              "lng": 119.88
+            }
+          },
+          {
+            "type": "eat",
+            "text": "土菜馆午餐",
+            "startTime": "11:30",
+            "endTime": "12:30",
+            "description": "笋干老鸭煲、土鸡等本地菜",
+            "place": {
+              "name": "山里人家土菜馆",
+              "lat": 30.628,
+              "lng": 119.876
+            }
+          },
+          {
+            "type": "play",
+            "text": "民宿午后避暑",
+            "startTime": "13:00",
+            "endTime": "16:00",
+            "description": "回民宿泳池纳凉，山上28°C，午后最热时段室内休息",
+            "place": {
+              "name": "裸心谷",
+              "lat": 30.625,
+              "lng": 119.872
+            }
+          },
+          {
+            "type": "play",
+            "text": "庾村文化市集",
+            "startTime": "16:30",
+            "endTime": "18:00",
+            "description": "傍晚凉快后逛文创市集，喝杯咖啡",
+            "place": {
+              "name": "庾村文化市集",
+              "lat": 30.613,
+              "lng": 119.862
+            }
+          },
+          {
+            "type": "stay",
+            "text": "莫干山民宿住一晚",
+            "startTime": "18:30",
+            "endTime": "22:00",
+            "description": "山间晚风，星空下的安静夜晚",
+            "place": {
+              "name": "裸心谷",
+              "lat": 30.625,
+              "lng": 119.872
+            }
+          }
+        ]
+      },
+      {
+        "photo": "photo-placeholder",
+        "activity": "西塘古镇夜场漫步",
+        "weather": {
+          "icon": "☀️",
+          "temp": "32°C"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "莫干山退房出发",
+            "startTime": "09:00",
+            "endTime": "09:00",
+            "description": "睡到自然醒，不赶早",
+            "place": {
+              "name": "裸心谷",
+              "lat": 30.625,
+              "lng": 119.872
+            }
+          },
+          {
+            "type": "transit",
+            "text": "自驾前往西塘",
+            "startTime": "09:00",
+            "endTime": "11:30",
+            "description": "莫干山→杭长高速→沪昆高速→西塘，约2.5小时",
+            "place": {
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
+            }
+          },
+          {
+            "type": "eat",
+            "text": "临河午餐",
+            "startTime": "11:30",
+            "endTime": "12:30",
+            "description": "临水餐厅吃本地菜，感受水乡氛围",
+            "place": {
+              "name": "明清食代",
+              "lat": 30.891,
+              "lng": 120.892
+            }
+          },
+          {
+            "type": "play",
+            "text": "午后室内游览",
+            "startTime": "13:00",
+            "endTime": "15:00",
+            "description": "西园园林+石皮弄窄巷，长廊有遮荫不晒",
+            "place": {
+              "name": "西园",
+              "lat": 30.894,
+              "lng": 120.895
+            }
+          },
+          {
+            "type": "play",
+            "text": "烟雨长廊看日落",
+            "startTime": "17:00",
+            "endTime": "18:30",
+            "description": "17点后免票入镇，金色夕阳洒在河面上",
+            "place": {
+              "name": "烟雨长廊",
+              "lat": 30.893,
+              "lng": 120.893
+            }
+          },
+          {
+            "type": "play",
+            "text": "夜景灯笼+古桥",
+            "startTime": "19:00",
+            "endTime": "20:30",
+            "description": "红灯笼亮起是西塘精华时刻，送子来凤桥夜景",
+            "place": {
+              "name": "送子来凤桥",
+              "lat": 30.893,
+              "lng": 120.894
+            }
+          },
+          {
+            "type": "home",
+            "text": "返回苏州",
+            "startTime": "20:30",
+            "endTime": "21:30",
+            "description": "西塘→苏州约1小时，夜间路况畅通",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suzhou-20260726-002",
+    "title": "莫干山一日避暑纳凉",
+    "generatedAt": "2026-07-25T23:00",
+    "validFor": "2026-07-26",
+    "reason": "周六晴天31°C，城里闷热山上凉爽，当天往返不用请假。早出晚归，把户外徒步放在上午凉爽时段，午后泡民宿泳池避暑。",
+    "weather": {
+      "icon": "☀️",
+      "temp": "31°C",
+      "desc": "晴，山上体感约25°C"
+    },
+    "days": [
+      {
+        "photo": "photo-placeholder",
+        "activity": "避暑纳凉一日游",
+        "weather": {
+          "icon": "☀️",
+          "temp": "31°C"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "苏州出发",
+            "startTime": "06:30",
+            "endTime": "06:30",
+            "description": "早起出发，避开暑热",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          },
+          {
+            "type": "transit",
+            "text": "自驾前往莫干山",
+            "startTime": "06:30",
+            "endTime": "08:30",
+            "description": "约2小时车程",
+            "place": {
+              "name": "莫干山风景区",
+              "lat": 30.632,
+              "lng": 119.875
+            }
+          },
+          {
+            "type": "play",
+            "text": "竹海栈道徒步",
+            "startTime": "08:30",
+            "endTime": "10:30",
+            "description": "晨间竹林洗肺，体感清凉",
+            "place": {
+              "name": "竹海栈道",
+              "lat": 30.638,
+              "lng": 119.88
+            }
+          },
+          {
+            "type": "play",
+            "text": "Discovery探索基地",
+            "startTime": "10:30",
+            "endTime": "12:00",
+            "description": "攀岩溜索，趁中午前玩完户外项目",
+            "place": {
+              "name": "Discovery探索极限基地",
+              "lat": 30.62,
+              "lng": 119.87
+            }
+          },
+          {
+            "type": "eat",
+            "text": "山里土菜午餐",
+            "startTime": "12:00",
+            "endTime": "13:00",
+            "description": "笋和土鸡是必点",
+            "place": {
+              "name": "山里人家土菜馆",
+              "lat": 30.628,
+              "lng": 119.876
+            }
+          },
+          {
+            "type": "play",
+            "text": "民宿泳池+下午茶",
+            "startTime": "13:30",
+            "endTime": "16:00",
+            "description": "午后最热时段在山间泳池纳凉，喝茶发呆",
+            "place": {
+              "name": "裸心谷",
+              "lat": 30.625,
+              "lng": 119.872
+            }
+          },
+          {
+            "type": "play",
+            "text": "庾村市集闲逛",
+            "startTime": "16:00",
+            "endTime": "17:30",
+            "description": "文创小店+精品咖啡",
+            "place": {
+              "name": "庾村文化市集",
+              "lat": 30.613,
+              "lng": 119.862
+            }
+          },
+          {
+            "type": "home",
+            "text": "返回苏州",
+            "startTime": "17:30",
+            "endTime": "19:30",
+            "description": "傍晚回程，避开暴晒",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "suzhou-20260727-003",
+    "title": "西塘古镇半日夜游",
+    "generatedAt": "2026-07-25T23:00",
+    "validFor": "2026-07-27",
+    "reason": "周日晴天32°C高温，西塘长廊全程遮荫，且17点后免门票。下午晚些出发避开暴晒，重点体验傍晚到入夜的古镇精华时段，1小时车程当天轻松往返。",
+    "weather": {
+      "icon": "☀️",
+      "temp": "32°C",
+      "desc": "晴，傍晚有河风"
+    },
+    "days": [
+      {
+        "photo": "photo-placeholder",
+        "activity": "古镇夜场漫步",
+        "weather": {
+          "icon": "☀️",
+          "temp": "32°C"
+        },
+        "steps": [
+          {
+            "type": "depart",
+            "text": "苏州出发",
+            "startTime": "15:30",
+            "endTime": "15:30",
+            "description": "下午出发避开正午暑热",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          },
+          {
+            "type": "transit",
+            "text": "自驾前往西塘",
+            "startTime": "15:30",
+            "endTime": "16:30",
+            "description": "约1小时车程",
+            "place": {
+              "name": "西塘古镇",
+              "lat": 30.893,
+              "lng": 120.893
+            }
+          },
+          {
+            "type": "play",
+            "text": "烟雨长廊漫步",
+            "startTime": "17:00",
+            "endTime": "18:00",
+            "description": "17点后免票入镇，长廊遮荫凉爽，看夕阳水面",
+            "place": {
+              "name": "烟雨长廊",
+              "lat": 30.893,
+              "lng": 120.893
+            }
+          },
+          {
+            "type": "play",
+            "text": "石皮弄+送子来凤桥",
+            "startTime": "18:00",
+            "endTime": "18:45",
+            "description": "窄巷打卡，古桥留影",
+            "place": {
+              "name": "石皮弄",
+              "lat": 30.892,
+              "lng": 120.891
+            }
+          },
+          {
+            "type": "eat",
+            "text": "临河晚餐",
+            "startTime": "18:45",
+            "endTime": "19:45",
+            "description": "河边位置看灯笼渐次亮起",
+            "place": {
+              "name": "明清食代",
+              "lat": 30.891,
+              "lng": 120.892
+            }
+          },
+          {
+            "type": "play",
+            "text": "夜景拍照+酒吧街",
+            "startTime": "20:00",
+            "endTime": "21:00",
+            "description": "红灯笼倒映水面，古镇夜景最佳时段",
+            "place": {
+              "name": "酒吧一条街",
+              "lat": 30.891,
+              "lng": 120.89
+            }
+          },
+          {
+            "type": "home",
+            "text": "返回苏州",
+            "startTime": "21:00",
+            "endTime": "22:00",
+            "description": "夜间回程路况好，1小时到家",
+            "place": {
+              "name": "苏州",
+              "lat": 31.299,
+              "lng": 120.585
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

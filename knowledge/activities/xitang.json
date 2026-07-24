@@ -1,0 +1,36 @@
+[
+  {
+    "destinationId": "xitang",
+    "activity": "古镇夜场漫步",
+    "description": "傍晚入镇，烟雨长廊看日落，夜景灯笼亮起后逛古镇最有味道",
+    "conditions": {
+      "weather": ["晴", "多云", "阴"],
+      "notRain": true
+    },
+    "duration": "半天-1天",
+    "tags": ["夜景", "拍照", "浪漫"]
+  },
+  {
+    "destinationId": "xitang",
+    "activity": "烟雨水乡",
+    "description": "小雨天的西塘最有江南味，撑伞走在长廊下",
+    "conditions": {
+      "weather": ["小雨", "阴转小雨"],
+      "notHeavyRain": true
+    },
+    "duration": "半天-1天",
+    "tags": ["雨天", "意境", "摄影"]
+  },
+  {
+    "destinationId": "xitang",
+    "activity": "周末住一晚深度游",
+    "description": "下午入住临水客栈，傍晚逛古镇，夜晚酒吧街，清晨无人时拍照",
+    "conditions": {
+      "weather": ["晴", "多云", "阴"],
+      "notRain": true,
+      "isWeekend": true
+    },
+    "duration": "2天1晚",
+    "tags": ["深度", "住一晚", "放松"]
+  }
+]
