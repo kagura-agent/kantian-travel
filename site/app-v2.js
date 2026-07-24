@@ -585,7 +585,7 @@ function openDetail(plan) {
         </div>
       </div>
       ${stepsHTML}
-      ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div></div>' : ''}
+      ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div><div id="dayMapLayerToggles" class="map-layer-toggles"></div></div>' : ''}
       ${buildPrepCard()}
     `;
   }
@@ -727,14 +727,75 @@ function renderDayMap(plan, dayIdx) {
   setTimeout(() => {
     const mapEl = document.getElementById('dayRouteMap');
     if (!mapEl) return;
-    try { const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-    route.forEach((p, i) => {
-      const marker = L.circleMarker([p.lat, p.lng], { radius: 6, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
-        .addTo(map).bindTooltip(p.name, { permanent: false, direction: 'top', offset: [0, -8], className: 'map-label-sm' });
-      marker.on('click', () => marker.openTooltip());
+    try {
+    // Categorize day points by step type
+    const pointsByType = { stay: [], play: [], transit: [] };
+    const seen = new Set();
+    plan.days[dayIdx].steps.forEach(s => {
+      if (s.place?.lat && s.place?.lng) {
+        const key = `${s.place.lat},${s.place.lng}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          const cat = s.type === 'stay' ? 'stay' : (s.type === 'transit' || s.type === 'depart' || s.type === 'home') ? 'transit' : 'play';
+          pointsByType[cat].push(s.place);
+        }
+      }
     });
-    map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] }); } catch(e) { console.error("Day map error:", e); }
+
+    const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
+
+    const colors = { stay: '#5856D6', play: '#34C759' };
+    const layers = {};
+    ['stay', 'play'].forEach(type => {
+      const group = L.layerGroup();
+      (pointsByType[type] || []).forEach(p => {
+        const marker = L.circleMarker([p.lat, p.lng], { radius: 6, fillColor: colors[type], color: '#fff', weight: 2, fillOpacity: 1 })
+          .bindTooltip(p.name, { permanent: false, direction: 'top', offset: [0, -8], className: 'map-label-sm' });
+        marker.on('click', () => marker.openTooltip());
+        marker.addTo(group);
+      });
+      layers[type] = group;
+    });
+
+    // Transit as route line
+    const transitGroup = L.layerGroup();
+    const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
+    fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
+      .then(r => r.json()).then(data => {
+        if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#BBBBC0', weight: 3, opacity: 0.7, dashArray: '6,4' }).addTo(transitGroup);
+      }).catch(() => {});
+    layers.transit = transitGroup;
+
+    // Default: show stay + play
+    if (layers.stay) layers.stay.addTo(map);
+    if (layers.play) layers.play.addTo(map);
+
+    const visiblePts = [...(pointsByType.stay || []), ...(pointsByType.play || [])].map(p => [p.lat, p.lng]);
+    if (visiblePts.length >= 2) map.fitBounds(visiblePts, { padding: [40, 40] });
+    else map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] });
+
+    // Toggle buttons
+    const toggleDiv = document.getElementById('dayMapLayerToggles');
+    if (toggleDiv) {
+      const btns = [
+        { key: 'stay', label: '<span class="layer-dot" style="background:#5856D6"></span>住宿', active: true },
+        { key: 'play', label: '<span class="layer-dot" style="background:#34C759"></span>景点', active: true },
+        { key: 'transit', label: '<span class="layer-dot" style="background:#BBBBC0"></span>交通', active: false }
+      ];
+      toggleDiv.innerHTML = btns.map(b =>
+        `<button class="map-layer-btn ${b.active ? 'active' : ''}" data-layer="${b.key}">${b.label}</button>`
+      ).join('');
+      toggleDiv.querySelectorAll('.map-layer-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.layer;
+          btn.classList.toggle('active');
+          if (btn.classList.contains('active')) layers[key]?.addTo(map);
+          else layers[key] && map.removeLayer(layers[key]);
+        });
+      });
+    }
+    } catch(e) { console.error("Day map error:", e); }
   }, 300);
 }
 
