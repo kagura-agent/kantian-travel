@@ -1,6 +1,6 @@
 // === State ===
 let savedIds = new Set();
-let currentFilter = 'tomorrow';
+let currentFilter = 'now';
 
 // === Helpers: derive card fields from steps ===
 function derivePlan(plan) {
@@ -137,11 +137,7 @@ const timeTabs = document.getElementById('timeTabs');
 const filterMap = {
   'now': ['now'],
   'tomorrow': ['tomorrow'],
-  'weekend': ['weekend'],
-  'next-weekend': ['weekend'],
-  '3day': ['3day'],
-  '5day': ['5day'],
-  'week': ['week']
+  'weekend': ['weekend']
 };
 
 // === Image URL ===
@@ -949,8 +945,7 @@ document.getElementById('cityOptions').addEventListener('click', (e) => {
 
 // Tag toggle — rebuild tab bar from all enabled tags
 const TAG_LABELS = {
-  now: '现在', tomorrow: '明天', weekend: '这周末', 'next-weekend': '下周末',
-  '3day': '请3天假', '5day': '小长假5天', week: '找7天连晴'
+  now: '今天', tomorrow: '明天', weekend: '周末2天'
 };
 
 function rebuildTabs() {
