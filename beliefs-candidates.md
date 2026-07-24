@@ -952,3 +952,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-24: [gradient] "When openclaw issue references bundled JS file line numbers, verify if the fix already exists on upstream/main HEAD before investing study time — release versions lag main by days/weeks" → [行为改变] First step of study: grep upstream/main for the exact code pattern the issue describes. If already fixed, skip immediately.. (pattern: verify-fix-on-head-before-study, 第1次) (Source: workloop)
   - **Trigger**: Issue filed against released version referencing specific code locations
+
+- 2026-07-24: [gradient] "study-saturation-gate.sh marks apply as 'open' based only on count (0/3) without checking if unapplied.md has actual content. Result: 2 consecutive days of apply rounds that correctly decline but waste a cron slot." → [行为改变] gate script should check unapplied.md unchecked count when apply is the sole available mode; if 0 unchecked items → mark as 'open (backlog empty)' and include in saturation calculation. (pattern: saturation-gate-apply-empty-backlog, 第1次) (Source: study)
+  - **Trigger**: apply is the only available mode but unapplied.md is fully checked off
