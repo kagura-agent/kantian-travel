@@ -800,8 +800,7 @@ shortlistBtn.addEventListener('click', openShortlist);
 shortlistClose.addEventListener('click', closeShortlist);
 
 // === Init ===
-rebuildTabs();
-renderCards();
+// (moved after TAG_LABELS/rebuildTabs definition below)
 
 // === Settings Panel ===
 const settingsOverlay = document.getElementById('settingsOverlay');
@@ -856,6 +855,10 @@ function rebuildTabs() {
 document.querySelectorAll('.tag-options').forEach(group => {
   group.addEventListener('change', rebuildTabs);
 });
+
+// === Init (deferred) ===
+rebuildTabs();
+renderCards();
 
 // === 跟着走 (Trip Instance) ===
 function createTrip(plan) {
