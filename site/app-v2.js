@@ -259,7 +259,7 @@ function initTimelines(plans) {
     html += '<div class="tl-legend">';
     html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h (${(playH/totalH*100).toFixed(0)}%)</span>`;
     html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h (${(travelH/totalH*100).toFixed(0)}%)</span>`;
-    if (freeH > 0) html += `<span><i style="background:#F0F0F0"></i>休息 ${freeH.toFixed(1)}h (${(freeH/totalH*100).toFixed(0)}%)</span>`;
+    if (freeH > 0) html += `<span><i style="background:#F0F0F0"></i>自由时间 ${freeH.toFixed(1)}h (${(freeH/totalH*100).toFixed(0)}%)</span>`;
     if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h (${(sleepH/totalH*100).toFixed(0)}%)</span>`;
     html += '</div>';
     el.innerHTML = html;
