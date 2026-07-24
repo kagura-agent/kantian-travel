@@ -412,7 +412,7 @@ function openDetail(plan) {
 
       ${buildOverviewTimeline()}
 
-      ${getRoutePoints(plan).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线地图</h4><div id="routeMap" class="route-map"></div></div>' : ''}
+      ${getRoutePoints(plan).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线地图</h4><div id="routeMap" class="route-map"></div><div id="mapLayerToggles" class="map-layer-toggles"></div></div>' : ''}
 
       <div class="detail-section">
         <h4 class="detail-section-title">行程概览</h4>
@@ -633,26 +633,81 @@ function openDetail(plan) {
   document.body.style.overflow = 'hidden';
 }
 
-// === Detail Map (Overview) ===
+// === Detail Map (Overview) with layer toggles ===
 function renderDetailMap(plan) {
   const route = getRoutePoints(plan);
   if (route.length < 2 || !window.L) return;
   setTimeout(() => {
     const mapEl = document.getElementById('routeMap');
     if (!mapEl) return;
-    try { const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
+    try {
+    // Categorize points by step type
+    const pointsByType = { stay: [], play: [], transit: [] };
+    const seen = new Set();
+    plan.days.forEach(d => d.steps.forEach(s => {
+      if (s.place?.lat && s.place?.lng) {
+        const key = `${s.place.lat},${s.place.lng}`;
+        if (!seen.has(key)) {
+          seen.add(key);
+          const cat = s.type === 'stay' ? 'stay' : (s.type === 'transit' || s.type === 'depart' || s.type === 'home') ? 'transit' : 'play';
+          pointsByType[cat].push(s.place);
+        }
+      }
+    }));
+
+    const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
     const pts = route.map(p => [p.lat, p.lng]);
+
+    // Route line
     const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
     fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
       .then(r => r.json()).then(data => {
         if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
       }).catch(() => {});
-    route.forEach((p, i) => {
-      L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
-        .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
+
+    // Layer groups
+    const colors = { stay: '#5856D6', play: '#34C759', transit: '#BBBBC0' };
+    const layers = {};
+    Object.entries(pointsByType).forEach(([type, points]) => {
+      const group = L.layerGroup();
+      points.forEach(p => {
+        L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: colors[type], color: '#fff', weight: 2, fillOpacity: 1 })
+          .bindTooltip(p.name, { permanent: true, direction: 'top', offset: [0, -8], className: 'map-label-sm' })
+          .addTo(group);
+      });
+      layers[type] = group;
     });
-    map.fitBounds(pts, { padding: [35, 35] }); } catch(e) { console.error("Detail map error:", e); }
+
+    // Default: show only stay
+    if (layers.stay) layers.stay.addTo(map);
+
+    map.fitBounds(pts, { padding: [35, 35] });
+
+    // Render toggle buttons
+    const toggleDiv = document.getElementById('mapLayerToggles');
+    if (toggleDiv) {
+      const btns = [
+        { key: 'stay', label: '🏨 住宿', active: true },
+        { key: 'play', label: '🎯 景点', active: false },
+        { key: 'transit', label: '🚗 交通', active: false }
+      ];
+      toggleDiv.innerHTML = btns.map(b =>
+        `<button class="map-layer-btn ${b.active ? 'active' : ''}" data-layer="${b.key}">${b.label}</button>`
+      ).join('');
+      toggleDiv.querySelectorAll('.map-layer-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.dataset.layer;
+          btn.classList.toggle('active');
+          if (btn.classList.contains('active')) {
+            layers[key]?.addTo(map);
+          } else {
+            layers[key] && map.removeLayer(layers[key]);
+          }
+        });
+      });
+    }
+    } catch(e) { console.error("Detail map error:", e); }
   }, 300);
 }
 
