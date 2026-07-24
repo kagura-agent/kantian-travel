@@ -192,6 +192,7 @@ function renderCards() {
         <div class="card-meta">
           <span class="card-transit">${d.transitLabel}</span>
           <span class="card-price">${priceLabel}</span>
+          <span class="card-time">🕔 ${plan.days[0].steps[0]?.startTime || ''}出发 → ${plan.days[plan.days.length-1].steps.slice(-1)[0]?.endTime || ''}到家</span>
         </div>
         ${getRoutePoints(plan).length >= 2 ? `<div class="card-timeline" id="timeline-${plan.id}"></div>` : ''}
       </div>
