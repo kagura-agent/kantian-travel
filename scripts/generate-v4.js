@@ -420,6 +420,30 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
     const plans = JSON.parse(output.slice(start, end));
     console.log(`   ✅ 生成 ${plans.length} 个方案`);
 
+    // === 校验 + 补坐标：模型编造的 poi_id 用高德搜 step.text 补坐标 ===
+    console.log('\n🔧 校验 poi_id...');
+    let verified = 0, fixed = 0, unfixable = 0;
+    for (const plan of plans) {
+      for (const day of plan.days || []) {
+        for (const step of day.steps || []) {
+          if (!step.poi_id || step.poi_id === 'null') continue;
+          if (poiLookup[step.poi_id]) { verified++; continue; }
+          // poi_id 不在 lookup 里，用 step.text 搜高德补坐标
+          try {
+            const results = await amap.searchPOI(step.text, { city: LOCATION.slice(0, 2) });
+            if (results[0]) {
+              poiLookup[step.poi_id] = { name: results[0].name, lat: results[0].location.lat, lng: results[0].location.lng };
+              step.poi_id = results[0].id;
+              poiLookup[results[0].id] = poiLookup[step.poi_id];
+              fixed++;
+            } else { unfixable++; }
+          } catch(e) { unfixable++; }
+          await new Promise(r => setTimeout(r, 400));
+        }
+      }
+    }
+    console.log(`   已知:${verified} 补救:${fixed} 无法修复:${unfixable}`);
+
     // Output
     const outputName = `${LOCATION}-${TAG}.json`;
     const outputPath = path.join(GENERATED_DIR, outputName);
