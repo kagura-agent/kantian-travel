@@ -513,6 +513,7 @@ function openDetail(plan) {
               ${step.description ? `<p class="step-desc">${step.description}</p>` : ''}
               <div class="step-actions">
                 ${navUrl ? `<a class="step-action-btn" href="${navUrl}" target="_blank">📍 导航到${step.place.name}</a>` : ''}
+                ${step.place?.name ? `<a class="step-action-btn" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(step.place.name)}" target="_blank">📕 小红书</a>` : ''}
                 ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? ' '+b.cost : ''}</span>`).join('')}
               </div>
               ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
@@ -1075,6 +1076,7 @@ function openTripView(tripId) {
                   ${step.description ? `<p class="step-desc">${step.description}</p>` : ""}
                   <div class="step-actions">
                     ${step.place?.name ? `<a class="step-action-btn" href="https://uri.amap.com/navigation?to=${encodeURIComponent(step.place.name)}&mode=car" target="_blank">📍 导航到${step.place.name}</a>` : ""}
+                    ${step.place?.name ? `<a class="step-action-btn" href="https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(step.place.name)}" target="_blank">📕 小红书</a>` : ""}
                     ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? " "+b.cost : ""}</span>`).join("")}
                   </div>
                   ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join("")}
