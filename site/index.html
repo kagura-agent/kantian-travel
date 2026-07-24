@@ -19,15 +19,7 @@
       <span class="loc-name">苏州</span>
     </div>
     <h1 class="app-name">看天出发</h1>
-    <nav class="time-tabs" id="timeTabs">
-      <button class="tab" data-filter="now">现在</button>
-      <button class="tab active" data-filter="tomorrow">明天</button>
-      <button class="tab" data-filter="weekend">这周末</button>
-      <button class="tab" data-filter="next-weekend">下周末</button>
-      <button class="tab" data-filter="3day">请3天假</button>
-      <button class="tab" data-filter="5day">小长假5天</button>
-      <button class="tab" data-filter="week">找7天连晴</button>
-    </nav>
+    <nav class="time-tabs" id="timeTabs"></nav>
     <button class="shortlist-btn" id="shortlistBtn">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
       <span class="badge" id="shortlistBadge">0</span>
@@ -83,8 +75,8 @@
         <p class="settings-hint">通常自动定位，也可以手动切换</p>
       </div>
       <div class="settings-section">
-        <h3 class="settings-label">🗓️ 显示时间标签</h3>
-        <div class="tag-options" id="tagOptions">
+        <h3 class="settings-label">🗓️ 时间</h3>
+        <div class="tag-options" data-group="time">
           <label class="tag-toggle"><input type="checkbox" data-tag="now" checked><span>现在</span></label>
           <label class="tag-toggle"><input type="checkbox" data-tag="tomorrow" checked><span>明天</span></label>
           <label class="tag-toggle"><input type="checkbox" data-tag="weekend" checked><span>这周末</span></label>
@@ -93,8 +85,38 @@
           <label class="tag-toggle"><input type="checkbox" data-tag="5day" checked><span>小长假5天</span></label>
           <label class="tag-toggle"><input type="checkbox" data-tag="week" checked><span>找7天连晴</span></label>
         </div>
-        <p class="settings-hint">关掉不需要的标签，只看你关心的时间段</p>
       </div>
+      <div class="settings-section">
+        <h3 class="settings-label">🏷️ 主题</h3>
+        <div class="tag-options" data-group="theme">
+          <label class="tag-toggle"><input type="checkbox" data-tag="camping" checked><span>露营</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="hiking" checked><span>徒步</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="family" checked><span>亲子</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="food" checked><span>美食</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="oldtown" checked><span>古镇</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="beach" checked><span>海边</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="hotspring" checked><span>泡温泉</span></label>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3 class="settings-label">📏 距离</h3>
+        <div class="tag-options" data-group="distance">
+          <label class="tag-toggle"><input type="checkbox" data-tag="1h" checked><span>1h内</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="2h" checked><span>2h内</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="halfday" checked><span>半日</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="fullday" checked><span>一日游</span></label>
+        </div>
+      </div>
+      <div class="settings-section">
+        <h3 class="settings-label">✨ 氛围</h3>
+        <div class="tag-options" data-group="vibe">
+          <label class="tag-toggle"><input type="checkbox" data-tag="quiet" checked><span>人少</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="niche" checked><span>小众</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="popular" checked><span>网红打卡</span></label>
+          <label class="tag-toggle"><input type="checkbox" data-tag="free" checked><span>免门票</span></label>
+        </div>
+      </div>
+      <p class="settings-hint">关掉不需要的标签，只看你关心的</p>
     </div>
   </div>
 </div>

@@ -134,6 +134,7 @@ const shortlistBody = document.getElementById('shortlistBody');
 const timeTabs = document.getElementById('timeTabs');
 
 // === Filter ===
+const TIME_FILTERS = ['now', 'tomorrow', 'weekend', 'next-weekend', '3day', '5day', 'week'];
 const filterMap = {
   'now': ['now'],
   'tomorrow': ['tomorrow'],
@@ -144,6 +145,16 @@ const filterMap = {
   'week': ['week']
 };
 
+function matchesFilter(plan, filter) {
+  // Time-based filters use category
+  if (TIME_FILTERS.includes(filter)) {
+    const categories = filterMap[filter];
+    return categories && categories.includes(plan.category);
+  }
+  // Tag-based filters match plan.tags array
+  return (plan.tags || []).includes(filter);
+}
+
 // === Image URL ===
 function imgUrl(id) {
   if (id.startsWith('http')) return id;
@@ -152,8 +163,7 @@ function imgUrl(id) {
 
 // === Render Cards ===
 function renderCards() {
-  const categories = filterMap[currentFilter];
-  const filtered = PLANS.filter(p => categories.includes(p.category));
+  const filtered = PLANS.filter(p => matchesFilter(p, currentFilter));
   cardList.innerHTML = '';
   if (filtered.length === 0) {
     cardList.innerHTML = '<div class="empty-state"><p>这个时间段暂无推荐</p><p class="empty-sub">换个时间看看？</p></div>';
@@ -790,6 +800,7 @@ shortlistBtn.addEventListener('click', openShortlist);
 shortlistClose.addEventListener('click', closeShortlist);
 
 // === Init ===
+rebuildTabs();
 renderCards();
 
 // === Settings Panel ===
@@ -818,12 +829,32 @@ document.getElementById('cityOptions').addEventListener('click', (e) => {
   document.querySelector('.loc-name').textContent = btn.dataset.city;
 });
 
-// Tag toggle
-document.getElementById('tagOptions').addEventListener('change', () => {
-  const checked = [...document.querySelectorAll('#tagOptions input:checked')].map(i => i.dataset.tag);
-  document.querySelectorAll('#timeTabs .tab').forEach(tab => {
-    tab.style.display = checked.includes(tab.dataset.filter) ? '' : 'none';
-  });
+// Tag toggle — rebuild tab bar from all enabled tags
+const TAG_LABELS = {
+  now: '现在', tomorrow: '明天', weekend: '这周末', 'next-weekend': '下周末',
+  '3day': '请3天假', '5day': '小长假5天', week: '找7天连晴',
+  camping: '露营', hiking: '徒步', family: '亲子', food: '美食',
+  oldtown: '古镇', beach: '海边', hotspring: '泡温泉',
+  '1h': '1h内', '2h': '2h内', halfday: '半日', fullday: '一日游',
+  quiet: '人少', niche: '小众', popular: '网红打卡', free: '免门票'
+};
+
+function rebuildTabs() {
+  const checked = [...document.querySelectorAll('.tag-options input:checked')].map(i => i.dataset.tag);
+  timeTabs.innerHTML = checked.map(tag =>
+    `<button class="tab ${tag === currentFilter ? 'active' : ''}" data-filter="${tag}">${TAG_LABELS[tag] || tag}</button>`
+  ).join('');
+  // If current filter was hidden, switch to first available
+  if (!checked.includes(currentFilter) && checked.length > 0) {
+    currentFilter = checked[0];
+    const first = timeTabs.querySelector('.tab');
+    if (first) first.classList.add('active');
+    renderCards();
+  }
+}
+
+document.querySelectorAll('.tag-options').forEach(group => {
+  group.addEventListener('change', rebuildTabs);
 });
 
 // === 跟着走 (Trip Instance) ===

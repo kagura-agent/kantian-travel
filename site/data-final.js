@@ -298,6 +298,11 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "2h",
+      "hiking",
+      "quiet"
     ]
   },
   {
@@ -563,6 +568,11 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "2h",
+      "food",
+      "oldtown"
     ]
   },
   {
@@ -774,6 +784,13 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "1h",
+      "family",
+      "hiking",
+      "niche",
+      "quiet"
     ]
   },
   {
@@ -980,6 +997,12 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "1h",
+      "hiking",
+      "niche",
+      "quiet"
     ]
   },
   {
@@ -1237,6 +1260,11 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "2h",
+      "oldtown",
+      "quiet"
     ]
   },
   {
@@ -1603,6 +1631,11 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "fullday",
+      "hiking",
+      "niche"
     ]
   },
   {
@@ -1892,6 +1925,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "hiking"
     ]
   },
   {
@@ -2390,6 +2426,11 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "beach",
+      "niche",
+      "quiet"
     ]
   },
   {
@@ -2804,6 +2845,12 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "2h",
+      "food",
+      "oldtown",
+      "quiet"
     ]
   },
   {
@@ -3433,6 +3480,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "niche"
     ]
   },
   {
@@ -3612,6 +3662,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "oldtown"
     ]
   },
   {
@@ -3778,6 +3831,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "hiking"
     ]
   },
   {
@@ -3972,6 +4028,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "hiking"
     ]
   },
   {
@@ -4461,6 +4520,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "niche"
     ]
   },
   {
@@ -4604,6 +4666,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "niche"
     ]
   },
   {
@@ -4678,6 +4743,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "hiking"
     ]
   },
   {
@@ -4784,6 +4852,9 @@ const PLANS = [
           }
         ]
       }
+    ],
+    "tags": [
+      "niche"
     ]
   }
 ];
