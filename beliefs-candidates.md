@@ -958,3 +958,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-24: [gradient] "OOM-constrained machine: inspector npm install and git fetch both killed. For repos with large dependency trees, consider using GitHub API to read/write files directly when local testing fails. The fix was trivially correct (uppercase chars in base36-safe assertion) so skipping tests was acceptable." → [行为改变] For trivially correct fixes (provably no behavior change), note the constraint in PR and proceed. For non-trivial fixes, use GitHub API workflows or schedule for low-memory-pressure time. (pattern: oom-constrained-repo-test-fallback, 第1次) (Source: workloop)
   - **Trigger**: npm install or git fetch gets SIGKILL on memory-constrained machine
+
+- 2026-07-24: [gradient] "Fresh-context review caught a real bug in --sentinel handling that I (and the plan reviewer) missed. The reviewer saw that return argv on -- discards already-parsed flags. This validates the fresh-context review step — it catches bugs that the builder is blind to." → [行为改变] Always run fresh-context review. Even simple code has assumptions the builder internalizes and stops questioning.. (pattern: fresh-context-review-value, 第1次) (Source: workloop)
+  - **Trigger**: When tempted to skip fresh-context review because code seems simple
