@@ -640,9 +640,9 @@ function openDetail(plan) {
   function renderDetailView(mode) {
     const isOverview = mode === 'overview';
     const showOverview = numDays > 1;
-    const viewTabsHTML = `
+    const viewTabsHTML = numDays > 1 ? `
       <div class="view-tabs-row">
-        ${showOverview ? `<button class="view-tab ${isOverview ? 'active' : ''}" data-mode="overview">全览</button>` : ''}
+        <button class="view-tab ${isOverview ? 'active' : ''}" data-mode="overview">全览</button>
         ${plan.days.map((day, i) => `
           <button class="view-tab ${mode === i ? 'active' : ''}" data-mode="${i}">
             <span class="vt-day">${dayDates[i]}</span>
@@ -650,7 +650,7 @@ function openDetail(plan) {
           </button>
         `).join('')}
       </div>
-    `;
+    ` : '';
     const contentHTML = isOverview ? buildOverviewHTML() : buildDayHTML(mode);
     detailBody.innerHTML = `
       <h2 class="detail-title">${plan.title}</h2>
