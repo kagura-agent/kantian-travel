@@ -211,22 +211,28 @@ function renderCards() {
 
 // === Timeline Gantt Bar (from steps) ===
 function initTimelines(plans) {
-  const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6' };
+  const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6', free: '#F0F0F0' };
   plans.forEach(plan => {
     const el = document.getElementById(`timeline-${plan.id}`);
     if (!el) return;
-    // Build timeline segments from steps
+    // Build timeline segments from steps, filling gaps
     const segs = [];
     let hourOffset = 0;
     plan.days.forEach((day, dayIdx) => {
+      let lastEnd = null;
       day.steps.forEach(step => {
         const start = hourOffset + _timeToHours(step.startTime);
         const end = hourOffset + _timeToHours(step.endTime || step.startTime);
+        // Fill gap with 'free' segment
+        if (lastEnd !== null && start > lastEnd + 0.1) {
+          segs.push({ type: 'free', label: '自由时间', start: lastEnd, end: start, cost: '' });
+        }
         let type = 'play';
         if (step.type === 'transit' || step.type === 'depart') type = 'travel';
         else if (step.type === 'stay') type = 'sleep';
-        const cost = step.bookings?.find(b => b.cost)?.cost || '';
-        segs.push({ type, label: step.text.substring(0, 20), start, end, cost });
+        segs.push({ type, label: step.text.substring(0, 20), start, end, cost: '' });
+        lastEnd = end;
+      });
       });
       if (dayIdx < plan.days.length - 1) {
         const lastStep = day.steps[day.steps.length - 1];
