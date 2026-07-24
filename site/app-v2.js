@@ -404,9 +404,9 @@ function openDetail(plan) {
       const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
       const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
       html += '<div class="tl-legend">';
-      html += `<span><i style="background:#34C759"></i>玩 ${playH.toFixed(1)}h (${(playH/totalH*100).toFixed(0)}%)</span>`;
-      html += `<span><i style="background:#BBBBC0"></i>路上 ${travelH.toFixed(1)}h (${(travelH/totalH*100).toFixed(0)}%)</span>`;
-      if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住 ${sleepH.toFixed(0)}h (${(sleepH/totalH*100).toFixed(0)}%)</span>`;
+      html += `<span><i style="background:#34C759"></i>玩${playH.toFixed(1)}h</span>`;
+      html += `<span><i style="background:#BBBBC0"></i>路${travelH.toFixed(1)}h</span>`;
+      if (sleepH > 0) html += `<span><i style="background:#5856D6"></i>住${sleepH.toFixed(0)}h</span>`;
       html += '</div></div>';
       return html;
     }
@@ -487,6 +487,41 @@ function openDetail(plan) {
   function buildDayHTML(dayIdx) {
     const day = plan.days[dayIdx];
     const steps = day.steps;
+
+    // Mini gantt for this day
+    function buildDayGantt() {
+      const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6', free: '#F0F0F0' };
+      const segs = [];
+      let lastEnd = null;
+      steps.forEach(step => {
+        const start = _timeToHours(step.startTime);
+        const end = _timeToHours(step.endTime || step.startTime);
+        if (lastEnd !== null && start > lastEnd + 0.1) {
+          segs.push({ type: 'free', start: lastEnd, end: start });
+        }
+        let type = 'play';
+        if (step.type === 'transit' || step.type === 'depart') type = 'travel';
+        else if (step.type === 'stay') type = 'sleep';
+        segs.push({ type, start, end });
+        lastEnd = end;
+      });
+      if (!segs.length) return '';
+      const base = segs[0].start;
+      segs.forEach(s => { s.start -= base; s.end -= base; });
+      const totalH = segs[segs.length - 1].end;
+      if (totalH <= 0) return '';
+      let html = '<div class="day-gantt"><div class="tl-bar">';
+      segs.forEach(seg => {
+        const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+        html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}"></div>`;
+      });
+      html += '</div>';
+      const depart = steps[0]?.startTime || '';
+      const home = steps[steps.length - 1]?.endTime || '';
+      html += `<div class="tl-times"><span>${depart}</span><span>${home}</span></div></div>`;
+      return html;
+    }
+
     // Compute durations for proportional timeline
     const durations = steps.map((s, i) => {
       if (i >= steps.length - 1) return 10;
@@ -594,6 +629,7 @@ function openDetail(plan) {
           <div class="hero-hourly">${buildHourlyChart(day)}</div>
         </div>
       </div>
+      ${buildDayGantt()}
       ${stepsHTML}
       ${getDayRoutePoints(plan, dayIdx).length >= 2 ? '<div class="detail-section"><h4 class="detail-section-title">路线</h4><div id="dayRouteMap" class="route-map"></div><div id="dayMapLayerToggles" class="map-layer-toggles"></div></div>' : ''}
       ${buildPrepCard()}
