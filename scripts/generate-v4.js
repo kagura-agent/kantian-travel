@@ -138,20 +138,95 @@ async function main() {
   console.log(`   搜索半径: ${tagConfig.radius / 1000}km, 最大车程: ${tagConfig.maxDrive}min`);
   console.log('');
 
-  // === Step 1: 动态发现景点 ===
-  console.log('🔍 Step 1: 搜索可达景点...');
-  const cacheKey = `${LOCATION}-${tagConfig.radius}`;
+  // === 提前拉天气（策略推导需要）===
+  console.log('🌡️ 查询天气...');
+  const adcodeMap = { '苏州': '320500', '上海': '310000', '杭州': '330100' };
+  const cityName = LOCATION.slice(0, 2);
+  const weather = await amap.getWeather(adcodeMap[cityName] || '320500');
+  weather.forecasts.forEach(f => console.log(`   ${f.date} 周${f.week}: ${f.dayWeather} ${f.dayTemp}°/${f.nightTemp}°`));
+
+  // === Step 0: 模型决定搜索策略 ===
+  console.log('🧠 Step 0: 模型推导搜索策略...');
+  const strategyCacheKey = `${LOCATION}-${TAG}-strategy`;
+  let strategy = cacheGet('strategies', strategyCacheKey);
+
+  if (!strategy) {
+    const strategyPrompt = `你是一个旅行搜索策略生成器。
+
+用户位置：${LOCATION}
+用户需求：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}，共${tagConfig.days}天）
+当前天气概况：${weather ? weather.forecasts.slice(0, 2).map(f => f.date + ' ' + f.dayWeather + ' ' + f.dayTemp + '°').join(', ') : '未知'}
+最大车程：${tagConfig.maxDrive}分钟
+
+请输出搜索策略 JSON，包含：
+1. nearby_types: 在用户附近30km搜什么类型的POI（数组）
+2. keyword_searches: 远距离应该搜哪些具体目的地/城市/景区（数组，每项含 keyword 和 city）
+3. transport: 推荐交通方式 (driving/transit)
+4. time_preference: 时间偏好 (早出晚归/下午出发/全天等)
+5. exclude: 排除什么类型
+
+只输出纯JSON，不要其他文字。示例：
+{"nearby_types":["公园","湖泊"],"keyword_searches":[{"keyword":"莫干山","city":"湖州"},{"keyword":"西塘古镇","city":"嘉兴"}],"transport":"driving","time_preference":"早出晚归","exclude":["室内游乐场"]}`;
+
+    try {
+      const strategyOutput = execSync(
+        `claude --print "${strategyPrompt.replace(/"/g, '\\"').replace(/\n/g, '\\n')}"`,
+        { encoding: 'utf8', maxBuffer: 512 * 1024, timeout: 30000 }
+      );
+      const sStart = strategyOutput.indexOf('{');
+      const sEnd = strategyOutput.lastIndexOf('}') + 1;
+      if (sStart !== -1 && sEnd > 0) {
+        strategy = JSON.parse(strategyOutput.slice(sStart, sEnd));
+        cacheSet('strategies', strategyCacheKey, strategy);
+        console.log(`   ✅ 策略: 近搜[${strategy.nearby_types?.join(',')}] 远搜${strategy.keyword_searches?.length || 0}个目的地`);
+      }
+    } catch (e) {
+      console.log(`   ⚠️ 策略生成失败，使用默认: ${e.message.slice(0, 50)}`);
+    }
+  } else {
+    console.log(`   命中缓存: 近搜[${strategy.nearby_types?.join(',')}] 远搜${strategy.keyword_searches?.length || 0}个目的地`);
+  }
+
+  // 默认策略
+  if (!strategy) {
+    strategy = {
+      nearby_types: ['风景名胜', '公园广场', '度假村'],
+      keyword_searches: [],
+      transport: 'driving',
+      time_preference: '早出晚归',
+      exclude: []
+    };
+  }
+
+  // === Step 1: 动态发现景点（基于策略）===
+  console.log('\n🔍 Step 1: 按策略搜索景点...');
+  const cacheKey = `${LOCATION}-r${tagConfig.radius}-${TAG}`;
   let discoveredPois = cacheGet('discovery', cacheKey);
 
   if (!discoveredPois) {
-    // 搜索多种类型的景点
-    const types = ['风景名胜', '公园广场', '度假村', '古镇'];
     const allResults = [];
-    for (const type of types) {
-      const results = await amap.searchNearby(userLocation, type, tagConfig.radius);
+    
+    // 近距离：用周边搜索
+    const nearbyTypes = strategy.nearby_types || ['风景名胜', '公园广场', '度假村'];
+    console.log(`   近程搜索: ${nearbyTypes.join(', ')}`);
+    for (const type of nearbyTypes) {
+      const results = await amap.searchNearby(userLocation, type, Math.min(tagConfig.radius, 50000));
       allResults.push(...results);
       await new Promise(r => setTimeout(r, 500));
     }
+    
+    // 远距离：用模型策略的关键词搜索
+    if (strategy.keyword_searches && strategy.keyword_searches.length > 0) {
+      console.log(`   远程搜索: ${strategy.keyword_searches.map(k => k.keyword).join(', ')}`);
+      for (const ks of strategy.keyword_searches) {
+        const results = await amap.searchPOI(ks.keyword, { city: ks.city, citylimit: true });
+        for (const r of results.slice(0, 3)) {
+          allResults.push({ ...r, distance: 999999, location: r.location });
+        }
+        await new Promise(r => setTimeout(r, 500));
+      }
+    }
+
     // 去重
     const seen = new Set();
     discoveredPois = allResults.filter(p => {
@@ -164,16 +239,23 @@ async function main() {
       distance: p.distance
     }));
     cacheSet('discovery', cacheKey, { pois: discoveredPois });
-    console.log(`   发现 ${discoveredPois.length} 个景点（已缓存）`);
+    console.log(`   发现 ${discoveredPois.length} 个景点（近${allResults.filter(r=>r.distance<=30000).length}/中${allResults.filter(r=>r.distance>30000&&r.distance<=80000).length}/远${allResults.filter(r=>r.distance>80000).length}）`);
   } else {
     discoveredPois = discoveredPois.pois;
     console.log(`   命中缓存: ${discoveredPois.length} 个景点`);
   }
 
-  // === Step 2: 计算路线（带缓存）===
+  // === Step 2: 计算路线（带缓存，远近各取）===
   console.log('\n🚗 Step 2: 计算路线...');
   const poisWithRoutes = [];
-  for (const poi of discoveredPois.slice(0, 20)) { // 取前20个计算路线
+  // 按距离分组，每组取几个
+  const sorted = [...discoveredPois].sort((a, b) => a.distance - b.distance);
+  const near = sorted.filter(p => p.distance <= 30000).slice(0, 8);
+  const mid = sorted.filter(p => p.distance > 30000 && p.distance <= 80000).slice(0, 8);
+  const far = sorted.filter(p => p.distance > 80000).slice(0, 8);
+  const toCalc = [...near, ...mid, ...far];
+  
+  for (const poi of toCalc) {
     const routeKey = `${LOCATION}-${poi.id}`;
     let route = cacheGet('routes', routeKey);
     if (!route) {
@@ -202,17 +284,8 @@ async function main() {
   }
   console.log(`   找到 ${restaurants.length} 家餐厅`);
 
-  // === Step 4: 天气（实时，不缓存）===
-  console.log('\n🌡️ Step 4: 查询天气...');
-  // 用用户所在城市的 adcode 查天气
-  const adcodeMap = { '苏州': '320500', '上海': '310000', '杭州': '330100' };
-  const cityName = LOCATION.slice(0, 2);
-  const weather = await amap.getWeather(adcodeMap[cityName] || '320500');
-  console.log(`   ${weather.city}:`);
-  weather.forecasts.forEach(f => console.log(`   ${f.date} 周${f.week}: ${f.dayWeather} ${f.dayTemp}°/${f.nightTemp}°`));
-
-  // === Step 5: 查质量层 ===
-  console.log('\n⭐ Step 5: 查询质量数据...');
+  // === Step 4: 查质量层 ===
+  console.log('\n⭐ Step 4: 查询质量数据...');
   let qualityNotes = '';
   for (const poi of poisWithRoutes) {
     const q = getQualityNotes(poi.id);

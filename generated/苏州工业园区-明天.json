@@ -1,0 +1,462 @@
+[
+  {
+    "title": "金鸡湖晨昏漫步",
+    "location": "苏州工业园区",
+    "tag": "明天",
+    "valid_date": "2026-07-25",
+    "reason": "周六多云37°高温，安排清晨湖边散步赏雕塑，午间餐厅避暑，傍晚栈桥纳凉，全程近距离景点减少暴晒",
+    "weather": {
+      "desc": "多云",
+      "high": 37,
+      "low": 27
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "晨游金鸡湖西岸+傍晚栈桥",
+        "weather": {
+          "desc": "多云",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "出发",
+            "start_time": "06:30",
+            "end_time": "06:34",
+            "description": "驱车前往黄蝶曼舞雕塑",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "黄蝶曼舞雕塑",
+            "start_time": "06:34",
+            "end_time": "07:15",
+            "description": "清晨湖边空气清新，欣赏雕塑与晨光",
+            "poi_id": "B0FFK7YXZJ"
+          },
+          {
+            "step_index": 2,
+            "type": "transit",
+            "text": "步行至丝路驼铃",
+            "start_time": "07:15",
+            "end_time": "07:25",
+            "description": "沿湖滨步道前行",
+            "poi_id": null
+          },
+          {
+            "step_index": 3,
+            "type": "play",
+            "text": "丝路驼铃雕塑",
+            "start_time": "07:25",
+            "end_time": "07:50",
+            "description": "晨间光线适合拍照",
+            "poi_id": "B0KUFCYVHD"
+          },
+          {
+            "step_index": 4,
+            "type": "transit",
+            "text": "前往李公堤",
+            "start_time": "07:50",
+            "end_time": "08:00",
+            "description": "短程驾车",
+            "poi_id": null
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "李公堤",
+            "start_time": "08:00",
+            "end_time": "09:00",
+            "description": "沿堤漫步，趁早间凉爽游览",
+            "poi_id": "B00190ZFQG"
+          },
+          {
+            "step_index": 6,
+            "type": "eat",
+            "text": "爱莲说艺术餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "13:00",
+            "description": "室内用餐避开正午高温",
+            "poi_id": "B0J06UKP64"
+          },
+          {
+            "step_index": 7,
+            "type": "transit",
+            "text": "前往金水湾栈桥",
+            "start_time": "17:30",
+            "end_time": "17:44",
+            "description": "傍晚气温下降后出发",
+            "poi_id": null
+          },
+          {
+            "step_index": 8,
+            "type": "play",
+            "text": "金水湾栈桥",
+            "start_time": "17:44",
+            "end_time": "18:45",
+            "description": "夕阳下湖面微风，栈桥观景纳凉",
+            "poi_id": "B0FFK1QYX3"
+          },
+          {
+            "step_index": 9,
+            "type": "eat",
+            "text": "苏州柏悦酒店·西洲轩晚餐",
+            "start_time": "18:50",
+            "end_time": "20:00",
+            "description": "栈桥附近精致晚餐",
+            "poi_id": "B0LDXZGIYZ"
+          },
+          {
+            "step_index": 10,
+            "type": "home",
+            "text": "返家",
+            "start_time": "20:00",
+            "end_time": "20:15",
+            "description": "驱车回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "桃花岛+摩天轮畔悠闲日",
+    "location": "苏州工业园区",
+    "tag": "明天",
+    "valid_date": "2026-07-25",
+    "reason": "桃花岛有树荫茶馆可避暑，搭配附近莱昂餐厅室内就餐，傍晚逍遥坡看日落，高温天以阴凉休闲为主",
+    "weather": {
+      "desc": "多云",
+      "high": 37,
+      "low": 27
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "桃花岛品茶+傍晚逍遥坡",
+        "weather": {
+          "desc": "多云",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "出发",
+            "start_time": "07:00",
+            "end_time": "07:14",
+            "description": "驱车前往文化水廊",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "金鸡湖文化水廊",
+            "start_time": "07:14",
+            "end_time": "08:00",
+            "description": "清晨水廊散步，廊下遮阳",
+            "poi_id": "B0FFK7NZ02"
+          },
+          {
+            "step_index": 2,
+            "type": "transit",
+            "text": "前往桃花岛",
+            "start_time": "08:00",
+            "end_time": "08:15",
+            "description": "沿湖前行",
+            "poi_id": null
+          },
+          {
+            "step_index": 3,
+            "type": "play",
+            "text": "金鸡湖桃花岛",
+            "start_time": "08:15",
+            "end_time": "10:30",
+            "description": "岛上树荫茶馆品茶休憩，避开烈日",
+            "poi_id": "B0FFF327SC"
+          },
+          {
+            "step_index": 4,
+            "type": "eat",
+            "text": "LÉON莱昂餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "13:00",
+            "description": "摩天轮旁法式餐厅，室内空调舒适",
+            "poi_id": "B0I2GCKFGH"
+          },
+          {
+            "step_index": 5,
+            "type": "transit",
+            "text": "前往逍遥坡",
+            "start_time": "17:30",
+            "end_time": "17:35",
+            "description": "短距离移动",
+            "poi_id": null
+          },
+          {
+            "step_index": 6,
+            "type": "play",
+            "text": "金鸡湖逍遥坡",
+            "start_time": "17:35",
+            "end_time": "18:45",
+            "description": "傍晚坡上赏湖景日落，气温回落",
+            "poi_id": "B0FFH44TNF"
+          },
+          {
+            "step_index": 7,
+            "type": "eat",
+            "text": "苏州洲际酒店·绣中餐厅晚餐",
+            "start_time": "19:00",
+            "end_time": "20:15",
+            "description": "逍遥坡附近中式精致晚餐",
+            "poi_id": "B020017D9Q"
+          },
+          {
+            "step_index": 8,
+            "type": "home",
+            "text": "返家",
+            "start_time": "20:15",
+            "end_time": "20:45",
+            "description": "驱车回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "湖东雕塑艺术之旅",
+    "location": "苏州工业园区",
+    "tag": "明天",
+    "valid_date": "2026-07-25",
+    "reason": "湖东片区集中多处雕塑和电影星光大道，清晨串联游览避暑，车程20分钟内可达，傍晚腾龙桥看落日",
+    "weather": {
+      "desc": "多云",
+      "high": 37,
+      "low": 27
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "湖东雕塑群+星光大道",
+        "weather": {
+          "desc": "多云",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "出发",
+            "start_time": "06:30",
+            "end_time": "06:50",
+            "description": "驱车前往陶醉雕塑",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "陶醉雕塑",
+            "start_time": "06:50",
+            "end_time": "07:20",
+            "description": "清晨湖畔雕塑打卡",
+            "poi_id": "B0FFKHDBSG"
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "憩雕塑",
+            "start_time": "07:25",
+            "end_time": "07:45",
+            "description": "步行可达的相邻雕塑",
+            "poi_id": "B0FFKHH3C5"
+          },
+          {
+            "step_index": 3,
+            "type": "play",
+            "text": "金鸡湖电影星光大道",
+            "start_time": "07:50",
+            "end_time": "08:30",
+            "description": "沿星光大道漫步拍照",
+            "poi_id": "B0K02UW3JW"
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "入戏雕塑(大相框)",
+            "start_time": "08:35",
+            "end_time": "09:00",
+            "description": "趣味打卡大相框",
+            "poi_id": "B0L6CSF0JV"
+          },
+          {
+            "step_index": 5,
+            "type": "eat",
+            "text": "鲨滩小海鲜午餐",
+            "start_time": "11:30",
+            "end_time": "13:00",
+            "description": "室内海鲜餐厅避暑",
+            "poi_id": "B0JATZNU7N"
+          },
+          {
+            "step_index": 6,
+            "type": "transit",
+            "text": "前往腾龙桥",
+            "start_time": "17:30",
+            "end_time": "17:40",
+            "description": "傍晚驱车前往",
+            "poi_id": null
+          },
+          {
+            "step_index": 7,
+            "type": "play",
+            "text": "腾龙桥",
+            "start_time": "17:40",
+            "end_time": "18:40",
+            "description": "桥上观湖景日落，有微风",
+            "poi_id": "B0FFHU5ENI"
+          },
+          {
+            "step_index": 8,
+            "type": "home",
+            "text": "返家",
+            "start_time": "18:40",
+            "end_time": "18:50",
+            "description": "驱车回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "码头微风轻松游",
+    "location": "苏州工业园区",
+    "tag": "明天",
+    "valid_date": "2026-07-25",
+    "reason": "高温天选择水边码头景点，湖风降温体感好，右岸码头和李公堤码头距离近串联方便，全程紧凑不费力",
+    "weather": {
+      "desc": "多云",
+      "high": 37,
+      "low": 27
+    },
+    "days": [
+      {
+        "day_index": 0,
+        "activity": "码头巡游+湖边晚餐",
+        "weather": {
+          "desc": "多云",
+          "high": 37,
+          "low": 27
+        },
+        "steps": [
+          {
+            "step_index": 0,
+            "type": "depart",
+            "text": "出发",
+            "start_time": "06:45",
+            "end_time": "06:53",
+            "description": "前往小金鸡湖码头",
+            "poi_id": null
+          },
+          {
+            "step_index": 1,
+            "type": "play",
+            "text": "小金鸡湖码头",
+            "start_time": "06:53",
+            "end_time": "07:30",
+            "description": "晨间码头观湖，水边凉爽",
+            "poi_id": "B0K1L72CP6"
+          },
+          {
+            "step_index": 2,
+            "type": "play",
+            "text": "迎风雕塑",
+            "start_time": "07:35",
+            "end_time": "08:00",
+            "description": "步行至迎风雕塑打卡",
+            "poi_id": "B0FFL4RXI5"
+          },
+          {
+            "step_index": 3,
+            "type": "transit",
+            "text": "前往右岸码头",
+            "start_time": "08:00",
+            "end_time": "08:11",
+            "description": "驱车前往",
+            "poi_id": null
+          },
+          {
+            "step_index": 4,
+            "type": "play",
+            "text": "右岸码头",
+            "start_time": "08:11",
+            "end_time": "09:00",
+            "description": "码头区域有遮阳，湖风习习",
+            "poi_id": "B0K3ZSJRCV"
+          },
+          {
+            "step_index": 5,
+            "type": "play",
+            "text": "飞翔雕塑",
+            "start_time": "09:00",
+            "end_time": "09:20",
+            "description": "码头附近雕塑拍照",
+            "poi_id": "B0K3ZSI2J1"
+          },
+          {
+            "step_index": 6,
+            "type": "eat",
+            "text": "LÉON莱昂餐厅午餐",
+            "start_time": "11:30",
+            "end_time": "13:00",
+            "description": "室内法餐避暑休息",
+            "poi_id": "B0I2GCKFGH"
+          },
+          {
+            "step_index": 7,
+            "type": "transit",
+            "text": "前往李公堤码头",
+            "start_time": "17:30",
+            "end_time": "17:39",
+            "description": "傍晚出发",
+            "poi_id": null
+          },
+          {
+            "step_index": 8,
+            "type": "play",
+            "text": "李公堤码头",
+            "start_time": "17:39",
+            "end_time": "18:30",
+            "description": "傍晚码头散步看夕阳",
+            "poi_id": "B0FFGFOTHD"
+          },
+          {
+            "step_index": 9,
+            "type": "eat",
+            "text": "爱莲说艺术餐厅晚餐",
+            "start_time": "18:35",
+            "end_time": "19:45",
+            "description": "李公堤附近艺术氛围餐厅",
+            "poi_id": "B0J06UKP64"
+          },
+          {
+            "step_index": 10,
+            "type": "home",
+            "text": "返家",
+            "start_time": "19:45",
+            "end_time": "19:55",
+            "description": "驱车回家",
+            "poi_id": null
+          }
+        ]
+      }
+    ]
+  }
+]
