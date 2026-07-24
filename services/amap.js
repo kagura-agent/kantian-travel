@@ -58,7 +58,9 @@ async function searchPOI(keyword, opts = {}) {
     address: poi.address || '',
     tel: poi.tel || '',
     location: parseLocation(poi.location),
-    photos: (poi.photos || []).map(p => p.url).filter(Boolean)
+    photos: (poi.photos || []).map(p => p.url).filter(Boolean),
+    rating: poi.biz_ext?.rating || null,
+    opentime: poi.biz_ext?.opentime2 || poi.biz_ext?.open_time || null
   }));
 }
 
