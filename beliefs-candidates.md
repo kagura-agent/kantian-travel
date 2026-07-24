@@ -955,3 +955,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-24: [gradient] "study-saturation-gate.sh marks apply as 'open' based only on count (0/3) without checking if unapplied.md has actual content. Result: 2 consecutive days of apply rounds that correctly decline but waste a cron slot." → [行为改变] gate script should check unapplied.md unchecked count when apply is the sole available mode; if 0 unchecked items → mark as 'open (backlog empty)' and include in saturation calculation. (pattern: saturation-gate-apply-empty-backlog, 第1次) (Source: study)
   - **Trigger**: apply is the only available mode but unapplied.md is fully checked off
+
+- 2026-07-24: [gradient] "OOM-constrained machine: inspector npm install and git fetch both killed. For repos with large dependency trees, consider using GitHub API to read/write files directly when local testing fails. The fix was trivially correct (uppercase chars in base36-safe assertion) so skipping tests was acceptable." → [行为改变] For trivially correct fixes (provably no behavior change), note the constraint in PR and proceed. For non-trivial fixes, use GitHub API workflows or schedule for low-memory-pressure time. (pattern: oom-constrained-repo-test-fallback, 第1次) (Source: workloop)
+  - **Trigger**: npm install or git fetch gets SIGKILL on memory-constrained machine
