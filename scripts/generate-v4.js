@@ -76,13 +76,9 @@ const PHOTO_CACHE_TTL = 90 * 24 * 3600 * 1000;    // 照片: 90天
 
 // Tag → search radius (meters) + max drive time (minutes)
 const TAG_CONFIG = {
-  '今天': { radius: 80000, maxDrive: 90, days: 1 },
-  '现在': { radius: 50000, maxDrive: 60, days: 1 },
-  '明天': { radius: 120000, maxDrive: 120, days: 1 },
   '周六': { radius: 150000, maxDrive: 150, days: 1 },
   '周日': { radius: 150000, maxDrive: 150, days: 1 },
-  '周末2天': { radius: 200000, maxDrive: 180, days: 2 },
-  '这周末': { radius: 200000, maxDrive: 180, days: 2 },
+  '周末两天': { radius: 200000, maxDrive: 180, days: 2 },
 };
 
 // === CLI Args ===
@@ -135,12 +131,15 @@ function getDateRange(tag) {
   const weekday = d => ['日', '一', '二', '三', '四', '五', '六'][d.getDay()];
 
   switch (tag) {
-    case '现在':
-    case '今天':
-      return [{ date: fmt(today), weekday: `周${weekday(today)}` }];
-    case '明天': {
-      const d = new Date(today); d.setDate(d.getDate() + 1);
-      return [{ date: fmt(d), weekday: `周${weekday(d)}` }];
+    case '周六': {
+      const d = new Date(today);
+      d.setDate(d.getDate() + ((6 - d.getDay() + 7) % 7 || 7));
+      return [{ date: fmt(d), weekday: '周六' }];
+    }
+    case '周日': {
+      const d = new Date(today);
+      d.setDate(d.getDate() + ((7 - d.getDay()) % 7 || 7));
+      return [{ date: fmt(d), weekday: '周日' }];
     }
     case '周六': {
       const d = new Date(today);
@@ -152,8 +151,7 @@ function getDateRange(tag) {
       d.setDate(d.getDate() + ((7 - d.getDay()) % 7 || 7));
       return [{ date: fmt(d), weekday: '周日' }];
     }
-    case '这周末':
-    case '周末2天': {
+    case '周末两天': {
       const sat = new Date(today);
       sat.setDate(sat.getDate() + ((6 - sat.getDay() + 7) % 7 || 7));
       const sun = new Date(sat); sun.setDate(sun.getDate() + 1);
@@ -172,7 +170,7 @@ async function main() {
   const userLocation = DISTRICT_CENTERS[LOCATION];
   if (!userLocation) { console.error(`Unknown location: ${LOCATION}`); process.exit(1); }
 
-  const tagConfig = TAG_CONFIG[TAG] || TAG_CONFIG['明天'];
+  const tagConfig = TAG_CONFIG[TAG] || TAG_CONFIG['周六'];
   const dateRange = getDateRange(TAG);
 
   console.log(`\n🌤️  看天出发 — 方案生成 v4`);
@@ -337,21 +335,27 @@ async function main() {
 
   // === Step 6: 组装 prompt ===
   console.log('\n✍️ Step 6: 组装 prompt...');
+
+  // 构建完整 POI 查找表（含坐标）—— 转换时直接用
+  const poiLookup = {};
+  poisWithRoutes.forEach(p => { poiLookup[p.id] = { name: p.name, lat: p.lat, lng: p.lng }; });
+  restaurants.forEach(r => { poiLookup[r.id] = { name: r.name, lat: r.lat, lng: r.lng }; });
+
   let prompt = `=== 数据（全部来自高德 API 实时查询）===
 
 用户位置：${LOCATION}
 Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 行程天数：${tagConfig.days}天
 
---- 可达景点（${tagConfig.maxDrive}分钟车程内）---
+--- 可达景点（${tagConfig.maxDrive}分钟车程内，含坐标）---
 `;
   for (const p of poisWithRoutes) {
-    prompt += `${p.id} | ${p.name} | ${p.type || ''} | ${p.route.distance}km ${p.route.durationText}\n`;
+    prompt += `${p.id} | ${p.name} | ${p.lat},${p.lng} | ${p.route.distance}km ${p.route.durationText}\n`;
   }
 
-  prompt += `\n--- 周边餐饮 ---\n`;
+  prompt += `\n--- 周边餐饮（含坐标）---\n`;
   for (const r of restaurants) {
-    prompt += `${r.id} | ${r.name} | 靠近${r.nearPoi}\n`;
+    prompt += `${r.id} | ${r.name} | ${r.lat},${r.lng} | 靠近${r.nearPoi}\n`;
   }
 
   prompt += `\n--- 天气预报 ---\n`;
@@ -370,9 +374,9 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
 2. 每个方案的 reason 说清为什么此刻适合（基于天气、距离、时间）
 3. 高温天户外放早晚，午后室内/阴凉
 4. 使用真实路程时间
-5. 餐饮用上面列表中的真实餐厅 poi_id
+5. poi_id 只能使用上面列表中存在的 ID，绝对不能编造
 6. 出发/到家 poi_id 为 null
-7. 只输出纯 JSON 数组
+7. 只输出纯 JSON 数组，不要 markdown 包裹
 
 格式：
 [{
@@ -420,7 +424,8 @@ Tag：${TAG}（${dateRange.map(d => d.date + ' ' + d.weekday).join(' + ')}）
     const outputName = `${LOCATION}-${TAG}.json`;
     const outputPath = path.join(GENERATED_DIR, outputName);
     ensureDir(GENERATED_DIR);
-    fs.writeFileSync(outputPath, JSON.stringify(plans, null, 2));
+    // 保存方案 + POI 查找表（转换时直接用，不用再调 API）
+    fs.writeFileSync(outputPath, JSON.stringify({ plans, poiLookup }, null, 2));
     console.log(`\n📦 输出: ${outputPath}`);
     console.log('\n✨ 完成！');
     for (const p of plans) {

@@ -1,6 +1,6 @@
 // === State ===
 let savedIds = new Set();
-let currentFilter = 'now';
+let currentFilter = 'saturday';
 
 // === Helpers: derive card fields from steps ===
 function derivePlan(plan) {
@@ -135,8 +135,8 @@ const timeTabs = document.getElementById('timeTabs');
 
 // === Filter ===
 const filterMap = {
-  'now': ['now'],
-  'tomorrow': ['tomorrow'],
+  'saturday': ['saturday'],
+  'sunday': ['sunday'],
   'weekend': ['weekend']
 };
 
@@ -988,7 +988,7 @@ document.getElementById('cityOptions').addEventListener('click', (e) => {
 
 // Tag toggle — rebuild tab bar from all enabled tags
 const TAG_LABELS = {
-  now: '今天', tomorrow: '明天', weekend: '周末2天'
+  saturday: '周六', sunday: '周日', weekend: '周末两天'
 };
 
 function rebuildTabs() {
