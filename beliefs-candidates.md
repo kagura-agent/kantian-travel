@@ -893,6 +893,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-07-22: [gradient] "FlowForge instances get stuck at terminal/near-terminal nodes (done, done_dedup, summary) for 3 consecutive days. Subagent completes work but cron session ends before flowforge advance executes the final step. Cleanup catches them next day but wastes instance state." → [行为改变] After any subagent completion in a cron session, flowforge advance is the FIRST action — before logging, before memory writes, before any other work. If cron session is about to end, prioritize advancing over everything else. (pattern: flowforge-terminal-node-stuck, 第3次 — 07-20: 3 instances stuck, 07-21: 1 instance stuck, 07-22: 1 instance stuck. Independent days, same root cause) (Source: audit)
   - **Trigger**: cron session spawns subagent for FlowForge node, subagent completes, but advance doesn't happen before session ends
   - **2026-07-24 RECLASSIFIED**: tool bug, not behavioral pattern. 行为修正连续 5 天无效(07-20~07-24 每天复发)。根因是 FlowForge engine 架构：到达 terminal node 后不 auto-close，需要额外 `next` 调用。已提交代码修正(engine.ts auto-close on terminal arrival)。此条目不再作为行为 gradient 计数。
+  → **graduated 2026-07-25** (target: Workflow — flowforge src/engine.ts auto-close terminal nodes, commit 9a191e7)
 
 - 2026-07-22: [audit-consolidation] "preflight size gate 碎片化修正 — 以下 4 个 gradient 描述同一问题（500MB size gate 阻塞有本地 clone 的大 repo），合并计数:"
   - 06-03: `preflight-false-positive` (count=1)
@@ -900,6 +901,7 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - 07-17: `preflight-size-gate-local-override` (count=1)
   - 07-18: `tool-blockers-unresolved` (count=1)
   **合并后**: pattern=preflight-size-gate-local-clone, **count=4** (4 independent occurrences across 4 dates). 已超过 3-count graduation gate。待下次 review 正式评估。
+  → **graduated 2026-07-25** (target: Workflow — flowforge scripts/preflight-repo.sh local clone detection bypass, commit 9a191e7)
 
 - 2026-07-22: [audit-consolidation] "apply empty backlog 碎片化修正 — 以下 4 个 gradient 描述同一问题（apply mode 进入但 backlog 为空，浪费工具调用），合并计数:"
   - 07-04: `study-saturation-apply-empty-misleading` (count=1)
