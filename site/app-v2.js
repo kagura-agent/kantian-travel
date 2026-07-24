@@ -659,22 +659,18 @@ function renderDetailMap(plan) {
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
     const pts = route.map(p => [p.lat, p.lng]);
 
-    // Route line
-    const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
-    fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
-      .then(r => r.json()).then(data => {
-        if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
-      }).catch(() => {});
-
-    // Layer groups
+    // Layer groups (no route line, labels on click only)
     const colors = { stay: '#5856D6', play: '#34C759', transit: '#BBBBC0' };
     const layers = {};
     Object.entries(pointsByType).forEach(([type, points]) => {
       const group = L.layerGroup();
       points.forEach(p => {
-        L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: colors[type], color: '#fff', weight: 2, fillOpacity: 1 })
-          .bindTooltip(p.name, { permanent: true, direction: 'top', offset: [0, -8], className: 'map-label-sm' })
-          .addTo(group);
+        const marker = L.circleMarker([p.lat, p.lng], { radius: 6, fillColor: colors[type], color: '#fff', weight: 2, fillOpacity: 1 })
+          .bindTooltip(p.name, { permanent: false, direction: 'top', offset: [0, -8], className: 'map-label-sm' });
+        marker.on('click', () => {
+          marker.openTooltip();
+        });
+        marker.addTo(group);
       });
       layers[type] = group;
     });
@@ -719,14 +715,10 @@ function renderDayMap(plan, dayIdx) {
     if (!mapEl) return;
     try { const map = L.map(mapEl, { zoomControl: false, attributionControl: false });
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', { maxZoom: 18 }).addTo(map);
-    const coords = route.map(p => `${p.lng},${p.lat}`).join(';');
-    fetch(`https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`)
-      .then(r => r.json()).then(data => {
-        if (data.routes?.[0]) L.polyline(data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]), { color: '#FF6B4A', weight: 3, opacity: 0.85 }).addTo(map);
-      }).catch(() => {});
     route.forEach((p, i) => {
-      L.circleMarker([p.lat, p.lng], { radius: 5, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
-        .addTo(map).bindTooltip(p.name, { permanent: true, direction: ['top','right','left','bottom'][i % 4], offset: [0, -8], className: 'map-label-sm' });
+      const marker = L.circleMarker([p.lat, p.lng], { radius: 6, fillColor: '#FF6B4A', color: '#fff', weight: 2, fillOpacity: 1 })
+        .addTo(map).bindTooltip(p.name, { permanent: false, direction: 'top', offset: [0, -8], className: 'map-label-sm' });
+      marker.on('click', () => marker.openTooltip());
     });
     map.fitBounds(route.map(p => [p.lat, p.lng]), { padding: [40, 40] }); } catch(e) { console.error("Day map error:", e); }
   }, 300);
