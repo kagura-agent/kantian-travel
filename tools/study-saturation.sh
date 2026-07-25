@@ -200,6 +200,17 @@ if (( ${#AVAILABLE[@]} == 0 )); then
     exit 0
 fi
 
+# Effective saturation: apply is the only open mode but backlog is empty.
+# 3 consecutive days (07-23/24/25) of entering apply → full workflow → "nothing to apply".
+# Deterministic fix: detect this case and treat as saturated instead of wasting 5-10 tool calls.
+# (AgentSmith "deterministic fix > prose reminder" principle, applied 2026-07-25)
+if (( ${#AVAILABLE[@]} == 1 )) && [[ "${AVAILABLE[0]}" == "apply" ]] && $APPLY_BACKLOG_EMPTY; then
+    echo "🛑 EFFECTIVELY SATURATED — only apply open but backlog empty"
+    echo "   Record: 「Study 全模式饱和（apply-only + empty backlog），跳过」"
+    echo "   (To force apply: add items to study/unapplied.md first)"
+    exit 0
+fi
+
 echo "Available modes: ${AVAILABLE[*]}"
 
 # Smart recommendation

@@ -85,24 +85,31 @@ if ! $APPLY_LOCKED; then
 fi
 FOLLOWUP_LOCKED=false; (( FOLLOWUP_COUNT >= 4 )) && FOLLOWUP_LOCKED=true
 
-# If followup is the only unlocked mode, check if there are actually due items
+# If followup is unlocked, check if there are actually due items
+# (must always check, not just when followup is last resort — consistency with study-saturation.sh)
 FOLLOWUP_EFFECTIVELY_LOCKED=$FOLLOWUP_LOCKED
-if ! $FOLLOWUP_LOCKED && $SCOUT_LOCKED && $APPLY_LOCKED; then
-  # Followup is last resort — check if any items are actually due
-  TARGETS_FILE="$HOME/.openclaw/workspace/study/targets.md"
-  DUE_COUNT=0
-  if [[ -f "$TARGETS_FILE" ]]; then
-    # Count items with revisit date ≤ today
-    DUE_COUNT=$(awk -v today="$DATE" '
-      /^- / {
-        if (match($0, /Revisit[: ]*([0-9]{4}-[0-9]{2}-[0-9]{2})/, m)) {
-          if (m[1] <= today) due++
-        }
-      }
-      END { print due+0 }
-    ' "$TARGETS_FILE" 2>/dev/null || echo 0)
+if ! $FOLLOWUP_LOCKED; then
+  # Check if any items are actually due
+  FOLLOWUP_OUTPUT=$(bash "$HOME/.openclaw/workspace/study/followup-status.sh" 2>/dev/null || true)
+  FOLLOWUP_DUE=0
+  if [[ -n "$FOLLOWUP_OUTPUT" ]]; then
+    FOLLOWUP_DUE=$(echo "$FOLLOWUP_OUTPUT" | grep -oP 'DUE ITEMS \(\K[0-9]+' || echo "0")
   fi
-  if (( DUE_COUNT == 0 )); then
+  if (( FOLLOWUP_DUE == 0 )); then
+    # Fallback: also check targets.md directly
+    TARGETS_FILE="$HOME/.openclaw/workspace/study/targets.md"
+    if [[ -f "$TARGETS_FILE" ]]; then
+      FOLLOWUP_DUE=$(awk -v today="$DATE" '
+        /^- / {
+          if (match($0, /Revisit[: ]*([0-9]{4}-[0-9]{2}-[0-9]{2})/, m)) {
+            if (m[1] <= today) due++
+          }
+        }
+        END { print due+0 }
+      ' "$TARGETS_FILE" 2>/dev/null || echo 0)
+    fi
+  fi
+  if (( FOLLOWUP_DUE == 0 )); then
     FOLLOWUP_EFFECTIVELY_LOCKED=true
   fi
 fi
@@ -120,6 +127,24 @@ $SCOUT_LOCKED || OPEN_MODES+=("scout")
 $QUICK_LOCKED || OPEN_MODES+=("quick")
 $APPLY_LOCKED || OPEN_MODES+=("apply")
 $FOLLOWUP_EFFECTIVELY_LOCKED || OPEN_MODES+=("followup")
+
+# --- Layer 3: Effective saturation (apply-only + empty backlog) ---
+# When apply is the only "open" mode but has nothing to apply, it's functionally saturated.
+# 3 consecutive days (07-23/24/25) of full-workflow-to-discover-nothing proved this wastes tokens.
+# Deterministic gate: catch it here instead of entering the workflow.
+# (AgentSmith "deterministic fix > prose reminder" principle, applied 2026-07-25)
+if (( ${#OPEN_MODES[@]} == 1 )) && [[ "${OPEN_MODES[0]}" == "apply" ]]; then
+  UNAPPLIED_CHECK="$HOME/.openclaw/workspace/study/unapplied.md"
+  BACKLOG_CHECK=0
+  if [[ -f "$UNAPPLIED_CHECK" ]]; then
+    BACKLOG_CHECK=$(grep -c '^- \[ \]' "$UNAPPLIED_CHECK" 2>/dev/null) || BACKLOG_CHECK=0
+  fi
+  if (( BACKLOG_CHECK == 0 )); then
+    echo "⛔ SATURATED — only apply open but backlog empty (effective saturation)"
+    echo "   $skip_count prior skips. Add items to study/unapplied.md to unblock."
+    exit 1
+  fi
+fi
 
 echo "✅ OPEN — $skip_count/$THRESHOLD saturation skips, ${#OPEN_MODES[@]} modes available (${OPEN_MODES[*]})"
 exit 0
