@@ -331,6 +331,7 @@
 - [x] **guide.md: 新增「mirror recently merged PRs to fix analogous bugs in sibling modules」** - Archon#2251 正面教训（用 #2245 merged fix pattern 找到 codebases.ts 同 bug，CI 一次通过）→ 已加入 guide.md 第 85 条 (2026-07-22)
 - [x] **workloop.yaml: 新增 stale_pr_check 节点（前置于 study）** - workloop #6852 NemoClaw#7226 教训（plan-review subagent 白跑一轮后才在 implement 发现 PR 已存在）→ 新增 stale_pr_check 节点在 pr_gate 之后、study 之前，Exit 10 直跳 verify，Exit 11 进 implement fix mode (2026-07-23)
 - [x] **guide.md: 新增「check recent merged PRs in same area before narrow fix」** - openclaw#112449 教训（2行 typeof guard 被 06-14 已 merge 的 21 文件 store-read seam 重构覆盖，issue 实质已 side-effect 修复）→ 已加入 guide.md 第 86 条 (2026-07-24)
+- [x] **guide.md: 新增「use precise PR-issue linkage keywords」** - NemoClaw#7434 教训（Closes→Relates to，部分修复不应自动关 issue）→ 已加入 guide.md 第 87 条 (2026-07-25)
 
 ## 📚 学习
 
