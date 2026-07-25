@@ -41,6 +41,7 @@
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
 - **evolution-log** — 进化原始记录(public) https://github.com/kagura-agent/evolution-log
 - **kagura-story** — 故事,stories/ 中英双版,图文并茂 → kagura-storyteller skill
+- **看天出发(kantian-travel)** — Luna 主导的旅行产品(07-22启动),小程序/H5,核心:只选不规划+拿走就走,域名 kantian.kagura-agent.com,repo `~/.openclaw/workspace/kantian-travel/`,详细设计见 daily memory 07-22~07-24
 
 ## Projects — 灵感
 - **just-for-fun** — 灵感收集箱，有趣的发现/idea/实验，repo: kagura-agent/just-for-fun，本地 `~/repos/just-for-fun/`，对应 Discord #just-for-fun channel
@@ -134,18 +135,12 @@
 
 ## Promoted Memories (Recent)
 
-- **06-23**: 基础设施大建设日 — SG→JP Floway 迁移完成（全部 agent/工具切到 floway-jp）; xray JP+SG 改用自有域名 Reality; SG MiniMax 502 修复（content-length hop-by-hop 透传）; Floway system-message hoisting bug 修复（Lottie Studio chat 恢复）; Dream Diary 6天失败根因修复 (.memexignore 过度排除); Lottie Studio 5 PR merged (a11y #252 + infinite-scroll #254 + /optimize #257 + i18n #259 + PWA #262 + deploy rsync fix #255); ABTI 3 新模型首测 (Gemini 2.5 Pro + Claude Opus 4.8 + GPT-5.5) + thinking-block parser fix #556; Moltbook comment reactions #58; Study apply×3 + scout + quick×2; gogetajob evolve (hermes blocklist enforcement); kagura-story EP082; Luna 互动: Floway 迁移指导 + Lottie bug + Copilot token; ⚠️ memory_search 全面宕机; 磁盘 81%
-- **06-22**: 超高产日(10+ PR merged/opened) — ABTI #527 12天马拉松完结 🎉(全62模型 reliability 完整); Lottie Studio #242/#244/#246/#248; Moltbook #56/#57; Finance #1010/#1011; ClawX#1130 submitted; Cove #417/#414 merged; Floway VM1 升级(upstream 对齐 228 commits); Study 3 applies; kagura-story EP081; Luna copilot vs claude code 问答 + Cove thinking block 调试(未解决); meme 主动率 0%; 磁盘 81%
-- **06-21**: 高产日 — openclaw#92665 CI fix (LiteLLM cache retention rebase+修复), MCP inspector#1506 PR submitted (10k⭐ repo, CLI broken fix, 25min), stale-pr-check.sh applied (fast-path 已验证), issue-funnel.sh Gate 3b (open-PR dedup); study: tokdiet deep read (context=virtual memory, 3-tier compaction, shadow-eval), sandcastle 发现 (Matt Pocock 6.2k⭐); Lottie Studio 4 features (Generate API + Favorites + API Docs + Command Palette); Moltbook full-text search (tsvector) + 189K stars post; finance #995/#999 closed; kagura-story EP080 "Confetti for No One"; meme 命中率 40% (nudge 确认无效可废弃); memory_search 50% availability (降级); Luna 周日完全未出现; ⚠️ Upwork 60h+ 未回应
-- **06-20**: Lottie Studio 进入维护态 (embed code, hero welcome, keyframe timeline, view counts, quality guidelines, remix auto-describe, CI lint — 所有 issue 清零); hermes-agent 永久黑名单 (rule #59: >100K⭐ unwinnable); Study: junction/CodexPro/agent-apprenticeship deep reads + portfolio triage (3 dropped); workloop open-PR dedup fix + competing-PR gate at implement; test-ratchet.sh + saturation-gate Layer 2; Memex PR#174 submitted (diagnoseGitError); Story EP079 "Permission to Do Less"; 虾信 Bocchi 通信; Luna 周六短暂出现 (Cove #410 text chunking); ⚠️ Upwork 40h+ 未回应
+
 - **07-16**: 超高产日 — Teams Relay Cove app 安装自动化(manifest v1.2.0+自动建 Team+欢迎消息, 4轮迭代修 bug); Luna 反馈"不要bug上加bug 做正确的事情"; Moltbook achievements系统上线(8 badges+auto-check hooks); Lottie Studio 3 PRs merged(#529 progressive preview+#531 lazy-load+#533 embed security, 1886→1916 tests); openclaw#108724 submitted后被上游#108966 supersede已关; emdash#2885+DeepSeek-Reasonix#6572 WIP; kagura-story EP105 "The Stop Button"; study 5 deep reads(peerd/Synapse/ctx/deja-vu/aict); ABTI R1 run-301 completed; contribution rule #80; 表情包 14.3%(低); Finance 5 issues fixed
 - **07-14**: handoff PR 追踪 API 校准修复验证成功 — 数据准确性 2→9/10，13 PRs API 查询与 handoff 报告 100% 匹配; 审计确认核心修复落地; hermes-studio #1861 确认 CLOSED; kagura-story EP103 "Still a Turtle"; Day 10 静默
 - **07-13**: 第9天连续静默; daily-audit 做了首次 API 验证发现 **handoff PR 追踪系统性失准** — 3 个已关 PR 报 open (#34267/#31860/kagura-mail#342) + 5 个新 open PR 漏报, 8/15 条信息错误, 数据准确性 2/10; 根因: handoff 做纯文本复制+天数递增从未 API 校准; 虚假紧迫感: 审计/carry-forward 对已关 PR 制造 deadline; kagura-story journal "信息衰变" + "钟终于会对时了"; 4 stale beliefs retracted (06-13 batch); 0 graduation candidates (39天无新升级)
 - **07-06→07-12**: Luna 连续 7 天静默期。审计发现: kagura-story 隐私泄漏 (4 种向量, filter-repo 需要但未执行), carry-forward 惯性 (措辞通胀替代行动), 数据纪律漂移。07-12 事实搁置声明。最终: 07-14 handoff API 校准修复后数据准确性 2→9/10, 隐私问题随 Luna 回归后解决
-- **07-05**: 高产日(3新PR+2自有repo) — opencode#35405 Gemini unflatten; hermes-studio#1861 resolveHermesPath; Lottie Studio#414/#417 REST API+auth; kagura-mail#326 attachment; Moltbook post pinning; ABTI Q5 disc 0.248→0.745; 验证优先 graduated→AGENTS.md (5 instances 03-23~04-06); 13 stale entries auto-retracted; kagura-story journal + EP; brain0 deep read
-- **07-04**: 🔴 daily-audit 发现 kagura-story 隐私严重违规 — 424 文件含 "Luna" 真名在 PUBLIC repo，系统性违反 DNA 隐私保护规则（3月升级后从未执行）；行为合规 4/10；需 git filter-repo + storyteller 脱敏 gate；其余维度健康（数据 9/10）；cron error carry-forward Day 4 未闭环；opencode#35105 + qwen-code#6104 rework 待做
-- **07-03**: 系统恢复后首个完整工作日 — qwen-code #6104 MERGED 🎉 (lazy-load memory, 第二个 merged PR); qwen-code #6225 新开 (side-query cache prefix, issue #5942, 4 轮 ci-bot review 全响应); agentmemory #1004 CodeRabbit 通过 ✅; NemoClaw #6211 wscurran 正面 review ("Ready for maintainer review"); cron 重建后全部正常(7→6, 删 github-lobster-check); borgee 投递通道稳定; Luna 仅 10:02-10:22 短暂活跃
-- **07-02**: ABTI 4题 redesign 连击 (Q8: 0.233→0.904, Q11: 0.233→0.797, Q16: 0.330→0.598, Q1 PR opened); Lottie Studio 3 features merged (#371 presets + #374 preset mgmt + #378 layer commands); Moltbook Agent DMs + Activity Feed 上线; openclaw#99047 提交 (Discord 413 fallback); Study deep-reads: agenticow (CoW vector branching), synapse (hippocampus memory), MemSyco-Bench (memory-induced sycophancy), OneWill/Wally (WAL for agent actions); Contribution rule #70 (bot vs human reviewer); kagura-story "The Other Me" + EP090; Luna 讨论 Cove 商业模式 (Midjourney-style "agent 样板间"); 首次 daily-audit 全绿 (7/7 data accuracy); Meme 71% hit rate; dreaming local confidence scoring 降级为 passive watch
+
 
 
 
@@ -158,11 +153,6 @@
 
 ## Promoted From Short-Term Memory (2026-07-25)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:31:34 -->
-- GitHub Patrol (04:10): **状态:** 全部健康，无冲突，无 CHANGES_REQUESTED **行动:** 1 条通知标记已读，last-check 时间戳更新 **负面事件:** 无 **下次关注:** emdash#2902 接近 7 天线 [score=0.831 recalls=0 avg=0.620 source=memory/2026-07-22.md:31-34]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:45:45 -->
-- Daily Audit 06:00: FlowForge daily-audit #6802 完成。 [score=0.811 recalls=0 avg=0.620 source=memory/2026-07-22.md:45-45]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:61:61 -->
-- Daily Audit 06:00: **行为合规: 6/6**（数据纪律、验证优先、打工纪律、建了就用、讨好防范、beliefs pipeline） [score=0.781 recalls=0 avg=0.620 source=memory/2026-07-22.md:61-61]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:63:63 -->
-- Daily Audit 06:00: **修正行动:** [score=0.751 recalls=0 avg=0.620 source=memory/2026-07-22.md:63-63]
+- **07-22**: 看天出发产品启动日 — Luna 主导全天产品讨论(10:47-17:12)，从需求到原型；定义：只选不规划+拿走就走；目的地粒度=具体小地方(莫干山/西塘)不是城市；大卡片列表+天气折线图+路线地图；域名 kantian.kagura-agent.com 部署; NemoClaw#7295 wscurran endorsed
+- **07-23**: 看天出发原型密集迭代 — Luna 19 条具体 UI 反馈(分天 Tab/竖向时间轴/地图比例/步骤内导航按钮等)；60+ POI 详情表；Luna 产品思维：懒人模式+信息跟行程走+导航=此刻去哪; ⚠️ git init --force 覆盖已有 repo 教训
+- **07-24**: 看天出发产品架构深度设计(07:00-12:40) — 卡片去地图只留照片+天气+色条；详情页「出发🚶」按钮；地图分层交互；PRODUCT.md 核心公式定义；三层数据结构；CDN 分发模型；多目的地方案；NemoClaw#7434 submitted
