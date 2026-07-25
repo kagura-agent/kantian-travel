@@ -965,3 +965,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: When tempted to skip fresh-context review because code seems simple
 
 - 2026-07-25: [gradient] "tracking-update.sh lacks --add flag for new projects — had to manually cat >> targets.md during followup" → [行为改变] Add --add support to tracking-update.sh for creating new target entries. (pattern: tracking-update-no-add-flag, 第1次) (Source: study)
+
+- 2026-07-25: [gradient] "spam-filter.sh expects specific pipe format that doesn't match gh API --jq JSON output" → [行为改变] Bypass spam-filter and read raw results when format mismatch occurs. Fix the script later.. (pattern: spam-filter-input-format, 第1次) (Source: study)
+  - **Trigger**: When running gh api ... | spam-filter.sh
+
+- 2026-07-25: [gradient] "For vercel/ai provider conversion bugs, always check the response parsing side (e.g., mistral-chat-language-model.ts) for the canonical format template. The input serialization should mirror the output deserialization. This saved time on #17931 — the thinking chunk format was already defined in the response parser." → [行为改变] Look at response parsing code first to understand the expected format, then mirror it in the request serialization. (pattern: mirror-response-format-in-request, 第1次) (Source: workloop)
+  - **Trigger**: Provider message conversion bug where input format doesnt match API expectations
