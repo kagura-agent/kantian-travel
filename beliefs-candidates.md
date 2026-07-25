@@ -974,3 +974,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-25: [gradient] "context-lost-between-cron-runs: workloop instance #6952 spent 10+ hours at plan node across multiple cron runs, each one re-deriving what to work on because find_work/study results are not persisted. Eventually had to reset to find_work. Need a mechanism to persist selected issue across cron boundaries." → [行为改变] write selected issue details to a state file (e.g. /tmp/workloop-current-issue.json) that subsequent cron sessions can read. (pattern: cron-context-persistence, 第1次) (Source: workloop)
   - **Trigger**: when flowforge instance spans multiple cron sessions and context is lost
+
+- 2026-07-25: [gradient] "Reporter-opened sibling issues (#17936/#17937/#17938) are low-hanging fruit for rule #85 mirror fixes. When one issue is selected, check if same reporter has related issues in same repo for batch/companion PRs." → [行为改变] After selecting an issue, check reporter profile for similar issues in same repo. If same pattern, consider batching or sequencing.. (pattern: sibling-issues-from-same-reporter, 第1次) (Source: workloop)
+  - **Trigger**: find_work selects an issue and reporter has other related open issues
