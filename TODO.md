@@ -372,6 +372,8 @@
 - [ ] Track: shikigami (shikigami.dev) - closed-source (07-20, NEW). Desktop IDE for parallel coding agents with git worktree isolation. Claude Code + Codex. Solo dev beta. Revisit 08-03
 - [x] Track: AgentSmith (PromptPartner/agentsmith) - 255⭐ (07-25 followup, +155%). Security-audit profile, design-system awareness, UI worked example. Solo dev but extreme quality. GROWING 5/6. Revisit 08-01
 - [ ] Track: BossConsole (risa-labs-inc/BossConsole) - 167⭐ (07-24, NEW). JVM-native microkernel agent harness. Kotlin Multiplatform. Self-healing orchestrator (escalation ladder + AI repair). Mastery DAG workflows. Tool Evolver (hot-reload self-modification). Per-tool RBAC. Deep read done. Revisit 07-31
+- [ ] Track: agentacct (mikehasa) - 97⭐ (07-25, NEW). Local-first Agent Work Intelligence. Reads coding-agent logs (Claude Code/Codex), honest confidence-labeled usage+cost+attribution dashboard. 80k LOC, 141 tests. Solo dev, just open-sourced. Deep read done. Revisit 08-01
+- [ ] Track: penguin-harness (Prism-Shadow) - 152⭐ (07-25, NEW). Self-improving desktop harness. TypeScript, 14 forks. Created 07-19. "Self-improving" claim unverified. Revisit 08-01
 - [x] Track: bbarit-agent-oss (bbarit) - 41⭐ (07-24 followup, +32%). Active solo dev v0.1.21. TUI fix, Grok 4.5 multi-agent, @image. Still solo, 0 community. Revisit 08-07
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
 - [x] Track: codex-control-plane-mcp (aresyn) - 222⭐ (06-18→06-25: 116→222, +91%). v0.2.0 major rewrite: worker-first MCP architecture (client/worker/observe/inline modes), durable scheduling, self-describing MCP contract (codexMcpGuide+tool annotations). Turn steering pattern (inject context into active turn). Solo dev, growing fast. Revisit 07-02
@@ -969,6 +971,9 @@
 
 ### 本轮改進 (done)
 - [x] Lower auto-wake default threshold 14d→10d — freshness reports stale at 7d but auto-wake only acted at 14d, creating a 7-day gap where cron reviews reported staleness without remediation. New 10d threshold gives categories 3 days of grace after stale report, then auto-wakes if still unused. Updated in cmd_review, _review_auto_wake, cmd_cron_check, and all help text. Tested: 7.3d stale categories correctly skipped (below new 10d threshold), will trigger at 10d. (07-24)
+
+### 本轮改進 (done)
+- [x] Add `target` field to tracker entries — `_track_send` now records the resolved channel/user ID as `.target` in history entries (7th param, backward-compatible). `memes failures` output shows `[discord → 123456]` when target is present, falls back to `[discord]` for old entries. Makes "Unknown Channel" failures instantly diagnosable — previously the tracker only recorded the platform name, not which channel ID was targeted. All 5 platform paths (discord/feishu/line/telegram/generic) capture `_resolved_target`. Tested: jq conditional `if $tgt != "" then .target = $tgt` works for both present and absent targets. (07-25)
 
 ## Archon (coleam00/Archon) — PR #2255 CodeRabbit Review
 
