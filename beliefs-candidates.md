@@ -963,3 +963,5 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-24: [gradient] "Fresh-context review caught a real bug in --sentinel handling that I (and the plan reviewer) missed. The reviewer saw that return argv on -- discards already-parsed flags. This validates the fresh-context review step — it catches bugs that the builder is blind to." → [行为改变] Always run fresh-context review. Even simple code has assumptions the builder internalizes and stops questioning.. (pattern: fresh-context-review-value, 第1次) (Source: workloop)
   - **Trigger**: When tempted to skip fresh-context review because code seems simple
+
+- 2026-07-25: [gradient] "tracking-update.sh lacks --add flag for new projects — had to manually cat >> targets.md during followup" → [行为改变] Add --add support to tracking-update.sh for creating new target entries. (pattern: tracking-update-no-add-flag, 第1次) (Source: study)

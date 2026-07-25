@@ -155,3 +155,14 @@
 
 
 
+
+## Promoted From Short-Term Memory (2026-07-25)
+
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:31:34 -->
+- GitHub Patrol (04:10): **状态:** 全部健康，无冲突，无 CHANGES_REQUESTED **行动:** 1 条通知标记已读，last-check 时间戳更新 **负面事件:** 无 **下次关注:** emdash#2902 接近 7 天线 [score=0.831 recalls=0 avg=0.620 source=memory/2026-07-22.md:31-34]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:45:45 -->
+- Daily Audit 06:00: FlowForge daily-audit #6802 完成。 [score=0.811 recalls=0 avg=0.620 source=memory/2026-07-22.md:45-45]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:61:61 -->
+- Daily Audit 06:00: **行为合规: 6/6**（数据纪律、验证优先、打工纪律、建了就用、讨好防范、beliefs pipeline） [score=0.781 recalls=0 avg=0.620 source=memory/2026-07-22.md:61-61]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:63:63 -->
+- Daily Audit 06:00: **修正行动:** [score=0.751 recalls=0 avg=0.620 source=memory/2026-07-22.md:63-63]

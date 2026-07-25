@@ -235,6 +235,14 @@
 - External PR #171 (wooksong) still open (37+ days without review)
 - Contribution score: 10 merged, 1 open (#177 mcp-link), 7 closed
 - Status: upstream active — PR #177 pending review
+- Wiki health (07-24): 1072 files (526 cards), 140 orphans (13%), 0 broken links, 0 collisions ✔
+- 22 wiki files edited today (active dogfood usage confirmed)
+- PR #177 (memex_link MCP tool): OPEN, 0 reviews, 4 days old (submitted 07-20)
+- External PR #171 (wooksong) 41+ days without review — still open
+- Upstream quiet since v0.4.0 (07-18), 6 days. Stars: 138 (+1)
+- Issue #151 still open (active user support thread — smoochy + Keesan12 discussing retro automation)
+- Contribution score: 10 merged, 1 open (#177), 7 closed
+- Status: PR #177 within patience window (4/14 days). Dogfood continues
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -346,7 +354,7 @@
 - [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
 - [x] Track: AgentSpace (HKUDS) - 793⭐ (07-24 followup, +15%). THRIVING 6/6. santhreal fix PRs, contributing guide. Steady. Revisit 07-31
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
-- [x] Track: dirac (dirac-run) - 1,404⭐ (07-18 followup, +3.2%). v0.4.18: autonomous tool building (staged validation, atomic promotion, bounded repair). ACP Elicitation. Revisit 07-25
+- [x] Track: dirac (dirac-run) - 1,421⭐ (07-25 followup, +1.2%). v0.4.21-23: ACP session continuity, configurable presets, webview stability, symbol indexer efficiency. Steady. Revisit 08-01
 - [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
 - [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
 - [x] Track: ctx (ctxrs/ctx) - 947⭐ (07-24 followup, +7%). v0.25.0 stable, pace declining. Only symbol stripping since. Revisit 07-31
@@ -362,7 +370,7 @@
 - [ ] Track: open-kritt (Kritt-ai/open-kritt) - 259⭐ (07-22, NEW). AI security research platform — depth-based workflow decomposition, multi-harness (Codex/Claude/Cursor), repeat-runs dedup, post-script enrichment. $1.5M bug bounty team (Blockian). AGPL-3.0, Python. Deep read done. Revisit 07-29
 - [ ] Track: mentor (smixs/mentor) - 35⭐ (07-20, NEW). Session-insights skill for coding agents (SKILL.md format). Deterministic parsing of Claude Code + Codex transcripts → LLM-written HTML report. 8-dimension rubric. skills.sh distribution. Deep read done. Revisit 07-27
 - [ ] Track: shikigami (shikigami.dev) - closed-source (07-20, NEW). Desktop IDE for parallel coding agents with git worktree isolation. Claude Code + Codex. Solo dev beta. Revisit 08-03
-- [ ] Track: AgentSmith (PromptPartner/agentsmith) - 100⭐ (07-18, NEW). Universal model-agnostic agent operating harness. Core+profile assembly, STOP table (anti-rationalization), static/dynamic context split. MIT. Solo dev, 6mo production use. Deep read done. Revisit 07-25
+- [x] Track: AgentSmith (PromptPartner/agentsmith) - 255⭐ (07-25 followup, +155%). Security-audit profile, design-system awareness, UI worked example. Solo dev but extreme quality. GROWING 5/6. Revisit 08-01
 - [ ] Track: BossConsole (risa-labs-inc/BossConsole) - 167⭐ (07-24, NEW). JVM-native microkernel agent harness. Kotlin Multiplatform. Self-healing orchestrator (escalation ladder + AI repair). Mastery DAG workflows. Tool Evolver (hot-reload self-modification). Per-tool RBAC. Deep read done. Revisit 07-31
 - [x] Track: bbarit-agent-oss (bbarit) - 41⭐ (07-24 followup, +32%). Active solo dev v0.1.21. TUI fix, Grok 4.5 multi-agent, @image. Still solo, 0 community. Revisit 08-07
 - [x] Track: soul-grader-skill (cobibean) - 29⭐ (06-18). 100-pt SOUL.md rubric. Self-graded 41→73 after apply (Needs-rewrite → Scaffold). Revisit 07-01
@@ -375,7 +383,7 @@
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
 - [x] Track: Plaer1/junction - 642⭐ (07-04 followup, +25%). 20 locales, context bleed fix, queue display. Healthy growth. Revisit 07-18
 - [ ] Track: shreyashankar/error-discovery-skill - 147⭐ (07-18 followup, +101% stars but code quiet since 06-25). GROWING 4/6. Methodology repo. Revisit 08-01
-- [ ] Track: Forall (astrio-labs/forall) - 279⭐ (07-18, NEW). Spec-driven code + machine-checkable proofs. Rust, Apache-2.0. MCP verify-only mode for existing agents. Deep read done. Revisit 07-25
+- [x] Track: Forall (astrio-labs/forall) - 260⭐ (07-25 followup, -7%). Only maintenance since. Stars declining. Quiet. Downgraded to monthly. Revisit 08-25
 - [ ] Track: Forsy-AI/agent-apprenticeship - 1,315⭐ (07-16 followup). STALLING: 0 commits since 07-06, 0 PRs, 0 issues, NASCENT 1/6. Downgraded to monthly. Revisit 08-16
 - [x] Track: KongFangXun/sofagent - 28⭐ (07-22 followup, +47%). v1.1.6→1.1.8 in 3 days: AES-256 security + ECDH, Federation CRDT sharing, DAG workflow engine. Solo dev extreme velocity. NASCENT 2/6. Expanding from governance to full framework. Revisit 08-05
 - [x] Track: NotASithLord/peerd - 369⭐ (07-23 followup, +3.6%). v0.2.8: watch mode, site clients (per-origin derived API clients), anti-bot detection posture spec. THRIVING 5/6 (33 ext PRs/30d). Revisit 07-30
@@ -955,6 +963,9 @@
 
 ### 本轮改進 (done)
 - [x] Investigate cross-category near-duplicates + fix dedup tool bug — Removed 1 exact same-cat dupe (confused/confused-cat.gif = confused/squint.gif, wrong name). Fixed dedup tool: both md5 and pHash paths now detect same-category dupes hidden within cross-category groups. Assessed all 6 pHash groups: remaining are valid semantic duplicates (anime-bruh≠monkey-bruh, different cats, different typing styles). thinking/math-lady.gif kept as valid cross-category usage of the math lady meme. 232→231 files. (07-24)
+
+### 本轮改進 (done)
+- [x] Fix _meta.categoryCounts drift in tags.json — 7 categories had stale counts (confused, disappointed, nailed-it, panic, sad, thanks, tired), totalFiles 219→231. 10-day drift since last meta update (07-14). Committed + pushed. (07-24)
 
 ### 本轮改進 (done)
 - [x] Lower auto-wake default threshold 14d→10d — freshness reports stale at 7d but auto-wake only acted at 14d, creating a 7-day gap where cron reviews reported staleness without remediation. New 10d threshold gives categories 3 days of grace after stale report, then auto-wakes if still unused. Updated in cmd_review, _review_auto_wake, cmd_cron_check, and all help text. Tested: 7.3d stale categories correctly skipped (below new 10d threshold), will trigger at 10d. (07-24)
