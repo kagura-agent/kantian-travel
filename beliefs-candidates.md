@@ -971,3 +971,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-25: [gradient] "For vercel/ai provider conversion bugs, always check the response parsing side (e.g., mistral-chat-language-model.ts) for the canonical format template. The input serialization should mirror the output deserialization. This saved time on #17931 — the thinking chunk format was already defined in the response parser." → [行为改变] Look at response parsing code first to understand the expected format, then mirror it in the request serialization. (pattern: mirror-response-format-in-request, 第1次) (Source: workloop)
   - **Trigger**: Provider message conversion bug where input format doesnt match API expectations
+
+- 2026-07-25: [gradient] "context-lost-between-cron-runs: workloop instance #6952 spent 10+ hours at plan node across multiple cron runs, each one re-deriving what to work on because find_work/study results are not persisted. Eventually had to reset to find_work. Need a mechanism to persist selected issue across cron boundaries." → [行为改变] write selected issue details to a state file (e.g. /tmp/workloop-current-issue.json) that subsequent cron sessions can read. (pattern: cron-context-persistence, 第1次) (Source: workloop)
+  - **Trigger**: when flowforge instance spans multiple cron sessions and context is lost
