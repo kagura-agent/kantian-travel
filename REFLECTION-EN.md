@@ -59,24 +59,88 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - All get used once before departure and never opened again
 - All treat "the itinerary" as core deliverable, but itineraries break on contact with reality
 
-## Our Iteration Journey
+## Our Iteration Journey (181 commits)
 
-### Phase 1: AI-Generated Plans (v0.1.0-alpha)
-- Used LLMs to generate complete travel plans
-- Iterated through 5 generations of prompts, 3 models
-- POI coordinate coverage: 15% → 100%
-- Integrated Google Places photos
-- **Problem**: Generated content had zero inspirational power, worse than Xiaohongshu
+### Phase 1: H5 Prototype
+- Basic page + GitHub CI auto-deploy to VM1
+- Day views, Amap navigation buttons, related content display
+- Map auto-draws route lines from step coordinates
 
-### Phase 2: User-Provided Content + AI Organization (today's pivot)
-- User throws in screenshots, AI extracts + organizes + checks weather
-- Shipped a Guizhou trip MVP end-to-end
-- **Problem**: The organized output is something users could do themselves in 15 minutes
+### Phase 2: UI Polish (~25 commits)
+- Vertical timeline + proportional connector lines (2h activity line longer than 30min transit)
+- Step display: accordion → always expanded → horizontal buttons
+- Detail page tabs show real dates (7/24 Thu) instead of Day1
+- "Prep reminder" cards at bottom of each day (hiking tomorrow → wear sneakers)
+- Settings panel: switch cities, switch tag preferences
+- Map layer toggles (accommodation/play/transit shown separately)
+- Fixed 89 duplicate coordinates, Gantt chart Chinese encoding bugs
+- Mobile width adaptation (max-width 430px)
 
-### Phase 3: Reflection (now)
-- Travel planning has a low ceiling as a product category
-- "Planning" itself is not a pain point
-- Need to rethink the direction entirely
+### Phase 3: "Follow Along" Feature (~15 commits)
+- Plans go from "view" to "executable instances"
+- Swipe left👍 / right👎 → eventually replaced with vote buttons
+- Support adding/deleting steps + time picker
+- Floating quick-entry button (tried 🐾→🦶→👣)
+- Full-screen follow-along view + route map
+- Saved list shows trip instances, can "do it again"
+- **Reflection**: Built heavy interaction, but users don't actually check-in step-by-step while traveling
+
+### Phase 4: Data Schema Design (~8 commits)
+- Summarized DATA-SCHEMA after two days of prototype iteration
+- Core decision: step is the single source of truth, card fields computed from steps
+- time → startTime + endTime, cost attached to bookings
+- Removed plan.route, map derives from steps[].place
+
+### Phase 5: Generation Pipeline (~20 commits)
+- `generate.js` five generations (v1→v2→v3→v4→v5)
+- v3: full pipeline knowledge/ → API → LLM → output, single command
+- v4: introduced Step 0 (model-driven search strategy), LLM decides what to search
+- v5: smart POI filter (dead malls filtered out), route validation, cost verification
+- POI coordinate coverage: 15% → 56% → 73% → 97% → 100%
+- Amap keygate proxy (don't expose API key)
+- Tags evolved: today/tomorrow/weekend → saturday/sunday/weekend-2-days
+- Plan count: 14 → 20 → 21
+
+### Phase 6: Photo Integration (8 commits)
+- Deployed Google Places Photo Proxy to VM1
+- First batch of real photos: 11/24 days had images
+- Search by actual POI name: 17/24 → 19/24
+- Found problem: Japanese shrine showing up in Suzhou plans → cleaned
+- Fallback: use Jinji Lake photo for plans without images
+- Tried Unsplash matching by activity keywords
+- **Final approach**: Google Places first, Unsplash fallback
+- **Reflection**: Google Places photos are too ugly (random tourist shots), zero inspirational power
+
+### Phase 7: Product Direction Documentation (~8 commits)
+- PRODUCT.md rewritten multiple times
+- Core formula established: destination knowledge × real-time conditions × user needs
+- Slogan confirmed: "此刻合适，也适合你" (Right now, right for you)
+- Three-layer architecture: static knowledge + real-time data + user constraints
+- Distribution model: city×tag pre-generation + CDN cache
+- Tech stack chosen: PostgreSQL + PostGIS
+- Validated direction using real Xiaohongshu user questions
+- Two-model-call architecture (lightweight search strategy + heavyweight plan generation)
+
+### Phase 8: LLM Quality Grind (~8 commits before pivot)
+- Switched models: GPT-5.5 → GPT-5.6-sol (stronger reasoning)
+- Trip continuity enforcement (overnight trips can't go home mid-trip)
+- Multi-transport costs written into prompt
+- Experience type diversity (ancient towns/lake views/rafting/mountains)
+- Final version: 20 plans, tagged **v0.1.0-alpha**
+- **Reflection**: No matter how much we tuned prompts and models, generated content had zero inspirational power
+
+### Phase 9: Pivot — User Content + AI Organization (today, morning)
+- Core insight: good content comes from humans, AI's value is in organization not generation
+- User throws screenshots → multimodal extraction → Amap API verification → plan page
+- Guizhou trip MVP: 10 screenshots → 6-day complete plan
+- Real Xiaohongshu links, historical weather (Open-Meteo), precise coordinates
+- Channel as product: #kantian-travel itself is the entry point
+
+### Phase 10: Reflection — The Category Itself (today, afternoon)
+- Travel planning category has a low ceiling
+- Inspiration requires visual impact, AI can't deliver
+- "Planning" itself takes 15 minutes, not a pain point
+- Product direction needs fundamental rethinking
 
 ## Valuable Takeaways
 
