@@ -63,6 +63,17 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif
 
 .route-map { height: 200px; margin: 16px; border-radius: 12px; overflow: hidden; }
 
+/* Gantt Chart */
+.gantt-section { padding: 12px 16px; background: #fff; border-bottom: 1px solid #f0f0f0; }
+.gantt-bar { display: flex; height: 28px; border-radius: 6px; overflow: hidden; margin-bottom: 6px; }
+.gantt-seg { display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; min-width: 2px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; padding: 0 3px; }
+.gantt-legend { display: flex; gap: 12px; font-size: 11px; color: #666; flex-wrap: wrap; }
+.gantt-legend i { display: inline-block; width: 8px; height: 8px; border-radius: 2px; margin-right: 3px; vertical-align: middle; }
+.gantt-overview { margin-bottom: 12px; }
+.gantt-overview-label { font-size: 12px; font-weight: 600; color: #333; margin-bottom: 6px; }
+.gantt-overview .gantt-bar { height: 20px; margin-bottom: 3px; border-radius: 4px; }
+.gantt-day-label { font-size: 10px; color: #999; margin-bottom: 2px; }
+
 .color-depart { background: #4A9EFF; }
 .color-transit { background: #999; }
 .color-play { background: #4CAF50; }
@@ -79,16 +90,64 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif
 </div>
 
 <div class="day-tabs" id="dayTabs"></div>
+<div id="ganttSection" class="gantt-section"></div>
 <div id="dayContent"></div>
 <div id="routeMap" class="route-map"></div>
 
 <script src="data-guizhou.js?v=2"></script>
 <script>
 const plan = PLANS[0];
-const TYPE_COLORS = { depart:'#4A9EFF', transit:'#999', play:'#4CAF50', eat:'#FF9800', stay:'#9C27B0', home:'#FF6B4A' };
+const TYPE_COLORS = { depart:'#4A9EFF', transit:'#BBBBC0', play:'#34C759', eat:'#FF9800', stay:'#9C27B0', home:'#FF6B4A' };
 const TYPE_LABELS = { depart:'出发', transit:'交通', play:'游玩', eat:'美食', stay:'住宿', home:'返程' };
+const GANTT_COLORS = { transit:'#BBBBC0', depart:'#BBBBC0', play:'#34C759', eat:'#FF9800', stay:'#9C27B0', home:'#FF6B4A' };
 
 let currentDay = 0;
+
+function timeToHours(t) { if (!t) return 8; const [h,m] = t.split(':').map(Number); return h + m/60; }
+
+// Gantt chart: overview of all days
+function renderGantt() {
+  const ganttEl = document.getElementById('ganttSection');
+  let html = '<div class="gantt-overview"><div class="gantt-overview-label">行程总览</div>';
+  
+  plan.days.forEach((day, i) => {
+    const segs = [];
+    let lastEnd = null;
+    day.steps.forEach(step => {
+      const start = timeToHours(step.startTime);
+      const end = timeToHours(step.endTime);
+      if (lastEnd !== null && start > lastEnd + 0.1) {
+        segs.push({ type: 'free', start: lastEnd, end: start });
+      }
+      segs.push({ type: step.type, label: step.text.substring(0, 8), start, end });
+      lastEnd = end;
+    });
+    if (!segs.length) return;
+    const base = segs[0].start;
+    const totalH = segs[segs.length-1].end - base;
+    if (totalH <= 0) return;
+    
+    html += `<div class="gantt-day-label">Day${i+1} ${day.activity.substring(0, 15)} ${day.weather.icon}${day.weather.temp}</div>`;
+    html += '<div class="gantt-bar">';
+    segs.forEach(seg => {
+      const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+      const color = seg.type === 'free' ? '#F0F0F0' : (GANTT_COLORS[seg.type] || '#999');
+      const textColor = seg.type === 'free' ? '#999' : '#fff';
+      html += `<div class="gantt-seg" style="width:${pct}%;background:${color};color:${textColor}" title="${seg.label || ''}">${pct > 8 ? (seg.label || '') : ''}</div>`;
+    });
+    html += '</div>';
+  });
+  
+  // Legend
+  html += '<div class="gantt-legend">';
+  html += '<span><i style="background:#34C759"></i>游玩</span>';
+  html += '<span><i style="background:#FF9800"></i>美食</span>';
+  html += '<span><i style="background:#BBBBC0"></i>交通</span>';
+  html += '<span><i style="background:#9C27B0"></i>住宿</span>';
+  html += '<span><i style="background:#FF6B4A"></i>返程</span>';
+  html += '</div></div>';
+  ganttEl.innerHTML = html;
+}
 
 // Render day tabs
 const tabsEl = document.getElementById('dayTabs');
@@ -177,6 +236,7 @@ function renderMap(idx) {
 }
 
 // Init
+renderGantt();
 renderDay(0);
 </script>
 </body>
