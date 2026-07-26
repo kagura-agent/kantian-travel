@@ -94,6 +94,13 @@ body { overflow-y: auto !important; height: auto !important; }
 setTimeout(() => {
   if (PLANS.length >= 1) {
     openDetail(PLANS[0]);
+    // Add "历史预估" labels to weather displays
+    setTimeout(() => {
+      document.querySelectorAll('.vt-weather').forEach((el, i) => {
+        const note = PLANS[0].days[i]?.weather?.note;
+        if (note) el.innerHTML += '<span style="font-size:9px;opacity:0.7;display:block">(预估)</span>';
+      });
+    }, 100);
   }
 }, 50);
 </script>
