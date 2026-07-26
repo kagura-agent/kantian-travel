@@ -14,7 +14,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1555217851-6141535bd771?w=800&h=500&fit=crop",
         "activity": "两路汇合 · 民生路夜市开干",
-        "weather": {"icon": "⛅", "temp": "24°"},
+        "weather": {"icon": "🌦️", "temp": "22°"},
         "steps": [
           {
             "type": "depart",
@@ -70,7 +70,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=500&fit=crop",
         "activity": "贵阳继续干饭 · 下午自驾去兴义",
-        "weather": {"icon": "⛅", "temp": "23°"},
+        "weather": {"icon": "⛅", "temp": "25°"},
         "steps": [
           {
             "type": "eat",
@@ -115,7 +115,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=500&fit=crop",
         "activity": "马岭河峡谷看瀑布 · 夺夺粉火锅",
-        "weather": {"icon": "🌤️", "temp": "22°"},
+        "weather": {"icon": "☀️", "temp": "25°"},
         "steps": [
           {
             "type": "transit",
@@ -176,7 +176,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=500&fit=crop",
         "activity": "万峰林慢游 · 稻田咖啡发呆",
-        "weather": {"icon": "☀️", "temp": "23°"},
+        "weather": {"icon": "☀️", "temp": "26°"},
         "steps": [
           {
             "type": "play",
@@ -277,7 +277,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&h=500&fit=crop",
         "activity": "还车 · 各回各家",
-        "weather": {"icon": "⛅", "temp": "23°"},
+        "weather": {"icon": "⛅", "temp": "22°"},
         "steps": [
           {
             "type": "transit",
