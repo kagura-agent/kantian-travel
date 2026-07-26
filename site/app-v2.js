@@ -500,13 +500,13 @@ function openDetail(plan) {
         <h4 class="detail-section-title">种草内容</h4>
         <div class="related-content">
           ${uniqueContent.map(c => `
-            <div class="related-card" style="border-left:3px solid ${c.color || '#FF6B4A'}">
+            <a class="related-card" href="${c.url || '#'}" target="_blank" rel="noopener" style="border-left:3px solid ${c.color || '#FF6B4A'};text-decoration:none;display:block">
               <div class="rc-header">
                 <span class="rc-platform">${c.icon} ${c.platform}</span>
                 <span class="rc-likes">❤️ ${c.likes}</span>
               </div>
               <p class="rc-title">${c.title}</p>
-            </div>
+            </a>
           `).join('')}
         </div>
       </div>
@@ -594,7 +594,7 @@ function openDetail(plan) {
                 ${step.place?.name ? `<a class="step-action-btn" href="xhsdiscover://search/result?keyword=${encodeURIComponent(step.place.name)}" target="_blank">📕 小红书</a>` : ''}
                 ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? ' '+b.cost : ''}</span>`).join('')}
               </div>
-              ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
+              ${(step.relatedContent || []).map(c => `<a class="step-rec" href="${c.url || '#'}" target="_blank" rel="noopener"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join('')}
               ${(step.tips || []).map(t => `<div class="step-tip">💡 ${t}</div>`).join('')}
             </div>` : ''}
           </div>
@@ -1158,7 +1158,7 @@ function openTripView(tripId) {
                     ${step.place?.name ? `<a class="step-action-btn" href="xhsdiscover://search/result?keyword=${encodeURIComponent(step.place.name)}" target="_blank">📕 小红书</a>` : ""}
                     ${(step.bookings || []).map(b => `<span class="step-action-btn step-action-book">${b.label}${b.cost ? " "+b.cost : ""}</span>`).join("")}
                   </div>
-                  ${(step.relatedContent || []).map(c => `<a class="step-rec" href="#"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join("")}
+                  ${(step.relatedContent || []).map(c => `<a class="step-rec" href="${c.url || '#'}" target="_blank" rel="noopener"><span class="sr-platform">${c.icon}</span><span class="sr-title">${c.title}</span><span class="sr-likes">❤️ ${c.likes}</span></a>`).join("")}
                   ${(step.tips || []).map(t => `<div class="step-tip">💡 ${t}</div>`).join("")}
                 </div>` : ""}
               </div>
