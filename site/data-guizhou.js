@@ -9,6 +9,7 @@ const PLANS = [
     "startDate": "2026-10-01",
     "weatherSource": "Open-Meteo Archive API (2024+2025 同期历史数据, 贵阳 26.538/106.805, 兴义 25.010/104.925)",
     "weatherNote": "基于历史数据预估，9月中旬更新为精确预报",
+    "priceNote": "所有价格为参考估价，请出行前在携程/去哪儿确认实际价格",
     "relatedContent": [
       {"platform": "腾讯文档", "icon": "📄", "title": "2026贵州干饭行！完整攻略", "likes": "原始素材"}
     ],
@@ -55,7 +56,8 @@ const PLANS = [
             "tips": ["人均 50-100 就能吃很好", "现金+微信都收"],
             "relatedContent": [
               {"platform": "小红书", "icon": "📕", "title": "贵阳三天两夜纯吃攻略4人版", "likes": "36赞", "url": "https://www.xiaohongshu.com/discovery/item/69b967ac0000000023012c87"},
-              {"platform": "小红书", "icon": "📕", "title": "贵阳民生路·对不起之前是我说话大声了", "likes": "47赞", "url": "https://www.xiaohongshu.com/discovery/item/6a33e80a000000000f01d838"}
+              {"platform": "小红书", "icon": "📕", "title": "贵阳民生路·对不起之前是我说话大声了", "likes": "47赞", "url": "https://www.xiaohongshu.com/discovery/item/6a33e80a000000000f01d838"},
+              {"platform": "小红书", "icon": "📕", "title": "二刷贵阳 只吃对的不吃贵的", "likes": "收藏", "url": "http://xhslink.com/o/9WUK1qY9cG1"}
             ]
           },
           {
@@ -100,7 +102,8 @@ const PLANS = [
             "description": "到了先吃一碗兴义羊肉汤粉，粉是兴义一绝。",
             "place": {"name": "兴义市区", "lat": 25.092, "lng": 104.895},
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "关于我在兴义吃了些什么😋", "likes": "13赞", "url": "https://www.xiaohongshu.com/discovery/item/68da0920000000001301a0fe"}
+              {"platform": "小红书", "icon": "📕", "title": "关于我在兴义吃了些什么😋", "likes": "13赞", "url": "https://www.xiaohongshu.com/discovery/item/68da0920000000001301a0fe"},
+              {"platform": "小红书", "icon": "📕", "title": "吃遍中国第三站｜贵州兴义", "likes": "31赞", "url": "https://www.xiaohongshu.com/discovery/item/69f97d4b0000000023014614"}
             ]
           },
           {
@@ -142,7 +145,8 @@ const PLANS = [
               "走完全程体力消耗大，备好干粮"
             ],
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "兴义｜值得去一万次的宝藏城市", "likes": "81赞", "url": "https://www.xiaohongshu.com/discovery/item/69d4bcb8000000001b00290b"}
+              {"platform": "小红书", "icon": "📕", "title": "兴义｜值得去一万次的宝藏城市", "likes": "81赞", "url": "https://www.xiaohongshu.com/discovery/item/69d4bcb8000000001b00290b"},
+              {"platform": "小红书", "icon": "📕", "title": "马岭河峡谷，一个体能拉练的地方！", "likes": "87赞", "url": "https://www.xiaohongshu.com/discovery/item/689609740000000004007e37"}
             ]
           },
           {
@@ -239,7 +243,7 @@ const PLANS = [
             "startTime": "08:30",
             "endTime": "10:30",
             "description": "坐船游万峰湖，再看看风景，喀斯特峰林倒映在湖面上。游完就返程。",
-            "place": {"name": "万峰湖", "lat": 24.95, "lng": 104.93},
+            "place": {"name": "万峰湖", "lat": 24.861834, "lng": 105.03658},
             "tips": ["提前查好船班时间", "湖上风大带件外套"]
           },
           {
