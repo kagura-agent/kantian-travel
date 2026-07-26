@@ -17,29 +17,29 @@ const PLANS = [
         "steps": [
           {
             "type": "depart",
-            "text": "北京组：高铁出发",
-            "startTime": "07:00",
-            "endTime": "07:30",
-            "description": "北京西/北京南→贵阳北，全程约 8-9 小时，建议早班车。国庆票务紧张，务必提前抢票。",
-            "place": {"name": "北京西站", "lat": 39.8959, "lng": 116.3228},
-            "bookings": [{"type": "train", "label": "查高铁票", "cost": "¥800-900（二等座）"}]
+            "text": "北京组：飞贵阳",
+            "startTime": "09:00",
+            "endTime": "12:00",
+            "description": "北京首都/大兴→贵阳龙洞堡，约 3 小时。国庆机票提前买，早买差价大。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "bookings": [{"type": "flight", "label": "查机票", "cost": "¥800-1500"}]
           },
           {
             "type": "depart",
-            "text": "苏州组：高铁出发",
-            "startTime": "07:30",
-            "endTime": "08:00",
-            "description": "苏州北→贵阳北，沪昆高铁约 7-8 小时。同样提前抢票。",
-            "place": {"name": "苏州北站", "lat": 31.3896, "lng": 120.5845},
-            "bookings": [{"type": "train", "label": "查高铁票", "cost": "¥600-700（二等座）"}]
+            "text": "苏州组：飞贵阳",
+            "startTime": "09:30",
+            "endTime": "12:00",
+            "description": "上海虹桥/浦东→贵阳龙洞堡，约 2.5 小时。苏州到虹桥高铁 30min，可当天赶。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "bookings": [{"type": "flight", "label": "查机票", "cost": "¥600-1200"}]
           },
           {
             "type": "transit",
-            "text": "贵阳北站汇合 · 取租车",
-            "startTime": "15:30",
-            "endTime": "16:30",
-            "description": "两路在贵阳北站汇合。站内/附近取租车（提前预订 SUV，4 人 + 行李）。国庆租车紧俏，建议提前 2 周订。",
-            "place": {"name": "贵阳北站", "lat": 26.619478, "lng": 106.674554},
+            "text": "机场汇合 · 取租车",
+            "startTime": "12:30",
+            "endTime": "13:00",
+            "description": "两路在贵阳龙洞堡机场汇合，机场取租车（提前预订 SUV，4 人 + 行李）。国庆租车紧俏，建议提前 2 周订。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
             "bookings": [{"type": "car", "label": "租车预订", "cost": "¥200-400/天"}]
           },
           {
@@ -280,29 +280,29 @@ const PLANS = [
         "steps": [
           {
             "type": "transit",
-            "text": "还租车",
+            "text": "还租车 · 去机场",
             "startTime": "08:00",
             "endTime": "09:00",
-            "description": "贵阳北站附近还车。",
-            "place": {"name": "贵阳北站", "lat": 26.619478, "lng": 106.674554}
+            "description": "贵阳龙洞堡机场还车。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017}
           },
           {
             "type": "home",
-            "text": "北京组：高铁返程",
-            "startTime": "09:30",
-            "endTime": "18:00",
-            "description": "贵阳北→北京，约 8-9 小时。10.6 返程日，建议选上午车次。",
-            "place": {"name": "贵阳北站", "lat": 26.619478, "lng": 106.674554},
-            "bookings": [{"type": "train", "label": "查返程高铁", "cost": "¥800-900"}]
+            "text": "北京组：飞回北京",
+            "startTime": "10:30",
+            "endTime": "13:30",
+            "description": "贵阳→北京，约 3 小时。国庆最后一天返程航班紧张，提前买。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "bookings": [{"type": "flight", "label": "查返程机票", "cost": "¥800-1500"}]
           },
           {
             "type": "home",
-            "text": "苏州组：高铁返程",
-            "startTime": "09:30",
-            "endTime": "17:00",
-            "description": "贵阳北→苏州北，约 7-8 小时。",
-            "place": {"name": "贵阳北站", "lat": 26.619478, "lng": 106.674554},
-            "bookings": [{"type": "train", "label": "查返程高铁", "cost": "¥600-700"}]
+            "text": "苏州组：飞回上海",
+            "startTime": "10:30",
+            "endTime": "13:00",
+            "description": "贵阳→上海，约 2.5 小时，落地后高铁回苏州 30min。",
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "bookings": [{"type": "flight", "label": "查返程机票", "cost": "¥600-1200"}]
           }
         ]
       }
