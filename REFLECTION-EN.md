@@ -62,11 +62,17 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 ## Our Iteration Journey (181 commits)
 
 ### Phase 1: H5 Prototype
+
+![Phase 1](screenshots/phase1.png)
+
 - Basic page + GitHub CI auto-deploy to VM1
 - Day views, Amap navigation buttons, related content display
 - Map auto-draws route lines from step coordinates
 
 ### Phase 2: UI Polish (~25 commits)
+
+![Phase 2](screenshots/phase2.png)
+
 - Vertical timeline + proportional connector lines (2h activity line longer than 30min transit)
 - Step display: accordion → always expanded → horizontal buttons
 - Detail page tabs show real dates (7/24 Thu) instead of Day1
@@ -77,6 +83,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - Mobile width adaptation (max-width 430px)
 
 ### Phase 3: "Follow Along" Feature (~15 commits)
+
+![Phase 3](screenshots/phase3.png)
+
 - Plans go from "view" to "executable instances"
 - Swipe left👍 / right👎 → eventually replaced with vote buttons
 - Support adding/deleting steps + time picker
@@ -92,6 +101,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - Removed plan.route, map derives from steps[].place
 
 ### Phase 5: Generation Pipeline (~20 commits)
+
+![Phase 5](screenshots/phase5.png)
+
 - `generate.js` five generations (v1→v2→v3→v4→v5)
 - v3: full pipeline knowledge/ → API → LLM → output, single command
 - v4: introduced Step 0 (model-driven search strategy), LLM decides what to search
@@ -102,6 +114,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - Plan count: 14 → 20 → 21
 
 ### Phase 6: Photo Integration (8 commits)
+
+![Phase 6](screenshots/phase6.png)
+
 - Deployed Google Places Photo Proxy to VM1
 - First batch of real photos: 11/24 days had images
 - Search by actual POI name: 17/24 → 19/24
@@ -122,6 +137,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - Two-model-call architecture (lightweight search strategy + heavyweight plan generation)
 
 ### Phase 8: LLM Quality Grind (~8 commits before pivot)
+
+![Phase 8](screenshots/phase8.png)
+
 - Switched models: GPT-5.5 → GPT-5.6-sol (stronger reasoning)
 - Trip continuity enforcement (overnight trips can't go home mid-trip)
 - Multi-transport costs written into prompt
@@ -130,6 +148,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - **Reflection**: No matter how much we tuned prompts and models, generated content had zero inspirational power
 
 ### Phase 9: Pivot — User Content + AI Organization (today, morning)
+
+![Phase 9](screenshots/phase9.png)
+
 - Core insight: good content comes from humans, AI's value is in organization not generation
 - User throws screenshots → multimodal extraction → Amap API verification → plan page
 - Guizhou trip MVP: 10 screenshots → 6-day complete plan
@@ -137,6 +158,9 @@ Everything else (where to eat, what to explore, which route to walk) you figure 
 - Channel as product: #kantian-travel itself is the entry point
 
 ### Phase 10: Reflection — The Category Itself (today, afternoon)
+
+![Phase 10](screenshots/phase10.png)
+
 - Travel planning category has a low ceiling
 - Inspiration requires visual impact, AI can't deliver
 - "Planning" itself takes 15 minutes, not a pain point

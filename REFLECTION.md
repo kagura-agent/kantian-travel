@@ -62,11 +62,17 @@
 ## 我们的迭代路径（181 commits）
 
 ### 阶段一：H5 原型搭建
+
+![Phase 1](screenshots/phase1.png)
+
 - 基础页面 + GitHub CI 自动部署到 VM1
 - 分天视图、高德导航按钮、种草内容展示
 - 地图从 steps 坐标自动画路线
 
 ### 阶段二：UI 疯狂打磨（~25 commits）
+
+![Phase 2](screenshots/phase2.png)
+
 - 时间轴竖向展示 + 按时长比例的连接线（玩 2h 的线比坐车 30min 长）
 - 行程步骤：手风琴展开 → 默认展开 → 横排按钮
 - 详情页 Tab 显示真实日期（7/24 周四）而非 Day1
@@ -77,6 +83,9 @@
 - 手机宽度适配（max-width 430px）
 
 ### 阶段三：「跟着走」功能（~15 commits）
+
+![Phase 3](screenshots/phase3.png)
+
 - 方案从「看」变成「执行实例」
 - 左滑👍/右滑👎 → 最终改成投票按钮
 - 支持增删步骤 + 时间选择器
@@ -92,6 +101,9 @@
 - plan.route 去掉，地图从 steps[].place 推导
 
 ### 阶段五：数据生成管线（~20 commits）
+
+![Phase 5](screenshots/phase5.png)
+
 - `generate.js` 五代迭代（v1→v2→v3→v4→v5）
 - v3：完整管线 knowledge/ → API → LLM → output，一条命令跑完
 - v4：引入 Step 0（模型驱动搜索策略），让 LLM 决定搜什么
@@ -102,6 +114,9 @@
 - 方案数量：14 → 20 → 21 个
 
 ### 阶段六：图片接入（8 commits）
+
+![Phase 6](screenshots/phase6.png)
+
 - 部署 Google Places Photo Proxy 到 VM1
 - 第一批真实照片：11/24 天有图
 - 用实际 POI 名搜索：17/24 → 19/24
@@ -122,6 +137,9 @@
 - 两次模型调用架构（轻量搜索策略 + 重量方案生成）
 
 ### 阶段八：LLM 质量死磕（~8 commits before pivot）
+
+![Phase 8](screenshots/phase8.png)
+
 - 换模型：GPT-5.5 → GPT-5.6-sol（更强推理）
 - 行程连续性强制（住一晚的方案不能中途回家）
 - 多交通方式成本写进 prompt
@@ -130,6 +148,9 @@
 - **反思**：再怎么调 prompt 和模型，生成的内容都没有种草力
 
 ### 阶段九：Pivot — 用户素材 + AI 整理（今天上午）
+
+![Phase 9](screenshots/phase9.png)
+
 - 核心洞察：好内容来自人类，AI 的价值在整理不在生成
 - 用户扔截图 → 多模态提取 → 高德 API 验证 → 方案页
 - 贵州行程 MVP：10 张截图 → 6 天完整方案
@@ -137,6 +158,9 @@
 - 频道即产品：#kantian-travel 本身就是入口
 
 ### 阶段十：反思 — 赛道本身的问题（今天下午）
+
+![Phase 10](screenshots/phase10.png)
+
 - 旅行规划赛道天花板很低
 - 种草靠视觉冲击，AI 做不到
 - "规划"本身 15 分钟搞定，不是痛点
