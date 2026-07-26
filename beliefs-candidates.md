@@ -985,3 +985,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-26: [gradient] "Socket guard (autouse fixture blocking socket.connect) in a large test suite will break many more tests than the obvious ones. Integration-style tests that start real servers (uvicorn, aiohttp) and connect to them with httpx/requests also need opt-out markers. CI --maxfail=1 means failures surface one at a time, requiring iterative push+fix cycles." → [行为改变] Before pushing: grep -rl "uvicorn|requests.get|requests.post|httpx|aiohttp.*AppRunner" tests/unit/ to find ALL files that make real connections, not just the obvious ones. (pattern: socket-guard-blast-radius, 第1次) (Source: workloop)
   - **Trigger**: Adding a network-blocking fixture to a test conftest
+
+- 2026-07-26: [gradient] "For repos created <7 days ago, use keyword search instead of topic filter. New repos rarely have proper topics set." → [行为改变] Use q=keyword search for <7d repos, reserve topic filter for established repos >30d. (pattern: github-topic-filter-empty-for-new-repos, 第1次) (Source: study)
+  - **Trigger**: GitHub API search returns 0 results with topic filter for recent repos
+
+- 2026-07-26: [gradient] "spam-filter.sh breaks on multi-object JSON piping" → [行为改变] Fix spam-filter.sh to handle streamed JSON objects (jq -s to wrap in array before piping, or fix script parser). (pattern: tool-blockers-unresolved, 第1次) (Source: study)
+  - **Trigger**: When piping gh api --jq output (individual JSON objects per line) to spam-filter.sh

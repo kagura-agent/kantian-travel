@@ -360,6 +360,7 @@
 - [x] Track: centaur (paradigmxyz) - 779⭐ (06-17→06-24: +1.4%). PR#541 Linear chat ingress (comment-thread=sandbox, live-edit single comment). PR#726 GCP ID token secret. PR#720 Slack archive import. Multi-ingress expanding. Revisit 07-01
 - [x] Track: Qwen-AgentWorld (QwenLM) - 750⭐ (07-04 followup, +32%). Dead since 06-25, only 4 commits total. Research paper release, no ongoing dev. **Downgraded to monthly.** Revisit 08-04
 - [x] Track: AgentSpace (HKUDS) - 793⭐ (07-24 followup, +15%). THRIVING 6/6. santhreal fix PRs, contributing guide. Steady. Revisit 07-31
+- [ ] Track: Sigbound (surya-koritala/sigbound) - 50⭐ (07-26). Parallel agent merge engine. OCC partition + tree-overlay + verify gate. Open Cursor Origin alternative. Go. Active, self-dogfooding. Revisit 08-02
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
 - [x] Track: dirac (dirac-run) - 1,421⭐ (07-25 followup, +1.2%). v0.4.21-23: ACP session continuity, configurable presets, webview stability, symbol indexer efficiency. Steady. Revisit 08-01
 - [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
@@ -725,6 +726,11 @@
 - [x] Track: metatron (kerbelp/metatron) - 13⭐ (06-05). **Dropped** 06-05 — 13⭐, too small, no deep read
 - [x] Track: mercury-agent-skills (cosmicstack-labs) - 352⭐ (06-19, plateau). **Dropped** 07-22 — main agent repo dead (44d stale), skills repo dormant. No new signal
 - [x] Track: 21-day-self-interview (Forlives) - 153⭐ (06-13, was 128, +20%). **Dropped** 06-13 — phantomstars bot flagged fake engagement (issue #1). Only 2 commits, 1 external PR (metadata fix). Star farming pattern
+
+## amd/gaia PR #2500 — hermetic test fixture fix
+- [ ] Bot review (github-actions) requests adding `pytestmark = pytest.mark.allow_network` to 6 test modules that use real loopback servers: test_broker_wiring.py, test_email_sidecar_proxy.py, test_api_agent_proxy.py, test_daemon_relay.py, test_email_sidecar_relay.py, test_agent_sidecar_manager.py
+- [ ] Also improve error message in conftest.py guard to mention the opt-out marker
+- [ ] Run full `pytest tests/unit/` with `pip install -e ".[api]"` to confirm
 
 ## openclaw/openclaw PR #92665 — cacheRetention for LiteLLM
 - [ ] Address ClawSweeper bot review (06-13): patch rated 🧂 unranked krab
