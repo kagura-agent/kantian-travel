@@ -135,9 +135,10 @@ const timeTabs = document.getElementById('timeTabs');
 
 // === Filter ===
 const filterMap = {
-  'saturday': ['saturday'],
-  'sunday': ['sunday'],
-  'weekend': ['weekend']
+  'saturday': ['saturday', 'weekend', 'trip'],
+  'sunday': ['sunday', 'weekend', 'trip'],
+  'weekend': ['weekend', 'trip'],
+  'trip': ['trip', 'weekend']
 };
 
 // === Image URL ===
