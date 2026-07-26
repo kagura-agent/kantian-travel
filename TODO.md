@@ -927,6 +927,6 @@
 
 ## Archon (coleam00/Archon) — PR #2255 CodeRabbit Review
 
-### Pending (added 2026-07-23 github-patrol)
-- [ ] Address CodeRabbit review comment [Minor]: loader.ts:781 — Add `KNOWN_DAG_NODE_KEYS.has(key)` hint when node-only key misplaced at workflow level (symmetry with node-level hint)
-- [ ] Address CodeRabbit review comment [Major]: workflow-discovery.ts:341 — Clear lower-scope warnings when project workflow overrides bundled one (`mergeWarnings` retains stale bundled warnings → false positive)
+### Done (addressed 2026-07-23, commit 9cf2f227)
+- [x] Address CodeRabbit review comment [Minor]: loader.ts:781 — Add `KNOWN_DAG_NODE_KEYS.has(key)` hint when node-only key misplaced at workflow level (symmetry with node-level hint)
+- [x] Address CodeRabbit review comment [Major]: workflow-discovery.ts:341 — Clear lower-scope warnings when project workflow overrides bundled one (`mergeWarnings` retains stale bundled warnings → false positive)
