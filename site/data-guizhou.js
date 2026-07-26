@@ -142,7 +142,7 @@ const PLANS = [
               "走完全程体力消耗大，备好干粮"
             ],
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "马岭河峡谷保姆级攻略", "likes": "收藏"}
+              {"platform": "小红书", "icon": "📕", "title": "兴义｜值得去一万次的宝藏城市", "likes": "81赞", "url": "https://www.xiaohongshu.com/discovery/item/69d4bcb8000000001b00290b"}
             ]
           },
           {
@@ -153,7 +153,7 @@ const PLANS = [
             "description": "走完马岭河一定要去吃夺夺粉火锅！兴义特色，类似小火锅涮粉，走完峡谷正好补充体力。",
             "place": {"name": "兴义市区", "lat": 25.092, "lng": 104.895},
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "兴义夺夺粉火锅推荐", "likes": "收藏"}
+              {"platform": "小红书", "icon": "📕", "title": "走完马岭河一定要去吃的！！好吃到晕厥！", "likes": "63赞", "url": "https://www.xiaohongshu.com/discovery/item/69e8e969000000001a0300ea"}
             ]
           },
           {
@@ -190,7 +190,7 @@ const PLANS = [
             "bookings": [{"type": "ticket", "label": "查门票+观光车", "cost": "¥70+50"}],
             "tips": ["建议先坐观光车上山看全景，再下来骑电驴"],
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "万峰林最佳游览路线", "likes": "收藏"}
+              {"platform": "小红书", "icon": "📕", "title": "贵州兴义⛰️万峰林⛰️路线推荐", "likes": "68赞", "url": "https://www.xiaohongshu.com/discovery/item/6a302bd6000000001101afe9"}
             ]
           },
           {
@@ -230,14 +230,23 @@ const PLANS = [
       },
       {
         "photo": "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=800&h=500&fit=crop",
-        "activity": "返回贵阳 · 收官干饭",
+        "activity": "万峰湖游船 · 返回贵阳收官",
         "weather": {"icon": "⛅", "temp": "24°"},
         "steps": [
           {
+            "type": "play",
+            "text": "万峰湖坐船游湖",
+            "startTime": "08:30",
+            "endTime": "10:30",
+            "description": "坐船游万峰湖，再看看风景，喀斯特峰林倒映在湖面上。游完就返程。",
+            "place": {"name": "万峰湖", "lat": 24.95, "lng": 104.93},
+            "tips": ["提前查好船班时间", "湖上风大带件外套"]
+          },
+          {
             "type": "transit",
             "text": "自驾返回贵阳",
-            "startTime": "09:00",
-            "endTime": "12:58",
+            "startTime": "11:00",
+            "endTime": "14:58",
             "description": "万峰林→贵阳 327km，约 3 小时 58 分钟。趁上午出发避开返程高峰。",
             "place": {"name": "贵阳市区", "lat": 26.583, "lng": 106.717},
             "tips": ["10.5 返程车流大，尽量早走"]
@@ -245,31 +254,31 @@ const PLANS = [
           {
             "type": "eat",
             "text": "贵阳收官饭",
-            "startTime": "13:30",
-            "endTime": "15:00",
+            "startTime": "15:30",
+            "endTime": "17:00",
             "description": "最后一顿贵阳饭，把前两天没吃到的补上。酸汤牛肉、糯米饭、豆腐圆子。",
             "place": {"name": "贵阳市区", "lat": 26.583, "lng": 106.717}
           },
           {
             "type": "play",
             "text": "市区逛逛",
-            "startTime": "15:30",
-            "endTime": "18:00",
+            "startTime": "17:00",
+            "endTime": "19:00",
             "description": "甲秀楼、文昌阁、大十字广场，市区景点走走消食。",
             "place": {"name": "贵阳市区", "lat": 26.583, "lng": 106.717}
           },
           {
             "type": "eat",
             "text": "晚饭",
-            "startTime": "18:30",
-            "endTime": "20:00",
+            "startTime": "19:30",
+            "endTime": "21:00",
             "description": "最后的贵阳夜宵。",
             "place": {"name": "贵阳市区", "lat": 26.583, "lng": 106.717}
           },
           {
             "type": "stay",
             "text": "入住贵阳酒店",
-            "startTime": "20:30",
+            "startTime": "21:30",
             "endTime": "22:00",
             "place": {"name": "贵阳市区", "lat": 26.583, "lng": 106.717},
             "bookings": [{"type": "hotel", "label": "查住宿", "cost": "¥300-500/晚"}]
