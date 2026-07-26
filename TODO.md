@@ -243,6 +243,12 @@
 - Issue #151 still open (active user support thread — smoochy + Keesan12 discussing retro automation)
 - Contribution score: 10 merged, 1 open (#177), 7 closed
 - Status: PR #177 within patience window (4/14 days). Dogfood continues
+- Wiki health (07-25): 1075 files, 141 orphans (13%), 0 broken links, 0 collisions ✔
+- 17 wiki files edited today (active dogfood usage confirmed)
+- PR #177 (memex_link MCP tool): OPEN, 0 reviews, 5 days old (submitted 07-20)
+- Upstream quiet since v0.4.0 (07-18), 7 days. Stars: 138 (stable)
+- Contribution score: 10 merged, 1 open (#177), 7 closed
+- Status: PR #177 within patience window (5/14 days). Dogfood continues
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -361,7 +367,7 @@
 - [x] Track: ctx (ctxrs/ctx) - 947⭐ (07-24 followup, +7%). v0.25.0 stable, pace declining. Only symbol stripping since. Revisit 07-31
 - [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
 - [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
-- [ ] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-19 followup). Phase 1-4 shipped (07-14): hippocampus coordinator, sleep replay, bounded fetch, RIF. GROWING 4/6. Revisit 07-26
+- [x] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-26 followup, flat). Only dependabot bumps since 07-19. Last meaningful commit 07-15. Phase 1-4 burst (07-14) not followed by further dev. GROWING 4/6 but pace slowing. 7 forks, 4 unique issue authors. Revisit 08-02
 - [x] Track: waku-agent (ShenSeanChen) - 355⭐ (07-21 followup, +150%). THRIVING 6/6. Compare Arena + delegate_task through full loop. Revisit 07-28
 - [x] Track: memraw (TetiAI) - 46⭐ (07-23 followup, flat). 13d stale, 0 forks, 0 community. All code in init commit. Concept documented. Downgraded to monthly. Revisit 08-23
 - [ ] Track: Caspian SDK (TryCaspian) - 176⭐ (07-24, NEW). Cross-platform agent identity SDK. One on_message handler across all channels. Ships OpenClaw plugin. Solo dev risk. Revisit 07-31
@@ -398,7 +404,7 @@
 - [ ] Track: GenseeAI/gensee-crate - 68⭐ (07-02, +45%). No commits since 06-27. Dev paused. Concept solid, execution stalled. Downgraded to monthly. Revisit 07-27
 - [x] Track: Godcoder (eli-labz/Godcoder) - 270⭐ (07-03 followup, +10%). 🔴 SOLO 0/6: 0 ext PRs, 0 issues. Added CoWork mode (computer-use). Local Qwen/Ollama. Solo dev burst-publish confirmed. Cooling — downgraded to monthly. Revisit 07-31
 - [ ] Track: agent-memory-engine (uudam42) - 122⭐ (06-28). Stars grew but 22d stale. Solo dev, 0 community. Downgraded to monthly. Revisit 08-10
-- [ ] Track: OpenTag (linxidnju/OpenTag) - 468⭐ (07-19 followup, +620% from 65). Team Knowledge feature burst 07-10: versioned knowledge records, scoped partitions (workspace/channel), typed kinds (fact/decision/convention/preference/procedure), audit trails. Solo dev, 0 forks, 0 external PRs. Interesting but no community. Revisit 07-26
+- [x] Track: OpenTag (linxidnju/OpenTag) - 573⭐ (07-26 followup). No commits since 07-10 (16d stale). SOLO 0/6 for 3rd consecutive check. Stars growing passively (+27%) but 0 forks, 0 issues, 0 external PRs. **Downgraded to monthly.** Revisit 08-26
 - [x] Track: self-learning-skills (Kulaxyz) - 899⭐ (07-20 followup, +580%). Viral growth but dev stopped (no commits since 07-01, 19d stale). Pure prompt skill, "finished" — nothing to iterate. Revisit 08-20 (monthly)
 - [x] Track: YurunChen/repo-docs-skills - 62⭐ (overdue, skipped this round). Revisit 07-27
 - [x] Track: oleksiijko/pmb - 313⭐ (07-20 followup, +259%). THRIVING 5/6: auto-decay, OpenAPI support (ext PR), dashboard. Community transformed from solo dev. Revisit 08-03
@@ -729,8 +735,8 @@
 
 ## 🎭 Agent-Memes
 
-### Done (06-07 → 06-27, collapsed)
-<details><summary>40 completed improvements — click to expand</summary>
+### Done (06-07 → 07-25, collapsed)
+<details><summary>70 completed improvements — click to expand</summary>
 
 - Normalize tracker format, fix counters, refresh coverage (06-07)
 - Add memes to low-variety categories, review selection logic, fix aliases (06-07–08)
@@ -742,104 +748,37 @@
 - Tag quality fix, auto-retry on failure, counts drift fix (06-21–22)
 - `memes wake`, `dormant-blast`, normalize, expire-legacy (06-23–25)
 - `memes quality`, `memes lint` pre-commit hook, filename dedup (06-26–27)
+- Optimize `_track_send` O(n)→O(1), bounded history (06-28)
+- `memes lint --fix` auto-fixer + pre-commit hook integration (06-28)
+- `memes coverage` command + `--json` + `--weak` filter (06-29)
+- `memes review` cron wrapper + today-count crash fix (06-30)
+- `memes freshness` command + review integration (06-30–07-01)
+- `memes review --full` mode + hooks dir false-positive fix (07-01)
+- `memes cron-check` alias + `--threshold N` + `--dry-run` (07-02)
+- Contextual category awareness (greeting 14d threshold) (07-03)
+- `memes retire` command + `memes dedup` (md5 + pHash) (07-03–04)
+- Cross-category pHash audit, focus.gif crash fix (07-04–05)
+- Split stale count general vs contextual in review (07-16)
+- Style diversity fixes: disappointed, sad (+anime), thanks (+anime) (07-16–17)
+- `memes review --auto-wake` flag + send error fix (07-17)
+- Same-cat dupe fix (thinking/), dormant-blast wake all stale (07-17–18)
+- Fix `memes wake` arg-ignored bug + add help text (07-18)
+- Fix wake misleading pick-only output (07-19)
+- Normalize tracker result inconsistencies (07-19)
+- Adaptive recency window for small pools (07-22)
+- Upgrade `_review_repetition_summary()` lifetime counters + 30d window (07-22)
+- Add 5 memes to `nailed-it` (8→13 files) (07-23)
+- `memes dedup --visual` alias + multi-frame GIF hashing (07-23)
+- Cross-category near-dupe investigation + dedup tool bug fix (07-24)
+- Fix `_meta.categoryCounts` drift (219→231) (07-24)
+- Lower auto-wake threshold 14d→10d (07-24)
+- Add `target` field to tracker entries for failure diagnosis (07-25)
 
 </details>
 
-### 本轮改進 (done)
-- [x] Optimize `_track_send` O(n)→O(1) — replaced 4× full-history scan with incremental counter updates. Added bounded history (MEMES_HISTORY_MAX=500, trims oldest entries). Lifetime counters (totalSent/totalFailed/counts) preserved through trimming. Benchmarked: 33% faster at 322 entries, scales better as history grows. `cmd_stats` shows trim notice when applicable. `cmd_sync` still available for full recalibration. (06-28)
+### Next
+- (none — system healthy, find next improvement on demand)
 
-### 本轮改進 (done)
-- [x] Add `memes lint --fix` auto-fixer — auto-tag new files with category-based tags + filename-derived tag, auto-add _styles entries guessed from filename keywords (anime/animal/cartoon/live-action/meme). Dry-run by default, `--fix` writes to tags.json. Tested with dummy file: tags + style correctly inferred. (06-28)
-
-### 本轮改進 (done)
-- [x] Add `memes lint` to pre-commit hook — hooks/pre-commit runs lint + quality on staged image/tags.json changes. Auto-installed via setup.sh. Tested: blocks commits with untagged files, passes clean commits. (06-28)
-
-### 本轮改進 (done)
-- [x] Add `memes coverage` command — shows tag/style coverage % per category, avg tag depth, style diversity count, identifies weakest categories (low coverage or low style diversity). Tested: all 26 categories at 100% tag+style, only weakness is cute-animals style diversity (all "animal"). (06-29)
-
-### 本轮改進 (done)
-- [x] Add batch mode to `memes coverage --json` for programmatic consumption — outputs full coverage data as JSON: per-category files/tagged/styled/avgTags/styleDiversity/styles/issues + totals. Handles no-arg (table) and --json (machine-readable) cleanly. Tested both modes. (06-29)
-
-### 本轮改進 (done)
-- [x] Add `memes coverage --json --weak` — filter JSON output to only categories with non-empty issues array. Tested: returns empty categories when all healthy, correctly filters when issues exist. Usage in table mode unaffected. (06-29)
-
-### 本轮改進 (done)
-- [x] Add `memes review` command — cron-friendly wrapper: runs `coverage --json --weak`, logs lastReview to tracker (time/status/weakCategories), outputs remediation hints for weak categories. Added Step 0 to review workflow in channels/agent-memes.md. (06-30)
-
-### 本轮改進 (done)
-- [x] Fix `memes review` today-count crash — 2 history entries used `timestamp` instead of `time`, causing jq `startswith()` to fail on null (reported "0 memes" instead of actual 3). Fixed: normalized tracker data (timestamp→time) + added `.time? // ""` null guard in script. (06-30)
-
-### 本轮改進 (done)
-- [x] Add `memes freshness` command — per-category last-used time + staleness ranking table (sorted stalest-first), flags >7d as STALE, 3-7d as aging, <3d as fresh. Includes --json mode for programmatic use. Shows actionable hint (memes wake/dormant-blast). Tested both table + JSON output. (06-30)
-
-### 本轮改進 (done)
-- [x] Add `memes freshness` integration with `memes review` — `_review_freshness_summary()` helper calls `cmd_freshness --json`, shows stale count + top-3 stalest in review output (both clean and weak paths), writes freshness data to tracker lastReview. Tested: 7/26 stale shown correctly. (07-01)
-
-### 本轮改進 (done)
-- [x] Add `memes review --full` mode — include health + audit summary alongside coverage + freshness for a comprehensive single-command cron check. Added `_review_health_summary()` helper (categories, file sizes, tracker integrity, style diversity, dormant cats, LFS pointers). Backward-compatible: plain `memes review` unchanged. (07-01)
-
-### 本轮改進 (done)
-- [x] Fix `hooks` directory false-positive in health/review — `hooks/` (git pre-commit hooks) was counted as a meme category in `cmd_health` and `_review_health_summary` dormant check. Fixed: added hooks exclusion to all 13 category-iteration loops + fixed BRE regex in `_review_health_summary` (was using `|` instead of `\|` for alternation). Also synced tracker counters and fixed 1 stale `timestamp` field entry. (07-01)
-
-### 本轮改進 (done)
-- [x] Add `memes cron-check` alias — runs `review --full` + auto-wakes top-stale category if staleness >14d, making cron fully autonomous. Also fixed discord `_send_openclaw` fallback bug (resolved target not passed through, retry path had same issue). Tested: auto-woke `thinking` (19d stale) and sent to Discord successfully. (07-02)
-
-### 本轮改進 (done)
-- [x] Add `--threshold N` flag to `cron-check` to override default 14d staleness threshold — parses `--threshold N` (positive int, days), validates input, passes to freshness filter. Tested: `--threshold 999` skips wake, `--threshold 5` correctly wakes stalest category (bruh, 17.3d). Error handling for invalid/missing/zero values. Updated usage text + case dispatch to forward args. (07-02)
-
-### 本轮改進 (done)
-- [x] Add `--dry-run` flag to `cron-check` — shows what auto-wake would do without sending. Parses `--dry-run` in any position alongside `--threshold N`. Outputs `🧪 [DRY-RUN] Would auto-wake: <cat> (<days>d stale)` instead of actually sending. Updated usage text. Tested: dry-run only, dry-run+threshold combo, threshold+dry-run order. (07-02)
-
-### 本轮改進 (done)
-- [x] Add contextual category awareness to freshness/review — greeting-morning/night/hello/bye now use 14d staleness threshold (vs 7d for general). Added MEMES_CONTEXTUAL_CATS array + _is_contextual_cat() helper. JSON includes contextual flag. Stale count 12→8, less noise. (07-03)
-
-### 本轮改進 (done)
-- [x] Add `memes retire <source> <target>` command — merges a category into another: moves files (with collision prefix), re-keys tags.json + _styles via rename map, rewrites tracker history/counts, removes empty source dir. Supports `--dry-run`. Tested: normal merge, name collision, alias resolution, error cases (nonexistent/same category). Fixed `((moved++))` with set -e, fixed `startswith('_')` filter excluding valid category keys. (07-03)
-
-### 本轮改進 (done)
-- [x] Add `memes dedup` command — finds exact-duplicate files (md5) across/within categories. Dry-run by default, `--fix` removes same-category dupes (merges tags into survivor, rewrites tracker history, updates categoryCounts). Cross-category dupes reported but preserved (different semantic contexts). Tested: found 9 groups (5 same-cat, 4 cross-cat), removed 6 same-cat dupes, saved ~5MB, 243→237 files. Coverage still 100%. (07-03)
-
-### 本轮改進 (done)
-- [x] Add perceptual hash (pHash) near-duplicate detection to `memes dedup` — `--phash` flag uses Python imagehash library to compute perceptual hashes for all 237 meme files, groups visually similar images by hamming distance (default threshold ≤10, configurable via `--threshold N`). Same-category near-dupes → auto-removable with `--fix` (reuses exact-dedup's tags.json + tracker merge logic). Cross-category near-dupes reported but preserved. Handles GIF first-frame extraction, broken file graceful fallback. Display script uses heredoc to avoid Python 3.12 f-string `\"` quoting issue in bash single-quoted strings. Found: 22 groups (12 same-cat removable, ~6.8MB savings). (07-04)
-
-### 本轮改進 (done)
-- [x] Audit cross-category pHash duplicates — reviewed all 10 cross-cat pHash groups. 4 groups were exact md5 dupes (same file, different name): consolidated 5 files into semantic-best category (confused/squint←thinking/math-lady, cute-animals/cat-curious←tired/exhausted-cat+wow/impressed, working/office-hustle←cute-animals/keyboard-cat, panic/fire←tired/face-desk). 6 groups were perceptually similar but genuinely different files — left untouched. Also ran same-cat pHash dedup --fix (14 more removed). Fixed dedup --fix bug (used `rm` instead of `git rm`, files deleted from disk but not staged). 237→218 files total. Tags merged into all survivors. (07-04)
-
-### 本轮改進 (done)
-- [x] Fix `working/focus.gif` pHash crash — root cause: `img.n_frames` internally seeks all GIF frames, hitting corrupt frame 22 → IndexError. Fixed `_dedup_phash()` with inner try/except to fallback to `seek(0)`. This unblocked hashing, which revealed focus.gif is pHash-identical to coffee-work.gif (dist=0). Deduped: removed focus.gif (988KB, corrupt), merged tags into coffee-work.gif (339KB, clean). 218→217 files. (07-05)
-
-### 本轮改進 (done)
-- [x] Split stale count into general vs contextual in review/freshness — `_review_freshness_summary()` now shows "7 general + 3 contextual" instead of lumped "10/26 stale". Top-3 stalest prioritizes general over contextual. `cmd_freshness` table footer matches. Tracker `lastReview.freshness` includes `generalStale`/`contextualStale`. More actionable: contextual staleness (greetings) is expected, general is the real signal. (07-16)
-
-### 本轮改進 (done)
-- [x] Improve `disappointed` style diversity — was already fixed (4 styles: 6 anime + 3 live-action + 1 meme + 1 cartoon, 58% anime). Task was stale. (07-16)
-
-### 本轮改進 (done)
-- [x] Add anime style to `sad` category — had 0 anime (3 animal + 2 meme + 1 cartoon). Added frieren-sad.gif (185KB, 438×480, Frieren chibi). Now 4 styles across 7 files. No pHash dupes. (07-16)
-
-### 本轮改進 (done)
-- [x] Add `--auto-wake` flag to `memes review` — auto-sends stalest general category (>14d) when coverage is clean. Also fixed `_send_err_file` RETURN trap unbound variable bug (used `${_send_err_file:-}` guard). Tested: correctly identifies stalest general category, sends to Discord, updates tracker. Now the 3x-daily review cron can self-heal staleness. (07-17)
-
-### 本轮改進 (done)
-- [x] Add anime style to `thanks` category — had 4 meme + 2 animal + 1 anime. Added pokemon-happy-cry.gif (1046KB, 480x364, Pokémon happy crying/tears of joy). Now 4 meme + 2 animal + 2 anime across 8 files. 3 styles, coverage 100%. Also found pre-existing same-cat dupe in thinking/ (anime-thinking = spongebob-thinking). (07-17)
-
-### 本轮改進 (done)
-- [x] Fix same-cat duplicate in `thinking` category — anime-thinking.gif exact md5 dupe of spongebob-thinking.gif. Ran `memes dedup --fix`: merged tags, rewritten history entries, deleted dupe. thinking/ 7→6 files, coverage 100%. (07-17)
-
-### 本轮改進 (done)
-- [x] Wake stale categories — all 7/26 stale categories woken via dormant-blast (greeting-night, greeting-hello, sad, waiting, popcorn, greeting-morning, confused, encourage). Freshness now 0/26 stale. 8 memes sent to Discord. (07-18)
-
-### 本轮改進 (done)
-- [x] Fix `memes wake <category>` argument ignored bug — root cause: `*) shift ;;` in arg parser discarded positional args. Fixed: capture positional as `target_cat`, validate directory exists, skip dormant-search when specified. Tested: `wake sad` → sad, `wake` → stalest (debug-mood), `wake nonexistent` → error. (07-18)
-
-### 本轮改進 (done)
-- [x] Add usage/help text to `memes wake` — added `--help` handler with full usage, options, examples. Also added `wake` + `dormant-blast` to main `memes` usage text (were missing). Tested: `--help`, auto-stalest, specific category, error on nonexistent all work. (07-18)
-
-### 本轮改進 (done)
-- [x] Fix `memes wake` misleading pick-only output — without `--send`, showed "💤 Waking dormant category" implying action was taken, but only picked a file. Changed to "🎲 Picked from ... — use --send to deliver" for pick-only mode. Send mode retains original message. Fixed in both /usr/local/bin/memes and skill source. Woke debug-mood (8d stale). (07-19)
-
-### 本轮改進 (done)
-- [x] Normalize tracker result inconsistencies — fixed 6 entries: 1 "pending" (send callback missed, resolved to success), 2 "sent" (legacy unresolvable → failed), 3 missing result field (backfilled to success). Distribution now clean: 379 success / 72 failed, zero anomalous states. (07-19)
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)

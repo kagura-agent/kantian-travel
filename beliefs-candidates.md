@@ -977,3 +977,8 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-25: [gradient] "Reporter-opened sibling issues (#17936/#17937/#17938) are low-hanging fruit for rule #85 mirror fixes. When one issue is selected, check if same reporter has related issues in same repo for batch/companion PRs." → [行为改变] After selecting an issue, check reporter profile for similar issues in same repo. If same pattern, consider batching or sequencing.. (pattern: sibling-issues-from-same-reporter, 第1次) (Source: workloop)
   - **Trigger**: find_work selects an issue and reporter has other related open issues
+
+- 2026-07-26: [gradient] "Audit carry-forward verification must independently query the source (API/CLI/filesystem), not trust previous memory/audit claims. 07-23 claimed #7062 CLOSED via API verification, but the issue was never closed. 07-24 and 07-25 audits trusted this claim without re-checking, allowing a false positive to persist 3 days." → [行为改变] When verifying carry-forward items, always run the actual verification command (gh api, grep, etc.) — never accept 'verified ✅' from a previous session's memory at face value. (pattern: audit-carry-forward-independent-verify, 第1次) (Source: audit)
+  - **Trigger**: Verifying carry-forward items from previous audit cycles
+
+- 2026-07-26: [gradient] "Commercial backing (funding, corp sponsorship) inflates star growth predictions. halo: predicted >2000 stars, actual 1117 — discount by ~40%." → [行为改变] When predicting star growth for commercially-backed projects, apply a 40% discount to organic-baseline projections. (pattern: calibration-commercial-backing-overweight, 第1次) (Source: study)
