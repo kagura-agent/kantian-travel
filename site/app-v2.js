@@ -394,14 +394,49 @@ function openDetail(plan) {
       segs.forEach(s => { s.start -= base; s.end -= base; });
       const totalH = segs[segs.length - 1].end;
       if (totalH <= 0) return '';
-      const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6' };
-      let html = '<div class="detail-section"><h4 class="detail-section-title">时间分配</h4><div class="tl-bar">';
-      segs.forEach(seg => {
-        const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
-        const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost && !/免费|当天/.test(seg.cost) ? `<span class="tl-cost">${seg.cost}</span>` : '';
-        html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
-      });
-      html += '</div>';
+      const colors = { travel: '#BBBBC0', play: '#34C759', sleep: '#5856D6', eat: '#FF9800' };
+      let html = '<div class="detail-section"><h4 class="detail-section-title">时间分配</h4>';
+
+      // Per-day gantt bars for multi-day trips
+      if (plan.days.length > 1) {
+        plan.days.forEach((day, dayIdx) => {
+          const daySegs = [];
+          let lastEnd = null;
+          day.steps.forEach(step => {
+            const start = _timeToHours(step.startTime);
+            const end = _timeToHours(step.endTime || step.startTime);
+            if (lastEnd !== null && start > lastEnd + 0.1) {
+              daySegs.push({ type: 'free', start: lastEnd, end: start });
+            }
+            let type = 'play';
+            if (step.type === 'transit' || step.type === 'depart' || step.type === 'home') type = 'travel';
+            else if (step.type === 'stay') type = 'sleep';
+            else if (step.type === 'eat') type = 'eat';
+            daySegs.push({ type, label: step.text.substring(0, 10), start, end });
+            lastEnd = end;
+          });
+          if (!daySegs.length) return;
+          const base = daySegs[0].start;
+          const totalH = daySegs[daySegs.length-1].end - base;
+          if (totalH <= 0) return;
+          html += `<div style="margin-bottom:8px"><div style="font-size:11px;color:#666;margin-bottom:3px">Day${dayIdx+1} ${day.weather.icon}${day.weather.temp} ${day.activity.substring(0,12)}</div><div class="tl-bar">`;
+          daySegs.forEach(seg => {
+            const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+            const color = seg.type === 'free' ? '#F0F0F0' : (colors[seg.type] || '#999');
+            html += `<div class="tl-seg" style="width:${pct}%;background:${color}" title="${seg.label || ''}"></div>`;
+          });
+          html += '</div></div>';
+        });
+      } else {
+        // Single day: one combined bar
+        html += '<div class="tl-bar">';
+        segs.forEach(seg => {
+          const pct = ((seg.end - seg.start) / totalH * 100).toFixed(1);
+          const costLabel = (seg.type === 'travel' || seg.type === 'sleep') && seg.cost && !/免费|当天/.test(seg.cost) ? `<span class="tl-cost">${seg.cost}</span>` : '';
+          html += `<div class="tl-seg" style="width:${pct}%;background:${colors[seg.type]}" title="${seg.label}">${costLabel}</div>`;
+        });
+        html += '</div>';
+      }
       const travelH = segs.filter(s=>s.type==='travel').reduce((a,s)=>a+(s.end-s.start),0);
       const playH = segs.filter(s=>s.type==='play').reduce((a,s)=>a+(s.end-s.start),0);
       const sleepH = segs.filter(s=>s.type==='sleep').reduce((a,s)=>a+(s.end-s.start),0);
