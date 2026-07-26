@@ -982,3 +982,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
   - **Trigger**: Verifying carry-forward items from previous audit cycles
 
 - 2026-07-26: [gradient] "Commercial backing (funding, corp sponsorship) inflates star growth predictions. halo: predicted >2000 stars, actual 1117 — discount by ~40%." → [行为改变] When predicting star growth for commercially-backed projects, apply a 40% discount to organic-baseline projections. (pattern: calibration-commercial-backing-overweight, 第1次) (Source: study)
+
+- 2026-07-26: [gradient] "Socket guard (autouse fixture blocking socket.connect) in a large test suite will break many more tests than the obvious ones. Integration-style tests that start real servers (uvicorn, aiohttp) and connect to them with httpx/requests also need opt-out markers. CI --maxfail=1 means failures surface one at a time, requiring iterative push+fix cycles." → [行为改变] Before pushing: grep -rl "uvicorn|requests.get|requests.post|httpx|aiohttp.*AppRunner" tests/unit/ to find ALL files that make real connections, not just the obvious ones. (pattern: socket-guard-blast-radius, 第1次) (Source: workloop)
+  - **Trigger**: Adding a network-blocking fixture to a test conftest
