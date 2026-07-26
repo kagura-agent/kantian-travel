@@ -17,7 +17,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1555217851-6141535bd771?w=800&h=500&fit=crop",
         "activity": "两路汇合 · 民生路夜市开干",
-        "weather": {"icon": "🌦️", "temp": "22°"},
+        "weather": {"icon": "🌦️", "temp": "22°", "note": "历史预估·到达日大概率有雨"},
         "steps": [
           {
             "type": "depart",
@@ -74,7 +74,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&h=500&fit=crop",
         "activity": "贵阳继续干饭 · 下午自驾去兴义",
-        "weather": {"icon": "⛅", "temp": "25°"},
+        "weather": {"icon": "⛅", "temp": "25°", "note": "历史预估·多云"},
         "steps": [
           {
             "type": "eat",
@@ -120,7 +120,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&h=500&fit=crop",
         "activity": "马岭河峡谷看瀑布 · 夺夺粉火锅",
-        "weather": {"icon": "☀️", "temp": "25°"},
+        "weather": {"icon": "☀️", "temp": "25°", "note": "历史预估·晴天概率高"},
         "steps": [
           {
             "type": "transit",
@@ -182,7 +182,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=500&fit=crop",
         "activity": "万峰林慢游 · 稻田咖啡发呆",
-        "weather": {"icon": "☀️", "temp": "26°"},
+        "weather": {"icon": "☀️", "temp": "26°", "note": "历史预估·适合户外"},
         "steps": [
           {
             "type": "play",
@@ -235,7 +235,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1526318896980-cf78c088247c?w=800&h=500&fit=crop",
         "activity": "万峰湖游船 · 返回贵阳收官",
-        "weather": {"icon": "⛅", "temp": "24°"},
+        "weather": {"icon": "⛅", "temp": "24°", "note": "历史预估·多云为主"},
         "steps": [
           {
             "type": "play",
@@ -292,7 +292,7 @@ const PLANS = [
       {
         "photo": "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=800&h=500&fit=crop",
         "activity": "还车 · 各回各家",
-        "weather": {"icon": "⛅", "temp": "22°"},
+        "weather": {"icon": "⛅", "temp": "22°", "note": "历史预估·返程日"},
         "steps": [
           {
             "type": "transit",
