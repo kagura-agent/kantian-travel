@@ -54,8 +54,8 @@ const PLANS = [
             "place": {"name": "民生路", "lat": 26.579231, "lng": 106.715828},
             "tips": ["人均 50-100 就能吃很好", "现金+微信都收"],
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "贵阳三天两夜纯吃攻略4人版", "likes": "收藏"},
-              {"platform": "小红书", "icon": "📕", "title": "贵阳民生路夜市攻略", "likes": "收藏"}
+              {"platform": "小红书", "icon": "📕", "title": "贵阳三天两夜纯吃攻略4人版", "likes": "36赞", "url": "https://www.xiaohongshu.com/discovery/item/69b967ac0000000023012c87"},
+              {"platform": "小红书", "icon": "📕", "title": "贵阳民生路·对不起之前是我说话大声了", "likes": "47赞", "url": "https://www.xiaohongshu.com/discovery/item/6a33e80a000000000f01d838"}
             ]
           },
           {
@@ -100,7 +100,7 @@ const PLANS = [
             "description": "到了先吃一碗兴义羊肉汤粉，粉是兴义一绝。",
             "place": {"name": "兴义市区", "lat": 25.092, "lng": 104.895},
             "relatedContent": [
-              {"platform": "小红书", "icon": "📕", "title": "兴义美食攻略·粉是一绝", "likes": "收藏"}
+              {"platform": "小红书", "icon": "📕", "title": "关于我在兴义吃了些什么😋", "likes": "13赞", "url": "https://www.xiaohongshu.com/discovery/item/68da0920000000001301a0fe"}
             ]
           },
           {
