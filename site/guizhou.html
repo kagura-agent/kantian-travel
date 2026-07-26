@@ -9,9 +9,10 @@
 /* Single trip mode: detail sheet as full page, not overlay */
 .top-bar { display: none !important; }
 .card-list { display: none !important; }
-.detail-overlay { position: relative !important; opacity: 1 !important; pointer-events: auto !important; background: none !important; backdrop-filter: none !important; }
-.detail-overlay .detail-sheet { position: relative !important; left: 0 !important; bottom: auto !important; top: 0 !important; transform: none !important; width: 100% !important; max-width: 100% !important; max-height: none !important; height: auto !important; border-radius: 0 !important; overflow: visible !important; }
+.detail-overlay { position: static !important; opacity: 1 !important; pointer-events: auto !important; background: none !important; backdrop-filter: none !important; }
+.detail-overlay .detail-sheet { position: static !important; transform: none !important; width: 100% !important; max-width: 100% !important; max-height: none !important; height: auto !important; border-radius: 0 !important; overflow-y: visible !important; overscroll-behavior: auto !important; }
 .detail-close { display: none !important; }
+body { overflow-y: auto !important; height: auto !important; }
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
