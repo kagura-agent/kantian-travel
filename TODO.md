@@ -387,6 +387,7 @@
 - [x] Track: vercel/eve - 3,085⭐ (07-03 followup, +19%). v0.19.0: cancellation propagation, gateway cost metadata, resilient attachment handling. Shipping daily. Revisit 07-10
 - [x] Track: scholar-loop (renee-jia/scholar-loop) - 444⭐ (06-26 followup, +252% viral but no code since 06-16). All patterns extracted and applied. Solo dev burst-publish confirmed. **Downgraded to monthly.** Revisit 07-26
 - [x] Track: VisionForge-OU/foreman - 116⭐ (06-26 followup, +35%). No feature commits in 45 days, only CI bumps + PyPI publish. All patterns applied (test-ratchet, merge gate). **Downgraded to monthly.** Revisit 07-26
+- [ ] Track: OneCLI (onecli/onecli) - 2,826⭐ (07-26, NEW). OSS credential gateway for AI agents. MITM proxy injects secrets transparently. Rust gateway + Next.js dashboard. Bitwarden vault integration. Apache-2.0. Deep read done. Revisit 08-02
 - [x] Track: rebel0789/codexpro - 1,355⭐ (07-23 followup, +3.7%). v0.29.0: native ChatGPT tool cards. 10d since last commit but healthy community. THRIVING 5/6. Revisit 07-30
 - [ ] Track: agenticow (ruvnet) - 43⭐ (07-18 followup). SOLO 0/6, 14d stale. Downgraded to monthly. Revisit 08-18
 - [x] Track: agiwhitelist/tokdiet - 69→63⭐ (declined). No commits since 06-18, only docs/marketing. Solo dev stalled. All patterns extracted and applied (shadow-eval, fail-open). **Dropped** 06-28
@@ -775,6 +776,9 @@
 - Add `target` field to tracker entries for failure diagnosis (07-25)
 
 </details>
+
+### Done (07-26)
+- Batch auto-wake: `_review_auto_wake` now wakes up to 3 stale categories per run (was 1). Fixes `((count++))` exit-code-1 under `set -e`. (07-26)
 
 ### Next
 - (none — system healthy, find next improvement on demand)
