@@ -94,9 +94,14 @@ setTimeout(() => {
     if (sheet) {
       sheet.style.height = '100%';
       sheet.style.maxHeight = '100%';
+      sheet.style.maxWidth = '100%';
       sheet.style.borderRadius = '0';
       sheet.style.top = '0';
+      sheet.style.bottom = '0';
+      sheet.style.left = '0';
       sheet.style.transform = 'none';
+      sheet.style.position = 'fixed';
+      sheet.style.width = '100%';
     }
     const closeBtn = document.querySelector('.detail-close');
     if (closeBtn) closeBtn.style.display = 'none';
