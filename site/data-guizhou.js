@@ -7,6 +7,8 @@ const PLANS = [
     "reason": "基于你们收集的小红书攻略整理。国庆 6 天 5 夜，贵阳干饭 + 兴义山水，高铁 + 租车方案。",
     "tags": ["国庆", "4人", "干饭", "峡谷", "喀斯特"],
     "startDate": "2026-10-01",
+    "weatherSource": "Open-Meteo Archive API (2024+2025 同期历史数据, 贵阳 26.538/106.805, 兴义 25.010/104.925)",
+    "weatherNote": "基于历史数据预估，9月中旬更新为精确预报",
     "relatedContent": [
       {"platform": "腾讯文档", "icon": "📄", "title": "2026贵州干饭行！完整攻略", "likes": "原始素材"}
     ],
