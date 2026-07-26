@@ -342,7 +342,8 @@ function openDetail(plan) {
   const weekday = ['周日','周一','周二','周三','周四','周五','周六'];
   const now = new Date();
   let start = new Date(now);
-  if (currentFilter === 'now') start = now;
+  if (plan.startDate) { start = new Date(plan.startDate + 'T00:00:00'); }
+  else if (currentFilter === 'now') start = now;
   else if (currentFilter === 'tomorrow') start.setDate(now.getDate() + 1);
   else if (currentFilter === 'weekend') { const dw = now.getDay(); start.setDate(now.getDate() + (dw === 0 ? 0 : 6 - dw)); }
   else if (currentFilter === 'next-weekend') { const dw = now.getDay(); start.setDate(now.getDate() + (dw === 0 ? 7 : 13 - dw)); }

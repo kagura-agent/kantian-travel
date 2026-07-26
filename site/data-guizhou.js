@@ -6,6 +6,7 @@ const PLANS = [
     "category": "weekend",
     "reason": "基于你们收集的小红书攻略整理。国庆 6 天 5 夜，贵阳干饭 + 兴义山水，高铁 + 租车方案。",
     "tags": ["国庆", "4人", "干饭", "峡谷", "喀斯特"],
+    "startDate": "2026-10-01",
     "relatedContent": [
       {"platform": "腾讯文档", "icon": "📄", "title": "2026贵州干饭行！完整攻略", "likes": "原始素材"}
     ],
