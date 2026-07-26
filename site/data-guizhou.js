@@ -21,7 +21,7 @@ const PLANS = [
             "startTime": "09:00",
             "endTime": "12:00",
             "description": "北京首都/大兴→贵阳龙洞堡，约 3 小时。国庆机票提前买，早买差价大。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223},
             "bookings": [{"type": "flight", "label": "查机票", "cost": "¥800-1500"}]
           },
           {
@@ -30,7 +30,7 @@ const PLANS = [
             "startTime": "09:30",
             "endTime": "12:00",
             "description": "上海虹桥/浦东→贵阳龙洞堡，约 2.5 小时。苏州到虹桥高铁 30min，可当天赶。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223},
             "bookings": [{"type": "flight", "label": "查机票", "cost": "¥600-1200"}]
           },
           {
@@ -39,7 +39,7 @@ const PLANS = [
             "startTime": "12:30",
             "endTime": "13:00",
             "description": "两路在贵阳龙洞堡机场汇合，机场取租车（提前预订 SUV，4 人 + 行李）。国庆租车紧俏，建议提前 2 周订。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223},
             "bookings": [{"type": "car", "label": "租车预订", "cost": "¥200-400/天"}]
           },
           {
@@ -284,7 +284,7 @@ const PLANS = [
             "startTime": "08:00",
             "endTime": "09:00",
             "description": "贵阳龙洞堡机场还车。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017}
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223}
           },
           {
             "type": "home",
@@ -292,7 +292,7 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "13:30",
             "description": "贵阳→北京，约 3 小时。国庆最后一天返程航班紧张，提前买。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223},
             "bookings": [{"type": "flight", "label": "查返程机票", "cost": "¥800-1500"}]
           },
           {
@@ -301,7 +301,7 @@ const PLANS = [
             "startTime": "10:30",
             "endTime": "13:00",
             "description": "贵阳→上海，约 2.5 小时，落地后高铁回苏州 30min。",
-            "place": {"name": "贵阳龙洞堡机场", "lat": 26.5385, "lng": 106.8017},
+            "place": {"name": "贵阳龙洞堡机场", "lat": 26.537812, "lng": 106.805223},
             "bookings": [{"type": "flight", "label": "查返程机票", "cost": "¥600-1200"}]
           }
         ]
