@@ -105,6 +105,9 @@ setTimeout(() => {
     }
     const closeBtn = document.querySelector('.detail-close');
     if (closeBtn) closeBtn.style.display = 'none';
+    // Scroll to top
+    sheet.scrollTop = 0;
+    window.scrollTo(0, 0);
   }
 }, 50);
 </script>
