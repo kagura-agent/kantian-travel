@@ -121,19 +121,63 @@
 
 ### 阶段六：图片接入（8 commits）
 
-![Phase 6a - Google Places首批真实照片](screenshots/phase6a-home.png)
-![Phase 6a - 详情页](screenshots/phase6a-detail.png)
-![Phase 6b - 最终方案GP+Unsplash](screenshots/phase6b-home.png)
-![Phase 6b - 详情页](screenshots/phase6b-detail.png)
+图片问题是整个项目中最能体现「种草力」瓶颈的环节。经历了 6 个子阶段：
 
-- 部署 Google Places Photo Proxy 到 VM1
-- 第一批真实照片：11/24 天有图
-- 用实际 POI 名搜索：17/24 → 19/24
-- 发现问题：日本神社出现在苏州方案里 → 清理
-- 兜底方案：没图的用金鸡湖
-- 尝试 Unsplash 按活动关键词匹配
-- **最终方案**：Google Places 优先，Unsplash fallback
-- **反思**：Google Places 照片太丑（随机游客拍的），没有种草力
+#### 6.1 首批 Google Places 照片（11/24 天有图）
+
+部署 Google Places Photo Proxy 到 VM1，第一次把占位图换成真实照片。
+
+![GP首批-首页1](screenshots/gp-first-1.png)
+![GP首批-首页2](screenshots/gp-first-2.png)
+![GP首批-详情](screenshots/gp-first-detail.png)
+
+照片来自 Google Places API 随机返回的用户上传图——灯笼街夜景还行，但很多 POI 返回的是游客随手拍的低质量照片，或者干脆没有照片（空白卡片）。
+
+#### 6.2 按实际 POI 名搜索（17/24 → 19/24）
+
+改用行程步骤中的实际地点名去搜索 Google Places，覆盖率从 11/24 提升到 19/24。
+
+![GP按名搜索-首页1](screenshots/gp-more-1.png)
+![GP按名搜索-首页2](screenshots/gp-more-2.png)
+![GP按名搜索-详情](screenshots/gp-more-detail.png)
+
+覆盖率提高了，但新问题出现——搜索结果不准，**日本神社出现在苏州方案里**：
+
+#### 6.3 错位照片问题（日本神社 in 苏州）
+
+![错位照片-首页1](screenshots/gp-wrong-1.png)
+![错位照片-首页2](screenshots/gp-wrong-2.png)
+
+注意第三张卡片「清晨雕塑快游」——配图是日本神社的金色屋顶。这是因为 Google Places API 按关键词搜索时没有地理围栏约束，「雕塑」匹配到了日本的结果。同时第一张卡片照片完全加载失败（空白）。
+
+#### 6.4 清理错位照片
+
+手动清理了所有地理位置不对的照片，没图的先用金鸡湖占位。
+
+![清理后-首页](screenshots/gp-cleared-1.png)
+![清理后-详情](screenshots/gp-cleared-detail.png)
+
+卡片变得干净了，但大量方案失去照片，回到了占位图状态。
+
+#### 6.5 换 Unsplash 高质量图
+
+尝试用 Unsplash API 按活动关键词（hiking、lake、ancient-town）匹配高质量照片。
+
+![Unsplash-首页1](screenshots/gp-unsplash-1.png)
+![Unsplash-首页2](screenshots/gp-unsplash-2.png)
+![Unsplash-详情](screenshots/gp-unsplash-detail.png)
+
+视觉效果大幅提升——每张卡片都有精美的风景照（湖泊、云海、日落）。但问题是：**这些照片跟苏州没有任何关系**。用户看到卡片觉得好看，到了现场发现完全不是那回事。这就是 AI 生成内容的信任问题——好看但假。
+
+#### 6.6 最终方案：Google Places 优先 + Unsplash 兜底
+
+![最终方案-首页1](screenshots/gp-final-1.png)
+![最终方案-首页2](screenshots/gp-final-2.png)
+![最终方案-详情](screenshots/gp-final-detail.png)
+
+折中方案：有真实 Google Places 照片的 POI 用真实照片，没有的用 Unsplash 兜底。但这个方案本质上没解决核心矛盾——**真实照片不够好看，好看照片不够真实**。
+
+- **反思**：图片问题暴露了整个产品方向的根本矛盾。种草靠的是「真实 + 好看」的交集（小红书用户精心拍的照片），而我们只能在「真实但丑」（Google Places）和「好看但假」（Unsplash/AI）之间二选一。这个问题无解。
 
 ### 阶段七：产品方向文档化（~8 commits）
 - PRODUCT.md 多次重写
