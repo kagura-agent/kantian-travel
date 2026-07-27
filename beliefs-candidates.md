@@ -994,3 +994,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-27: [gradient] "Star growth predictions for academic paper repos and solo-dev novel-architecture repos consistently over-estimated (2/2 wrong in calibration: Qwen-AgentWorld derivatives, context-warp-drive stars)" → [行为改变] Apply 50% discount to gut star estimate before committing prediction. (pattern: calibration-overestimate-solo-academic, 第1次) (Source: study)
   - **Trigger**: When logging a calibration prediction for an academic or solo-dev repo
+
+- 2026-07-27: [gradient] "git clone fails on network/disk issues: switch to API-based reading immediately, no retry" → [行为改变] Use gh api contents + web_fetch for repos <1MB. Only clone for large codebases. (pattern: clone-fail-api-fallback, 第1次) (Source: study)
+  - **Trigger**: git clone timeout or failure on small repos
