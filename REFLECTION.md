@@ -63,7 +63,8 @@
 
 ### 阶段一：H5 原型搭建
 
-![Phase 1](screenshots/phase1.png)
+![Phase 1 - 首页](screenshots/phase1-home.png)
+![Phase 1 - 详情页](screenshots/phase1-detail.png)
 
 - 基础页面 + GitHub CI 自动部署到 VM1
 - 分天视图、高德导航按钮、种草内容展示
@@ -71,7 +72,8 @@
 
 ### 阶段二：UI 疯狂打磨（~25 commits）
 
-![Phase 2](screenshots/phase2.png)
+![Phase 2 - 首页](screenshots/phase2-home.png)
+![Phase 2 - 详情页](screenshots/phase2-detail.png)
 
 - 时间轴竖向展示 + 按时长比例的连接线（玩 2h 的线比坐车 30min 长）
 - 行程步骤：手风琴展开 → 默认展开 → 横排按钮
@@ -84,7 +86,8 @@
 
 ### 阶段三：「跟着走」功能（~15 commits）
 
-![Phase 3](screenshots/phase3.png)
+![Phase 3 - 首页](screenshots/phase3-home.png)
+![Phase 3 - 详情页](screenshots/phase3-detail.png)
 
 - 方案从「看」变成「执行实例」
 - 左滑👍/右滑👎 → 最终改成投票按钮
@@ -102,7 +105,10 @@
 
 ### 阶段五：数据生成管线（~20 commits）
 
-![Phase 5](screenshots/phase5.png)
+![Phase 5a - 首次真实数据14方案](screenshots/phase5a-home.png)
+![Phase 5a - 详情页](screenshots/phase5a-detail.png)
+![Phase 5b - v5最终21方案100%坐标](screenshots/phase5b-home.png)
+![Phase 5b - 详情页](screenshots/phase5b-detail.png)
 
 - `generate.js` 五代迭代（v1→v2→v3→v4→v5）
 - v3：完整管线 knowledge/ → API → LLM → output，一条命令跑完
@@ -115,7 +121,10 @@
 
 ### 阶段六：图片接入（8 commits）
 
-![Phase 6](screenshots/phase6.png)
+![Phase 6a - Google Places首批真实照片](screenshots/phase6a-home.png)
+![Phase 6a - 详情页](screenshots/phase6a-detail.png)
+![Phase 6b - 最终方案GP+Unsplash](screenshots/phase6b-home.png)
+![Phase 6b - 详情页](screenshots/phase6b-detail.png)
 
 - 部署 Google Places Photo Proxy 到 VM1
 - 第一批真实照片：11/24 天有图
@@ -138,7 +147,10 @@
 
 ### 阶段八：LLM 质量死磕（~8 commits before pivot）
 
-![Phase 8](screenshots/phase8.png)
+![Phase 8a - GPT-5.6-sol 17方案](screenshots/phase8a-home.png)
+![Phase 8a - 详情页](screenshots/phase8a-detail.png)
+![Phase 8b - 最终20方案](screenshots/phase8b-home.png)
+![Phase 8b - 详情页](screenshots/phase8b-detail.png)
 
 - 换模型：GPT-5.5 → GPT-5.6-sol（更强推理）
 - 行程连续性强制（住一晚的方案不能中途回家）
@@ -149,7 +161,8 @@
 
 ### 阶段九：Pivot — 用户素材 + AI 整理（今天上午）
 
-![Phase 9](screenshots/phase9.png)
+![Phase 9 - 贵州MVP顶部](screenshots/phase9-home.png)
+![Phase 9 - 时间轴详情](screenshots/phase9-detail.png)
 
 - 核心洞察：好内容来自人类，AI 的价值在整理不在生成
 - 用户扔截图 → 多模态提取 → 高德 API 验证 → 方案页
@@ -159,7 +172,8 @@
 
 ### 阶段十：反思 — 赛道本身的问题（今天下午）
 
-![Phase 10](screenshots/phase10.png)
+![Phase 10 - 贵州全览](screenshots/phase10-home.png)
+![Phase 10 - 分天甘特图](screenshots/phase10-detail.png)
 
 - 旅行规划赛道天花板很低
 - 种草靠视觉冲击，AI 做不到
