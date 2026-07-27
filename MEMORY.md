@@ -151,8 +151,9 @@
 
 
 
-## Promoted From Short-Term Memory (2026-07-25)
+## Promoted From Short-Term Memory (2026-07-27)
 
-- **07-22**: 看天出发产品启动日 — Luna 主导全天产品讨论(10:47-17:12)，从需求到原型；定义：只选不规划+拿走就走；目的地粒度=具体小地方(莫干山/西塘)不是城市；大卡片列表+天气折线图+路线地图；域名 kantian.kagura-agent.com 部署; NemoClaw#7295 wscurran endorsed
-- **07-23**: 看天出发原型密集迭代 — Luna 19 条具体 UI 反馈(分天 Tab/竖向时间轴/地图比例/步骤内导航按钮等)；60+ POI 详情表；Luna 产品思维：懒人模式+信息跟行程走+导航=此刻去哪; ⚠️ git init --force 覆盖已有 repo 教训
-- **07-24**: 看天出发产品架构深度设计(07:00-12:40) — 卡片去地图只留照片+天气+色条；详情页「出发🚶」按钮；地图分层交互；PRODUCT.md 核心公式定义；三层数据结构；CDN 分发模型；多目的地方案；NemoClaw#7434 submitted
+<!-- openclaw-memory-promotion:memory:memory/2026-07-24.md:1074:1100 -->
+- Uppercase `DeepSeek-V3-0324` still returns 500 - Run-302 state file: 0/16 (fresh start ready) - Next cron run at 13:30 should be able to start run-302 after daily quota resets - All other issues remain blocked/icebox — no other work available ## 看天出发 — 产品设计日（与 Luna 深度讨论） ### 全天和 Luna 讨论产品架构（07:00-12:40），成果巨大： **前端改动：** - 卡片去掉地图，只留照片+天气+时间线色条 - 详情页按钮合并为单个「出发 🚶」（自动收藏+创建行程） - 行程页删除改为左滑手势 - 地图分层交互：默认住宿+景点，交通按钮显示路线，点击点才弹标签 - 标签系统回归简单（7 个时间标签，设置里开关） - 废旧 JS 文件清理（8 个，8300+ 行） **产品定义（PRODUCT.md）：** - 核心公式：`目的地知识 × 目的地实况 × 你的需求 = 此刻适合你的旅行方案` - Slogan：「此刻合适，也适合你」 - 三层数据结构：静态知识 / 玩法模板 / 实时数据 - 分发模型：按"城市×tag"生成，同需求同方案，CDN 友好 - 区级定位 + 路线 API... [score=0.762 recalls=6 avg=0.596 source=memory/2026-07-24.md:1074-1100]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:506:529 -->
+- Claude Code fixed all lint errors (replaced `as any` with proper types, removed unused imports) - All 194 tests pass, lint clean - Pushed fix commit `5ea6792`, awaiting CI re-run # 2026-07-22 ## 看天出发 — 新产品讨论 (10:47-17:12) 🔥 **Luna 主导的产品讨论，从需求到原型。这是新项目。** ### 产品定义 - **名字**：看天出发 - **核心信条**：只选不规划，用户永远不需要动脑子，打开就有答案 - **形态**：小程序（先 H5 验证） - **域名**：kantian.kagura-agent.com（已部署，DNS→VM1） - **Repo**：`~/.openclaw/workspace/kantian-travel/` ### 产品设计决策（Luna 主导） 1. **目的地粒度** — 不是城市（杭州/上海太大），是具体小地方（莫干山、西塘、径山） 2. **卡片=方案** — 不是推荐"地点"，是完整的行程方案（拿走就走） 3. **内容要有信息差** — 不要热门废话（西湖、外滩谁不知道），要具体有画面感的推荐 4. **交互模式** — 大卡片列表，上下滑动，每屏1.5-2张（类似大众点评但更大） 5.... [score=0.746 recalls=7 avg=0.498 source=memory/2026-07-22.md:506-529]

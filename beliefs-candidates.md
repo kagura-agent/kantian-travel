@@ -991,3 +991,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-26: [gradient] "spam-filter.sh breaks on multi-object JSON piping" → [行为改变] Fix spam-filter.sh to handle streamed JSON objects (jq -s to wrap in array before piping, or fix script parser). (pattern: tool-blockers-unresolved, 第1次) (Source: study)
   - **Trigger**: When piping gh api --jq output (individual JSON objects per line) to spam-filter.sh
+
+- 2026-07-27: [gradient] "Star growth predictions for academic paper repos and solo-dev novel-architecture repos consistently over-estimated (2/2 wrong in calibration: Qwen-AgentWorld derivatives, context-warp-drive stars)" → [行为改变] Apply 50% discount to gut star estimate before committing prediction. (pattern: calibration-overestimate-solo-academic, 第1次) (Source: study)
+  - **Trigger**: When logging a calibration prediction for an academic or solo-dev repo
