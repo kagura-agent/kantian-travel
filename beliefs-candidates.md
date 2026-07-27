@@ -1003,3 +1003,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-27: [gradient] "competing-pr-check.sh false positive: finds unrelated merged PRs that reference the same issue number via GitHub search. PR #568 (gate LLM features) matched #712 search but was completely unrelated to parse_language. Manual verification step was needed." → [行为改变] When competing-pr-check flags a merged PR, verify the PR title/description actually fixes the same bug before abandoning. Consider adding keyword matching to the script.. (pattern: competing-pr-false-positive, 第1次) (Source: workloop)
   - **Trigger**: competing-pr-check exits 1 with merged PR that looks unrelated
+
+- 2026-07-27: [gradient] "For large codebases (600MB+), grep-r and gogetajob scan get OOM-killed. Use targeted grep with --include and specific directories instead of repo-wide search." → [行为改变] Use grep -rn <pattern> src/lib/ --include="*.ts" instead of grep -r <pattern> src/. (pattern: large-repo-resource-management, 第1次) (Source: workloop)
+  - **Trigger**: Working in NemoClaw or similarly large repos
