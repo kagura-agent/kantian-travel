@@ -997,3 +997,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-27: [gradient] "git clone fails on network/disk issues: switch to API-based reading immediately, no retry" → [行为改变] Use gh api contents + web_fetch for repos <1MB. Only clone for large codebases. (pattern: clone-fail-api-fallback, 第1次) (Source: study)
   - **Trigger**: git clone timeout or failure on small repos
+
+- 2026-07-27: [gradient] "Completion evidence gate: before accepting task 'done', require structured proof (summary + evidence items). Learned from wmux A2A TaskService." → [行为改变] Ask what was checked and what output was observed, don't just trust summary text. (pattern: completion-evidence-before-done, 第1次) (Source: study)
+  - **Trigger**: Reviewing subagent or delegated task results
+
+- 2026-07-27: [gradient] "competing-pr-check.sh false positive: finds unrelated merged PRs that reference the same issue number via GitHub search. PR #568 (gate LLM features) matched #712 search but was completely unrelated to parse_language. Manual verification step was needed." → [行为改变] When competing-pr-check flags a merged PR, verify the PR title/description actually fixes the same bug before abandoning. Consider adding keyword matching to the script.. (pattern: competing-pr-false-positive, 第1次) (Source: workloop)
+  - **Trigger**: competing-pr-check exits 1 with merged PR that looks unrelated
