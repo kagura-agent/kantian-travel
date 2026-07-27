@@ -338,6 +338,7 @@
 - [x] **workloop.yaml: 新增 stale_pr_check 节点（前置于 study）** - workloop #6852 NemoClaw#7226 教训（plan-review subagent 白跑一轮后才在 implement 发现 PR 已存在）→ 新增 stale_pr_check 节点在 pr_gate 之后、study 之前，Exit 10 直跳 verify，Exit 11 进 implement fix mode (2026-07-23)
 - [x] **guide.md: 新增「check recent merged PRs in same area before narrow fix」** - openclaw#112449 教训（2行 typeof guard 被 06-14 已 merge 的 21 文件 store-read seam 重构覆盖，issue 实质已 side-effect 修复）→ 已加入 guide.md 第 86 条 (2026-07-24)
 - [x] **guide.md: 新增「use precise PR-issue linkage keywords」** - NemoClaw#7434 教训（Closes→Relates to，部分修复不应自动关 issue）→ 已加入 guide.md 第 87 条 (2026-07-25)
+- [x] **guide.md: 新增「trace actual error path before posting root-cause analysis」** - NemoClaw#7361 教训（症状模式匹配误归因 TLS catch-22，实际是 credential resolution bug，被 mill101 纠正）→ 已加入 guide.md 第 88 条 (2026-07-27)
 
 ## 📚 学习
 
@@ -791,6 +792,10 @@
 ### Next
 - (none — system healthy, find next improvement on demand)
 
+### Done (07-27)
+- Lower auto-wake threshold 10d→8d (1d grace after 7d stale report instead of 3d). Woke 3 stale categories immediately. (07-27)
+- Sync `cron-check` default threshold 10d→8d to match `review --auto-wake`. Fix tracker counter drift (totalSent 412→413, purge 1 timeless entry). Health now all-clean. (07-27)
+
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
 - [x] PR #44782 CLOSED as duplicate of #44652 (by LeonSGP43, opened 4h earlier)
@@ -932,3 +937,8 @@
 ### Done (addressed 2026-07-23, commit 9cf2f227)
 - [x] Address CodeRabbit review comment [Minor]: loader.ts:781 — Add `KNOWN_DAG_NODE_KEYS.has(key)` hint when node-only key misplaced at workflow level (symmetry with node-level hint)
 - [x] Address CodeRabbit review comment [Major]: workflow-discovery.ts:341 — Clear lower-scope warnings when project workflow overrides bundled one (`mergeWarnings` retains stale bundled warnings → false positive)
+
+## Pending Workloop Tasks (from patrol 07-27)
+
+- [ ] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES.
+- [ ] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach.
