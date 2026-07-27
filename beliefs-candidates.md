@@ -704,22 +704,22 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - 2026-06-26: [gradient] "In high-activity repos (openclaw), narrower PRs with immediate behavior proof beat broader fixes needing multiple review rounds. Time-to-submit matters when competitors are working the same issue." → [行为改变] Submit the narrowest working fix first. If broader improvements are needed, file them as follow-up issues/PRs after the initial fix lands.. (pattern: speed-over-scope, 第1次) (Source: workloop) → **retracted 2026-07-26** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: When choosing between a minimal fix with proof vs a complete fix needing more time, especially on popular issues
 
-- 2026-06-27: [gradient] "calibration-log.sh verify uses no-space grep pattern but jsonl has spaced JSON. Direct python workaround needed until fixed." → [行为改变] Use python json approach or fix grep pattern in script. (pattern: calibration-log-json-spacing, 第1次) (Source: study)
+- 2026-06-27: [gradient] "calibration-log.sh verify uses no-space grep pattern but jsonl has spaced JSON. Direct python workaround needed until fixed." → [行为改变] Use python json approach or fix grep pattern in script. (pattern: calibration-log-json-spacing, 第1次) (Source: study) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 31+ days)
   - **Trigger**: verify command says 'not found' for existing predictions
 
-- 2026-06-27: [gradient] "升级从发现(06-25)到完成核心adoption(06-27)花了48h，刚好卡在deadline边缘。主要延迟：06-26的run被gateway restart中断。自动生效类fix验证最快（看runs data即可），需配置类需实际触发场景，跨session类最难验证（需等真实场景）。" → [行为改变] 优先验证自动生效类和可观测类fix（数据已有），跨session类标记待观察而非阻塞流程。升级后第一天就开始验证，不等第二天。. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade)
+- 2026-06-27: [gradient] "升级从发现(06-25)到完成核心adoption(06-27)花了48h，刚好卡在deadline边缘。主要延迟：06-26的run被gateway restart中断。自动生效类fix验证最快（看runs data即可），需配置类需实际触发场景，跨session类最难验证（需等真实场景）。" → [行为改变] 优先验证自动生效类和可观测类fix（数据已有），跨session类标记待观察而非阻塞流程。升级后第一天就开始验证，不等第二天。. (pattern: dogfood-adoption, 第1次) (Source: post-upgrade) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 31+ days)
   - **Trigger**: 下次升级后执行adoption时
 
-- 2026-06-28: [gradient] "One-line bug fixes with clear root cause in issue body are ideal workloop targets — minimal implementation time, high success probability, CI passes immediately. The key is funnel efficiency: batch-filter 5+ candidates rather than checking one-by-one." → [行为改变] When P1/P2 are all competed, immediately look for well-specified one-line bugs in P3 repos with merged history. Funnel 5+ candidates at once.. (pattern: one-line-fix-efficiency, 第1次) (Source: workloop)
+- 2026-06-28: [gradient] "One-line bug fixes with clear root cause in issue body are ideal workloop targets — minimal implementation time, high success probability, CI passes immediately. The key is funnel efficiency: batch-filter 5+ candidates rather than checking one-by-one." → [行为改变] When P1/P2 are all competed, immediately look for well-specified one-line bugs in P3 repos with merged history. Funnel 5+ candidates at once.. (pattern: one-line-fix-efficiency, 第1次) (Source: workloop) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: find_work step when multiple P1 issues are competed
 
-- 2026-06-28: [gradient] "HN Show submissions without findable GitHub repos are time sinks — skip after 1 failed search attempt instead of trying 3+ queries" → [行为改变] Move to next candidate immediately. Don't try alternate search terms.. (pattern: hn-phantom-project-skip, 第1次) (Source: study)
+- 2026-06-28: [gradient] "HN Show submissions without findable GitHub repos are time sinks — skip after 1 failed search attempt instead of trying 3+ queries" → [行为改变] Move to next candidate immediately. Don't try alternate search terms.. (pattern: hn-phantom-project-skip, 第1次) (Source: study) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: HN item has no obvious repo link and first GitHub search returns nothing
 
-- 2026-06-28: [gradient] "Before implementing on a repo not PRed recently, check CONTRIBUTING.md for new contribution gates (vouch systems, CLA bots, etc). oh-my-pi introduced a vouch system on 2026-06-19 that auto-closes PRs from non-vouched users. Wasted a full implement cycle before discovering this at verify time." → [行为改变] Add a step in study/pr_gate node: read CONTRIBUTING.md, check for vouch/CLA/approval requirements, ensure compliance before starting implementation. (pattern: check-contribution-gates-before-implement, 第1次) (Source: workloop)
+- 2026-06-28: [gradient] "Before implementing on a repo not PRed recently, check CONTRIBUTING.md for new contribution gates (vouch systems, CLA bots, etc). oh-my-pi introduced a vouch system on 2026-06-19 that auto-closes PRs from non-vouched users. Wasted a full implement cycle before discovering this at verify time." → [行为改变] Add a step in study/pr_gate node: read CONTRIBUTING.md, check for vouch/CLA/approval requirements, ensure compliance before starting implementation. (pattern: check-contribution-gates-before-implement, 第1次) (Source: workloop) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Starting work on a repo where last PR was >2 weeks ago or never
 
-- 2026-06-28: [gradient] "Claude Code --print mode can hang silently for 3+ minutes on complex prompts. For small surgical fixes (< 20 LOC production code), manual implementation is faster and more reliable than waiting for Claude Code." → [行为改变] Kill and implement manually when the change is well-understood and < 20 lines. Already documented in AGENTS.md as efficiency tip.. (pattern: claude-code-print-timeout-fallback, 第1次) (Source: workloop)
+- 2026-06-28: [gradient] "Claude Code --print mode can hang silently for 3+ minutes on complex prompts. For small surgical fixes (< 20 LOC production code), manual implementation is faster and more reliable than waiting for Claude Code." → [行为改变] Kill and implement manually when the change is well-understood and < 20 lines. Already documented in AGENTS.md as efficiency tip.. (pattern: claude-code-print-timeout-fallback, 第1次) (Source: workloop) → **retracted 2026-07-28** (rationale: stale — single occurrence, no recurrence in 30+ days)
   - **Trigger**: Claude Code --print takes >2 minutes with no output
 
 - 2026-06-29: [gradient] "Apply mode with empty backlog + same-day prior apply + no new deep reads = effectively saturated. The 5-min search cycle (unapplied.md → wiki search → read cards → conclude nothing) costs more than potential find." → [行为改变] Skip apply immediately. Record in memory as saturation skip, not as apply attempt.. (pattern: apply-mode-empty-backlog-skip, 第1次) (Source: study)
@@ -1006,3 +1006,10 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-27: [gradient] "For large codebases (600MB+), grep-r and gogetajob scan get OOM-killed. Use targeted grep with --include and specific directories instead of repo-wide search." → [行为改变] Use grep -rn <pattern> src/lib/ --include="*.ts" instead of grep -r <pattern> src/. (pattern: large-repo-resource-management, 第1次) (Source: workloop)
   - **Trigger**: Working in NemoClaw or similarly large repos
+
+### 被動模式三天硬限 (2026-07-28, daily-review carry-forward)
+- **trigger**: 同一問題連續 3 天被標記 "deferred" / "白天處理" / "下次做" 但未實際行動
+- **rule**: 連續 3 天 deferred = 必須當場執行或明確 DROP（附理由），不允許第 4 天 carry-forward
+- **validation**: daily-audit carry-forward 表格中同一項連續出現 ≥3 次 → 強制行動
+- **evidence**: NemoClaw#7361 5天被動 + L1 regen 4天 deferred（07-27 audit）, NemoClaw#7062 同類前科
+- **repeats**: 1 (首次記錄，07-27 audit 發現)
