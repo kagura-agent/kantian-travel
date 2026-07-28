@@ -1016,3 +1016,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-28: [gradient] "workloop-find-issue.sh OOM killed on memory-constrained machine — manual gogetajob feed + gh search worked as fallback but lost automated gate filtering" → [行为改变] If script OOMs, use gogetajob feed directly + manual gh search as lightweight fallback; consider splitting heavy scripts into smaller steps. (pattern: oom-large-scripts, 第1次) (Source: workloop)
   - **Trigger**: When running batch scripts (find-issue, followup) that spawn multiple gh API calls in sequence on memory-constrained machine
+
+- 2026-07-28: [gradient] "Issue saturation: when workloop-find-issue.sh OOMs and manual search checks 15+ issues across 5 repos, nearly ALL have competing PRs within hours of creation. The competitive window for popular repos (NemoClaw, openclaw) is <24h from issue creation to first PR." → [行为改变] Consider: (1) Run workloop more frequently during high-activity hours, (2) Fix workloop-find-issue.sh OOM to catch fresh issues faster, (3) Focus on repos with less competition, (4) Handle existing PR feedback (CodeRabbit) as priority work when no new issues available. (pattern: issue-timing-window, 第1次) (Source: workloop)
+  - **Trigger**: find_work step returns no viable candidates after exhaustive manual search
