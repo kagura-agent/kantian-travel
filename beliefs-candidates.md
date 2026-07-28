@@ -1013,3 +1013,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 - **validation**: daily-audit carry-forward 表格中同一項連續出現 ≥3 次 → 強制行動
 - **evidence**: NemoClaw#7361 5天被動 + L1 regen 4天 deferred（07-27 audit）, NemoClaw#7062 同類前科
 - **repeats**: 1 (首次記錄，07-27 audit 發現)
+
+- 2026-07-28: [gradient] "workloop-find-issue.sh OOM killed on memory-constrained machine — manual gogetajob feed + gh search worked as fallback but lost automated gate filtering" → [行为改变] If script OOMs, use gogetajob feed directly + manual gh search as lightweight fallback; consider splitting heavy scripts into smaller steps. (pattern: oom-large-scripts, 第1次) (Source: workloop)
+  - **Trigger**: When running batch scripts (find-issue, followup) that spawn multiple gh API calls in sequence on memory-constrained machine
