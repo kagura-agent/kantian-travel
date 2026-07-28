@@ -371,6 +371,8 @@
 - [ ] Track: Sigbound (surya-koritala/sigbound) - 50⭐ (07-26). Parallel agent merge engine. OCC partition + tree-overlay + verify gate. Open Cursor Origin alternative. Go. Active, self-dogfooding. Revisit 08-02
 - [ ] Track: wmux (openwong2kim/wmux) - 291⭐ (07-27). Workspace multiplexer for AI coding agents. TypeScript/Electron. Daemon-owns-PTY, A2A channels, completion evidence gates, git worktree fan-out. Desktop-only but patterns portable. Revisit 08-10
 - [ ] Track: Cindy (makecindy/cindy) - 476⭐ (07-27). Multi-harness unified agent desktop. Orca Lead/Worker orchestration, maker-core abstraction, code-over-prompt invariant. TypeScript/Electron. Active team (5d old, 48 forks, 143 issues). Revisit 08-10
+- [ ] Track: Approving (cocofhu/approving) - 73⭐ (07-28). Visual multi-agent delivery workflow platform. FSM paths, Docker sandboxes, MCP artifacts, human Approve gates. Go+web. Active. Revisit 08-04
+- [ ] Track: deer-workflow (deerwork-ai) - 254⭐ (07-28). Code-first Graph Engineering agent workflow runtime. TypeScript/Bun. DeerWork pilot (ByteDance DeerFlow family). Vendor-neutral Agent interface, parallel/pipeline primitives, task-native vision. Deep read done. Revisit 08-04
 - [ ] Track: Godcoder (eli-labz) - 290⭐ (07-17 followup, +18% stars but 13d stale). No commits since 07-04. Downgrade to monthly if no activity by 07-24. Revisit 07-31
 - [x] Track: dirac (dirac-run) - 1,421⭐ (07-25 followup, +1.2%). v0.4.21-23: ACP session continuity, configurable presets, webview stability, symbol indexer efficiency. Steady. Revisit 08-01
 - [ ] Track: Graphenium (lambda-alpha-labs) - 21⭐ (07-17 followup, +75%). PIVOTED: no longer memory → now "architecture gate/linter for AI agents" (tree-sitter + Stack Graphs + Datalog, block structural drift on virtual ASTs). v0.19.3, MCP tool support (Gemini/Vertex compat). Solo dev, active (pushed 07-13). Reclassified to Coding Agents category. Revisit 07-31
@@ -382,7 +384,7 @@
 - [x] Track: waku-agent (ShenSeanChen) - 355⭐ (07-21 followup, +150%). THRIVING 6/6. Compare Arena + delegate_task through full loop. Revisit 07-28
 - [x] Track: memraw (TetiAI) - 46⭐ (07-23 followup, flat). 13d stale, 0 forks, 0 community. All code in init commit. Concept documented. Downgraded to monthly. Revisit 08-23
 - [ ] Track: Caspian SDK (TryCaspian) - 176⭐ (07-24, NEW). Cross-platform agent identity SDK. One on_message handler across all channels. Ships OpenClaw plugin. Solo dev risk. Revisit 07-31
-- [ ] Track: Waggle (modiqo/waggle) - 909⭐ (07-21, NEW). Attributed artifact references for agent handoffs. MCP-native ~30-byte tokens, sealed variant matcher, consumption contracts, payload-free telemetry. Rust, Apache-2.0/MIT. Deep read done. Revisit 07-28
+- [ ] Track: Waggle (modiqo/waggle) - 860⭐ (07-28 followup). Quiet — last push 07-20 (badges only). No new architecture since 0.5.3 (07-14). Revisit 08-11
 - [ ] Track: Observal (Observal/Observal) - 2,218⭐ (07-22, NEW). Cross-harness AI component registry + analytics. Agent=portable context package (MCP+skills+hooks+prompts+sandboxes). Self-learning pipeline (insights→pending registry items). ClickHouse analytics, Helm, SSO/SCIM. Apache-2.0, Python. Deep read done. Revisit 07-29
 - [ ] Track: Superserve (superserve-ai/superserve) - 419⭐ (07-22, NEW). Firecracker microVM sandbox for AI agents. Secret proxy pattern (credential never enters VM). Sandtrace: hypervisor-level hash-chained audit trails. Pause/resume lifecycle. TypeScript+Python SDK. Apache-2.0. Deep read done. Revisit 07-29
 - [ ] Track: open-kritt (Kritt-ai/open-kritt) - 259⭐ (07-22, NEW). AI security research platform — depth-based workflow decomposition, multi-harness (Codex/Claude/Cursor), repeat-runs dedup, post-script enrichment. $1.5M bug bounty team (Blockian). AGPL-3.0, Python. Deep read done. Revisit 07-29
@@ -866,7 +868,7 @@
 - [ ] Add stale-memory MEMORY_DRIFT_CAVEAT remediation step to condensed bullet
 - [ ] Consider: condensedTypes parity test against TYPES_SECTION_INDIVIDUAL
 - Review body: https://github.com/QwenLM/qwen-code/pull/6104
-- [ ] Track: learn-agent (7-e1even) - 154⭐ (07-21 followup). SOLO 0/6, quiet since s20 (07-17). No new episode. Revisit 07-28
+- [x] Track: learn-agent (7-e1even) - 211⭐ (07-28 followup). s21-s23 + agent_analysis + interview all covered previously. No s24 yet. Author active. Revisit 08-04
 - [x] Track: Napaxi (antgroup) - 24⭐ (07-20 followup). Cannot find repo on GitHub (possibly private/org-restricted/renamed). Dropped — unverifiable.
 - [ ] Track: Brain0-ai/brain0 - 22⭐ (07-05, NEW). AI code provenance — passive decision graph linking commits to agent intents. 3 novel signals: drift (declared vs done), DLP (agent reads), 2D risk (a-priori × a-posteriori). Rust+TS, open-core, 14 crates. Deep read done. Revisit 07-30
 
@@ -950,4 +952,4 @@
 
 - [ ] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES.
 - [ ] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach.
-- [ ] **NemoClaw #7631**: Address PR Review Advisor blocker PRA-1 — move `commandExists("openshell")` check before cleanup steps in `run-plan.ts`. Add test: `runUninstallPlan` with `commandExists("openshell")=false` verifies no service-removal/process-stop/OpenShell cleanup calls occur before nonzero exit.
+- [x] **NemoClaw #7631**: ✅ MERGED (approved by senthilr-nv, 07-28). Issue #7628 also closed.
