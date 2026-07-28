@@ -346,6 +346,7 @@
 - [x] **guide.md: 新增「check recent merged PRs in same area before narrow fix」** - openclaw#112449 教训（2行 typeof guard 被 06-14 已 merge 的 21 文件 store-read seam 重构覆盖，issue 实质已 side-effect 修复）→ 已加入 guide.md 第 86 条 (2026-07-24)
 - [x] **guide.md: 新增「use precise PR-issue linkage keywords」** - NemoClaw#7434 教训（Closes→Relates to，部分修复不应自动关 issue）→ 已加入 guide.md 第 87 条 (2026-07-25)
 - [x] **guide.md: 新增「trace actual error path before posting root-cause analysis」** - NemoClaw#7361 教训（症状模式匹配误归因 TLS catch-22，实际是 credential resolution bug，被 mill101 纠正）→ 已加入 guide.md 第 88 条 (2026-07-27)
+- [x] **guide.md: 新增「same-person serial supersede = persistent structural disadvantage」** - vercel/ai#17931 教训（aayush-kapoor 第 3 次 supersede，实现几乎相同但每次都先被 merge，结构性竞争劣势）→ 已加入 guide.md 第 89 条 (2026-07-28)
 
 ## 📚 学习
 
@@ -700,6 +701,10 @@
 
 ## NemoClaw (NVIDIA/NemoClaw)
 
+### Active
+- [ ] **PR #7684** — CodeRabbit review: validate `shellcheck --format=json1` capability before skipping apt install (not just `command -v`). Quick win, Major severity. (2026-07-28)
+- [ ] **Issue #7612** — [Jetson][Install] Unsupported-JetPack host-setup warning — claimed, need to submit PR
+
 ### Merged ✅
 - [x] PR #4054 - fix(security): enforce owner-only permissions on ~/.nemoclaw directory and config files — merged 05-26 by cv 🎉
 - [x] Track: centaur (paradigmxyz/centaur) - 728⭐ (06-07). Minor fixes only. Growth slowing (+0.6%). Revisit 06-14
@@ -798,10 +803,15 @@
 ### Done (07-26)
 - Batch auto-wake: `_review_auto_wake` now wakes up to 3 stale categories per run (was 1). Fixes `((count++))` exit-code-1 under `set -e`. (07-26)
 
+### Done (07-28)
+- Regenerated gallery.html (was 21d stale, Jul 7 → Jul 28, 231 memes/26 cats). (07-28)
+
 ### Next
 - (none — system healthy, find next improvement on demand)
 
 ### Done (07-27)
+- Woke stale `panic` category (8.1d → fresh). System fully healthy: 0 stale, 100% tags/styles. (07-28)
+
 - Lower auto-wake threshold 10d→8d (1d grace after 7d stale report instead of 3d). Woke 3 stale categories immediately. (07-27)
 - Sync `cron-check` default threshold 10d→8d to match `review --auto-wake`. Fix tracker counter drift (totalSent 412→413, purge 1 timeless entry). Health now all-clean. (07-27)
 - Refactor `cmd_cron_check` to delegate to `cmd_review --full --auto-wake` instead of reimplementing wake logic. Eliminates duplicated threshold, gets batch wake (up to 3), dry-run now previews all 3. (07-27)
@@ -953,3 +963,5 @@
 - [ ] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES.
 - [ ] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach.
 - [x] **NemoClaw #7631**: ✅ MERGED (approved by senthilr-nv, 07-28). Issue #7628 also closed.
+- [ ] **NemoClaw #7684**: Address CodeRabbit suggestions — 1) .github/workflows/code-scanning.yaml line 90 stability fix (Major) 2) test assertions should verify conditional behavior not just command presence. github-actions bot recommends "merge_after_fixes".
+NemoClaw #7292 follow-up: investigate OPENSHELL_SANDBOX in channels guard context, fix interpolation
