@@ -249,6 +249,13 @@
 - Upstream quiet since v0.4.0 (07-18), 7 days. Stars: 138 (stable)
 - Contribution score: 10 merged, 1 open (#177), 7 closed
 - Status: PR #177 within patience window (5/14 days). Dogfood continues
+- Wiki health (07-27): 1082 files, 142 orphans (13%), 0 broken links, 0 collisions ✔
+- 11 wiki files edited today (active dogfood usage confirmed)
+- PR #177 (memex_link MCP tool): OPEN, 0 reviews, 7 days old (submitted 07-20). Halfway through 14-day patience window
+- External PR #171 (wooksong) 44+ days without review — still open
+- Upstream dormant again since v0.4.0 (07-18), 9 days. Stars: 138 (stable)
+- Contribution score: 10 merged, 1 open (#177), 7 closed
+- Status: PR #177 at 7/14 days. Dogfood-only continues
 
 ## 🔧 Infrastructure Maintenance
 - [x] memory_search 完全失效 — 06-23 SG→JP Floway 迁移后彻底宕机。根因: Floway JP 不支持 /v1/embeddings 路由。✅ Fixed — verified 06-23 19:00, embeddings route working (returns results via text-embedding-3-small)
@@ -370,7 +377,7 @@
 - [x] Track: Ornith-1.0 (deepreinforce-ai) - 800⭐ (07-01). **Dropped** 07-16 — repo 404 (removed/private/renamed). Cannot find via search.
 - [x] Track: ctx (ctxrs/ctx) - 947⭐ (07-24 followup, +7%). v0.25.0 stable, pace declining. Only symbol stripping since. Revisit 07-31
 - [x] Track: pocketdev (0xMassi/pocketdev) - 100⭐ (07-17 followup, +9%). 17d stale (last push 06-30). Solo dev, no community, concept simple (infra setup script). **Dropped** 07-17 — stagnant, no architectural insight remaining
-- [ ] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. Revisit 07-30
+- [x] Track: MemSyco-Bench (XMUDeepLIT) - 16⭐ (07-02). Stagnant — only README updates since 07-02. No code development. **Dropped** 07-28 — 26d stale, no code, 16⭐
 - [x] Track: Synapse (ardhaecosystem/synapse) - 71⭐ (07-26 followup, flat). Only dependabot bumps since 07-19. Last meaningful commit 07-15. Phase 1-4 burst (07-14) not followed by further dev. GROWING 4/6 but pace slowing. 7 forks, 4 unique issue authors. Revisit 08-02
 - [x] Track: waku-agent (ShenSeanChen) - 355⭐ (07-21 followup, +150%). THRIVING 6/6. Compare Arena + delegate_task through full loop. Revisit 07-28
 - [x] Track: memraw (TetiAI) - 46⭐ (07-23 followup, flat). 13d stale, 0 forks, 0 community. All code in init commit. Concept documented. Downgraded to monthly. Revisit 08-23
@@ -795,6 +802,7 @@
 ### Done (07-27)
 - Lower auto-wake threshold 10d→8d (1d grace after 7d stale report instead of 3d). Woke 3 stale categories immediately. (07-27)
 - Sync `cron-check` default threshold 10d→8d to match `review --auto-wake`. Fix tracker counter drift (totalSent 412→413, purge 1 timeless entry). Health now all-clean. (07-27)
+- Refactor `cmd_cron_check` to delegate to `cmd_review --full --auto-wake` instead of reimplementing wake logic. Eliminates duplicated threshold, gets batch wake (up to 3), dry-run now previews all 3. (07-27)
 
 
 ## hermes-agent PR #44782 — CLOSED (duplicate)
@@ -942,3 +950,4 @@
 
 - [ ] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES.
 - [ ] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach.
+- [ ] **NemoClaw #7631**: Address PR Review Advisor blocker PRA-1 — move `commandExists("openshell")` check before cleanup steps in `run-plan.ts`. Add test: `runUninstallPlan` with `commandExists("openshell")=false` verifies no service-removal/process-stop/OpenShell cleanup calls occur before nonzero exit.
