@@ -41,7 +41,7 @@
 - **FlowForge** — Workflow 引擎(npm @kagura-agent/flowforge@1.1.2)
 - **evolution-log** — 进化原始记录(public) https://github.com/kagura-agent/evolution-log
 - **kagura-story** — 故事,stories/ 中英双版,图文并茂 → kagura-storyteller skill
-- **看天出发(kantian-travel)** — Luna 主导的旅行产品(07-22启动),小程序/H5,核心:只选不规划+拿走就走,域名 kantian.kagura-agent.com,repo `~/.openclaw/workspace/kantian-travel/`,详细设计见 daily memory 07-22~07-24
+- **看天出发(kantian-travel)** — ⏸️ Luna 主导的旅行产品(07-22启动→07-26 反思结论:赛道天花板低,规划太薄不成刚需),但沉淀了「频道即产品」通用思路+截图→结构化提取能力链路。详见 daily memory 07-22~07-26
 
 ## Projects — 灵感
 - **just-for-fun** — 灵感收集箱，有趣的发现/idea/实验，repo: kagura-agent/just-for-fun，本地 `~/repos/just-for-fun/`，对应 Discord #just-for-fun channel
@@ -151,9 +151,9 @@
 
 
 
-## Promoted From Short-Term Memory (2026-07-27)
+## Promoted From Short-Term Memory (2026-07-29)
 
-<!-- openclaw-memory-promotion:memory:memory/2026-07-24.md:1074:1100 -->
-- Uppercase `DeepSeek-V3-0324` still returns 500 - Run-302 state file: 0/16 (fresh start ready) - Next cron run at 13:30 should be able to start run-302 after daily quota resets - All other issues remain blocked/icebox — no other work available ## 看天出发 — 产品设计日（与 Luna 深度讨论） ### 全天和 Luna 讨论产品架构（07:00-12:40），成果巨大： **前端改动：** - 卡片去掉地图，只留照片+天气+时间线色条 - 详情页按钮合并为单个「出发 🚶」（自动收藏+创建行程） - 行程页删除改为左滑手势 - 地图分层交互：默认住宿+景点，交通按钮显示路线，点击点才弹标签 - 标签系统回归简单（7 个时间标签，设置里开关） - 废旧 JS 文件清理（8 个，8300+ 行） **产品定义（PRODUCT.md）：** - 核心公式：`目的地知识 × 目的地实况 × 你的需求 = 此刻适合你的旅行方案` - Slogan：「此刻合适，也适合你」 - 三层数据结构：静态知识 / 玩法模板 / 实时数据 - 分发模型：按"城市×tag"生成，同需求同方案，CDN 友好 - 区级定位 + 路线 API... [score=0.762 recalls=6 avg=0.596 source=memory/2026-07-24.md:1074-1100]
-<!-- openclaw-memory-promotion:memory:memory/2026-07-22.md:506:529 -->
-- Claude Code fixed all lint errors (replaced `as any` with proper types, removed unused imports) - All 194 tests pass, lint clean - Pushed fix commit `5ea6792`, awaiting CI re-run # 2026-07-22 ## 看天出发 — 新产品讨论 (10:47-17:12) 🔥 **Luna 主导的产品讨论，从需求到原型。这是新项目。** ### 产品定义 - **名字**：看天出发 - **核心信条**：只选不规划，用户永远不需要动脑子，打开就有答案 - **形态**：小程序（先 H5 验证） - **域名**：kantian.kagura-agent.com（已部署，DNS→VM1） - **Repo**：`~/.openclaw/workspace/kantian-travel/` ### 产品设计决策（Luna 主导） 1. **目的地粒度** — 不是城市（杭州/上海太大），是具体小地方（莫干山、西塘、径山） 2. **卡片=方案** — 不是推荐"地点"，是完整的行程方案（拿走就走） 3. **内容要有信息差** — 不要热门废话（西湖、外滩谁不知道），要具体有画面感的推荐 4. **交互模式** — 大卡片列表，上下滑动，每屏1.5-2张（类似大众点评但更大） 5.... [score=0.746 recalls=7 avg=0.498 source=memory/2026-07-22.md:506-529]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-02-1722.md:69:98 -->
+- `clawhub publish` 发布 cove-ops - 邀请信里的 `clawhub install cove-ops` 步骤已加 - 最终 build + deploy - Git commit 整理 + push + 提 PR 要不你帮跑一下 version 修改 + publish？还是我等工具恢复后一起收？ user: 给你修了 你看看呢 assistant: 谢谢 Luna！原来是 `clawhub` 不读 frontmatter 的 version，必须用 `--version` 参数。cove-ops 发布好了 ✅ 现在收尾 — build + deploy + commit： assistant: exec 又完全不返回了… 只有最简单的单行命令偶尔能工作。Luna，这个 exec 问题一直反复出现，可能是 gateway exec sandbox 的 bug。 剩下的收尾步骤很机械化，我列出来，你可以帮跑或者等 gateway 修复： ```bash # 1. Build server cd ~/repos/forks/cove/packages/server && npm run build # 2.... [score=0.675 recalls=4 avg=0.518 source=memory/2026-07-02-1722.md:69-98]
+<!-- openclaw-memory-promotion:memory:memory/2026-07-26.md:1:27 -->
+- ## 看天出发 — 产品方向反思与结论 (17:40-18:12) **Luna 主导的深度产品反思，最终结论：旅行规划赛道天花板很低。** ### 核心洞察链 1. **AI 生成旅行内容不可行** — 种草靠视觉冲击（图片/视频），AI 文字没有让人"想去"的力量 2. **图片的三难困境** — Google Places 真实但丑，AI 生成好看但假，小红书真实+好看但拿不到 3. **规划本身不是痛点** — 有经验的人做旅行规划就三步：查天气→查交通→定住宿，15分钟搞定 4. **到当地的事不需要提前规划** — 吃什么、逛哪里，到了再说反而更好 5. **赛道分析** — AI行程生成(Roam Around)、行程编辑器(Wanderlog)、预订聚合(TripIt)、平台附属功能(携程) — 没有一个成为刚需 ### 结论 **旅行规划作为独立产品可能立不住。** 原因： - 发现/种草 → 小红书已解决 - 执行/导航 → 高德已解决 - 预订 → 携程已解决 - 中间的"规划" → 太薄，15分钟人自己能做 ### 但这段时间不白费 Luna 认可的有价值的产出： 1. **"频道即产品"** — 不局限于旅行的通用思路 2. **截图→结构化提取→可执行输出** — 能力链路可复用到其他场景 [score=0.652 recalls=4 avg=0.379 source=memory/2026-07-26.md:1-27]

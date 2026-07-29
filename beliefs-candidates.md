@@ -1019,3 +1019,6 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-28: [gradient] "Issue saturation: when workloop-find-issue.sh OOMs and manual search checks 15+ issues across 5 repos, nearly ALL have competing PRs within hours of creation. The competitive window for popular repos (NemoClaw, openclaw) is <24h from issue creation to first PR." → [行为改变] Consider: (1) Run workloop more frequently during high-activity hours, (2) Fix workloop-find-issue.sh OOM to catch fresh issues faster, (3) Focus on repos with less competition, (4) Handle existing PR feedback (CodeRabbit) as priority work when no new issues available. (pattern: issue-timing-window, 第1次) (Source: workloop)
   - **Trigger**: find_work step returns no viable candidates after exhaustive manual search
+
+- 2026-07-29: [gradient] "Scout 添加新项目到 TODO.md 时必须同步写入 targets.md" → [行为改变] tracking-update.sh 加 --add 选项，或 scout 流程中强制双写. (pattern: targets-todo-crossref-mismatch, 第1次) (Source: study)
+  - **Trigger**: 新项目在 scout 中添加到 TODO.md 但忘记同步到 targets.md
