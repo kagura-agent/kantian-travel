@@ -961,8 +961,8 @@
 
 ## Pending Workloop Tasks (from patrol 07-27)
 
-- [ ] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES.
-- [ ] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach.
+- [x] **Archon #2262**: Push I1/S1 fixes — convert 8 bare-arg `$node.output` sites to assignment form, update stale warning count. Wirasm reviewed SHIP-WITH-FIXES. ✅ Pushed 65bd8d17 (2026-07-29)
+- [x] **opencode #38667**: Create PR for `usage_update` currency fix — add optional `currency` field to `ProviderCost` schema. DinahK-2SO approved approach. ✅ PR #39425 (2026-07-29)
 - [x] **NemoClaw #7631**: ✅ MERGED (approved by senthilr-nv, 07-28). Issue #7628 also closed.
 - [ ] **NemoClaw #7684**: Address CodeRabbit suggestions — 1) .github/workflows/code-scanning.yaml line 90 stability fix (Major) 2) test assertions should verify conditional behavior not just command presence. github-actions bot recommends "merge_after_fixes".
 NemoClaw #7292 follow-up: investigate OPENSHELL_SANDBOX in channels guard context, fix interpolation
