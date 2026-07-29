@@ -896,6 +896,7 @@
 - [ ] Fix type-suppression-inventory: remove `as any` cast introduced by this PR
 - [ ] Re-push to trigger CI re-run
 - [ ] Track: loope (ngthluu/loope) - 7⭐ (07-19 deep-read). Stateless Go daemon: issue→PR via headless Claude Code, label-driven state machine, session persistence, confidence gate. Solo dev, 0 community. Revisit 08-02
+- [ ] Track: Memory Forest (hyungchulc/memory-forest) - 19⭐ (07-29). 6-layer provenance-preserving agent memory architecture. Python, GPLv3, solo dev. Canonical filesystem + structured sweep + route-first retrieval. Deep read done. Revisit 08-12
 
 ## NVIDIA/NemoClaw PR #7422 — Bot Review Fixes (Issue #7415)
 
