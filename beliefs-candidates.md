@@ -1022,3 +1022,9 @@ _Adapted from cangjie-skill's Triple Verification (Cross-domain/Predictive/Exclu
 
 - 2026-07-29: [gradient] "Scout 添加新项目到 TODO.md 时必须同步写入 targets.md" → [行为改变] tracking-update.sh 加 --add 选项，或 scout 流程中强制双写. (pattern: targets-todo-crossref-mismatch, 第1次) (Source: study)
   - **Trigger**: 新项目在 scout 中添加到 TODO.md 但忘记同步到 targets.md
+
+- 2026-07-29: [gradient] "When 4/5 precheck results are EXISTING, acknowledge consolidation phase and focus deep-read on the 1 novel find instead of broadening search endlessly" → [行为改变] Accept saturation signal, pivot to quality deep-read of the single novel find. (pattern: saturation-signal-is-valid-outcome, 第1次) (Source: study)
+  - **Trigger**: Most scout candidates already in wiki
+
+- 2026-07-29: [gradient] "Review fix commits can end up on wrong git branch when session switches between PRs mid-work. The previous cron session committed 71dddc20 to fix/unknown-node-keys instead of fix/sweep-double-quoted-node-output, causing 6 days of apparent inaction." → [行为改变] After git commit, always run git branch and git log --oneline -1 to confirm correct branch. Before push, verify with gh pr view to confirm the branch name matches.. (pattern: wrong-branch-commit, 第1次) (Source: workloop)
+  - **Trigger**: After committing review fixes for a PR
